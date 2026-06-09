@@ -7,7 +7,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import os
 from collections import abc
-from pointnet2_ops import pointnet2_utils
+from utils import pointnet2_utils
 
 def jitter_points(pc, std=0.01, clip=0.05):
     bsize = pc.size()[0]

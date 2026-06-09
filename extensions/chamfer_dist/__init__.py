@@ -7,12 +7,24 @@
 
 import torch
 
-import chamfer
+try:
+    import chamfer
+except ImportError:
+    chamfer = None
+
+
+def _torch_chamfer_forward(xyz1, xyz2):
+    dist = torch.cdist(xyz1, xyz2, p=2) ** 2
+    dist1 = dist.min(dim=2)[0]
+    dist2 = dist.min(dim=1)[0]
+    return dist1, dist2
 
 
 class ChamferFunction(torch.autograd.Function):
     @staticmethod
     def forward(ctx, xyz1, xyz2):
+        if chamfer is None:
+            raise RuntimeError("compiled chamfer extension is not available")
         dist1, dist2, idx1, idx2 = chamfer.forward(xyz1, xyz2)
         ctx.save_for_backward(xyz1, xyz2, idx1, idx2)
 
@@ -40,7 +52,10 @@ class ChamferDistanceL2(torch.nn.Module):
             xyz1 = xyz1[non_zeros1].unsqueeze(dim=0)
             xyz2 = xyz2[non_zeros2].unsqueeze(dim=0)
 
-        dist1, dist2 = ChamferFunction.apply(xyz1, xyz2)
+        if chamfer is None:
+            dist1, dist2 = _torch_chamfer_forward(xyz1, xyz2)
+        else:
+            dist1, dist2 = ChamferFunction.apply(xyz1, xyz2)
         return torch.mean(dist1) + torch.mean(dist2)
 
 class ChamferDistanceL2_split(torch.nn.Module):
@@ -58,7 +73,10 @@ class ChamferDistanceL2_split(torch.nn.Module):
             xyz1 = xyz1[non_zeros1].unsqueeze(dim=0)
             xyz2 = xyz2[non_zeros2].unsqueeze(dim=0)
 
-        dist1, dist2 = ChamferFunction.apply(xyz1, xyz2)
+        if chamfer is None:
+            dist1, dist2 = _torch_chamfer_forward(xyz1, xyz2)
+        else:
+            dist1, dist2 = ChamferFunction.apply(xyz1, xyz2)
         return torch.mean(dist1), torch.mean(dist2)
 
 class ChamferDistanceL1(torch.nn.Module):
@@ -76,7 +94,10 @@ class ChamferDistanceL1(torch.nn.Module):
             xyz1 = xyz1[non_zeros1].unsqueeze(dim=0)
             xyz2 = xyz2[non_zeros2].unsqueeze(dim=0)
 
-        dist1, dist2 = ChamferFunction.apply(xyz1, xyz2)
+        if chamfer is None:
+            dist1, dist2 = _torch_chamfer_forward(xyz1, xyz2)
+        else:
+            dist1, dist2 = ChamferFunction.apply(xyz1, xyz2)
         # import pdb
         # pdb.set_trace()
         dist1 = torch.sqrt(dist1)
@@ -98,7 +119,10 @@ class ChamferDistanceL1_PM(torch.nn.Module):
             xyz1 = xyz1[non_zeros1].unsqueeze(dim=0)
             xyz2 = xyz2[non_zeros2].unsqueeze(dim=0)
 
-        dist1, _ = ChamferFunction.apply(xyz1, xyz2)
+        if chamfer is None:
+            dist1, _ = _torch_chamfer_forward(xyz1, xyz2)
+        else:
+            dist1, _ = ChamferFunction.apply(xyz1, xyz2)
         dist1 = torch.sqrt(dist1)
         return torch.mean(dist1)
 

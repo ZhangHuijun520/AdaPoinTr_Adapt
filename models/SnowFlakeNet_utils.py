@@ -1,6 +1,6 @@
 import torch
 from torch import nn, einsum
-from pointnet2_ops.pointnet2_utils import furthest_point_sample, \
+from utils.pointnet2_utils import furthest_point_sample, \
     gather_operation, ball_query, three_nn, three_interpolate, grouping_operation
 
 class Conv1d(nn.Module):

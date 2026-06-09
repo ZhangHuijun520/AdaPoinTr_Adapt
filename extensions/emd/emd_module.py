@@ -23,7 +23,10 @@ import numpy as np
 import torch
 from torch import nn
 from torch.autograd import Function
-import emd
+try:
+    import emd
+except ImportError:
+    emd = None
 
 
 
@@ -31,6 +34,8 @@ import emd
 class emdFunction(Function):
     @staticmethod
     def forward(ctx, xyz1, xyz2, eps, iters):
+        if emd is None:
+            raise RuntimeError("compiled emd extension is not available")
 
         batchsize, n, _ = xyz1.size()
         _, m, _ = xyz2.size()
@@ -76,6 +81,10 @@ class emdModule(nn.Module):
         super(emdModule, self).__init__()
 
     def forward(self, input1, input2, eps, iters):
+        if emd is None:
+            dist = torch.cdist(input1, input2, p=2) ** 2
+            min_dist, assignment = dist.min(dim=2)
+            return min_dist, assignment.int()
         return emdFunction.apply(input1, input2, eps, iters)
 
 def test_emd():
