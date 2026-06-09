@@ -34,7 +34,7 @@ else
 fi
 
 echo "[setup] upgrading build helpers"
-python -m pip install --upgrade pip setuptools wheel ninja
+python -m pip install --upgrade pip "setuptools<70" wheel ninja
 
 echo "[setup] installing Python requirements"
 python -m pip install \
@@ -63,8 +63,26 @@ python setup.py install
 popd >/dev/null
 
 echo "[setup] installing PointNet++ ops"
-python -m pip install \
-    "git+https://github.com/erikwijmans/Pointnet2_PyTorch.git#egg=pointnet2_ops&subdirectory=pointnet2_ops_lib"
+if [[ -d "third_party/pointnet2_ops_lib" ]]; then
+    echo "[setup] using local third_party/pointnet2_ops_lib"
+    python - <<'PY'
+from pathlib import Path
+
+setup_py = Path("third_party/pointnet2_ops_lib/setup.py")
+old = 'os.environ["TORCH_CUDA_ARCH_LIST"] = "3.7+PTX;5.0;6.0;6.1;6.2;7.0;7.5"'
+new = 'os.environ.setdefault("TORCH_CUDA_ARCH_LIST", "8.9")'
+
+if setup_py.exists():
+    text = setup_py.read_text()
+    if old in text:
+        setup_py.write_text(text.replace(old, new))
+        print("[setup] patched local pointnet2_ops TORCH_CUDA_ARCH_LIST")
+PY
+    python -m pip install --no-build-isolation "third_party/pointnet2_ops_lib"
+else
+    python -m pip install \
+        "git+https://github.com/erikwijmans/Pointnet2_PyTorch.git#egg=pointnet2_ops&subdirectory=pointnet2_ops_lib"
+fi
 
 if [[ "${INSTALL_GRNET_EXTENSIONS:-0}" == "1" ]]; then
     echo "[setup] INSTALL_GRNET_EXTENSIONS=1; building optional GRNet extensions"

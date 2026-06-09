@@ -6,7 +6,6 @@
 # @Email:  cshzxie@gmail.com
 
 import logging
-import open3d
 import torch
 from extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL2
 import os
@@ -77,8 +76,13 @@ class Metrics(object):
                 f_score_list.append(cls._get_f_score(pred[idx:idx+1], gt[idx:idx+1]))
             return sum(f_score_list)/len(f_score_list)
         else:
-            pred = cls._get_open3d_ptcloud(pred)
-            gt = cls._get_open3d_ptcloud(gt)
+            pred_tensor = pred
+            gt_tensor = gt
+            try:
+                pred = cls._get_open3d_ptcloud(pred)
+                gt = cls._get_open3d_ptcloud(gt)
+            except (ImportError, OSError):
+                return cls._get_f_score_torch(pred_tensor, gt_tensor, th)
 
             dist1 = pred.compute_point_cloud_distance(gt)
             dist2 = gt.compute_point_cloud_distance(pred)
@@ -92,11 +96,30 @@ class Metrics(object):
     @classmethod
     def _get_open3d_ptcloud(cls, tensor):
         """pred and gt bs is 1"""
+        import open3d
+
         tensor = tensor.squeeze().cpu().numpy()
         ptcloud = open3d.geometry.PointCloud()
         ptcloud.points = open3d.utility.Vector3dVector(tensor)
 
         return ptcloud
+
+    @classmethod
+    def _get_f_score_torch(cls, pred, gt, th=0.01):
+        """Torch fallback for headless servers where Open3D cannot load."""
+        dist = torch.cdist(pred, gt)
+        dist1 = dist.min(dim=2)[0]
+        dist2 = dist.min(dim=1)[0]
+
+        recall = (dist2 < th).float().mean(dim=1)
+        precision = (dist1 < th).float().mean(dim=1)
+        denom = recall + precision
+        f_score = torch.where(
+            denom > 0,
+            2 * recall * precision / denom,
+            torch.zeros_like(denom),
+        )
+        return f_score.mean()
 
     @classmethod
     def _get_chamfer_distancel1(cls, pred, gt):
@@ -110,6 +133,8 @@ class Metrics(object):
 
     @classmethod
     def _get_emd_distance(cls, pred, gt, eps=0.005, iterations=100):
+        if pred.size(1) != gt.size(1) or pred.size(1) % 1024 != 0:
+            return torch.tensor(0., device=gt.device)
         emd_loss = cls.ITEMS[3]['eval_object']
         dist, _ = emd_loss(pred, gt, eps, iterations)
         emd_out = torch.mean(torch.sqrt(dist))

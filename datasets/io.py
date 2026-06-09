@@ -1,6 +1,5 @@
 import h5py
 import numpy as np
-import open3d
 import os
 
 class IO:
@@ -28,6 +27,15 @@ class IO:
     # Support PCD files without compression ONLY!
     @classmethod
     def _read_pcd(cls, file_path):
+        try:
+            import open3d
+        except OSError as exc:
+            raise ImportError(
+                "Open3D is required for .pcd/.ply files, but it failed to load. "
+                "On headless servers this is often caused by missing system "
+                "libraries such as libX11. Use .npy/.h5/.txt data or install "
+                "the required system libraries."
+            ) from exc
         pc = open3d.io.read_point_cloud(file_path)
         ptcloud = np.array(pc.points)
         return ptcloud
