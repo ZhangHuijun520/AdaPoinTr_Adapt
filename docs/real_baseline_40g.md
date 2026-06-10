@@ -20,12 +20,13 @@ volume.
 
 Use this order:
 
-1. Completion3D or another compact `.h5/.npy` dataset for a real-data pipeline
-   sanity baseline.
-2. PCN small subset if you need PCN-style `.pcd` data before expansion.
-3. Full PCN AdaPoinTr after requesting more storage or confirming the dataset
+1. ShapeNet-34 with the official AdaPoinTr architecture for the first
+   real-data object-level sanity baseline.
+2. ShapeNet-34 longer single-GPU baseline after the 1-epoch run passes.
+3. PCN small subset if you need PCN-style `.pcd` data before expansion.
+4. Full PCN AdaPoinTr after requesting more storage or confirming the dataset
    fits comfortably.
-4. Projected-ShapeNet only after the full PCN baseline is stable.
+5. Projected-ShapeNet only after the full PCN baseline is stable.
 
 ## Keep Datasets Outside the Repository
 
@@ -35,10 +36,64 @@ Use `~/datasets` for data and symlink into the repository:
 mkdir -p ~/datasets
 cd ~/adapointr_work/PoinTr
 mkdir -p data
-ln -s ~/datasets/Completion3D data/Completion3D
+ln -s ~/datasets/ShapeNet55-34 data/ShapeNet55-34
 ```
 
 This keeps repository, data, logs, and future model changes easier to manage.
+
+## ShapeNet-34 1GPU/1Epoch Sanity Baseline
+
+Use ShapeNet-34 first because it is object-level, it is part of the original
+AdaPoinTr/PoinTr protocol, and it stores complete point clouds as `.npy`
+files. The runner generates partial inputs online, so it avoids the much
+larger stored partial-cloud footprint of Projected-ShapeNet and PCN.
+
+This project provides a server sanity config:
+
+```text
+cfgs/ShapeNet34_models/AdaPoinTr_1gpu_1epoch.yaml
+```
+
+It keeps the official AdaPoinTr ShapeNet-34 model architecture, but changes
+training scale to:
+
+```text
+total_bs : 2
+max_epoch : 1
+```
+
+Expected data layout follows `cfgs/dataset_configs/ShapeNet-34.yaml`:
+
+```text
+data/ShapeNet55-34/ShapeNet-34/train.txt
+data/ShapeNet55-34/ShapeNet-34/test.txt
+data/ShapeNet55-34/shapenet_pc/<taxonomy_id>-<model_id>.npy
+```
+
+Run the sanity baseline on the server:
+
+```bash
+cd ~/adapointr_work/PoinTr
+conda activate adapointr-server
+
+python main.py \
+  --config cfgs/ShapeNet34_models/AdaPoinTr_1gpu_1epoch.yaml \
+  --exp_name shapenet34_adapointr_1gpu_1epoch \
+  --num_workers 4 \
+  --val_freq 1 \
+  2>&1 | tee shapenet34_adapointr_1gpu_1epoch.log
+```
+
+If dataloader workers hit shared-memory or file-handle issues, rerun with:
+
+```bash
+python main.py \
+  --config cfgs/ShapeNet34_models/AdaPoinTr_1gpu_1epoch.yaml \
+  --exp_name shapenet34_adapointr_1gpu_1epoch_w0 \
+  --num_workers 0 \
+  --val_freq 1 \
+  2>&1 | tee shapenet34_adapointr_1gpu_1epoch_w0.log
+```
 
 ## Completion3D Small AdaPoinTr Baseline
 
@@ -127,4 +182,3 @@ If space gets tight, remove only clearly disposable experiments, not Conda:
 ```bash
 rm -rf ~/adapointr_work/PoinTr/experiments/AdaPoinTr/ToyPCN_models/server_toy_smoke*
 ```
-
