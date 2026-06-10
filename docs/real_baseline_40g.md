@@ -59,8 +59,11 @@ training scale to:
 
 ```text
 total_bs : 2
-max_epoch : 1
+max_epoch : 0
 ```
+
+The runner iterates from epoch `0` through `max_epoch`, so `max_epoch : 0`
+means one full training pass.
 
 Expected data layout follows `cfgs/dataset_configs/ShapeNet-34.yaml`:
 
