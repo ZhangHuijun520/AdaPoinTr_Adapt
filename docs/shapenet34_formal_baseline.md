@@ -80,6 +80,47 @@ under:
 experiments/AdaPoinTr_1gpu_full/ShapeNet34_models/shapenet34_adapointr_1gpu_full/
 ```
 
+## Short Baseline Before Full Training
+
+Before the 600-epoch run, use the 5-epoch configuration:
+
+```text
+cfgs/ShapeNet34_models/AdaPoinTr_1gpu_5epoch.yaml
+```
+
+The runner iterates from epoch `0` through `max_epoch`, so this config uses:
+
+```text
+max_epoch : 4
+```
+
+Run:
+
+```bash
+tmux new -s shapenet34_5epoch
+cd ~/adapointr_work/PoinTr
+bash scripts/run_shapenet34_adapointr_1gpu_5epoch.sh
+```
+
+Outputs are saved under:
+
+```text
+logs/shapenet34_5epoch/
+experiments/AdaPoinTr_1gpu_5epoch/ShapeNet34_models/shapenet34_adapointr_1gpu_5epoch/
+```
+
+After it finishes, evaluate the best checkpoint:
+
+```bash
+RUN_TAG=shapenet34_adapointr_1gpu_5epoch \
+bash scripts/eval_shapenet34_adapointr_seen_unseen.sh \
+  experiments/AdaPoinTr_1gpu_5epoch/ShapeNet34_models/shapenet34_adapointr_1gpu_5epoch/ckpt-best.pth
+```
+
+Use this short run to confirm that the loss curve, validation metrics,
+evaluation scripts, checkpoint layout, and visualization script all behave as
+expected before spending time on the full run.
+
 ## Evaluation: Seen and Unseen
 
 After training, run all ShapeNet evaluation modes:

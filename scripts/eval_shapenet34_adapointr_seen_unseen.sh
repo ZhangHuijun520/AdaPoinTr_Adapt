@@ -9,6 +9,7 @@ cd "${POINTR_ROOT:-$HOME/adapointr_work/PoinTr}"
 CKPT="${1:-experiments/AdaPoinTr_1gpu_full/ShapeNet34_models/shapenet34_adapointr_1gpu_full/ckpt-best.pth}"
 NUM_WORKERS="${NUM_WORKERS:-4}"
 LOG_DIR="${LOG_DIR:-logs/shapenet34_eval}"
+RUN_TAG="${RUN_TAG:-shapenet34_adapointr_1gpu_full}"
 mkdir -p "$LOG_DIR"
 
 if [ ! -f "$CKPT" ]; then
@@ -22,7 +23,7 @@ run_eval() {
   local mode="$3"
   local stamp
   stamp="$(date +%Y%m%d_%H%M%S)"
-  local exp_name="shapenet34_adapointr_1gpu_full_${split}"
+  local exp_name="${RUN_TAG}_${split}"
   local log_file="$LOG_DIR/${exp_name}_${mode}_${stamp}.log"
 
   echo "[eval] split=$split mode=$mode ckpt=$CKPT" | tee "$log_file"
