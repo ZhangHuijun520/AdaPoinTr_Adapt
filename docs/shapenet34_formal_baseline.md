@@ -121,6 +121,31 @@ Use this short run to confirm that the loss curve, validation metrics,
 evaluation scripts, checkpoint layout, and visualization script all behave as
 expected before spending time on the full run.
 
+## Speed Profiling
+
+The sanity run used `total_bs : 2`. If GPU memory allows a larger batch, this
+is the safest way to speed up training because it reduces the number of steps
+per epoch.
+
+Profile candidate batch sizes before starting the short baseline:
+
+```bash
+cd ~/adapointr_work/PoinTr
+bash scripts/profile_shapenet34_batch_sizes.sh 2 4 8
+```
+
+The profiler reports:
+
+```text
+mean_batch_time_sec
+steps_per_epoch
+estimated_epoch_hours_no_validation
+peak_cuda_memory_gb
+```
+
+If `bs=4` or `bs=8` passes with comfortable memory, copy the 5-epoch config and
+change only `total_bs` before launching the short baseline.
+
 ## Evaluation: Seen and Unseen
 
 After training, run all ShapeNet evaluation modes:
