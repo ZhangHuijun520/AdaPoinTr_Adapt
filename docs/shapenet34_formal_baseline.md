@@ -152,13 +152,20 @@ The current 4090D profiler result supports `bs=8`:
 bs=2: mean_batch_time_sec 1.3353, estimated_epoch_hours_no_validation 8.67, peak_cuda_memory_gb 1.36
 bs=4: mean_batch_time_sec 1.2789, estimated_epoch_hours_no_validation 4.15, peak_cuda_memory_gb 1.97
 bs=8: mean_batch_time_sec 1.4404, estimated_epoch_hours_no_validation 2.34, peak_cuda_memory_gb 3.40
+bs=16: mean_batch_time_sec 1.4562, estimated_epoch_hours_no_validation 1.18, peak_cuda_memory_gb 6.24
+bs=24: mean_batch_time_sec 1.4949, estimated_epoch_hours_no_validation 0.81, peak_cuda_memory_gb 9.09
+bs=32: mean_batch_time_sec 1.6599, estimated_epoch_hours_no_validation 0.67, peak_cuda_memory_gb 11.94
 ```
 
 Use this short-baseline config first:
 
 ```text
-cfgs/ShapeNet34_models/AdaPoinTr_1gpu_5epoch_bs8.yaml
+cfgs/ShapeNet34_models/AdaPoinTr_1gpu_5epoch_bs32.yaml
 ```
+
+Optionally profile `bs=48` and `bs=64` before the short baseline. `bs=48`
+matches the official ShapeNet-34 total batch size, but should still be checked
+for memory and throughput on the current container.
 
 ## Evaluation: Seen and Unseen
 
