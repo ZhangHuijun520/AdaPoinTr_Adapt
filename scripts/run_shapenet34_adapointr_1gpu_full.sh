@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+set +u
 source /opt/conda/etc/profile.d/conda.sh
 conda activate adapointr-server
+set -u
 
 cd "${POINTR_ROOT:-$HOME/adapointr_work/PoinTr}"
 

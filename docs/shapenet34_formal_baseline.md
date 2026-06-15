@@ -146,6 +146,20 @@ peak_cuda_memory_gb
 If `bs=4` or `bs=8` passes with comfortable memory, copy the 5-epoch config and
 change only `total_bs` before launching the short baseline.
 
+The current 4090D profiler result supports `bs=8`:
+
+```text
+bs=2: mean_batch_time_sec 1.3353, estimated_epoch_hours_no_validation 8.67, peak_cuda_memory_gb 1.36
+bs=4: mean_batch_time_sec 1.2789, estimated_epoch_hours_no_validation 4.15, peak_cuda_memory_gb 1.97
+bs=8: mean_batch_time_sec 1.4404, estimated_epoch_hours_no_validation 2.34, peak_cuda_memory_gb 3.40
+```
+
+Use this short-baseline config first:
+
+```text
+cfgs/ShapeNet34_models/AdaPoinTr_1gpu_5epoch_bs8.yaml
+```
+
 ## Evaluation: Seen and Unseen
 
 After training, run all ShapeNet evaluation modes:
