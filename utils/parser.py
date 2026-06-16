@@ -13,7 +13,7 @@ def get_args():
         choices=['none', 'pytorch'],
         default='none',
         help='job launcher')     
-    parser.add_argument('--local_rank', type=int, default=0)
+    parser.add_argument('--local_rank', '--local-rank', type=int, default=0)
     parser.add_argument('--num_workers', type=int, default=4)   
     # seed 
     parser.add_argument('--seed', type=int, default=0, help='random seed')
@@ -61,7 +61,9 @@ def get_args():
         raise ValueError(
             'ckpts shouldnt be None while test mode')
 
-    if 'LOCAL_RANK' not in os.environ:
+    if 'LOCAL_RANK' in os.environ:
+        args.local_rank = int(os.environ['LOCAL_RANK'])
+    else:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
 
     if args.test:

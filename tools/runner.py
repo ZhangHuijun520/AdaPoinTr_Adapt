@@ -5,12 +5,16 @@ import json
 from tools import builder
 from utils import misc, dist_utils
 import time
+from tqdm import tqdm
 from utils.logger import *
 from utils.AverageMeter import AverageMeter
 from utils.metrics import Metrics
 from extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL2
 
 PC_LIKE_DATASETS = {'PCN', 'Completion3D', 'Projected_ShapeNet', 'ToyPCN'}
+
+def _is_main_process(args):
+    return (not getattr(args, 'distributed', False)) or getattr(args, 'local_rank', 0) == 0
 
 def run_net(args, config, train_writer=None, val_writer=None):
     logger = get_logger(args.log_name)
@@ -92,7 +96,14 @@ def run_net(args, config, train_writer=None, val_writer=None):
 
         base_model.train()  # set model to training mode
         n_batches = len(train_dataloader)
-        for idx, (taxonomy_ids, model_ids, data) in enumerate(train_dataloader):
+        train_iter = tqdm(
+            train_dataloader,
+            total=n_batches,
+            desc=f'Train Epoch {epoch}/{config.max_epoch}',
+            dynamic_ncols=True,
+            disable=not _is_main_process(args)
+        )
+        for idx, (taxonomy_ids, model_ids, data) in enumerate(train_iter):
             data_time.update(time.time() - batch_start_time)
             npoints = config.dataset.train._base_.N_POINTS
             dataset_name = config.dataset.train._base_.NAME
@@ -150,6 +161,12 @@ def run_net(args, config, train_writer=None, val_writer=None):
                 print_log('[Epoch %d/%d][Batch %d/%d] BatchTime = %.3f (s) DataTime = %.3f (s) Losses = %s lr = %.6f' %
                             (epoch, config.max_epoch, idx + 1, n_batches, batch_time.val(), data_time.val(),
                             ['%.4f' % l for l in losses.val()], optimizer.param_groups[0]['lr']), logger = logger)
+            if _is_main_process(args):
+                train_iter.set_postfix({
+                    'sparse': '%.4f' % losses.val(0),
+                    'dense': '%.4f' % losses.val(1),
+                    'lr': '%.6f' % optimizer.param_groups[0]['lr']
+                })
 
             if config.scheduler.type == 'GradualWarmup':
                 if n_itr < config.scheduler.kwargs_2.total_epoch:
@@ -195,7 +212,14 @@ def validate(base_model, test_dataloader, epoch, ChamferDisL1, ChamferDisL2, val
     interval = max(n_samples // 10, 1)
 
     with torch.no_grad():
-        for idx, (taxonomy_ids, model_ids, data) in enumerate(test_dataloader):
+        val_iter = tqdm(
+            test_dataloader,
+            total=n_samples,
+            desc=f'Val Epoch {epoch}',
+            dynamic_ncols=True,
+            disable=not _is_main_process(args)
+        )
+        for idx, (taxonomy_ids, model_ids, data) in enumerate(val_iter):
             taxonomy_id = taxonomy_ids[0] if isinstance(taxonomy_ids[0], str) else taxonomy_ids[0].item()
             model_id = model_ids[0]
 
@@ -266,6 +290,12 @@ def validate(base_model, test_dataloader, epoch, ChamferDisL1, ChamferDisL2, val
                 print_log('Test[%d/%d] Taxonomy = %s Sample = %s Losses = %s Metrics = %s' %
                             (idx + 1, n_samples, taxonomy_id, model_id, ['%.4f' % l for l in test_losses.val()], 
                             ['%.4f' % m for m in _metrics]), logger=logger)
+            if _is_main_process(args):
+                val_iter.set_postfix({
+                    'F': '%.4f' % _metrics[0],
+                    'CDL1': '%.4f' % _metrics[1],
+                    'CDL2': '%.4f' % _metrics[2]
+                })
         for _,v in category_metrics.items():
             test_metrics.update(v.avg())
         print_log('[Validation] EPOCH: %d  Metrics = %s' % (epoch, ['%.4f' % m for m in test_metrics.avg()]), logger=logger)
@@ -346,7 +376,13 @@ def test(base_model, test_dataloader, ChamferDisL1, ChamferDisL2, args, config, 
     n_samples = len(test_dataloader) # bs is 1
 
     with torch.no_grad():
-        for idx, (taxonomy_ids, model_ids, data) in enumerate(test_dataloader):
+        test_iter = tqdm(
+            test_dataloader,
+            total=n_samples,
+            desc='Test',
+            dynamic_ncols=True
+        )
+        for idx, (taxonomy_ids, model_ids, data) in enumerate(test_iter):
             taxonomy_id = taxonomy_ids[0] if isinstance(taxonomy_ids[0], str) else taxonomy_ids[0].item()
             model_id = model_ids[0]
 
@@ -420,6 +456,11 @@ def test(base_model, test_dataloader, ChamferDisL1, ChamferDisL2, args, config, 
                 print_log('Test[%d/%d] Taxonomy = %s Sample = %s Losses = %s Metrics = %s' %
                             (idx + 1, n_samples, taxonomy_id, model_id, ['%.4f' % l for l in test_losses.val()], 
                             ['%.4f' % m for m in _metrics]), logger=logger)
+            test_iter.set_postfix({
+                'F': '%.4f' % _metrics[0],
+                'CDL1': '%.4f' % _metrics[1],
+                'CDL2': '%.4f' % _metrics[2]
+            })
         if dataset_name == 'KITTI':
             return
         for _,v in category_metrics.items():

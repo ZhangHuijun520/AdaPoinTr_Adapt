@@ -12,6 +12,8 @@ CKPT="${1:-experiments/AdaPoinTr_1gpu_full/ShapeNet34_models/shapenet34_adapoint
 NUM_WORKERS="${NUM_WORKERS:-4}"
 LOG_DIR="${LOG_DIR:-logs/shapenet34_eval}"
 RUN_TAG="${RUN_TAG:-shapenet34_adapointr_1gpu_full}"
+SEEN_CONFIG="${SEEN_CONFIG:-cfgs/ShapeNet34_models/AdaPoinTr_1gpu_full.yaml}"
+UNSEEN_CONFIG="${UNSEEN_CONFIG:-cfgs/ShapeNetUnseen21_models/AdaPoinTr.yaml}"
 mkdir -p "$LOG_DIR"
 
 if [ ! -f "$CKPT" ]; then
@@ -40,9 +42,9 @@ run_eval() {
 }
 
 for mode in easy median hard; do
-  run_eval seen cfgs/ShapeNet34_models/AdaPoinTr_1gpu_full.yaml "$mode"
+  run_eval seen "$SEEN_CONFIG" "$mode"
 done
 
 for mode in easy median hard; do
-  run_eval unseen cfgs/ShapeNetUnseen21_models/AdaPoinTr.yaml "$mode"
+  run_eval unseen "$UNSEEN_CONFIG" "$mode"
 done
