@@ -4,9 +4,9 @@ import random
 import sys
 from pathlib import Path
 
-import cv2
 import numpy as np
 import torch
+from PIL import Image
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(BASE_DIR, "../"))
@@ -50,7 +50,7 @@ def parse_args():
 
 def save_cloud_image(path, cloud):
     img = misc.get_ptcloud_img(cloud)
-    cv2.imwrite(str(path), cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
+    Image.fromarray(img).save(path)
 
 
 def main():
