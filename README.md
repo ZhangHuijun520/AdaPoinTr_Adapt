@@ -33,7 +33,7 @@ We provide pretrained PoinTr models:
 We provide pretrained AdaPoinTr models (coming soon):
 | dataset  | url| performance |
 | --- | --- |  --- |
-| ShapeNet-55 | Tsinghua Cloud / Google Drive / BaiDuYun  | CD = 0.81e-3|
+| ShapeNet-55 | [[Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/e73573ca08574e51a714/?dl=1)] / Google Drive / BaiDuYun  | CD = 0.81e-3|
 | ShapeNet-34 | Tsinghua Cloud / Google Drive / BaiDuYun | CD = 1.23e-3| 
 | Projected_ShapeNet-55 | [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/41ed3a765c4b42d98d01/?dl=1) / Google Drive / [[BaiDuYun](https://pan.baidu.com/s/1Vx-E557-dOj7dLi132--Uw?pwd=dycc)](code:dycc)  | CD = 9.58e-3|
 | Projected_ShapeNet-34 | [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/71494f78cb694e45a448/?dl=1) / Google Drive / [[BaiDuYun](https://pan.baidu.com/s/1GQnfJuxtpV5Mchl-98BRBg?pwd=dycc)](code:dycc)  | CD = 9.12e-3|
