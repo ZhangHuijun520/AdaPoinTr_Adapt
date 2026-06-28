@@ -48,6 +48,8 @@ seed:  20260628
 └── SkullFixPC/
     ├── manifest.jsonl
     ├── pairing_report.json
+    ├── splits.json
+    ├── SHA256SUMS
     ├── summary.json
     └── points/
         ├── <case_id>.npz
@@ -283,3 +285,70 @@ normalization scale 还原，不能直接在归一化坐标中解释为临床距
 - 80/10/10 baseline 完成并保存权重、日志、指标和可视化；
 - baseline 代码单独 commit；
 - 然后再开始 SkullBreak 接入和正式鲁棒性实验。
+
+## 11. 真实数据首次转换记录
+
+2026-06-28 已对 Figshare SkullFix 训练包完成首次转换：
+
+```text
+raw complete skulls:   100
+raw defective skulls:  100
+raw implants:          100
+paired triplets:       100
+
+train/val/test:         80/10/10
+seed:                   20260628
+partial points:         8192
+complete points:        8192
+implant points:         4096
+
+prepared files:         100 NPZ + metadata
+prepared size:          about 13.35 MiB
+min implant/missing IoU:  1.0
+mean implant/missing IoU: 1.0
+```
+
+固定测试病例：
+
+```text
+000, 001, 014, 030, 047, 053, 054, 056, 079, 092
+```
+
+固定验证病例：
+
+```text
+028, 031, 035, 042, 058, 069, 072, 080, 082, 088
+```
+
+其余 80 个病例属于训练集。转换结果位于：
+
+```text
+D:\dataset\SkullFix\pointcloud
+```
+
+已生成服务器上传包：
+
+```text
+D:\dataset\SkullFix\SkullFixPC_8192_seed20260628.tar.gz
+```
+
+SHA256：
+
+```text
+670a715e24fce4d37ea2616562c9d21e21abf04cf24131f7880d7443410ace46
+```
+
+服务器解包：
+
+```bash
+mkdir -p ~/datasets/SkullFixPC
+tar -xzf ~/SkullFixPC_8192_seed20260628.tar.gz \
+  -C ~/datasets/SkullFixPC
+
+cd ~/adapointr_work/PoinTr
+mkdir -p data
+ln -s ~/datasets/SkullFixPC data/SkullFixPC
+
+python tools/check_skullfix_pointcloud.py \
+  --data_root ~/datasets/SkullFixPC
+```

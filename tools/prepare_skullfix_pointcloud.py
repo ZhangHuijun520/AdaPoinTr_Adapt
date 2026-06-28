@@ -474,6 +474,14 @@ def write_json(path, payload):
         handle.write("\n")
 
 
+def sha256_file(path):
+    digest = hashlib.sha256()
+    with open(path, "rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def main():
     args = parse_args()
     args.input_root = args.input_root.expanduser().resolve()
@@ -534,9 +542,28 @@ def main():
         for record in sorted(records, key=lambda item: item["case_id"]):
             handle.write(json.dumps(record, ensure_ascii=True) + "\n")
 
+    split_case_ids = {
+        split: sorted(
+            record["case_id"]
+            for record in records
+            if record["split"] == split
+        )
+        for split in ("train", "val", "test")
+    }
+    write_json(args.output_root / "splits.json", split_case_ids)
+
+    with open(args.output_root / "SHA256SUMS", "w", encoding="ascii") as handle:
+        for record in sorted(records, key=lambda item: item["case_id"]):
+            point_path = args.output_root / record["point_path"]
+            handle.write(
+                f"{sha256_file(point_path)}  {record['point_path']}\n"
+            )
+
     summary = {
         **pairing_report,
         "manifest": str(manifest_path),
+        "splits_file": str(args.output_root / "splits.json"),
+        "checksums": str(args.output_root / "SHA256SUMS"),
         "point_cloud": {
             "partial": args.n_partial,
             "complete": args.n_complete,
