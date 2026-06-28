@@ -55,7 +55,7 @@ class SkullFixPreparationTest(unittest.TestCase):
         flat_indices = PREPARE.surface_flat_indices(complete)
         directions = np.diag([0.4, 0.4, 1.0])
         origin = np.array([10.0, -5.0, 2.0])
-        centroid, scale = PREPARE.complete_surface_normalization(
+        centroid, scale = PREPARE.surface_normalization(
             flat_indices,
             shape,
             directions,

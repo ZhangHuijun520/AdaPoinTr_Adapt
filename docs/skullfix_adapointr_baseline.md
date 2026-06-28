@@ -133,7 +133,7 @@ python tools/prepare_skullfix_pointcloud.py \
 2. 检查一一对应、重复 ID、体数据 shape、origin 和 direction；
 3. 检查 `implant` 与 `complete - defective` 的体素 IoU；
 4. 从二值体边界体素采样物理坐标点；
-5. 只用 complete skull 表面计算 centroid 和最大半径；
+5. 只用输入端 defective skull 表面计算 centroid 和最大半径；
 6. 对 defective、complete、implant 使用完全相同的平移和缩放；
 7. 生成固定随机种子的 `80/10/10` manifest。
 
@@ -269,8 +269,8 @@ normalization scale 还原，不能直接在归一化坐标中解释为临床距
 ## 9. 防止数据泄漏
 
 - split 必须按病例，而不是按点、切片或增强样本；
-- complete skull 决定 normalization 是允许的预处理监督，但 val/test 的
-  complete/implant 不能作为模型输入或输入特征；
+- normalization 只能由 defective skull 输入计算，再将同一变换应用到
+  complete 和 implant；val/test 的 complete/implant 不能参与输入预处理；
 - implant 只用于训练后的局部评估，不能混入 partial；
 - 后续扩增同一病例时，所有增强版本必须留在同一个 split；
 - SkullBreak 的患者/原始 skull ID 也必须做 group split，五种缺损不能跨集合。
@@ -301,6 +301,7 @@ seed:                   20260628
 partial points:         8192
 complete points:        8192
 implant points:         4096
+normalization source:   defective_surface
 
 prepared files:         100 NPZ + metadata
 prepared size:          about 13.35 MiB
@@ -323,26 +324,26 @@ mean implant/missing IoU: 1.0
 其余 80 个病例属于训练集。转换结果位于：
 
 ```text
-D:\dataset\SkullFix\pointcloud
+D:\dataset\SkullFix\pointcloud_defective_norm
 ```
 
 已生成服务器上传包：
 
 ```text
-D:\dataset\SkullFix\SkullFixPC_8192_seed20260628.tar.gz
+D:\dataset\SkullFix\SkullFixPC_defnorm_8192_seed20260628.tar.gz
 ```
 
 SHA256：
 
 ```text
-670a715e24fce4d37ea2616562c9d21e21abf04cf24131f7880d7443410ace46
+22bc6f57a01e3f175c70c1502eb8009019c687ee79554ebffea37f8ef74ed1ac
 ```
 
 服务器解包：
 
 ```bash
 mkdir -p ~/datasets/SkullFixPC
-tar -xzf ~/SkullFixPC_8192_seed20260628.tar.gz \
+tar -xzf ~/SkullFixPC_defnorm_8192_seed20260628.tar.gz \
   -C ~/datasets/SkullFixPC
 
 cd ~/adapointr_work/PoinTr

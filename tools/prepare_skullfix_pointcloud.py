@@ -55,6 +55,15 @@ def parse_args():
     parser.add_argument("--n_implant", type=int, default=4096)
     parser.add_argument("--seed", type=int, default=20260628)
     parser.add_argument(
+        "--normalization_source",
+        choices=("defective", "complete"),
+        default="defective",
+        help=(
+            "Surface used to compute the shared centroid and scale. "
+            "Use defective for leakage-free inference."
+        ),
+    )
+    parser.add_argument(
         "--split",
         default="80,10,10",
         help="Train/val/test counts or ratios, for example 80,10,10 or 0.8,0.1,0.1.",
@@ -291,7 +300,7 @@ def flat_indices_to_world(flat_indices, shape, directions, origin):
     return origin + coordinates.astype(np.float64) @ directions
 
 
-def complete_surface_normalization(flat_indices, shape, directions, origin):
+def surface_normalization(flat_indices, shape, directions, origin):
     chunk_size = 250000
     coordinate_sum = np.zeros(3, dtype=np.float64)
     count = 0
@@ -407,9 +416,10 @@ def process_triplet(args, triplet, split, points_dir):
     surfaces = {
         role: surface_flat_indices(volume) for role, volume in volumes.items()
     }
-    centroid, scale = complete_surface_normalization(
-        surfaces["complete"],
-        volumes["complete"].shape,
+    normalization_role = args.normalization_source
+    centroid, scale = surface_normalization(
+        surfaces[normalization_role],
+        volumes[normalization_role].shape,
         directions,
         origin,
     )
@@ -457,7 +467,7 @@ def process_triplet(args, triplet, split, points_dir):
         "n_complete": args.n_complete,
         "n_implant": args.n_implant,
         "normalization": {
-            "source": "complete_surface",
+            "source": f"{normalization_role}_surface",
             "centroid": centroid.tolist(),
             "scale": float(scale),
         },
@@ -569,7 +579,9 @@ def main():
             "complete": args.n_complete,
             "implant": args.n_implant,
         },
-        "normalization": "shared complete-surface centroid and max radius",
+        "normalization": (
+            f"shared {args.normalization_source}-surface centroid and max radius"
+        ),
         "quality": {
             "min_implant_missing_iou": min(
                 record["quality"]["implant_missing_iou"] for record in records
