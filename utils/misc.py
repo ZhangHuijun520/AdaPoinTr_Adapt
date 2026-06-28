@@ -223,7 +223,8 @@ def get_ptcloud_img(ptcloud):
 
     fig.canvas.draw()
     img = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
-    img = img.reshape(fig.canvas.get_width_height()[::-1] + (3, ))
+    img = img.reshape(fig.canvas.get_width_height()[::-1] + (3, )).copy()
+    plt.close(fig)
     return img
 
 

@@ -11,7 +11,7 @@ from utils.AverageMeter import AverageMeter
 from utils.metrics import Metrics
 from extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL2
 
-PC_LIKE_DATASETS = {'PCN', 'Completion3D', 'Projected_ShapeNet', 'ToyPCN'}
+PC_LIKE_DATASETS = {'PCN', 'Completion3D', 'Projected_ShapeNet', 'ToyPCN', 'SkullFix'}
 
 def _is_main_process(args):
     return (not getattr(args, 'distributed', False)) or getattr(args, 'local_rank', 0) == 0
@@ -320,7 +320,7 @@ def validate(base_model, test_dataloader, epoch, ChamferDisL1, ChamferDisL2, val
         msg += (str(category_metrics[taxonomy_id].count(0)) + '\t')
         for value in category_metrics[taxonomy_id].avg():
             msg += '%.3f \t' % value
-        msg += shapenet_dict[taxonomy_id] + '\t'
+        msg += shapenet_dict.get(taxonomy_id, taxonomy_id) + '\t'
         print_log(msg, logger=logger)
 
     msg = ''
@@ -403,7 +403,11 @@ def test(base_model, test_dataloader, ChamferDisL1, ChamferDisL2, args, config, 
 
                 test_losses.update([sparse_loss_l1.item() * 1000, sparse_loss_l2.item() * 1000, dense_loss_l1.item() * 1000, dense_loss_l2.item() * 1000])
 
-                _metrics = Metrics.get(dense_points, gt, require_emd=True)
+                _metrics = Metrics.get(
+                    dense_points,
+                    gt,
+                    require_emd=dataset_name != 'SkullFix',
+                )
                 # test_metrics.update(_metrics)
 
                 if taxonomy_id not in category_metrics:
@@ -487,7 +491,7 @@ def test(base_model, test_dataloader, ChamferDisL1, ChamferDisL2, args, config, 
         msg += (str(category_metrics[taxonomy_id].count(0)) + '\t')
         for value in category_metrics[taxonomy_id].avg():
             msg += '%.3f \t' % value
-        msg += shapenet_dict[taxonomy_id] + '\t'
+        msg += shapenet_dict.get(taxonomy_id, taxonomy_id) + '\t'
         print_log(msg, logger=logger)
 
     msg = ''
