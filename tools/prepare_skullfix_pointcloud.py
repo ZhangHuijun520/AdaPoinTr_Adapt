@@ -479,7 +479,7 @@ def process_triplet(args, triplet, split, points_dir):
 
 
 def write_json(path, payload):
-    with open(path, "w", encoding="utf-8") as handle:
+    with open(path, "w", encoding="utf-8", newline="\n") as handle:
         json.dump(payload, handle, indent=2, ensure_ascii=True)
         handle.write("\n")
 
@@ -548,7 +548,7 @@ def main():
         )
 
     manifest_path = args.output_root / "manifest.jsonl"
-    with open(manifest_path, "w", encoding="utf-8") as handle:
+    with open(manifest_path, "w", encoding="utf-8", newline="\n") as handle:
         for record in sorted(records, key=lambda item: item["case_id"]):
             handle.write(json.dumps(record, ensure_ascii=True) + "\n")
 
@@ -562,7 +562,12 @@ def main():
     }
     write_json(args.output_root / "splits.json", split_case_ids)
 
-    with open(args.output_root / "SHA256SUMS", "w", encoding="ascii") as handle:
+    with open(
+        args.output_root / "SHA256SUMS",
+        "w",
+        encoding="ascii",
+        newline="\n",
+    ) as handle:
         for record in sorted(records, key=lambda item: item["case_id"]):
             point_path = args.output_root / record["point_path"]
             handle.write(

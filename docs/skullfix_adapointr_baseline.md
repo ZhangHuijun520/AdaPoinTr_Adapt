@@ -145,6 +145,9 @@ python tools/prepare_skullfix_pointcloud.py \
 ```bash
 python tools/check_skullfix_pointcloud.py \
   --data_root ~/datasets/SkullFixPC
+
+cd ~/datasets/SkullFixPC
+sha256sum -c SHA256SUMS
 ```
 
 还应人工检查：
@@ -336,7 +339,7 @@ D:\dataset\SkullFix\SkullFixPC_defnorm_8192_seed20260628.tar.gz
 SHA256：
 
 ```text
-22bc6f57a01e3f175c70c1502eb8009019c687ee79554ebffea37f8ef74ed1ac
+da4e3b50acf5d8768cf497bc9b848e4db849ecdc01abeef21e08e7d31d128a3c
 ```
 
 服务器解包：
