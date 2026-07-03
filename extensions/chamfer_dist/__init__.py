@@ -104,6 +104,62 @@ class ChamferDistanceL1(torch.nn.Module):
         dist2 = torch.sqrt(dist2)
         return (torch.mean(dist1) + torch.mean(dist2))/2
 
+
+class ChamferDistanceL1Directional(torch.nn.Module):
+    """Weighted L1 Chamfer with explicit prediction and coverage directions."""
+
+    def __init__(self, pred_to_ref_weight=1.0, ref_to_pred_weight=1.0):
+        super().__init__()
+        self.pred_to_ref_weight = float(pred_to_ref_weight)
+        self.ref_to_pred_weight = float(ref_to_pred_weight)
+        if self.pred_to_ref_weight < 0 or self.ref_to_pred_weight < 0:
+            raise ValueError("Directional Chamfer weights must be non-negative")
+        if self.pred_to_ref_weight + self.ref_to_pred_weight == 0:
+            raise ValueError("At least one directional Chamfer weight must be positive")
+
+    def forward(self, prediction, reference):
+        if chamfer is None:
+            pred_to_ref, ref_to_pred = _torch_chamfer_forward(
+                prediction,
+                reference,
+            )
+        else:
+            pred_to_ref, ref_to_pred = ChamferFunction.apply(
+                prediction,
+                reference,
+            )
+        pred_to_ref = torch.sqrt(pred_to_ref).mean()
+        ref_to_pred = torch.sqrt(ref_to_pred).mean()
+        weight_sum = self.pred_to_ref_weight + self.ref_to_pred_weight
+        return (
+            self.pred_to_ref_weight * pred_to_ref
+            + self.ref_to_pred_weight * ref_to_pred
+        ) / weight_sum
+
+
+class ChamferDistanceL1Stable(torch.nn.Module):
+    """L1 Chamfer with a clamped square root for direct point optimization."""
+
+    def __init__(self, squared_distance_epsilon=1e-12):
+        super().__init__()
+        self.squared_distance_epsilon = float(squared_distance_epsilon)
+        if self.squared_distance_epsilon <= 0:
+            raise ValueError("squared_distance_epsilon must be positive")
+
+    def forward(self, xyz1, xyz2):
+        if chamfer is None:
+            dist1, dist2 = _torch_chamfer_forward(xyz1, xyz2)
+        else:
+            dist1, dist2 = ChamferFunction.apply(xyz1, xyz2)
+        dist1 = torch.sqrt(
+            torch.clamp(dist1, min=self.squared_distance_epsilon)
+        )
+        dist2 = torch.sqrt(
+            torch.clamp(dist2, min=self.squared_distance_epsilon)
+        )
+        return (torch.mean(dist1) + torch.mean(dist2)) / 2
+
+
 class ChamferDistanceL1_PM(torch.nn.Module):
     f''' Chamder Distance L1
     '''

@@ -7,10 +7,30 @@ import torch
 import torch.nn as nn
 from functools import partial, reduce
 from timm.models.layers import DropPath, trunc_normal_
-from extensions.chamfer_dist import ChamferDistanceL1
+from extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL1Directional
 from .build import MODELS, build_model_from_cfg
 from models.Transformer_utils import *
 from utils import misc
+
+
+def patch_local_chamfer(pred_coarse, pred_fine, gt, factor, loss_func):
+    """Match each query's fine patch to the factor nearest GT points."""
+    batch_size, num_queries, _ = pred_coarse.shape
+    if pred_fine.size(1) != num_queries * factor:
+        raise ValueError(
+            'pred_fine cannot be reshaped into query-local patches: '
+            f'{pred_fine.size(1)} != {num_queries} * {factor}'
+        )
+    target_index = knn_point(factor, gt, pred_coarse)
+    target_patches = index_points(gt, target_index)
+    pred_patches = pred_fine.reshape(batch_size * num_queries, factor, 3)
+    target_patches = target_patches.reshape(
+        batch_size * num_queries,
+        factor,
+        3,
+    )
+    return loss_func(pred_patches, target_patches)
+
 
 class SelfAttnBlockApi(nn.Module):
     r'''
@@ -769,6 +789,16 @@ class PCTransformer(nn.Module):
 
         in_chans = 3
         self.num_query = query_num = config.num_query
+        self.query_selection = getattr(config, 'query_selection', 'ranking')
+        if self.query_selection not in [
+            'ranking', 'fps_preserve', 'fps_only', 'learned_only'
+        ]:
+            raise ValueError(
+                f'Unsupported query_selection={self.query_selection!r}; '
+                "expected 'ranking', 'fps_preserve', 'fps_only', or "
+                "'learned_only'"
+            )
+        self.use_denoise = float(getattr(config, 'denoise_weight', 0.5)) > 0
         global_feature_dim = config.global_feature_dim
 
         print_log(f'Transformer with config {config}', logger='MODEL')
@@ -845,19 +875,38 @@ class PCTransformer(nn.Module):
         global_feature = self.increase_dim(x) # B 1024 N 
         global_feature = torch.max(global_feature, dim=1)[0] # B 1024
 
-        coarse = self.coarse_pred(global_feature).reshape(bs, -1, 3)
+        learned_coarse = self.coarse_pred(global_feature).reshape(bs, -1, 3)
 
-        coarse_inp = misc.fps(xyz, self.num_query//2) # B 128 3
-        coarse = torch.cat([coarse, coarse_inp], dim=1) # B 224+128 3?
-
+        fps_count = (
+            self.num_query
+            if self.query_selection == 'fps_only'
+            else self.num_query // 2
+        )
+        coarse_inp = misc.fps(xyz, fps_count)
         mem = self.mem_link(x)
 
-        # query selection
-        query_ranking = self.query_ranking(coarse) # b n 1
-        idx = torch.argsort(query_ranking, dim=1, descending=True) # b n 1
-        coarse = torch.gather(coarse, 1, idx[:,:self.num_query].expand(-1, -1, coarse.size(-1)))
+        if self.query_selection == 'ranking':
+            coarse_candidates = torch.cat([learned_coarse, coarse_inp], dim=1)
+            query_ranking = self.query_ranking(coarse_candidates) # b n 1
+            idx = torch.argsort(query_ranking, dim=1, descending=True) # b n 1
+            coarse = torch.gather(
+                coarse_candidates,
+                1,
+                idx[:, :self.num_query].expand(-1, -1, coarse_candidates.size(-1))
+            )
+        elif self.query_selection == 'fps_preserve':
+            # Keep every input FPS anchor so the coarse queries retain global
+            # coverage. The remaining half are differentiable learned queries.
+            learned_count = self.num_query - coarse_inp.size(1)
+            coarse = torch.cat([learned_coarse[:, :learned_count], coarse_inp], dim=1)
+        elif self.query_selection == 'fps_only':
+            coarse = coarse_inp
+        else:
+            # Implant prediction should not anchor query points on the defective
+            # skull surface; all coarse queries are generated from global context.
+            coarse = learned_coarse[:, :self.num_query]
 
-        if self.training:
+        if self.training and self.use_denoise:
             # add denoise task
             # first pick some point : 64?
             picked_points = misc.fps(xyz, 64)
@@ -900,6 +949,19 @@ class AdaPoinTr(nn.Module):
 
         self.decoder_type = config.decoder_type
         assert self.decoder_type in ['fold', 'fc'], f'unexpected decoder_type {self.decoder_type}'
+        self.denoise_weight = float(getattr(config, 'denoise_weight', 0.5))
+        if self.denoise_weight < 0:
+            raise ValueError('denoise_weight must be non-negative')
+        self.fine_coverage_weight = float(
+            getattr(config, 'fine_coverage_weight', 1.0)
+        )
+        if self.fine_coverage_weight <= 0:
+            raise ValueError('fine_coverage_weight must be positive')
+        self.fine_local_weight = float(
+            getattr(config, 'fine_local_weight', 0.0)
+        )
+        if self.fine_local_weight < 0:
+            raise ValueError('fine_local_weight must be non-negative')
 
         self.fold_step = 8
         self.base_model = PCTransformer(config)
@@ -926,23 +988,51 @@ class AdaPoinTr(nn.Module):
 
     def build_loss_func(self):
         self.loss_func = ChamferDistanceL1()
+        self.fine_loss_func = ChamferDistanceL1Directional(
+            pred_to_ref_weight=1.0,
+            ref_to_pred_weight=self.fine_coverage_weight,
+        )
+
+    def get_fine_loss_components(self, pred_coarse, pred_fine, gt):
+        loss_global = self.fine_loss_func(pred_fine, gt)
+        if self.fine_local_weight == 0:
+            loss_local = pred_fine.new_zeros(())
+            return loss_global, loss_local, loss_global
+
+        loss_local = patch_local_chamfer(
+            pred_coarse,
+            pred_fine,
+            gt,
+            self.factor,
+            self.loss_func,
+        )
+        loss_combined = (
+            loss_global + self.fine_local_weight * loss_local
+        ) / (1.0 + self.fine_local_weight)
+        return loss_global, loss_local, loss_combined
 
     def get_loss(self, ret, gt, epoch=1):
         pred_coarse, denoised_coarse, denoised_fine, pred_fine = ret
         
         assert pred_fine.size(1) == gt.size(1)
 
-        # denoise loss
-        idx = knn_point(self.factor, gt, denoised_coarse) # B n k 
-        denoised_target = index_points(gt, idx) # B n k 3 
-        denoised_target = denoised_target.reshape(gt.size(0), -1, 3)
-        assert denoised_target.size(1) == denoised_fine.size(1)
-        loss_denoised = self.loss_func(denoised_fine, denoised_target)
-        loss_denoised = loss_denoised * 0.5
+        if self.denoise_weight > 0 and denoised_coarse.size(1) > 0:
+            idx = knn_point(self.factor, gt, denoised_coarse) # B n k
+            denoised_target = index_points(gt, idx) # B n k 3
+            denoised_target = denoised_target.reshape(gt.size(0), -1, 3)
+            assert denoised_target.size(1) == denoised_fine.size(1)
+            loss_denoised = self.loss_func(denoised_fine, denoised_target)
+            loss_denoised = loss_denoised * self.denoise_weight
+        else:
+            loss_denoised = pred_fine.new_zeros(())
 
         # recon loss
         loss_coarse = self.loss_func(pred_coarse, gt)
-        loss_fine = self.loss_func(pred_fine, gt)
+        _, _, loss_fine = self.get_fine_loss_components(
+            pred_coarse,
+            pred_fine,
+            gt,
+        )
         loss_recon = loss_coarse + loss_fine
 
         return loss_denoised, loss_recon
@@ -972,7 +1062,7 @@ class AdaPoinTr(nn.Module):
             relative_xyz = self.decode_head(rebuild_feature)   # B M S 3
             rebuild_points = (relative_xyz + coarse_point_cloud.unsqueeze(-2))  # B M S 3
 
-        if self.training:
+        if self.training and denoise_length > 0:
             # split the reconstruction and denoise task
             pred_fine = rebuild_points[:, :-denoise_length].reshape(B, -1, 3).contiguous()
             pred_coarse = coarse_point_cloud[:, :-denoise_length].contiguous()
@@ -985,6 +1075,19 @@ class AdaPoinTr(nn.Module):
 
             ret = (pred_coarse, denoised_coarse, denoised_fine, pred_fine)
             return ret
+        elif self.training:
+            pred_fine = rebuild_points.reshape(B, -1, 3).contiguous()
+            pred_coarse = coarse_point_cloud.contiguous()
+
+            assert pred_fine.size(1) == self.num_query * self.factor
+            assert pred_coarse.size(1) == self.num_query
+
+            return (
+                pred_coarse,
+                pred_coarse[:, :0],
+                pred_fine[:, :0],
+                pred_fine,
+            )
 
         else:
             assert denoise_length == 0

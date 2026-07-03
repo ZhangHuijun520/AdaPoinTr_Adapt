@@ -24,9 +24,24 @@ class SkullFix(data.Dataset):
         self.npartial = int(config.N_PARTIAL)
         self.cars = False
         self.taxonomy_id = str(getattr(config, "TAXONOMY_ID", "skullfix"))
+        self.input_key = str(getattr(config, "input_key", "partial")).lower()
+        if self.input_key not in {"partial", "gt", "implant"}:
+            raise ValueError(
+                "SkullFix input_key must be 'partial', 'gt', or 'implant', "
+                f"got {self.input_key!r}"
+            )
+        self.target_key = str(getattr(config, "target_key", "gt")).lower()
+        if self.target_key not in {"gt", "implant"}:
+            raise ValueError(
+                "SkullFix target_key must be 'gt' or 'implant', "
+                f"got {self.target_key!r}"
+            )
 
         max_samples = getattr(config, "max_samples", getattr(config, "MAX_SAMPLES", None))
         self.max_samples = None if max_samples is None else int(max_samples)
+        self.repeat = int(getattr(config, "repeat", 1))
+        if self.repeat < 1:
+            raise ValueError(f"SkullFix repeat must be >= 1, got {self.repeat}")
 
         if not os.path.isfile(manifest_path):
             raise FileNotFoundError(
@@ -58,10 +73,15 @@ class SkullFix(data.Dataset):
                 f"No SkullFix records found for manifest split '{self.manifest_split}' "
                 f"in {manifest_path}."
             )
+        unique_samples = len(self.records)
+        if self.repeat > 1:
+            self.records = self.records * self.repeat
 
         print(
             f"[DATASET] SkullFix subset={self.subset} "
-            f"manifest_split={self.manifest_split} samples={len(self.records)}"
+            f"manifest_split={self.manifest_split} samples={len(self.records)} "
+            f"unique_samples={unique_samples} repeat={self.repeat} "
+            f"input_key={self.input_key} target_key={self.target_key}"
         )
 
     def __len__(self):
@@ -74,17 +94,17 @@ class SkullFix(data.Dataset):
             point_path = os.path.join(self.data_root, point_path)
 
         with np.load(point_path, allow_pickle=False) as sample:
-            partial = sample["partial"].astype(np.float32, copy=False)
-            gt = sample["gt"].astype(np.float32, copy=False)
+            partial = sample[self.input_key].astype(np.float32, copy=False)
+            gt = sample[self.target_key].astype(np.float32, copy=False)
 
         if partial.shape != (self.npartial, 3):
             raise ValueError(
-                f"{record['case_id']}: expected partial shape "
+                f"{record['case_id']}: expected {self.input_key} input shape "
                 f"({self.npartial}, 3), got {partial.shape}"
             )
         if gt.shape != (self.npoints, 3):
             raise ValueError(
-                f"{record['case_id']}: expected gt shape "
+                f"{record['case_id']}: expected {self.target_key} target shape "
                 f"({self.npoints}, 3), got {gt.shape}"
             )
         if not np.isfinite(partial).all() or not np.isfinite(gt).all():

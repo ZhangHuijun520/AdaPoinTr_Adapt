@@ -200,7 +200,184 @@ bash scripts/run_skullfix_adapointr_overfit1.sh
 建议同时记录 epoch 0、20、50、100、199 的 CD-L1、CD-L2 和可视化。
 若单样本无法过拟合，不应开始完整 baseline。
 
-### 7.3 完整内部划分 baseline
+第一轮 `batch=1`、200 step 实验仅表现出基础可学习性，未达到强过拟合：
+
+```text
+best epoch:           70
+best CDL1:            49.2525
+best CDL2:            7.6842
+best F-Score:         0.0167
+
+input -> GT CD:       2.8448 mm
+prediction -> GT CD:  5.2648 mm
+input -> GT HD95:     5.3350 mm
+prediction -> GT HD95: 12.2129 mm
+```
+
+因此增加第二轮受控 overfit：
+
+- 唯一病例保持不变；
+- 将该病例重复 8 次组成 `batch=8`；
+- 从头训练 1000 step；
+- 学习率 `5e-5`；
+- weight decay 设为 0；
+- 每 25 step 验证并保存 checkpoint；
+- 脚本检测到 `ckpt-last.pth` 时自动恢复。
+
+运行：
+
+```bash
+tmux new -s skullfix_overfit2
+cd ~/adapointr_work/PoinTr
+bash scripts/run_skullfix_adapointr_overfit1_controlled.sh
+```
+
+配置文件：
+
+```text
+cfgs/SkullFix_models/AdaPoinTr_overfit1_controlled.yaml
+```
+
+日志：
+
+```text
+logs/skullfix/skullfix_adapointr_overfit1_controlled_<timestamp>.log
+```
+
+第二轮最低通过门槛：
+
+```text
+prediction complete -> GT CD-L1 < 2.8448 mm
+prediction complete -> GT HD95  < 5.3350 mm
+prediction complete -> GT NSD@1mm > 0.0948
+```
+
+同时可视化必须恢复完整颅骨轮廓，不能出现明显覆盖塌缩。若第二轮仍未达到门槛，
+停止完整 baseline，转而检查任务定义、输入点数、完整颅骨目标和 AdaPoinTr
+输入保留机制之间的适配。
+
+第二轮在 1000 step 时仍未超过缺损输入基准，主要表现为 GT 到 prediction
+的方向距离过大，即预测点靠近真实表面，但没有覆盖完整表面：
+
+```text
+best epoch: 975
+
+input -> GT:
+  CD-L1: 2.8448 mm
+  HD95:  5.3350 mm
+  NSD@1 mm: 0.0948
+
+prediction -> GT:
+  CD-L1: 3.6884 mm
+  HD95:  9.3093 mm
+  NSD@1 mm: 0.0940
+
+prediction -> GT directed mean: 2.3293 mm
+GT -> prediction directed mean: 5.0475 mm
+```
+
+### 7.3 Identity overfit 诊断
+
+在继续完整 baseline 前，使用同一病例执行 `complete -> complete` 诊断。该实验只用于
+区分“模型本身无法记忆”与“defective -> complete 任务不适配”，不得作为正式结果。
+
+配置通过 `input_key: gt` 令模型输入与监督目标读取同一份固定 GT 点云：
+
+```text
+cfgs/SkullFix_models/AdaPoinTr_identity_overfit_controlled.yaml
+```
+
+实验保持 batch=8、weight decay=0，训练 500 step：
+
+```bash
+tmux new -s skullfix_identity
+cd ~/adapointr_work/PoinTr
+bash scripts/run_skullfix_adapointr_identity_overfit.sh
+```
+
+预期数据日志：
+
+```text
+train: samples=8 unique_samples=1 repeat=8 input_key=gt
+val:   samples=1 unique_samples=1 repeat=1 input_key=gt
+```
+
+判定：
+
+- 若 identity 能显著过拟合且无覆盖塌缩，问题位于 `defective -> complete` 的任务适配；
+- 若 identity 仍无法过拟合，优先检查 AdaPoinTr 的 denoising queries、BatchNorm
+  统计、训练/推理分支和当前优化配置；
+- identity 实验中模型输入与 GT 是同一组点，因此输入自身的 CD、ASSD、HD95
+  必须为 0，NSD 必须为 1；
+- 预测建议达到 CD-L1 < 1 mm、HD95 < 2 mm、NSD@1 mm > 0.5；
+- 若未达到理想门槛，也必须显著优于 defective -> complete 的 3.6884 mm，
+  且两个方向的平均距离不能继续严重失衡。
+
+Identity overfit 实际未通过。输入配置已经确认是 `input_key=gt`，训练 reconstruction
+loss 从 256.4390 降至约 119.4，但验证最佳结果仍约为 CDL1=47.0432、
+CDL2=7.2927，说明需要区分训练/推理分支差异。
+
+使用以下脚本比较四种模式：
+
+```text
+tools/diagnose_skullfix_train_eval_gap.py
+```
+
+四种模式分别为：
+
+1. `eval_standard`：标准推理分支和 running BN statistics。
+2. `eval_branch_batch_bn`：推理分支，但 BN 使用当前 batch statistics。
+3. `train_branch_eval_layers`：启用 denoising 训练分支，其余子层保持 eval。
+4. `train_full`：完整训练模式。
+
+运行：
+
+```bash
+python tools/diagnose_skullfix_train_eval_gap.py \
+  --config cfgs/SkullFix_models/AdaPoinTr_identity_overfit_controlled.yaml \
+  --ckpt experiments/AdaPoinTr_identity_overfit_controlled/SkullFix_models/\
+skullfix_adapointr_identity_overfit/ckpt-best.pth \
+  --batch_size 8 \
+  --out logs/skullfix/identity_train_eval_gap.json
+```
+
+判断：
+
+- `eval_branch_batch_bn` 明显优于标准 eval：BatchNorm running statistics 是主因。
+- `train_branch_eval_layers` 明显优于标准 eval：denoising 训练分支与推理分支不一致。
+- `train_full` 明显更好、其余仍差：多个训练态因素共同作用。
+- 四种模式都差：优先检查 reconstruction objective、输出覆盖和架构适配。
+
+实际四路诊断表明，batch BN 能改善预测点贴近表面的精度，但不能改善
+GT 到 prediction 的覆盖距离；denoising 分支差异影响很小。下一步使用：
+
+```text
+tools/diagnose_skullfix_loss_gradients.py
+```
+
+该工具只执行一次 train-mode forward 和若干次 backward，不执行 optimizer step，
+也不写入 checkpoint。它会：
+
+- 独立复算 denoise、coarse、fine reconstruction loss；
+- 断言分解结果与 `model.get_loss` 完全一致；
+- 分别对 denoise、coarse、fine 和 total loss 反向传播；
+- 按 grouper、encoder、coarse prediction、query ranking、transformer decoder、
+  decode head 等模块统计梯度；
+- 分别报告 coarse、fine 和 denoised fine 的毫米制双向覆盖；
+- 报告 fine patch 相对其 coarse parent 的半径和点云内部最近邻分布。
+
+运行：
+
+```bash
+python tools/diagnose_skullfix_loss_gradients.py \
+  --config cfgs/SkullFix_models/AdaPoinTr_identity_overfit_controlled.yaml \
+  --ckpt experiments/AdaPoinTr_identity_overfit_controlled/SkullFix_models/\
+skullfix_adapointr_identity_overfit/ckpt-best.pth \
+  --batch_size 8 \
+  --out logs/skullfix/identity_loss_gradient_diagnostic.json
+```
+
+### 7.4 完整内部划分 baseline
 
 ```bash
 tmux new -s skullfix_baseline

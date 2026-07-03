@@ -190,11 +190,20 @@ def run_net(args, config, train_writer=None, val_writer=None):
             metrics = validate(base_model, test_dataloader, epoch, ChamferDisL1, ChamferDisL2, val_writer, args, config, logger=logger)
 
             # Save ckeckpoints
-            if  metrics.better_than(best_metrics):
+            save_best_checkpoint = bool(
+                getattr(config, 'save_best_checkpoint', True)
+            )
+            if metrics.better_than(best_metrics):
                 best_metrics = metrics
-                builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, 'ckpt-best', args, logger = logger)
-        builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, 'ckpt-last', args, logger = logger)      
-        if (config.max_epoch - epoch) < 2:
+                if save_best_checkpoint:
+                    builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, 'ckpt-best', args, logger = logger)
+        save_freq = max(int(getattr(config, 'save_freq', 1)), 1)
+        if epoch % save_freq == 0 or epoch == config.max_epoch:
+            builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, 'ckpt-last', args, logger = logger)
+        save_final_epoch_checkpoints = bool(
+            getattr(config, 'save_final_epoch_checkpoints', True)
+        )
+        if save_final_epoch_checkpoints and (config.max_epoch - epoch) < 2:
             builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, f'ckpt-epoch-{epoch:03d}', args, logger = logger)     
     if train_writer is not None and val_writer is not None:
         train_writer.close()

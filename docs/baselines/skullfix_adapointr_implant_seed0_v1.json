@@ -1,0 +1,100 @@
+{
+  "baseline_id": "skullfix-adapointr-implant-seed0-v1",
+  "intended_git_tag": "skullfix-adapointr-implant-seed0-v1",
+  "dataset": {
+    "name": "SkullFix",
+    "source": "100 labeled training triplets",
+    "split": {
+      "train": 80,
+      "val": 10,
+      "test": 10,
+      "seed": 20260628
+    },
+    "point_counts": {
+      "defective_input": 8192,
+      "implant_target": 4096
+    },
+    "prepared_bundle_sha256": "da4e3b50acf5d8768cf497bc9b848e4db849ecdc01abeef21e08e7d31d128a3c"
+  },
+  "training": {
+    "config": "cfgs/SkullFix_models/AdaPoinTr_implant_full100_bncal.yaml",
+    "model_seed": 0,
+    "epochs": 100,
+    "total_batch_size": 8,
+    "query_selection": "learned_only",
+    "denoise_weight": 0.0,
+    "checkpoint_epoch": 100,
+    "batchnorm_recalibration": {
+      "enabled": true,
+      "train_samples": 80,
+      "batch_size": 8,
+      "batches": 10,
+      "reset_running_stats": true
+    }
+  },
+  "checkpoint": {
+    "filename": "ckpt-last-bncal.pth",
+    "sha256": "6368ea972e8346e2679fdefec9e5c736bd0dbebefb2ed01d45056b2a22108119"
+  },
+  "archive": {
+    "filename": "skullfix_adapointr_implant_seed0_v1.tar",
+    "size_bytes": 394362880,
+    "sha256": "38c8e2cf148b581494e0a3966bb6bcf13198be8f37098941227660b3ab04ba71",
+    "local_checksum_verified": true
+  },
+  "test_cases": [
+    "001",
+    "092",
+    "047",
+    "014",
+    "000",
+    "030",
+    "079",
+    "054",
+    "056",
+    "053"
+  ],
+  "point_surface_test_metrics": {
+    "implant_cd_l1_mm": 2.9559594785800227,
+    "implant_hd95_mm": 6.325527201983126,
+    "implant_nsd_at_1mm": 0.126806640625,
+    "final_cd_l1_mm": 2.619120403418413,
+    "final_hd95_mm": 5.899791072249156,
+    "final_nsd_at_1mm": 0.106982421875,
+    "input_cd_l1_mm": 2.6987808495395624,
+    "rim_contact_cd_l1_mm": 8.154746718725388,
+    "rim_contact_hd95_mm": 29.02667797443998,
+    "rim_gt_rim_to_pred_p95_mm": 7.625359208210613
+  },
+  "voxel_test_protocol": {
+    "prediction_representation": "fixed-radius surface splatting",
+    "splat_radius_mm": 1.0,
+    "rim_band_mm": 2.0,
+    "surface_dice_weighting": "surface-voxel count",
+    "bootstrap_samples": 2000,
+    "confidence": 0.95
+  },
+  "voxel_test_metrics": {
+    "implant_dsc_mean": 0.2585360318725939,
+    "implant_dsc_std": 0.11294558988562044,
+    "implant_dsc_mean_ci95": [
+      0.18656780946535972,
+      0.31990417791292847
+    ],
+    "implant_absolute_rve_mean": 0.6629680460562484,
+    "implant_surface_assd_mm_mean": 2.5860569722164035,
+    "implant_surface_hd95_mm_mean": 6.320338338777098,
+    "implant_surface_dice_at_1mm_mean": 0.33222873929967556,
+    "implant_surface_dice_at_2mm_mean": 0.5753000732299319,
+    "final_dsc_mean": 0.9564208969072144,
+    "final_absolute_rve_mean": 0.060282312264042,
+    "input_dsc_mean": 0.9540654005827477,
+    "input_absolute_rve_mean": 0.08776545254505094
+  },
+  "known_limitations": [
+    "Voxel DSC depends on the fixed 1 mm point-to-voxel splat radius.",
+    "Whole-skull metrics are dominated by unchanged anatomy and are auxiliary.",
+    "Rim and implant-region metrics are the primary indicators for later model comparison.",
+    "This manifest freezes one training seed; multi-seed uncertainty is not yet available."
+  ]
+}
