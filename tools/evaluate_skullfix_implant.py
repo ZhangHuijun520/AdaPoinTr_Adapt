@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Evaluate SkullFix implant prediction in millimeters."""
+"""Evaluate cranial implant prediction in millimeters."""
 
 import argparse
 import csv
@@ -20,7 +20,9 @@ from datasets import build_dataset_from_cfg  # noqa: E402
 from tools import builder  # noqa: E402
 from utils.config import cfg_from_yaml_file  # noqa: E402
 from utils.evaluation_statistics import (  # noqa: E402
+    aggregate_rows_by_group,
     describe_rows,
+    describe_rows_by_group,
     paired_comparisons,
 )
 from utils.skullfix_metrics import (  # noqa: E402
@@ -41,6 +43,7 @@ def parse_args():
     parser.add_argument("--rim_band_mm", type=float, default=2.0)
     parser.add_argument("--bootstrap_samples", type=int, default=2000)
     parser.add_argument("--confidence", type=float, default=0.95)
+    parser.add_argument("--dataset_label", default="SkullFix")
     parser.add_argument(
         "--save_predictions_dir",
         default="",
@@ -170,6 +173,8 @@ def main():
                 "taxonomy_id": taxonomy_id,
                 "case_id": case_id,
                 "split": record["split"],
+                "skull_id": record.get("skull_id", case_id),
+                "defect_type": record.get("defect_type", ""),
             }
             row.update(metric_dict("implant", implant_metrics))
             row.update(metric_dict("final", final_metrics))
@@ -189,6 +194,13 @@ def main():
                     {
                         "case_id": str(case_id),
                         "split": record["split"],
+                        "skull_id": record.get("skull_id", str(case_id)),
+                        "source_skull_id": record.get(
+                            "source_skull_id", str(case_id)
+                        ),
+                        "defect_type": record.get("defect_type", ""),
+                        "official_split": record.get("official_split"),
+                        "gate_split": record.get("gate_split"),
                         "prediction_path": prediction_path.name,
                         "raw": record.get("raw", {}),
                         "voxel_shape": record.get("voxel_shape"),
@@ -209,8 +221,19 @@ def main():
             writer = csv.DictWriter(handle, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(rows)
-    metric_keys = [key for key in rows[0].keys() if key not in {"taxonomy_id", "case_id", "split"}] if rows else []
+    identifier_keys = {
+        "taxonomy_id",
+        "case_id",
+        "split",
+        "skull_id",
+        "defect_type",
+    }
+    metric_keys = [
+        key for key in rows[0].keys() if key not in identifier_keys
+    ] if rows else []
+    skull_rows = aggregate_rows_by_group(rows, "skull_id", metric_keys)
     summary = {
+        "dataset": args.dataset_label,
         "config": args.config,
         "ckpt": args.ckpt,
         "split": args.split,
@@ -224,6 +247,29 @@ def main():
             bootstrap_samples=args.bootstrap_samples,
             confidence=args.confidence,
             seed=args.seed,
+        ),
+        "statistics_case_level": describe_rows(
+            rows,
+            metric_keys,
+            bootstrap_samples=args.bootstrap_samples,
+            confidence=args.confidence,
+            seed=args.seed,
+        ),
+        "statistics_skull_macro": describe_rows(
+            skull_rows,
+            metric_keys,
+            bootstrap_samples=args.bootstrap_samples,
+            confidence=args.confidence,
+            seed=args.seed + 20000,
+        ),
+        "num_skulls": len(skull_rows),
+        "by_defect_type": describe_rows_by_group(
+            rows,
+            "defect_type",
+            metric_keys,
+            bootstrap_samples=args.bootstrap_samples,
+            confidence=args.confidence,
+            seed=args.seed + 30000,
         ),
         "paired_final_vs_input": paired_comparisons(
             rows,
@@ -248,10 +294,12 @@ def main():
         handle.write("\n")
 
     mean = summary["mean"]
-    print("==== SkullFix implant evaluation ====")
+    print(f"==== {args.dataset_label} implant evaluation ====")
     print(f"config: {args.config}")
     print(f"ckpt: {args.ckpt}")
     print(f"split: {args.split} samples={len(rows)}")
+    if skull_rows:
+        print(f"skulls: {len(skull_rows)}")
     print(
         "implant: "
         f"CD={mean.get('implant_cd_l1_mm', float('nan')):.4f}mm "

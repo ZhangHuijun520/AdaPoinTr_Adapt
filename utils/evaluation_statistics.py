@@ -56,6 +56,63 @@ def describe_rows(
     }
 
 
+def aggregate_rows_by_group(rows, group_key, metric_keys):
+    """Average case-level metrics within each non-empty group."""
+    grouped = {}
+    for row in rows:
+        group_value = row.get(group_key)
+        if group_value is None or str(group_value) == "":
+            continue
+        grouped.setdefault(str(group_value), []).append(row)
+
+    aggregated = []
+    for group_value, group_rows in sorted(grouped.items()):
+        item = {group_key: group_value, "case_count": len(group_rows)}
+        for metric_key in metric_keys:
+            values = [
+                float(row[metric_key])
+                for row in group_rows
+                if metric_key in row and np.isfinite(row[metric_key])
+            ]
+            if values:
+                item[metric_key] = float(np.mean(values))
+        aggregated.append(item)
+    return aggregated
+
+
+def describe_rows_by_group(
+    rows,
+    group_key,
+    metric_keys,
+    bootstrap_samples=2000,
+    confidence=0.95,
+    seed=0,
+):
+    """Return independent descriptive statistics for each group value."""
+    grouped = {}
+    for row in rows:
+        group_value = row.get(group_key)
+        if group_value is None or str(group_value) == "":
+            continue
+        grouped.setdefault(str(group_value), []).append(row)
+
+    return {
+        group_value: {
+            "num_cases": len(group_rows),
+            "statistics": describe_rows(
+                group_rows,
+                metric_keys,
+                bootstrap_samples=bootstrap_samples,
+                confidence=confidence,
+                seed=seed + index * 1000,
+            ),
+        }
+        for index, (group_value, group_rows) in enumerate(
+            sorted(grouped.items())
+        )
+    }
+
+
 def paired_comparisons(
     rows,
     candidate_prefix="final",

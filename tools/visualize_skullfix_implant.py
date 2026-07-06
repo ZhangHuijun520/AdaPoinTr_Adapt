@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Save visual samples for SkullFix implant prediction."""
+"""Save visual samples for cranial implant prediction."""
 
 import argparse
 import json
@@ -126,6 +126,13 @@ def main():
                         "taxonomy_id": taxonomy_id,
                         "model_id": model_id,
                         "split": record["split"],
+                        "skull_id": record.get("skull_id", model_id),
+                        "source_skull_id": record.get(
+                            "source_skull_id", model_id
+                        ),
+                        "defect_type": record.get("defect_type", ""),
+                        "official_split": record.get("official_split"),
+                        "gate_split": record.get("gate_split"),
                         "input_key": dataset.input_key,
                         "target_key": dataset.target_key,
                         "normalization": norm,

@@ -11,7 +11,15 @@ from utils.AverageMeter import AverageMeter
 from utils.metrics import Metrics
 from extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL2
 
-PC_LIKE_DATASETS = {'PCN', 'Completion3D', 'Projected_ShapeNet', 'ToyPCN', 'SkullFix'}
+PC_LIKE_DATASETS = {
+    'PCN',
+    'Completion3D',
+    'Projected_ShapeNet',
+    'ToyPCN',
+    'SkullFix',
+    'SkullBreak',
+}
+NO_EMD_DATASETS = {'SkullFix', 'SkullBreak'}
 
 def _is_main_process(args):
     return (not getattr(args, 'distributed', False)) or getattr(args, 'local_rank', 0) == 0
@@ -415,7 +423,7 @@ def test(base_model, test_dataloader, ChamferDisL1, ChamferDisL2, args, config, 
                 _metrics = Metrics.get(
                     dense_points,
                     gt,
-                    require_emd=dataset_name != 'SkullFix',
+                    require_emd=dataset_name not in NO_EMD_DATASETS,
                 )
                 # test_metrics.update(_metrics)
 

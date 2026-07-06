@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Evaluate exported SkullFix predictions against original NRRD masks."""
+"""Evaluate exported cranial-implant predictions against original NRRD masks."""
 
 import argparse
 import csv
@@ -14,7 +14,9 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from utils.evaluation_statistics import (  # noqa: E402
+    aggregate_rows_by_group,
     describe_rows,
+    describe_rows_by_group,
     paired_comparisons,
 )
 from utils.skullfix_metrics import normalized_to_world  # noqa: E402
@@ -37,6 +39,8 @@ def parse_args():
     parser.add_argument("--bootstrap_samples", type=int, default=2000)
     parser.add_argument("--confidence", type=float, default=0.95)
     parser.add_argument("--seed", type=int, default=20260702)
+    parser.add_argument("--dataset_label", default="SkullFix")
+    parser.add_argument("--output_prefix", default="skullfix")
     return parser.parse_args()
 
 
@@ -149,6 +153,8 @@ def main():
         row = {
             "case_id": record["case_id"],
             "split": record["split"],
+            "skull_id": record.get("skull_id", record["case_id"]),
+            "defect_type": record.get("defect_type", ""),
         }
         row.update(
             prefixed(
@@ -205,8 +211,8 @@ def main():
 
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    csv_path = out_dir / "skullfix_voxel_per_sample.csv"
-    summary_path = out_dir / "skullfix_voxel_summary.json"
+    csv_path = out_dir / f"{args.output_prefix}_voxel_per_sample.csv"
+    summary_path = out_dir / f"{args.output_prefix}_voxel_summary.json"
 
     if rows:
         with open(csv_path, "w", newline="", encoding="utf-8") as handle:
@@ -214,7 +220,9 @@ def main():
             writer.writeheader()
             writer.writerows(rows)
     metric_keys = [
-        key for key in rows[0] if key not in {"case_id", "split"}
+        key
+        for key in rows[0]
+        if key not in {"case_id", "split", "skull_id", "defect_type"}
     ] if rows else []
     statistics = describe_rows(
         rows,
@@ -223,7 +231,9 @@ def main():
         confidence=args.confidence,
         seed=args.seed,
     )
+    skull_rows = aggregate_rows_by_group(rows, "skull_id", metric_keys)
     summary = {
+        "dataset": args.dataset_label,
         "protocol": {
             "prediction_representation": "fixed-radius surface splatting",
             "splat_radius_mm": args.splat_radius_mm,
@@ -237,11 +247,28 @@ def main():
             ),
         },
         "num_samples": len(rows),
+        "num_skulls": len(skull_rows),
         "mean": {
             key: values.get("mean")
             for key, values in statistics.items()
         },
         "statistics": statistics,
+        "statistics_case_level": statistics,
+        "statistics_skull_macro": describe_rows(
+            skull_rows,
+            metric_keys,
+            bootstrap_samples=args.bootstrap_samples,
+            confidence=args.confidence,
+            seed=args.seed + 20000,
+        ),
+        "by_defect_type": describe_rows_by_group(
+            rows,
+            "defect_type",
+            metric_keys,
+            bootstrap_samples=args.bootstrap_samples,
+            confidence=args.confidence,
+            seed=args.seed + 30000,
+        ),
         "paired_final_vs_input": paired_comparisons(
             rows,
             candidate_prefix="final",

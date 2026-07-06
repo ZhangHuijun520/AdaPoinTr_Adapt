@@ -6,3 +6,4 @@ import datasets.Completion3DDataset
 import datasets.Projected_ShapeNet
 import datasets.ToyPCNDataset
 import datasets.SkullFixDataset
+import datasets.SkullBreakDataset
