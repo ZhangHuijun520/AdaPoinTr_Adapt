@@ -25,11 +25,6 @@ class SkullFix(data.Dataset):
         self.cars = False
         self.taxonomy_id = str(getattr(config, "TAXONOMY_ID", "skullfix"))
         self.input_key = str(getattr(config, "input_key", "partial")).lower()
-        if self.input_key not in {"partial", "gt", "implant"}:
-            raise ValueError(
-                "SkullFix input_key must be 'partial', 'gt', or 'implant', "
-                f"got {self.input_key!r}"
-            )
         self.target_key = str(getattr(config, "target_key", "gt")).lower()
         if self.target_key not in {"gt", "implant"}:
             raise ValueError(
@@ -94,6 +89,18 @@ class SkullFix(data.Dataset):
             point_path = os.path.join(self.data_root, point_path)
 
         with np.load(point_path, allow_pickle=False) as sample:
+            if self.input_key not in sample:
+                available = ", ".join(sorted(sample.files))
+                raise KeyError(
+                    f"{record['case_id']}: input key {self.input_key!r} "
+                    f"not found in {point_path}. Available arrays: {available}"
+                )
+            if self.target_key not in sample:
+                available = ", ".join(sorted(sample.files))
+                raise KeyError(
+                    f"{record['case_id']}: target key {self.target_key!r} "
+                    f"not found in {point_path}. Available arrays: {available}"
+                )
             partial = sample[self.input_key].astype(np.float32, copy=False)
             gt = sample[self.target_key].astype(np.float32, copy=False)
 

@@ -10,6 +10,7 @@ from pathlib import Path
 
 import numpy as np
 from scipy import ndimage
+from scipy.spatial import cKDTree
 
 
 ROLE_ALIASES = {
@@ -53,6 +54,22 @@ def parse_args():
     parser.add_argument("--n_complete", type=int, default=8192)
     parser.add_argument("--n_partial", type=int, default=8192)
     parser.add_argument("--n_implant", type=int, default=4096)
+    parser.add_argument(
+        "--n_rim_local",
+        type=int,
+        default=0,
+        help=(
+            "Optional number of defective-skull rim-local points to sample. "
+            "When positive, the output NPZ also contains partial_rim_local "
+            "and partial_global_rim arrays."
+        ),
+    )
+    parser.add_argument(
+        "--rim_band_mm",
+        type=float,
+        default=2.0,
+        help="Distance band for selecting defective-skull rim-local surface points.",
+    )
     parser.add_argument("--seed", type=int, default=20260628)
     parser.add_argument(
         "--normalization_source",
@@ -347,6 +364,32 @@ def sample_surface(
     return ((world - centroid) / scale).astype(np.float32)
 
 
+def rim_local_surface_indices(
+    defective_flat_indices,
+    implant_flat_indices,
+    shape,
+    directions,
+    origin,
+    rim_band_mm,
+):
+    if rim_band_mm <= 0 or not np.isfinite(rim_band_mm):
+        raise ValueError("--rim_band_mm must be positive and finite")
+    defective_world = flat_indices_to_world(
+        defective_flat_indices, shape, directions, origin
+    )
+    implant_world = flat_indices_to_world(
+        implant_flat_indices, shape, directions, origin
+    )
+    distances, _ = cKDTree(implant_world).query(defective_world, k=1)
+    selected = defective_flat_indices[np.asarray(distances) <= rim_band_mm]
+    if selected.size == 0:
+        raise ValueError(
+            "No defective-skull rim-local surface points were found; "
+            f"try increasing --rim_band_mm above {rim_band_mm:g} mm."
+        )
+    return selected
+
+
 def relative_or_absolute(path, root):
     try:
         return path.relative_to(root).as_posix()
@@ -442,11 +485,38 @@ def process_triplet(args, triplet, split, points_dir):
             stable_rng(args.seed, case_id, role),
         )
 
+    extra_arrays = {}
+    rim_local_count = int(args.n_rim_local)
+    if rim_local_count > 0:
+        rim_indices = rim_local_surface_indices(
+            surfaces["defective"],
+            surfaces["implant"],
+            volumes["defective"].shape,
+            directions,
+            origin,
+            args.rim_band_mm,
+        )
+        rim_local = sample_surface(
+            rim_indices,
+            volumes["defective"].shape,
+            directions,
+            origin,
+            rim_local_count,
+            centroid,
+            scale,
+            stable_rng(args.seed, case_id, f"rim_local_{rim_local_count}"),
+        )
+        extra_arrays["partial_rim_local"] = rim_local
+        extra_arrays["partial_global_rim"] = np.concatenate(
+            (sampled["defective"], rim_local), axis=0
+        ).astype(np.float32)
+
     np.savez_compressed(
         output_path,
         partial=sampled["defective"],
         gt=sampled["complete"],
         implant=sampled["implant"],
+        **extra_arrays,
         centroid=centroid.astype(np.float64),
         scale=np.asarray(scale, dtype=np.float64),
         voxel_shape=np.asarray(volumes["complete"].shape, dtype=np.int32),
@@ -466,6 +536,15 @@ def process_triplet(args, triplet, split, points_dir):
         "n_partial": args.n_partial,
         "n_complete": args.n_complete,
         "n_implant": args.n_implant,
+        "n_rim_local": rim_local_count,
+        "rim_band_mm": float(args.rim_band_mm),
+        "input_arrays": {
+            "partial": args.n_partial,
+            "partial_rim_local": rim_local_count,
+            "partial_global_rim": (
+                args.n_partial + rim_local_count if rim_local_count > 0 else 0
+            ),
+        },
         "normalization": {
             "source": f"{normalization_role}_surface",
             "centroid": centroid.tolist(),
@@ -500,6 +579,8 @@ def main():
         raise FileNotFoundError(f"Input root not found: {args.input_root}")
     if min(args.n_complete, args.n_partial, args.n_implant) <= 0:
         raise ValueError("All point counts must be positive")
+    if args.n_rim_local < 0:
+        raise ValueError("--n_rim_local must be non-negative")
 
     role_directories = {
         role: find_role_directory(
@@ -583,6 +664,12 @@ def main():
             "partial": args.n_partial,
             "complete": args.n_complete,
             "implant": args.n_implant,
+            "rim_local": args.n_rim_local,
+            "partial_global_rim": (
+                args.n_partial + args.n_rim_local
+                if args.n_rim_local > 0
+                else 0
+            ),
         },
         "normalization": (
             f"shared {args.normalization_source}-surface centroid and max radius"

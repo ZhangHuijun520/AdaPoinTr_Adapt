@@ -52,7 +52,22 @@ def main():
                 "gt": (int(record["n_complete"]), 3),
                 "implant": (int(record["n_implant"]), 3),
             }
+            input_arrays = record.get("input_arrays", {})
+            if int(input_arrays.get("partial_rim_local", 0)) > 0:
+                expected["partial_rim_local"] = (
+                    int(input_arrays["partial_rim_local"]),
+                    3,
+                )
+            if int(input_arrays.get("partial_global_rim", 0)) > 0:
+                expected["partial_global_rim"] = (
+                    int(input_arrays["partial_global_rim"]),
+                    3,
+                )
             for key, shape in expected.items():
+                if key not in sample:
+                    raise KeyError(
+                        f"{record['case_id']}: missing expected array {key!r}"
+                    )
                 points = sample[key]
                 if points.shape != shape:
                     raise ValueError(

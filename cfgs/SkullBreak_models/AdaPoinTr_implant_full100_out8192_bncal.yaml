@@ -1,0 +1,84 @@
+optimizer: {
+  type: AdamW,
+  kwargs: {lr: 0.0001, weight_decay: 0.0005}
+}
+
+scheduler: {
+  type: LambdaLR,
+  kwargs: {decay_step: 21, lr_decay: 0.9, lowest_decay: 0.02}
+}
+
+bnmscheduler: {
+  type: Lambda,
+  kwargs: {
+    decay_step: 21, bn_decay: 0.5, bn_momentum: 0.9,
+    lowest_decay: 0.01
+  }
+}
+
+dataset: {
+  train: {
+    _base_: cfgs/dataset_configs/SkullBreak.yaml,
+    others: {
+      DATA_ROOT: data/SkullBreakPC_out8192,
+      subset: train, split_field: official_split, manifest_split: train,
+      input_key: partial, target_key: implant,
+      N_PARTIAL: 8192, N_POINTS: 8192
+    }},
+  val: {
+    _base_: cfgs/dataset_configs/SkullBreak.yaml,
+    others: {
+      DATA_ROOT: data/SkullBreakPC_out8192,
+      subset: val, split_field: monitor_split, manifest_split: monitor,
+      input_key: partial, target_key: implant,
+      N_PARTIAL: 8192, N_POINTS: 8192
+    }},
+  test: {
+    _base_: cfgs/dataset_configs/SkullBreak.yaml,
+    others: {
+      DATA_ROOT: data/SkullBreakPC_out8192,
+      subset: test, split_field: official_split, manifest_split: test,
+      input_key: partial, target_key: implant,
+      N_PARTIAL: 8192, N_POINTS: 8192
+    }}
+}
+
+model: {
+  NAME: AdaPoinTr,
+  num_query: 256,
+  num_points: 8192,
+  center_num: [512, 256],
+  global_feature_dim: 1024,
+  encoder_type: graph,
+  decoder_type: fc,
+  query_selection: learned_only,
+  denoise_weight: 0.0,
+  fine_coverage_weight: 1.0,
+  fine_local_weight: 0.0,
+  encoder_config: {
+    embed_dim: 384, depth: 6, num_heads: 6, k: 8, n_group: 2,
+    mlp_ratio: 2.0,
+    block_style_list: [attn-graph, attn, attn, attn, attn, attn],
+    combine_style: concat,
+  },
+  decoder_config: {
+    embed_dim: 384, depth: 8, num_heads: 6, k: 8, n_group: 2,
+    mlp_ratio: 2.0,
+    self_attn_block_style_list: [
+      attn-graph, attn, attn, attn, attn, attn, attn, attn
+    ],
+    self_attn_combine_style: concat,
+    cross_attn_block_style_list: [
+      attn-graph, attn, attn, attn, attn, attn, attn, attn
+    ],
+    cross_attn_combine_style: concat,
+  }
+}
+
+total_bs: 8
+step_per_update: 1
+max_epoch: 100
+consider_metric: CDL2
+save_freq: 10
+save_best_checkpoint: false
+save_final_epoch_checkpoints: false
