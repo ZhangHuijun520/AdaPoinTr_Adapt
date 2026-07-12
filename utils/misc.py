@@ -222,8 +222,11 @@ def get_ptcloud_img(ptcloud):
     ax.scatter(x, y, z, zdir='z', c=x, cmap='jet')
 
     fig.canvas.draw()
-    img = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
-    img = img.reshape(fig.canvas.get_width_height()[::-1] + (3, )).copy()
+    if hasattr(fig.canvas, 'tostring_rgb'):
+        img = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+        img = img.reshape(fig.canvas.get_width_height()[::-1] + (3, )).copy()
+    else:
+        img = np.asarray(fig.canvas.buffer_rgba())[..., :3].copy()
     plt.close(fig)
     return img
 

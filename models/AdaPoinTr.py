@@ -32,6 +32,201 @@ def patch_local_chamfer(pred_coarse, pred_fine, gt, factor, loss_func):
     return loss_func(pred_patches, target_patches)
 
 
+class GatedConvSequenceMixer(nn.Module):
+    """Small dependency-free mixer for adapter smoke tests.
+
+    The real Mamba adapter uses mamba_ssm when available. This mixer keeps the
+    same BNC interface so configs can be debugged without the CUDA extension.
+    """
+
+    def __init__(self, dim, d_conv=4, expand=2):
+        super().__init__()
+        hidden_dim = int(dim * expand)
+        padding = max(int(d_conv) - 1, 0)
+        self.in_proj = nn.Linear(dim, hidden_dim * 2)
+        self.dwconv = nn.Conv1d(
+            hidden_dim,
+            hidden_dim,
+            kernel_size=int(d_conv),
+            padding=padding,
+            groups=hidden_dim,
+        )
+        self.act = nn.SiLU()
+        self.out_proj = nn.Linear(hidden_dim, dim)
+
+    def forward(self, x):
+        value, gate = self.in_proj(x).chunk(2, dim=-1)
+        value = self.dwconv(value.transpose(1, 2)).transpose(1, 2)
+        if value.size(1) != x.size(1):
+            value = value[:, :x.size(1)]
+        return self.out_proj(self.act(value) * torch.sigmoid(gate))
+
+
+def build_sequence_mixer(dim, adapter_type, d_state, d_conv, expand, use_fast_path):
+    if adapter_type == 'mamba_ssm':
+        try:
+            try:
+                from mamba_ssm import Mamba
+            except ImportError:
+                from mamba_ssm.modules.mamba_simple import Mamba
+        except ImportError as exc:
+            raise ImportError(
+                "mamba_ssm is required when mamba_adapter.adapter_type="
+                "'mamba_ssm'. Install mamba-ssm in the training environment "
+                "or set adapter_type: gated_conv for a dependency-free smoke "
+                "test."
+            ) from exc
+        try:
+            return Mamba(
+                d_model=dim,
+                d_state=int(d_state),
+                d_conv=int(d_conv),
+                expand=int(expand),
+                use_fast_path=bool(use_fast_path),
+            )
+        except TypeError:
+            if not bool(use_fast_path):
+                raise TypeError(
+                    "The installed mamba_ssm Mamba class does not support "
+                    "use_fast_path=False. Install a compatible mamba-ssm "
+                    "version or enable fast path with a working "
+                    "causal-conv1d CUDA extension."
+                )
+            return Mamba(
+                d_model=dim,
+                d_state=int(d_state),
+                d_conv=int(d_conv),
+                expand=int(expand),
+            )
+    if adapter_type == 'gated_conv':
+        return GatedConvSequenceMixer(dim, d_conv=d_conv, expand=expand)
+    raise ValueError(
+        f"Unsupported mamba_adapter.adapter_type={adapter_type!r}; "
+        "expected 'mamba_ssm' or 'gated_conv'"
+    )
+
+
+class MambaAdapterBlock(nn.Module):
+    def __init__(
+        self,
+        dim,
+        adapter_type='mamba_ssm',
+        d_state=16,
+        d_conv=4,
+        expand=2,
+        use_fast_path=True,
+        drop_path=0.0,
+        alpha_init=0.1,
+    ):
+        super().__init__()
+        self.norm = nn.LayerNorm(dim)
+        self.mixer = build_sequence_mixer(
+            dim=dim,
+            adapter_type=adapter_type,
+            d_state=d_state,
+            d_conv=d_conv,
+            expand=expand,
+            use_fast_path=use_fast_path,
+        )
+        self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
+        self.alpha = nn.Parameter(torch.tensor(float(alpha_init)))
+
+    def forward(self, x):
+        return x + self.alpha * self.drop_path(self.mixer(self.norm(x)))
+
+
+class MambaSequenceAdapter(nn.Module):
+    def __init__(self, dim, config):
+        super().__init__()
+        self.enabled = bool(getattr(config, 'enabled', False)) if config else False
+        self.order = getattr(config, 'order', 'xyz') if config else 'xyz'
+        if not self.enabled:
+            self.blocks = nn.ModuleList()
+            return
+
+        adapter_type = getattr(config, 'adapter_type', 'mamba_ssm')
+        depth = int(getattr(config, 'depth', 1))
+        d_state = int(getattr(config, 'd_state', 16))
+        d_conv = int(getattr(config, 'd_conv', 4))
+        expand = int(getattr(config, 'expand', 2))
+        use_fast_path = bool(getattr(config, 'use_fast_path', True))
+        drop_path = float(getattr(config, 'drop_path', 0.0))
+        alpha_init = float(getattr(config, 'alpha_init', 0.1))
+
+        self.blocks = nn.ModuleList([
+            MambaAdapterBlock(
+                dim=dim,
+                adapter_type=adapter_type,
+                d_state=d_state,
+                d_conv=d_conv,
+                expand=expand,
+                use_fast_path=use_fast_path,
+                drop_path=drop_path,
+                alpha_init=alpha_init,
+            )
+            for _ in range(depth)
+        ])
+
+    @staticmethod
+    def _ordering_indices(coor, order):
+        if order in [None, 'none', 'identity']:
+            return None, None
+        axes_by_order = {
+            'x': [0],
+            'y': [1],
+            'z': [2],
+            'xy': [0, 1],
+            'xz': [0, 2],
+            'yz': [1, 2],
+            'xyz': [0, 1, 2],
+            'xzy': [0, 2, 1],
+            'zyx': [2, 1, 0],
+        }
+        if order not in axes_by_order:
+            raise ValueError(
+                f"Unsupported mamba_adapter.order={order!r}; expected one of "
+                f"{sorted(axes_by_order) + ['none', 'identity']}"
+            )
+        axes = axes_by_order[order]
+        values = coor.detach()[..., axes]
+        min_values = values.amin(dim=1, keepdim=True)
+        max_values = values.amax(dim=1, keepdim=True)
+        values = (values - min_values) / (max_values - min_values + 1e-6)
+
+        key = values.new_zeros(values.shape[:2])
+        weight = 1.0
+        for axis_id in range(values.size(-1)):
+            key = key + values[..., axis_id] * weight
+            weight *= 1e-3
+
+        sort_idx = torch.argsort(key, dim=1)
+        inv_idx = torch.empty_like(sort_idx)
+        arange = torch.arange(
+            sort_idx.size(1),
+            device=sort_idx.device,
+            dtype=sort_idx.dtype,
+        ).unsqueeze(0).expand_as(sort_idx)
+        inv_idx.scatter_(1, sort_idx, arange)
+        return sort_idx, inv_idx
+
+    def forward(self, x, coor):
+        if not self.enabled:
+            return x
+
+        sort_idx, inv_idx = self._ordering_indices(coor, self.order)
+        if sort_idx is not None:
+            sort_idx = sort_idx.unsqueeze(-1).expand(-1, -1, x.size(-1))
+            x = torch.gather(x, 1, sort_idx)
+
+        for block in self.blocks:
+            x = block(x)
+
+        if inv_idx is not None:
+            inv_idx = inv_idx.unsqueeze(-1).expand(-1, -1, x.size(-1))
+            x = torch.gather(x, 1, inv_idx)
+        return x
+
+
 class SelfAttnBlockApi(nn.Module):
     r'''
         1. Norm Encoder Block 
@@ -819,6 +1014,10 @@ class PCTransformer(nn.Module):
         )
         # Coarse Level 1 : Encoder
         self.encoder = PointTransformerEncoderEntry(encoder_config)
+        self.encoder_adapter = MambaSequenceAdapter(
+            encoder_config.embed_dim,
+            getattr(config, 'mamba_adapter', None),
+        )
 
         self.increase_dim = nn.Sequential(
             nn.Linear(encoder_config.embed_dim, 1024),
@@ -872,6 +1071,7 @@ class PCTransformer(nn.Module):
         x = self.input_proj(f)
 
         x = self.encoder(x + pe, coor) # b n c
+        x = self.encoder_adapter(x, coor)
         global_feature = self.increase_dim(x) # B 1024 N 
         global_feature = torch.max(global_feature, dim=1)[0] # B 1024
 
