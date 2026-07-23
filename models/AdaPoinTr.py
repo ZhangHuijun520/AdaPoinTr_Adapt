@@ -130,9 +130,13 @@ class MambaAdapterBlock(nn.Module):
         )
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
         self.alpha = nn.Parameter(torch.tensor(float(alpha_init)))
+        self.register_buffer('alpha_scale', torch.tensor(1.0), persistent=False)
+
+    def set_alpha_scale(self, scale):
+        self.alpha_scale.fill_(float(scale))
 
     def forward(self, x):
-        return x + self.alpha * self.drop_path(self.mixer(self.norm(x)))
+        return x + self.alpha_scale * self.alpha * self.drop_path(self.mixer(self.norm(x)))
 
 
 class MambaSequenceAdapter(nn.Module):
@@ -208,6 +212,12 @@ class MambaSequenceAdapter(nn.Module):
         ).unsqueeze(0).expand_as(sort_idx)
         inv_idx.scatter_(1, sort_idx, arange)
         return sort_idx, inv_idx
+
+    def set_alpha_scale(self, scale):
+        if not self.enabled:
+            return
+        for block in self.blocks:
+            block.set_alpha_scale(scale)
 
     def forward(self, x, coor):
         if not self.enabled:
@@ -1064,6 +1074,9 @@ class PCTransformer(nn.Module):
             nn.init.constant_(m.bias, 0)
             nn.init.constant_(m.weight, 1.0)
 
+    def set_mamba_adapter_scale(self, scale):
+        self.encoder_adapter.set_alpha_scale(scale)
+
     def forward(self, xyz):
         bs = xyz.size(0)
         coor, f = self.grouper(xyz, self.center_num) # b n c
@@ -1185,6 +1198,10 @@ class AdaPoinTr(nn.Module):
         )
         self.reduce_map = nn.Linear(self.trans_dim + 1027, self.trans_dim)
         self.build_loss_func()
+
+    def set_mamba_adapter_scale(self, scale):
+        if hasattr(self.base_model, 'set_mamba_adapter_scale'):
+            self.base_model.set_mamba_adapter_scale(scale)
 
     def build_loss_func(self):
         self.loss_func = ChamferDistanceL1()

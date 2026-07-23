@@ -24,6 +24,27 @@ NO_EMD_DATASETS = {'SkullFix', 'SkullBreak'}
 def _is_main_process(args):
     return (not getattr(args, 'distributed', False)) or getattr(args, 'local_rank', 0) == 0
 
+def _compute_mamba_adapter_scale(config, epoch):
+    adapter_config = getattr(config.model, 'mamba_adapter', None)
+    if adapter_config is None or not bool(getattr(adapter_config, 'enabled', False)):
+        return None
+
+    warmup_epochs = int(getattr(adapter_config, 'alpha_warmup_epochs', 0))
+    if warmup_epochs <= 0:
+        return None
+
+    start = float(getattr(adapter_config, 'alpha_warmup_start', 0.0))
+    end = float(getattr(adapter_config, 'alpha_warmup_end', 1.0))
+    progress = min(max(float(epoch) / float(warmup_epochs), 0.0), 1.0)
+    return start + (end - start) * progress
+
+def _set_mamba_adapter_scale(base_model, scale):
+    if scale is None:
+        return
+    model = base_model.module if hasattr(base_model, 'module') else base_model
+    if hasattr(model, 'set_mamba_adapter_scale'):
+        model.set_mamba_adapter_scale(scale)
+
 def run_net(args, config, train_writer=None, val_writer=None):
     logger = get_logger(args.log_name)
     # build dataset
@@ -93,6 +114,12 @@ def run_net(args, config, train_writer=None, val_writer=None):
         if args.distributed:
             train_sampler.set_epoch(epoch)
         base_model.train()
+        mamba_adapter_scale = _compute_mamba_adapter_scale(config, epoch)
+        _set_mamba_adapter_scale(base_model, mamba_adapter_scale)
+        if mamba_adapter_scale is not None and _is_main_process(args):
+            print_log(f'[MambaAdapter] alpha_scale = {mamba_adapter_scale:.4f}', logger=logger)
+            if train_writer is not None:
+                train_writer.add_scalar('MambaAdapter/AlphaScale', mamba_adapter_scale, epoch)
 
         epoch_start_time = time.time()
         batch_start_time = time.time()
@@ -220,6 +247,7 @@ def run_net(args, config, train_writer=None, val_writer=None):
 def validate(base_model, test_dataloader, epoch, ChamferDisL1, ChamferDisL2, val_writer, args, config, logger = None):
     print_log(f"[VALIDATION] Start validating epoch {epoch}", logger = logger)
     base_model.eval()  # set model to eval mode
+    _set_mamba_adapter_scale(base_model, _compute_mamba_adapter_scale(config, epoch))
 
     test_losses = AverageMeter(['SparseLossL1', 'SparseLossL2', 'DenseLossL1', 'DenseLossL2'])
     test_metrics = AverageMeter(Metrics.names())
