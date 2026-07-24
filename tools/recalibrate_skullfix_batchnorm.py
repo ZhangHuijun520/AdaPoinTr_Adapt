@@ -11,6 +11,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
+from tqdm import tqdm
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
@@ -128,12 +129,24 @@ def main():
         module.train()
 
     batches_used = 0
+    progress_total = min(len(loader), args.max_batches)
     with torch.no_grad():
-        for _, _, data in loader:
+        progress = tqdm(
+            loader,
+            total=progress_total,
+            desc="BNCal",
+            dynamic_ncols=True,
+        )
+        for _, _, data in progress:
             model(data[0].to(device))
             batches_used += 1
+            progress.set_postfix(
+                batches=f"{batches_used}/{progress_total}",
+                refresh=False,
+            )
             if batches_used >= args.max_batches:
                 break
+        progress.close()
 
     after = metric_summary(
         predict(model, first_input, device),

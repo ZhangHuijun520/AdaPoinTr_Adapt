@@ -23,6 +23,25 @@ class SkullBreak(data.Dataset):
         self.manifest_split = str(
             getattr(config, "manifest_split", self.subset)
         )
+        exclude_split_field = getattr(config, "exclude_split_field", None)
+        exclude_manifest_split = getattr(
+            config, "exclude_manifest_split", None
+        )
+        if (exclude_split_field is None) != (exclude_manifest_split is None):
+            raise ValueError(
+                "SkullBreak exclude_split_field and "
+                "exclude_manifest_split must be configured together"
+            )
+        self.exclude_split_field = (
+            None
+            if exclude_split_field is None
+            else str(exclude_split_field)
+        )
+        self.exclude_manifest_split = (
+            None
+            if exclude_manifest_split is None
+            else str(exclude_manifest_split)
+        )
         self.npoints = int(config.N_POINTS)
         self.npartial = int(config.N_PARTIAL)
         self.cars = False
@@ -73,6 +92,12 @@ class SkullBreak(data.Dataset):
                 record = json.loads(line)
                 if record.get(self.split_field) != self.manifest_split:
                     continue
+                if (
+                    self.exclude_split_field is not None
+                    and record.get(self.exclude_split_field)
+                    == self.exclude_manifest_split
+                ):
+                    continue
                 required = {"case_id", "skull_id", "point_path"}
                 missing = required.difference(record)
                 if missing:
@@ -122,6 +147,8 @@ class SkullBreak(data.Dataset):
         print(
             f"[DATASET] SkullBreak subset={self.subset} "
             f"{self.split_field}={self.manifest_split} "
+            f"exclude={self.exclude_split_field}="
+            f"{self.exclude_manifest_split} "
             f"samples={len(self.records)} unique_samples={unique_samples} "
             f"unique_skulls={unique_skulls} repeat={self.repeat} "
             f"input_key={self.input_key} target_key={self.target_key}"
