@@ -135,8 +135,23 @@ class MambaAdapterBlock(nn.Module):
     def set_alpha_scale(self, scale):
         self.alpha_scale.fill_(float(scale))
 
-    def forward(self, x):
-        return x + self.alpha_scale * self.alpha * self.drop_path(self.mixer(self.norm(x)))
+    def forward(self, x, return_instrumentation=False):
+        if not return_instrumentation:
+            return x + self.alpha_scale * self.alpha * self.drop_path(self.mixer(self.norm(x)))
+
+        normalized = self.norm(x)
+        mixed = self.mixer(normalized)
+        residual = self.alpha_scale * self.alpha * self.drop_path(mixed)
+        output = x + residual
+        return output, {
+            'input': x.detach(),
+            'normalized': normalized.detach(),
+            'mixed': mixed.detach(),
+            'residual': residual.detach(),
+            'output': output.detach(),
+            'alpha': self.alpha.detach(),
+            'alpha_scale': self.alpha_scale.detach(),
+        }
 
 
 class MambaSequenceAdapter(nn.Module):
@@ -144,6 +159,8 @@ class MambaSequenceAdapter(nn.Module):
         super().__init__()
         self.enabled = bool(getattr(config, 'enabled', False)) if config else False
         self.order = getattr(config, 'order', 'xyz') if config else 'xyz'
+        self.instrumentation_enabled = False
+        self._last_instrumentation = None
         if not self.enabled:
             self.blocks = nn.ModuleList()
             return
@@ -219,17 +236,203 @@ class MambaSequenceAdapter(nn.Module):
         for block in self.blocks:
             block.set_alpha_scale(scale)
 
+    def enable_instrumentation(self, enabled=True):
+        self.instrumentation_enabled = bool(enabled)
+        self._last_instrumentation = None
+
+    def pop_instrumentation(self):
+        records = self._last_instrumentation
+        self._last_instrumentation = None
+        return records
+
+    @staticmethod
+    def _tensor_summary(tensor, eps=1e-12):
+        token_norm = torch.linalg.vector_norm(tensor.float(), dim=-1)
+        rms = torch.sqrt(torch.mean(tensor.float().square(), dim=(1, 2)))
+        return {
+            'rms': rms,
+            'token_norm_mean': token_norm.mean(dim=1),
+            'token_norm_p95': torch.quantile(token_norm, 0.95, dim=1),
+            'token_norm_max': token_norm.amax(dim=1),
+            'token_norm_min': token_norm.amin(dim=1),
+            'nonfinite_count': (~torch.isfinite(tensor)).sum(dim=(1, 2)),
+            'eps': tensor.new_full((tensor.size(0),), float(eps)),
+        }
+
+    @classmethod
+    def _block_instrumentation_rows(cls, block_index, tensors):
+        eps = 1e-12
+        input_tensor = tensors['input'].float()
+        residual = tensors['residual'].float()
+        input_norm = torch.linalg.vector_norm(input_tensor, dim=-1)
+        residual_norm = torch.linalg.vector_norm(residual, dim=-1)
+        output_delta = tensors['output'].float() - input_tensor
+        ratio = residual_norm / input_norm.clamp_min(eps)
+        token_count = input_tensor.size(1)
+        head_count = max(1, token_count // 10)
+        tail_start = token_count - head_count
+        max_position = residual_norm.argmax(dim=1).float()
+        if token_count > 1:
+            max_position = max_position / float(token_count - 1)
+
+        input_residual_cosine = torch.nn.functional.cosine_similarity(
+            input_tensor.reshape(input_tensor.size(0), -1),
+            residual.reshape(residual.size(0), -1),
+            dim=1,
+            eps=eps,
+        )
+        summaries = {
+            name: cls._tensor_summary(tensor)
+            for name, tensor in (
+                ('input', tensors['input']),
+                ('normalized', tensors['normalized']),
+                ('mixed', tensors['mixed']),
+                ('residual', tensors['residual']),
+                ('output', tensors['output']),
+            )
+        }
+        output_delta_rms = torch.sqrt(
+            torch.mean(output_delta.square(), dim=(1, 2))
+        )
+        alpha = float(tensors['alpha'].float().cpu().item())
+        alpha_scale = float(tensors['alpha_scale'].float().cpu().item())
+
+        rows = []
+        for sample_index in range(input_tensor.size(0)):
+            row = {
+                'sample_index': sample_index,
+                'block_index': int(block_index),
+                'token_count': int(token_count),
+                'feature_dim': int(input_tensor.size(2)),
+                'alpha': alpha,
+                'alpha_scale': alpha_scale,
+                'effective_alpha': alpha * alpha_scale,
+                'residual_to_input_rms': float(
+                    summaries['residual']['rms'][sample_index].cpu()
+                    / summaries['input']['rms'][sample_index].clamp_min(eps).cpu()
+                ),
+                'residual_to_input_token_ratio_mean': float(
+                    ratio[sample_index].mean().cpu()
+                ),
+                'residual_to_input_token_ratio_p95': float(
+                    torch.quantile(ratio[sample_index], 0.95).cpu()
+                ),
+                'residual_to_input_token_ratio_max': float(
+                    ratio[sample_index].amax().cpu()
+                ),
+                'input_residual_cosine': float(
+                    input_residual_cosine[sample_index].cpu()
+                ),
+                'output_delta_rms': float(output_delta_rms[sample_index].cpu()),
+                'residual_head_token_norm_mean': float(
+                    residual_norm[sample_index, :head_count].mean().cpu()
+                ),
+                'residual_tail_token_norm_mean': float(
+                    residual_norm[sample_index, tail_start:].mean().cpu()
+                ),
+                'residual_tail_to_head_ratio': float(
+                    (
+                        residual_norm[sample_index, tail_start:].mean()
+                        / residual_norm[
+                            sample_index, :head_count
+                        ].mean().clamp_min(eps)
+                    ).cpu()
+                ),
+                'residual_max_position_fraction': float(
+                    max_position[sample_index].cpu()
+                ),
+            }
+            for name, summary in summaries.items():
+                for metric_name, values in summary.items():
+                    if metric_name == 'eps':
+                        continue
+                    value = values[sample_index]
+                    if metric_name == 'nonfinite_count':
+                        row[f'{name}_{metric_name}'] = int(value.cpu())
+                    else:
+                        row[f'{name}_{metric_name}'] = float(value.cpu())
+            rows.append(row)
+        return rows
+
+    @staticmethod
+    def _ordering_instrumentation_rows(ordered_coor):
+        coor = ordered_coor.float()
+        jumps = torch.linalg.vector_norm(coor[:, 1:] - coor[:, :-1], dim=-1)
+        endpoint = torch.linalg.vector_norm(coor[:, -1] - coor[:, 0], dim=-1)
+        path_length = jumps.sum(dim=1)
+        rows = []
+        for sample_index in range(coor.size(0)):
+            sample_jumps = jumps[sample_index]
+            rows.append({
+                'sample_index': sample_index,
+                'token_count': int(coor.size(1)),
+                'order': None,
+                'jump_mean': float(sample_jumps.mean().cpu()),
+                'jump_p95': float(
+                    torch.quantile(sample_jumps, 0.95).cpu()
+                ),
+                'jump_max': float(sample_jumps.amax().cpu()),
+                'path_length': float(path_length[sample_index].cpu()),
+                'endpoint_distance': float(endpoint[sample_index].cpu()),
+                'path_efficiency': float(
+                    (
+                        endpoint[sample_index]
+                        / path_length[sample_index].clamp_min(1e-12)
+                    ).cpu()
+                ),
+                'coordinate_nonfinite_count': int(
+                    (~torch.isfinite(coor[sample_index])).sum().cpu()
+                ),
+            })
+        return rows
+
     def forward(self, x, coor):
         if not self.enabled:
             return x
+        if self.instrumentation_enabled and self.training:
+            raise RuntimeError(
+                'Mamba instrumentation is inference-only; call model.eval() '
+                'before enabling it'
+            )
 
         sort_idx, inv_idx = self._ordering_indices(coor, self.order)
+        original_coor = coor
         if sort_idx is not None:
-            sort_idx = sort_idx.unsqueeze(-1).expand(-1, -1, x.size(-1))
-            x = torch.gather(x, 1, sort_idx)
+            feature_sort_idx = sort_idx.unsqueeze(-1).expand(-1, -1, x.size(-1))
+            x = torch.gather(x, 1, feature_sort_idx)
+            coor_sort_idx = sort_idx.unsqueeze(-1).expand(-1, -1, coor.size(-1))
+            ordered_coor = torch.gather(coor, 1, coor_sort_idx)
+        else:
+            ordered_coor = coor
 
-        for block in self.blocks:
-            x = block(x)
+        block_rows = []
+        for block_index, block in enumerate(self.blocks):
+            if self.instrumentation_enabled:
+                x, tensors = block(x, return_instrumentation=True)
+                block_rows.extend(
+                    self._block_instrumentation_rows(block_index, tensors)
+                )
+            else:
+                x = block(x)
+
+        if self.instrumentation_enabled:
+            ordering_rows = self._ordering_instrumentation_rows(ordered_coor)
+            for row in ordering_rows:
+                row['order'] = self.order
+            if sort_idx is None:
+                sort_idx_to_save = torch.arange(
+                    coor.size(1), device=coor.device
+                ).unsqueeze(0).expand(coor.size(0), -1)
+            else:
+                sort_idx_to_save = sort_idx
+            self._last_instrumentation = {
+                'order': self.order,
+                'ordering_rows': ordering_rows,
+                'block_rows': block_rows,
+                'coor_original': original_coor.detach().cpu(),
+                'sort_idx': sort_idx_to_save.detach().cpu(),
+                'coor_ordered': ordered_coor.detach().cpu(),
+            }
 
         if inv_idx is not None:
             inv_idx = inv_idx.unsqueeze(-1).expand(-1, -1, x.size(-1))
@@ -1077,6 +1280,12 @@ class PCTransformer(nn.Module):
     def set_mamba_adapter_scale(self, scale):
         self.encoder_adapter.set_alpha_scale(scale)
 
+    def enable_mamba_instrumentation(self, enabled=True):
+        self.encoder_adapter.enable_instrumentation(enabled)
+
+    def pop_mamba_instrumentation(self):
+        return self.encoder_adapter.pop_instrumentation()
+
     def forward(self, xyz):
         bs = xyz.size(0)
         coor, f = self.grouper(xyz, self.center_num) # b n c
@@ -1202,6 +1411,16 @@ class AdaPoinTr(nn.Module):
     def set_mamba_adapter_scale(self, scale):
         if hasattr(self.base_model, 'set_mamba_adapter_scale'):
             self.base_model.set_mamba_adapter_scale(scale)
+
+    def enable_mamba_instrumentation(self, enabled=True):
+        if not hasattr(self.base_model, 'enable_mamba_instrumentation'):
+            raise RuntimeError('Mamba instrumentation is unavailable')
+        self.base_model.enable_mamba_instrumentation(enabled)
+
+    def pop_mamba_instrumentation(self):
+        if not hasattr(self.base_model, 'pop_mamba_instrumentation'):
+            return None
+        return self.base_model.pop_mamba_instrumentation()
 
     def build_loss_func(self):
         self.loss_func = ChamferDistanceL1()

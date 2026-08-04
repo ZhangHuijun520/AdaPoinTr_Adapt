@@ -1,0 +1,68 @@
+{
+  "freeze_version": "mamba-v1.1-o0-multiseed-r1-p1-freeze-v1",
+  "status": "frozen_after_r1_p1_before_new_development_candidates",
+  "freeze_date": "2026-08-04",
+  "frozen_candidate": "Mamba Adapter v1.1 O0=xyz out8192",
+  "frozen_base_tag": "mamba-adapter-v11-ordering-o0-xyz-out8192-seed0",
+  "frozen_base_commit": "0cbdf8d8d379f4d57e6a2a60d5b5c71c00319721",
+  "seeds": [0, 1, 2],
+  "r1": {
+    "protocol": "docs/protocols/mamba_v11_o0_xyz_multiseed_instrumentation_seed1_seed2.json",
+    "strict_train_cases": 520,
+    "strict_train_skulls": 104,
+    "monitor_cases": 50,
+    "monitor_skulls": 10,
+    "canonical_checkpoint": "ckpt-last-bncal.pth",
+    "official_test_run": false,
+    "selection_allowed": false
+  },
+  "p1": {
+    "protocol": "docs/protocols/mamba_v11_o0_multiseed_full_monitor_posthoc_v1.json",
+    "scope": "complete monitor",
+    "records": 150,
+    "unique_cases": 50,
+    "token_coordinates_equal_across_seeds": true,
+    "maximum_coordinate_delta": 0.0,
+    "official_test_used": false,
+    "selection_allowed": false
+  },
+  "catastrophe_definition": {
+    "metric": "rim_contact_hd95_mm",
+    "operator": ">",
+    "threshold_mm": 50.0,
+    "nonfinite_is_catastrophe": true
+  },
+  "catastrophes_by_seed": {
+    "0": 0,
+    "1": 2,
+    "2": 3
+  },
+  "archive": {
+    "name": "skullbreak_mamba_v11_o0_multiseed_r1_p1_seed012_v1.tar",
+    "compression": "none",
+    "bytes": 1219491840,
+    "sha256": "1d5b3c96d7a4b171fb0924c5a52e302b1cae884382468a63f2145f7cd76e9d09",
+    "download_parts_enabled_by_default": true,
+    "download_part_size_mb": 128,
+    "download_parts": 10,
+    "includes_three_bncal_checkpoints": true,
+    "includes_raw_dataset": false,
+    "includes_official_test_outputs": false,
+    "verification_script": "scripts/verify_skullbreak_mamba_v11_o0_multiseed_r1_p1_archive.sh",
+    "sha256_generated_at_archive_time": true,
+    "server_archive_verified": true,
+    "local_parts_verified": true,
+    "local_tar_verified": true,
+    "restored_payload_verified": true,
+    "verification_exit_code": 0
+  },
+  "prohibitions": [
+    "no seed selection",
+    "no ordering reopening",
+    "no catastrophe threshold modification",
+    "no candidate tuning on consumed monitor",
+    "no official-test feedback",
+    "no causal claim from post-hoc correlations"
+  ],
+  "next_allowed_step": "preregister a new skull-level development protocol"
+}

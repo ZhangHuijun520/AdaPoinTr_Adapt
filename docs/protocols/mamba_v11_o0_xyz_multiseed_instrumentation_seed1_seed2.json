@@ -1,0 +1,47 @@
+{
+  "protocol_version": "mamba-v1.1-o0-multiseed-r1-v1",
+  "status": "preregistered_before_seed1_seed2",
+  "frozen_base_tag": "mamba-adapter-v11-ordering-o0-xyz-out8192-seed0",
+  "frozen_base_commit": "0cbdf8d8d379f4d57e6a2a60d5b5c71c00319721",
+  "config": "cfgs/SkullBreak_models/MambaAdapterV11OrderingO0_xyz_out8192_monitor.yaml",
+  "candidate": "O0",
+  "order": "xyz",
+  "output_points": 8192,
+  "replication_seeds": [1, 2],
+  "train_protocol": {
+    "split": "strict train",
+    "cases": 520,
+    "skulls": 104,
+    "monitor_excluded_from_training": true,
+    "epochs": 100,
+    "deterministic": true,
+    "batchnorm_recalibration_batches": 65
+  },
+  "evaluation_protocol": {
+    "allowed_split_during_replication": "monitor",
+    "monitor_cases": 50,
+    "monitor_skulls": 10,
+    "official_test_run_by_scripts": false,
+    "candidate_selection_or_reopening": false,
+    "seed2_adaptation_after_seed1": false
+  },
+  "catastrophe_definition": {
+    "metric": "rim_contact_hd95_mm",
+    "operator": ">",
+    "threshold_mm": 50.0,
+    "nonfinite_is_catastrophe": true
+  },
+  "instrumentation": {
+    "mode": "observation-only eval",
+    "default_enabled": false,
+    "split": "strict train",
+    "panel_cases": 20,
+    "panel_skulls": 20,
+    "selection_seed": 20260803,
+    "selection_uses_outcomes": false,
+    "selection": "defect-balanced SHA256 ranking with globally unique skulls",
+    "save_actual_512_token_coordinates_and_order": true,
+    "save_block_feature_and_residual_statistics": true
+  },
+  "decision_rule": "No model or ordering selection is performed in R1; report all seeds and all preregistered metrics."
+}

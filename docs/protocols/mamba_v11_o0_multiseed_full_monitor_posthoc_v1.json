@@ -1,0 +1,39 @@
+{
+  "protocol_version": "mamba-v1.1-o0-multiseed-full-monitor-posthoc-v1",
+  "status": "posthoc_declared_before_internal_monitor_inspection",
+  "parent_protocol": "mamba-v1.1-o0-multiseed-r1-v1",
+  "frozen_candidate": "Mamba Adapter v1.1 O0=xyz out8192",
+  "seeds": [0, 1, 2],
+  "scope": {
+    "split": "monitor",
+    "cases": 50,
+    "skulls": 10,
+    "include_all_cases": true,
+    "outcome_based_case_selection": false,
+    "new_training": false,
+    "official_test": false
+  },
+  "catastrophe_definition": {
+    "metric": "rim_contact_hd95_mm",
+    "operator": ">",
+    "threshold_mm": 50.0,
+    "nonfinite_is_catastrophe": true
+  },
+  "analyses": [
+    "catastrophe recurrence across seeds",
+    "per-seed descriptive correlations",
+    "pooled descriptive correlations",
+    "case-centered cross-seed correlations",
+    "catastrophe versus non-catastrophe feature contrasts",
+    "actual 512-token coordinate and ordering equality across seeds",
+    "block-wise residual allocation across seeds"
+  ],
+  "prohibitions": [
+    "no seed selection",
+    "no ordering reopening",
+    "no model selection",
+    "no threshold modification",
+    "no candidate modification based on posthoc findings"
+  ],
+  "allowed_use": "mechanistic interpretation and hypothesis generation for a new skull-level development protocol only"
+}
