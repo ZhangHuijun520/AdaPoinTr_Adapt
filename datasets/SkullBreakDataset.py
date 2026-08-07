@@ -1,5 +1,6 @@
 import json
 import os
+import hashlib
 
 import numpy as np
 import torch
@@ -83,6 +84,51 @@ class SkullBreak(data.Dataset):
                 "Run tools/prepare_skullbreak_pointcloud.py first."
             )
 
+        include_case_ids_file = getattr(
+            config, "include_case_ids_file", None
+        )
+        self.include_case_ids_file = None
+        include_case_ids = None
+        include_case_ids_sha256 = None
+        if include_case_ids_file is not None:
+            include_path = os.path.abspath(
+                os.path.expanduser(str(include_case_ids_file))
+            )
+            if not os.path.isfile(include_path):
+                data_relative = os.path.join(
+                    self.data_root,
+                    os.path.expanduser(str(include_case_ids_file)),
+                )
+                if os.path.isfile(data_relative):
+                    include_path = os.path.abspath(data_relative)
+            if not os.path.isfile(include_path):
+                raise FileNotFoundError(
+                    "SkullBreak include-case list not found: "
+                    f"{include_case_ids_file}"
+                )
+            with open(include_path, "rb") as handle:
+                raw_include_ids = handle.read()
+            include_case_ids_sha256 = hashlib.sha256(
+                raw_include_ids
+            ).hexdigest()
+            decoded_ids = raw_include_ids.decode("utf-8").splitlines()
+            include_case_ids_list = [
+                item.strip()
+                for item in decoded_ids
+                if item.strip() and not item.lstrip().startswith("#")
+            ]
+            if len(include_case_ids_list) != len(set(include_case_ids_list)):
+                raise ValueError(
+                    "SkullBreak include-case list contains duplicate case IDs: "
+                    f"{include_path}"
+                )
+            if not include_case_ids_list:
+                raise ValueError(
+                    f"SkullBreak include-case list is empty: {include_path}"
+                )
+            self.include_case_ids_file = include_path
+            include_case_ids = set(include_case_ids_list)
+
         self.records = []
         with open(manifest_path, "r", encoding="utf-8") as handle:
             for line_number, line in enumerate(handle, start=1):
@@ -106,6 +152,26 @@ class SkullBreak(data.Dataset):
                         f"{line_number}: missing {sorted(missing)}."
                     )
                 self.records.append(record)
+
+        if include_case_ids is not None:
+            eligible_case_ids = {
+                str(record["case_id"]) for record in self.records
+            }
+            missing_case_ids = sorted(
+                include_case_ids.difference(eligible_case_ids)
+            )
+            if missing_case_ids:
+                preview = ", ".join(missing_case_ids[:10])
+                raise ValueError(
+                    "SkullBreak include-case list contains IDs outside the "
+                    "eligible split/filter set: "
+                    f"{preview}"
+                )
+            self.records = [
+                record
+                for record in self.records
+                if str(record["case_id"]) in include_case_ids
+            ]
 
         self.records.sort(
             key=lambda item: (
@@ -151,7 +217,9 @@ class SkullBreak(data.Dataset):
             f"{self.exclude_manifest_split} "
             f"samples={len(self.records)} unique_samples={unique_samples} "
             f"unique_skulls={unique_skulls} repeat={self.repeat} "
-            f"input_key={self.input_key} target_key={self.target_key}"
+            f"input_key={self.input_key} target_key={self.target_key} "
+            f"include_case_ids_file={self.include_case_ids_file} "
+            f"include_sha256={include_case_ids_sha256}"
         )
 
     def __len__(self):

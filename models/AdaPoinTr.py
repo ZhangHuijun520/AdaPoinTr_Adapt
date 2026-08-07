@@ -5,12 +5,88 @@
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
+import math
 from functools import partial, reduce
 from timm.models.layers import DropPath, trunc_normal_
 from extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL1Directional
 from .build import MODELS, build_model_from_cfg
 from models.Transformer_utils import *
 from utils import misc
+
+
+def coarse_geometry_guard_components(
+        pred_coarse,
+        gt,
+        smooth_l1_beta=0.1,
+        cvar_fraction=0.1,
+        eps=1.0e-6,
+        requested_mode=None):
+    """Return scale-normalized coarse geometry losses for training only."""
+    if pred_coarse.ndim != 3 or gt.ndim != 3:
+        raise ValueError('pred_coarse and gt must have shape [B, N, 3]')
+    if pred_coarse.size(0) != gt.size(0) or pred_coarse.size(-1) != 3:
+        raise ValueError('pred_coarse and gt batch/coordinate dimensions differ')
+    if not 0.0 < cvar_fraction <= 1.0:
+        raise ValueError('cvar_fraction must be in (0, 1]')
+    if smooth_l1_beta <= 0 or eps <= 0:
+        raise ValueError('smooth_l1_beta and eps must be positive')
+    allowed_modes = {None, 'centroid', 'centroid_radius', 'coverage_cvar'}
+    if requested_mode not in allowed_modes:
+        raise ValueError(f'Unsupported requested_mode={requested_mode!r}')
+
+    gt_centroid = gt.mean(dim=1)
+    pred_centroid = pred_coarse.mean(dim=1)
+    gt_radius = torch.sqrt(
+        torch.mean(torch.sum((gt - gt_centroid.unsqueeze(1)) ** 2, dim=-1), dim=1)
+        + eps
+    )
+    pred_radius = torch.sqrt(
+        torch.mean(
+            torch.sum(
+                (pred_coarse - pred_centroid.unsqueeze(1)) ** 2,
+                dim=-1,
+            ),
+            dim=1,
+        )
+        + eps
+    )
+
+    centroid_offset = torch.linalg.vector_norm(
+        pred_centroid - gt_centroid,
+        dim=-1,
+    ) / gt_radius
+    radius_log_ratio = torch.log((pred_radius + eps) / (gt_radius + eps))
+    centroid = F.smooth_l1_loss(
+        centroid_offset,
+        torch.zeros_like(centroid_offset),
+        beta=smooth_l1_beta,
+    )
+    radius = F.smooth_l1_loss(
+        radius_log_ratio,
+        torch.zeros_like(radius_log_ratio),
+        beta=smooth_l1_beta,
+    )
+
+    components = {
+        'centroid': centroid,
+        'radius': radius,
+        'centroid_radius': 0.5 * (centroid + radius),
+    }
+    if requested_mode in (None, 'coverage_cvar'):
+        gt_to_coarse = (
+            torch.cdist(gt, pred_coarse).amin(dim=-1)
+            / gt_radius.unsqueeze(1)
+        )
+        tail_count = max(1, int(math.ceil(gt.size(1) * cvar_fraction)))
+        components['coverage_cvar'] = torch.topk(
+            gt_to_coarse,
+            k=tail_count,
+            dim=1,
+            largest=True,
+            sorted=False,
+        ).values.mean()
+    return components
 
 
 def patch_local_chamfer(pred_coarse, pred_fine, gt, factor, loss_func):
@@ -117,8 +193,23 @@ class MambaAdapterBlock(nn.Module):
         use_fast_path=True,
         drop_path=0.0,
         alpha_init=0.1,
+        mechanism='o0',
+        normalization_eps=1e-6,
+        normalization_scale_min=0.1,
+        normalization_scale_max=10.0,
+        alpha_trainable=True,
     ):
         super().__init__()
+        if mechanism not in {'o0', 'residual_budget', 'normalized_gate', 'bidirectional_shared'}:
+            raise ValueError(f'Unsupported Mamba adapter mechanism: {mechanism!r}')
+        if normalization_eps <= 0:
+            raise ValueError('normalization_eps must be positive')
+        if not 0 < normalization_scale_min <= normalization_scale_max:
+            raise ValueError('Invalid residual normalization scale bounds')
+        self.mechanism = mechanism
+        self.normalization_eps = float(normalization_eps)
+        self.normalization_scale_min = float(normalization_scale_min)
+        self.normalization_scale_max = float(normalization_scale_max)
         self.norm = nn.LayerNorm(dim)
         self.mixer = build_sequence_mixer(
             dim=dim,
@@ -129,28 +220,60 @@ class MambaAdapterBlock(nn.Module):
             use_fast_path=use_fast_path,
         )
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
-        self.alpha = nn.Parameter(torch.tensor(float(alpha_init)))
+        self.alpha = nn.Parameter(
+            torch.tensor(float(alpha_init)),
+            requires_grad=bool(alpha_trainable),
+        )
         self.register_buffer('alpha_scale', torch.tensor(1.0), persistent=False)
 
     def set_alpha_scale(self, scale):
         self.alpha_scale.fill_(float(scale))
 
-    def forward(self, x, return_instrumentation=False):
-        if not return_instrumentation:
-            return x + self.alpha_scale * self.alpha * self.drop_path(self.mixer(self.norm(x)))
-
+    def forward(self, x, return_instrumentation=False, external_alpha=None):
         normalized = self.norm(x)
-        mixed = self.mixer(normalized)
-        residual = self.alpha_scale * self.alpha * self.drop_path(mixed)
+        if self.mechanism == 'bidirectional_shared':
+            mixed_forward = self.mixer(normalized)
+            mixed_reverse = torch.flip(
+                self.mixer(
+                    torch.flip(normalized, dims=(1,)).contiguous()
+                ),
+                dims=(1,),
+            ).contiguous()
+            mixed = 0.5 * (mixed_forward + mixed_reverse)
+        else:
+            mixed = self.mixer(normalized)
+
+        normalization_scale = mixed.new_ones((mixed.size(0), 1, 1))
+        if self.mechanism == 'normalized_gate':
+            input_rms = torch.sqrt(
+                torch.mean(x.float().square(), dim=(1, 2), keepdim=True)
+            )
+            mixed_rms = torch.sqrt(
+                torch.mean(mixed.float().square(), dim=(1, 2), keepdim=True)
+            )
+            normalization_scale = (
+                input_rms / mixed_rms.clamp_min(self.normalization_eps)
+            ).clamp(
+                min=self.normalization_scale_min,
+                max=self.normalization_scale_max,
+            ).to(dtype=mixed.dtype)
+            mixed = mixed * normalization_scale
+
+        alpha = self.alpha if external_alpha is None else external_alpha
+        residual = self.alpha_scale * alpha * self.drop_path(mixed)
         output = x + residual
+        if not return_instrumentation:
+            return output
         return output, {
             'input': x.detach(),
             'normalized': normalized.detach(),
             'mixed': mixed.detach(),
             'residual': residual.detach(),
             'output': output.detach(),
-            'alpha': self.alpha.detach(),
+            'alpha': alpha.detach(),
             'alpha_scale': self.alpha_scale.detach(),
+            'normalization_scale': normalization_scale.detach(),
+            'mechanism': self.mechanism,
         }
 
 
@@ -159,6 +282,7 @@ class MambaSequenceAdapter(nn.Module):
         super().__init__()
         self.enabled = bool(getattr(config, 'enabled', False)) if config else False
         self.order = getattr(config, 'order', 'xyz') if config else 'xyz'
+        self.mechanism = getattr(config, 'mechanism', 'o0') if config else 'o0'
         self.instrumentation_enabled = False
         self._last_instrumentation = None
         if not self.enabled:
@@ -173,6 +297,33 @@ class MambaSequenceAdapter(nn.Module):
         use_fast_path = bool(getattr(config, 'use_fast_path', True))
         drop_path = float(getattr(config, 'drop_path', 0.0))
         alpha_init = float(getattr(config, 'alpha_init', 0.1))
+        normalization_eps = float(getattr(config, 'normalization_eps', 1e-6))
+        normalization_scale_min = float(
+            getattr(config, 'normalization_scale_min', 0.1)
+        )
+        normalization_scale_max = float(
+            getattr(config, 'normalization_scale_max', 10.0)
+        )
+
+        if self.mechanism not in {
+            'o0', 'residual_budget', 'normalized_gate', 'bidirectional_shared'
+        }:
+            raise ValueError(
+                f'Unsupported mamba_adapter.mechanism={self.mechanism!r}'
+            )
+        if self.mechanism == 'residual_budget':
+            self.budget_logits = nn.Parameter(torch.zeros(depth))
+            self.register_buffer(
+                'total_residual_budget',
+                torch.tensor(float(depth) * alpha_init),
+            )
+        else:
+            self.register_parameter('budget_logits', None)
+            self.register_buffer(
+                'total_residual_budget',
+                torch.tensor(0.0),
+                persistent=False,
+            )
 
         self.blocks = nn.ModuleList([
             MambaAdapterBlock(
@@ -184,6 +335,11 @@ class MambaSequenceAdapter(nn.Module):
                 use_fast_path=use_fast_path,
                 drop_path=drop_path,
                 alpha_init=alpha_init,
+                mechanism=self.mechanism,
+                normalization_eps=normalization_eps,
+                normalization_scale_min=normalization_scale_min,
+                normalization_scale_max=normalization_scale_max,
+                alpha_trainable=self.mechanism != 'residual_budget',
             )
             for _ in range(depth)
         ])
@@ -296,17 +452,24 @@ class MambaSequenceAdapter(nn.Module):
         )
         alpha = float(tensors['alpha'].float().cpu().item())
         alpha_scale = float(tensors['alpha_scale'].float().cpu().item())
+        normalization_scale = tensors['normalization_scale'].float().reshape(
+            input_tensor.size(0), -1
+        ).mean(dim=1)
 
         rows = []
         for sample_index in range(input_tensor.size(0)):
             row = {
                 'sample_index': sample_index,
                 'block_index': int(block_index),
+                'mechanism': tensors['mechanism'],
                 'token_count': int(token_count),
                 'feature_dim': int(input_tensor.size(2)),
                 'alpha': alpha,
                 'alpha_scale': alpha_scale,
                 'effective_alpha': alpha * alpha_scale,
+                'normalization_scale': float(
+                    normalization_scale[sample_index].cpu()
+                ),
                 'residual_to_input_rms': float(
                     summaries['residual']['rms'][sample_index].cpu()
                     / summaries['input']['rms'][sample_index].clamp_min(eps).cpu()
@@ -406,14 +569,24 @@ class MambaSequenceAdapter(nn.Module):
             ordered_coor = coor
 
         block_rows = []
+        if self.mechanism == 'residual_budget':
+            block_alphas = self.total_residual_budget * torch.softmax(
+                self.budget_logits, dim=0
+            )
+        else:
+            block_alphas = [None] * len(self.blocks)
         for block_index, block in enumerate(self.blocks):
             if self.instrumentation_enabled:
-                x, tensors = block(x, return_instrumentation=True)
+                x, tensors = block(
+                    x,
+                    return_instrumentation=True,
+                    external_alpha=block_alphas[block_index],
+                )
                 block_rows.extend(
                     self._block_instrumentation_rows(block_index, tensors)
                 )
             else:
-                x = block(x)
+                x = block(x, external_alpha=block_alphas[block_index])
 
         if self.instrumentation_enabled:
             ordering_rows = self._ordering_instrumentation_rows(ordered_coor)
@@ -427,6 +600,7 @@ class MambaSequenceAdapter(nn.Module):
                 sort_idx_to_save = sort_idx
             self._last_instrumentation = {
                 'order': self.order,
+                'mechanism': self.mechanism,
                 'ordering_rows': ordering_rows,
                 'block_rows': block_rows,
                 'coor_original': original_coor.detach().cpu(),
@@ -642,7 +816,18 @@ class CrossAttnBlockApi(nn.Module):
                 self.ls5 = LayerScale(dim, init_values=init_values) if init_values else nn.Identity()
                 self.drop_path5 = DropPath(drop_path) if drop_path > 0. else nn.Identity()
 
-    def forward(self, q, v, q_pos, v_pos, self_attn_idx=None, cross_attn_idx=None, denoise_length=None):
+    def forward(
+        self,
+        q,
+        v,
+        q_pos,
+        v_pos,
+        self_attn_idx=None,
+        cross_attn_idx=None,
+        denoise_length=None,
+        return_instrumentation=False,
+    ):
+        q_input = q
         # q = q + self.drop_path(self.self_attn(self.norm1(q)))
 
         # calculate mask, shape N,N
@@ -693,6 +878,7 @@ class CrossAttnBlockApi(nn.Module):
             else:
                 raise RuntimeError()
 
+        q_after_self = q
         # q = q + self.drop_path(self.attn(self.norm_q(q), self.norm_v(v)))
         # Cross attn
         feature_list = []
@@ -733,8 +919,16 @@ class CrossAttnBlockApi(nn.Module):
             else:
                 raise RuntimeError()
 
+        q_after_cross = q
         q = q + self.drop_path2(self.ls2(self.mlp(self.norm2(q))))
-        return q
+        if not return_instrumentation:
+            return q
+        return q, {
+            'input': q_input.detach(),
+            'after_self': q_after_self.detach(),
+            'after_cross': q_after_cross.detach(),
+            'output': q.detach(),
+        }
 ######################################## Entry ########################################  
 
 class TransformerEncoder(nn.Module):
@@ -783,14 +977,41 @@ class TransformerDecoder(nn.Module):
                 k=k, n_group=n_group
             ))
 
-    def forward(self, q, v, q_pos, v_pos, denoise_length=None):
+    def forward(
+        self,
+        q,
+        v,
+        q_pos,
+        v_pos,
+        denoise_length=None,
+        return_instrumentation=False,
+    ):
         if denoise_length is None:
             self_attn_idx = knn_point(self.k, q_pos, q_pos)
         else:
             self_attn_idx = None
         cross_attn_idx = knn_point(self.k, v_pos, q_pos)
-        for _, block in enumerate(self.blocks):
-            q = block(q, v, q_pos, v_pos, self_attn_idx=self_attn_idx, cross_attn_idx=cross_attn_idx, denoise_length=denoise_length)
+        layer_records = []
+        for layer_index, block in enumerate(self.blocks):
+            if return_instrumentation:
+                q, record = block(
+                    q, v, q_pos, v_pos,
+                    self_attn_idx=self_attn_idx,
+                    cross_attn_idx=cross_attn_idx,
+                    denoise_length=denoise_length,
+                    return_instrumentation=True,
+                )
+                record['layer_index'] = layer_index
+                layer_records.append(record)
+            else:
+                q = block(
+                    q, v, q_pos, v_pos,
+                    self_attn_idx=self_attn_idx,
+                    cross_attn_idx=cross_attn_idx,
+                    denoise_length=denoise_length,
+                )
+        if return_instrumentation:
+            return q, layer_records
         return q
 
 class PointTransformerEncoder(nn.Module):
@@ -922,9 +1143,23 @@ class PointTransformerDecoder(nn.Module):
             nn.init.constant_(m.bias, 0)
             nn.init.constant_(m.weight, 1.0)
 
-    def forward(self, q, v, q_pos, v_pos, denoise_length=None):
-        q = self.blocks(q, v, q_pos, v_pos, denoise_length=denoise_length)
-        return q
+    def forward(
+        self,
+        q,
+        v,
+        q_pos,
+        v_pos,
+        denoise_length=None,
+        return_instrumentation=False,
+    ):
+        return self.blocks(
+            q,
+            v,
+            q_pos,
+            v_pos,
+            denoise_length=denoise_length,
+            return_instrumentation=return_instrumentation,
+        )
 
 class PointTransformerEncoderEntry(PointTransformerEncoder):
     def __init__(self, config, **kwargs):
@@ -1189,6 +1424,8 @@ class SimpleRebuildFCLayer(nn.Module):
 class PCTransformer(nn.Module):
     def __init__(self, config):
         super().__init__()
+        self.full_instrumentation_enabled = False
+        self._last_full_instrumentation = None
         encoder_config = config.encoder_config
         decoder_config = config.decoder_config
         self.center_num  = getattr(config, 'center_num', [512, 128])
@@ -1286,14 +1523,32 @@ class PCTransformer(nn.Module):
     def pop_mamba_instrumentation(self):
         return self.encoder_adapter.pop_instrumentation()
 
+    def enable_full_instrumentation(self, enabled=True):
+        self.full_instrumentation_enabled = bool(enabled)
+        self._last_full_instrumentation = None
+        self.encoder_adapter.enable_instrumentation(enabled)
+
+    def pop_full_instrumentation(self):
+        records = self._last_full_instrumentation
+        self._last_full_instrumentation = None
+        if records is not None:
+            records['adapter'] = self.encoder_adapter.pop_instrumentation()
+        return records
+
     def forward(self, xyz):
+        if self.full_instrumentation_enabled and self.training:
+            raise RuntimeError(
+                'Full-model instrumentation is inference-only; call eval() first'
+            )
         bs = xyz.size(0)
         coor, f = self.grouper(xyz, self.center_num) # b n c
         pe =  self.pos_embed(coor)
         x = self.input_proj(f)
 
         x = self.encoder(x + pe, coor) # b n c
+        encoder_pre_adapter = x
         x = self.encoder_adapter(x, coor)
+        encoder_post_adapter = x
         global_feature = self.increase_dim(x) # B 1024 N 
         global_feature = torch.max(global_feature, dim=1)[0] # B 1024
 
@@ -1306,11 +1561,15 @@ class PCTransformer(nn.Module):
         )
         coarse_inp = misc.fps(xyz, fps_count)
         mem = self.mem_link(x)
+        coarse_candidates = None
+        query_ranking = None
+        selected_query_indices = None
 
         if self.query_selection == 'ranking':
             coarse_candidates = torch.cat([learned_coarse, coarse_inp], dim=1)
             query_ranking = self.query_ranking(coarse_candidates) # b n 1
             idx = torch.argsort(query_ranking, dim=1, descending=True) # b n 1
+            selected_query_indices = idx[:, :self.num_query]
             coarse = torch.gather(
                 coarse_candidates,
                 1,
@@ -1341,9 +1600,37 @@ class PCTransformer(nn.Module):
             torch.cat([
                 global_feature.unsqueeze(1).expand(-1, coarse.size(1), -1),
                 coarse], dim = -1)) # b n c
+            query_pre_decoder = q
 
             # forward decoder
-            q = self.decoder(q=q, v=mem, q_pos=coarse, v_pos=coor, denoise_length=denoise_length)
+            if self.full_instrumentation_enabled:
+                q, decoder_layers = self.decoder(
+                    q=q, v=mem, q_pos=coarse, v_pos=coor,
+                    denoise_length=denoise_length,
+                    return_instrumentation=True,
+                )
+            else:
+                q = self.decoder(q=q, v=mem, q_pos=coarse, v_pos=coor, denoise_length=denoise_length)
+                decoder_layers = None
+
+            if self.full_instrumentation_enabled:
+                self._last_full_instrumentation = {
+                    'input_xyz': xyz.detach(),
+                    'encoder_coordinates': coor.detach(),
+                    'encoder_pre_adapter': encoder_pre_adapter.detach(),
+                    'encoder_post_adapter': encoder_post_adapter.detach(),
+                    'encoder_memory': mem.detach(),
+                    'global_feature': global_feature.detach(),
+                    'learned_coarse': learned_coarse.detach(),
+                    'fps_coarse': coarse_inp.detach(),
+                    'coarse_candidates': None if coarse_candidates is None else coarse_candidates.detach(),
+                    'query_ranking': None if query_ranking is None else query_ranking.detach(),
+                    'selected_query_indices': None if selected_query_indices is None else selected_query_indices.detach(),
+                    'coarse': coarse.detach(),
+                    'query_pre_decoder': query_pre_decoder.detach(),
+                    'query_post_decoder': q.detach(),
+                    'decoder_layers': decoder_layers,
+                }
 
             return q, coarse, denoise_length
 
@@ -1353,9 +1640,36 @@ class PCTransformer(nn.Module):
             torch.cat([
                 global_feature.unsqueeze(1).expand(-1, coarse.size(1), -1),
                 coarse], dim = -1)) # b n c
+            query_pre_decoder = q
             
             # forward decoder
-            q = self.decoder(q=q, v=mem, q_pos=coarse, v_pos=coor)
+            if self.full_instrumentation_enabled:
+                q, decoder_layers = self.decoder(
+                    q=q, v=mem, q_pos=coarse, v_pos=coor,
+                    return_instrumentation=True,
+                )
+            else:
+                q = self.decoder(q=q, v=mem, q_pos=coarse, v_pos=coor)
+                decoder_layers = None
+
+            if self.full_instrumentation_enabled:
+                self._last_full_instrumentation = {
+                    'input_xyz': xyz.detach(),
+                    'encoder_coordinates': coor.detach(),
+                    'encoder_pre_adapter': encoder_pre_adapter.detach(),
+                    'encoder_post_adapter': encoder_post_adapter.detach(),
+                    'encoder_memory': mem.detach(),
+                    'global_feature': global_feature.detach(),
+                    'learned_coarse': learned_coarse.detach(),
+                    'fps_coarse': coarse_inp.detach(),
+                    'coarse_candidates': None if coarse_candidates is None else coarse_candidates.detach(),
+                    'query_ranking': None if query_ranking is None else query_ranking.detach(),
+                    'selected_query_indices': None if selected_query_indices is None else selected_query_indices.detach(),
+                    'coarse': coarse.detach(),
+                    'query_pre_decoder': query_pre_decoder.detach(),
+                    'query_post_decoder': q.detach(),
+                    'decoder_layers': decoder_layers,
+                }
 
             return q, coarse, 0
 
@@ -1365,6 +1679,8 @@ class PCTransformer(nn.Module):
 class AdaPoinTr(nn.Module):
     def __init__(self, config, **kwargs):
         super().__init__()
+        self.full_instrumentation_enabled = False
+        self._last_full_instrumentation = None
         self.trans_dim = config.decoder_config.embed_dim
         self.num_query = config.num_query
         self.num_points = getattr(config, 'num_points', None)
@@ -1384,6 +1700,39 @@ class AdaPoinTr(nn.Module):
         )
         if self.fine_local_weight < 0:
             raise ValueError('fine_local_weight must be non-negative')
+
+        geometry_config = getattr(config, 'coarse_geometry_guard', None)
+        self.coarse_geometry_guard_enabled = bool(
+            getattr(geometry_config, 'enabled', False)
+        ) if geometry_config is not None else False
+        self.coarse_geometry_guard_mode = str(
+            getattr(geometry_config, 'mode', 'none')
+        ) if geometry_config is not None else 'none'
+        self.coarse_geometry_guard_weight = float(
+            getattr(geometry_config, 'weight', 0.0)
+        ) if geometry_config is not None else 0.0
+        self.coarse_geometry_guard_beta = float(
+            getattr(geometry_config, 'smooth_l1_beta', 0.1)
+        ) if geometry_config is not None else 0.1
+        self.coarse_geometry_guard_cvar_fraction = float(
+            getattr(geometry_config, 'cvar_fraction', 0.1)
+        ) if geometry_config is not None else 0.1
+        self.coarse_geometry_guard_eps = float(
+            getattr(geometry_config, 'eps', 1.0e-6)
+        ) if geometry_config is not None else 1.0e-6
+        allowed_geometry_modes = {
+            'none', 'centroid', 'centroid_radius', 'coverage_cvar'
+        }
+        if self.coarse_geometry_guard_mode not in allowed_geometry_modes:
+            raise ValueError(
+                'Unsupported coarse_geometry_guard mode: '
+                f'{self.coarse_geometry_guard_mode!r}'
+            )
+        if self.coarse_geometry_guard_enabled:
+            if self.coarse_geometry_guard_mode == 'none':
+                raise ValueError('Enabled coarse geometry guard requires a mode')
+            if self.coarse_geometry_guard_weight <= 0:
+                raise ValueError('Enabled coarse geometry guard requires positive weight')
 
         self.fold_step = 8
         self.base_model = PCTransformer(config)
@@ -1422,6 +1771,19 @@ class AdaPoinTr(nn.Module):
             return None
         return self.base_model.pop_mamba_instrumentation()
 
+    def enable_full_instrumentation(self, enabled=True):
+        self.full_instrumentation_enabled = bool(enabled)
+        self._last_full_instrumentation = None
+        self.base_model.enable_full_instrumentation(enabled)
+
+    def pop_full_instrumentation(self):
+        records = self._last_full_instrumentation
+        self._last_full_instrumentation = None
+        backbone = self.base_model.pop_full_instrumentation()
+        if records is not None:
+            records['backbone'] = backbone
+        return records
+
     def build_loss_func(self):
         self.loss_func = ChamferDistanceL1()
         self.fine_loss_func = ChamferDistanceL1Directional(
@@ -1447,7 +1809,11 @@ class AdaPoinTr(nn.Module):
         ) / (1.0 + self.fine_local_weight)
         return loss_global, loss_local, loss_combined
 
-    def get_loss(self, ret, gt, epoch=1):
+    def get_loss(self, ret, gt, epoch=1, partial=None):
+        # Compatibility with the rim-aware runner deployed on the experiment
+        # server. D2 deliberately keeps the frozen global reconstruction loss,
+        # so the partial input is accepted but is not consumed here.
+        del partial
         pred_coarse, denoised_coarse, denoised_fine, pred_fine = ret
         
         assert pred_fine.size(1) == gt.size(1)
@@ -1470,10 +1836,27 @@ class AdaPoinTr(nn.Module):
             gt,
         )
         loss_recon = loss_coarse + loss_fine
+        if self.coarse_geometry_guard_enabled:
+            geometry_components = coarse_geometry_guard_components(
+                pred_coarse,
+                gt,
+                smooth_l1_beta=self.coarse_geometry_guard_beta,
+                cvar_fraction=self.coarse_geometry_guard_cvar_fraction,
+                eps=self.coarse_geometry_guard_eps,
+                requested_mode=self.coarse_geometry_guard_mode,
+            )
+            loss_recon = loss_recon + (
+                self.coarse_geometry_guard_weight
+                * geometry_components[self.coarse_geometry_guard_mode]
+            )
 
         return loss_denoised, loss_recon
 
     def forward(self, xyz):
+        if self.full_instrumentation_enabled and self.training:
+            raise RuntimeError(
+                'Full-model instrumentation is inference-only; call eval() first'
+            )
         q, coarse_point_cloud, denoise_length = self.base_model(xyz) # B M C and B M 3
     
         B, M ,C = q.shape
@@ -1497,6 +1880,16 @@ class AdaPoinTr(nn.Module):
             rebuild_feature = self.reduce_map(rebuild_feature) # B M C
             relative_xyz = self.decode_head(rebuild_feature)   # B M S 3
             rebuild_points = (relative_xyz + coarse_point_cloud.unsqueeze(-2))  # B M S 3
+
+        if self.full_instrumentation_enabled:
+            self._last_full_instrumentation = {
+                'decoder_query': q.detach(),
+                'coarse_point_cloud': coarse_point_cloud.detach(),
+                'rebuild_global_feature': global_feature.detach(),
+                'rebuild_feature': rebuild_feature.detach(),
+                'relative_xyz': relative_xyz.detach(),
+                'rebuild_points_grouped': rebuild_points.detach(),
+            }
 
         if self.training and denoise_length > 0:
             # split the reconstruction and denoise task
