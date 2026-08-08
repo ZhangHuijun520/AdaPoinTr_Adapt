@@ -1,0 +1,134 @@
+{
+  "protocol_id": "mamba-v12-d22-local-rim-trust-v1",
+  "status": "preregistered_before_implementation",
+  "dataset": "SkullBreak",
+  "task": "partial_to_implant_out8192",
+  "base_tag": "mamba-adapter-v12-d2-d21-negative-result-skullbreak-seed0",
+  "development_split": "development84_fixed_folds_A_D",
+  "protected_splits": [
+    "confirmation20",
+    "old_monitor",
+    "official_test"
+  ],
+  "candidates": {
+    "R0": {
+      "role": "same_round_reference",
+      "mechanism": "frozen_o0_xyz"
+    },
+    "R1": {
+      "role": "experimental",
+      "mechanism": "one_sided_gt_rim_undercoverage_deadzone"
+    },
+    "R2": {
+      "role": "experimental",
+      "mechanism": "R1_plus_R0_global_moment_trust_region"
+    }
+  },
+  "units": {
+    "stored_coordinates": "normalized",
+    "world_conversion": "world_mm = normalized * scale + centroid",
+    "scale_source": "frozen_manifest_by_case_id"
+  },
+  "local_rim": {
+    "rim_band_mm": 2.0,
+    "deadzone_mm": 5.0,
+    "direction": "gt_rim_to_predicted_coarse_only",
+    "lambda": 0.01,
+    "smooth_l1_beta": 0.1,
+    "epsilon_mm": 1e-06,
+    "reduction": "mean_within_case_then_mean_across_batch",
+    "empty_reference_rim": "preflight_error"
+  },
+  "trust_region": {
+    "teacher": "same_fold_same_seed_R0_ckpt_last_bncal",
+    "teacher_mode": "eval_no_grad_no_bn_update",
+    "centroid_tolerance_mm": 3.0,
+    "radius_log_tolerance": 0.04879016416943205,
+    "lambda": 0.01,
+    "smooth_l1_beta": 0.1,
+    "scope": "coarse_centroid_and_radial_rms_only"
+  },
+  "round_a": {
+    "seed": 0,
+    "folds": ["A", "B", "C", "D"],
+    "arms": ["R0", "R1", "R2"],
+    "trainings": 12
+  },
+  "disaster": {
+    "nonfinite_core_metric": true,
+    "rim_contact_hd95_mm_gt": 50.0,
+    "undefined_contact_is_disaster": true
+  },
+  "candidate_gates": {
+    "complete_cases": 420,
+    "nonfinite_cases_eq": 0,
+    "disaster_count_le_reference": true,
+    "final_cd_mean_delta_mm_le": 0.1,
+    "final_hd95_mean_delta_mm_le": 0.5,
+    "final_nsd_at_1mm_mean_delta_ge": -0.01,
+    "rim_hd95_p95_le_reference": true,
+    "induced_le_rescued": true,
+    "gt_rim_to_coarse_p95_case_mean_le_reference": true,
+    "direct_target_improved_cases_ge_worsened_cases": true,
+    "inference_latency_ratio_le": 1.75,
+    "peak_memory_ratio_le": 1.25,
+    "steady_epoch_time_ratio_le": 1.75
+  },
+  "aggregation": {
+    "case_count": 420,
+    "percentile_method": "numpy_linear",
+    "tie_absolute_tolerance": 1e-06,
+    "bootstrap": {
+      "selection_inert": true,
+      "cluster": "skull_id",
+      "samples": 2000,
+      "seed": 0
+    }
+  },
+  "ranking": [
+    "disaster_count",
+    "undefined_contact_count",
+    "rim_hd95_p95",
+    "rim_hd95_max",
+    "induced_minus_rescued",
+    "rim_hd95_mean",
+    "implant_hd95_mean",
+    "final_noninferiority_margin",
+    "inference_latency"
+  ],
+  "round_b": {
+    "condition": "at_least_one_experimental_candidate_eligible",
+    "arms": ["R0", "frozen_round_a_winner"],
+    "folds": ["A", "B", "C", "D"],
+    "seed": 1,
+    "trainings": 8
+  },
+  "seed2": {
+    "condition": "round_b_winner_passes_all_gates",
+    "arms": ["R0", "same_frozen_winner"],
+    "folds": ["A", "B", "C", "D"],
+    "seed": 2,
+    "trainings": 8
+  },
+  "confirmation": {
+    "automatic_access": false,
+    "condition": "method_selected_as_current_final_paper_method_after_seed0_seed1_seed2",
+    "full_training_seed": 0,
+    "epochs": 100,
+    "checkpoint_rule": "ckpt_last_then_bncal",
+    "access": "one_shot"
+  },
+  "official_test": {
+    "condition": "confirmation_passed_and_method_refrozen",
+    "access": "one_shot_no_feedback"
+  },
+  "stop_after_failure": [
+    "no_weight_scan",
+    "no_deadzone_scan",
+    "no_rim_band_scan",
+    "no_trust_tolerance_scan",
+    "no_new_candidate",
+    "no_d22b",
+    "no_more_loss_engineering_on_development84"
+  ]
+}
