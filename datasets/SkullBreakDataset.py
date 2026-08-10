@@ -1,6 +1,7 @@
 import json
 import os
 import hashlib
+import math
 
 import numpy as np
 import torch
@@ -203,6 +204,24 @@ class SkullBreak(data.Dataset):
                 f"in {manifest_path}."
             )
 
+        self._records_by_case_id = {}
+        for record in self.records:
+            case_id = str(record["case_id"])
+            if case_id in self._records_by_case_id:
+                raise ValueError(
+                    "SkullBreak manifest selection contains duplicate case ID: "
+                    f"{case_id}"
+                )
+            self._records_by_case_id[case_id] = record
+
+        self.gt_rim_cache_manifest = getattr(
+            config, "GT_RIM_CACHE_MANIFEST", None
+        )
+        self._gt_rim_cache_by_case_id = None
+        self._gt_rim_mask_memory = {}
+        if self.gt_rim_cache_manifest is not None:
+            self._load_gt_rim_cache_manifest(self.gt_rim_cache_manifest)
+
         unique_samples = len(self.records)
         unique_skulls = len(
             {str(record["skull_id"]) for record in self.records}
@@ -260,3 +279,165 @@ class SkullBreak(data.Dataset):
 
     def get_record(self, idx):
         return dict(self.records[idx])
+
+    def get_case_normalization(self, case_id):
+        """Return validated normalization metadata for one manifest case."""
+
+        case_id = str(case_id)
+        record = self._records_by_case_id.get(case_id)
+        if record is None:
+            raise KeyError(f"Unknown SkullBreak case ID: {case_id}")
+
+        normalization = record.get("normalization")
+        if not isinstance(normalization, dict):
+            raise ValueError(
+                f"{case_id}: manifest normalization metadata is missing"
+            )
+
+        centroid = np.asarray(normalization.get("centroid"), dtype=np.float64)
+        try:
+            scale = float(normalization.get("scale"))
+        except (TypeError, ValueError) as exc:
+            raise ValueError(
+                f"{case_id}: normalization.scale must be a finite positive scalar"
+            ) from exc
+
+        if centroid.shape != (3,) or not np.isfinite(centroid).all():
+            raise ValueError(
+                f"{case_id}: normalization.centroid must contain 3 finite values"
+            )
+        if not np.isfinite(scale) or scale <= 0:
+            raise ValueError(
+                f"{case_id}: normalization.scale must be finite and positive, "
+                f"got {scale}"
+            )
+
+        return {
+            "centroid": centroid.copy(),
+            "scale": scale,
+        }
+
+    def get_normalization_scales(self, case_ids, device=None, dtype=None):
+        """Return per-case normalized-to-world scale factors in manifest order."""
+
+        if dtype is None:
+            dtype = torch.float32
+        scales = [
+            self.get_case_normalization(case_id)["scale"]
+            for case_id in case_ids
+        ]
+        return torch.tensor(scales, device=device, dtype=dtype)
+
+    def _load_gt_rim_cache_manifest(self, manifest_path):
+        manifest_path = os.path.abspath(os.path.expanduser(str(manifest_path)))
+        if not os.path.isfile(manifest_path):
+            raise FileNotFoundError(
+                f"SkullBreak GT-rim cache manifest not found: {manifest_path}"
+            )
+        hashes_path = os.path.join(os.path.dirname(manifest_path), "files.sha256")
+        if not os.path.isfile(hashes_path):
+            raise FileNotFoundError(
+                f"SkullBreak GT-rim cache hash manifest not found: {hashes_path}"
+            )
+        expected_manifest_hash = None
+        with open(hashes_path, "r", encoding="ascii") as handle:
+            for line in handle:
+                fields = line.split()
+                if len(fields) == 2 and fields[1].lstrip("*") == os.path.basename(
+                    manifest_path
+                ):
+                    expected_manifest_hash = fields[0]
+                    break
+        if expected_manifest_hash is None:
+            raise ValueError("GT-rim files.sha256 omits its cache manifest")
+        with open(manifest_path, "rb") as handle:
+            actual_manifest_hash = hashlib.sha256(handle.read()).hexdigest()
+        if actual_manifest_hash != expected_manifest_hash:
+            raise ValueError("SkullBreak GT-rim cache manifest SHA256 mismatch")
+
+        entries = {}
+        with open(manifest_path, "r", encoding="utf-8") as handle:
+            for line_number, line in enumerate(handle, start=1):
+                line = line.strip()
+                if not line:
+                    continue
+                entry = json.loads(line)
+                case_id = str(entry.get("case_id", ""))
+                if not case_id or case_id in entries:
+                    raise ValueError(
+                        "Invalid or duplicate GT-rim cache case ID at line "
+                        f"{line_number}: {case_id!r}"
+                    )
+                mask_path = os.path.expanduser(str(entry.get("mask_path", "")))
+                if not os.path.isabs(mask_path):
+                    mask_path = os.path.join(
+                        os.path.dirname(manifest_path), mask_path
+                    )
+                entry = dict(entry)
+                entry["mask_path"] = os.path.abspath(mask_path)
+                entries[case_id] = entry
+
+        selected = set(self._records_by_case_id)
+        missing = sorted(selected.difference(entries))
+        extra = sorted(set(entries).difference(selected))
+        if missing or extra:
+            raise ValueError(
+                "GT-rim cache case set differs from selected SkullBreak cases: "
+                f"missing={missing[:10]} extra={extra[:10]}"
+            )
+        for case_id, entry in entries.items():
+            manifest_scale = self.get_case_normalization(case_id)["scale"]
+            cached_scale = float(entry.get("normalization_scale", float("nan")))
+            if not math.isclose(
+                manifest_scale,
+                cached_scale,
+                rel_tol=0.0,
+                abs_tol=1.0e-12,
+            ):
+                raise ValueError(f"{case_id}: GT-rim cache scale mismatch")
+        self.gt_rim_cache_manifest = manifest_path
+        self._gt_rim_cache_by_case_id = entries
+
+    def get_gt_rim_masks(self, case_ids, device=None):
+        """Load deterministic all-point GT-rim masks for a training batch."""
+
+        if self._gt_rim_cache_by_case_id is None:
+            raise RuntimeError("SkullBreak GT-rim cache is not configured")
+
+        masks = []
+        for case_id in case_ids:
+            case_id = str(case_id)
+            if case_id in self._gt_rim_mask_memory:
+                masks.append(self._gt_rim_mask_memory[case_id])
+                continue
+            entry = self._gt_rim_cache_by_case_id.get(case_id)
+            if entry is None:
+                raise KeyError(f"GT-rim cache has no entry for {case_id}")
+            mask_path = entry["mask_path"]
+            if not os.path.isfile(mask_path):
+                raise FileNotFoundError(
+                    f"{case_id}: GT-rim mask not found: {mask_path}"
+                )
+            expected_hash = str(entry.get("mask_sha256", ""))
+            with open(mask_path, "rb") as handle:
+                payload = handle.read()
+            actual_hash = hashlib.sha256(payload).hexdigest()
+            if actual_hash != expected_hash:
+                raise ValueError(
+                    f"{case_id}: GT-rim mask SHA256 mismatch"
+                )
+            mask = np.load(mask_path, allow_pickle=False)
+            if mask.shape != (self.npartial,) or mask.dtype != np.bool_:
+                raise ValueError(
+                    f"{case_id}: invalid GT-rim mask shape/dtype "
+                    f"{mask.shape}/{mask.dtype}"
+                )
+            if int(mask.sum()) != int(entry.get("rim_points", -1)):
+                raise ValueError(f"{case_id}: GT-rim point count mismatch")
+            if not mask.any():
+                raise ValueError(f"{case_id}: cached GT-rim mask is empty")
+            tensor = torch.from_numpy(mask.copy())
+            self._gt_rim_mask_memory[case_id] = tensor
+            masks.append(tensor)
+
+        return torch.stack(masks, dim=0).to(device=device)

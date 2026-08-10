@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn
 import os
 import json
+import math
+import hashlib
 from tools import builder
 from utils import misc, dist_utils
 import time
@@ -45,11 +47,153 @@ def _set_mamba_adapter_scale(base_model, scale):
     if hasattr(model, 'set_mamba_adapter_scale'):
         model.set_mamba_adapter_scale(scale)
 
+
+def _local_rim_config(config):
+    guard = getattr(config.model, 'local_rim_guard', None)
+    if guard is None or not bool(getattr(guard, 'enabled', False)):
+        return None
+    return guard
+
+
+def _sha256_file(path):
+    digest = hashlib.sha256()
+    with open(path, 'rb') as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b''):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _load_d22_teacher_cache(config, train_dataset):
+    guard = _local_rim_config(config)
+    if guard is None or not bool(getattr(guard, 'trust_enabled', False)):
+        return None
+
+    cache_path = os.path.abspath(
+        os.path.expanduser(str(getattr(guard, 'teacher_cache', '')))
+    )
+    if not os.path.isfile(cache_path):
+        raise FileNotFoundError(
+            f'D2.2 R0 teacher cache not found: {cache_path}'
+        )
+    sidecar_path = cache_path + '.sha256'
+    if not os.path.isfile(sidecar_path):
+        raise FileNotFoundError(
+            f'D2.2 R0 teacher cache sidecar not found: {sidecar_path}'
+        )
+    with open(sidecar_path, 'r', encoding='ascii') as handle:
+        expected_cache_hash = handle.read().split()[0]
+    if _sha256_file(cache_path) != expected_cache_hash:
+        raise ValueError('D2.2 R0 teacher cache SHA256 mismatch')
+    with open(cache_path, 'r', encoding='utf-8') as handle:
+        cache = json.load(handle)
+    if cache.get('protocol_version') != 'mamba-v12-d22-teacher-cache-v1':
+        raise ValueError('Unsupported D2.2 teacher cache protocol')
+    if cache.get('candidate') != 'R0':
+        raise ValueError('D2.2 teacher cache must come from R0')
+    development = getattr(config, 'development_protocol', None)
+    if development is None:
+        raise ValueError('D2.2 config has no development protocol identity')
+    if (
+        str(cache.get('fold')) != str(getattr(development, 'fold', ''))
+        or int(cache.get('seed', -1)) != int(getattr(development, 'seed', -2))
+    ):
+        raise ValueError('D2.2 teacher cache fold/seed mismatch')
+    for path_key, hash_key in (
+        ('checkpoint_path', 'checkpoint_sha256'),
+        ('config_path', 'config_sha256'),
+    ):
+        source_path = os.path.abspath(
+            os.path.expanduser(str(cache.get(path_key, '')))
+        )
+        if not os.path.isfile(source_path):
+            raise FileNotFoundError(
+                f'D2.2 teacher source is missing: {source_path}'
+            )
+        if _sha256_file(source_path) != str(cache.get(hash_key, '')):
+            raise ValueError(f'D2.2 teacher source hash mismatch: {source_path}')
+
+    entries = cache.get('entries')
+    if not isinstance(entries, dict):
+        raise ValueError('D2.2 teacher cache entries are missing')
+    canonical_entries = (
+        json.dumps(
+            entries,
+            indent=2,
+            sort_keys=True,
+            allow_nan=False,
+        ) + '\n'
+    ).encode('utf-8')
+    if hashlib.sha256(canonical_entries).hexdigest() != cache.get('cache_sha256'):
+        raise ValueError('D2.2 teacher cache entries SHA256 mismatch')
+    selected_ids = {str(record['case_id']) for record in train_dataset.records}
+    if set(entries) != selected_ids:
+        missing = sorted(selected_ids.difference(entries))
+        extra = sorted(set(entries).difference(selected_ids))
+        raise ValueError(
+            'D2.2 teacher cache case set mismatch: '
+            f'missing={missing[:5]} extra={extra[:5]}'
+        )
+    for case_id, entry in entries.items():
+        manifest_scale = train_dataset.get_case_normalization(case_id)['scale']
+        cached_scale = float(entry['normalization_scale'])
+        if not math.isclose(
+            manifest_scale, cached_scale, rel_tol=0.0, abs_tol=1.0e-12
+        ):
+            raise ValueError(f'{case_id}: teacher cache scale mismatch')
+    return entries
+
+
+def _d22_loss_kwargs(
+        config,
+        train_dataset,
+        model_ids,
+        partial,
+        teacher_cache):
+    guard = _local_rim_config(config)
+    if guard is None:
+        return {}
+    if not hasattr(train_dataset, 'get_normalization_scales'):
+        raise TypeError('D2.2 requires SkullBreak normalization metadata')
+
+    case_ids = [str(case_id) for case_id in model_ids]
+    kwargs = {
+        'partial': partial,
+        'normalization_scale': train_dataset.get_normalization_scales(
+            case_ids,
+            device=partial.device,
+            dtype=partial.dtype,
+        ),
+        'gt_rim_mask': train_dataset.get_gt_rim_masks(
+            case_ids,
+            device=partial.device,
+        ),
+    }
+    if bool(getattr(guard, 'trust_enabled', False)):
+        if teacher_cache is None:
+            raise RuntimeError('D2.2 R2 teacher cache was not loaded')
+        kwargs['teacher_coarse_centroid'] = torch.tensor(
+            [teacher_cache[case_id]['coarse_centroid_normalized']
+             for case_id in case_ids],
+            device=partial.device,
+            dtype=partial.dtype,
+        )
+        kwargs['teacher_coarse_radius'] = torch.tensor(
+            [teacher_cache[case_id]['coarse_radial_rms_normalized']
+             for case_id in case_ids],
+            device=partial.device,
+            dtype=partial.dtype,
+        )
+    return kwargs
+
 def run_net(args, config, train_writer=None, val_writer=None):
     logger = get_logger(args.log_name)
     # build dataset
     (train_sampler, train_dataloader), (_, test_dataloader) = builder.dataset_builder(args, config.dataset.train), \
                                                             builder.dataset_builder(args, config.dataset.val)
+    teacher_cache = _load_d22_teacher_cache(
+        config,
+        train_dataloader.dataset,
+    )
     # build model
     base_model = builder.model_builder(config.model)
     if args.use_gpu:
@@ -161,7 +305,19 @@ def run_net(args, config, train_writer=None, val_writer=None):
            
             ret = base_model(partial)
             
-            sparse_loss, dense_loss = base_model.module.get_loss(ret, gt, epoch)
+            loss_kwargs = _d22_loss_kwargs(
+                config,
+                train_dataloader.dataset,
+                model_ids,
+                partial,
+                teacher_cache,
+            )
+            sparse_loss, dense_loss = base_model.module.get_loss(
+                ret,
+                gt,
+                epoch,
+                **loss_kwargs,
+            )
          
             _loss = sparse_loss + dense_loss 
             _loss.backward()

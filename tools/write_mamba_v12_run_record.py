@@ -20,6 +20,13 @@ def parse_args():
     parser = argparse.ArgumentParser()
     for name in ("candidate", "fold", "seed", "config", "checkpoint", "metrics_csv", "metrics_summary", "efficiency", "training_log", "output"):
         parser.add_argument(f"--{name}", required=True)
+    parser.add_argument(
+        "--extra_artifact",
+        action="append",
+        default=[],
+        metavar="NAME=PATH",
+        help="Additional immutable artifact to include in the run record.",
+    )
     return parser.parse_args()
 
 
@@ -32,6 +39,13 @@ def main():
             "efficiency", "training_log",
         )
     }
+    for item in args.extra_artifact:
+        if "=" not in item:
+            raise ValueError(f"Invalid --extra_artifact value: {item!r}")
+        name, value = item.split("=", 1)
+        if not name or name in paths:
+            raise ValueError(f"Invalid/duplicate extra artifact name: {name!r}")
+        paths[name] = Path(value)
     missing = [name for name, path in paths.items() if not path.is_file()]
     if missing:
         raise FileNotFoundError(f"Run record inputs missing: {missing}")

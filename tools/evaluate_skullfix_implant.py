@@ -45,6 +45,11 @@ def parse_args():
     parser.add_argument("--confidence", type=float, default=0.95)
     parser.add_argument("--dataset_label", default="SkullFix")
     parser.add_argument(
+        "--include_coarse_rim_metrics",
+        action="store_true",
+        help="Add observation-only GT-rim-to-coarse metrics for D2.2.",
+    )
+    parser.add_argument(
         "--save_predictions_dir",
         default="",
         help="Optional directory for per-case prediction NPZ files.",
@@ -126,8 +131,9 @@ def main():
         for index in tqdm(indices, desc=f"Evaluate {args.split}", dynamic_ncols=True):
             taxonomy_id, case_id, data = dataset[index]
             partial, target = data
-            prediction = model(partial.unsqueeze(0).to(device))[-1]
-            pred_implant = prediction.squeeze(0).cpu().numpy()
+            model_output = model(partial.unsqueeze(0).to(device))
+            pred_coarse = model_output[0].squeeze(0).cpu().numpy()
+            pred_implant = model_output[-1].squeeze(0).cpu().numpy()
 
             record, arrays = load_full_sample(dataset, index)
             norm = record["normalization"]
@@ -180,6 +186,27 @@ def main():
             row.update(metric_dict("final", final_metrics))
             row.update(metric_dict("input", input_metrics))
             row.update(metric_dict("rim", rim_metrics))
+            if args.include_coarse_rim_metrics:
+                coarse_rim_metrics = normalized_point_rim_metrics(
+                    pred_coarse,
+                    arrays["implant"],
+                    arrays["partial"],
+                    centroid,
+                    scale,
+                    rim_band_mm=args.rim_band_mm,
+                    tolerances_mm=tolerances,
+                )
+                row.update({
+                    "coarse_reference_rim_points": (
+                        coarse_rim_metrics.reference_rim_points
+                    ),
+                    "coarse_gt_rim_to_pred_mean_mm": (
+                        coarse_rim_metrics.gt_rim_to_pred_mean_mm
+                    ),
+                    "coarse_gt_rim_to_pred_p95_mm": (
+                        coarse_rim_metrics.gt_rim_to_pred_p95_mm
+                    ),
+                })
             rows.append(row)
 
             if prediction_dir is not None:
@@ -240,6 +267,7 @@ def main():
         "num_samples": len(rows),
         "tolerances_mm": tolerances,
         "rim_band_mm": args.rim_band_mm,
+        "include_coarse_rim_metrics": args.include_coarse_rim_metrics,
         "mean": mean_dict(rows, metric_keys),
         "statistics": describe_rows(
             rows,

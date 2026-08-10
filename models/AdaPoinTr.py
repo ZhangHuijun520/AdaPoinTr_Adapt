@@ -13,6 +13,10 @@ from extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL1Directio
 from .build import MODELS, build_model_from_cfg
 from models.Transformer_utils import *
 from utils import misc
+from utils.mamba_d22_geometry import (
+    global_moment_trust_loss,
+    local_rim_undercoverage_loss,
+)
 
 
 def coarse_geometry_guard_components(
@@ -1734,6 +1738,48 @@ class AdaPoinTr(nn.Module):
             if self.coarse_geometry_guard_weight <= 0:
                 raise ValueError('Enabled coarse geometry guard requires positive weight')
 
+        local_rim_config = getattr(config, 'local_rim_guard', None)
+        self.local_rim_guard_enabled = bool(
+            getattr(local_rim_config, 'enabled', False)
+        ) if local_rim_config is not None else False
+        self.local_rim_guard_weight = float(
+            getattr(local_rim_config, 'weight', 0.01)
+        ) if local_rim_config is not None else 0.01
+        self.local_rim_band_mm = float(
+            getattr(local_rim_config, 'rim_band_mm', 2.0)
+        ) if local_rim_config is not None else 2.0
+        self.local_rim_deadzone_mm = float(
+            getattr(local_rim_config, 'deadzone_mm', 5.0)
+        ) if local_rim_config is not None else 5.0
+        self.local_rim_beta = float(
+            getattr(local_rim_config, 'smooth_l1_beta', 0.1)
+        ) if local_rim_config is not None else 0.1
+        self.local_rim_epsilon_mm = float(
+            getattr(local_rim_config, 'epsilon_mm', 1.0e-6)
+        ) if local_rim_config is not None else 1.0e-6
+        self.moment_trust_enabled = bool(
+            getattr(local_rim_config, 'trust_enabled', False)
+        ) if local_rim_config is not None else False
+        self.moment_trust_weight = float(
+            getattr(local_rim_config, 'trust_weight', 0.01)
+        ) if local_rim_config is not None else 0.01
+        self.moment_trust_centroid_tolerance_mm = float(
+            getattr(local_rim_config, 'centroid_tolerance_mm', 3.0)
+        ) if local_rim_config is not None else 3.0
+        self.moment_trust_radius_log_tolerance = float(
+            getattr(
+                local_rim_config,
+                'radius_log_tolerance',
+                math.log(1.05),
+            )
+        ) if local_rim_config is not None else math.log(1.05)
+        if self.moment_trust_enabled and not self.local_rim_guard_enabled:
+            raise ValueError('Moment trust requires the local rim guard')
+        if self.local_rim_guard_enabled and self.local_rim_guard_weight <= 0:
+            raise ValueError('Enabled local rim guard requires positive weight')
+        if self.moment_trust_enabled and self.moment_trust_weight <= 0:
+            raise ValueError('Enabled moment trust requires positive weight')
+
         self.fold_step = 8
         self.base_model = PCTransformer(config)
         
@@ -1809,11 +1855,17 @@ class AdaPoinTr(nn.Module):
         ) / (1.0 + self.fine_local_weight)
         return loss_global, loss_local, loss_combined
 
-    def get_loss(self, ret, gt, epoch=1, partial=None):
-        # Compatibility with the rim-aware runner deployed on the experiment
-        # server. D2 deliberately keeps the frozen global reconstruction loss,
-        # so the partial input is accepted but is not consumed here.
-        del partial
+    def get_loss(
+        self,
+        ret,
+        gt,
+        epoch=1,
+        partial=None,
+        normalization_scale=None,
+        gt_rim_mask=None,
+        teacher_coarse_centroid=None,
+        teacher_coarse_radius=None,
+    ):
         pred_coarse, denoised_coarse, denoised_fine, pred_fine = ret
         
         assert pred_fine.size(1) == gt.size(1)
@@ -1848,6 +1900,46 @@ class AdaPoinTr(nn.Module):
             loss_recon = loss_recon + (
                 self.coarse_geometry_guard_weight
                 * geometry_components[self.coarse_geometry_guard_mode]
+            )
+
+        if self.local_rim_guard_enabled:
+            if partial is None or normalization_scale is None:
+                raise ValueError(
+                    'Local rim guard requires partial and normalization_scale'
+                )
+            rim_result = local_rim_undercoverage_loss(
+                pred_coarse,
+                partial,
+                gt,
+                normalization_scale,
+                gt_rim_mask=gt_rim_mask,
+                rim_band_mm=self.local_rim_band_mm,
+                deadzone_mm=self.local_rim_deadzone_mm,
+                smooth_l1_beta=self.local_rim_beta,
+                epsilon_mm=self.local_rim_epsilon_mm,
+            )
+            loss_recon = loss_recon + self.local_rim_guard_weight * rim_result.loss
+
+        if self.moment_trust_enabled:
+            if teacher_coarse_centroid is None or teacher_coarse_radius is None:
+                raise ValueError('Moment trust requires frozen R0 teacher moments')
+            trust_result = global_moment_trust_loss(
+                pred_coarse,
+                gt,
+                normalization_scale,
+                teacher_coarse_centroid,
+                teacher_coarse_radius,
+                centroid_tolerance_mm=(
+                    self.moment_trust_centroid_tolerance_mm
+                ),
+                radius_log_tolerance=(
+                    self.moment_trust_radius_log_tolerance
+                ),
+                smooth_l1_beta=self.local_rim_beta,
+                epsilon_mm=self.local_rim_epsilon_mm,
+            )
+            loss_recon = (
+                loss_recon + self.moment_trust_weight * trust_result.loss
             )
 
         return loss_denoised, loss_recon

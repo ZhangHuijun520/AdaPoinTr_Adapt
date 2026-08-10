@@ -1,0 +1,29 @@
+{
+  "amendment_id": "mamba-v12-d22-local-rim-trust-implementation-v1",
+  "amends": "mamba-v12-d22-local-rim-trust-v1",
+  "status": "preregistered_before_any_d22_candidate_training",
+  "changes_scientific_hypothesis": false,
+  "changes_candidates_or_thresholds": false,
+  "radius_epsilon_mm": 1e-06,
+  "final_noninferiority_ranking_margin": {
+    "direction": "lower_is_better",
+    "formula": "max(delta_final_cd_l1_mm/0.10, delta_final_hd95_mm/0.50, -delta_final_nsd_at_1mm/0.01)"
+  },
+  "gt_rim_cache": {
+    "semantic_role": "deterministic_computation_cache_only",
+    "mask_format": "npy_bool_8192",
+    "per_mask_sha256": true,
+    "evaluator_index_equivalence_required": true
+  },
+  "teacher_cache": {
+    "cache_sha256_definition": "sha256_of_case_sorted_canonical_entries_json",
+    "whole_file_sha256_sidecar": true,
+    "allow_nan": false,
+    "case_set_must_equal_fold_train": true
+  },
+  "protected_splits": {
+    "confirmation20": false,
+    "old_monitor": false,
+    "official_test": false
+  }
+}

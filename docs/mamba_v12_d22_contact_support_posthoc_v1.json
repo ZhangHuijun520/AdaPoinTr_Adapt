@@ -1,0 +1,50 @@
+{
+  "analysis_id": "mamba-v12-d22-contact-support-posthoc-v1",
+  "status": "declared_after_round_a_failure_before_contact_support_replay",
+  "parent_protocol": "mamba-v12-d22-local-rim-trust-v1",
+  "parent_result": "negative_with_positive_mechanism_signal_but_safety_gate_failed",
+  "known_before_replay": {
+    "winner": null,
+    "round_b_allowed": false,
+    "R0_nonfinite_cases": 2,
+    "R1_nonfinite_cases": 2,
+    "R2_nonfinite_cases": 3,
+    "all_nonfinite_cause": "predicted_rim_points_eq_0_at_2mm",
+    "nonfinite_case_sets_overlap": false
+  },
+  "scope": {
+    "dataset": "SkullBreak",
+    "partition": "development84_fixed_folds_A_D_only",
+    "candidates": ["R0", "R1", "R2"],
+    "seed": 0,
+    "folds": ["A", "B", "C", "D"],
+    "cases_per_candidate": 420,
+    "stages": ["coarse", "dense"],
+    "contact_bands_mm": [0.5, 1.0, 2.0, 3.0, 4.0, 5.0],
+    "distance_percentiles": [1, 5, 50, 95]
+  },
+  "questions": [
+    "At which band does zero contact recover for each frozen failure?",
+    "Does coarse support exist when dense support is absent?",
+    "Does R1 or R2 relocate rather than eliminate contact absence?",
+    "How do paired R0-to-candidate support transitions vary by defect type?"
+  ],
+  "integrity": {
+    "post_hoc": true,
+    "observation_only": true,
+    "selection_inert": true,
+    "may_change_d22_winner": false,
+    "may_unlock_round_b": false,
+    "confirmation20_used": false,
+    "old_monitor_used": false,
+    "official_test_used": false
+  },
+  "forbidden_uses": [
+    "relax_nonfinite_gate",
+    "change_2mm_primary_metric",
+    "select_R1_or_R2",
+    "resume_D2.2_Round_B",
+    "tune_weight_deadzone_band_or_trust_tolerance",
+    "access_protected_splits"
+  ]
+}
