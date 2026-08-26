@@ -1,0 +1,186 @@
+{
+  "protocol_id": "mamba-v13-d3-round-a-candidate-execution-v1",
+  "status": "preregistered_templates_locked_training_not_authorized",
+  "lineage": {
+    "scientific_protocol": {
+      "path": "docs/mamba_v13_d3_contact_support_structuralization_protocol_v1.json",
+      "sha256": "91c43c449f92c8c591a6f76128839c30483703b2222b0f4a0e2bb93006c71f63"
+    },
+    "source_split_lock": {
+      "protocol_id": "mug500plus-m2-d3-source-split-100-25-v1",
+      "protocol_sha256": "71eed1ddc6c8671fd9500a58332af7024a1d45f328eb7672c340c3bdcf970b89",
+      "receipt_sha256": "c2519155b1d433e434d4bcb16a1d58b0d614985083b1125785c723d6525a1379",
+      "files_manifest_sha256": "c189245b585768130ac18da10bdfbb993edb77fff55912538f2460899b0c17da"
+    }
+  },
+  "data_mount_contract": {
+    "source_split_root": "data/MUG500plusM2SourceSplitV1",
+    "manifest": "data/MUG500plusM2SourceSplitV1/manifest_with_split.jsonl",
+    "asset_root": "data/MUG500plusM2_v1/audit_v1",
+    "point_path_resolution": "asset_root_plus_portable_point_path",
+    "gt_rim_source": "reference_rim_mask_inside_frozen_case_npz",
+    "locked_holdout_referenced_by_candidate_configs": false
+  },
+  "shared_model_and_training": {
+    "architecture": "AdaPoinTr_with_MambaAdapter_v1.1",
+    "ordering": "xyz",
+    "input_points": 8192,
+    "output_points": 8192,
+    "queries": 256,
+    "alpha_init": 0.01,
+    "alpha_warmup_epochs": 20,
+    "seed": 0,
+    "folds": ["A", "B", "C", "D"],
+    "train_source_skulls_per_fold": 75,
+    "dev_source_skulls_per_fold": 25,
+    "cases_per_source_skull": 4,
+    "epochs": 100,
+    "total_batch_size": 8,
+    "optimizer": "AdamW(lr=1e-4,weight_decay=5e-4)",
+    "scheduler": "LambdaLR(decay_step=21,lr_decay=0.9,lowest_decay=0.02)",
+    "bncal_required": true,
+    "tmux_required": true,
+    "tqdm_required": true
+  },
+  "candidates": {
+    "S0": {
+      "role": "same_round_reference_only",
+      "dense_contact_objective": false,
+      "rim_query_allocation": false,
+      "runtime_authorization_prerequisite": "template_lock_receipt"
+    },
+    "S1": {
+      "role": "dense_contact_existence_and_tail",
+      "prediction_stage": "dense_8192",
+      "threshold_mm": 2.0,
+      "temperature_mm": 0.25,
+      "tail_fraction": 0.1,
+      "case_balanced": true,
+      "runtime_authorization_prerequisites": [
+        "template_lock_receipt",
+        "fold_weight_calibration_receipt"
+      ]
+    },
+    "S2": {
+      "role": "partial_only_rim_aware_query_allocation",
+      "global_queries": 224,
+      "rim_queries": 32,
+      "candidate_pool": 96,
+      "selection": "score_top_pool_then_deterministic_fps",
+      "coordinate": "selected_partial_proxy_without_offset",
+      "training_label": "nearest_proxy_assignment_of_each_reference_rim_point",
+      "classification": "per_case_class_balanced_bce",
+      "inference_target_inputs_allowed": false,
+      "runtime_authorization_prerequisites": [
+        "template_lock_receipt",
+        "fold_feasibility_receipt_passed",
+        "fold_weight_calibration_receipt"
+      ]
+    }
+  },
+  "weight_calibration": {
+    "applies_to": ["S1", "S2"],
+    "fold_training_data_only": true,
+    "model_state": "seed0_candidate_initialization_before_optimizer_step",
+    "batches": 8,
+    "batch_order": "seed0_train_loader_first_8_full_batches",
+    "batch_size": 8,
+    "drop_last": true,
+    "optimizer_steps": 0,
+    "batchnorm_updates_persisted": false,
+    "random_state_restored_after_calibration": true,
+    "reconstruction_gradient": "global_l2_over_all_trainable_parameters",
+    "unit_auxiliary_gradient": "global_l2_over_all_trainable_parameters_with_aux_weight_1",
+    "missing_parameter_gradient": "zero",
+    "per_batch_raw_ratio": "aux_gradient_l2/max(reconstruction_gradient_l2,1e-12)",
+    "fold_raw_ratio": "median_of_8_per_batch_raw_ratios",
+    "target_ratio": 0.075,
+    "dev_metrics_forbidden": true,
+    "calibrated_weight": "0.075/fold_raw_ratio",
+    "clipping_or_manual_adjustment_allowed": false,
+    "nonfinite_zero_or_nonpositive_result": "hard_failure",
+    "recalibration_after_training_starts": false,
+    "receipt_requires_case_ids_and_sha256": true
+  },
+  "s2_feasibility": {
+    "required_before_S2_full_training": true,
+    "encoder": "same_fold_same_seed_frozen_S0_bncal",
+    "head_only_training": true,
+    "full_S2_reuses_feasibility_head": false,
+    "held_out_cases": "same_fold_development_cases",
+    "hard_gate": "every_case_has_at_least_one_GT_positive_selected_anchor",
+    "reported_metrics": [
+      "case_hit_rate",
+      "positive_proxy_recall",
+      "precision",
+      "selected_anchor_spatial_coverage",
+      "false_positive_rate"
+    ]
+  },
+  "execution_order": [
+    "lock_non_runnable_S0_S1_S2_fold_templates",
+    "authorize_and_train_S0_seed0_folds",
+    "freeze_S0_checkpoint_bncal_and_efficiency_receipts",
+    "run_S2_head_only_feasibility_folds",
+    "calibrate_S1_and_feasible_S2_fold_weights",
+    "materialize_receipt_bound_authorized_runtime_configs",
+    "train_S1_and_feasible_S2_seed0_folds",
+    "evaluate_development_folds_only",
+    "apply_preregistered_round_a_gates",
+    "freeze_round_a_selection_receipt"
+  ],
+  "round_a_gates": {
+    "complete_case_records": true,
+    "all_required_metrics_finite": true,
+    "disaster": "nonfinite_or_rim_contact_hd95_mm_gt_50",
+    "disaster_count_max": "same_round_S0",
+    "dense_zero_contact_at_2mm": 0,
+    "S2_coarse_zero_support_at_2mm": 0,
+    "rim_contact_hd95_p95_max": "same_round_S0",
+    "final_cd_l1_mm_delta_max": 0.1,
+    "final_hd95_mm_delta_max": 0.5,
+    "final_nsd_at_1mm_delta_min": -0.01,
+    "parameter_ratio_max": 1.02,
+    "latency_ratio_max": 1.1,
+    "peak_gpu_memory_ratio_max": 1.1
+  },
+  "selection_aggregation": {
+    "case_universe": "all_400_development_cases_exactly_once_per_candidate",
+    "pairing": "candidate_to_S0_by_case_id_and_fold",
+    "duplicate_or_missing_case": "hard_failure",
+    "pooled_percentile_method": "numpy_percentile_linear",
+    "rim_contact_hd95_p95": "pooled_over_400_cases",
+    "final_metric_delta": "mean_of_400_paired_candidate_minus_S0_case_deltas",
+    "disaster_count": "pooled_over_400_cases",
+    "dense_zero_contact_count": "number_of_cases_with_dense_2mm_support_count_equal_zero",
+    "coarse_zero_support_count": "number_of_cases_with_coarse_2mm_support_count_equal_zero",
+    "parameter_latency_memory_ratio": "maximum_of_four_fold_candidate_to_S0_ratios",
+    "uncertainty_or_defect_subgroup_used_for_gate": false,
+    "manual_tie_break_allowed": false
+  },
+  "selection": {
+    "S0_selectable_as_new_method": false,
+    "no_experimental_passes": "freeze_negative_and_stop_loss_query_micro_tuning",
+    "one_experimental_passes": "advance_candidate_with_S0_to_seed1",
+    "two_experimental_pass": "advance_both_with_S0_to_seed1",
+    "candidate_or_rule_revision_after_round_a_starts": false,
+    "locked_holdout_access_before_winner_and_seed2_freeze": false
+  },
+  "template_lock_effect": {
+    "generated_configs": 12,
+    "templates_are_directly_trainable": false,
+    "training_authorized": false,
+    "holdout_access_authorized": false,
+    "training_started": false,
+    "model_selection_started": false
+  },
+  "forbidden": [
+    "direct_training_from_locked_template",
+    "manual_auxiliary_weight_choice",
+    "dev_metric_weight_calibration",
+    "reuse_S2_feasibility_head_in_full_S2",
+    "holdout_inference_metrics_visualization_or_manual_review",
+    "candidate_or_gate_revision_after_round_a_starts",
+    "combine_S1_and_S2_in_this_protocol"
+  ]
+}

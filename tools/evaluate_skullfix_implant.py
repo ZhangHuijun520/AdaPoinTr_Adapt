@@ -66,6 +66,17 @@ def metric_dict(prefix, metrics):
     return {f"{prefix}_{key}": value for key, value in metrics.as_dict().items()}
 
 
+def record_split_label(dataset, record):
+    """Return a portable split label for legacy and D3 manifests."""
+
+    if record.get("split") is not None:
+        return record["split"]
+    split_field = getattr(dataset, "split_field", None)
+    if split_field and record.get(split_field) is not None:
+        return record[split_field]
+    return getattr(dataset, "manifest_split", "")
+
+
 def mean_dict(rows, keys):
     return {
         key: float(np.nanmean([row[key] for row in rows]))
@@ -178,7 +189,7 @@ def main():
             row = {
                 "taxonomy_id": taxonomy_id,
                 "case_id": case_id,
-                "split": record["split"],
+                "split": record_split_label(dataset, record),
                 "skull_id": record.get("skull_id", case_id),
                 "defect_type": record.get("defect_type", ""),
             }
@@ -197,6 +208,9 @@ def main():
                     tolerances_mm=tolerances,
                 )
                 row.update({
+                    "coarse_predicted_rim_points": (
+                        coarse_rim_metrics.predicted_rim_points
+                    ),
                     "coarse_reference_rim_points": (
                         coarse_rim_metrics.reference_rim_points
                     ),
@@ -220,7 +234,7 @@ def main():
                 prediction_records.append(
                     {
                         "case_id": str(case_id),
-                        "split": record["split"],
+                        "split": record_split_label(dataset, record),
                         "skull_id": record.get("skull_id", str(case_id)),
                         "source_skull_id": record.get(
                             "source_skull_id", str(case_id)

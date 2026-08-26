@@ -55,6 +55,34 @@ def _local_rim_config(config):
     return guard
 
 
+def _requires_gt_rim_supervision(config):
+    model = config.model
+    for name in (
+        'local_rim_guard',
+        'dense_contact_objective',
+        'rim_query_allocation',
+    ):
+        candidate = getattr(model, name, None)
+        if candidate is not None and bool(getattr(candidate, 'enabled', False)):
+            return True
+    return False
+
+
+def _enforce_d3_execution_guard(config):
+    execution = getattr(config, 'd3_execution', None)
+    if execution is None:
+        return
+    if not bool(getattr(execution, 'training_authorized', False)):
+        candidate = str(getattr(execution, 'candidate', 'unknown'))
+        fold = str(getattr(execution, 'fold', 'unknown'))
+        status = str(getattr(execution, 'status', 'unspecified'))
+        raise RuntimeError(
+            'D3 training is locked for this config template: '
+            f'candidate={candidate} fold={fold} status={status}. '
+            'Only a receipt-bound authorized runtime config may enter run_net.'
+        )
+
+
 def _sha256_file(path):
     digest = hashlib.sha256()
     with open(path, 'rb') as handle:
@@ -150,10 +178,10 @@ def _d22_loss_kwargs(
         partial,
         teacher_cache):
     guard = _local_rim_config(config)
-    if guard is None:
+    if not _requires_gt_rim_supervision(config):
         return {}
     if not hasattr(train_dataset, 'get_normalization_scales'):
-        raise TypeError('D2.2 requires SkullBreak normalization metadata')
+        raise TypeError('Rim supervision requires normalization metadata')
 
     case_ids = [str(case_id) for case_id in model_ids]
     kwargs = {
@@ -168,7 +196,7 @@ def _d22_loss_kwargs(
             device=partial.device,
         ),
     }
-    if bool(getattr(guard, 'trust_enabled', False)):
+    if guard is not None and bool(getattr(guard, 'trust_enabled', False)):
         if teacher_cache is None:
             raise RuntimeError('D2.2 R2 teacher cache was not loaded')
         kwargs['teacher_coarse_centroid'] = torch.tensor(
@@ -187,6 +215,7 @@ def _d22_loss_kwargs(
 
 def run_net(args, config, train_writer=None, val_writer=None):
     logger = get_logger(args.log_name)
+    _enforce_d3_execution_guard(config)
     # build dataset
     (train_sampler, train_dataloader), (_, test_dataloader) = builder.dataset_builder(args, config.dataset.train), \
                                                             builder.dataset_builder(args, config.dataset.val)

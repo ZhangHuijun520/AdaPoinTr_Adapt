@@ -1,0 +1,39 @@
+{
+  "hotfix_id": "mamba-v13-d3-s2-head-feasibility-hotfix1-20260825",
+  "status": "implementation_repair_no_scientific_protocol_change",
+  "trigger": {
+    "fold": "A",
+    "stage": "first_and_only_development_evaluation_after_head_training",
+    "exception": "RuntimeError: SkullBreak GT-rim supervision is not configured",
+    "root_cause": "The frozen S2 template configured reference_rim_mask for train supervision but not for val-side offline scoring",
+    "head_checkpoint_persisted_before_failure": false,
+    "development_metrics_produced": false,
+    "holdout_accessed": false
+  },
+  "repair": {
+    "change": "Copy the already frozen training GT_RIM_KEY reference_rim_mask into the in-memory val dataset configuration before one-shot development scoring",
+    "development_gt_use": "offline labels and metrics only",
+    "inference_graph_changed": false,
+    "model_parameters_changed": false,
+    "head_architecture_changed": false,
+    "training_schedule_changed": false,
+    "query_selection_changed": false,
+    "hard_gate_changed": false,
+    "candidate_changed": false
+  },
+  "recovery": {
+    "fold_A_action": "restart deterministic head training from initialization because no head checkpoint was persisted",
+    "stale_working_directory": "remove_only_if_empty",
+    "folds_B_C_D": "run_once_with_repaired_offline_scoring_configuration",
+    "reuse_failed_in_memory_head": false,
+    "manual_result_selection": false
+  },
+  "old_runner_sha256": "4ee2d838bc890c94d89f9723d341d73ab6e245208fa6389c5489e6fb7c12a871",
+  "locks": {
+    "base_feasibility_lock_overwritten": false,
+    "S1_authorized": false,
+    "S2_full_training_authorized": false,
+    "holdout_authorized": false,
+    "selection_started": false
+  }
+}

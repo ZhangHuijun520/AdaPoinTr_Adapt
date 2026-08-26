@@ -1,0 +1,92 @@
+{
+  "protocol_id": "mug500plus-m2-protected-overlap-audit-v1",
+  "status": "preregistered_not_run",
+  "purpose": "data-leakage audit only; results cannot select a model, loss, ordering, seed, or query rule",
+  "cohorts": {
+    "candidate": "mug500plus-v20-healthy125-derived-m2-v1",
+    "protected": [
+      "skullbreak-pointcloud-out8192",
+      "skullfix-pointcloud-out8192"
+    ]
+  },
+  "access_boundary": {
+    "allowed_arrays": ["gt"],
+    "allowed_metadata": [
+      "case_id",
+      "skull_id",
+      "point_path",
+      "complete_mask_sha256"
+    ],
+    "model_predictions_allowed": false,
+    "model_metrics_allowed": false,
+    "defect_or_implant_arrays_allowed": false,
+    "manual_visual_review_before_automatic_gate": false
+  },
+  "exact_hash_audit": {
+    "mug_hash_roles": [
+      "source_asset_sha256",
+      "source_surface_fingerprint_sha256",
+      "derived_case_sha256"
+    ],
+    "protected_hash_roles": [
+      "point_npz_sha256",
+      "complete_mask_sha256_when_available"
+    ],
+    "allowed_intersections": 0
+  },
+  "geometry_representation": {
+    "point_key": "gt",
+    "representative_per_source_skull": "lexicographically_first_case_id",
+    "normalization": "subtract_point_mean_then_divide_by_rms_radius",
+    "comparison_points": 1024,
+    "descriptor_points": 512,
+    "deterministic_subsample": "lexicographic_xyz_then_even_index",
+    "descriptor": {
+      "covariance_eigenvalues": 3,
+      "radial_quantiles": 33,
+      "pairwise_distance_quantiles": 33
+    }
+  },
+  "candidate_screen": {
+    "descriptor_distance": "euclidean_after_featurewise_median_mad_scaling",
+    "nearest_protected_per_mug_skull": 10,
+    "screen_runs_separately_per_protected_dataset": true
+  },
+  "rigid_alignment": {
+    "method": "independent_PCA_frames",
+    "axis_permutations": 6,
+    "axis_sign_combinations": 8,
+    "reflections_allowed_for_audit_sensitivity": true,
+    "reported_distances": [
+      "symmetric_chamfer_l1_normalized",
+      "symmetric_hd95_normalized"
+    ]
+  },
+  "threshold_calibration": {
+    "uses_cross_dataset_results": false,
+    "positive_pairs": [
+      "mug_same_source_skull_across_four_generated_gt_samples",
+      "skullbreak_same_source_skull_across_defect_cases"
+    ],
+    "cd_threshold": "max(0.01, 1.5 * within_source_cd_q99)",
+    "hd95_threshold": "max(0.03, 1.5 * within_source_hd95_q99)",
+    "suspect_rule": "cd_le_threshold_and_hd95_le_threshold",
+    "automatic_pass_rule": "zero_exact_intersections_and_zero_near_duplicate_suspects"
+  },
+  "outputs": [
+    "protected_fingerprints.sha256",
+    "within_source_calibration.csv",
+    "near_duplicate_candidates.csv",
+    "exact_hash_intersections.csv",
+    "overlap_audit_summary.json",
+    "overlap_audit_report_zh.md",
+    "files.sha256"
+  ],
+  "forbidden": [
+    "change_thresholds_after_cross_dataset_comparison",
+    "use_overlap_distances_for_model_selection",
+    "inspect_protected_predictions_or_metrics",
+    "unlock_D3_training_when_any_suspect_remains",
+    "access_MUG500plus_B_series_craniotomy_or_real_implants"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "evidence_id": "mug500plus-skullbreak-skullfix-source-provenance-v1",
+  "status": "frozen_primary_source_metadata",
+  "verified_on": "2026-08-24",
+  "purpose": "patient-cohort provenance evidence for the MUG500+ M2 protected-overlap audit only",
+  "datasets": {
+    "mug500plus": {
+      "cohort": "head CT scans acquired in clinical routines at the Medical University of Graz",
+      "institution": "Medical University of Graz",
+      "country": "Austria",
+      "primary_reference": {
+        "title": "MUG500+: Database of 500 high-resolution healthy human skulls and 29 craniotomy skulls and implants",
+        "doi": "10.1016/j.dib.2021.107524",
+        "pmid": "34815988",
+        "pmcid": "PMC8591340",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8591340/"
+      }
+    },
+    "skullbreak_skullfix": {
+      "cohort": "public CQ500 head CT collection",
+      "institution": "Centre for Advanced Research in Imaging, Neurosciences and Genomics",
+      "country": "India",
+      "primary_reference": {
+        "title": "SkullBreak / SkullFix - Dataset for automatic cranial implant design and a benchmark for volumetric shape learning tasks",
+        "doi": "10.1016/j.dib.2021.106902",
+        "pmid": "33997287",
+        "pmcid": "PMC8100897",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8100897/"
+      }
+    }
+  },
+  "assertions": {
+    "reported_acquisition_cohorts_are_distinct": true,
+    "reported_institutions_are_distinct": true,
+    "reported_countries_are_distinct": true,
+    "patient_identifier_crosswalk_available": false,
+    "provenance_alone_proves_zero_duplicate_geometry": false,
+    "provenance_must_be_combined_with_exact_hash_and_geometry_audits": true
+  },
+  "access_boundary": {
+    "contains_patient_identifiers": false,
+    "contains_model_predictions": false,
+    "contains_model_metrics": false,
+    "contains_implant_or_defect_arrays": false
+  }
+}

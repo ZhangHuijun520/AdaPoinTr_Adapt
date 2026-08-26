@@ -1,0 +1,47 @@
+{
+  "protocol_id": "mamba-v13-d3-s1-seed0-runtime-config-materialization-v1",
+  "status": "preregistered_after_calibration_before_materialization",
+  "candidate": "S1",
+  "seed": 0,
+  "folds": ["A", "B", "C", "D"],
+  "required_inputs": {
+    "round_a_template_lock": "mamba-v13-d3-round-a-candidate-execution-v1",
+    "calibration_completion_status": "S1_gradient_ratio_calibration_frozen_complete",
+    "calibration_target_gradient_ratio": 0.075,
+    "fold_count": 4,
+    "optimizer_steps": 0
+  },
+  "transformation": {
+    "source": "frozen S1 fold template",
+    "only_scientific_value_changed": "model.dense_contact_objective.weight",
+    "weight_source": "same-fold calibrated_weight from completion-bound fold receipt",
+    "rounding_clipping_or_manual_adjustment": false,
+    "other_model_fields_changed": false,
+    "dataset_fields_changed": false,
+    "training_fields_changed": false
+  },
+  "materialized_config_state": {
+    "training_authorized": false,
+    "holdout_authorized": false,
+    "S2_authorized": false,
+    "selection_started": false,
+    "directly_trainable": false
+  },
+  "post_materialization_permissions": {
+    "independent_S1_seed0_training_authorization_allowed_next": true,
+    "S1_training_authorized_by_materialization": false,
+    "S2_calibration_authorized": false,
+    "S2_full_training_authorized": false,
+    "holdout_authorized": false,
+    "selection_started": false
+  },
+  "forbidden": [
+    "use a pooled or averaged fold weight",
+    "round clip or manually edit a calibrated weight",
+    "change any loss definition besides inserting the receipt value",
+    "set training_authorized true during materialization",
+    "start training from a materialized config",
+    "access development metrics or locked holdout",
+    "authorize S2 or begin model selection"
+  ]
+}

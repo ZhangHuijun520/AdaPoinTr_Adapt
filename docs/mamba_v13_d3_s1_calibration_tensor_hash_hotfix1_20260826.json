@@ -1,0 +1,44 @@
+{
+  "hotfix_id": "mamba-v13-d3-s1-calibration-tensor-hash-hotfix1-20260826",
+  "status": "pre_batch_implementation_repair",
+  "observed_failure": {
+    "stage": "model_state_fingerprint_before_data_iterator_creation",
+    "exception": "RuntimeError: self.dim() cannot be 0 to view Float as Byte",
+    "cause": "tensor_hash attempted dtype reinterpretation on a zero-dimensional scalar buffer",
+    "batches_consumed": 0,
+    "gradients_computed": 0,
+    "fold_receipts_written": 0
+  },
+  "repair": {
+    "old_expression": "value.view(torch.uint8)",
+    "new_expression": "value.reshape(-1).view(torch.uint8)",
+    "effect": "serialize scalar and non-scalar tensors through the same one-dimensional byte view",
+    "scientific_protocol_changed": false,
+    "data_order_changed": false,
+    "loss_changed": false,
+    "gradient_ratio_rule_changed": false,
+    "authorization_or_gate_changed": false
+  },
+  "receipt_policy": {
+    "preserve_base_authorization": true,
+    "bind_failed_master_log_sha256": true,
+    "required_master_log_evidence": [
+      "Python traceback",
+      "runner source path",
+      "state_before tensor_hash call",
+      "zero-dimensional Float-to-Byte view exception"
+    ],
+    "external_tmux_exit_status_required_inside_master_log": false,
+    "bind_base_authorized_runner_sha256": true,
+    "bind_repaired_runner_sha256": true,
+    "require_no_existing_fold_calibration_receipt": true
+  },
+  "permissions": {
+    "S1_calibration_authorized": true,
+    "S1_training_authorized": false,
+    "S2_calibration_authorized": false,
+    "S2_full_training_authorized": false,
+    "holdout_authorized": false,
+    "selection_started": false
+  }
+}

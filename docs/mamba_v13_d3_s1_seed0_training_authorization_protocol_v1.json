@@ -1,0 +1,46 @@
+{
+  "protocol_id": "mamba-v13-d3-s1-seed0-training-authorization-v1",
+  "status": "preregistered_after_materialization_before_training_authorization",
+  "candidate": "S1",
+  "seed": 0,
+  "folds": ["A", "B", "C", "D"],
+  "required_lineage": [
+    "frozen Round-A S1 templates",
+    "S0 seed-0 frozen reference completion",
+    "frozen S2 head-only feasibility negative result",
+    "S1 training-only calibration completion",
+    "S1 non-runnable materialization receipt",
+    "MUG500plus M2 deployment integrity receipt"
+  ],
+  "authorization_scope": {
+    "candidate": "S1 only",
+    "seed": 0,
+    "fold_order": ["A", "B", "C", "D"],
+    "epochs": 100,
+    "development_evaluation": true,
+    "bncal_required": true,
+    "tmux_required": true,
+    "tqdm_required": true
+  },
+  "frozen_scientific_contract": {
+    "same_fold_calibrated_weight_only": true,
+    "weight_recalibration_after_authorization": false,
+    "dense_contact_threshold_mm": 2.0,
+    "dense_contact_temperature_mm": 0.25,
+    "dense_contact_tail_fraction": 0.1,
+    "candidate_or_gate_revision": false
+  },
+  "protected_boundaries": {
+    "locked_holdout_authorized": false,
+    "S2_calibration_authorized": false,
+    "S2_full_training_authorized": false,
+    "selection_started": false,
+    "official_test_authorized": false
+  },
+  "post_training": {
+    "freeze_four_development_fold_run_records": true,
+    "freeze_S1_seed0_completion_before_gate_analysis": true,
+    "automatic_model_selection": false,
+    "automatic_holdout_access": false
+  }
+}

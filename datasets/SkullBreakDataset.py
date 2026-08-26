@@ -16,9 +16,18 @@ class SkullBreak(data.Dataset):
 
     def __init__(self, config):
         self.data_root = os.path.abspath(os.path.expanduser(config.DATA_ROOT))
+        self.asset_root = os.path.abspath(
+            os.path.expanduser(str(getattr(config, "ASSET_ROOT", self.data_root)))
+        )
         manifest_path = os.path.expanduser(config.MANIFEST)
         if not os.path.isabs(manifest_path):
-            manifest_path = os.path.join(self.data_root, manifest_path)
+            cwd_relative = os.path.abspath(manifest_path)
+            data_relative = os.path.abspath(
+                os.path.join(self.data_root, manifest_path)
+            )
+            manifest_path = (
+                cwd_relative if os.path.isfile(cwd_relative) else data_relative
+            )
 
         self.subset = str(config.subset)
         self.split_field = str(getattr(config, "split_field", "official_split"))
@@ -217,6 +226,17 @@ class SkullBreak(data.Dataset):
         self.gt_rim_cache_manifest = getattr(
             config, "GT_RIM_CACHE_MANIFEST", None
         )
+        self.gt_rim_key = getattr(config, "GT_RIM_KEY", None)
+        if self.gt_rim_key is not None:
+            self.gt_rim_key = str(self.gt_rim_key)
+        if (
+            self.gt_rim_cache_manifest is not None
+            and self.gt_rim_key is not None
+        ):
+            raise ValueError(
+                "Configure exactly one GT-rim source: "
+                "GT_RIM_CACHE_MANIFEST or GT_RIM_KEY"
+            )
         self._gt_rim_cache_by_case_id = None
         self._gt_rim_mask_memory = {}
         if self.gt_rim_cache_manifest is not None:
@@ -246,9 +266,7 @@ class SkullBreak(data.Dataset):
 
     def __getitem__(self, idx):
         record = self.records[idx]
-        point_path = record["point_path"]
-        if not os.path.isabs(point_path):
-            point_path = os.path.join(self.data_root, point_path)
+        point_path = self._resolve_point_path(record)
 
         with np.load(point_path, allow_pickle=False) as sample:
             partial = sample[self.input_key].astype(
@@ -279,6 +297,17 @@ class SkullBreak(data.Dataset):
 
     def get_record(self, idx):
         return dict(self.records[idx])
+
+    def _resolve_point_path(self, record):
+        point_path = os.path.expanduser(str(record["point_path"]))
+        if not os.path.isabs(point_path):
+            point_path = os.path.join(self.asset_root, point_path)
+        point_path = os.path.abspath(point_path)
+        if not os.path.isfile(point_path):
+            raise FileNotFoundError(
+                f"{record['case_id']}: point cloud not found: {point_path}"
+            )
+        return point_path
 
     def get_case_normalization(self, case_id):
         """Return validated normalization metadata for one manifest case."""
@@ -401,8 +430,8 @@ class SkullBreak(data.Dataset):
     def get_gt_rim_masks(self, case_ids, device=None):
         """Load deterministic all-point GT-rim masks for a training batch."""
 
-        if self._gt_rim_cache_by_case_id is None:
-            raise RuntimeError("SkullBreak GT-rim cache is not configured")
+        if self._gt_rim_cache_by_case_id is None and self.gt_rim_key is None:
+            raise RuntimeError("SkullBreak GT-rim supervision is not configured")
 
         masks = []
         for case_id in case_ids:
@@ -410,29 +439,49 @@ class SkullBreak(data.Dataset):
             if case_id in self._gt_rim_mask_memory:
                 masks.append(self._gt_rim_mask_memory[case_id])
                 continue
-            entry = self._gt_rim_cache_by_case_id.get(case_id)
-            if entry is None:
-                raise KeyError(f"GT-rim cache has no entry for {case_id}")
-            mask_path = entry["mask_path"]
-            if not os.path.isfile(mask_path):
-                raise FileNotFoundError(
-                    f"{case_id}: GT-rim mask not found: {mask_path}"
+            if self.gt_rim_key is not None:
+                record = self._records_by_case_id.get(case_id)
+                if record is None:
+                    raise KeyError(f"Unknown SkullBreak case ID: {case_id}")
+                point_path = self._resolve_point_path(record)
+                with np.load(point_path, allow_pickle=False) as sample:
+                    if self.gt_rim_key not in sample:
+                        raise KeyError(
+                            f"{case_id}: NPZ has no GT-rim key "
+                            f"{self.gt_rim_key!r}"
+                        )
+                    mask = sample[self.gt_rim_key].copy()
+                expected_count = record.get("point_audit", {}).get(
+                    "reference_rim_points"
                 )
-            expected_hash = str(entry.get("mask_sha256", ""))
-            with open(mask_path, "rb") as handle:
-                payload = handle.read()
-            actual_hash = hashlib.sha256(payload).hexdigest()
-            if actual_hash != expected_hash:
-                raise ValueError(
-                    f"{case_id}: GT-rim mask SHA256 mismatch"
-                )
-            mask = np.load(mask_path, allow_pickle=False)
+            else:
+                entry = self._gt_rim_cache_by_case_id.get(case_id)
+                if entry is None:
+                    raise KeyError(f"GT-rim cache has no entry for {case_id}")
+                mask_path = entry["mask_path"]
+                if not os.path.isfile(mask_path):
+                    raise FileNotFoundError(
+                        f"{case_id}: GT-rim mask not found: {mask_path}"
+                    )
+                expected_hash = str(entry.get("mask_sha256", ""))
+                with open(mask_path, "rb") as handle:
+                    payload = handle.read()
+                actual_hash = hashlib.sha256(payload).hexdigest()
+                if actual_hash != expected_hash:
+                    raise ValueError(
+                        f"{case_id}: GT-rim mask SHA256 mismatch"
+                    )
+                mask = np.load(mask_path, allow_pickle=False)
+                expected_count = entry.get("rim_points", -1)
             if mask.shape != (self.npartial,) or mask.dtype != np.bool_:
                 raise ValueError(
                     f"{case_id}: invalid GT-rim mask shape/dtype "
                     f"{mask.shape}/{mask.dtype}"
                 )
-            if int(mask.sum()) != int(entry.get("rim_points", -1)):
+            if (
+                expected_count is not None
+                and int(mask.sum()) != int(expected_count)
+            ):
                 raise ValueError(f"{case_id}: GT-rim point count mismatch")
             if not mask.any():
                 raise ValueError(f"{case_id}: cached GT-rim mask is empty")

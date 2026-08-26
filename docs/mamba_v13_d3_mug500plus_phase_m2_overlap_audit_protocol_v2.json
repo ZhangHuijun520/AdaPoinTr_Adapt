@@ -1,0 +1,110 @@
+{
+  "protocol_id": "mug500plus-m2-protected-overlap-audit-v2",
+  "status": "preregistered_not_run",
+  "amendment": {
+    "source_v1_protocol_sha256": "97e131a83fa869732eb2a0e86e18f474c6b56520cfbd99b884102fca5295da6d",
+    "source_v1_summary_sha256": "6ec587f871d2b6dd26ca72f17e9f3ccae4d39f3f60999f728449a820f40fc7a1",
+    "source_v1_outcome": "failed_0_exact_769_geometry_suspects",
+    "reason": "post-hoc diagnosis found that all suspects were SkullFix-only, covered 119/125 MUG skulls, lacked one-to-one concentration, and therefore showed insufficient specificity",
+    "v1_result_remains_immutable": true
+  },
+  "purpose": "independent high-resolution data-leakage audit only; results cannot select a model, loss, ordering, seed, or query rule",
+  "cohorts": {
+    "candidate": "mug500plus-v20-healthy125-derived-m2-v1",
+    "protected": [
+      "skullbreak-pointcloud-out8192",
+      "skullfix-pointcloud-out8192"
+    ],
+    "reported_provenance": {
+      "mug500plus": "Medical University of Graz clinical-routine head CT scans",
+      "skullbreak_skullfix": "CQ500 public head CT collection",
+      "references": [
+        "https://doi.org/10.1016/j.dib.2021.107524",
+        "https://doi.org/10.1016/j.dib.2021.106902"
+      ]
+    }
+  },
+  "access_boundary": {
+    "allowed_arrays": ["gt"],
+    "allowed_metadata": [
+      "case_id",
+      "skull_id",
+      "point_path",
+      "complete_mask_sha256"
+    ],
+    "model_predictions_allowed": false,
+    "model_metrics_allowed": false,
+    "defect_or_implant_arrays_allowed": false,
+    "mug_B_series_or_craniotomy_allowed": false
+  },
+  "geometry_representation": {
+    "point_key": "gt",
+    "representative_per_source_skull": "lexicographically_first_case_id",
+    "normalization": "subtract_point_mean_then_divide_by_rms_radius",
+    "coarse_alignment_points": 1024,
+    "high_resolution_points": 4096,
+    "descriptor_points": 1024,
+    "deterministic_subsample": "lexicographic_xyz_then_even_index",
+    "descriptor": {
+      "covariance_eigenvalues": 3,
+      "radial_quantiles": 49,
+      "pairwise_distance_quantiles": 49
+    }
+  },
+  "candidate_screen": {
+    "descriptor_distance": "euclidean_after_featurewise_median_mad_scaling",
+    "nearest_protected_per_mug_skull": 5,
+    "screen_runs_separately_per_protected_dataset": true,
+    "v1_candidate_rows_reused": false
+  },
+  "rigid_alignment": {
+    "coarse_initializations": "all_6_axis_permutations_x_8_sign_combinations",
+    "coarse_initializations_retained": 2,
+    "reflections_allowed_for_audit_sensitivity": true,
+    "high_resolution_refinement": "deterministic_bidirectional_nearest_neighbor_ICP",
+    "icp_iterations": 6,
+    "reported_distances": [
+      "symmetric_chamfer_l1_normalized",
+      "symmetric_hd95_normalized"
+    ]
+  },
+  "calibration": {
+    "uses_cross_dataset_results": false,
+    "positive_pairs": [
+      "one_deterministic_mug_same_source_pair_per_skull",
+      "one_deterministic_skullbreak_same_source_pair_per_skull"
+    ],
+    "negative_pairs": [
+      "one_deterministic_distinct_source_pair_per_mug_skull",
+      "one_deterministic_distinct_source_pair_per_skullbreak_skull",
+      "one_deterministic_distinct_source_pair_per_skullfix_skull"
+    ],
+    "positive_limit": "q99_for_each_metric",
+    "negative_limit": "q01_for_each_metric",
+    "calibration_separation_rule": "positive_q99_lt_negative_q01_for_both_metrics",
+    "decision_threshold": "midpoint_of_positive_q99_and_negative_q01_for_each_metric",
+    "suspect_rule": "cd_le_threshold_and_hd95_le_threshold"
+  },
+  "automatic_gate": {
+    "pass_rule": "calibration_separated_and_zero_exact_intersections_and_zero_high_resolution_suspects",
+    "failure_action": "keep_D3_locked_and_require_manual_source-level_review_or_new_preregistered_amendment",
+    "manual_removal_of_cases_before_gate": false
+  },
+  "outputs": [
+    "calibration_pairs.csv",
+    "high_resolution_candidates.csv",
+    "exact_hash_intersections.csv",
+    "overlap_audit_v2_summary.json",
+    "overlap_audit_v2_report_zh.md",
+    "files.sha256"
+  ],
+  "forbidden": [
+    "change_v2_thresholds_after_cross_dataset_comparison",
+    "reuse_v1_cross_dataset_distances_for_v2_thresholds",
+    "use_overlap_distances_for_model_selection",
+    "inspect_protected_predictions_or_metrics",
+    "unlock_D3_training_when_calibration_is_not_separated",
+    "unlock_D3_training_when_any_v2_suspect_remains",
+    "access_MUG500plus_B_series_craniotomy_or_real_implants"
+  ]
+}

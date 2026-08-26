@@ -1,0 +1,103 @@
+{
+  "protocol_id": "mug500plus-m2-d3-source-split-100-25-v1",
+  "status": "preregistered_not_generated",
+  "preregistered_on": "2026-08-24",
+  "purpose": "freeze an outcome-independent 100/25 source-skull split after the protected-overlap v2.1 gate passed",
+  "lineage": {
+    "m1_healthy125_data_lock": {
+      "data_lock_id": "mug500plus-m1-healthy125-v1",
+      "receipt_sha256": "43cafddb0edabef5486c0c12d47164be676d07f049c4ca7dd6c6be9823fd7d62",
+      "files_manifest_sha256": "3892dbcad93418834daf1c1abb4915c8e73a0d6d538741ea8dc49539c8c522d0"
+    },
+    "m2_generation_audit": {
+      "audit_id": "mug500plus-m2-generation-audit-v1",
+      "summary_sha256": "75e5b541520f1c3a363d754fc292df7795779ba807078029e26c3dbc4bee8f04",
+      "files_manifest_sha256": "d0c0642793965013cdaf7f2e9dea4d4daddeeaab5b63e19650a28e4221256d1e",
+      "portable_manifest_sha256": "efab88d42a62c36270c8e1ca2988950de8039871bff3e9a00f4f379fb5f4f3cd"
+    },
+    "protected_overlap_v21_adjudication": {
+      "protocol_id": "mug500plus-m2-protected-overlap-audit-v2.1-source-stratified-provenance",
+      "receipt_sha256": "e9785783c73006d0ee29fc17ec9a9bdbcd1a5a5a12fd811f6adc3ab565e6df58",
+      "files_manifest_sha256": "ed953956559e049987795c19ae213edff8c738bdf35acf4bb0c7944e721a83f1",
+      "required_status": "passed_permit_100_25_source_skull_data_lock"
+    }
+  },
+  "preregistration_correction": {
+    "date": "2026-08-24",
+    "field": "lineage.m2_generation_audit.files_manifest_sha256",
+    "reason": "one-character transcription omission detected by the lineage gate before any output directory was created",
+    "initial_value_length": 63,
+    "corrected_value_verified_from_frozen_file": true,
+    "data_lock_output_existed_at_correction": false,
+    "split_assignments_had_been_generated": false
+  },
+  "input_contract": {
+    "source_skulls": 125,
+    "derived_cases": 500,
+    "cases_per_source_skull": 4,
+    "defect_types": [
+      "ellipsoid_large",
+      "ellipsoid_medium",
+      "ellipsoid_small",
+      "irregular_medium"
+    ],
+    "source_dataset": "mug500plus-v20-healthy125",
+    "generator_sha256": "93e64b358b98c89ed879c16865880a704378ced3848be8a3469943093c64219c",
+    "surface_fingerprint_algorithm_sha256": "b947368b9d226fd752b1d683356ba18373517c3afb5890ca987afde78d9310a2",
+    "source_and_derived_hashes_required": true,
+    "portable_relative_paths_required": true
+  },
+  "split_rule": {
+    "unit": "source_skull",
+    "salt": "mamba-v13-d3-independent-data-v1-20260811",
+    "hash_algorithm": "sha256_utf8",
+    "holdout_key": "SHA256(salt|holdout|skull_id)",
+    "holdout_selection": "25 lexicographically smallest holdout keys",
+    "development_skulls": 100,
+    "locked_holdout_skulls": 25,
+    "development_cases": 400,
+    "locked_holdout_cases": 100,
+    "development_folds": ["A", "B", "C", "D"],
+    "fold_key": "SHA256(salt|fold|skull_id)",
+    "fold_assignment": "sort development skulls by fold key then assign A,B,C,D round-robin",
+    "development_skulls_per_fold": 25,
+    "same_source_skull_never_crosses_partition_or_fold": true,
+    "model_or_geometry_metrics_used": false,
+    "manual_reassignment_allowed": false
+  },
+  "holdout_policy": {
+    "case_and_skull_identifiers_may_be_frozen": true,
+    "holdout_model_inference_allowed_before_method_freeze": false,
+    "holdout_metrics_allowed_before_method_freeze": false,
+    "holdout_visual_review_allowed_before_method_freeze": false,
+    "one_shot_use_requires_separate_frozen_method_receipt": true
+  },
+  "lock_effect": {
+    "permit_candidate_protocol_and_config_preparation": true,
+    "start_training_automatically": false,
+    "training_unlocked": false,
+    "reason": "model candidates, configs, loss weights, gates, and execution receipts remain a separate preregistered step"
+  },
+  "required_outputs": [
+    "source_split_protocol_v1.json",
+    "source_split_lock_receipt.json",
+    "source_split_lock_report_zh.md",
+    "skull_assignments.csv",
+    "case_assignments.csv",
+    "manifest_with_split.jsonl",
+    "development_skull_ids.txt",
+    "locked_holdout_skull_ids.txt",
+    "development_case_ids.txt",
+    "locked_holdout_case_ids.txt",
+    "foldA_foldB_foldC_foldD_skull_and_case_lists",
+    "files.sha256"
+  ],
+  "forbidden": [
+    "change_the_split_salt_after_generation",
+    "select_or_reassign_skulls_using_geometry_defect_difficulty_or_model_metrics",
+    "split_cases_from_one_source_skull_across_partitions_or_folds",
+    "access_holdout_predictions_metrics_or_visualizations_before_method_freeze",
+    "rewrite_the_v21_adjudication",
+    "start_D3_training_as_a_side_effect_of_this_data_lock"
+  ]
+}

@@ -17,6 +17,13 @@ from utils.mamba_d22_geometry import (
     global_moment_trust_loss,
     local_rim_undercoverage_loss,
 )
+from utils.mamba_d3_contact import (
+    assign_reference_rim_to_proxies,
+    case_balanced_binary_cross_entropy,
+    dense_contact_safety_loss,
+    diversified_topk_indices,
+    gather_points,
+)
 
 
 def coarse_geometry_guard_components(
@@ -1447,6 +1454,35 @@ class PCTransformer(nn.Module):
                 "expected 'ranking', 'fps_preserve', 'fps_only', or "
                 "'learned_only'"
             )
+        rim_query_config = getattr(config, 'rim_query_allocation', None)
+        self.rim_query_enabled = bool(
+            getattr(rim_query_config, 'enabled', False)
+        ) if rim_query_config is not None else False
+        self.rim_query_count = int(
+            getattr(rim_query_config, 'rim_queries', 32)
+        ) if rim_query_config is not None else 32
+        self.rim_query_pool_size = int(
+            getattr(rim_query_config, 'candidate_pool', 96)
+        ) if rim_query_config is not None else 96
+        if self.rim_query_enabled:
+            if self.query_selection != 'learned_only':
+                raise ValueError(
+                    'Rim query allocation requires query_selection=learned_only'
+                )
+            if not 0 < self.rim_query_count < self.num_query:
+                raise ValueError(
+                    'rim_queries must be positive and smaller than num_query'
+                )
+            proxy_count = int(self.center_num[-1])
+            if not (
+                self.rim_query_count
+                <= self.rim_query_pool_size
+                <= proxy_count
+            ):
+                raise ValueError(
+                    'Rim allocation requires rim_queries <= candidate_pool '
+                    '<= final encoder proxy count'
+                )
         self.use_denoise = float(getattr(config, 'denoise_weight', 0.5)) > 0
         global_feature_dim = config.global_feature_dim
 
@@ -1472,6 +1508,15 @@ class PCTransformer(nn.Module):
             encoder_config.embed_dim,
             getattr(config, 'mamba_adapter', None),
         )
+        if self.rim_query_enabled:
+            proxy_feature_dim = 2 * encoder_config.embed_dim
+            self.rim_score_head = nn.Sequential(
+                nn.Linear(proxy_feature_dim, 128),
+                nn.GELU(),
+                nn.Linear(128, 1),
+            )
+        else:
+            self.rim_score_head = None
 
         self.increase_dim = nn.Sequential(
             nn.Linear(encoder_config.embed_dim, 1024),
@@ -1539,19 +1584,28 @@ class PCTransformer(nn.Module):
             records['adapter'] = self.encoder_adapter.pop_instrumentation()
         return records
 
+    def encode_rim_proxy_tokens(self, xyz):
+        """Return the exact coordinates and features consumed by the rim head."""
+
+        coor, features = self.grouper(xyz, self.center_num)
+        position = self.pos_embed(coor)
+        encoded = self.input_proj(features)
+        encoded = self.encoder(encoded + position, coor)
+        encoder_pre_adapter = encoded
+        encoded = self.encoder_adapter(encoded, coor)
+        proxy_features = torch.cat([encoded, position], dim=-1)
+        return coor, proxy_features, encoder_pre_adapter, encoded
+
     def forward(self, xyz):
         if self.full_instrumentation_enabled and self.training:
             raise RuntimeError(
                 'Full-model instrumentation is inference-only; call eval() first'
-            )
+        )
         bs = xyz.size(0)
-        coor, f = self.grouper(xyz, self.center_num) # b n c
-        pe =  self.pos_embed(coor)
-        x = self.input_proj(f)
-
-        x = self.encoder(x + pe, coor) # b n c
-        encoder_pre_adapter = x
-        x = self.encoder_adapter(x, coor)
+        coor, proxy_features, encoder_pre_adapter, x = (
+            self.encode_rim_proxy_tokens(xyz)
+        )
+        pe = proxy_features[..., x.shape[-1]:]
         encoder_post_adapter = x
         global_feature = self.increase_dim(x) # B 1024 N 
         global_feature = torch.max(global_feature, dim=1)[0] # B 1024
@@ -1568,6 +1622,7 @@ class PCTransformer(nn.Module):
         coarse_candidates = None
         query_ranking = None
         selected_query_indices = None
+        rim_aux = None
 
         if self.query_selection == 'ranking':
             coarse_candidates = torch.cat([learned_coarse, coarse_inp], dim=1)
@@ -1586,6 +1641,25 @@ class PCTransformer(nn.Module):
             coarse = torch.cat([learned_coarse[:, :learned_count], coarse_inp], dim=1)
         elif self.query_selection == 'fps_only':
             coarse = coarse_inp
+        elif self.rim_query_enabled:
+            rim_logits = self.rim_score_head(proxy_features).squeeze(-1)
+            selected_rim_indices = diversified_topk_indices(
+                rim_logits,
+                coor,
+                selected_count=self.rim_query_count,
+                pool_size=self.rim_query_pool_size,
+            )
+            rim_coarse = gather_points(coor, selected_rim_indices)
+            learned_count = self.num_query - self.rim_query_count
+            coarse = torch.cat(
+                [learned_coarse[:, :learned_count], rim_coarse], dim=1
+            )
+            rim_aux = {
+                'proxy_coordinates': coor,
+                'rim_logits': rim_logits,
+                'selected_proxy_indices': selected_rim_indices,
+                'selected_proxy_coordinates': rim_coarse,
+            }
         else:
             # Implant prediction should not anchor query points on the defective
             # skull surface; all coarse queries are generated from global context.
@@ -1630,13 +1704,15 @@ class PCTransformer(nn.Module):
                     'coarse_candidates': None if coarse_candidates is None else coarse_candidates.detach(),
                     'query_ranking': None if query_ranking is None else query_ranking.detach(),
                     'selected_query_indices': None if selected_query_indices is None else selected_query_indices.detach(),
+                    'rim_logits': None if rim_aux is None else rim_aux['rim_logits'].detach(),
+                    'selected_rim_indices': None if rim_aux is None else rim_aux['selected_proxy_indices'].detach(),
                     'coarse': coarse.detach(),
                     'query_pre_decoder': query_pre_decoder.detach(),
                     'query_post_decoder': q.detach(),
                     'decoder_layers': decoder_layers,
                 }
 
-            return q, coarse, denoise_length
+            return q, coarse, denoise_length, rim_aux
 
         else:
             # produce query
@@ -1669,13 +1745,15 @@ class PCTransformer(nn.Module):
                     'coarse_candidates': None if coarse_candidates is None else coarse_candidates.detach(),
                     'query_ranking': None if query_ranking is None else query_ranking.detach(),
                     'selected_query_indices': None if selected_query_indices is None else selected_query_indices.detach(),
+                    'rim_logits': None if rim_aux is None else rim_aux['rim_logits'].detach(),
+                    'selected_rim_indices': None if rim_aux is None else rim_aux['selected_proxy_indices'].detach(),
                     'coarse': coarse.detach(),
                     'query_pre_decoder': query_pre_decoder.detach(),
                     'query_post_decoder': q.detach(),
                     'decoder_layers': decoder_layers,
                 }
 
-            return q, coarse, 0
+            return q, coarse, 0, rim_aux
 
 ######################################## PoinTr ########################################  
 
@@ -1780,6 +1858,43 @@ class AdaPoinTr(nn.Module):
         if self.moment_trust_enabled and self.moment_trust_weight <= 0:
             raise ValueError('Enabled moment trust requires positive weight')
 
+        dense_contact_config = getattr(config, 'dense_contact_objective', None)
+        self.dense_contact_enabled = bool(
+            getattr(dense_contact_config, 'enabled', False)
+        ) if dense_contact_config is not None else False
+        self.dense_contact_weight = float(
+            getattr(dense_contact_config, 'weight', 0.0)
+        ) if dense_contact_config is not None else 0.0
+        self.dense_contact_threshold_mm = float(
+            getattr(dense_contact_config, 'threshold_mm', 2.0)
+        ) if dense_contact_config is not None else 2.0
+        self.dense_contact_temperature_mm = float(
+            getattr(dense_contact_config, 'temperature_mm', 0.25)
+        ) if dense_contact_config is not None else 0.25
+        self.dense_contact_tail_fraction = float(
+            getattr(dense_contact_config, 'tail_fraction', 0.1)
+        ) if dense_contact_config is not None else 0.1
+        if self.dense_contact_enabled and self.dense_contact_weight <= 0:
+            raise ValueError(
+                'Enabled dense contact objective requires a calibrated weight'
+            )
+
+        rim_query_config = getattr(config, 'rim_query_allocation', None)
+        self.rim_query_enabled = bool(
+            getattr(rim_query_config, 'enabled', False)
+        ) if rim_query_config is not None else False
+        self.rim_query_classification_weight = float(
+            getattr(rim_query_config, 'classification_weight', 0.0)
+        ) if rim_query_config is not None else 0.0
+        if (
+            self.rim_query_enabled
+            and self.rim_query_classification_weight <= 0
+        ):
+            raise ValueError(
+                'Enabled rim query allocation requires a calibrated '
+                'classification_weight'
+            )
+
         self.fold_step = 8
         self.base_model = PCTransformer(config)
         
@@ -1866,7 +1981,10 @@ class AdaPoinTr(nn.Module):
         teacher_coarse_centroid=None,
         teacher_coarse_radius=None,
     ):
-        pred_coarse, denoised_coarse, denoised_fine, pred_fine = ret
+        if len(ret) not in (4, 5):
+            raise ValueError('AdaPoinTr training output must contain 4 or 5 items')
+        pred_coarse, denoised_coarse, denoised_fine, pred_fine = ret[:4]
+        rim_aux = ret[4] if len(ret) == 5 else None
         
         assert pred_fine.size(1) == gt.size(1)
 
@@ -1942,6 +2060,48 @@ class AdaPoinTr(nn.Module):
                 loss_recon + self.moment_trust_weight * trust_result.loss
             )
 
+        if self.dense_contact_enabled:
+            if (
+                partial is None
+                or normalization_scale is None
+                or gt_rim_mask is None
+            ):
+                raise ValueError(
+                    'Dense contact objective requires partial, '
+                    'normalization_scale, and gt_rim_mask'
+                )
+            contact_result = dense_contact_safety_loss(
+                pred_fine,
+                partial,
+                normalization_scale,
+                gt_rim_mask,
+                threshold_mm=self.dense_contact_threshold_mm,
+                temperature_mm=self.dense_contact_temperature_mm,
+                tail_fraction=self.dense_contact_tail_fraction,
+            )
+            loss_recon = (
+                loss_recon + self.dense_contact_weight * contact_result.loss
+            )
+
+        if self.rim_query_enabled:
+            if partial is None or gt_rim_mask is None or rim_aux is None:
+                raise ValueError(
+                    'Rim query supervision requires partial, gt_rim_mask, '
+                    'and rim query auxiliary output'
+                )
+            proxy_labels = assign_reference_rim_to_proxies(
+                rim_aux['proxy_coordinates'],
+                partial,
+                gt_rim_mask,
+            )
+            classification_loss = case_balanced_binary_cross_entropy(
+                rim_aux['rim_logits'],
+                proxy_labels.labels,
+            )
+            loss_recon = loss_recon + (
+                self.rim_query_classification_weight * classification_loss
+            )
+
         return loss_denoised, loss_recon
 
     def forward(self, xyz):
@@ -1949,7 +2109,7 @@ class AdaPoinTr(nn.Module):
             raise RuntimeError(
                 'Full-model instrumentation is inference-only; call eval() first'
             )
-        q, coarse_point_cloud, denoise_length = self.base_model(xyz) # B M C and B M 3
+        q, coarse_point_cloud, denoise_length, rim_aux = self.base_model(xyz)
     
         B, M ,C = q.shape
 
@@ -1995,6 +2155,8 @@ class AdaPoinTr(nn.Module):
             assert pred_coarse.size(1) == self.num_query
 
             ret = (pred_coarse, denoised_coarse, denoised_fine, pred_fine)
+            if rim_aux is not None:
+                ret = ret + (rim_aux,)
             return ret
         elif self.training:
             pred_fine = rebuild_points.reshape(B, -1, 3).contiguous()
@@ -2003,12 +2165,15 @@ class AdaPoinTr(nn.Module):
             assert pred_fine.size(1) == self.num_query * self.factor
             assert pred_coarse.size(1) == self.num_query
 
-            return (
+            ret = (
                 pred_coarse,
                 pred_coarse[:, :0],
                 pred_fine[:, :0],
                 pred_fine,
             )
+            if rim_aux is not None:
+                ret = ret + (rim_aux,)
+            return ret
 
         else:
             assert denoise_length == 0

@@ -53,6 +53,10 @@ def main():
     model = builder.model_builder(config.model).cuda().eval()
     builder.load_model(model, args.ckpt)
     model.enable_full_instrumentation(False)
+    parameter_count_total = sum(value.numel() for value in model.parameters())
+    parameter_count_trainable = sum(
+        value.numel() for value in model.parameters() if value.requires_grad
+    )
 
     with torch.no_grad():
         for _ in tqdm(range(args.warmup), desc="Efficiency warmup", dynamic_ncols=True):
@@ -77,6 +81,8 @@ def main():
         "latency_ms_median": statistics.median(timings),
         "latency_ms_p95": timings_sorted[p95_index],
         "peak_gpu_memory_bytes": int(torch.cuda.max_memory_allocated()),
+        "parameter_count_total": int(parameter_count_total),
+        "parameter_count_trainable": int(parameter_count_trainable),
         "gpu": torch.cuda.get_device_name(0),
         "config": args.config,
         "config_sha256": sha256_file(args.config),

@@ -1,0 +1,136 @@
+{
+  "protocol_id": "mug500plus-m2-protected-overlap-audit-v2.1-source-stratified-provenance",
+  "status": "preregistered_not_adjudicated",
+  "preregistered_on": "2026-08-24",
+  "purpose": "correct the invalid pooled-domain calibration in v2 without changing v1/v2 artifacts or using overlap results for model selection",
+  "lineage": {
+    "v1": {
+      "protocol_sha256": "97e131a83fa869732eb2a0e86e18f474c6b56520cfbd99b884102fca5295da6d",
+      "summary_sha256": "6ec587f871d2b6dd26ca72f17e9f3ccae4d39f3f60999f728449a820f40fc7a1",
+      "frozen_outcome": "failed_0_exact_769_geometry_suspects"
+    },
+    "v2": {
+      "protocol_sha256": "5375ba3ea573db9769ac750c1302f5169ed6e3a8accb8a3a9f3e77b11884d0d4",
+      "summary_sha256": "8f59e45f1a0ae561e84c07c12a4a778c9fd1670c1b81b290cec03c18860413a9",
+      "files_manifest_sha256": "9d606892858ff30575137dee1308d095bd1997e4fc91fa8a390d7b68554ea72c",
+      "frozen_outcome": "failed_calibration_not_separated_0_exact_0_high_resolution_suspects"
+    },
+    "prior_results_remain_immutable": true,
+    "amendment_is_post_v2": true
+  },
+  "frozen_inputs": {
+    "v2_files": {
+      "calibration_pairs.csv": "426611eae599230744a30ff92db3fdd6bb72d0839c5c0fcdbbaa097b9f061443",
+      "exact_hash_intersections.csv": "fcd33941ad0b01374944dcf6c04ed935fd50fdebf7f926b4f4153bdae1295298",
+      "high_resolution_candidates.csv": "2afbd2351804e0693d3c6c488b76c35a10470004bef6cd9c8c600a865349a6c6",
+      "overlap_audit_v2_summary.json": "8f59e45f1a0ae561e84c07c12a4a778c9fd1670c1b81b290cec03c18860413a9"
+    },
+    "source_provenance_file": "docs/mug500plus_skullbreak_skullfix_source_provenance_v1.json",
+    "source_provenance_sha256": "d6bb8bb51a5a105d3c77d63c289076a036b3d8e9641c7133ea620e5042311b4c"
+  },
+  "correction": {
+    "invalid_v2_operation": "pooled positive q99 and pooled negative q01 were compared across heterogeneous point-sampling domains",
+    "replacement": "compute positive q99 and negative q01 separately inside each source domain",
+    "cross_dataset_metrics_recomputed": false,
+    "v2_candidate_shortlist_changed": false,
+    "thresholds_selected_from_cross_dataset_pairs": false
+  },
+  "access_boundary": {
+    "allowed_frozen_inputs": [
+      "v2 calibration_pairs.csv",
+      "v2 exact_hash_intersections.csv",
+      "v2 high_resolution_candidates.csv",
+      "v2 overlap_audit_v2_summary.json",
+      "frozen source provenance JSON"
+    ],
+    "raw_protected_arrays_reopened": false,
+    "model_predictions_allowed": false,
+    "model_metrics_allowed": false,
+    "defect_or_implant_arrays_allowed": false,
+    "MUG500plus_B_series_or_craniotomy_allowed": false
+  },
+  "provenance_gate": {
+    "evidence_id": "mug500plus-skullbreak-skullfix-source-provenance-v1",
+    "required_claims": {
+      "reported_acquisition_cohorts_are_distinct": true,
+      "reported_institutions_are_distinct": true,
+      "reported_countries_are_distinct": true,
+      "provenance_must_be_combined_with_exact_hash_and_geometry_audits": true
+    },
+    "primary_references_required": [
+      "10.1016/j.dib.2021.107524",
+      "10.1016/j.dib.2021.106902"
+    ],
+    "provenance_alone_can_unlock_D3": false
+  },
+  "source_stratified_calibration": {
+    "metrics": [
+      "symmetric_cd_l1_normalized",
+      "symmetric_hd95_normalized"
+    ],
+    "positive_quantile": 0.99,
+    "negative_quantile": 0.01,
+    "domains": {
+      "mug500plus": {
+        "positive_pairs_required": 125,
+        "negative_pairs_required": 125,
+        "separation_rule": "positive_q99_lt_negative_q01_for_both_metrics"
+      },
+      "skullbreak": {
+        "positive_pairs_required": 134,
+        "negative_pairs_required": 134,
+        "separation_rule": "positive_q99_lt_negative_q01_for_both_metrics"
+      },
+      "skullfix": {
+        "positive_pairs_required": 0,
+        "negative_pairs_required": 100,
+        "separation_rule": "not_applicable_because_one_point_sample_per_source_skull",
+        "may_be_used_to_define_duplicate_envelope": false
+      }
+    },
+    "all_required_source_domains_must_pass": true,
+    "pooled_cross_domain_extrema_forbidden": true
+  },
+  "geometry_adjudication": {
+    "input": "frozen v2 high_resolution_candidates.csv",
+    "expected_candidate_pairs": 1250,
+    "expected_pairs_per_protected_dataset": 625,
+    "expected_descriptor_ranks": [1, 2, 3, 4, 5],
+    "duplicate_like_envelope": {
+      "source": "mug500plus positive calibration pairs only",
+      "cd_limit": "mug500plus positive CD q99",
+      "hd95_limit": "mug500plus positive HD95 q99",
+      "candidate_rule": "cd_le_limit_and_hd95_le_limit"
+    },
+    "required_duplicate_like_candidates": 0,
+    "manual_case_exclusion_allowed": false,
+    "candidate_metrics_cannot_select_models": true
+  },
+  "exact_hash_gate": {
+    "input": "frozen v2 exact_hash_intersections.csv",
+    "required_intersections": 0
+  },
+  "automatic_gate": {
+    "pass_rule": "lineage_hashes_valid_and_provenance_gate_passed_and_exact_hash_zero_and_mug500plus_calibration_separated_and_skullbreak_calibration_separated_and_zero_duplicate_like_candidates",
+    "pass_effect": "permit_only_the_100_25_source_skull_data_lock_step",
+    "training_starts_automatically": false,
+    "failure_effect": "keep_D3_locked_and_require_manual_source_level_review_or_a_new_explicit_amendment"
+  },
+  "required_outputs": [
+    "source_stratified_calibration.csv",
+    "geometry_adjudication.csv",
+    "overlap_v21_adjudication_receipt.json",
+    "overlap_v21_adjudication_report_zh.md",
+    "files.sha256"
+  ],
+  "forbidden": [
+    "rewrite_or_delete_v1_or_v2_results",
+    "recompute_thresholds_from_cross_dataset_candidate_pairs",
+    "pool_calibration_extrema_across_source_domains",
+    "invent_skullfix_positive_pairs",
+    "remove_individual_MUG_cases_after_adjudication",
+    "use_overlap_results_for_model_loss_ordering_seed_or_query_selection",
+    "access_model_predictions_or_model_metrics",
+    "start_D3_training_before_a_separate_100_25_data_lock"
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "protocol_id": "mamba-v13-d3-contact-support-structuralization-v1",
+  "status": "preregistered_implementation_started_training_locked_until_new_data_audit",
+  "parent_result_tag": "mamba-adapter-v12-d22-negative-result-skullbreak-seed0",
+  "parent_result_commit": "a8941c6f35ba4751f32bea223114ca32b1133514",
+  "scientific_questions": {
+    "Q1": "Can an evaluator-aligned dense contact-existence and GT-rim tail objective eliminate dense 2 mm zero-contact failures?",
+    "Q2": "Can partial-only rim-aware query allocation eliminate coarse 2 mm support omissions without inference-time target leakage?"
+  },
+  "data_boundary": {
+    "source": "new_external_healthy_skulls_with_preregistered_synthetic_defects",
+    "required_unique_skulls": 125,
+    "required_derived_cases": 500,
+    "locked_holdout_fraction": 0.2,
+    "locked_holdout_skulls": 25,
+    "development_skulls": 100,
+    "development_folds": 4,
+    "development_skulls_per_fold": 25,
+    "split_unit": "source_skull",
+    "same_source_asset_must_not_cross_skulls": true,
+    "source_and_derived_sha256_required": true,
+    "canonical_surface_fingerprint_and_algorithm_sha256_required": true,
+    "synthetic_generator_sha256_required": true,
+    "protected_fingerprint_overlap_allowed": false
+  },
+  "protected_data": {
+    "d2_development84_used": false,
+    "skullbreak_confirmation20_used": false,
+    "old_monitor_used": false,
+    "skullbreak_official_test_used": false,
+    "skullfix_used_for_selection": false
+  },
+  "shared_training": {
+    "input_points": 8192,
+    "output_points": 8192,
+    "queries": 256,
+    "ordering": "xyz",
+    "mamba_adapter": "v1.1_alpha_init_0.01_warmup_20_epochs",
+    "seed_round_a": 0,
+    "folds": ["A", "B", "C", "D"],
+    "same_epoch_optimizer_bncal_and_efficiency_protocol": true
+  },
+  "execution": {
+    "long_running_jobs_require_tmux": true,
+    "training_evaluation_and_replay_require_tqdm": true,
+    "master_log_and_exit_status_required": true
+  },
+  "reference_rim": {
+    "definition": "defective_partial_points_with_distance_to_gt_implant_le_2mm",
+    "band_mm": 2.0,
+    "must_match_existing_point_rim_evaluator_indices": true
+  },
+  "candidates": {
+    "S0": {
+      "role": "same_round_reference_only",
+      "definition": "O0 xyz architecture retrained on every new-data fold",
+      "contact_objective": false,
+      "rim_query_allocation": false
+    },
+    "S1": {
+      "role": "tests_Q1",
+      "definition": "dense evaluator-aligned contact existence plus GT-rim CVaR tail",
+      "contact_objective": {
+        "prediction_stage": "dense_8192",
+        "existence_distance": "reference_rim_to_dense_global_minimum",
+        "smooth_min": "negative_temperature_times_log_mean_exp_negative_distance",
+        "temperature_mm": 0.25,
+        "threshold_mm": 2.0,
+        "tail_direction": "reference_rim_to_dense",
+        "tail_fraction": 0.1,
+        "case_balanced": true
+      },
+      "weight_calibration": {
+        "uses_training_fold_only": true,
+        "batches": 8,
+        "combined_aux_to_reconstruction_gradient_ratio": 0.075,
+        "dev_metrics_forbidden": true,
+        "one_calibration_receipt_per_fold": true,
+        "recalibration_after_training_starts": false
+      },
+      "rim_query_allocation": false
+    },
+    "S2": {
+      "role": "tests_Q2",
+      "definition": "224 global learned coarse queries plus 32 partial-only rim-context queries",
+      "contact_objective": false,
+      "rim_query_allocation": {
+        "global_queries": 224,
+        "rim_queries": 32,
+        "candidate_pool": 96,
+        "score_source": "encoder_proxy_feature_and_position",
+        "training_label": "nearest_proxy_assignment_of_each_reference_rim_point",
+        "classification": "per_case_class_balanced_bce",
+        "classification_weight_calibration": "training_only_8_batches_target_gradient_ratio_0.075",
+        "selection": "score_top_pool_then_deterministic_fps",
+        "coordinate": "anchor_preserving_selected_partial_proxy_without_offset",
+        "query_feature": "shared_existing_mlp_query",
+        "type_embedding": false,
+        "inference_inputs": ["defective_partial", "normalization_metadata_derived_from_partial"]
+      }
+    }
+  },
+  "rim_proposal_feasibility": {
+    "required_before_full_S2": true,
+    "encoder": "frozen_same_round_S0",
+    "head_only_training": true,
+    "full_S2_reuses_feasibility_head_weights": false,
+    "hard_gate": "every_held_out_case_selects_at_least_one_gt_positive_proxy",
+    "reported": [
+      "case_hit_rate",
+      "positive_proxy_recall",
+      "precision",
+      "selected_anchor_spatial_coverage",
+      "false_positive_rate"
+    ]
+  },
+  "round_a_hard_gates": {
+    "complete_case_records": true,
+    "all_required_metrics_finite": true,
+    "disaster_definition": "nonfinite_or_rim_contact_hd95_mm_gt_50",
+    "disaster_count_max": "same_round_S0",
+    "dense_zero_contact_at_2mm": 0,
+    "S2_coarse_zero_support_at_2mm": 0,
+    "rim_contact_hd95_p95_max": "same_round_S0",
+    "final_noninferiority": {
+      "final_cd_l1_mm_delta_max": 0.1,
+      "final_hd95_mm_delta_max": 0.5,
+      "final_nsd_at_1mm_delta_min": -0.01
+    },
+    "efficiency_vs_S0": {
+      "parameter_ratio_max": 1.02,
+      "inference_latency_ratio_max": 1.1,
+      "peak_gpu_memory_ratio_max": 1.1
+    }
+  },
+  "statistics": {
+    "paired_by_case": true,
+    "uncertainty_cluster_unit": "source_skull",
+    "support_count_also_reported_as_fraction_of_reference_rim": true,
+    "defect_type_results_descriptive_only": true
+  },
+  "rounds": {
+    "feasibility": "fold-wise frozen-S0 encoder rim-proposal head only",
+    "A": "S0_S1_S2_x_four_folds_x_seed0",
+    "B": "S0_plus_every_roundA_eligible_experimental_candidate_x_four_folds_x_seed1",
+    "seed2": "frozen_winner_plus_S0_x_four_folds_x_seed2",
+    "new_holdout": "one_shot_after_method_freeze",
+    "skullbreak_confirmation20": "one_shot_only_after_new_holdout_passes",
+    "skullfix": "post_freeze_cross_dataset_report_only",
+    "official_test": "one_shot_final_evaluation"
+  },
+  "selection": {
+    "S0_can_be_selected_as_new_method": false,
+    "no_experimental_candidate_passes": "freeze_negative_and_stop_loss_query_micro_tuning",
+    "one_experimental_candidate_passes": "advance_candidate_with_S0_to_roundB",
+    "two_experimental_candidates_pass": "advance_both_with_S0_to_roundB",
+    "no_candidate_or_rule_revision_after_roundA_starts": true
+  },
+  "forbidden": [
+    "reuse_consumed_development84_for_selection",
+    "derive_defect_generator_from_D2.2_failure_cases",
+    "scan_loss_weights_query_counts_label_thresholds_or_selection_rules_on_dev",
+    "use_gt_implant_gt_rim_complete_skull_defect_type_or_manual_center_at_inference",
+    "initialize_full_S2_from_the_feasibility_head",
+    "combine_S1_and_S2_in_this_protocol",
+    "access_protected_splits_before_method_freeze"
+  ]
+}

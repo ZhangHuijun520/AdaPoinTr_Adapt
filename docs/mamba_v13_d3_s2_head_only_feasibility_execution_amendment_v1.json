@@ -1,0 +1,96 @@
+{
+  "protocol_id": "mamba-v13-d3-s2-head-only-feasibility-execution-amendment-v1",
+  "status": "post_s0_pre_feasibility_preregistered_execution_amendment",
+  "timing_and_scope": {
+    "s0_completion_seen": true,
+    "any_s2_feasibility_output_seen": false,
+    "scientific_candidate_changed": false,
+    "query_counts_changed": false,
+    "hard_gate_changed": false,
+    "purpose": "Freeze previously unspecified operational details before any S2 feasibility training or development evaluation"
+  },
+  "lineage": {
+    "scientific_protocol": "mamba-v13-d3-contact-support-structuralization-v1",
+    "candidate_execution_protocol": "mamba-v13-d3-round-a-candidate-execution-v1",
+    "required_s0_completion_status": "S0_seed0_frozen_ready_for_S2_feasibility"
+  },
+  "folds": ["A", "B", "C", "D"],
+  "seed": 0,
+  "data": {
+    "train_cases_per_fold": 300,
+    "development_cases_per_fold": 100,
+    "split_unit": "source_skull",
+    "train_and_development_disjoint": true,
+    "holdout_allowed": false,
+    "gt_rim_use": "training labels and development scoring only",
+    "inference_features": "defective_partial_only"
+  },
+  "frozen_encoder": {
+    "checkpoint": "same_fold_same_seed_S0_ckpt_last_bncal",
+    "mode": "eval",
+    "requires_grad": false,
+    "batchnorm_updates": false,
+    "proxy_coordinates": "same 256 encoder proxy coordinates used by S2",
+    "proxy_features": "concat(post_Mamba_encoder_feature, positional_embedding)",
+    "feature_dimension": 768
+  },
+  "head": {
+    "architecture": "Linear(768,128)-GELU-Linear(128,1)",
+    "initialization": "torch_trunc_normal_weight_std_0.02_bias_zero_seed0",
+    "only_trainable_component": true,
+    "full_S2_reuses_feasibility_head": false
+  },
+  "training": {
+    "epochs": 50,
+    "batch_size": 8,
+    "drop_last": false,
+    "shuffle": "torch_randperm_seed0_per_epoch",
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "scheduler": "none",
+    "early_stopping": false,
+    "development_evaluation_during_training": false,
+    "development_evaluation_count": 1,
+    "development_evaluation_time": "after_epoch_50",
+    "objective": "per_case_class_balanced_binary_cross_entropy",
+    "optimizer_steps_expected": 1900
+  },
+  "selection": {
+    "candidate_pool": 96,
+    "selected_anchors": 32,
+    "algorithm": "stable_score_sort_top96_then_deterministic_farthest_point_selection",
+    "anchor_preserving": true,
+    "coordinate_offsets": false
+  },
+  "metrics": {
+    "case_hit": "selected_positive_proxy_count_greater_than_zero",
+    "case_hit_rate": "mean_case_hit",
+    "positive_proxy_recall": "selected_positive_proxy_count_divided_by_all_positive_proxy_count",
+    "precision": "selected_positive_proxy_count_divided_by_32",
+    "false_positive_rate": "selected_negative_proxy_count_divided_by_all_negative_proxy_count",
+    "selected_anchor_spatial_coverage_mm": "mean_selected_anchor_nearest_neighbor_distance_times_manifest_normalization_scale",
+    "aggregation": "case_mean_with_fold_and_pooled_counts_reported"
+  },
+  "hard_gate": {
+    "per_fold": "100_of_100_development_cases_have_case_hit_true",
+    "overall": "all_four_folds_pass",
+    "manual_override": false,
+    "rerun_or_hyperparameter_tuning_after_result": false
+  },
+  "outcomes": {
+    "pass": "S2_full_weight_calibration_may_be_authorized_but_full_training_remains_separately_receipt_bound",
+    "fail": "S2_full_route_remains_locked",
+    "S1_effect": "S1_training_only_weight_calibration_remains_independent",
+    "model_selection_started": false
+  },
+  "forbidden": [
+    "development_driven_epoch_learning_rate_or_architecture_selection",
+    "development_evaluation_before_head_training_finishes",
+    "reuse_feasibility_head_in_full_S2",
+    "unfreeze_or_update_S0_encoder_or_batchnorm",
+    "holdout_inference_metrics_or_visual_review",
+    "change_32_selected_or_96_pool_after_feasibility_output",
+    "manual_gate_override"
+  ]
+}

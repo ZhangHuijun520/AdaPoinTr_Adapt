@@ -1,0 +1,121 @@
+{
+  "protocol_id": "mug500plus-m2-synthetic-defect-v1",
+  "status": "preregistered_generator_not_run",
+  "source_data_lock": {
+    "data_lock_id": "mug500plus-m1-healthy125-v1",
+    "healthy_skulls": 125,
+    "qc_pass_required": 125,
+    "duplicate_surface_groups_required": 0,
+    "protected_external_validation_unlocked": false
+  },
+  "determinism": {
+    "master_seed": 20260823,
+    "rng": "numpy-pcg64",
+    "seed_derivation": "sha256(protocol_id|master_seed|skull_id|defect_type|role|attempt)",
+    "npz_member_order": "lexicographic",
+    "npz_timestamp": "1980-01-01T00:00:00",
+    "overwrite_allowed": false
+  },
+  "surface_sampling": {
+    "method": "triangle-area-weighted-barycentric",
+    "triangle_assignment": "triangle-centroid-inside-implicit-cutter",
+    "partial_points": 8192,
+    "implant_points": 8192,
+    "complete_points": 8192,
+    "dtype": "float32"
+  },
+  "location": {
+    "candidate_directions": 32,
+    "direction_sequence": "fibonacci-sphere",
+    "family_stride": 7,
+    "retry_stride": 11,
+    "maximum_geometry_attempts": 16,
+    "surface_anchor": "triangle-centroid-with-maximum-projection",
+    "uses_source_geometry_only": true,
+    "anatomical_labels_claimed": false
+  },
+  "defect_families": {
+    "ellipsoid_small": {
+      "tangent_radius_u_scale": 0.1,
+      "tangent_radius_v_scale": 0.12,
+      "normal_radius_scale": 0.16,
+      "inward_center_offset_fraction": 0.3,
+      "irregular_lobes": []
+    },
+    "ellipsoid_medium": {
+      "tangent_radius_u_scale": 0.13,
+      "tangent_radius_v_scale": 0.16,
+      "normal_radius_scale": 0.2,
+      "inward_center_offset_fraction": 0.3,
+      "irregular_lobes": []
+    },
+    "ellipsoid_large": {
+      "tangent_radius_u_scale": 0.17,
+      "tangent_radius_v_scale": 0.2,
+      "normal_radius_scale": 0.24,
+      "inward_center_offset_fraction": 0.3,
+      "irregular_lobes": []
+    },
+    "irregular_medium": {
+      "tangent_radius_u_scale": 0.14,
+      "tangent_radius_v_scale": 0.17,
+      "normal_radius_scale": 0.2,
+      "inward_center_offset_fraction": 0.3,
+      "irregular_lobes": [
+        {"offset_u": 0.5, "offset_v": 0.15, "radius_scale": 0.62},
+        {"offset_u": -0.35, "offset_v": -0.45, "radius_scale": 0.55}
+      ]
+    }
+  },
+  "geometric_hard_gates": {
+    "removed_surface_area_fraction_min": 0.003,
+    "removed_surface_area_fraction_max": 0.25,
+    "minimum_removed_triangles": 256,
+    "minimum_remaining_triangles": 4096,
+    "reference_rim_band_mm": 2.0,
+    "minimum_reference_rim_points": 8,
+    "maximum_point_sampling_attempts": 32,
+    "all_arrays_finite": true,
+    "all_four_families_required_per_skull": true
+  },
+  "normalization": {
+    "centroid": "mean_of_sampled_defective_partial",
+    "scale": "maximum_radius_of_sampled_defective_partial",
+    "uses_partial_only": true,
+    "world_unit": "millimeter",
+    "shared_by_partial_implant_complete": true
+  },
+  "derived_dataset": {
+    "defects_per_skull": 4,
+    "expected_cases": 500,
+    "source_dataset": "mug500plus-v20-healthy125",
+    "manifest_format": "jsonl",
+    "point_container": "deterministic-npz",
+    "required_arrays": [
+      "partial",
+      "implant",
+      "gt",
+      "centroid",
+      "scale",
+      "reference_rim_mask"
+    ]
+  },
+  "split_policy": {
+    "unit": "source_skull",
+    "development_skulls": 100,
+    "locked_holdout_skulls": 25,
+    "development_folds": 4,
+    "fold_dev_skulls": 25,
+    "all_defects_from_one_skull_share_partition": true,
+    "split_generated_only_after_manifest_audit": true
+  },
+  "forbidden": [
+    "derive_generator_parameters_from_D2_or_D2.2_failure_cases",
+    "use_skullbreak_confirmation20_old_monitor_or_official_test",
+    "use_skullfix_for_generator_selection",
+    "use_gt_implant_or_gt_rim_at_inference",
+    "change_generator_after_derived_generation_starts",
+    "inspect_locked_holdout_metrics during development",
+    "claim anatomical defect labels for geometry-direction families"
+  ]
+}

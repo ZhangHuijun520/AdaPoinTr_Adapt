@@ -1,0 +1,98 @@
+{
+  "amendment_id": "mamba-v13-d3-s1-training-only-gradient-ratio-calibration-v1",
+  "status": "preregistered_before_s1_calibration",
+  "scope": "S1 seed-0 folds A-D calibration only",
+  "lineage": {
+    "parent_execution_protocol": "mamba-v13-d3-round-a-candidate-execution-v1",
+    "requires_frozen_s0_completion": true,
+    "requires_frozen_s2_feasibility_base_lock": true,
+    "requires_frozen_s2_feasibility_negative_receipt": true,
+    "s2_result_changes_s1_definition": false,
+    "implementation_lineage_rule": "parent hash is preferred; a mismatch is accepted only for model/contact code when the current hash equals the later frozen S2 feasibility base-lock hash referenced by the S2 negative receipt"
+  },
+  "scientific_role": {
+    "candidate": "S1",
+    "question": "Can the preregistered dense contact-existence plus GT-rim worst-10-percent tail objective eliminate dense 2 mm zero-contact failures?",
+    "calibration_is_model_selection": false,
+    "calibration_uses_outcome_metrics": false
+  },
+  "data_boundary": {
+    "allowed_partition": "development fold training subset only",
+    "folds": ["A", "B", "C", "D"],
+    "training_cases_per_fold": 300,
+    "batches_per_fold": 8,
+    "batch_size": 8,
+    "drop_last": true,
+    "batch_order": "seed0 train loader first 8 full batches",
+    "development_fold_evaluation_allowed": false,
+    "locked_holdout_allowed": false,
+    "old_monitor_allowed": false,
+    "confirmation20_allowed": false,
+    "official_test_allowed": false
+  },
+  "model_state": {
+    "source": "frozen S1 template seed-0 initialization",
+    "checkpoint_loaded": false,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "mamba_adapter_alpha_scale": 0.0,
+    "alpha_scale_reason": "match epoch-0 state before the first optimizer step",
+    "batchnorm_or_parameter_updates_persisted": false,
+    "random_state_restored_after_measurement": true
+  },
+  "auxiliary_objective": {
+    "prediction_stage": "dense_8192",
+    "components": [
+      "2mm_evaluator_aligned_contact_existence",
+      "GT_rim_to_dense_worst_10_percent_tail"
+    ],
+    "threshold_mm": 2.0,
+    "temperature_mm": 0.25,
+    "tail_fraction": 0.1,
+    "case_balanced": true,
+    "unit_auxiliary_weight_for_measurement": 1.0
+  },
+  "gradient_measurement": {
+    "parameters": "all trainable S1 parameters",
+    "missing_parameter_gradient": "zero",
+    "norm": "global_l2",
+    "reconstruction_loss": "frozen S1 reconstruction loss with auxiliary objective disabled",
+    "per_batch_raw_ratio": "auxiliary_gradient_l2/max(reconstruction_gradient_l2,1e-12)",
+    "fold_raw_ratio": "median of exactly 8 per-batch raw ratios",
+    "target_ratio": 0.075,
+    "calibrated_weight": "0.075/fold_raw_ratio",
+    "clipping_allowed": false,
+    "manual_adjustment_allowed": false,
+    "nonfinite_zero_or_nonpositive": "hard failure"
+  },
+  "receipt_contract": {
+    "one_immutable_receipt_per_fold": true,
+    "records_batch_case_ids": true,
+    "records_case_list_sha256": true,
+    "records_reconstruction_gradient_l2": true,
+    "records_auxiliary_gradient_l2": true,
+    "records_raw_ratio": true,
+    "records_calibrated_weight": true,
+    "records_model_state_restore_check": true,
+    "records_rng_restore_check": true,
+    "completion_requires_four_folds": true
+  },
+  "post_completion_permissions": {
+    "S1_runtime_config_materialization_authorized_next": true,
+    "S1_training_authorized_by_calibration_receipt": false,
+    "S2_calibration_authorized": false,
+    "S2_full_training_authorized": false,
+    "holdout_authorized": false,
+    "selection_started": false
+  },
+  "forbidden": [
+    "use development metrics to choose or alter the weight",
+    "inspect locked holdout",
+    "rerun a completed fold calibration",
+    "clip round or manually edit a calibrated weight",
+    "load an S0 or S2 checkpoint into S1 calibration",
+    "persist batchnorm parameter or optimizer updates",
+    "automatically start S1 training",
+    "reopen S2 feasibility calibration or full training"
+  ]
+}
