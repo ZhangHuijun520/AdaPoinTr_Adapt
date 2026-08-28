@@ -1,0 +1,121 @@
+{
+  "candidate_role": {
+    "T0": "same-seed paired reference, never counted as an experimental eligibility slot",
+    "T1": "high-resolution partial-only rim-aware query allocation",
+    "T2": "T1 plus contact-support preservation with fixed 8192 output points"
+  },
+  "d4_data": {
+    "development_case_target": 400,
+    "development_source_skull_target": 100,
+    "d3_development_source_reuse_forbidden": true,
+    "d3_holdout_source_reuse_forbidden": true,
+    "defects_per_source": 4,
+    "fold_count": 4,
+    "generator": "MUG500+ M2 synthetic defects v1, byte/hash bound",
+    "source_skull_out_of_fold": true,
+    "unused_mug500plus_sources_only": true
+  },
+  "d4a": {
+    "all_case_hit_required": true,
+    "candidate_count_scan_forbidden": true,
+    "development_evaluation_count_per_fold": 1,
+    "head_training_uses_training_sources_only": true,
+    "learned_feasibility_is_out_of_fold": true,
+    "oracle_candidate_availability_required": true,
+    "proposal_representation_and_selector_must_be_frozen_before_results": true,
+    "rim_query_budget": 32,
+    "selector_scan_forbidden": true
+  },
+  "dataset_qc": {
+    "case_pruning_from_model_performance_forbidden": true,
+    "empty_or_invalid_geometry_action": "freeze QC failure and amend the generator protocol before training",
+    "model_independent_only": true,
+    "source_hash_overlap_is_hard_failure": true
+  },
+  "efficiency_gates": {
+    "latency_ratio_max": 1.25,
+    "parameter_ratio_max": 1.1,
+    "peak_gpu_memory_ratio_max": 1.1,
+    "reference": "same-seed same-fold T0"
+  },
+  "final_noninferiority": {
+    "final_cd_l1_delta_mm_max": 0.1,
+    "final_hd95_delta_mm_max": 0.5,
+    "final_nsd_at_1mm_delta_min": -0.01
+  },
+  "hard_gate_order": [
+    "complete_exact_case_pairing",
+    "all_required_metrics_finite",
+    "dense_zero_contact_at_2mm_equals_zero",
+    "T2_generated_only_zero_contact_at_2mm_equals_zero",
+    "disaster_count_not_above_same_seed_T0",
+    "induced_disasters_not_above_rescued_disasters",
+    "contact_relevance_fixed_threshold_events_noninferior",
+    "final_noninferiority",
+    "efficiency"
+  ],
+  "pd3": {
+    "candidate_or_threshold_selection_authorized": false,
+    "d3_rerun_authorized": false,
+    "diagnostic_rank_cutoffs": [
+      32,
+      64,
+      96,
+      128
+    ],
+    "optimizer_steps": 0,
+    "post_hoc": true,
+    "protected_split_access_authorized": false,
+    "selection_inert": true,
+    "uses_exact_frozen_s0_and_head_checkpoints": true
+  },
+  "protected_splits": {
+    "all_locked": true,
+    "mug500plus_25_source_holdout": "locked",
+    "old_d3_development": "historical diagnosis only",
+    "skullbreak_confirmation20": "locked",
+    "skullbreak_official_test": "locked",
+    "skullfix": "locked for selection"
+  },
+  "protocol_version": "mamba-v14-d4-contact-support-v1",
+  "round_progression": {
+    "round_a": "T0/T1/T2, four folds, seed0",
+    "round_b_authorization": "at least one experimental candidate passes every hard gate; run T0 plus all eligible experimental candidates at seed1",
+    "seed2_authorization": "run T0 plus the preregistered lexicographic seed0/1 winner",
+    "zero_eligible_action": "freeze D4 negative and move to local rim-context representation"
+  },
+  "selection": {
+    "aggregation": "paired over all out-of-fold cases; source-skull is the resampling unit",
+    "manual_tie_break_forbidden": true,
+    "ranking": [
+      "lower disaster count",
+      "lower dense zero-contact count",
+      "lower fixed-threshold contact-relevance exceedance vector lexicographically",
+      "lower rim_contact_hd95 on the common finite paired subset",
+      "lower implant_hd95",
+      "lower latency",
+      "lower parameter count",
+      "candidate name lexical order"
+    ],
+    "t0_can_win": false
+  },
+  "support_relevance": {
+    "fixed_thresholds_mm": [
+      2.0,
+      5.0,
+      10.0,
+      20.0,
+      50.0
+    ],
+    "finite_only_p95_as_primary_gate_forbidden": true,
+    "nonfinite_counts_as_threshold_exceedance": true,
+    "report_bidirectional_gt_rim_support_distances": true
+  },
+  "t2_anti_gaming": {
+    "exact_partial_copy_ratio_reported": true,
+    "generated_only_contact_metrics_required": true,
+    "generated_only_zero_contact_hard_gate": true,
+    "retained_anchor_offset_distribution_reported": true,
+    "total_output_points": 8192
+  }
+}
