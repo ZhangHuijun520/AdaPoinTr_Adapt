@@ -1,0 +1,103 @@
+{
+  "protocol_id": "mamba-v14-d4-mug500plus-m2-fourfold-v1",
+  "status": "preregistered_generation_not_run",
+  "preregistered_on": "2026-08-29",
+  "purpose": "freeze D4 M2-v1-compatible synthetic generation and four source-skull folds before generating any derived case",
+  "lineage": {
+    "source100_qc_lock": {
+      "protocol_id": "mamba-v14-d4-mug500plus-source100-final-qc-lock-v1",
+      "files_manifest_sha256": "6103ebc8010441ad7a0c7eff4f96b3df0cae0e359de79258182b59917b5f12eb",
+      "receipt_sha256": "c76cc14db549badb08bf2e9005b58f4825067c0af17431c989359e9697d0c98a",
+      "assets_csv_sha256": "0e81a5a41e1a972d5d2d66c3603fcb101b9d6f8b4878460f259e4035514c1d15",
+      "required_sources": 100,
+      "required_qc_pass": 100,
+      "required_prior_overlap": 0
+    },
+    "m2_v1_engine": {
+      "implementation": "tools/generate_mug500plus_m2_synthetic_defects.py",
+      "implementation_sha256": "88a839afffadaa4d0eaf3fa7293e2cef0fdb2cccb7beb2af5062a91fc0f3adf7",
+      "base_protocol": "docs/mamba_v13_d3_mug500plus_phase_m2_synthetic_defect_protocol_v1.json",
+      "base_protocol_sha256": "1da529947cdce9972a2ce7881c05df891191d54026a96ed229c872cdd7e18768",
+      "inherited_sections": [
+        "surface_sampling",
+        "location",
+        "defect_families",
+        "geometric_hard_gates",
+        "normalization"
+      ],
+      "inherited_sections_must_be_unmodified": true
+    }
+  },
+  "d4_generation_overrides": {
+    "effective_protocol_id": "mamba-v14-d4-mug500plus-m2-synthetic-defect-v1",
+    "master_seed": 20260829,
+    "source_dataset": "mug500plus-v20-d4-source100",
+    "source_skulls": 100,
+    "defects_per_source": 4,
+    "expected_cases": 400,
+    "case_id": "mug500plus__Axxxx__defect_type",
+    "output_container": "deterministic-npz",
+    "output_manifest": "manifest.jsonl",
+    "overwrite_allowed": false
+  },
+  "defect_contract": {
+    "defect_types": [
+      "ellipsoid_small",
+      "ellipsoid_medium",
+      "ellipsoid_large",
+      "irregular_medium"
+    ],
+    "all_four_required_per_source": true,
+    "partial_points": 8192,
+    "implant_points": 8192,
+    "complete_points": 8192,
+    "reference_rim_band_mm": 2.0,
+    "uses_source_geometry_only": true,
+    "anatomical_labels_claimed": false
+  },
+  "four_fold_rule": {
+    "unit": "source_skull",
+    "salt": "mamba-v14-d4-m2-source-fourfold-v1-20260829",
+    "hash_algorithm": "sha256_utf8",
+    "fold_key": "SHA256(salt|fold|source_id)",
+    "assignment": "sort all 100 source IDs by fold key then assign A,B,C,D round-robin",
+    "folds": ["A", "B", "C", "D"],
+    "dev_sources_per_fold": 25,
+    "train_sources_per_fold": 75,
+    "dev_cases_per_fold": 100,
+    "train_cases_per_fold": 300,
+    "each_source_is_dev_once": true,
+    "same_source_four_cases_share_fold": true,
+    "model_or_geometry_metrics_used": false,
+    "manual_reassignment_allowed": false
+  },
+  "generation_audit_required_after_run": {
+    "exact_sources": 100,
+    "exact_cases": 400,
+    "all_source_hashes_reverified": true,
+    "all_derived_hashes_unique_and_verified": true,
+    "all_npz_contracts_verified": true,
+    "all_geometry_hard_gates_verified": true,
+    "all_paths_portable": true,
+    "fold_membership_rejoined_by_source_id": true,
+    "training_remains_locked_until_audit_passes": true
+  },
+  "lock_effect": {
+    "D4_M2_generation_authorized_after_protocol_lock": true,
+    "D4_M2_generation_started_by_lock": false,
+    "D4_training_authorized": false,
+    "D4_candidate_selection_authorized": false,
+    "D3_holdout_access_authorized": false,
+    "SkullBreak_confirmation20_access_authorized": false,
+    "official_test_access_authorized": false
+  },
+  "forbidden": [
+    "change_source100_membership",
+    "change_fold_salt_after_lock",
+    "split_four_cases_from_one_source_across_folds",
+    "change_inherited_M2_v1_geometry_or_sampling_sections",
+    "prune_or_replace_cases_using_generation_difficulty_or_model_results",
+    "start_training_or_candidate_selection_as_a_side_effect",
+    "access_D3_holdout_confirmation20_or_official_test"
+  ]
+}
