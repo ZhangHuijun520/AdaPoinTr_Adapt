@@ -1,0 +1,47 @@
+{
+  "protocol_id": "mamba-v14-d4-mug500plus-source100-final-qc-lock-v1",
+  "status": "preregistered_before_cross_batch_audit",
+  "preregistered_on": "2026-08-29",
+  "inputs": {
+    "source_acquisition_lock": "mamba-v14-d4-mug500plus-source100-acquisition-v1",
+    "batch_ids": [1, 2, 3],
+    "expected_source_counts": [40, 40, 20],
+    "expected_total_sources": 100,
+    "prior_source_lock": "mug500plus-m1-healthy125-v1"
+  },
+  "hard_gates": {
+    "all_batch_hash_manifests_valid": true,
+    "all_batch_receipts_passed": true,
+    "all_expected_source_ids_exact": true,
+    "all_extracted_asset_hashes_match": true,
+    "all_structural_qc_rows_pass": true,
+    "duplicate_asset_sha256_within_d4": 0,
+    "duplicate_surface_fingerprint_within_d4": 0,
+    "asset_sha256_overlap_with_d3_healthy125": 0,
+    "surface_fingerprint_overlap_with_d3_healthy125": 0,
+    "source_id_overlap_with_d3_healthy125": 0,
+    "craniotomy_or_B_series_accessed": false
+  },
+  "failure_policy": {
+    "automatic_source_replacement_forbidden": true,
+    "automatic_threshold_revision_forbidden": true,
+    "freeze_failure_and_require_separate_amendment": true
+  },
+  "success_effect": {
+    "D4_M2_protocol_preparation_authorized_next": true,
+    "synthetic_generation_authorized": false,
+    "D4_training_authorized": false,
+    "D4_candidate_selection_authorized": false,
+    "protected_split_access_authorized": false
+  },
+  "required_outputs": [
+    "source100_ids.txt",
+    "source100_assets.csv",
+    "source100_extraction_manifest.csv",
+    "source100_qc_per_case.csv",
+    "source100_overlap_audit.json",
+    "source100_qc_lock_receipt.json",
+    "source100_qc_lock_report_zh.md",
+    "files.sha256"
+  ]
+}

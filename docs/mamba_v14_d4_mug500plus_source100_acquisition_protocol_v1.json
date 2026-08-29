@@ -1,0 +1,88 @@
+{
+  "protocol_id": "mamba-v14-d4-mug500plus-source100-acquisition-v1",
+  "status": "preregistered_payload_not_downloaded",
+  "preregistered_on": "2026-08-28",
+  "purpose": "freeze 100 previously unused MUG500+ v20 healthy source skulls before any D4 payload download, QC, synthetic-defect generation, or model execution",
+  "parent_d4_protocol": {
+    "protocol_version": "mamba-v14-d4-contact-support-v1",
+    "git_commit": "a5e6f60067599cc4f1cf81b22975d1adade9e19a",
+    "git_tag": "mamba-adapter-v14-pd3-s2-failure-decomposition-seed0",
+    "protocol_json_sha256": "7dff6bd80f62aef273960e1d6546f67c97745ae3e3fa64c6e5ba26d2054ce4e3",
+    "protocol_report_sha256": "7c0f2089c462f2d1e579f6ffbee325a59a65e0d5772e76880a7a2d47c492490d"
+  },
+  "official_metadata": {
+    "article_id": 9616319,
+    "version": 20,
+    "article_json_sha256": "32b6b6e3f57bfd90c45933560723742814e61993ff2f4399dd794156288301e2",
+    "files_json_sha256": "f475490611f5d17536bbf76a0f7db0693a668fd3e87e8502ec395db6b461a078",
+    "healthy_series": "A0001-A0500",
+    "protected_series": "craniotomy/B-series"
+  },
+  "excluded_d3_lineage": {
+    "m1_lock_id": "mug500plus-m1-healthy125-v1",
+    "m1_healthy125_ids_sha256": "558ec65c8b1d16283406b62f52ef132c59f81160b7e66d237aab8335d78ad17a",
+    "m1_receipt_sha256": "43cafddb0edabef5486c0c12d47164be676d07f049c4ca7dd6c6be9823fd7d62",
+    "m1_files_manifest_sha256": "3892dbcad93418834daf1c1abb4915c8e73a0d6d538741ea8dc49539c8c522d0",
+    "d3_split_protocol_id": "mug500plus-m2-d3-source-split-100-25-v1",
+    "d3_development100_ids_sha256": "2771ef919a4fe25f913acac9e9f8c6012ec8b6fc965db649df46acba3abf4838",
+    "d3_holdout25_ids_sha256": "05a788bd09a1e56357ebbbe41450a492a4caf8214171cd669e8ae4c143863a1d",
+    "d3_split_receipt_sha256": "c2519155b1d433e434d4bcb16a1d58b0d614985083b1125785c723d6525a1379",
+    "d3_split_files_manifest_sha256": "c189245b585768130ac18da10bdfbb993edb77fff55912538f2460899b0c17da",
+    "required_identity": "M1 healthy125 IDs must equal the disjoint union of D3 development100 and locked holdout25 IDs"
+  },
+  "selection_rule": {
+    "unit": "complete_official_A_series_archive",
+    "target_source_skulls": 100,
+    "salt": "mamba-v14-d4-new-source-development-v1-20260828",
+    "hash_algorithm": "sha256_utf8",
+    "strata": "ten fixed 50-skull index bands: A0001-A0050 through A0451-A0500",
+    "within_stratum_key": "SHA256(salt|archive|archive_name|normalized_md5|size_bytes)",
+    "interleave": "ascending stratum 0..9, one archive per non-empty stratum per depth",
+    "archive_acceptance": "scan interleaved order; accept a complete archive when cumulative skulls plus archive skulls does not exceed 100; otherwise skip it; stop only at exactly 100",
+    "partial_prior_overlap_action": "hard_failure",
+    "exact_target_failure_action": "hard_failure",
+    "manual_reassignment_allowed": false,
+    "geometry_qc_or_model_metrics_used": false
+  },
+  "download_plan": {
+    "target_skulls_per_batch": 40,
+    "archive_boundaries_preserved": true,
+    "expected_batches": 3,
+    "download_before_lock_allowed": false,
+    "download_after_lock_requires_md5_and_size_verification": true,
+    "extract_only_selected_clear_stl": true,
+    "nrrd_png_nonclear_and_protected_assets_forbidden": true
+  },
+  "lock_effect": {
+    "payload_download_authorized": true,
+    "payload_qc_authorized": true,
+    "synthetic_defect_generation_authorized": false,
+    "D4_training_authorized": false,
+    "D4_candidate_selection_authorized": false,
+    "D3_holdout_access_authorized": false,
+    "SkullBreak_confirmation20_access_authorized": false,
+    "official_test_access_authorized": false
+  },
+  "required_outputs": [
+    "source_acquisition_protocol_v1.json",
+    "excluded_d3_source125_ids.txt",
+    "d4_source100_ids.txt",
+    "d4_source100_archive_plan.csv",
+    "d4_source100_source_plan.csv",
+    "batch_001_downloads.csv through batch_003_downloads.csv",
+    "batch_001_expected_source_ids.txt through batch_003_expected_source_ids.txt",
+    "source_overlap_audit.json",
+    "source_acquisition_lock_receipt.json",
+    "source_acquisition_lock_report_zh.md",
+    "files.sha256"
+  ],
+  "forbidden": [
+    "reuse_any_D3_development_or_holdout_source_skull",
+    "select_part_of_an_official_archive_that_contains_prior_D3_sources",
+    "change_the_salt_or_selection_rule_after_viewing_downloaded_geometry",
+    "replace_failed_QC_sources_without_a_formal_amendment",
+    "use_geometry_QC_model_predictions_or_metrics_for_source_selection",
+    "access_craniotomy_B_series_or_any_protected_split",
+    "start_synthetic_generation_or_training_as_a_side_effect_of_this_lock"
+  ]
+}
