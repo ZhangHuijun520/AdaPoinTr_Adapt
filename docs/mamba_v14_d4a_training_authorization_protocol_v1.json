@@ -1,0 +1,115 @@
+{
+  "protocol_id": "mamba-v14-d4a-training-authorization-v1",
+  "status": "preregistered_after_zero_step_before_head_only_training",
+  "preregistered_on": "2026-08-30",
+  "lineage": {
+    "parent_git_commit": "c59eece3ca37e5d6a1bfa755013b5721f04fac2d",
+    "parent_git_tag": "mamba-adapter-v14-d4a-zero-step-preflight-v1",
+    "candidate_training_protocol_sha256": "1fd3d6dff2876d4dbaec92b6dc34e61ba833ddee0ff7bbe4cd0abf64488eb24a",
+    "zero_step_result_report_sha256": "77b311f1a14a6534e23cf31cf29b22964108c3527878785b830bc389214f97b6",
+    "server_zero_step": {
+      "receipt_sha256": "20b728a1760d906bf89076c5991730275557065c98762c2e6d2ac0d673b91dfc",
+      "metrics_sha256": "b3fff3299b8e3f4354a09f9aa552e88386ca57f3ebef8163a42d357e5916cde2",
+      "report_sha256": "68d177bbf52c98b7a6b06a478786790b5150916e5a94d93aa0dba18fee623dfc",
+      "files_manifest_sha256": "85c9f8a322b975a8a79b31ed2ef9f1b3421c635bdf2de75bc335153df7d16a74",
+      "required_status": "implementation_zero_step_preflight_passed"
+    }
+  },
+  "authorization_scope": {
+    "candidate": "D4A_head_only",
+    "folds": ["A", "B", "C", "D"],
+    "seed": 0,
+    "D4A_head_only_training_authorized": true,
+    "one_shot_development_evaluation_authorized": true,
+    "T0_training_authorized": false,
+    "T1_training_authorized": false,
+    "T2_training_authorized": false,
+    "D4_candidate_selection_authorized": false,
+    "protected_data_access_authorized": false,
+    "training_started_by_authorization": false
+  },
+  "data": {
+    "source_skulls": 100,
+    "cases": 400,
+    "train_sources_per_fold": 75,
+    "dev_sources_per_fold": 25,
+    "train_cases_per_fold": 300,
+    "dev_cases_per_fold": 100,
+    "cases_per_source": 4,
+    "training_order_unit": "source_skull",
+    "source_shuffle_seed": 0,
+    "within_source_case_order": "case_id_lexicographic",
+    "train_dev_source_overlap": 0,
+    "descriptor_cache": "in_memory_CPU_float32_fold_local",
+    "dev_assets_may_be_opened": "only_after_all_50_training_epochs_finish"
+  },
+  "model": {
+    "candidate_count": 8192,
+    "descriptor_dimensions": 13,
+    "descriptor_knn": 16,
+    "descriptor_query_chunk_size": 512,
+    "head_layers": [13, 128, 64, 1],
+    "activation": "GELU",
+    "dropout": 0.0,
+    "loss": "case_balanced_binary_cross_entropy",
+    "selector": "mandatory_top8_plus_conditioned_deterministic_FPS24_over_top256",
+    "selected_count": 32,
+    "backbone_or_completion_checkpoint_loaded": false,
+    "only_proposal_head_trainable": true
+  },
+  "training": {
+    "epochs": 50,
+    "batch_size": 8,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "scheduler": "CosineAnnealingLR",
+    "scheduler_t_max_epochs": 50,
+    "minimum_learning_rate": 0.00001,
+    "gradient_clip_norm": 1.0,
+    "early_stopping": false,
+    "augmentation": "none",
+    "optimizer_steps_per_fold": 1900,
+    "checkpoint_policy": "final_epoch_only",
+    "intermediate_checkpoint_writes": 0,
+    "dev_evaluation_during_training": false,
+    "dev_evaluation_count_after_training": 1
+  },
+  "hard_gate": {
+    "oracle_positive_candidate_exists_for_all_400_cases": true,
+    "selected_32_contains_positive_for_all_400_out_of_fold_cases": true,
+    "all_required_outputs_finite": true,
+    "exact_case_pairing": true,
+    "all_four_folds_complete": true,
+    "protected_data_accessed": false,
+    "pass_action": "authorize_separate_T0_T1_T2_round_A_materialization_only",
+    "failure_action": "freeze_D4A_negative_and_forbid_T0_T1_T2_round_A",
+    "automatic_T0_T1_T2_execution": false
+  },
+  "output": {
+    "fold_artifacts": [
+      "head_final_epoch.pth",
+      "development_per_case.csv",
+      "fold_summary.json",
+      "run_receipt.json",
+      "files.sha256"
+    ],
+    "aggregate_artifacts": [
+      "d4a_all_case_metrics.csv",
+      "d4a_training_completion_receipt.json",
+      "d4a_training_result_zh.md",
+      "files.sha256"
+    ]
+  },
+  "forbidden": [
+    "change_descriptor_head_selector_or_training_budget",
+    "scan_knn_pool_size_top_score_quota_or_seed",
+    "access_dev_before_the_final_training_epoch",
+    "evaluate_dev_more_than_once_per_fold",
+    "select_a_best_epoch_or_checkpoint_from_dev",
+    "load_a_backbone_or_completion_checkpoint",
+    "start_T0_T1_or_T2_as_a_side_effect",
+    "access_holdout_confirmation20_old_monitor_official_test_or_other_protected_data",
+    "revise_the_all_case_gate_after_results"
+  ]
+}

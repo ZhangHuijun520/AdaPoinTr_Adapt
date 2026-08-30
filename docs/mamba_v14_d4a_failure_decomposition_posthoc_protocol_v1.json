@@ -1,0 +1,51 @@
+{
+  "analysis_scope": {
+    "cases": 400,
+    "checkpoint_count": 4,
+    "folds": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "replay_target": "same-fold frozen out-of-fold development cases"
+  },
+  "classification": {
+    "ranking_miss_top256": "no positive candidate occurs in the frozen score-ranked top-256 pool",
+    "selected_hit": "at least one positive candidate occurs in mandatory top-8 or conditioned FPS-24",
+    "selector_dropped_all_pool_positive": "positive candidates occur in top-256 but none occur in final top-8 plus FPS-24"
+  },
+  "frozen_selector": {
+    "conditioned_deterministic_fps": 24,
+    "mandatory_top_score": 8,
+    "ranked_pool": 256,
+    "total_selected": 32
+  },
+  "lineage": {
+    "completion_status": "D4A_frozen_negative_all_case_gate_failed",
+    "expected_cases": 400,
+    "expected_hits": 332,
+    "expected_misses": 68
+  },
+  "permissions": {
+    "D4_candidate_selection_authorized": false,
+    "T0_T1_T2_materialization_authorized": false,
+    "model_updates": 0,
+    "optimizer_steps": 0,
+    "post_hoc": true,
+    "protected_data_access_authorized": false,
+    "selection_inert": true,
+    "threshold_revision_authorized": false,
+    "training_authorized": false
+  },
+  "protocol_id": "mamba-v14-d4a-failure-decomposition-posthoc-v1",
+  "required_checks": [
+    "verify the frozen authorization receipt and proposal-module hash",
+    "verify completion and every fold hash manifest",
+    "verify four final head checkpoint hashes against run receipts",
+    "reproduce all 400 original selected-positive counts and hits",
+    "require finite replay logits",
+    "preserve the original 332/400 gate result"
+  ],
+  "status": "posthoc_observation_only_preregistered"
+}
