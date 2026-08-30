@@ -1,0 +1,88 @@
+{
+  "protocol_id": "mamba-v14-d4a-zero-step-preflight-v1",
+  "status": "post_candidate_lock_pre_D4A_execution_implementation_preflight",
+  "purpose": "verify the preregistered D4-A descriptor, proposal head, loss, backward, and selector paths without training or development evaluation",
+  "lineage": {
+    "parent_commit": "581ecf4c9ef35f28a65e4817704b15e8d42473f8",
+    "parent_tag": "mamba-adapter-v14-d4-candidate-training-preregistered-v1",
+    "candidate_training_protocol_sha256": "1fd3d6dff2876d4dbaec92b6dc34e61ba833ddee0ff7bbe4cd0abf64488eb24a"
+  },
+  "scope": {
+    "implementation_allowed": true,
+    "zero_step_preflight_allowed": true,
+    "D4A_training_allowed": false,
+    "D4_full_training_allowed": false,
+    "development_evaluation_allowed": false,
+    "candidate_selection_allowed": false,
+    "protected_data_access_allowed": false
+  },
+  "probe_cases": {
+    "folds": ["A", "B", "C", "D"],
+    "source": "same_fold_training_case_ids_only",
+    "selection": "lexicographically_first_case_not_used_by_an_earlier_fold_probe",
+    "cases_per_fold": 1,
+    "total_cases": 4,
+    "dev_case_access": 0
+  },
+  "descriptor": {
+    "candidate_count": 8192,
+    "dimensions": 13,
+    "knn": 16,
+    "self_neighbor_excluded_by_index": true,
+    "offset_definition": "knn_centroid_minus_candidate_coordinate",
+    "distance_std": "population",
+    "covariance_divisor": 16,
+    "eigenvalue_order": "ascending",
+    "epsilon": 1e-08,
+    "query_chunk_size": 512
+  },
+  "proposal_head": {
+    "layers": [13, 128, 64, 1],
+    "activation": "GELU_after_first_and_second_linear_layers",
+    "dropout": 0.0,
+    "initialization": "truncated_normal_std_0.02_weights_zero_biases",
+    "seed": 0,
+    "loss": "case_balanced_binary_cross_entropy"
+  },
+  "selector": {
+    "mandatory_top_score_count": 8,
+    "ranked_pool_size": 256,
+    "diversified_count": 24,
+    "selected_count": 32,
+    "score_tie_break": "candidate_index_ascending",
+    "fps_conditioning": "all_mandatory_top8_points",
+    "fps_distance_tie_break": "score_rank_then_candidate_index"
+  },
+  "zero_step_contract": {
+    "device": "CUDA_required",
+    "forward_passes_per_fold": 1,
+    "backward_passes_per_fold": 1,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "checkpoint_loaded": false,
+    "checkpoint_written": false,
+    "selected_hit_is_observation_only_not_a_gate": true,
+    "required_checks": [
+      "input_and_reference_rim_contract",
+      "descriptor_shape_and_finiteness",
+      "proposal_logit_shape_and_finiteness",
+      "case_balanced_loss_finite",
+      "proposal_gradients_finite_and_nonzero",
+      "selector_returns_32_unique_in_pool_indices",
+      "parameter_hash_unchanged_after_backward",
+      "no_dev_or_protected_access"
+    ]
+  },
+  "receipt": {
+    "immutable_output": true,
+    "artifacts": [
+      "fold_probe_metrics.csv",
+      "zero_step_preflight_receipt.json",
+      "zero_step_preflight_report_zh.md",
+      "files.sha256"
+    ],
+    "next_step_on_pass": "separate_D4A_training_execution_authorization",
+    "automatic_training_after_pass": false
+  }
+}
