@@ -1,0 +1,326 @@
+{
+  "protocol_id": "mamba-v14-d4-candidate-training-v1",
+  "status": "preregistered_candidates_and_budgets_locked_training_not_authorized",
+  "preregistered_on": "2026-08-30",
+  "purpose": "freeze D4-A feasibility, T0/T1/T2 definitions, training budgets, source-fourfold execution, gates, and progression before any D4 model training",
+  "lineage": {
+    "parent_git_commit": "7d30d8519474fac4566e92e38599ce006c7e4180",
+    "parent_git_tag": "mamba-adapter-v14-d4-m2-generation-audit-v1",
+    "scientific_protocol": {
+      "path": "docs/mamba_v14_d4_contact_support_representation_protocol_v1.json",
+      "sha256": "7dff6bd80f62aef273960e1d6546f67c97745ae3e3fa64c6e5ba26d2054ce4e3"
+    },
+    "pd3_result": {
+      "path": "docs/mamba_v14_pd3_s2_failure_decomposition_result_zh.md",
+      "sha256": "629344497e16dee56991d9ed45e31faa1a3f0e3da623287fb3fc4f075602b356",
+      "ranking_miss_top96": 2,
+      "selector_dropped_all_positive": 6,
+      "candidate_or_threshold_selection_authorized": false
+    },
+    "fourfold_lock": {
+      "protocol_sha256": "505f7e510447cdb7b3be8016fafcf8126f9f6e093536d4aba1587d672183b324",
+      "receipt_sha256": "84c92aacc7a3bf7bac1d84f5ff1eb1b63a241705f07e930b99ded7ae7a1a5885",
+      "files_manifest_sha256": "3b431cfddc3c9575f9269e1535bd3c4ba66c1220b64a77b14256fea152aa1b7b"
+    },
+    "generation_audit": {
+      "audit_id": "mamba-v14-d4-mug500plus-m2-generation-audit-v1",
+      "summary_sha256": "829a74d2eccd6bedd61bd2c1041e6120394c00ee6f645922beadeb61a45a565f",
+      "files_manifest_sha256": "0b51735e0af8ef14fddca8e378155b0d9b60ff818fe163813287f7935c731929",
+      "portable_manifest_sha256": "709759f5a32fe8862668b5a457f9f7be60489fcabb63fa83093fd6627278e781",
+      "required_status": "generation_integrity_passed_training_and_selection_still_locked"
+    }
+  },
+  "data_and_folds": {
+    "source_skulls": 100,
+    "cases": 400,
+    "folds": ["A", "B", "C", "D"],
+    "train_sources_per_fold": 75,
+    "dev_sources_per_fold": 25,
+    "train_cases_per_fold": 300,
+    "dev_cases_per_fold": 100,
+    "source_skull_is_the_resampling_unit": true,
+    "same_source_four_cases_must_share_fold": true,
+    "development_evaluations_per_run": 1,
+    "holdout_or_protected_data_allowed": false
+  },
+  "execution_sequence": [
+    "lock_protocol_and_non_runnable_templates",
+    "implement_and_zero_step_preflight_all_paths",
+    "run_D4A_training_only_proposal_feasibility_folds_A_to_D",
+    "freeze_D4A_receipt_and_apply_all_case_gate",
+    "if_D4A_passes_run_T0_T1_T2_round_A_seed0",
+    "freeze_round_A_gate_receipt_without_rule_revision"
+  ],
+  "d4a_feasibility": {
+    "candidate_coordinates": "all_8192_normalized_partial_points_in_original_frozen_order",
+    "candidate_count": 8192,
+    "ground_truth_label": "reference_rim_mask_training_only",
+    "descriptor": {
+      "knn": 16,
+      "self_neighbor_excluded": true,
+      "distance": "euclidean_normalized_space",
+      "epsilon": 1e-08,
+      "components": {
+        "normalized_xyz": 3,
+        "offset_to_knn_centroid": 3,
+        "knn_distance_mean_std_max": 3,
+        "covariance_eigenvalues_divided_by_trace_ascending": 3,
+        "radial_norm": 1
+      },
+      "total_dimensions": 13,
+      "augmentation": "none"
+    },
+    "proposal_head": {
+      "layers": [13, 128, 64, 1],
+      "activation": "GELU",
+      "dropout": 0.0,
+      "loss": "case_balanced_binary_cross_entropy",
+      "backbone_or_completion_checkpoint_loaded": false
+    },
+    "selector": {
+      "rim_query_budget": 32,
+      "mandatory_top_score_count": 8,
+      "ranked_pool_size": 256,
+      "diversified_count": 24,
+      "algorithm": "retain_top8_then_deterministic_euclidean_fps_over_top256_conditioned_on_retained_set",
+      "score_tie_break": "candidate_index_ascending",
+      "fps_distance_tie_break": "score_rank_then_candidate_index",
+      "candidate_count_or_selector_scan_allowed": false
+    },
+    "training": {
+      "unit": "source_skull_out_of_fold",
+      "folds": 4,
+      "seed": 0,
+      "epochs": 50,
+      "batch_size": 8,
+      "optimizer": "AdamW",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "scheduler": "CosineAnnealingLR",
+      "minimum_learning_rate": 0.00001,
+      "gradient_clip_norm": 1.0,
+      "early_stopping": false,
+      "dev_evaluation_during_training": false,
+      "one_shot_dev_evaluation_after_final_epoch": true,
+      "head_checkpoint_selection": "final_epoch_only"
+    },
+    "hard_gate": {
+      "oracle_positive_candidate_exists_for_all_400_cases": true,
+      "selected_32_contains_positive_for_all_400_out_of_fold_cases": true,
+      "all_required_outputs_finite": true,
+      "exact_case_pairing": true,
+      "protected_data_accessed": false,
+      "all_folds_must_pass": true,
+      "failure_action": "freeze_D4A_negative_and_forbid_T0_T1_T2_round_A"
+    },
+    "checkpoint_use_after_pass": "load_same_fold_final_head_into_T1_and_T2_and_keep_head_frozen"
+  },
+  "common_model": {
+    "architecture": "AdaPoinTr_Implant_8192_plus_Mamba_Adapter_v1.1",
+    "input_points": 8192,
+    "output_points": 8192,
+    "num_queries": 256,
+    "query_selection": "learned_only",
+    "mamba_order": "xyz",
+    "mamba_depth": 2,
+    "mamba_d_state": 16,
+    "mamba_d_conv": 4,
+    "mamba_expand": 2,
+    "mamba_drop_path": 0.05,
+    "alpha_init": 0.01,
+    "alpha_warmup_epochs": 20,
+    "dense_contact_objective_enabled": false,
+    "denoise_weight": 0.0
+  },
+  "candidates": {
+    "T0": {
+      "role": "same_seed_same_fold_reference_only",
+      "global_learned_queries": 256,
+      "rim_queries": 0,
+      "proposal_head": "disabled",
+      "support_preservation": "disabled"
+    },
+    "T1": {
+      "role": "experimental_high_resolution_rim_aware_query_allocation",
+      "global_learned_queries": 224,
+      "rim_queries": 32,
+      "proposal_head": "same_fold_frozen_D4A_final_head",
+      "selector": "frozen_D4A_top8_plus_conditioned_FPS24",
+      "rim_query_feature": "project_selected_13D_descriptor_plus_anchor_positional_encoding_plus_learned_rim_type_embedding",
+      "anchor_coordinate_is_query_positional_prior": true,
+      "support_preservation": "disabled"
+    },
+    "T2": {
+      "role": "experimental_T1_plus_contact_preserving_support",
+      "global_learned_queries": 224,
+      "rim_queries": 32,
+      "proposal_head": "same_fold_frozen_D4A_final_head",
+      "selector": "frozen_D4A_top8_plus_conditioned_FPS24",
+      "rim_query_feature": "same_as_T1",
+      "support_offset": "0.02_times_tanh_raw_offset_in_normalized_space",
+      "support_points": 32,
+      "ordinary_generated_points": 8160,
+      "total_output_points": 8192,
+      "replacement_rule": "replace_offspring_index0_of_each_rim_query_group_with_its_bounded_support_point",
+      "generated_only_metrics_exclude_the_32_replaced_support_points": true,
+      "exact_partial_copy_ratio_reported": true,
+      "offset_distribution_reported_in_normalized_and_world_mm": true
+    }
+  },
+  "round_a_training_budget": {
+    "candidates": ["T0", "T1", "T2"],
+    "folds": ["A", "B", "C", "D"],
+    "seed": 0,
+    "maximum_full_trainings_after_D4A_pass": 12,
+    "epochs_per_training": 100,
+    "total_batch_size": 8,
+    "step_per_update": 1,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0005,
+    "scheduler": {
+      "type": "LambdaLR",
+      "decay_step": 21,
+      "lr_decay": 0.9,
+      "lowest_decay": 0.02
+    },
+    "bn_scheduler": {
+      "decay_step": 21,
+      "bn_decay": 0.5,
+      "bn_momentum": 0.9,
+      "lowest_decay": 0.01
+    },
+    "gradient_clip_norm": null,
+    "early_stopping": false,
+    "dev_evaluation_during_training": false,
+    "checkpoint_for_evaluation": "final_epoch_then_training_fold_only_batchnorm_recalibration",
+    "dev_evaluation_count_per_candidate_fold": 1,
+    "best_checkpoint_selection_from_dev_forbidden": true,
+    "training_order": "T0_A_to_D_then_T1_A_to_D_then_T2_A_to_D",
+    "S1_or_other_contact_loss_allowed": false
+  },
+  "required_metrics": {
+    "global": [
+      "implant_cd_l1_mm",
+      "implant_hd95_mm",
+      "implant_nsd_at_1mm",
+      "final_cd_l1_mm",
+      "final_hd95_mm",
+      "final_nsd_at_1mm"
+    ],
+    "contact": [
+      "coarse_zero_support_at_2mm",
+      "coarse_support_count_at_2mm",
+      "dense_zero_contact_at_2mm",
+      "dense_support_count_at_2mm",
+      "rim_contact_hd95_mm",
+      "gt_rim_to_predicted_support_p50_mm",
+      "gt_rim_to_predicted_support_p95_mm",
+      "predicted_support_to_gt_rim_p50_mm",
+      "predicted_support_to_gt_rim_p95_mm"
+    ],
+    "t2_additional": [
+      "generated_only_zero_contact_at_2mm",
+      "generated_only_support_count_at_2mm",
+      "generated_only_bidirectional_support_relevance",
+      "exact_partial_copy_ratio",
+      "support_offset_p50_p95_max"
+    ],
+    "efficiency": [
+      "parameter_count",
+      "median_inference_latency_ms",
+      "peak_gpu_memory_mib",
+      "training_wall_time_seconds"
+    ]
+  },
+  "round_a_hard_gates": {
+    "order": [
+      "complete_exact_case_pairing",
+      "all_required_metrics_finite",
+      "dense_zero_contact_at_2mm_equals_zero",
+      "T2_generated_only_zero_contact_at_2mm_equals_zero",
+      "disaster_count_not_above_same_seed_same_fold_T0",
+      "induced_disasters_not_above_rescued_disasters",
+      "contact_relevance_event_vectors_componentwise_not_above_T0",
+      "final_noninferiority",
+      "efficiency"
+    ],
+    "disaster_definition": "any_required_metric_nonfinite_or_rim_contact_hd95_mm_above_50",
+    "contact_relevance": {
+      "thresholds_mm": [2.0, 5.0, 10.0, 20.0, 50.0],
+      "directions": [
+        "gt_rim_to_predicted_support",
+        "predicted_support_to_gt_rim"
+      ],
+      "event": "per_case_directional_p95_nonfinite_or_above_threshold",
+      "nonfinite_counts_as_event": true,
+      "candidate_event_count_must_not_exceed_T0_at_every_direction_and_threshold": true,
+      "finite_only_p95_as_primary_gate_forbidden": true
+    },
+    "final_noninferiority_vs_T0": {
+      "final_cd_l1_delta_mm_max": 0.1,
+      "final_hd95_delta_mm_max": 0.5,
+      "final_nsd_at_1mm_delta_min": -0.01
+    },
+    "efficiency_vs_T0": {
+      "parameter_ratio_max": 1.1,
+      "peak_gpu_memory_ratio_max": 1.1,
+      "median_latency_ratio_max": 1.25
+    },
+    "paired_transition_reporting_required": true,
+    "bootstrap_unit": "source_skull",
+    "bootstrap_samples": 2000
+  },
+  "selection_and_progression": {
+    "T0_is_an_eligibility_slot": false,
+    "round_b_condition": "at_least_one_of_T1_T2_passes_every_round_A_hard_gate",
+    "round_b": "run_same_fold_T0_and_all_seed0_eligible_experimental_candidates_at_seed1",
+    "seed2": "run_T0_and_the_fixed_lexicographic_seed0_seed1_provisional_winner",
+    "experimental_candidate_ranking": [
+      "lower_disaster_count",
+      "lower_dense_zero_contact_count",
+      "lower_contact_relevance_event_vector_lexicographically",
+      "lower_rim_contact_hd95_on_common_finite_paired_subset",
+      "lower_implant_hd95",
+      "lower_latency",
+      "lower_parameter_count",
+      "candidate_name_lexical_order"
+    ],
+    "manual_tie_break": false,
+    "zero_eligible_action": "freeze_D4_negative_and_move_to_local_rim_context_representation",
+    "rule_revision_after_results": false
+  },
+  "protected_splits": {
+    "mug500plus_D3_25_source_holdout": "locked",
+    "D3_development": "historical_post_hoc_only",
+    "skullbreak_confirmation20": "locked",
+    "skullbreak_old_monitor": "locked",
+    "skullbreak_official_test": "locked",
+    "skullfix_selection": "locked"
+  },
+  "lock_effect": {
+    "non_runnable_templates_generated": 12,
+    "D4_implementation_and_zero_step_preflight_authorized_next": true,
+    "D4A_execution_authorized": false,
+    "D4_training_authorized": false,
+    "D4_candidate_selection_authorized": false,
+    "round_b_authorized": false,
+    "holdout_access_authorized": false,
+    "protected_data_accessed": false,
+    "training_started": false,
+    "selection_started": false
+  },
+  "forbidden": [
+    "change_candidate_count_descriptor_head_selector_or_query_budget_after_D4A_results",
+    "scan_pool_size_top_score_quota_knn_or_support_offset",
+    "use_D4_dev_during_head_or_model_training",
+    "evaluate_D4_dev_more_than_once_per_frozen_run",
+    "transfer_D4A_dev_labels_or_metrics_into_T1_T2_inference",
+    "fine_tune_the_frozen_D4A_head_inside_T1_or_T2",
+    "add_S1_dense_contact_or_other_contact_loss_in_round_A",
+    "select_best_epoch_or_checkpoint_using_D4_dev",
+    "change_hard_gates_or_ranking_after_results",
+    "access_any_protected_split",
+    "start_training_as_a_side_effect_of_protocol_locking"
+  ]
+}
