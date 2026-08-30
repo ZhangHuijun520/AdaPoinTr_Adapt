@@ -1,0 +1,54 @@
+{
+  "protocol_id": "mamba-v14-d4-mug500plus-m2-generation-audit-v1",
+  "status": "preregistered_before_generation_audit",
+  "preregistered_on": "2026-08-30",
+  "purpose": "independently verify the frozen D4 M2 source100 generation before any training or candidate selection",
+  "lineage": {
+    "generation_protocol_id": "mamba-v14-d4-mug500plus-m2-fourfold-v1",
+    "generator_bundle_sha256": "4ac9b1cb29f46e79e5dde1adfd8abf868e8a440dd366e25237bafcc5369c7e93",
+    "source100_files_manifest_sha256": "6103ebc8010441ad7a0c7eff4f96b3df0cae0e359de79258182b59917b5f12eb",
+    "source100_receipt_sha256": "c76cc14db549badb08bf2e9005b58f4825067c0af17431c989359e9697d0c98a",
+    "source100_assets_sha256": "0e81a5a41e1a972d5d2d66c3603fcb101b9d6f8b4878460f259e4035514c1d15",
+    "fourfold_files_manifest_sha256": "3b431cfddc3c9575f9269e1535bd3c4ba66c1220b64a77b14256fea152aa1b7b",
+    "fourfold_assignment_sha256": "94b74c54267bed307e84d9e64700e6606f2605bbec72854184e618cbe3361735"
+  },
+  "expected_cardinality": {
+    "source_skulls": 100,
+    "derived_cases": 400,
+    "cases_per_source": 4,
+    "folds": ["A", "B", "C", "D"],
+    "sources_per_fold": 25,
+    "cases_per_fold": 100
+  },
+  "hard_gates": {
+    "generation_receipt_and_manifest_hash_chain_valid": true,
+    "source100_and_fourfold_hash_chains_valid": true,
+    "source_assets_rehashed_and_match_lock": true,
+    "derived_case_hashes_all_match_and_are_unique": true,
+    "manifest_and_cases_directory_are_bijective": true,
+    "npz_members_shapes_dtypes_and_finiteness_valid": true,
+    "partial_only_normalization_valid": true,
+    "reference_rim_points_minimum": 8,
+    "removed_surface_area_fraction_min": 0.003,
+    "removed_surface_area_fraction_max": 0.25,
+    "minimum_removed_triangles": 256,
+    "minimum_remaining_triangles": 4096,
+    "all_four_families_present_per_source": true,
+    "all_four_cases_from_each_source_share_frozen_fold": true,
+    "all_manifest_paths_relative_and_resolvable": true,
+    "no_unmanifested_npz_files": true
+  },
+  "audit_effect": {
+    "D4_training_authorized_on_pass": false,
+    "D4_candidate_selection_authorized_on_pass": false,
+    "protected_data_access_authorized": false,
+    "next_step_on_pass": "freeze_a_separate_D4_candidate_and_training_protocol"
+  },
+  "forbidden": [
+    "repair_or_replace_a_generated_case_during_audit",
+    "change_generation_or_fold_rules_after_reading_audit_results",
+    "drop_sources_or_cases_using_audit_statistics",
+    "start_training_or_candidate_selection_as_an_audit_side_effect",
+    "access_D3_holdout_SkullBreak_confirmation20_or_official_test"
+  ]
+}
