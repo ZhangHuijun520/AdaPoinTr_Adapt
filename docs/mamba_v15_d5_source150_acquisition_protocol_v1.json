@@ -1,0 +1,147 @@
+{
+  "protocol_id": "mamba-v15-d5-mug500plus-source150-acquisition-v1",
+  "status": "preregistered_metadata_only_payload_not_downloaded",
+  "preregistered_on": "2026-08-30",
+  "purpose": "freeze 150 previously unused MUG500+ v20 healthy source skulls into development100, proposal-confirmation25, and completion-holdout25 before any D5 geometry access or model execution",
+  "parent_d4a_negative": {
+    "git_branch": "feature/mamba-v12-mechanism-dev",
+    "git_commit": "93a047f03245f7ca25f2281c71442197bad2a980",
+    "git_tag": "mamba-adapter-v14-d4a-negative-posthoc-seed0",
+    "frozen_result_sha256": "a9696d4cdc45c78a00b55458ff88bc23f079b86a22eb38c4f801b6dd0bbb7dff",
+    "complete_report_sha256": "2f9f061f8649d06b6c45006510a0a2e3a64e2ba1496f03a3e05dc24053bb325d",
+    "frozen_gate": "332/400_negative",
+    "posthoc_failure_stages": {
+      "ranking_miss_top256": 2,
+      "selector_dropped_all_pool_positive": 66
+    },
+    "D4_T0_T1_T2_permanently_locked": true
+  },
+  "official_metadata": {
+    "article_id": 9616319,
+    "version": 20,
+    "article_json_sha256": "32b6b6e3f57bfd90c45933560723742814e61993ff2f4399dd794156288301e2",
+    "files_json_sha256": "f475490611f5d17536bbf76a0f7db0693a668fd3e87e8502ec395db6b461a078",
+    "healthy_series": "A0001-A0500",
+    "protected_series": "craniotomy/B-series"
+  },
+  "excluded_lineage": {
+    "d3_source125": {
+      "source_ids_sha256": "558ec65c8b1d16283406b62f52ef132c59f81160b7e66d237aab8335d78ad17a",
+      "data_lock_receipt_sha256": "43cafddb0edabef5486c0c12d47164be676d07f049c4ca7dd6c6be9823fd7d62",
+      "files_manifest_sha256": "3892dbcad93418834daf1c1abb4915c8e73a0d6d538741ea8dc49539c8c522d0",
+      "development100_ids_sha256": "2771ef919a4fe25f913acac9e9f8c6012ec8b6fc965db649df46acba3abf4838",
+      "holdout25_ids_sha256": "05a788bd09a1e56357ebbbe41450a492a4caf8214171cd669e8ae4c143863a1d",
+      "split_receipt_sha256": "c2519155b1d433e434d4bcb16a1d58b0d614985083b1125785c723d6525a1379",
+      "split_files_manifest_sha256": "c189245b585768130ac18da10bdfbb993edb77fff55912538f2460899b0c17da"
+    },
+    "d4_source100": {
+      "source_ids_sha256": "4bba53ee4be0397c319af01e63c0f2c86b13126302786e07183ead367f544a0f",
+      "acquisition_receipt_sha256": "53f713aaa9a57739db0a47ced2219d0c57ad273677638bb0ef721ee8216a7222",
+      "files_manifest_sha256": "d60bc9d118376a36bbe2dcd1b25b35cb8b5af06f37e0916ac811b73708493162"
+    },
+    "required_identity": "D3 source125 and D4 source100 are disjoint complete-archive selections; their union contains exactly 225 source skulls"
+  },
+  "selection_rule": {
+    "unit": "complete_official_A_series_archive",
+    "target_source_skulls": 150,
+    "salt": "mamba-v15-d5-source150-three-partition-v1-20260830",
+    "hash_algorithm": "sha256_utf8",
+    "strata": "ten fixed 50-skull index bands: A0001-A0050 through A0451-A0500",
+    "within_stratum_key": "SHA256(salt|archive|archive_name|normalized_md5|size_bytes)",
+    "interleave": "ascending stratum 0..9, one archive per non-empty stratum per depth",
+    "archive_acceptance": "scan interleaved order; accept a complete archive when cumulative skulls plus archive skulls does not exceed 150; otherwise skip it; stop only at exactly 150",
+    "partition_by_selected_prefix": {
+      "development": 100,
+      "proposal_confirmation": 25,
+      "completion_holdout": 25
+    },
+    "partition_boundary_failure_action": "hard_failure",
+    "partial_prior_overlap_action": "hard_failure",
+    "exact_target_failure_action": "hard_failure",
+    "manual_reassignment_allowed": false,
+    "geometry_qc_or_model_metrics_used": false
+  },
+  "access_policy": {
+    "development": {
+      "archive_download_and_md5_authorized": true,
+      "clear_stl_extraction_and_model_independent_qc_authorized": true,
+      "server_deployment_authorized_after_qc_lock": true,
+      "synthetic_generation_authorized": false
+    },
+    "proposal_confirmation": {
+      "offline_archive_download_and_md5_authorized": true,
+      "clear_stl_extraction_authorized": false,
+      "geometry_qc_authorized": false,
+      "server_deployment_authorized": false,
+      "model_access_authorized": false
+    },
+    "completion_holdout": {
+      "offline_archive_download_and_md5_authorized": true,
+      "clear_stl_extraction_authorized": false,
+      "geometry_qc_authorized": false,
+      "server_deployment_authorized": false,
+      "model_access_authorized": false
+    }
+  },
+  "download_plan": {
+    "development_target_skulls_per_batch": 40,
+    "expected_development_batches": 3,
+    "archive_boundaries_preserved": true,
+    "download_before_lock_allowed": false,
+    "all_downloads_require_md5_and_size_verification": true,
+    "development_extract_only_selected_clear_stl": true,
+    "sealed_partitions_extract_nothing": true,
+    "nrrd_png_nonclear_and_protected_assets_forbidden": true
+  },
+  "lock_effect": {
+    "development_payload_download_authorized": true,
+    "development_payload_qc_authorized": true,
+    "sealed_archive_download_only_authorized": true,
+    "D5_synthetic_generation_authorized": false,
+    "D5A_model_implementation_authorized": false,
+    "D5A_training_authorized": false,
+    "D5B_training_authorized": false,
+    "D5_candidate_selection_authorized": false,
+    "proposal_confirmation_access_authorized": false,
+    "completion_holdout_access_authorized": false,
+    "SkullBreak_confirmation20_access_authorized": false,
+    "official_test_access_authorized": false
+  },
+  "required_outputs": [
+    "source150_acquisition_protocol_v1.json",
+    "excluded_d3_source125_ids.txt",
+    "excluded_d4_source100_ids.txt",
+    "excluded_prior225_ids.txt",
+    "d5_source150_ids.txt",
+    "d5_development100_ids.txt",
+    "d5_proposal_confirmation25_ids.txt",
+    "d5_completion_holdout25_ids.txt",
+    "d5_source150_archive_plan.csv",
+    "d5_source150_source_plan.csv",
+    "development_batch_001_downloads.csv through development_batch_003_downloads.csv",
+    "development_batch_001_expected_source_ids.txt through development_batch_003_expected_source_ids.txt",
+    "proposal_confirmation_downloads.csv",
+    "proposal_confirmation_expected_source_ids.txt",
+    "completion_holdout_downloads.csv",
+    "completion_holdout_expected_source_ids.txt",
+    "source_overlap_audit.json",
+    "source_acquisition_lock_receipt.json",
+    "source_acquisition_lock_report_zh.md",
+    "files.sha256"
+  ],
+  "forbidden": [
+    "reuse_any_D3_or_D4_source_skull",
+    "select_part_of_an_official_archive_that_contains_a_prior_source",
+    "change_salt_partition_boundaries_or_source_ids_after_geometry_access",
+    "replace_failed_QC_sources_without_a_formal_amendment",
+    "use_geometry_QC_model_predictions_or_metrics_for_source_selection",
+    "extract_visualize_deploy_or_model_access_either_sealed_partition",
+    "access_craniotomy_B_series_or_any_other_protected_split",
+    "start_synthetic_generation_model_implementation_or_training_as_a_side_effect_of_this_lock"
+  ],
+  "statistical_interpretation": {
+    "future_400_of_400_gate": "operational safety gate, not proof of population-wide zero failure probability",
+    "future_100_of_100_confirmation_gate": "independent one-shot generalization gate, not a replacement for confidence intervals",
+    "required_secondary_reporting": "source-clustered uncertainty and defect-family stratification"
+  }
+}
