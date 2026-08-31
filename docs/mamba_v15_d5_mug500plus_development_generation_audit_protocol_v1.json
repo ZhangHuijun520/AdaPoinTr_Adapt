@@ -1,0 +1,62 @@
+{
+  "protocol_id": "mamba-v15-d5-mug500plus-development-generation-audit-v1",
+  "status": "preregistered_before_generation",
+  "preregistered_on": "2026-08-31",
+  "purpose": "independently verify the frozen D5 development400 generation before any model implementation, training, candidate selection, or sealed-partition access",
+  "lineage": {
+    "generation_protocol_id": "mamba-v15-d5-mug500plus-development-generation-fourfold-v1",
+    "generator_bundle_sha256": "ef0664bf17435d7aa7c5efbba076ef4dc1cc49701483bdd29f743af1e0ac27e8",
+    "development100_files_manifest_sha256": "cb2ec987d4f5e4259464a8083bb4ca3bb632d4212bf8f1cdb140f5b404d534b4",
+    "development100_receipt_sha256": "c9985f0c323edb0c0bfac3b02141cda2b371844804b215450f45f17494476e56",
+    "development100_assets_sha256": "a60775feb127a6ca3ba33d22f877b4c4d64d532c0bb5b4bae735cdb47ab6702f",
+    "fourfold_files_manifest_sha256": "eade1467f7864f041c2c9e2065936f5aa8fbd84e0999d335f1d1b0b247da18fb",
+    "fourfold_assignment_sha256": "31948e5425b17ebdc25ec2d4607fc8fbd534a144d80c5a0fe0c2828346770461"
+  },
+  "expected_cardinality": {
+    "source_skulls": 100,
+    "derived_cases": 400,
+    "cases_per_source": 4,
+    "folds": ["A", "B", "C", "D"],
+    "sources_per_fold": 25,
+    "cases_per_fold": 100
+  },
+  "hard_gates": {
+    "generation_receipt_and_manifest_hash_chain_valid": true,
+    "development100_and_fourfold_hash_chains_valid": true,
+    "source_assets_rehashed_and_match_lock": true,
+    "derived_case_hashes_all_match_and_are_unique": true,
+    "manifest_and_cases_directory_are_bijective": true,
+    "npz_members_shapes_dtypes_and_finiteness_valid": true,
+    "partial_only_normalization_valid": true,
+    "reference_rim_points_minimum": 8,
+    "removed_surface_area_fraction_min": 0.003,
+    "removed_surface_area_fraction_max": 0.25,
+    "minimum_removed_triangles": 256,
+    "minimum_remaining_triangles": 4096,
+    "all_four_families_present_per_source": true,
+    "all_four_cases_from_each_source_share_frozen_fold": true,
+    "all_manifest_paths_relative_and_resolvable": true,
+    "no_unmanifested_npz_files": true,
+    "proposal_confirmation_accessed": false,
+    "completion_holdout_accessed": false,
+    "official_test_accessed": false
+  },
+  "audit_effect": {
+    "D5A_model_implementation_authorized_on_pass": false,
+    "D5A_training_authorized_on_pass": false,
+    "D5B_training_authorized_on_pass": false,
+    "D5_candidate_selection_authorized_on_pass": false,
+    "proposal_confirmation_access_authorized": false,
+    "completion_holdout_access_authorized": false,
+    "official_test_access_authorized": false,
+    "next_step_on_pass": "freeze_a_separate_D5_candidate_and_training_protocol"
+  },
+  "forbidden": [
+    "repair_or_replace_a_generated_case_during_audit",
+    "change_generation_or_fold_rules_after_reading_audit_results",
+    "drop_sources_or_cases_using_audit_statistics",
+    "start_model_implementation_training_or_candidate_selection_as_an_audit_side_effect",
+    "extract_or_access_proposal_confirmation_or_completion_holdout",
+    "access_official_test"
+  ]
+}
