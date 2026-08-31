@@ -1,0 +1,286 @@
+{
+  "protocol_id": "mamba-v15-d5-candidate-training-v1",
+  "status": "preregistered_D5A_candidates_budgets_and_progression_locked_training_not_authorized",
+  "preregistered_on": "2026-08-31",
+  "purpose": "freeze an independent D5 context-aware set-level support-allocation feasibility experiment before implementation or training",
+  "lineage": {
+    "parent_git_commit": "fa2f4223a90728b65f9a0182c6dc7aa6bcc62037",
+    "parent_git_tag": "mamba-adapter-v15-d5-development400-generation-audit-v1",
+    "d4a_complete_result": {
+      "path": "docs/mamba_v14_d4a_complete_experiment_report_and_next_plan_zh.md",
+      "sha256": "2f9f061f8649d06b6c45006510a0a2e3a64e2ba1496f03a3e05dc24053bb325d",
+      "frozen_hits": 332,
+      "frozen_cases": 400,
+      "ranking_miss_top256": 2,
+      "selector_dropped_all_pool_positive": 66,
+      "D4_rerun_authorized": false
+    },
+    "d5_generation_result": {
+      "path": "docs/mamba_v15_d5_development400_generation_audit_complete_result_zh.md",
+      "sha256": "eca7c9d01a02db12e84f72d831f85e70624a3d605c8c583d57dedf926477a1c4"
+    },
+    "development100_qc_lock": {
+      "receipt_sha256": "c9985f0c323edb0c0bfac3b02141cda2b371844804b215450f45f17494476e56",
+      "files_manifest_sha256": "cb2ec987d4f5e4259464a8083bb4ca3bb632d4212bf8f1cdb140f5b404d534b4"
+    },
+    "development400_fourfold_lock": {
+      "protocol_sha256": "aa6a1d44bc99cdeec2a5edd3271c07e60daf6f9aae17fb0f1141dfbaaab80eaa",
+      "receipt_sha256": "ed9173f50f70bf835fb5173e03a0eb16b110476b45a2deade9afbafbddbaeafc",
+      "files_manifest_sha256": "eade1467f7864f041c2c9e2065936f5aa8fbd84e0999d335f1d1b0b247da18fb"
+    },
+    "generation_audit": {
+      "audit_id": "mamba-v15-d5-development-generation-audit-v1",
+      "summary_sha256": "a760c09eacff95841c5443155f11328a6b6a0cc6d646455e8a2d5ef35aad2840",
+      "files_manifest_sha256": "6232d046f87ee8548d29580a635c41e3ab316d96920fcc6a9fd8ab27a78e55ed",
+      "portable_manifest_sha256": "f653a82ac29c98909d987ad0b6bb618841d006ddf3144ba732d4911cff32bf8d",
+      "required_status": "generation_integrity_passed_model_training_selection_and_sealed_still_locked"
+    }
+  },
+  "data_and_folds": {
+    "development_source_skulls": 100,
+    "development_cases": 400,
+    "folds": ["A", "B", "C", "D"],
+    "train_sources_per_fold": 75,
+    "dev_sources_per_fold": 25,
+    "train_cases_per_fold": 300,
+    "dev_cases_per_fold": 100,
+    "defect_families": [
+      "ellipsoid_large",
+      "ellipsoid_medium",
+      "ellipsoid_small",
+      "irregular_medium"
+    ],
+    "source_skull_is_the_split_and_reporting_unit": true,
+    "same_source_four_cases_must_share_fold": true,
+    "development_evaluations_per_run": 1,
+    "proposal_confirmation_sources": 25,
+    "proposal_confirmation_cases": 100,
+    "proposal_confirmation_currently_sealed": true,
+    "completion_holdout_currently_sealed": true,
+    "official_test_currently_sealed": true
+  },
+  "research_hypothesis": "partial-only multiscale local context plus global set context and a top32-aligned set-level objective can retain at least one reference-rim positive in every selected 32-point set on independent sources",
+  "candidate_coordinates": {
+    "source": "all_8192_normalized_partial_points_in_original_frozen_order",
+    "candidate_count": 8192,
+    "ground_truth_label": "reference_rim_mask_training_and_frozen_gate_only",
+    "ground_truth_is_never_an_inference_input": true
+  },
+  "candidates": {
+    "V0": {
+      "role": "reference_exact_D4A_mechanism_retrained_on_D5_seed0_only",
+      "eligibility_candidate": false,
+      "descriptor": {
+        "name": "D4A_13D",
+        "knn": 16,
+        "total_dimensions": 13
+      },
+      "head_layers": [13, 128, 64, 1],
+      "loss": {
+        "case_balanced_binary_cross_entropy_weight": 1.0
+      },
+      "selector": {
+        "algorithm": "retain_top8_then_deterministic_euclidean_fps24_over_top256",
+        "selected_count": 32,
+        "mandatory_top_score_count": 8,
+        "ranked_pool_size": 256,
+        "diversified_count": 24
+      }
+    },
+    "V1": {
+      "role": "only_experimental_context_aware_set_level_aligned_candidate",
+      "eligibility_candidate": true,
+      "descriptor": {
+        "base_D4A_13D": 13,
+        "k32_offset_to_centroid": 3,
+        "k32_distance_mean_std_max": 3,
+        "k32_covariance_eigenvalues_divided_by_trace": 3,
+        "offset_to_partial_centroid": 3,
+        "radial_norm_divided_by_partial_rms_radius": 1,
+        "log_k16_to_k32_mean_distance_ratio": 1,
+        "total_dimensions": 27,
+        "knn_scales": [16, 32],
+        "self_neighbor_excluded": true,
+        "distance": "euclidean_normalized_space",
+        "epsilon": 1e-08,
+        "augmentation": "none"
+      },
+      "context_head": {
+        "point_encoder_layers": [27, 64, 64],
+        "global_pool": ["mean", "max"],
+        "global_context_dimensions": 128,
+        "classifier_input_dimensions": 219,
+        "classifier_layers": [219, 128, 64, 1],
+        "activation": "GELU",
+        "dropout": 0.0
+      },
+      "loss": {
+        "case_balanced_binary_cross_entropy_weight": 1.0,
+        "positive_mass_nll_weight": 1.0,
+        "positive_mass_softmax_temperature": 1.0,
+        "top32_margin_weight": 1.0,
+        "top32_margin": 1.0,
+        "top32_margin_definition": "softplus(margin + score_of_32nd_ranked_negative - best_positive_score)"
+      },
+      "selector": {
+        "algorithm": "deterministic_score_top32",
+        "selected_count": 32,
+        "score_tie_break": "candidate_index_ascending",
+        "fps_or_post_rank_diversification": false
+      }
+    }
+  },
+  "common_head_training": {
+    "unit": "source_skull_out_of_fold",
+    "epochs": 50,
+    "batch_size_cases": 8,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "scheduler": "CosineAnnealingLR",
+    "minimum_learning_rate": 0.00001,
+    "gradient_clip_norm": 1.0,
+    "early_stopping": false,
+    "dev_evaluation_during_training": false,
+    "one_shot_dev_evaluation_after_final_epoch": true,
+    "checkpoint_selection": "final_epoch_only",
+    "completion_backbone_loaded": false,
+    "optimizer_state_reuse_between_folds_or_candidates": false
+  },
+  "execution_sequence": [
+    "lock_protocol_and_13_non_runnable_templates",
+    "implement_V0_V1_and_run_zero_step_preflight_without_optimizer",
+    "separately_authorize_seed0_V0_and_V1_fourfold_training",
+    "run_seed0_V0_folds_A_to_D_then_V1_folds_A_to_D",
+    "freeze_seed0_all_case_receipt",
+    "if_and_only_if_V1_seed0_is_400_of_400_separately_authorize_V1_seed1",
+    "freeze_seed1_all_case_receipt",
+    "if_and_only_if_V1_seed1_is_400_of_400_train_one_development_all_final_V1_head",
+    "separately_authorize_and_open_proposal_confirmation_once",
+    "if_and_only_if_confirmation_is_100_of_100_freeze_a_separate_D5B_full_model_protocol"
+  ],
+  "seed0_budget": {
+    "candidates": ["V0", "V1"],
+    "folds": ["A", "B", "C", "D"],
+    "seed": 0,
+    "maximum_head_trainings": 8,
+    "training_order": "V0_A_to_D_then_V1_A_to_D"
+  },
+  "seed1_stability_budget": {
+    "candidate": "V1",
+    "folds": ["A", "B", "C", "D"],
+    "seed": 1,
+    "maximum_head_trainings": 4,
+    "authorized_only_after_seed0_all_case_gate": true,
+    "V0_seed1_training": false
+  },
+  "development_all_confirmation_budget": {
+    "candidate": "V1",
+    "training_sources": 100,
+    "training_cases": 400,
+    "seed": 0,
+    "epochs": 50,
+    "checkpoint_selection": "final_epoch_only",
+    "proposal_confirmation_evaluations": 1,
+    "authorized_only_after_seed0_and_seed1_all_case_gates": true,
+    "currently_authorized": false
+  },
+  "hard_gates": {
+    "development_seed0": {
+      "V0_is_reference_and_not_eligible": true,
+      "V1_exact_case_pairing_400": true,
+      "V1_oracle_positive_exists_400_of_400": true,
+      "V1_selected32_contains_positive_400_of_400": true,
+      "all_required_outputs_finite": true,
+      "all_four_folds_pass": true,
+      "protected_or_sealed_accessed": false,
+      "failure_action": "freeze_D5A_seed0_negative_and_stop"
+    },
+    "development_seed1": {
+      "V1_exact_case_pairing_400": true,
+      "V1_oracle_positive_exists_400_of_400": true,
+      "V1_selected32_contains_positive_400_of_400": true,
+      "all_required_outputs_finite": true,
+      "all_four_folds_pass": true,
+      "protected_or_sealed_accessed": false,
+      "failure_action": "freeze_D5A_seed_instability_negative_and_stop"
+    },
+    "proposal_confirmation": {
+      "exact_case_pairing_100": true,
+      "oracle_positive_exists_100_of_100": true,
+      "selected32_contains_positive_100_of_100": true,
+      "all_required_outputs_finite": true,
+      "single_access_only": true,
+      "failure_action": "freeze_D5A_confirmation_negative_and_stop"
+    }
+  },
+  "required_reporting": {
+    "primary": [
+      "selected32_contains_positive",
+      "selected_positive_count",
+      "best_positive_rank",
+      "all_required_outputs_finite"
+    ],
+    "diagnostic_not_gate_relaxing": [
+      "recall_at_8_16_32_64_128_256",
+      "positive_candidate_count",
+      "fold_by_defect_family",
+      "source_level_miss_multiplicity",
+      "V1_minus_V0_paired_hit_transition"
+    ],
+    "reporting_unit": "source_skull",
+    "case_level_rows_required": true
+  },
+  "anti_gaming": {
+    "manual_tie_break": false,
+    "rule_revision_after_results": false,
+    "candidate_or_seed_substitution": false,
+    "best_epoch_or_checkpoint_selection_from_dev": false,
+    "threshold_pool_size_query_budget_knn_loss_weight_or_margin_scan": false,
+    "D4_or_D5_development_posthoc_used_to_change_V1": false,
+    "failed_stage_rerun_without_new_independent_protocol_and_data": false
+  },
+  "protected_and_sealed_splits": {
+    "D5_proposal_confirmation_25_sources": "sealed",
+    "D5_completion_holdout_25_sources": "sealed",
+    "MUG500plus_D3_holdout": "locked",
+    "SkullBreak_confirmation20": "locked",
+    "SkullBreak_old_monitor": "locked",
+    "SkullBreak_official_test": "locked",
+    "SkullFix_selection": "locked"
+  },
+  "D5B_full_model_boundary": {
+    "candidate_definition_frozen_here": false,
+    "implementation_authorized": false,
+    "training_authorized": false,
+    "selection_authorized": false,
+    "separate_protocol_required_after_D5A_confirmation_pass": true
+  },
+  "lock_effect": {
+    "non_runnable_templates_generated": 13,
+    "V0_V1_implementation_and_zero_step_preflight_authorized_next": true,
+    "D5A_seed0_training_authorized": false,
+    "D5A_seed1_training_authorized": false,
+    "development_all_training_authorized": false,
+    "proposal_confirmation_access_authorized": false,
+    "D5B_implementation_authorized": false,
+    "D5B_training_authorized": false,
+    "D5_candidate_selection_authorized": false,
+    "completion_holdout_access_authorized": false,
+    "official_test_access_authorized": false,
+    "training_started": false,
+    "selection_started": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "forbidden": [
+    "start_training_as_a_side_effect_of_protocol_locking",
+    "access_proposal_confirmation_before_both_development_seed_gates_pass",
+    "access_completion_holdout_or_official_test",
+    "replace_direct_top32_with_FPS_or_scan_selector_parameters",
+    "change_27D_descriptor_context_head_loss_weights_temperature_or_margin_after_results",
+    "run_extra_seeds_or_repeat_a_failed_fold",
+    "select_best_epoch_using_development_data",
+    "define_or_train_D5B_inside_the_D5A_protocol",
+    "treat_diagnostic_recall_at_K_as_a_gate_replacement"
+  ]
+}
