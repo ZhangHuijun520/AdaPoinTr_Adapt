@@ -1,0 +1,81 @@
+{
+  "protocol_id": "mamba-v15-d5a-zero-step-preflight-v1",
+  "status": "implementation_and_zero_step_only_training_not_authorized",
+  "lineage": {
+    "candidate_training_protocol_id": "mamba-v15-d5-candidate-training-v1",
+    "candidate_training_protocol_sha256": "135cd7a99da57b36d94220fc8b6ed0ec73b87bb35443ddbd898e1216edba03ed",
+    "candidate_training_git_commit": "02e7e4604456fb3a684fa3390bbc2dff7162b299",
+    "candidate_training_git_tag": "mamba-adapter-v15-d5-candidate-training-preregistered-v1"
+  },
+  "scope": {
+    "V0_V1_implementation_allowed": true,
+    "zero_step_preflight_allowed": true,
+    "D5A_seed0_training_allowed": false,
+    "D5A_seed1_training_allowed": false,
+    "development_evaluation_allowed": false,
+    "proposal_confirmation_access_allowed": false,
+    "D5B_implementation_allowed": false,
+    "candidate_selection_allowed": false,
+    "protected_or_sealed_data_access_allowed": false
+  },
+  "probe_cases": {
+    "folds": ["A", "B", "C", "D"],
+    "selection": "lexicographically_first_distinct_training_case_per_fold",
+    "total_cases": 4,
+    "candidates_per_case": ["V0", "V1"],
+    "dev_case_access": 0,
+    "sealed_case_access": 0
+  },
+  "V0": {
+    "candidate_count": 8192,
+    "descriptor_dimensions": 13,
+    "knn": 16,
+    "query_chunk_size": 512,
+    "head_layers": [13, 128, 64, 1],
+    "loss": "case_balanced_binary_cross_entropy",
+    "selector": "top8_plus_conditioned_deterministic_fps24_over_top256",
+    "selected_count": 32,
+    "initialization_seed": 0
+  },
+  "V1": {
+    "candidate_count": 8192,
+    "descriptor_dimensions": 27,
+    "knn_scales": [16, 32],
+    "query_chunk_size": 512,
+    "point_encoder_layers": [27, 64, 64],
+    "global_pool": ["mean", "max"],
+    "classifier_layers": [219, 128, 64, 1],
+    "loss_weights": {
+      "case_balanced_binary_cross_entropy": 1.0,
+      "positive_mass_nll": 1.0,
+      "top32_margin": 1.0
+    },
+    "positive_mass_softmax_temperature": 1.0,
+    "top32_margin": 1.0,
+    "selector": "deterministic_score_top32",
+    "selected_count": 32,
+    "score_tie_break": "candidate_index_ascending",
+    "initialization_seed": 0
+  },
+  "zero_step_contract": {
+    "device": "CUDA_required",
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "backward_passes": 8,
+    "model_updates": 0,
+    "checkpoint_loaded": false,
+    "checkpoint_written": false,
+    "dev_cases_accessed": 0,
+    "proposal_confirmation_accessed": false,
+    "completion_holdout_accessed": false,
+    "official_test_accessed": false,
+    "selected_hit_is_observation_only_not_a_gate": true
+  },
+  "required_outputs": [
+    "fold_candidate_probe_metrics.csv",
+    "zero_step_preflight_receipt.json",
+    "zero_step_preflight_report_zh.md",
+    "files.sha256"
+  ],
+  "next_step_after_pass": "separate_D5A_seed0_training_execution_authorization"
+}
