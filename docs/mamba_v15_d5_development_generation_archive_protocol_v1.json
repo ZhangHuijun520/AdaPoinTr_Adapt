@@ -1,0 +1,54 @@
+{
+  "protocol_id": "mamba-v15-d5-development400-generation-archive-v1",
+  "status": "archive_only_no_new_experiment_authority",
+  "purpose": "Create a portable, restore-verified milestone archive for the frozen D5 development400 generation and independent audit.",
+  "required_payload": {
+    "derived_dataset": "datasets/MUG500plusD5Development400_v1",
+    "data_locks": [
+      "mug500plus_d5_source150_acquisition_lock_v1",
+      "mug500plus_d5_development100_qc_lock_v1",
+      "mug500plus_d5_development400_fourfold_protocol_lock_v1"
+    ],
+    "audit": "development_generation_audit_v1",
+    "transport_receipt": "d5_overlay_transport_normalization_v1",
+    "runtime_logs": [
+      "development_generation_tmux",
+      "development_generation_audit_tmux"
+    ],
+    "implementation_and_environment": true
+  },
+  "required_cardinality": {
+    "source_skulls": 100,
+    "derived_cases": 400,
+    "fold_cases": {
+      "A": 100,
+      "B": 100,
+      "C": 100,
+      "D": 100
+    },
+    "defect_families": 4
+  },
+  "excluded_payload": {
+    "development_source_stl": true,
+    "proposal_confirmation_geometry": true,
+    "completion_holdout_geometry": true,
+    "official_test_geometry": true,
+    "reason": "Source STL is retained in the independently verified local source100 asset archive; sealed geometry was never acquired or accessed."
+  },
+  "source_archive_binding": {
+    "archive_bytes": 9288781774,
+    "archive_sha256": "9d3544766188369783d8adfa99a6592dc32ccea7715d9b43a97ab1f493091a21",
+    "source_stl_count": 100,
+    "source_stl_bytes": 16820263850
+  },
+  "permission_boundary": {
+    "D5A_model_implementation_authorized": false,
+    "D5A_training_authorized": false,
+    "D5B_training_authorized": false,
+    "D5_candidate_selection_authorized": false,
+    "proposal_confirmation_accessed": false,
+    "completion_holdout_accessed": false,
+    "official_test_accessed": false
+  },
+  "next_step": "restore_verify_locally_then_freeze_git_milestone"
+}
