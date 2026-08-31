@@ -1,0 +1,50 @@
+{
+  "protocol_id": "mamba-v15-d5-development100-final-qc-lock-v1",
+  "status": "preregistered_before_global_development100_qc_lock",
+  "inputs": {
+    "source_acquisition_lock_manifest_sha256": "9d512638287e782b31f83b566429990673e8af70bd5d01686654c2d0eb8ffa0b",
+    "source_acquisition_lock_receipt_sha256": "64634d5c31a0d27ce27d10645d4bffa7f28cc22bf09f178ff363acf4c1d49015",
+    "development_batches": [1, 2, 3],
+    "development_sources": 100,
+    "prior_d3_sources": 125,
+    "prior_d4_sources": 100
+  },
+  "hard_gates": {
+    "batch_qc_failures": 0,
+    "missing_or_extra_development_sources": 0,
+    "stl_sha256_mismatches": 0,
+    "duplicate_asset_sha256_within_d5": 0,
+    "duplicate_surface_fingerprint_within_d5": 0,
+    "asset_sha256_overlap_with_prior_d3_d4": 0,
+    "surface_fingerprint_overlap_with_prior_d3_d4": 0,
+    "source_id_overlap_with_prior_d3_d4": 0,
+    "proposal_confirmation_files": 0,
+    "completion_holdout_files": 0
+  },
+  "batch_003_transition": {
+    "generic_next_step_text_is_advisory_only": true,
+    "superseded_by_final_lock": "freeze_D5_development100_global_qc_lock",
+    "geometry_or_gate_result_changed": false
+  },
+  "outputs": [
+    "development100_ids.txt",
+    "development100_assets.csv",
+    "development100_extraction_manifest.csv",
+    "development100_qc_per_case.csv",
+    "development100_overlap_audit.json",
+    "development100_qc_lock_receipt.json",
+    "development100_qc_lock_report_zh.md",
+    "files.sha256"
+  ],
+  "success_effect": {
+    "D5_data_generation_protocol_preparation_authorized_next": true,
+    "synthetic_generation_authorized": false,
+    "D5A_model_implementation_authorized": false,
+    "D5A_training_authorized": false,
+    "D5B_training_authorized": false,
+    "D5_candidate_selection_authorized": false,
+    "proposal_confirmation_access_authorized": false,
+    "completion_holdout_access_authorized": false,
+    "protected_split_access_authorized": false
+  }
+}

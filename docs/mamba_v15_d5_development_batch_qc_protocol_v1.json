@@ -1,0 +1,65 @@
+{
+  "protocol_id": "mamba-v15-d5-development-batch-qc-v1",
+  "status": "preregistered_before_development_geometry_qc",
+  "parent_source_lock": {
+    "protocol_id": "mamba-v15-d5-mug500plus-source150-acquisition-v1",
+    "receipt_sha256": "64634d5c31a0d27ce27d10645d4bffa7f28cc22bf09f178ff363acf4c1d49015",
+    "files_manifest_sha256": "9d512638287e782b31f83b566429990673e8af70bd5d01686654c2d0eb8ffa0b"
+  },
+  "scope": {
+    "partition": "development",
+    "allowed_batch_ids": [1, 2, 3],
+    "batch_001_sources": 40,
+    "batch_001_archives": 8,
+    "archive_boundaries_preserved": true,
+    "model_independent_qc_only": true
+  },
+  "archive_contract": {
+    "require_exact_frozen_archive_set": true,
+    "require_exact_size_and_md5": true,
+    "partial_or_downloading_files_forbidden": true,
+    "unexpected_regular_files_forbidden": true
+  },
+  "extraction_contract": {
+    "selected_member_pattern": "A????_clear.stl",
+    "exactly_one_selected_member_per_expected_source": true,
+    "canonical_member_basename_required": true,
+    "stream_selected_members_only": true,
+    "zip_path_is_not_reused_for_destination": true,
+    "nrrd_png_nonclear_and_B_series_extracted": false,
+    "encrypted_members_forbidden": true
+  },
+  "qc_contract": {
+    "engine": "tools/qc_mug500plus_clear_stl.py",
+    "engine_sha256": "9b5d406cd84ce806dbc80bad38edb5d48b999665a5a33c5b4cdcaf2bfe3c19cb",
+    "batch_local_duplicate_gate": true,
+    "cross_batch_duplicate_gate_pending_until_100_sources": true,
+    "failed_sources_are_frozen_without_replacement": true,
+    "replacement_requires_formal_amendment": true
+  },
+  "sealed_partition_contract": {
+    "proposal_confirmation_files_before_and_after": 0,
+    "completion_holdout_files_before_and_after": 0,
+    "archive_download": false,
+    "extraction": false,
+    "geometry_qc": false,
+    "model_access": false
+  },
+  "outputs": [
+    "extraction_manifest.csv",
+    "d5_development_source_qc_per_case.csv",
+    "batch_qc_summary.json",
+    "batch_qc_receipt.json",
+    "batch_qc_report_zh.md",
+    "files.sha256"
+  ],
+  "lock_effect": {
+    "next_development_batch_authorized_only_if_all_sources_pass": true,
+    "D5_synthetic_generation_authorized": false,
+    "D5A_model_implementation_authorized": false,
+    "D5A_training_authorized": false,
+    "D5B_training_authorized": false,
+    "D5_candidate_selection_authorized": false,
+    "protected_data_accessed": false
+  }
+}
