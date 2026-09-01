@@ -1,0 +1,55 @@
+{
+  "protocol_id": "mamba-v15-d5a-v0-v1-zero-step-result-freeze-v1",
+  "status": "preregistered_result_freeze_after_zero_step_before_training_authorization",
+  "inputs": {
+    "candidate_protocol_lock": "candidate_training_protocol_v1",
+    "zero_step_preflight": "d5a_zero_step_preflight_v1",
+    "transport_normalization_receipt": "d5a_overlay_transport_normalization_v1",
+    "parent_lineage_hotfix_receipt": "d5a_d4_parent_lineage_hotfix1_v1"
+  },
+  "required_execution_facts": {
+    "folds": 4,
+    "training_probe_cases": 4,
+    "candidates_per_probe": 2,
+    "metric_rows": 8,
+    "backward_passes": 8,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "checkpoint_loaded": false,
+    "checkpoint_written": false,
+    "dev_cases_accessed": 0
+  },
+  "reporting_rules": {
+    "selected_hit_is_observation_only": true,
+    "selected_hit_must_not_be_used_as_a_gate": true,
+    "candidate_comparison_is_not_authorized": true,
+    "report_all_eight_probe_rows": true,
+    "report_candidate_aggregates": true,
+    "bind_all_input_and_output_sha256": true
+  },
+  "permission_boundary": {
+    "D5A_seed0_training_authorized": false,
+    "D5A_seed1_training_authorized": false,
+    "development_all_training_authorized": false,
+    "proposal_confirmation_access_authorized": false,
+    "D5B_implementation_authorized": false,
+    "D5B_training_authorized": false,
+    "D5_candidate_selection_authorized": false,
+    "proposal_confirmation_accessed": false,
+    "completion_holdout_accessed": false,
+    "official_test_accessed": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "archive_boundary": {
+    "include_protocol_locks": true,
+    "include_zero_step_outputs": true,
+    "include_transport_and_lineage_receipts": true,
+    "include_environment": true,
+    "include_checkpoints": false,
+    "include_npz": false,
+    "include_stl": false,
+    "include_sealed_geometry": false
+  },
+  "authorized_next": "separate_D5A_seed0_training_execution_authorization_and_training_preflight_only"
+}
