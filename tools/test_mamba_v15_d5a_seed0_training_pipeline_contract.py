@@ -6,6 +6,7 @@ from __future__ import annotations
 import importlib.util
 import json
 from pathlib import Path
+import sys
 import tempfile
 
 try:
@@ -15,6 +16,9 @@ except ModuleNotFoundError:  # Local archive/Git hosts may not carry the CUDA en
 
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 PROTOCOL = ROOT / "docs/mamba_v15_d5a_seed0_training_authorization_protocol_v1.json"
 AUTHORIZER = ROOT / "tools/authorize_mamba_v15_d5a_seed0_training.py"
 RUNNER = ROOT / "tools/run_mamba_v15_d5a_seed0_training_fold.py"
