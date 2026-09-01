@@ -1,0 +1,130 @@
+{
+  "protocol_id": "mamba-v15-d5a-seed0-training-authorization-v1",
+  "status": "preregistered_after_zero_step_result_freeze_before_seed0_training",
+  "preregistered_on": "2026-09-01",
+  "purpose": "authorize exactly eight D5-A seed-0 head-only fold trainings after the frozen V0/V1 zero-step result",
+  "lineage": {
+    "parent_git_commit": "642dfab55b919074906401ee5d835e6cdd02aa3d",
+    "parent_git_tag": "mamba-adapter-v15-d5a-v0-v1-zero-step-result-v1",
+    "candidate_training_protocol_sha256": "135cd7a99da57b36d94220fc8b6ed0ec73b87bb35443ddbd898e1216edba03ed",
+    "zero_step_result_report_sha256": "0988705914ad6dce6604ffec6bde60f23efb8faab0282d9308d945c99e3ac357",
+    "server_zero_step": {
+      "receipt_sha256": "ff3ac1dfdede66781815dce0bdd420d6f3a38145c1601e2405aa5f42493c45b0",
+      "metrics_sha256": "c80042f1e01cc259ef24caa51fe72aefba4caf06ad7f9cd5a2ec3d17b861b9bb",
+      "report_sha256": "984e66fe3ddda30790f83029c0f6b0a24521ff8a89eaca8ac6a97ab6ca2f50cf",
+      "files_manifest_sha256": "8643213bc1e0698445daaf0a0ae1dfa5d2feaa6d073be37de3eb0e6be4cfa58c",
+      "required_status": "V0_V1_implementation_zero_step_preflight_passed"
+    },
+    "zero_step_result_freeze": {
+      "summary_sha256": "83044d35b441b06d42025a79122cf9fe3637c68fcd9fdbc7c27d296b1c6b0262",
+      "report_sha256": "0988705914ad6dce6604ffec6bde60f23efb8faab0282d9308d945c99e3ac357",
+      "files_manifest_sha256": "87c38656e57f7066f4401dfcd391c3496635e8e3423be9d1c4e4793cbe52f12b",
+      "required_status": "D5A_V0_V1_zero_step_frozen_complete_training_still_locked"
+    },
+    "transport_normalization_receipt_sha256": "bb84a21e5894712ba9cce9a7d800d264fa6760dff4c013ad94b8e0e0f32e8de4",
+    "parent_lineage_hotfix_receipt_sha256": "e6cdb5c5c8668e68c4674015dc8a0b1f375180a0b7887329be1b6f984fde2c44"
+  },
+  "authorization_scope": {
+    "candidates": ["V0", "V1"],
+    "folds": ["A", "B", "C", "D"],
+    "seed": 0,
+    "training_order": ["V0_A", "V0_B", "V0_C", "V0_D", "V1_A", "V1_B", "V1_C", "V1_D"],
+    "maximum_head_trainings": 8,
+    "D5A_seed0_training_authorized": true,
+    "one_shot_development_evaluation_authorized": true,
+    "D5A_seed1_training_authorized": false,
+    "development_all_training_authorized": false,
+    "proposal_confirmation_access_authorized": false,
+    "D5B_implementation_authorized": false,
+    "D5B_training_authorized": false,
+    "D5_candidate_selection_authorized": false,
+    "completion_holdout_access_authorized": false,
+    "official_test_access_authorized": false,
+    "training_started_by_authorization": false
+  },
+  "data": {
+    "development_sources": 100,
+    "development_cases": 400,
+    "train_sources_per_fold": 75,
+    "dev_sources_per_fold": 25,
+    "train_cases_per_fold": 300,
+    "dev_cases_per_fold": 100,
+    "cases_per_source": 4,
+    "source_skull_is_split_unit": true,
+    "source_shuffle_seed": 0,
+    "within_source_case_order": "case_id_lexicographic",
+    "train_dev_source_overlap": 0,
+    "descriptor_cache": "in_memory_CPU_float32_candidate_and_fold_local",
+    "dev_assets_may_be_opened": "only_after_all_50_training_epochs_finish"
+  },
+  "candidates": {
+    "V0": {
+      "eligibility_candidate": false,
+      "descriptor_dimensions": 13,
+      "head": "13-128-64-1",
+      "loss": "case_balanced_binary_cross_entropy",
+      "selector": "top8_plus_conditioned_FPS24_over_top256"
+    },
+    "V1": {
+      "eligibility_candidate": true,
+      "descriptor_dimensions": 27,
+      "head": "27-64-64_point_encoder_plus_mean_max_context_then_219-128-64-1",
+      "loss": "case_balanced_BCE_plus_positive_mass_NLL_plus_top32_margin",
+      "selector": "stable_score_top32"
+    }
+  },
+  "training": {
+    "epochs": 50,
+    "batch_size": 8,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "scheduler": "CosineAnnealingLR",
+    "scheduler_t_max_epochs": 50,
+    "minimum_learning_rate": 0.00001,
+    "gradient_clip_norm": 1.0,
+    "early_stopping": false,
+    "augmentation": "none",
+    "optimizer_steps_per_candidate_fold": 1900,
+    "maximum_optimizer_steps_total": 15200,
+    "checkpoint_policy": "final_epoch_only",
+    "intermediate_checkpoint_writes": 0,
+    "dev_evaluation_during_training": false,
+    "dev_evaluation_count_after_training": 1
+  },
+  "hard_gate": {
+    "V0_is_reference_and_not_eligible": true,
+    "V1_exact_case_pairing_400": true,
+    "V1_oracle_positive_exists_400_of_400": true,
+    "V1_selected32_contains_positive_400_of_400": true,
+    "all_required_outputs_finite": true,
+    "all_four_V1_folds_pass": true,
+    "protected_or_sealed_accessed": false,
+    "pass_action": "separately_authorize_V1_seed1_only",
+    "failure_action": "freeze_D5A_seed0_negative_and_stop",
+    "automatic_seed1_execution": false,
+    "automatic_confirmation_or_D5B_execution": false
+  },
+  "preflight": {
+    "authorization_receipt_and_eight_runtime_configs_verified": true,
+    "all_train_and_dev_case_lists_rehashed": true,
+    "all_400_portable_manifest_rows_rejoined": true,
+    "V0_and_V1_modules_constructed": true,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "dev_cases_accessed": 0,
+    "training_started": false
+  },
+  "forbidden": [
+    "change_V0_or_V1_descriptor_head_loss_selector_or_training_budget",
+    "scan_knn_loss_weight_margin_pool_size_query_budget_or_seed",
+    "access_dev_before_the_final_training_epoch",
+    "evaluate_dev_more_than_once_per_candidate_fold",
+    "select_best_epoch_or_checkpoint_from_dev",
+    "run_V0_or_V1_seed1",
+    "start_seed1_confirmation_or_D5B_as_a_side_effect",
+    "access_proposal_confirmation_completion_holdout_or_official_test",
+    "revise_the_400_of_400_gate_after_results"
+  ]
+}
