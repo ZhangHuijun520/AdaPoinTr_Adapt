@@ -1,0 +1,275 @@
+{
+  "protocol_id": "mamba-v16-d6a-slot32-assignment-consistent-mechanism-v1",
+  "status": "preregistered_mechanism_locked_implementation_not_started",
+  "preregistered_on": "2026-09-02",
+  "purpose": "freeze one fixed-budget assignment-consistent 32-slot support allocator against the exact D5 V1 reference before any D6 geometry extraction, model implementation, or training",
+  "lineage": {
+    "git_branch": "feature/mamba-v12-mechanism-dev",
+    "source125_acquisition_commit": "c3b4671b263b56d2132343b88fc5842e400ad43a",
+    "source125_acquisition_tag": "mamba-adapter-v16-d6-source125-acquisition-v1",
+    "source125_lock": {
+      "receipt_sha256": "865b9fb30ef52c532ae5dd4c5ff18405833dee0570144ee94957cf5c460dab71",
+      "files_manifest_sha256": "d8509c44dd36575d46784972f70ec8f808754d3ffa84f390655ef3e5467c0fc1",
+      "source125_ids_sha256": "f84e13b0f260beefe9308bd5bd56d18fc5d95055c24033eaad0f2d1a74c3d658",
+      "development100_ids_sha256": "833595b000732cb56a3d729fcb1121a0c70018bf030505aa9584020498a2cc68",
+      "confirmation25_ids_sha256": "7adb4a0dcf6eb7897d66110f32f425fa36a5c5561f729bd173200bcd1386d632"
+    },
+    "d5_parent": {
+      "negative_result_sha256": "6b4eceafa24e29077fa48dae086df36bec3e6faea597793c388e05cf658f5932",
+      "complete_report_sha256": "f69bc137bc0d57ee43cd2ee1f4e8edad667ceabacc14875ca04180582152bfd6",
+      "candidate_protocol_sha256": "135cd7a99da57b36d94220fc8b6ed0ec73b87bb35443ddbd898e1216edba03ed",
+      "V1_implementation_sha256": "6cca9c11f302da3ca202f3e33547c62e4584eeb0fd81f9e96c20f2787e04f070",
+      "frozen_V0_hits": 322,
+      "frozen_V1_hits": 368,
+      "frozen_cases": 400,
+      "D5_rerun_seed1_confirmation_D5B_authorized": false
+    }
+  },
+  "data_access_boundary": {
+    "D6_source_partition_frozen": true,
+    "D6_geometry_extracted": false,
+    "D6_geometry_QC_authorized": false,
+    "D6_generation_authorized": false,
+    "protocol_and_implementation_design_may_use": [
+      "frozen_D5_reports_and_CSV_diagnostics",
+      "artificial_toy_points_and_masks",
+      "synthetic_random_tensors_without_D6_identity"
+    ],
+    "protocol_and_implementation_design_must_not_use": [
+      "D6_clear_STL",
+      "D6_geometry_QC",
+      "D6_derived_cases",
+      "D6_development_metrics",
+      "D6_confirmation_geometry",
+      "any_D5_sealed_geometry",
+      "SkullBreak_or_official_test"
+    ]
+  },
+  "candidate_universe_and_label": {
+    "candidate_source": "all_8192_normalized_partial_points_in_frozen_original_order",
+    "candidate_count": 8192,
+    "positive_mask_key": "reference_rim_mask",
+    "positive_mask_dtype": "bool",
+    "positive_mask_shape": [8192],
+    "positive_count_contract": "0 < positive_count < 8192 and equals audited reference_rim_points",
+    "empty_positive_action": "hard_failure",
+    "coordinate_normalization": "inherit_frozen_M2_centroid_and_scale_contract",
+    "ground_truth_usage": "training_loss_and_frozen_scoring_only",
+    "ground_truth_is_never_an_inference_input": true,
+    "D6_generation_must_bind_byte_identical_reference_rim_semantics": true
+  },
+  "candidates": {
+    "R0": {
+      "role": "exact_D5_V1_reference_retrained_on_D6_seed0_only",
+      "eligibility_candidate": false,
+      "descriptor_dimensions": 27,
+      "point_encoder_layers": [27, 64, 64],
+      "global_context": "mean_max_128D",
+      "classifier_layers": [219, 128, 64, 1],
+      "loss": "exact_D5_V1_equal_weight_BCE_positive_mass_NLL_top32_margin",
+      "selector": "stable_scalar_score_top32_candidate_index_ascending",
+      "selected_count": 32
+    },
+    "R1": {
+      "role": "only_experimental_assignment_consistent_slot32_candidate",
+      "eligibility_candidate": true,
+      "descriptor": "exact_R0_27D_partial_only_descriptor",
+      "point_encoder_layers": [27, 64, 64],
+      "point_feature_dimensions": 64,
+      "global_context": "mean_max_128D",
+      "point_calibration_classifier_layers": [219, 128, 64, 1],
+      "support_slots": 32,
+      "slot_dimensions": 64,
+      "slot_initialization": "learnable_truncated_normal_std_0.02",
+      "global_to_slot_projection": [128, 64],
+      "cross_attention": {
+        "layers": 1,
+        "heads": 1,
+        "query_key_value_dimensions": 64,
+        "scale": "one_over_sqrt_64",
+        "residual_layer_norm": true,
+        "ffn_layers": [64, 128, 64],
+        "activation": "GELU",
+        "dropout": 0.0
+      },
+      "pointer": {
+        "slot_projection": [64, 64],
+        "point_projection": [64, 64],
+        "shared_point_calibration_bias": true,
+        "logit_shape": [32, 8192]
+      },
+      "parameter_gate": {
+        "trainable_parameters_maximum": 100000,
+        "failure_action": "stop_before_D6_geometry_access"
+      }
+    }
+  },
+  "hard_assignment": {
+    "algorithm": "maximum_weight_rectangular_linear_sum_assignment",
+    "implementation_dependency": "scipy.optimize.linear_sum_assignment",
+    "required_scipy_major_minor": "1.11",
+    "slots": 32,
+    "candidates": 8192,
+    "output_unique_indices": 32,
+    "maximize": true,
+    "input_logits_for_assignment": "slot_pointer_logits_plus_shared_point_calibration_bias",
+    "tie_break": "subtract_float64_epsilon_scaled_candidate_index_before_assignment_then_return_selected_set_candidate_index_ascending",
+    "slot_order_greedy_forbidden": true,
+    "random_sampling_gumbel_or_stochastic_assignment_forbidden": true
+  },
+  "straight_through_training_assignment": {
+    "hard_forward": "one_hot_global_unique_linear_sum_assignment",
+    "soft_backward": "row_softmax_of_unadjusted_slot_logits",
+    "expression": "hard_one_hot + row_softmax - stop_gradient(row_softmax)",
+    "softmax_temperature": 1.0,
+    "temperature_scan_allowed": false,
+    "hard_forward_selected_set_must_equal_inference_selected_set": true
+  },
+  "raw_loss_components": {
+    "L_point": {
+      "definition": "case_balanced_binary_cross_entropy_on_shared_point_calibration_logits"
+    },
+    "L_support": {
+      "selected_positive_mass": "sum(straight_through_assignment * positive_mask)",
+      "definition": "softplus(beta * (target_mass - selected_positive_mass)) / beta",
+      "target_mass": 0.5,
+      "beta": 8.0,
+      "purpose": "penalize a hard-forward selected set with zero positive anchors"
+    },
+    "L_shape": {
+      "row_entropy": "mean_over_slots(-sum(p*log(p+epsilon))/log(candidate_count))",
+      "column_collision": "sum_over_candidates(relu(sum_over_slots(p)-1)^2)/slot_count",
+      "definition": "row_entropy + column_collision",
+      "epsilon": 1e-08,
+      "purpose": "encourage sharp non-collapsed slot distributions without defining uniqueness"
+    },
+    "total_after_calibration": "L_point + lambda_support*L_support + lambda_shape*L_shape"
+  },
+  "training_only_gradient_calibration": {
+    "authorized_now": false,
+    "separate_authorization_after_D6_generation_audit": true,
+    "common_gradient_object": "shared_64D_point_features_F_before_global_pool",
+    "additional_reported_parameter_groups": [
+      "shared_point_encoder",
+      "point_calibration_branch",
+      "slot_attention_and_pointer"
+    ],
+    "target_gradient_ratio_to_L_point": {
+      "lambda_support_times_L_support": 0.5,
+      "lambda_shape_times_L_shape": 0.1
+    },
+    "formula": "lambda_component = target_ratio * median_norm_L_point / median_norm_raw_component",
+    "per_fold": true,
+    "fixed_complete_training_batches_per_fold": 8,
+    "batch_size_cases": 8,
+    "initialization": "exact_future_training_initialization_for_that_fold_and_seed",
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "dev_access": 0,
+    "checkpoint_loaded": false,
+    "weight_bounds": [0.0001, 10000.0],
+    "outside_bounds_zero_or_nonfinite_action": "hard_failure_no_clipping"
+  },
+  "implementation_tests_required": [
+    "R0_exact_D5_V1_descriptor_head_loss_and_top32",
+    "R1_parameter_count_at_most_100000",
+    "same_input_state_device_returns_same_selected_set",
+    "exactly_32_unique_candidate_indices",
+    "global_assignment_score_not_below_slot_order_greedy",
+    "tie_case_returns_candidate_indices_0_through_31",
+    "increasing_positive_logit_decreases_L_support",
+    "collapsed_slots_produce_positive_L_shape_collision",
+    "separated_sharp_slots_reduce_L_shape",
+    "hard_forward_set_equals_inference_set",
+    "empty_positive_mask_hard_failure",
+    "NaN_Inf_short_input_and_wrong_candidate_count_hard_failure",
+    "ground_truth_mask_absent_from_inference_signature",
+    "tiny_artificial_task_learns_a_positive_assignment_without_D6_data"
+  ],
+  "synthetic_zero_step": {
+    "authorized_after_protocol_lock_and_implementation_tests": true,
+    "D6_geometry_cases": 0,
+    "artificial_cases": 4,
+    "candidates": ["R0", "R1"],
+    "forward_passes": 8,
+    "backward_passes": 8,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "checkpoint_loaded": false,
+    "checkpoint_written": false,
+    "development_metrics": 0,
+    "protected_or_sealed_access": false
+  },
+  "future_efficiency_gate": {
+    "benchmark_must_precede_development_evaluation": true,
+    "hardware": "same_GPU_and_software_environment_for_R0_and_R1",
+    "dtype": "float32",
+    "batch_size": 1,
+    "warmup_runs": 10,
+    "timed_runs": 50,
+    "CUDA_synchronize_before_and_after_each_timed_run": true,
+    "latency_statistic": "median",
+    "peak_memory_reset_before_each_candidate": true,
+    "R1_to_R0_latency_ratio_maximum": 1.15,
+    "R1_to_R0_peak_memory_ratio_maximum": 1.10,
+    "failure_action": "freeze_efficiency_negative_before_dev"
+  },
+  "future_hard_gates": {
+    "seed0": {
+      "R1_exact_case_pairing": 400,
+      "R1_selected32_contains_positive": "400/400",
+      "each_fold": "100/100",
+      "each_defect_family": "100/100",
+      "selected_indices_unique": "32/32_per_case",
+      "all_required_outputs_finite": true,
+      "efficiency_passed": true,
+      "sealed_or_protected_access": false,
+      "failure_action": "freeze_D6A_seed0_negative_and_stop"
+    },
+    "seed1": {
+      "authorization_condition": "seed0_all_hard_gates_pass",
+      "R1_selected32_contains_positive": "400/400",
+      "failure_action": "freeze_cross_seed_instability_and_stop"
+    },
+    "proposal_confirmation": {
+      "authorization_condition": "seed0_and_seed1_all_hard_gates_pass",
+      "selected32_contains_positive": "100/100",
+      "single_access": true,
+      "failure_action": "freeze_independent_source_generalization_failure_and_stop"
+    }
+  },
+  "required_statistical_reporting": {
+    "zero_miss_400_one_sided_95_percent_upper_bound_approx": 0.00746,
+    "zero_miss_100_one_sided_95_percent_upper_bound_approx": 0.02951,
+    "source_clustered_uncertainty": true,
+    "same_cases_across_seeds_not_additional_independent_samples": true,
+    "statistical_significance_cannot_replace_hard_gate": true
+  },
+  "lock_effect": {
+    "R0_R1_implementation_authorized_next": true,
+    "toy_case_learning_test_authorized_next": true,
+    "synthetic_zero_step_authorized_after_tests": true,
+    "D6_development_extraction_authorized": false,
+    "D6_generation_authorized": false,
+    "gradient_calibration_authorized": false,
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_access_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "forbidden": [
+    "use_noisy_OR_as_a_calibrated_independent_slot_probability",
+    "use_slot_index_order_greedy_as_final_assignment",
+    "change_slot_count_candidate_count_temperature_assignment_or_loss_after_D6_geometry_access",
+    "scan_soft_assignment_or_loss_variants_on_D6_data",
+    "extract_development_as_a_side_effect_of_protocol_lock",
+    "start_calibration_or_training_as_a_side_effect",
+    "access_confirmation_or_any_protected_split",
+    "expand_topK_or_proposal_budget",
+    "run_seed1_after_any_seed0_gate_failure"
+  ]
+}
+
