@@ -1,0 +1,40 @@
+{
+  "analysis": {
+    "counterfactual_top_k": [8, 16, 32, 64, 128, 256],
+    "input": "frozen D5-A seed-0 completion receipt and all-case CSV only",
+    "name": "paired transition and ranking-tail decomposition",
+    "rank_bands": ["33-40", "41-64", "65-128", ">128"]
+  },
+  "expected_frozen_parent": {
+    "V0_hits": 322,
+    "V0_misses": 78,
+    "V1_hits": 368,
+    "V1_misses": 32,
+    "cases": 400,
+    "sources": 100,
+    "status": "D5A_seed0_frozen_negative_V1_all_case_gate_failed"
+  },
+  "permissions": {
+    "D5A_seed1_training_authorized": false,
+    "D5B_implementation_authorized": false,
+    "D5B_training_authorized": false,
+    "checkpoint_access": false,
+    "completion_holdout_access": false,
+    "model_updates": 0,
+    "npz_access": false,
+    "official_test_access": false,
+    "optimizer_steps": 0,
+    "post_hoc": true,
+    "proposal_confirmation_access": false,
+    "sealed_geometry_access": false,
+    "selection_inert": true,
+    "stl_access": false
+  },
+  "protocol_id": "mamba-v15-d5a-seed0-csv-posthoc-v1",
+  "semantics": {
+    "counterfactual_recall_may_change_original_gate": false,
+    "top128_400_of_400_is_explanatory_only": true,
+    "top32_gate_remains_frozen_negative": true
+  },
+  "status": "posthoc_csv_only_analysis_preregistered_after_frozen_negative"
+}
