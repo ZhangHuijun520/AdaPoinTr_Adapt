@@ -1,0 +1,74 @@
+{
+  "protocol_id": "mamba-v16-d6a-synthetic-zero-step-v1",
+  "status": "preregistered_artificial_CUDA_zero_step_only",
+  "lineage": {
+    "mechanism_protocol_sha256": "2fff4782d429a3ea70607560bee9f464fb7b4eb7cea261376a91eb648a72f284",
+    "mechanism_lock_receipt_sha256": "acd62da63f0788ed2cbca2d48a49114c4cf8cd89b49a878d7fcba94e7ecd2a89",
+    "mechanism_lock_manifest_sha256": "4cbad1016851057152ad536bb69462df9a2c0b3d2440780336e3f24ac69d1a12",
+    "implementation_sha256": "2e71ff22800a8215001de6fb8963c3016b5056763b0e905a8149180578a75d43",
+    "implementation_tests_sha256": "94e8933fd45b80864e62f009afdf3043d35529f7f62f7a5f6c0870f5b1c86a00",
+    "scipy_compatibility_amendment_sha256": "5c5cd38d7dd2386c9886a007f4318be5328bac014c50f94b31dd713bb9890914"
+  },
+  "environment": {
+    "device": "CUDA_required",
+    "dtype": "float32",
+    "scipy_version_specifier": ">=1.11,<2.0",
+    "scipy_semantic_runtime_tests_required": true,
+    "scipy_mismatch_action": "hard_failure_before_forward"
+  },
+  "artificial_input": {
+    "cases": 4,
+    "candidate_points_per_case": 8192,
+    "descriptor_dimensions": 27,
+    "positive_points_per_case": 16,
+    "random_seed": 160600,
+    "contains_D6_identity_or_geometry": false
+  },
+  "execution": {
+    "candidates": [
+      "R0",
+      "R1"
+    ],
+    "forward_passes": 8,
+    "backward_passes": 8,
+    "R0_loss": "exact_frozen_D5_V1_set_level_loss",
+    "R1_backward_probe": "unweighted_sum_of_raw_L_point_L_support_L_shape_for_path_validation_only",
+    "R1_backward_probe_is_not_a_training_objective": true,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "checkpoint_loaded": false,
+    "checkpoint_written": false,
+    "parameter_state_hash_before_after_must_match": true
+  },
+  "access_boundary": {
+    "D6_cases_accessed": 0,
+    "D6_geometry_accessed": false,
+    "D6_development_metrics": 0,
+    "D6_confirmation_accessed": false,
+    "D5_sealed_accessed": false,
+    "official_test_accessed": false,
+    "calibration_authorized": false,
+    "training_authorized": false,
+    "selection_started": false
+  },
+  "pass_conditions": {
+    "implementation_tests_pass": true,
+    "all_losses_and_gradients_finite": true,
+    "R1_selected_indices_unique_per_case": 32,
+    "R1_hard_forward_equals_inference": true,
+    "R1_trainable_parameters_maximum": 100000,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "D6_cases_accessed": 0
+  },
+  "next_step_if_passed": "freeze_implementation_and_zero_step_result_then_authorize_development_download_and_QC_only",
+  "forbidden": [
+    "interpret_random_initialization_selected_hit_as_a_gate",
+    "construct_an_optimizer",
+    "update_model_parameters",
+    "load_or_write_a_checkpoint",
+    "access_D6_or_sealed_data",
+    "authorize_generation_calibration_or_training"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "amendment_id": "mamba-v16-d6a-scipy-linear-assignment-compatibility-amendment-v1",
+  "status": "preregistered_pre_D6_pre_forward_environment_amendment",
+  "issued_on": "2026-09-02",
+  "reason": "the original exact SciPy 1.11.x transport pin was more restrictive than the scientific contract; the frozen implementation uses only scipy.optimize.linear_sum_assignment with maximize=True and enforces deterministic semantic tests at runtime",
+  "timing_and_access_proof": {
+    "issued_before_formal_zero_step_forward": true,
+    "formal_zero_step_outputs_created": false,
+    "D6_geometry_accessed": false,
+    "D6_cases_accessed": 0,
+    "D6_metrics_observed": 0,
+    "confirmation_or_sealed_accessed": false,
+    "training_started": false,
+    "selection_started": false
+  },
+  "bound_parent": {
+    "mechanism_protocol_sha256": "2fff4782d429a3ea70607560bee9f464fb7b4eb7cea261376a91eb648a72f284",
+    "mechanism_lock_receipt_sha256": "acd62da63f0788ed2cbca2d48a49114c4cf8cd89b49a878d7fcba94e7ecd2a89",
+    "mechanism_lock_manifest_sha256": "4cbad1016851057152ad536bb69462df9a2c0b3d2440780336e3f24ac69d1a12",
+    "implementation_sha256": "2e71ff22800a8215001de6fb8963c3016b5056763b0e905a8149180578a75d43",
+    "implementation_tests_sha256": "94e8933fd45b80864e62f009afdf3043d35529f7f62f7a5f6c0870f5b1c86a00"
+  },
+  "single_superseded_field": {
+    "path": "hard_assignment.required_scipy_major_minor",
+    "old_value": "1.11",
+    "new_value": ">=1.11,<2.0"
+  },
+  "compatibility_contract": {
+    "package": "scipy",
+    "version_specifier": ">=1.11,<2.0",
+    "required_api": "scipy.optimize.linear_sum_assignment(cost_matrix, maximize=True)",
+    "server_observed_version_before_execution": "1.15.3",
+    "server_observed_version_is_compatible": true,
+    "runtime_tests_required_before_every_formal_execution": [
+      "global_assignment_score_not_below_slot_order_greedy",
+      "all_equal_tie_returns_candidate_indices_0_through_31",
+      "exactly_32_unique_candidate_indices",
+      "same_input_returns_same_assignment",
+      "hard_forward_selected_set_equals_inference_selected_set"
+    ],
+    "test_failure_action": "hard_failure_before_formal_zero_step"
+  },
+  "unchanged_contracts": [
+    "R0_and_R1_architecture",
+    "8192_candidate_points",
+    "32_support_slots_and_32_unique_outputs",
+    "deterministic_maximum_weight_rectangular_assignment",
+    "tie_break_rule",
+    "straight_through_assignment",
+    "raw_loss_definitions",
+    "parameter_gate",
+    "data_access_boundary",
+    "future_training_and_progression_gates"
+  ],
+  "authorization_effect": {
+    "formal_artificial_zero_step_authorized_if_runtime_tests_pass": true,
+    "D6_development_extraction_authorized": false,
+    "D6_generation_authorized": false,
+    "gradient_calibration_authorized": false,
+    "training_authorized": false,
+    "seed1_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "selection_started": false,
+    "protected_or_sealed_data_accessed": false
+  }
+}
