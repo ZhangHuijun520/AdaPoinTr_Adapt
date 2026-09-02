@@ -1,0 +1,126 @@
+{
+  "protocol_id": "mamba-v16-d6-mug500plus-source125-terminal-acquisition-v1",
+  "status": "preregistered_metadata_only_no_d6_geometry_access",
+  "preregistered_on": "2026-09-02",
+  "purpose": "exhaustively bind the exact 125 MUG500+ v20 healthy sources unused by D3, D4, and D5 into blind development100 and proposal-confirmation25 before D6 mechanism or geometry access",
+  "parent_d5_negative": {
+    "git_branch": "feature/mamba-v12-mechanism-dev",
+    "git_commit": "a6ce92c4330687251d8ad98908612e79c7dabe39",
+    "git_tag": "mamba-adapter-v15-d5a-seed0-negative-csv-posthoc-v1",
+    "frozen_result_sha256": "6b4eceafa24e29077fa48dae086df36bec3e6faea597793c388e05cf658f5932",
+    "complete_report_sha256": "f69bc137bc0d57ee43cd2ee1f4e8edad667ceabacc14875ca04180582152bfd6",
+    "frozen_gate": "V0_322_of_400_V1_368_of_400_negative",
+    "D5_seed1_confirmation_D5B_selection_sealed_permanently_locked": true
+  },
+  "official_metadata": {
+    "article_id": 9616319,
+    "version": 20,
+    "article_json_sha256": "32b6b6e3f57bfd90c45933560723742814e61993ff2f4399dd794156288301e2",
+    "files_json_sha256": "f475490611f5d17536bbf76a0f7db0693a668fd3e87e8502ec395db6b461a078",
+    "healthy_series": "A0001-A0500",
+    "protected_series": "craniotomy/B-series"
+  },
+  "excluded_lineage": {
+    "d3_source125": {
+      "source_ids_sha256": "558ec65c8b1d16283406b62f52ef132c59f81160b7e66d237aab8335d78ad17a",
+      "data_lock_receipt_sha256": "43cafddb0edabef5486c0c12d47164be676d07f049c4ca7dd6c6be9823fd7d62",
+      "files_manifest_sha256": "3892dbcad93418834daf1c1abb4915c8e73a0d6d538741ea8dc49539c8c522d0"
+    },
+    "d4_source100": {
+      "source_ids_sha256": "4bba53ee4be0397c319af01e63c0f2c86b13126302786e07183ead367f544a0f",
+      "acquisition_receipt_sha256": "53f713aaa9a57739db0a47ced2219d0c57ad273677638bb0ef721ee8216a7222",
+      "files_manifest_sha256": "d60bc9d118376a36bbe2dcd1b25b35cb8b5af06f37e0916ac811b73708493162"
+    },
+    "d5_source150": {
+      "source_ids_sha256": "22eedf95e35060cf17aad32371dce160c57e63da26179539ddbb3f3746d77fb7",
+      "development100_ids_sha256": "5c9688a8f70e359270a247db724cf5d5dee60f3e2690ac5e10aff4b338c3d9be",
+      "proposal_confirmation25_ids_sha256": "da93a50a0e92a34438feee5007e3692542f626a6a4709d14897494bab147dd95",
+      "completion_holdout25_ids_sha256": "1fb3222454747dbe2234258ffcca5055418b620fd9e7b2b7264f45b2216514c3",
+      "acquisition_receipt_sha256": "64634d5c31a0d27ce27d10645d4bffa7f28cc22bf09f178ff363acf4c1d49015",
+      "files_manifest_sha256": "9d512638287e782b31f83b566429990673e8af70bd5d01686654c2d0eb8ffa0b"
+    },
+    "required_identity": "D3 source125, D4 source100, and all D5 source150 partitions are pairwise disjoint and their union contains exactly 375 healthy source skulls"
+  },
+  "remaining_pool_contract": {
+    "official_healthy_sources": 500,
+    "excluded_prior_sources": 375,
+    "remaining_sources": 125,
+    "remaining_complete_archives": 25,
+    "partial_archive_overlap_action": "hard_failure",
+    "remaining_after_d6": 0
+  },
+  "partition_rule": {
+    "unit": "complete_official_A_series_archive",
+    "salt": "mamba-v16-d6-source125-terminal-two-partition-v1-20260902",
+    "hash_algorithm": "sha256_utf8",
+    "macro_strata": [
+      {"name": "S1", "start": 1, "end": 150},
+      {"name": "S2", "start": 151, "end": 250},
+      {"name": "S3", "start": 251, "end": 350},
+      {"name": "S4", "start": 351, "end": 450},
+      {"name": "S5", "start": 451, "end": 500}
+    ],
+    "confirmation_selection": "within each macro stratum choose exactly one remaining archive with minimum SHA256(salt|confirmation|archive_name|normalized_md5|size_bytes), then archive_name tie-break",
+    "development_selection": "all remaining archives not selected for confirmation",
+    "expected_partition_sources": {"development": 100, "proposal_confirmation": 25},
+    "expected_partition_archives": {"development": 20, "proposal_confirmation": 5},
+    "manual_reassignment_allowed": false,
+    "geometry_qc_or_model_metrics_used": false
+  },
+  "access_policy": {
+    "development": {
+      "archive_download_and_checksum_authorized_after_lock": true,
+      "clear_stl_extraction_authorized": false,
+      "geometry_qc_authorized": false,
+      "server_deployment_authorized": false,
+      "synthetic_generation_authorized": false,
+      "model_access_authorized": false
+    },
+    "proposal_confirmation": {
+      "offline_archive_download_and_checksum_authorized_after_lock": true,
+      "clear_stl_extraction_authorized": false,
+      "geometry_qc_authorized": false,
+      "server_deployment_authorized": false,
+      "synthetic_generation_authorized": false,
+      "model_access_authorized": false
+    }
+  },
+  "download_plan": {
+    "development_target_skulls_per_batch": 40,
+    "expected_development_batches": 3,
+    "expected_development_batch_sources": [40, 40, 20],
+    "archive_boundaries_preserved": true,
+    "all_downloads_require_md5_and_size_verification": true,
+    "extract_nothing_under_this_lock": true
+  },
+  "lock_effect": {
+    "development_archive_download_authorized": true,
+    "proposal_confirmation_archive_download_authorized": true,
+    "D6_mechanism_protocol_freeze_authorized_next": true,
+    "D6_development_extraction_authorized": false,
+    "D6_development_QC_authorized": false,
+    "D6_synthetic_generation_authorized": false,
+    "D6_R0_R1_implementation_authorized": false,
+    "D6_training_authorized": false,
+    "D6_seed1_authorized": false,
+    "D6_confirmation_access_authorized": false,
+    "D6B_authorized": false,
+    "SkullBreak_confirmation20_authorized": false,
+    "official_test_authorized": false
+  },
+  "statistical_interpretation": {
+    "future_400_of_400_gate": "operational finite-suite gate; zero of 400 misses has an approximately 0.75 percent one-sided 95 percent miss-rate upper bound",
+    "future_100_of_100_confirmation_gate": "independent one-shot gate; zero of 100 misses has an approximately 2.95 percent one-sided 95 percent miss-rate upper bound",
+    "same_cases_across_seeds": "training-stability evidence only, not additional independent source sample size"
+  },
+  "forbidden": [
+    "reuse_any_D3_D4_or_D5_source_including_D5_sealed_sources",
+    "partially_select_an_official_archive",
+    "use_geometry_QC_or_model_metrics_for_partitioning",
+    "extract_development_before_D6_mechanism_protocol_and_preflight_authorization",
+    "extract_or_deploy_confirmation_before_seed0_and_seed1_pass",
+    "modify_partition_after_download_or_geometry_access",
+    "start_generation_implementation_training_or_selection_as_a_side_effect"
+  ]
+}
+
