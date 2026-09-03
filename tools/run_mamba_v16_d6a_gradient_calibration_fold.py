@@ -11,10 +11,15 @@ import json
 import random
 from pathlib import Path
 from statistics import median
+import sys
 from typing import Any, Iterable
 
 import numpy as np
 import torch
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from tools.verify_mamba_v16_d6a_gradient_calibration_execution_authorization import verify_authorization
 from utils.mamba_d5a_proposal import geometry_descriptor_27d

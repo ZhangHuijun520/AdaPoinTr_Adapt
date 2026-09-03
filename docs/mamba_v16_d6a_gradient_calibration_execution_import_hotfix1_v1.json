@@ -1,0 +1,18 @@
+{
+  "hotfix_id": "mamba-v16-d6a-gradient-calibration-execution-import-hotfix1-v1",
+  "date": "2026-09-03",
+  "reason": "Direct execution of tools/*.py places the tools directory, not the repository root, at sys.path[0] in a clean shell.",
+  "files_changed": [
+    "tools/preflight_mamba_v16_d6a_gradient_calibration_execution.py",
+    "tools/run_mamba_v16_d6a_gradient_calibration_fold.py"
+  ],
+  "change": "Insert the resolved repository root into sys.path before importing repository-local tools and utils modules.",
+  "semantic_change": false,
+  "protocol_change": false,
+  "data_change": false,
+  "calibration_rule_change": false,
+  "permission_change": false,
+  "calibration_started": false,
+  "training_started": false,
+  "protected_or_sealed_data_accessed": false
+}

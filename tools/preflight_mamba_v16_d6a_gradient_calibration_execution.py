@@ -9,9 +9,14 @@ import hashlib
 import io
 import json
 from pathlib import Path
+import sys
 from typing import Any
 
 import torch
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from tools.verify_mamba_v16_d6a_gradient_calibration_execution_authorization import verify_authorization
 from utils.mamba_d6a_slot_allocator import D6R1SlotAllocator, d6a_raw_losses
