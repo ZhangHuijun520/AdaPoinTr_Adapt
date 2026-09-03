@@ -1,0 +1,131 @@
+{
+  "protocol_id": "mamba-v16-d6-mug500plus-development-generation-fourfold-v1",
+  "status": "preregistered_generation_not_run",
+  "preregistered_on": "2026-09-03",
+  "purpose": "freeze M2-v1-compatible generation for D6 development100 and four source-skull folds while proposal-confirmation25 remains sealed",
+  "lineage": {
+    "development100_qc_lock": {
+      "protocol_id": "mamba-v16-d6-development100-final-qc-lock-v1",
+      "files_manifest_sha256": "ba62bbe839e044d98a1f73be2fa2d0f2973ca771ab9e0911548dd77e81376ed2",
+      "receipt_sha256": "97e26338d4d4bff743a20e0a830ca6e34f1c64f8dfd0de5115d91f22aec93cef",
+      "assets_csv_sha256": "a1f06fba94158074a116033d62b37c267479c7f630a10bee94c0383980083d0c",
+      "required_sources": 100,
+      "required_qc_pass": 100,
+      "required_prior_overlap": 0
+    },
+    "source125_acquisition_lock": {
+      "protocol_id": "mamba-v16-d6-mug500plus-source125-terminal-acquisition-v1",
+      "files_manifest_sha256": "d8509c44dd36575d46784972f70ec8f808754d3ffa84f390655ef3e5467c0fc1",
+      "receipt_sha256": "865b9fb30ef52c532ae5dd4c5ff18405833dee0570144ee94957cf5c460dab71",
+      "development100_ids_sha256": "833595b000732cb56a3d729fcb1121a0c70018bf030505aa9584020498a2cc68",
+      "proposal_confirmation25_ids_sha256": "7adb4a0dcf6eb7897d66110f32f425fa36a5c5561f729bd173200bcd1386d632",
+      "proposal_confirmation_accessed": false
+    },
+    "d6a_zero_step": {
+      "git_commit": "26b255f1d71291c6ad40b9c50c2119a0eb88ff6c",
+      "git_tag": "mamba-adapter-v16-d6a-slot32-zero-step-v1",
+      "complete_result_sha256": "7f093b50e660e4828bec85b5c0f75ce2f6dc487198c648516b933969ff267b85",
+      "D6_cases_accessed": 0,
+      "model_updates": 0
+    },
+    "m2_v1_engine": {
+      "implementation": "tools/generate_mug500plus_m2_synthetic_defects.py",
+      "implementation_sha256": "88a839afffadaa4d0eaf3fa7293e2cef0fdb2cccb7beb2af5062a91fc0f3adf7",
+      "base_protocol": "docs/mamba_v13_d3_mug500plus_phase_m2_synthetic_defect_protocol_v1.json",
+      "base_protocol_sha256": "1da529947cdce9972a2ce7881c05df891191d54026a96ed229c872cdd7e18768",
+      "inherited_sections": [
+        "surface_sampling",
+        "location",
+        "defect_families",
+        "geometric_hard_gates",
+        "normalization"
+      ],
+      "inherited_sections_must_be_unmodified": true
+    }
+  },
+  "development_generation": {
+    "effective_protocol_id": "mamba-v16-d6-development100-m2-synthetic-defect-v1",
+    "master_seed": 20260903,
+    "source_dataset": "mug500plus-v20-d6-development100",
+    "source_skulls": 100,
+    "defects_per_source": 4,
+    "expected_cases": 400,
+    "case_id": "mug500plus__Axxxx__defect_type",
+    "output_container": "deterministic-npz",
+    "output_manifest": "manifest.jsonl",
+    "overwrite_allowed": false
+  },
+  "defect_contract": {
+    "defect_types": [
+      "ellipsoid_small",
+      "ellipsoid_medium",
+      "ellipsoid_large",
+      "irregular_medium"
+    ],
+    "all_four_required_per_source": true,
+    "partial_points": 8192,
+    "implant_points": 8192,
+    "complete_points": 8192,
+    "reference_rim_band_mm": 2.0,
+    "uses_source_geometry_only": true,
+    "anatomical_labels_claimed": false
+  },
+  "four_fold_rule": {
+    "unit": "source_skull",
+    "salt": "mamba-v16-d6-development100-source-fourfold-v1-20260903",
+    "hash_algorithm": "sha256_utf8",
+    "fold_key": "SHA256(salt|fold|source_id)",
+    "assignment": "sort all 100 development source IDs by fold key then assign A,B,C,D round-robin",
+    "folds": ["A", "B", "C", "D"],
+    "dev_sources_per_fold": 25,
+    "train_sources_per_fold": 75,
+    "dev_cases_per_fold": 100,
+    "train_cases_per_fold": 300,
+    "each_source_is_dev_once": true,
+    "same_source_four_cases_share_fold": true,
+    "model_or_geometry_metrics_used": false,
+    "manual_reassignment_allowed": false
+  },
+  "sealed_partition_contract": {
+    "proposal_confirmation_sources": 25,
+    "geometry_may_be_read_by_this_stage": false,
+    "archives_may_be_extracted_by_this_stage": false,
+    "derived_cases_may_be_generated_by_this_stage": false,
+    "only_frozen_id_hashes_and_access_flags_are_bound": true
+  },
+  "generation_audit_required_after_run": {
+    "exact_sources": 100,
+    "exact_cases": 400,
+    "all_source_hashes_reverified": true,
+    "all_derived_hashes_unique_and_verified": true,
+    "all_npz_contracts_verified": true,
+    "all_geometry_hard_gates_verified": true,
+    "all_paths_portable": true,
+    "fold_membership_rejoined_by_source_id": true,
+    "proposal_confirmation_remains_unaccessed": true,
+    "calibration_and_training_remain_locked_until_audit_passes": true
+  },
+  "lock_effect": {
+    "D6_development_synthetic_generation_authorized_after_protocol_lock": true,
+    "D6_development_synthetic_generation_started_by_lock": false,
+    "D6A_R0_R1_implementation_frozen": true,
+    "D6_gradient_calibration_authorized": false,
+    "D6A_training_authorized": false,
+    "D6_seed1_authorized": false,
+    "D6B_training_authorized": false,
+    "D6_candidate_selection_authorized": false,
+    "proposal_confirmation_access_authorized": false,
+    "official_test_access_authorized": false
+  },
+  "forbidden": [
+    "change_development100_membership",
+    "change_fold_salt_after_lock",
+    "split_four_cases_from_one_source_across_folds",
+    "change_inherited_M2_v1_geometry_or_sampling_sections",
+    "prune_or_replace_cases_using_generation_difficulty_or_model_results",
+    "extract_or_inspect_proposal_confirmation25",
+    "generate_cases_for_proposal_confirmation25",
+    "start_calibration_training_seed1_or_selection_as_a_side_effect",
+    "access_official_test"
+  ]
+}
