@@ -1,0 +1,58 @@
+{
+  "protocol_id": "mamba-v16-d6a-calibrated-weighted-real-train-zero-step-v1",
+  "status": "preregistered_after_gradient_calibration_before_training_authorization",
+  "candidate": "R1",
+  "seed": 0,
+  "folds": ["A", "B", "C", "D"],
+  "input": {
+    "case_source": "first_frozen_eight_case_calibration_batch_per_fold",
+    "cases_per_fold": 8,
+    "total_case_slots": 32,
+    "membership": "same_fold_development_train_only",
+    "dev_cases_accessed": 0,
+    "protected_or_sealed_cases_accessed": 0
+  },
+  "loss": {
+    "formula": "L_point + lambda_support_fold * L_support + lambda_shape_fold * L_shape",
+    "weight_source": "immutable_D6A_R1_gradient_calibration_completion_receipt",
+    "weight_binding": "same_fold_only",
+    "cross_fold_mean_forbidden": true,
+    "manual_adjustment_forbidden": true
+  },
+  "measurements": {
+    "gradient_objects": [
+      "shared_64D_point_features_F_before_global_pool",
+      "shared_point_encoder_parameters",
+      "point_calibration_branch_parameters",
+      "slot_attention_and_pointer_parameters"
+    ],
+    "quantities": [
+      "raw_and_weighted_component_losses",
+      "weighted_total_loss",
+      "component_and_total_global_L2_gradient_norms",
+      "cosine_of_total_gradient_with_each_weighted_component_when_defined",
+      "selected_index_uniqueness"
+    ],
+    "cosines_are_observation_only_not_a_gate": true
+  },
+  "hard_gates": {
+    "all_losses_and_gradients_finite": true,
+    "weighted_total_gradient_nonzero": true,
+    "exactly_32_unique_selected_indices_per_case": true,
+    "model_state_unchanged": true,
+    "random_state_restored": true,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "checkpoint_written": false
+  },
+  "permissions_after_pass": {
+    "D6A_seed0_training_authorized": false,
+    "D6A_seed1_training_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "next_step": "freeze_and_review_weighted_zero_step_before_separate_training_protocol"
+  }
+}
+
