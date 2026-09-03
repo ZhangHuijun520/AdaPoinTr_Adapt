@@ -1,0 +1,51 @@
+{
+  "protocol_id": "mamba-v16-d6a-full-inference-efficiency-implementation-zero-step-v1",
+  "status": "preregistered_artificial_zero_step_formal_benchmark_not_authorized",
+  "purpose": "verify the frozen R0/R1 full-inference benchmark implementation on artificial descriptors without producing an efficiency gate result",
+  "lineage": {
+    "candidate_training_efficiency_protocol_sha256": "5060c7700e53d42a4100ebeacf35f662accd58c585fc82af1443fafffb17fc3e",
+    "R0_implementation_sha256": "6cca9c11f302da3ca202f3e33547c62e4584eeb0fd81f9e96c20f2787e04f070",
+    "R1_implementation_sha256": "2e71ff22800a8215001de6fb8963c3016b5056763b0e905a8149180578a75d43"
+  },
+  "benchmark_implementation_contract": {
+    "scope": "full candidate inference including final selector",
+    "candidate_order": ["R0", "R1"],
+    "input_shape": [1, 8192, 27],
+    "input_dtype": "float32",
+    "device": "CUDA_required",
+    "warmup_runs_formal": 10,
+    "timed_runs_formal": 50,
+    "cuda_synchronize_before_and_after_each_timed_run": true,
+    "latency_statistic": "median",
+    "peak_memory_reset_before_each_candidate": true,
+    "R1_to_R0_latency_ratio_maximum": 1.15,
+    "R1_to_R0_peak_memory_ratio_maximum": 1.10
+  },
+  "artificial_zero_step": {
+    "descriptor_seed": 160610,
+    "contains_D6_identity_or_geometry": false,
+    "full_inference_passes": {"R0": 1, "R1": 1},
+    "selected_indices_required": 32,
+    "formal_warmup_runs": 0,
+    "formal_timed_runs": 0,
+    "latency_gate_evaluated": false,
+    "peak_memory_gate_evaluated": false,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "checkpoint_loaded": false,
+    "checkpoint_written": false
+  },
+  "permission_boundary": {
+    "formal_efficiency_execution_authorized": false,
+    "separate_formal_efficiency_execution_authorization_allowed_next": true,
+    "runtime_training_configs_authorized": false,
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "development_cases_accessed": 0,
+    "protected_or_sealed_data_accessed": false
+  }
+}
