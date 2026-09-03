@@ -1,0 +1,57 @@
+{
+  "protocol_id": "mamba-v16-d6a-gradient-calibration-execution-authorization-v1",
+  "status": "preregistered_after_protocol_lock_before_calibration_execution",
+  "scope": {
+    "candidate": "R1",
+    "folds": ["A", "B", "C", "D"],
+    "seed": 0,
+    "calibration_execution_authorized": true,
+    "calibration_order": ["A", "B", "C", "D"],
+    "completed_fold_rerun_authorized": false
+  },
+  "measurement": {
+    "batches_per_fold": 8,
+    "cases_per_batch": 8,
+    "measured_case_slots_per_fold": 64,
+    "common_gradient_object": "shared_64D_point_features_F_before_global_pool",
+    "losses": ["L_point", "L_support", "L_shape"],
+    "norm": "global_l2_over_complete_F_tensor_and_batch",
+    "fold_aggregation": "independent_median_of_8_raw_norms",
+    "target_support_ratio": 0.5,
+    "target_shape_ratio": 0.1,
+    "weight_bounds_inclusive": [0.0001, 10000.0],
+    "gradient_clipping": false,
+    "manual_adjustment": false
+  },
+  "cuda_preflight": {
+    "input": "deterministic_artificial_descriptors_and_masks_only",
+    "D6_cases_accessed": 0,
+    "forward_passes": 1,
+    "backward_gradient_queries": 3,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "calibration_receipt_written": false
+  },
+  "execution_effect": {
+    "one_immutable_receipt_per_fold": true,
+    "completion_requires_four_folds": true,
+    "runtime_config_materialization_authorized_after_completion": true,
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "forbidden": [
+    "access any development dev case during calibration",
+    "access proposal-confirmation25 completion holdout or official test",
+    "pool gradient norms across folds",
+    "clip round scan or manually edit either weight",
+    "rerun a completed fold",
+    "construct an optimizer or persist model or buffer updates",
+    "write a model checkpoint",
+    "automatically start seed-0 training"
+  ]
+}
