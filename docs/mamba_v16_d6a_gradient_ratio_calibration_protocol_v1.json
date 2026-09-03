@@ -1,0 +1,140 @@
+{
+  "protocol_id": "mamba-v16-d6a-r1-training-only-gradient-ratio-calibration-v1",
+  "status": "preregistered_before_any_D6_gradient_measurement",
+  "preregistered_on": "2026-09-03",
+  "scope": "R1 seed-0 folds A-D training-only gradient calibration",
+  "scientific_role": {
+    "candidate": "R1",
+    "question": "Can the frozen assignment-consistent slot32 allocator be trained with support and shape gradients at their preregistered relative scales?",
+    "calibration_is_model_selection": false,
+    "calibration_uses_outcome_metrics": false,
+    "R0_new_weight_calibration": false,
+    "R0_rule": "retain the exact frozen D5 V1 loss definition as the in-round reference"
+  },
+  "lineage": {
+    "git_branch": "feature/mamba-v12-mechanism-dev",
+    "generation_audit_result_commit": "a9766771b34a4d4e74e34ae893e5f64a193552cd",
+    "generation_audit_result_tag": "mamba-adapter-v16-d6-development400-generation-audit-v1",
+    "mechanism_protocol_sha256": "2fff4782d429a3ea70607560bee9f464fb7b4eb7cea261376a91eb648a72f284",
+    "mechanism_lock_manifest_sha256": "4cbad1016851057152ad536bb69462df9a2c0b3d2440780336e3f24ac69d1a12",
+    "mechanism_lock_receipt_sha256": "acd62da63f0788ed2cbca2d48a49114c4cf8cd89b49a878d7fcba94e7ecd2a89",
+    "zero_step_manifest_sha256": "8d8495a30421f143aef4f660169a0777cffcecc5e11a53f396ee1de6fccfbbf9",
+    "zero_step_receipt_sha256": "63271b3567d3ad06994e63b67eac0d7f2f006055a5b93bb2ea1e1fe23efa8c7a",
+    "fourfold_lock_manifest_sha256": "6a130df708ba006a286388cd38fb8bdd0d3fac7a028d67063357fa18bbd04036",
+    "fourfold_lock_receipt_sha256": "207ffb0c9c6f5a913ab96de23b3a5f88d17bc301d53e871b181da0a3a48a374e",
+    "generation_audit_manifest_sha256": "fa14e67677aa64e1f0e2cdf96aa9d37062471ea3f774ca831d05bea1c95e7e7a",
+    "generation_audit_summary_sha256": "f8942d6421a524ff648639e464394bd64bfa32781f7d65a6ec8c62aa7485c390",
+    "zero_step_complete_result_sha256": "7f093b50e660e4828bec85b5c0f75ce2f6dc487198c648516b933969ff267b85",
+    "generation_audit_complete_result_sha256": "e79beea12f01cb25e3a54a1118424683a2e62bcfc9de323d73c6068f0f5590e8",
+    "R1_implementation_sha256": "2e71ff22800a8215001de6fb8963c3016b5056763b0e905a8149180578a75d43"
+  },
+  "data_boundary": {
+    "allowed_partition": "same-fold development training cases only",
+    "folds": ["A", "B", "C", "D"],
+    "training_cases_per_fold": 300,
+    "training_sources_per_fold": 75,
+    "calibration_batches_per_fold": 8,
+    "batch_size_cases": 8,
+    "measured_case_slots_per_fold": 64,
+    "measured_sources_per_fold": 16,
+    "all_four_defect_families_per_measured_source": true,
+    "batch_construction": "two_complete_sources_per_batch_in_frozen_hash_rank_order",
+    "source_rank_key": "sha256(protocol_id|fold|seed0|source_id)",
+    "case_order_within_source": "exact fold train case-id file order",
+    "drop_last": true,
+    "dev_cases_accessed": 0,
+    "proposal_confirmation_accessed": false,
+    "completion_holdout_accessed": false,
+    "official_test_accessed": false
+  },
+  "model_state": {
+    "candidate": "R1",
+    "seed": 0,
+    "initialization": "exact future R1 fold seed-0 training initialization",
+    "model_mode": "train_with_state_and_rng_restored_after_measurement",
+    "checkpoint_loaded": false,
+    "checkpoint_written": false,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "persistent_buffer_updates": false,
+    "random_state_restored_after_measurement": true
+  },
+  "gradient_measurement": {
+    "common_gradient_object": "shared_64D_point_features_F_before_global_pool",
+    "common_object_shape_per_case": [8192, 64],
+    "losses_measured_separately_on_the_same_forward_graph": [
+      "L_point",
+      "L_support",
+      "L_shape"
+    ],
+    "norm": "global_l2_over_the_complete_common_F_tensor_and_batch",
+    "missing_gradient": "hard_failure",
+    "epsilon_denominator": 1e-12,
+    "gradient_clipping_applied": false,
+    "reported_clipped_norm": "identical_to_raw_norm_with_clipping_applied_false",
+    "fold_aggregation": "independent_median_of_exactly_8_raw_norms_for_each_loss",
+    "diagnostic_parameter_groups": [
+      "shared_point_encoder",
+      "point_calibration_branch",
+      "slot_attention_and_pointer"
+    ],
+    "diagnostic_group_norm": "global_l2_with_missing_parameter_gradients_counted_as_zero",
+    "diagnostic_group_norms_affect_weights": false
+  },
+  "weight_rule": {
+    "target_gradient_ratio_to_L_point": {
+      "lambda_support_times_L_support": 0.5,
+      "lambda_shape_times_L_shape": 0.1
+    },
+    "lambda_support": "0.5 * median_norm_L_point / median_norm_L_support",
+    "lambda_shape": "0.1 * median_norm_L_point / median_norm_L_shape",
+    "weight_bounds_inclusive": [0.0001, 10000.0],
+    "clipping_rounding_or_manual_adjustment_allowed": false,
+    "zero_nonfinite_nonpositive_or_outside_bounds_action": "hard_failure_no_receipt",
+    "same_fold_weight_binding_required": true,
+    "cross_fold_pooling_allowed": false
+  },
+  "receipt_contract": {
+    "one_immutable_receipt_per_fold": true,
+    "records_exact_batch_case_ids": true,
+    "records_train_case_list_sha256": true,
+    "records_common_F_raw_norms": true,
+    "records_diagnostic_parameter_group_norms": true,
+    "records_component_medians": true,
+    "records_lambda_support_and_lambda_shape": true,
+    "records_model_state_restore_check": true,
+    "records_rng_restore_check": true,
+    "completion_requires_four_folds": true,
+    "rerun_completed_fold_allowed": false
+  },
+  "protocol_lock_effect": {
+    "calibration_execution_authorized": false,
+    "separate_calibration_execution_authorization_allowed_next": true,
+    "runtime_config_materialization_authorized": false,
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "post_calibration_effect": {
+    "receipt_bound_R1_runtime_config_materialization_allowed_next": true,
+    "calibration_receipt_itself_authorizes_training": false,
+    "seed1_confirmation_D6B_or_selection_authorized": false
+  },
+  "forbidden": [
+    "use dev or outcome metrics to choose alter or validate calibration weights",
+    "calibrate R0 into a new candidate",
+    "pool folds before computing either weight",
+    "use disjoint parameter-group norms as the calibration denominator",
+    "clip round scan or manually edit either weight",
+    "replace the frozen 8-batch schedule",
+    "rerun a completed fold to obtain a preferred value",
+    "construct an optimizer or persist model or buffer updates",
+    "load any checkpoint",
+    "access proposal-confirmation25 holdout or official test",
+    "automatically materialize configs or start seed-0 training"
+  ]
+}
