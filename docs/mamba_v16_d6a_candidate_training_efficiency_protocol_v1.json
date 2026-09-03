@@ -1,0 +1,112 @@
+{
+  "protocol_id": "mamba-v16-d6a-r0-r1-candidate-training-efficiency-v1",
+  "status": "preregistered_non_runnable_efficiency_before_training",
+  "preregistered_on": "2026-09-03",
+  "purpose": "freeze the R0/R1 seed-0 training budget and require an architecture-only efficiency gate before any D6-A optimizer step",
+  "candidate_roles": {
+    "R0": "exact D5 V1 reference retrained on D6; non-eligibility control",
+    "R1": "only assignment-consistent slot32 eligibility candidate"
+  },
+  "execution_order": [
+    "separate_efficiency_implementation_and_artificial_zero_step",
+    "separate_efficiency_execution_authorization",
+    "freeze_efficiency_result",
+    "separate_seed0_training_authorization_only_if_efficiency_passes"
+  ],
+  "efficiency_gate": {
+    "data": "deterministic artificial 8192x27 descriptors without D6 identity",
+    "scope": "full candidate inference including final selector",
+    "candidates": ["R0", "R1"],
+    "hardware": "same GPU and software environment",
+    "dtype": "float32",
+    "batch_size": 1,
+    "warmup_runs": 10,
+    "timed_runs": 50,
+    "cuda_synchronize_before_and_after_each_timed_run": true,
+    "latency_statistic": "median",
+    "peak_memory_reset_before_each_candidate": true,
+    "R1_to_R0_latency_ratio_maximum": 1.15,
+    "R1_to_R0_peak_memory_ratio_maximum": 1.10,
+    "failure_action": "freeze_efficiency_negative_and_stop_before_training",
+    "development_cases_accessed": 0,
+    "protected_or_sealed_access": false
+  },
+  "seed0_training_budget": {
+    "authorized_now": false,
+    "authorization_condition": "frozen efficiency result passes both hard thresholds",
+    "candidate_order": ["R0", "R1"],
+    "fold_order": ["A", "B", "C", "D"],
+    "runs": 8,
+    "epochs_per_run": 50,
+    "batch_size_cases": 8,
+    "training_cases_per_fold": 300,
+    "development_cases_per_fold": 100,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "scheduler": "CosineAnnealingLR",
+    "scheduler_T_max_epochs": 50,
+    "scheduler_eta_min": 0.00001,
+    "gradient_clip_norm": 1.0,
+    "optimizer_steps_per_run": 1900,
+    "optimizer_steps_total_maximum": 15200,
+    "early_stopping": false,
+    "checkpoint_policy": "final_epoch_only",
+    "development_access": "one_shot_after_exactly_1900_optimizer_steps",
+    "development_during_training": false
+  },
+  "loss_contract": {
+    "R0": {
+      "definition": "exact frozen D5 V1 equal-weight BCE plus positive-mass NLL plus top32 margin",
+      "new_calibration_forbidden": true
+    },
+    "R1": {
+      "definition": "L_point + lambda_support_fold*L_support + lambda_shape_fold*L_shape",
+      "same_fold_weights": {
+        "A": {"lambda_support": 0.494150599249, "lambda_shape": 4316.05849206},
+        "B": {"lambda_support": 0.527897066392, "lambda_shape": 4345.89188804},
+        "C": {"lambda_support": 0.497502166326, "lambda_shape": 4021.99250307},
+        "D": {"lambda_support": 0.535437539569, "lambda_shape": 4579.44433601}
+      },
+      "cross_fold_mean_weight_forbidden": true,
+      "scalar_total_loss_for_early_stopping_scheduler_checkpoint_or_candidate_comparison_forbidden": true,
+      "required_logging": [
+        "L_point",
+        "L_support",
+        "L_shape",
+        "weighted_support",
+        "weighted_shape",
+        "total_loss"
+      ],
+      "nonfinite_component_or_gradient_action": "hard_failure"
+    }
+  },
+  "seed0_hard_gate_after_training": {
+    "R1_selected32_contains_positive": "400/400",
+    "each_fold": "100/100",
+    "each_defect_family": "100/100",
+    "selected_indices_unique": "32/32_per_case",
+    "all_outputs_finite": true,
+    "efficiency_gate_passed": true,
+    "failure_action": "freeze_D6A_seed0_negative_and_stop"
+  },
+  "permission_boundary": {
+    "efficiency_implementation_and_artificial_zero_step_authorized_next": true,
+    "efficiency_execution_authorized": false,
+    "runtime_training_configs_authorized": false,
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "forbidden": [
+    "benchmark on development or protected cases",
+    "start training as a side effect of protocol locking",
+    "use a four-fold mean R1 calibration weight",
+    "use R1 scalar total loss for early stopping, scheduling, checkpoint selection, or candidate comparison",
+    "change the frozen efficiency thresholds after observing runtime",
+    "run seed1, confirmation, D6B, or selection after any hard-gate failure"
+  ]
+}
