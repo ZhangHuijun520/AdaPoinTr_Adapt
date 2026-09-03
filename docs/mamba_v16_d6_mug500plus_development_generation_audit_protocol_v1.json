@@ -1,0 +1,69 @@
+{
+  "protocol_id": "mamba-v16-d6-mug500plus-development-generation-audit-v1",
+  "status": "execution_protocol_frozen_after_generation_before_audit",
+  "frozen_on": "2026-09-03",
+  "purpose": "independently execute the hard gates preregistered in the D6 generation protocol before calibration, training, candidate selection, or sealed-partition access",
+  "timing_disclosure": {
+    "hard_gates_preregistered_before_generation": true,
+    "audit_executor_frozen_after_generation": true,
+    "detailed_audit_statistics_read_before_executor_freeze": false
+  },
+  "lineage": {
+    "generation_protocol_id": "mamba-v16-d6-mug500plus-development-generation-fourfold-v1",
+    "generator_bundle_sha256": "793306c4b0ec9ed0079c891f4f4c1b82590fb4b77dce5f9cd7a8a8885fe99a84",
+    "development100_files_manifest_sha256": "ba62bbe839e044d98a1f73be2fa2d0f2973ca771ab9e0911548dd77e81376ed2",
+    "development100_receipt_sha256": "97e26338d4d4bff743a20e0a830ca6e34f1c64f8dfd0de5115d91f22aec93cef",
+    "development100_assets_sha256": "a1f06fba94158074a116033d62b37c267479c7f630a10bee94c0383980083d0c",
+    "source125_files_manifest_sha256": "d8509c44dd36575d46784972f70ec8f808754d3ffa84f390655ef3e5467c0fc1",
+    "source125_receipt_sha256": "865b9fb30ef52c532ae5dd4c5ff18405833dee0570144ee94957cf5c460dab71",
+    "fourfold_files_manifest_sha256": "6a130df708ba006a286388cd38fb8bdd0d3fac7a028d67063357fa18bbd04036",
+    "fourfold_assignment_sha256": "35d7b981395e4f630b1c2b071a42af38594380daa0ee92e60bb54653a6d0b5d1"
+  },
+  "expected_cardinality": {
+    "source_skulls": 100,
+    "derived_cases": 400,
+    "cases_per_source": 4,
+    "folds": ["A", "B", "C", "D"],
+    "sources_per_fold": 25,
+    "cases_per_fold": 100
+  },
+  "hard_gates": {
+    "generation_receipt_and_manifest_hash_chain_valid": true,
+    "development100_source125_and_fourfold_hash_chains_valid": true,
+    "source_assets_rehashed_and_match_lock": true,
+    "derived_case_hashes_all_match_and_are_unique": true,
+    "manifest_and_cases_directory_are_bijective": true,
+    "npz_members_shapes_dtypes_and_finiteness_valid": true,
+    "partial_only_normalization_valid": true,
+    "reference_rim_points_minimum": 8,
+    "removed_surface_area_fraction_min": 0.003,
+    "removed_surface_area_fraction_max": 0.25,
+    "minimum_removed_triangles": 256,
+    "minimum_remaining_triangles": 4096,
+    "all_four_families_present_per_source": true,
+    "all_four_cases_from_each_source_share_frozen_fold": true,
+    "all_manifest_paths_relative_and_resolvable": true,
+    "no_unmanifested_npz_files": true,
+    "proposal_confirmation_accessed": false,
+    "official_test_accessed": false
+  },
+  "audit_effect": {
+    "D6A_R0_R1_implementation_remains_frozen": true,
+    "D6_gradient_calibration_authorized_on_pass": false,
+    "D6A_training_authorized_on_pass": false,
+    "D6_seed1_authorized_on_pass": false,
+    "D6B_training_authorized_on_pass": false,
+    "D6_candidate_selection_authorized_on_pass": false,
+    "proposal_confirmation_access_authorized": false,
+    "official_test_access_authorized": false,
+    "next_step_on_pass": "freeze_a_separate_D6_gradient_calibration_protocol"
+  },
+  "forbidden": [
+    "repair_or_replace_a_generated_case_during_audit",
+    "change_generation_or_fold_rules_after_reading_audit_results",
+    "drop_sources_or_cases_using_audit_statistics",
+    "authorize_calibration_training_seed1_D6B_or_selection_as_an_audit_side_effect",
+    "extract_or_access_proposal_confirmation25",
+    "access_official_test"
+  ]
+}
