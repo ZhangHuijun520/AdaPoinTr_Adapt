@@ -1,0 +1,69 @@
+{
+  "protocol_id": "mamba-v16-d6-development400-generation-archive-v1",
+  "status": "archive_only_no_new_experiment_authority",
+  "purpose": "Create a portable, restore-verified milestone archive for the frozen D6 development400 generation and independent audit.",
+  "required_payload": {
+    "derived_dataset": "datasets/MUG500plusD6Development400_v1",
+    "data_locks": [
+      "mug500plus_d6_source125_acquisition_lock_v1",
+      "mug500plus_d6_development100_qc_lock_v1",
+      "mug500plus_d6_development_generation_fourfold_protocol_lock_v1"
+    ],
+    "mechanism_lock": "d6a_slot32_mechanism_protocol_lock_v1",
+    "synthetic_zero_step": "d6a_synthetic_zero_step_v1",
+    "generation_audit": "development_generation_audit_v1",
+    "transport_and_lineage_receipts": [
+      "development_protocol_lf_hotfix2_v1",
+      "development_protocol_zero_step_parent_hotfix1_v1"
+    ],
+    "runtime_logs": [
+      "development_generation_tmux_v1",
+      "development_generation_audit_tmux"
+    ],
+    "implementation_and_environment": true
+  },
+  "required_cardinality": {
+    "source_skulls": 100,
+    "derived_cases": 400,
+    "fold_cases": {
+      "A": 100,
+      "B": 100,
+      "C": 100,
+      "D": 100
+    },
+    "defect_families": 4
+  },
+  "frozen_artifact_bindings": {
+    "generation_files_sha256": "7c5967d6600aa2017e9c28aa3414594010b2033acf94c69f161f12889f243041",
+    "generation_manifest_sha256": "37fca6b9436233053ce142d1fcb9504d0fb17c79123e1d78a1514f87b2528bdb",
+    "generation_receipt_sha256": "eddc4758c434313e4edac1b6b50a8124f2d0d68744636133d57b239c69fdf676",
+    "audit_files_sha256": "fa14e67677aa64e1f0e2cdf96aa9d37062471ea3f774ca831d05bea1c95e7e7a",
+    "audit_summary_sha256": "f8942d6421a524ff648639e464394bd64bfa32781f7d65a6ec8c62aa7485c390",
+    "portable_manifest_sha256": "f39e44d0836545980840db2dad8969899be00b631f070fe535b8f09bbba9c682"
+  },
+  "excluded_payload": {
+    "development_source_stl": true,
+    "proposal_confirmation_geometry": true,
+    "official_test_geometry": true,
+    "model_checkpoints": true,
+    "reason": "Source STL is retained in the independently verified local development100 asset package; proposal-confirmation25 and official test remain sealed."
+  },
+  "source_archive_binding": {
+    "archive_stream_bytes": 11007297410,
+    "archive_stream_sha256": "183ac5d7a1e6b3c2006ef0f933f1c78280da839dde492341c2c76ff6269e07c4",
+    "source_stl_count": 100,
+    "source_stl_file_bytes": 19914032900,
+    "source_tree_du_bytes": 19914069764
+  },
+  "permission_boundary": {
+    "D6A_R0_R1_implementation_frozen": true,
+    "D6_gradient_calibration_authorized": false,
+    "D6A_training_authorized": false,
+    "D6_seed1_authorized": false,
+    "D6B_training_authorized": false,
+    "D6_candidate_selection_authorized": false,
+    "proposal_confirmation_accessed": false,
+    "official_test_accessed": false
+  },
+  "next_step": "restore_verify_locally_then_freeze_complete_result_report"
+}
