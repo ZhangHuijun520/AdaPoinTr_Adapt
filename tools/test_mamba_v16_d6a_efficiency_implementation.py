@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import inspect
+import sys
 from pathlib import Path
 
 import torch
@@ -11,6 +12,8 @@ import torch
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "utils" / "mamba_d6a_efficiency.py"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from utils.mamba_d6a_efficiency import (  # noqa: E402
     LATENCY_RATIO_MAXIMUM,
