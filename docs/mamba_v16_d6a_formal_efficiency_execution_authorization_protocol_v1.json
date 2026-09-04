@@ -1,0 +1,61 @@
+{
+  "protocol_id": "mamba-v16-d6a-formal-efficiency-execution-authorization-v1",
+  "status": "preregistered_after_artificial_zero_step_before_formal_efficiency_execution",
+  "scope": {
+    "candidates": ["R0", "R1"],
+    "candidate_order": ["R0", "R1"],
+    "formal_efficiency_execution_authorized": true,
+    "completed_execution_rerun_authorized": false
+  },
+  "benchmark": {
+    "descriptor_seed": 160610,
+    "descriptor_shape": [1, 8192, 27],
+    "descriptor_dtype": "float32",
+    "contains_D6_identity_or_geometry": false,
+    "device": "CUDA_required",
+    "same_GPU_and_process": true,
+    "model_initialization": "torch_manual_seed_160610_once_then_construct_R0_then_R1",
+    "model_residency": "one_candidate_at_a_time_with_prior_candidate_deleted",
+    "full_inference_includes_final_selector": true,
+    "warmup_runs_per_candidate": 10,
+    "timed_runs_per_candidate": 50,
+    "cuda_synchronize_before_and_after_each_timed_run": true,
+    "latency_statistic": "median",
+    "peak_memory_statistic": "torch_cuda_max_memory_allocated",
+    "peak_memory_reset_before_each_candidate_timed_block": true,
+    "R1_to_R0_latency_ratio_maximum": 1.15,
+    "R1_to_R0_peak_memory_ratio_maximum": 1.10
+  },
+  "authorization_preflight": {
+    "artificial_full_inference_passes": {"R0": 1, "R1": 1},
+    "formal_warmup_runs": 0,
+    "formal_timed_runs": 0,
+    "latency_gate_evaluated": false,
+    "peak_memory_gate_evaluated": false,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0
+  },
+  "result_transition": {
+    "both_gates_pass": "freeze_positive_efficiency_result_then_allow_separate_seed0_training_authorization",
+    "either_gate_fails": "freeze_negative_efficiency_result_and_stop_before_training",
+    "automatic_training": false
+  },
+  "permission_boundary": {
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "development_cases_accessed": 0,
+    "protected_or_sealed_data_accessed": false
+  },
+  "forbidden": [
+    "benchmark on D6 development, proposal-confirmation, completion holdout, or official test cases",
+    "change candidate order, descriptor, dtype, run counts, synchronization, or gate thresholds",
+    "keep both candidate models resident while measuring CUDA peak memory",
+    "rerun a completed formal efficiency execution",
+    "construct an optimizer, update a model, or write a checkpoint",
+    "automatically start seed-0 training, seed-1, D6-B, confirmation, or selection"
+  ]
+}
