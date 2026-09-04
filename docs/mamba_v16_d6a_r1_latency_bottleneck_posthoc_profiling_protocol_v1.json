@@ -1,0 +1,137 @@
+{
+  "protocol_id": "mamba-v16-d6a-r1-latency-bottleneck-posthoc-profiling-v1",
+  "status": "posthoc_profiling_preregistered_non_runnable_after_frozen_negative",
+  "preregistered_on": "2026-09-04",
+  "purpose": "localize the frozen R1 292.508788407 ms latency without rerunning or changing the formal efficiency gate",
+  "frozen_parent": {
+    "git_commit": "16b8f531bafa21805ece57053f18e1084166878d",
+    "annotated_tag": "mamba-adapter-v16-d6a-formal-efficiency-negative-result-v1",
+    "result_status": "D6A_formal_efficiency_gate_failed",
+    "R0_latency_ms_median": 0.3978973254561424,
+    "R1_latency_ms_median": 292.5087884068489,
+    "R1_to_R0_latency_ratio": 735.1363522524863,
+    "R1_peak_memory_ratio": 1.1133695855991,
+    "formal_gate_changed": false,
+    "formal_gate_rerun_authorized": false
+  },
+  "scope": {
+    "candidate": "R1_only",
+    "data": "deterministic_artificial_descriptor_only",
+    "descriptor_seed": 160610,
+    "descriptor_shape": [1, 8192, 27],
+    "descriptor_dtype": "float32",
+    "expected_R1_state_sha256": "d3eedd80617538c1fa0278d8d87427c27b242fd38fe2950bd8bba6cd5455cd78",
+    "device": "cuda:0",
+    "development_cases_accessed": 0,
+    "checkpoint_accessed": false,
+    "geometry_accessed": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "execution_contract": {
+    "authorized_now": false,
+    "separate_execution_authorization_required": true,
+    "candidate_order": ["R1"],
+    "blocks": 3,
+    "warmup_runs_per_block": 5,
+    "timed_runs_per_block": 20,
+    "total_timed_observations": 60,
+    "model_mode": "eval_inference_mode",
+    "one_model_resident": true,
+    "state_hash_before_and_after_required_equal": true,
+    "selected_indices_must_match_uninstrumented_reference": true,
+    "cuda_synchronization_boundaries_must_be_logged": true,
+    "formal_efficiency_thresholds_evaluated": false,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0
+  },
+  "profiling_passes": [
+    {
+      "name": "exact_path_wall_clock",
+      "purpose": "measure the unchanged R1 full inference path in three fixed blocks",
+      "segments": [
+        "descriptor_validation",
+        "R1_model_forward",
+        "global_assignment_total",
+        "selected_index_return",
+        "full_inference_total"
+      ],
+      "statistics": ["minimum", "median", "p95", "maximum", "mad"],
+      "timing_rule": "perf_counter with explicit CUDA synchronization at declared segment boundaries"
+    },
+    {
+      "name": "global_assignment_decomposition",
+      "purpose": "separate synchronization, host transfer, SciPy solve, and GPU reconstruction costs",
+      "segments": [
+        "slot_logits_finite_validation_and_sync",
+        "hard_tensor_gpu_allocation",
+        "slot_logits_d2h_float64_numpy",
+        "epsilon_tie_adjustment_cpu",
+        "scipy_linear_sum_assignment_cpu",
+        "assignment_integrity_checks_cpu",
+        "selected_indices_h2d",
+        "hard_scatter_gpu",
+        "selected_sort_and_stack_gpu"
+      ],
+      "statistics": ["minimum", "median", "p95", "maximum", "mad"],
+      "timing_rule": "exclusive wall-clock regions with synchronization boundaries recorded; GPU event time also recorded for GPU-only regions"
+    },
+    {
+      "name": "torch_profiler_trace",
+      "purpose": "capture CPU and CUDA operator timeline with named record_function regions",
+      "schedule": {"wait": 1, "warmup": 1, "active": 5, "repeat": 1},
+      "activities": ["CPU", "CUDA"],
+      "record_shapes": true,
+      "profile_memory": true,
+      "with_stack": false,
+      "trace_export_required": true
+    }
+  ],
+  "predeclared_attribution": {
+    "unit": "median exclusive wall-clock share of the instrumented full-inference total",
+    "dominant_threshold": 0.5,
+    "labels": [
+      "gpu_model_forward_dominant",
+      "validation_or_cuda_sync_dominant",
+      "device_to_host_transfer_dominant",
+      "scipy_global_assignment_dominant",
+      "gpu_reconstruction_dominant",
+      "mixed_no_single_dominant_stage"
+    ],
+    "causal_claim_authorized": false,
+    "optimized_alternative_benchmark_authorized": false,
+    "note": "Profiler overhead and forced synchronization may perturb timing; exact-path and decomposed timings must be reported separately and must not be summed across timing domains."
+  },
+  "required_outputs": [
+    "r1_exact_path_stage_metrics.csv",
+    "r1_assignment_stage_metrics.csv",
+    "r1_operator_summary.csv",
+    "r1_torch_profiler_trace.json.gz",
+    "r1_latency_attribution_summary.json",
+    "posthoc_profiling_receipt.json",
+    "posthoc_profiling_report_zh.md",
+    "files.sha256"
+  ],
+  "permission_boundary": {
+    "protocol_lock_authorized": true,
+    "posthoc_profiling_execution_authorized": false,
+    "formal_efficiency_rerun_authorized": false,
+    "R1_implementation_change_authorized": false,
+    "R2_implementation_authorized": false,
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "forbidden": [
+    "read any D6 development, confirmation, holdout, official-test, checkpoint, STL, or NPZ payload",
+    "construct an optimizer or update model state",
+    "recompute, reinterpret, or replace the frozen formal efficiency gate",
+    "change candidate code or benchmark an optimized alternative in this protocol",
+    "search profiler schedules, repetition counts, synchronization boundaries, or attribution thresholds after observing results",
+    "use post-hoc profiling to authorize training, seed1, confirmation, D6B, selection, or sealed access"
+  ],
+  "next_step_after_lock": "separate_R1_posthoc_profiling_execution_authorization_only"
+}
