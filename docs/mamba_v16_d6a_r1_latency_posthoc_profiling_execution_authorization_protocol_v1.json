@@ -1,0 +1,88 @@
+{
+  "protocol_id": "mamba-v16-d6a-r1-latency-posthoc-profiling-execution-authorization-v1",
+  "status": "preregistered_after_frozen_profiling_protocol_before_execution",
+  "preregistered_on": "2026-09-05",
+  "purpose": "authorize one observation-only R1 artificial-descriptor profiling execution without changing the frozen formal efficiency result",
+  "parent_lock": {
+    "protocol_id": "mamba-v16-d6a-r1-latency-bottleneck-posthoc-profiling-v1",
+    "manifest_sha256": "259bc0e1dcbffda71d2a343ae090240f4a07ba40c2b2138a5cc6bb31ebc871b7",
+    "protocol_sha256": "b93200400b48dc62f03c7703f3434d28fa76e3c88e4975e6562e28e340fdcea1",
+    "receipt_sha256": "b074c94acb0b1e73228c030c7e8f50562d48d929f919dad5dfb6e3a35ad9af05",
+    "status": "D6A_R1_latency_posthoc_profiling_protocol_frozen_non_runnable"
+  },
+  "runtime": {
+    "candidate": "R1",
+    "candidate_order": ["R1"],
+    "descriptor_seed": 160610,
+    "descriptor_shape": [1, 8192, 27],
+    "descriptor_dtype": "float32",
+    "device": "cuda:0",
+    "expected_R1_state_sha256": "d3eedd80617538c1fa0278d8d87427c27b242fd38fe2950bd8bba6cd5455cd78",
+    "model_initialization": "torch_manual_seed_160610_then_construct_and_discard_R0_then_construct_R1",
+    "blocks": 3,
+    "warmup_runs_per_block": 5,
+    "timed_runs_per_block": 20,
+    "total_timed_observations": 60,
+    "torch_profiler_schedule": {"wait": 1, "warmup": 1, "active": 5, "repeat": 1},
+    "one_shot_execution": true,
+    "completed_execution_rerun_authorized": false
+  },
+  "authorization_preflight": {
+    "artificial_descriptor_probe_cases": 1,
+    "R1_forward_probes": 1,
+    "R1_assignment_equivalence_probes": 1,
+    "profiling_blocks": 0,
+    "timed_observations": 0,
+    "torch_profiler_traces": 0,
+    "formal_gate_evaluated": false,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "D6_cases_accessed": 0
+  },
+  "result_contract": {
+    "required_outputs": [
+      "r1_exact_path_stage_metrics.csv",
+      "r1_assignment_stage_metrics.csv",
+      "r1_operator_summary.csv",
+      "r1_torch_profiler_trace.json.gz",
+      "r1_latency_attribution_summary.json",
+      "posthoc_profiling_receipt.json",
+      "posthoc_profiling_report_zh.md",
+      "files.sha256"
+    ],
+    "selected_indices_must_match_uninstrumented_reference": true,
+    "state_hash_before_and_after_required_equal": true,
+    "all_metrics_finite": true,
+    "dominant_share_threshold": 0.5,
+    "formal_gate_changed": false,
+    "formal_gate_rerun": false,
+    "result_can_authorize_training": false,
+    "result_can_authorize_implementation_change": false,
+    "result_can_authorize_R2": false
+  },
+  "permission_boundary": {
+    "posthoc_profiling_execution_authorized": true,
+    "execution_started": false,
+    "formal_efficiency_rerun_authorized": false,
+    "R1_implementation_change_authorized": false,
+    "optimized_alternative_benchmark_authorized": false,
+    "R2_implementation_authorized": false,
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "forbidden": [
+    "access D6 development, confirmation, holdout, official-test, checkpoint, STL, or NPZ payload",
+    "construct an optimizer or update model state",
+    "run R0 or recompute the frozen formal efficiency ratio",
+    "modify R1, implement R2, or benchmark an optimized alternative",
+    "change timing blocks, repetitions, synchronization boundaries, trace schedule, or attribution threshold",
+    "launch profiling as a side effect of authorization or preflight",
+    "use profiling output to authorize training or any protected transition"
+  ],
+  "next_step": "issue_authorization_then_run_zero_count_preflight_before_separate_tmux_launch"
+}
