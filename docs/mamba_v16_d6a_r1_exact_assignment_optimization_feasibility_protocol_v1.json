@@ -1,0 +1,168 @@
+{
+  "protocol_id": "mamba-v16-d6a-r1-exact-assignment-optimization-feasibility-v1",
+  "status": "optimization_feasibility_preregistered_non_runnable_after_frozen_profiling",
+  "preregistered_on": "2026-09-06",
+  "purpose": "test whether a mathematically lossless column reduction can reduce the frozen R1 SciPy assignment latency without changing R1 outputs, formal results, or permissions",
+  "frozen_parent": {
+    "git_commit": "a1d57c531252bc2f00d8a0ed6c145731069a1b40",
+    "annotated_tag": "mamba-adapter-v16-d6a-r1-latency-posthoc-profiling-result-v1",
+    "formal_result_status": "D6A_formal_efficiency_gate_failed",
+    "profiling_result_status": "D6A_R1_latency_posthoc_profiling_complete_observation_only",
+    "profiling_classification": "scipy_global_assignment_dominant",
+    "R0_formal_latency_ms_median": 0.3978973254561424,
+    "R1_formal_latency_ms_median": 292.5087884068489,
+    "R1_to_R0_formal_latency_ratio": 735.1363522524863,
+    "R1_model_forward_profiled_ms_median": 1.3413522392511368,
+    "D2H_profiled_ms_median": 40.2697054669261,
+    "scipy_assignment_profiled_ms_median": 103.0079061165452,
+    "scipy_assignment_profiled_share": 0.7087436968007994,
+    "formal_gate_changed": false,
+    "formal_gate_rerun_authorized": false
+  },
+  "scope": {
+    "candidate": "R1_only",
+    "selector_shape": [32, 8192],
+    "selector_input_dtype": "float32",
+    "baseline_cpu_dtype": "float64",
+    "data": "deterministic_artificial_assignment_matrices_only",
+    "checkpoint_accessed": false,
+    "D6_cases_accessed": 0,
+    "geometry_accessed": false,
+    "protected_or_sealed_data_accessed": false,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0
+  },
+  "candidate_definitions": {
+    "S0": {
+      "role": "frozen exact reference",
+      "definition": "copy the complete 32x8192 float32 logits to CPU float64, subtract float64 epsilon times the original candidate index, and call scipy.optimize.linear_sum_assignment(maximize=True)",
+      "implementation_change_authorized": false
+    },
+    "S1": {
+      "role": "first exact-reduction feasibility candidate",
+      "definition": "after the unchanged complete CPU float64 transfer and unchanged epsilon adjustment, retain every original column at or above each row's 32nd-largest adjusted-score threshold, take the ascending original-index union, solve the reduced matrix with the same SciPy call, and map columns back to original indices",
+      "row_top_k": 32,
+      "cutoff_ties": "include_all",
+      "union_order": "ascending_original_candidate_index",
+      "full_D2H_retained": true,
+      "fallback_to_S0_during_benchmark": false,
+      "implementation_change_authorized": false
+    },
+    "S2": {
+      "role": "conditional future reduced-transfer candidate",
+      "definition": "GPU float64 tie-safe union construction followed by reduced D2H and the same CPU SciPy solve",
+      "authorization_condition": "S1 passes every equivalence and engineering gate in a separately frozen result",
+      "implementation_change_authorized": false,
+      "benchmark_authorized": false
+    }
+  },
+  "mathematical_boundary": {
+    "statement": "with 32 assigned rows, a strictly lower-than-row-top32 selected edge cannot belong to an optimum because at most 31 other rows can occupy those 32 better columns",
+    "tie_rule": "all columns tied at the row top32 cutoff must be retained",
+    "guarantee_scope": "the reduced union contains at least one global optimum under the adjusted scores",
+    "non_guarantee": "the theorem alone does not guarantee the identical SciPy optimum when multiple global optima exist",
+    "required_resolution": "S1 must match S0 slot_to_candidate, sorted selected_indices, hard_assignment, and adjusted objective on every preregistered case; equal objective alone is insufficient"
+  },
+  "synthetic_equivalence_suite": {
+    "matrix_shape": [32, 8192],
+    "dtype": "float32_before_the_frozen_float64_adjustment",
+    "total_cases": 168,
+    "families": [
+      {"name": "independent_normal", "cases": 64, "seed_start": 160610},
+      {"name": "collision_heavy_shared_candidate_bias", "cases": 32, "seed_start": 260610},
+      {"name": "identical_rows", "cases": 8, "seed_start": 360610},
+      {"name": "exact_tie_groups", "cases": 16, "seed_start": 460610},
+      {"name": "near_ties_float32", "cases": 16, "seed_start": 560610},
+      {"name": "shared_top32_adversarial", "cases": 16, "seed_start": 660610},
+      {"name": "top32_cutoff_ties", "cases": 16, "seed_start": 760610}
+    ],
+    "case_order": "family_order_then_increasing_seed",
+    "post_result_case_search_forbidden": true
+  },
+  "equivalence_hard_gate": {
+    "cases_required": 168,
+    "slot_to_candidate_exact": "168/168",
+    "sorted_selected_indices_exact": "168/168",
+    "hard_assignment_exact": "168/168",
+    "adjusted_objective_exact": "168/168",
+    "selected_indices_unique": "32/32_per_case",
+    "baseline_columns_contained_in_union": "168/168",
+    "all_outputs_finite": true,
+    "failure_action": "freeze_S1_negative_and_stop_without_performance_benchmark"
+  },
+  "future_artificial_benchmark": {
+    "authorized_now": false,
+    "separate_execution_authorization_required": true,
+    "descriptor_seed": 160610,
+    "descriptor_shape": [1, 8192, 27],
+    "candidate_order_by_block": [["S0", "S1"], ["S1", "S0"], ["S0", "S1"]],
+    "blocks": 3,
+    "warmup_runs_per_candidate_per_block": 10,
+    "timed_runs_per_candidate_per_block": 50,
+    "timed_observations_per_candidate": 150,
+    "CUDA_synchronize_before_and_after": true,
+    "CPU_thread_environment": {
+      "OMP_NUM_THREADS": 1,
+      "MKL_NUM_THREADS": 1,
+      "OPENBLAS_NUM_THREADS": 1,
+      "NUMEXPR_NUM_THREADS": 1
+    },
+    "statistics": ["minimum", "median", "p95", "maximum", "mad"],
+    "state_hash_before_and_after_required_equal": true,
+    "formal_efficiency_thresholds_evaluated": false
+  },
+  "engineering_progression_gate": {
+    "S1_scipy_solver_median_speedup_minimum": 4.0,
+    "S1_assignment_total_median_speedup_minimum": 2.0,
+    "all_equivalence_hard_gates_required": true,
+    "failure_action": "freeze_S1_engineering_negative_and_stop",
+    "pass_action": "S2_protocol_may_be_preregistered_separately_but_is_not_automatically_authorized"
+  },
+  "formal_gate_feasibility_check": {
+    "classification": "descriptive_non_formal_only",
+    "frozen_R0_latency_ms_median": 0.3978973254561424,
+    "unchanged_R1_to_R0_latency_ratio_maximum": 1.15,
+    "implied_R1_latency_ms_maximum": 0.4575819242745637,
+    "formal_rerun_authorization_condition": "a separately frozen optimized full-R1 artificial benchmark must first satisfy the unchanged 1.15 ratio and all equivalence gates",
+    "formal_rerun_authorized_now": false,
+    "training_authorized_now": false,
+    "note": "S1 retains full D2H and the profiled R1 model-forward median already exceeds the implied limit; engineering improvement cannot be interpreted as formal-gate recovery"
+  },
+  "required_future_outputs": [
+    "synthetic_equivalence_metrics.csv",
+    "union_size_metrics.csv",
+    "paired_S0_S1_latency_metrics.csv",
+    "optimization_feasibility_summary.json",
+    "optimization_feasibility_receipt.json",
+    "optimization_feasibility_report_zh.md",
+    "files.sha256"
+  ],
+  "permission_boundary": {
+    "protocol_lock_authorized": true,
+    "S1_implementation_authorized": false,
+    "S1_zero_step_authorized": false,
+    "S1_benchmark_authorized": false,
+    "S2_implementation_authorized": false,
+    "S2_benchmark_authorized": false,
+    "R1_production_implementation_change_authorized": false,
+    "formal_efficiency_rerun_authorized": false,
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "forbidden": [
+    "read any D6 development, confirmation, holdout, official-test, checkpoint, STL, or NPZ payload",
+    "construct an optimizer or update model state",
+    "replace exact global assignment with greedy, auction, approximate, or nondeterministic selection under the R1 name",
+    "treat equal objective or equal sorted selected set as sufficient when slot mapping differs",
+    "drop columns tied at the row top32 cutoff",
+    "change the frozen epsilon adjustment, SciPy maximize call, formal thresholds, or R0 denominator",
+    "benchmark S1 or implement S2 as a side effect of protocol locking",
+    "use an engineering speedup to authorize formal rerun, training, seed1, confirmation, D6B, selection, or sealed access"
+  ],
+  "next_step_after_lock": "separate_S1_implementation_and_artificial_zero_step_authorization_only"
+}
