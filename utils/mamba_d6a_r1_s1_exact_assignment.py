@@ -3,13 +3,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Any, Tuple
+from typing import Any, Tuple
 
 import numpy as np
 from scipy.optimize import linear_sum_assignment
-
-if TYPE_CHECKING:
-    import torch
+import torch
 
 
 SLOT_COUNT = 32

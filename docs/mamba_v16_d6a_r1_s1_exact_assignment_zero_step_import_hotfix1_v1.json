@@ -1,0 +1,18 @@
+{
+  "hotfix_id": "mamba-v16-d6a-r1-s1-exact-assignment-zero-step-import-hotfix1-v1",
+  "date": "2026-09-06",
+  "scope": [
+    "utils/mamba_d6a_r1_s1_exact_assignment.py"
+  ],
+  "failure": "NameError: name 'torch' is not defined in adjusted_scores_cpu_float64",
+  "change": "import torch at module scope because runtime functions reference torch.float64 and torch.long",
+  "semantic_effect": "none",
+  "S1_contract_changed": false,
+  "artificial_zero_step_case_count_changed": false,
+  "performance_benchmark_authorized": false,
+  "production_R1_change_authorized": false,
+  "formal_efficiency_rerun_authorized": false,
+  "training_authorized": false,
+  "D6_cases_accessed": 0,
+  "protected_or_sealed_accessed": false
+}
