@@ -1,0 +1,185 @@
+{
+  "protocol_id": "mamba-v16-d6a-r1-s2-certified-fast-path-feasibility-v1",
+  "status": "S2_certified_fast_path_feasibility_preregistered_non_runnable_after_S1_frozen_negative",
+  "preregistered_on": "2026-09-06",
+  "purpose": "test whether an ambiguity-certified reduced SciPy assignment with an exact S0 fallback can preserve every frozen R1 output while avoiding the full solver on clearly unique artificial cases",
+  "frozen_parent": {
+    "git_commit": "bb2f952c1323d46ddc4a7d35fd2228ece1e8f211",
+    "annotated_tag": "mamba-adapter-v16-d6a-r1-s1-exact-assignment-negative-result-v1",
+    "S1_result_status": "D6A_R1_S1_exact_assignment_artificial_zero_step_equivalence_failed",
+    "S1_cases": 168,
+    "S1_slot_to_candidate_exact": 128,
+    "S1_sorted_selected_indices_exact": 168,
+    "S1_hard_assignment_exact": 128,
+    "S1_adjusted_objective_exact": 160,
+    "S1_baseline_columns_contained_in_union": 168,
+    "S1_union_size_minimum": 32,
+    "S1_union_size_mean": 436.14285714285717,
+    "S1_union_size_maximum": 981,
+    "S1_performance_benchmark_authorized": false,
+    "formal_efficiency_result_changed": false
+  },
+  "scope": {
+    "candidate": "R1_S2_shadow_only",
+    "selector_shape": [32, 8192],
+    "selector_input_dtype": "float32",
+    "adjusted_score_dtype": "cpu_float64",
+    "data": "the_same_frozen_168_artificial_assignment_matrices_only",
+    "full_D2H_retained": true,
+    "checkpoint_accessed": false,
+    "D6_cases_accessed": 0,
+    "geometry_accessed": false,
+    "protected_or_sealed_data_accessed": false,
+    "timing_calls": 0,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0
+  },
+  "candidate_definitions": {
+    "S0": {
+      "role": "frozen exact fallback and comparison reference",
+      "definition": "copy the complete 32x8192 float32 logits to CPU float64, subtract float64 epsilon times the original candidate index, and call scipy.optimize.linear_sum_assignment(maximize=True)",
+      "implementation_change_authorized": false
+    },
+    "S1": {
+      "role": "frozen failed predecessor",
+      "definition": "solve only the ascending union of all columns at or above each row's 32nd-largest adjusted score without fallback or an ambiguity certificate",
+      "result": "frozen_negative_no_rerun",
+      "implementation_change_authorized": false,
+      "benchmark_authorized": false
+    },
+    "S2": {
+      "role": "certified reduced-solver shadow candidate with exact fallback",
+      "definition": "construct the same tie-safe row-top32 union after the unchanged full D2H and float64 adjustment; use the reduced solution only when cutoff and global assignment uniqueness certificates exceed frozen numerical guards; otherwise return an independently executed complete S0 result",
+      "fast_path_solver": "the_same_scipy_optimize_linear_sum_assignment_maximize_true",
+      "fallback": "execute_complete_frozen_S0_and_return_only_S0_outputs",
+      "fallback_must_not_reuse_uncertified_S2_outputs": true,
+      "implementation_change_authorized": false,
+      "zero_step_authorized": false,
+      "benchmark_authorized": false
+    }
+  },
+  "certification_contract": {
+    "row_top_k": 32,
+    "cutoff_ties": "include_all",
+    "union_order": "ascending_original_candidate_index",
+    "omitted_edge_theorem": "with 32 assigned rows, every edge in every global optimum is at or above its row's 32nd-largest adjusted score when all cutoff ties are retained",
+    "cutoff_ambiguity": {
+      "definition": "for every row compare the 32nd and 33rd adjusted scores in descending order",
+      "guard": "256 * float64_epsilon * max(1.0, row_maximum_absolute_adjusted_score)",
+      "fallback_condition": "any cutoff_gap_is_less_than_or_equal_to_its_guard"
+    },
+    "global_uniqueness": {
+      "best_solution": "solve the tie-safe reduced union once",
+      "second_best_solution": "for each of the 32 selected edges solve the same reduced problem with that edge forbidden; take the maximum feasible alternative objective",
+      "edge_exclusion_solves": 32,
+      "objective_accumulation": "numpy_sum_float64_in_increasing_slot_order",
+      "guard": "256 * float64_epsilon * max(1.0, abs(best_objective), abs(second_best_objective), sum_abs_best_selected_scores, sum_abs_second_best_selected_scores)",
+      "certified_condition": "best_objective_minus_second_best_objective_is_strictly_greater_than_guard"
+    },
+    "mandatory_fallback_conditions": [
+      "cutoff_tie_or_near_tie_detected",
+      "global_optimum_not_certified_unique_above_guard",
+      "nonfinite_value_or_solver_failure",
+      "union_or_assignment_invariant_failure",
+      "selected_candidate_count_is_not_32_or_candidates_are_not_unique"
+    ],
+    "output_rule": "certified cases return the reduced mapping; every other case executes and returns complete S0",
+    "no_posthoc_exception_rule": true
+  },
+  "synthetic_equivalence_suite": {
+    "binding": "byte_identical_to_the_frozen_S0_S1_parent_suite",
+    "matrix_shape": [32, 8192],
+    "dtype": "float32_before_the_frozen_float64_adjustment",
+    "total_cases": 168,
+    "families": [
+      {"name": "independent_normal", "cases": 64, "seed_start": 160610},
+      {"name": "collision_heavy_shared_candidate_bias", "cases": 32, "seed_start": 260610},
+      {"name": "identical_rows", "cases": 8, "seed_start": 360610},
+      {"name": "exact_tie_groups", "cases": 16, "seed_start": 460610},
+      {"name": "near_ties_float32", "cases": 16, "seed_start": 560610},
+      {"name": "shared_top32_adversarial", "cases": 16, "seed_start": 660610},
+      {"name": "top32_cutoff_ties", "cases": 16, "seed_start": 760610}
+    ],
+    "case_order": "family_order_then_increasing_seed",
+    "post_result_case_search_forbidden": true,
+    "case_addition_removal_or_seed_change_forbidden": true
+  },
+  "equivalence_hard_gate": {
+    "cases_required": 168,
+    "slot_to_candidate_exact": "168/168",
+    "sorted_selected_indices_exact": "168/168",
+    "hard_assignment_exact": "168/168",
+    "adjusted_objective_exact": "168/168",
+    "selected_indices_unique": "32/32_per_case",
+    "input_state_unchanged": "168/168",
+    "all_outputs_finite": true,
+    "comparison_reference": "a_separately_executed_complete_S0_for_every_case",
+    "failure_action": "freeze_S2_negative_and_stop_without_performance_benchmark"
+  },
+  "routing_integrity_gate": {
+    "certified_fast_path_cases_minimum": 96,
+    "independent_normal_certified_fast_path_required": "64/64",
+    "collision_heavy_certified_fast_path_required": "32/32",
+    "uncertified_case_fallback_required": "all",
+    "fallback_outputs_must_be_direct_S0_outputs": true,
+    "false_positive_certificates_allowed": 0,
+    "false_negative_certificates": "reported_but_not_a_semantic_failure",
+    "all_fallback_is_a_failure": true,
+    "failure_action": "freeze_S2_routing_negative_and_stop_without_performance_benchmark"
+  },
+  "artificial_zero_step": {
+    "authorized_now": false,
+    "separate_implementation_and_execution_authorization_required": true,
+    "performance_timing": false,
+    "warmup_runs": 0,
+    "timed_runs": 0,
+    "torch_profiler_traces": 0,
+    "formal_efficiency_thresholds_evaluated": false,
+    "state_hash_before_and_after_required_equal": true
+  },
+  "future_artificial_performance_benchmark": {
+    "authorized_now": false,
+    "authorization_condition": "a separately frozen S2 artificial zero-step passes every equivalence and routing-integrity gate",
+    "separate_execution_authorization_required": true,
+    "comparison": "complete_S0_versus_complete_S2_including_certificate_and_fallback_cost",
+    "formal_efficiency_thresholds_evaluated": false,
+    "production_change_authorized": false
+  },
+  "required_future_zero_step_outputs": [
+    "s2_artificial_equivalence_metrics.csv",
+    "s2_certification_routing_metrics.csv",
+    "s2_family_summary.csv",
+    "s2_artificial_zero_step_summary.json",
+    "s2_artificial_zero_step_receipt.json",
+    "s2_artificial_zero_step_report_zh.md",
+    "files.sha256"
+  ],
+  "permission_boundary": {
+    "protocol_lock_authorized": true,
+    "S2_shadow_implementation_authorized": false,
+    "S2_artificial_zero_step_authorized": false,
+    "S2_artificial_performance_benchmark_authorized": false,
+    "S1_rerun_authorized": false,
+    "R1_production_implementation_change_authorized": false,
+    "formal_efficiency_rerun_authorized": false,
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "forbidden": [
+    "read any D6 development, confirmation, holdout, official-test, checkpoint, STL, or NPZ payload",
+    "construct an optimizer or update model state",
+    "time or profile S2 during protocol locking or zero-step",
+    "accept selected-set or objective equality when slot mapping or hard assignment differs",
+    "treat a reduced optimum as certified without the frozen cutoff and second-best guards",
+    "return uncertified reduced outputs instead of independently executing complete S0",
+    "claim success when all 168 cases use fallback",
+    "change the frozen epsilon adjustment, SciPy maximize call, artificial suite, formal thresholds, or R0 denominator",
+    "use S2 feasibility to authorize a production change, formal rerun, training, seed1, confirmation, D6B, selection, or sealed access"
+  ],
+  "next_step_after_lock": "separate_S2_shadow_implementation_and_168_case_artificial_zero_step_authorization_only"
+}
