@@ -1,0 +1,209 @@
+{
+  "protocol_id": "mamba-v16-d6a-r1-s2-artificial-performance-benchmark-v1",
+  "status": "preregistered_non_runnable_after_frozen_S2_positive_before_benchmark_authorization_or_execution",
+  "preregistered_on": "2026-09-07",
+  "purpose": "measure whether the frozen S2 certified fast path reduces complete selector latency relative to frozen S0 on the same 168 artificial matrices while preserving every frozen output and routing decision",
+  "frozen_parent": {
+    "git_commit": "18466faedd08e77009bcf52b0e937f60947d2fab",
+    "annotated_tag": "mamba-adapter-v16-d6a-r1-s2-certified-fast-path-zero-step-result-v1",
+    "S2_result_status": "D6A_R1_S2_certified_fast_path_artificial_zero_step_passed",
+    "cases": 168,
+    "slot_to_candidate_exact": 168,
+    "sorted_selected_indices_exact": 168,
+    "hard_assignment_exact": 168,
+    "adjusted_objective_exact": 168,
+    "certified_fast_path_cases": 96,
+    "fallback_s0_cases": 72,
+    "false_positive_certificates": 0,
+    "result_hashes": {
+      "files.sha256": "5713a4fa4307cd0a68c8d429848b6055e2b0d888c2eea0c5e39cd9d965fcbeb6",
+      "s2_artificial_equivalence_metrics.csv": "be1ea8643a169293cf258bd39473557f8a40f72da31427b84cfc5fcc85677244",
+      "s2_certification_routing_metrics.csv": "182654d18b1c428f80f4f796449c35eafe17d782e11238fa7856811a302a4cc1",
+      "s2_family_summary.csv": "102a7c4d3b5c0dff5410f17a3f6d88c14b2d755267d9dde2eacb0ed2c7c79fd0",
+      "s2_artificial_zero_step_summary.json": "a3b9c5ede525f3b29e638abdc55f97c7367d8b760fb34d829d0472b3093813d1",
+      "s2_artificial_zero_step_receipt.json": "85d8a0946504bb02d471b0087df7d6a8ccb929c01dc40df031088c6143a9c061",
+      "s2_artificial_zero_step_report_zh.md": "a166d0fb514716d2e71477dc064243a3e0623a85c93477127f7f0d1d50e4df7b"
+    }
+  },
+  "scope": {
+    "candidates": ["S0", "S2"],
+    "selector_shape": [32, 8192],
+    "selector_input_dtype": "float32_CUDA",
+    "adjusted_score_dtype": "cpu_float64",
+    "data": "the_same_frozen_168_artificial_assignment_matrices_only",
+    "case_order": "frozen_family_order_then_increasing_seed",
+    "checkpoints_accessed": 0,
+    "D6_cases_accessed": 0,
+    "STL_or_NPZ_accessed": 0,
+    "protected_or_sealed_data_accessed": false,
+    "protocol_lock_timing_calls": 0,
+    "protocol_lock_warmup_calls": 0,
+    "protocol_lock_profiler_traces": 0,
+    "optimizer_constructed": false,
+    "optimizer_steps": 0,
+    "model_updates": 0
+  },
+  "candidate_definitions": {
+    "S0": {
+      "role": "frozen complete exact reference",
+      "timed_boundary": "CUDA slot-logits input through full D2H, CPU float64 adjustment, complete 32x8192 scipy.optimize.linear_sum_assignment(maximize=True), and returned mapping outputs",
+      "implementation_change_authorized": false
+    },
+    "S2": {
+      "role": "frozen certified reduced-solver shadow candidate",
+      "timed_boundary": "CUDA slot-logits input through full D2H, CPU float64 adjustment, tie-safe union, cutoff checks, reduced best solve, 32 edge-exclusion solves, exact S0 fallback when uncertified, and returned mapping outputs",
+      "full_D2H_retained": true,
+      "certified_fast_path_cases_expected": 96,
+      "fallback_s0_cases_expected": 72,
+      "implementation_change_authorized": false
+    },
+    "excluded_from_timing": [
+      "artificial_matrix_generation",
+      "host_to_device_input_creation",
+      "correctness_comparison",
+      "CSV_or_JSON_serialization",
+      "report_generation",
+      "hashing"
+    ]
+  },
+  "pre_timing_correctness_replay": {
+    "required_before_any_timed_call": true,
+    "cases": 168,
+    "S0_calls": 168,
+    "S2_calls": 168,
+    "slot_to_candidate_exact_required": "168/168",
+    "sorted_selected_indices_exact_required": "168/168",
+    "hard_assignment_exact_required": "168/168",
+    "adjusted_objective_exact_required": "168/168",
+    "input_state_unchanged_required": "168/168",
+    "certified_fast_path_cases_required": 96,
+    "fallback_s0_cases_required": 72,
+    "independent_normal_fast_path_required": "64/64",
+    "collision_heavy_fast_path_required": "32/32",
+    "fallback_reasons_required": {
+      "cutoff_tie_or_near_tie": 32,
+      "global_optimum_not_certified_unique": 40
+    },
+    "false_positive_certificates_allowed": 0,
+    "failure_action": "freeze_correctness_or_routing_negative_result_without_any_timed_call"
+  },
+  "benchmark_design": {
+    "authorized_now": false,
+    "separate_execution_authorization_required": true,
+    "execution_count_after_authorization": 1,
+    "processes": 1,
+    "CUDA_devices": 1,
+    "candidate_residency": "no_model_is_loaded_and_only_one_artificial_score_matrix_is_resident_at_a_time",
+    "inference_context": "torch.inference_mode",
+    "CPU_thread_environment": {
+      "OMP_NUM_THREADS": 1,
+      "MKL_NUM_THREADS": 1,
+      "OPENBLAS_NUM_THREADS": 1,
+      "NUMEXPR_NUM_THREADS": 1,
+      "torch_num_threads": 1
+    },
+    "warmup": {
+      "family_anchor": "first_case_of_each_of_the_7_frozen_families",
+      "rounds": 2,
+      "calls_per_candidate": 14,
+      "total_calls": 28,
+      "timed": false,
+      "order": "alternate_candidate_first_by_family_index_and_warmup_round"
+    },
+    "measurement": {
+      "blocks": 3,
+      "cases_per_block": 168,
+      "timed_calls_per_candidate": 504,
+      "total_timed_calls": 1008,
+      "case_order_within_block": "frozen_family_order_then_increasing_seed",
+      "paired_order_rule": "S0_then_S2_when_(zero_based_block_index_plus_zero_based_case_index)_mod_2_equals_0_else_S2_then_S0",
+      "candidate_first_counts_per_block": {"S0": 84, "S2": 84},
+      "CUDA_synchronize_immediately_before_each_call": true,
+      "CUDA_synchronize_immediately_after_each_call": true,
+      "clock": "time.perf_counter_ns",
+      "latency_unit": "milliseconds",
+      "garbage_collection": "disabled_during_warmup_and_measurement_then_restored",
+      "outlier_removal": "none",
+      "retry_on_slow_observation": false,
+      "torch_profiler_traces": 0
+    },
+    "environment_observation": {
+      "record_GPU_name_and_torch_scipy_versions": true,
+      "record_CUDA_memory_before_and_after": true,
+      "record_process_and_system_metadata": true,
+      "environment_observations_are_descriptive_not_exclusion_rules": true
+    }
+  },
+  "analysis_contract": {
+    "primary_unit": "one_complete_168_case_measurement_block",
+    "primary_ratio": "sum_S2_latency_ms_divided_by_sum_S0_latency_ms_within_each_block",
+    "primary_summary": "median_of_the_3_preregistered_block_ratios",
+    "fast_path_ratio": "sum_S2_latency_ms_divided_by_sum_S0_latency_ms_over_all_96_frozen_fast_path_cases_and_all_3_blocks",
+    "fallback_ratio": "sum_S2_latency_ms_divided_by_sum_S0_latency_ms_over_all_72_frozen_fallback_cases_and_all_3_blocks",
+    "supporting_summaries": [
+      "candidate_latency_min_median_mean_p95_max_by_overall_route_and_family",
+      "paired_S2_divided_by_S0_case_ratio_median_and_p95_by_overall_route_and_family",
+      "absolute_paired_latency_difference_ms_by_overall_route_and_family",
+      "three_individual_block_total_latency_ratios"
+    ],
+    "percentile_method": "numpy_percentile_linear",
+    "inferential_statistics": "none_fixed_deterministic_suite",
+    "all_raw_observations_retained": true,
+    "formal_R0_denominator_used": false,
+    "formal_efficiency_thresholds_evaluated": false
+  },
+  "performance_hard_gate": {
+    "all_observations_finite_and_strictly_positive": true,
+    "timed_observation_rows_required": 1008,
+    "median_of_3_overall_block_ratios_maximum": 0.9,
+    "each_overall_block_ratio_must_be_strictly_less_than": 1.0,
+    "aggregate_fast_path_ratio_maximum": 0.5,
+    "aggregate_fallback_ratio_maximum": 1.25,
+    "all_conditions_required": true,
+    "threshold_change_after_result_forbidden": true,
+    "failure_action": "freeze_S2_artificial_performance_negative_and_stop_without_production_integration_or_formal_rerun"
+  },
+  "result_classification": {
+    "positive_status": "D6A_R1_S2_artificial_performance_benchmark_passed",
+    "negative_status": "D6A_R1_S2_artificial_performance_benchmark_failed",
+    "correctness_negative_status": "D6A_R1_S2_artificial_performance_pre_timing_correctness_replay_failed",
+    "positive_next_step": "separate_S2_production_path_shadow_integration_feasibility_protocol_only",
+    "negative_next_step": "freeze_archive_and_stop_S2_while_retaining_S0",
+    "result_can_authorize_production_change": false,
+    "result_can_authorize_formal_efficiency_rerun": false,
+    "result_can_authorize_training": false
+  },
+  "required_future_outputs": [
+    "s2_artificial_performance_observations.csv",
+    "s2_artificial_performance_block_summary.csv",
+    "s2_artificial_performance_stratum_summary.csv",
+    "s2_artificial_performance_environment.json",
+    "s2_artificial_performance_receipt.json",
+    "s2_artificial_performance_report_zh.md",
+    "files.sha256"
+  ],
+  "permission_boundary": {
+    "protocol_lock_authorized": true,
+    "S2_artificial_performance_benchmark_execution_authorized": false,
+    "S2_implementation_change_authorized": false,
+    "R1_production_implementation_change_authorized": false,
+    "formal_efficiency_rerun_authorized": false,
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "forbidden": [
+    "read any D6 development, confirmation, holdout, official-test, checkpoint, STL, or NPZ payload",
+    "change S0, S2, the 168 artificial matrices, case order, route labels, guards, fallback behavior, or benchmark thresholds",
+    "start warmup or timed calls while freezing this protocol",
+    "start timing before the complete 168-case correctness and routing replay passes",
+    "exclude warmup-complete timed observations as outliers or retry observations because they are slow",
+    "time only the reduced SciPy solve while excluding D2H, certification, fallback, or output construction",
+    "substitute the formal R0 denominator or claim the frozen formal efficiency gate changed",
+    "modify production R1, rerun formal efficiency, construct an optimizer, train, select a candidate, or access protected data"
+  ],
+  "next_step_after_lock": "separate_S2_artificial_performance_benchmark_execution_authorization_only"
+}
