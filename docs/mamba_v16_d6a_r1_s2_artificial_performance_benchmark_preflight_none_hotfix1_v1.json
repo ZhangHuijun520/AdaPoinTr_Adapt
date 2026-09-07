@@ -1,0 +1,50 @@
+{
+  "amendment_id": "mamba-v16-d6a-r1-s2-artificial-performance-benchmark-preflight-none-hotfix1-v1",
+  "status": "frozen_transport_and_validation_hotfix_before_successful_preflight",
+  "frozen_on": "2026-09-07",
+  "scope": "authorization_preflight_fast_path_fallback_reason_sentinel_validation_only",
+  "observed_failure": {
+    "exception": "RuntimeError: S2 benchmark preflight route drifted",
+    "stage": "after_S0_S2_exact_output_checks_before_preflight_artifact_write",
+    "preflight_artifacts_created": 0,
+    "benchmark_started": false,
+    "timed_calls": 0,
+    "D6_cases_accessed": 0
+  },
+  "root_cause": {
+    "frozen_fast_path_sentinel": "none",
+    "incorrect_expression": "s2.route != expected_route or s2.fallback_reason",
+    "reason": "the valid non-empty string 'none' is truthy in Python",
+    "correct_expression": "s2.route != expected_route or s2.fallback_reason != 'none'"
+  },
+  "file_binding": {
+    "preflight_before_sha256": "bfbe8f25c6b6f85a83c5ad8c9098e8d4e86ca9241357db4247ea2625432fa062",
+    "preflight_after_sha256": "e9ff733110c1c8a22296fa1b3a1c62f15126288131153356951b19e6b896106a",
+    "contract_test_before_sha256": "d2bfe6fbba96b866264c39157562d27e56ae64086cde855b84db5cd8fefab41a",
+    "contract_test_after_sha256": "4457846ec23ffa02c8701dcdeedda57aec2b1d23b1104ca925d0cf585bd81387"
+  },
+  "unchanged": {
+    "S0": true,
+    "S2": true,
+    "artificial_suite": true,
+    "case_count": 168,
+    "warmup_calls": 28,
+    "timed_observation_rows": 1008,
+    "performance_gates": true,
+    "authorization_receipt": true
+  },
+  "permission_boundary": {
+    "preflight_retry_authorized": true,
+    "benchmark_execution_authorized_by_this_hotfix": false,
+    "S2_implementation_change_authorized": false,
+    "R1_production_implementation_change_authorized": false,
+    "formal_efficiency_rerun_authorized": false,
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "next_step": "install_exact_hotfix_and_retry_only_the_zero_count_CUDA_authorization_preflight"
+}

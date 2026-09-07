@@ -99,7 +99,7 @@ def main() -> None:
     outputs_finite = bool(torch.isfinite(s2.hard_assignment).all().item() and np.isfinite(s2.adjusted_objective))
     if not all((slot_exact, selected_exact, hard_exact, objective_exact, input_unchanged, outputs_finite)):
         raise RuntimeError("S2 benchmark preflight equivalence probe failed")
-    if s2.route != probe_contract["expected_S2_route"] or s2.fallback_reason:
+    if s2.route != probe_contract["expected_S2_route"] or s2.fallback_reason != "none":
         raise RuntimeError("S2 benchmark preflight route drifted")
 
     auth_path = args.authorization_dir / "benchmark_execution_authorization_receipt.json"

@@ -91,6 +91,8 @@ def main() -> None:
     assert "perf_counter" not in preflight_source
     assert '"warmup_calls": 0' in preflight_source
     assert '"timed_calls": 0' in preflight_source
+    assert 's2.fallback_reason != "none"' in preflight_source
+    assert "or s2.fallback_reason:" not in preflight_source
     assert "time.perf_counter_ns()" in runner_source
     assert "torch.cuda.synchronize" in runner_source
     assert "correctness_replay(cases, device)" in runner_source
