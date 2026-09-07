@@ -1,0 +1,117 @@
+{
+  "protocol_id": "mamba-v16-d6a-r1-s2-artificial-performance-benchmark-execution-authorization-v1",
+  "status": "preregistered_after_frozen_benchmark_protocol_before_authorization_preflight_or_execution",
+  "preregistered_on": "2026-09-07",
+  "purpose": "authorize exactly one fixed-suite S0-versus-S2 artificial performance benchmark after a zero-count CUDA preflight without changing either implementation or accessing D6 data",
+  "frozen_parent": {
+    "protocol_lock_status": "D6A_R1_S2_artificial_performance_benchmark_protocol_frozen_non_runnable",
+    "protocol_lock_hashes": {
+      "files.sha256": "1887c591137aacb67615510defa2be816cf5c71f4637d12f390121c328b03f9a",
+      "benchmark_contract.json": "841dfcea14b41c68294526080b6bf13ab311ddabaa1311b8739315e9fda52ecd",
+      "benchmark_execution.template.json": "74ca7f0a03c32b9adfff2008db4958807064ea5f4f2eac34fcc8bdc895149a58",
+      "protocol_lock_receipt.json": "c553795d6c4f3995b062e755c7dde7a53c646266c3f07c72d2cc5ac4de24088b",
+      "protocol_lock_report_zh.md": "81e07348c7f41e7d8ef759d8d2432f12361c0d7634f1e747cd8feca41af97b3a",
+      "protocol_v1.json": "0542199bf2b05a82c3197bd156e5bc3269a118acf676e356ebdc306effa9ea04",
+      "synthetic_suite_binding.json": "6da4e2100f9a682c7364bdc01b680b2d796644d2c7a4ccc3f41be22f9f9118f3"
+    },
+    "S2_result_status": "D6A_R1_S2_certified_fast_path_artificial_zero_step_passed",
+    "S2_result_manifest_sha256": "5713a4fa4307cd0a68c8d429848b6055e2b0d888c2eea0c5e39cd9d965fcbeb6",
+    "cases": 168,
+    "certified_fast_path_cases": 96,
+    "fallback_s0_cases": 72,
+    "false_positive_certificates": 0
+  },
+  "implementation_binding": {
+    "policy": "LF_normalized_source_must_match_frozen_value_and_raw_source_must_remain_unchanged_after_authorization",
+    "LF_normalized_sha256": {
+      "S2_shadow": "4cb4e5bd2c8c9cb7ce8a4e2b1d501e85631553b6b27ecc10079788fcd0189bb6",
+      "S1_support": "ba4072e5ac23679c9cf6c186eb7aded5d761b59160e2c9c406ddd052516550cd",
+      "S1_artificial_suite": "4d65e34e0ace92ca2b9ec68d43fc889765c30debd760cc57f444eb79b5aabd85",
+      "S2_zero_step_reference": "b89ddad702d9828ebfab7dabdce952a4fbb4fd19f823ed5c0422bb58473aa4f1"
+    },
+    "S0_or_S2_change_authorized": false,
+    "full_D2H_retained": true,
+    "source_hashes_recorded_in_authorization_receipt": true
+  },
+  "runtime": {
+    "candidates": ["S0", "S2"],
+    "data": "same_frozen_168_artificial_assignment_matrices_only",
+    "case_order": "frozen_result_case_index_0_through_167",
+    "pre_timing_correctness_replay_cases": 168,
+    "expected_routes": {"certified_fast_path": 96, "fallback_s0": 72},
+    "expected_fallback_reasons": {"cutoff_tie_or_near_tie": 32, "global_optimum_not_certified_unique": 40},
+    "warmup_anchor_families": 7,
+    "warmup_rounds": 2,
+    "warmup_calls_per_candidate": 14,
+    "warmup_calls_total": 28,
+    "measurement_blocks": 3,
+    "cases_per_block": 168,
+    "timed_calls_per_candidate": 504,
+    "timed_observation_rows": 1008,
+    "paired_order_rule": "S0_then_S2_when_(zero_based_block_index_plus_zero_based_case_index)_mod_2_equals_0_else_S2_then_S0",
+    "CUDA_sync_before_and_after_each_timed_call": true,
+    "clock": "time.perf_counter_ns",
+    "outlier_removal": "none",
+    "retry_on_slow_observation": false,
+    "torch_profiler_traces": 0,
+    "CPU_threads": {"OMP_NUM_THREADS": 1, "MKL_NUM_THREADS": 1, "OPENBLAS_NUM_THREADS": 1, "NUMEXPR_NUM_THREADS": 1, "torch_num_threads": 1}
+  },
+  "authorization_preflight": {
+    "CUDA_required": true,
+    "probe_family": "independent_normal",
+    "probe_seed": 160610,
+    "S0_calls": 1,
+    "S2_calls": 1,
+    "exact_outputs_required": true,
+    "expected_S2_route": "certified_fast_path",
+    "warmup_calls": 0,
+    "timed_calls": 0,
+    "measurement_blocks": 0,
+    "torch_profiler_traces": 0,
+    "D6_cases_accessed": 0
+  },
+  "performance_gate": {
+    "timed_observation_rows_required": 1008,
+    "median_of_3_overall_block_ratios_maximum": 0.9,
+    "each_overall_block_ratio_must_be_strictly_less_than": 1.0,
+    "aggregate_fast_path_ratio_maximum": 0.5,
+    "aggregate_fallback_ratio_maximum": 1.25,
+    "all_conditions_required": true,
+    "formal_R0_denominator_used": false,
+    "formal_efficiency_thresholds_evaluated": false
+  },
+  "result_contract": {
+    "correctness_replay_failure_status": "D6A_R1_S2_artificial_performance_pre_timing_correctness_replay_failed",
+    "performance_positive_status": "D6A_R1_S2_artificial_performance_benchmark_passed",
+    "performance_negative_status": "D6A_R1_S2_artificial_performance_benchmark_failed",
+    "negative_result_frozen_on_any_failure": true,
+    "positive_next_step": "separate_S2_production_path_shadow_integration_feasibility_protocol_only",
+    "negative_next_step": "freeze_archive_and_stop_S2_while_retaining_S0",
+    "result_can_authorize_production_change": false,
+    "result_can_authorize_formal_efficiency_rerun": false,
+    "result_can_authorize_training": false
+  },
+  "permission_boundary": {
+    "S2_artificial_performance_benchmark_execution_authorized": true,
+    "execution_started": false,
+    "authorization_preflight_authorized": true,
+    "S2_implementation_change_authorized": false,
+    "R1_production_implementation_change_authorized": false,
+    "formal_efficiency_rerun_authorized": false,
+    "seed0_training_authorized": false,
+    "seed1_training_authorized": false,
+    "proposal_confirmation_authorized": false,
+    "D6B_authorized": false,
+    "candidate_selection_authorized": false,
+    "protected_or_sealed_data_accessed": false
+  },
+  "forbidden": [
+    "modify S0, S2, suite generation, certification guards, routing, fallback, schedule, analysis, or thresholds",
+    "access D6 development, confirmation, holdout, official-test, checkpoint, STL, NPZ, or sealed payload",
+    "enter warmup or timed loops during authorization or zero-count preflight",
+    "enter timing after any correctness or routing replay mismatch",
+    "drop or retry timed observations, invoke torch profiler, or import the formal R0 denominator",
+    "modify production R1, rerun formal efficiency, construct an optimizer, train, or select a candidate"
+  ],
+  "next_step_after_authorization": "run_zero_count_CUDA_authorization_preflight_before_separate_tmux_benchmark_launch"
+}
