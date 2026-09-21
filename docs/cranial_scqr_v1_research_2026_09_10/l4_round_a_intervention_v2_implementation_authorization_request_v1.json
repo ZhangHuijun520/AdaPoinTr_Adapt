@@ -1,0 +1,225 @@
+{
+  "request_id": "cranial-scqr-v1.1-L4-roundA-I-v2-implementation-request-v1",
+  "status": "PENDING_EXPLICIT_USER_AUTHORIZATION",
+  "authorization_effective": false,
+  "created_at_utc": "2026-09-15T06:44:00Z",
+  "purpose": "Implement the already frozen Round A-I v2 negative-control semantics in exactly the existing runner, analyzer and synthetic contract test, then run only syntax checks and one complete synthetic CPU contract suite. No real checkpoint, NPZ, GPU inference, development evaluation, formal statistics, launcher, retry, Round B or later run is authorized.",
+  "parent_protocol": {
+    "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v2.json",
+    "protocol_id": "cranial-scqr-v1.1-L4-roundA-I-same-QC-checkpoint-intervention-v2",
+    "status": "FROZEN_REVISED_PROTOCOL_IMPLEMENTATION_AND_EXECUTION_NOT_AUTHORIZED",
+    "sha256": "e2a77fc55b3c8bda24cd6b5a0b129764054e2be3941e8affe78a5714b6e42ad1",
+    "bytes": 29750,
+    "immutability": "must remain byte-for-byte unchanged"
+  },
+  "protocol_revision_authorization_request": {
+    "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_protocol_revision_authorization_request_v1.json",
+    "sha256": "a80058196fc9cf760ba6a8aa4533c4728ba22dbf5b424e67f6b9d950d35a8000",
+    "bytes": 18930
+  },
+  "p1_preimplementation_audit": {
+    "status": "PASS_IMPLEMENTATION_NOT_YET_AUTHORIZED",
+    "completed_at_utc": "2026-09-15T06:44:00Z",
+    "project_identity": {
+      "expected_project_root": "/home/jovyan/adapointr_work/PoinTr",
+      "actual_project_root": "/home/jovyan/adapointr_work/PoinTr",
+      "hostname": "shu-common-25721452-notebook-vzvww6-0",
+      "user": "jovyan",
+      "git_worktree": false,
+      "available_disk": "18 GiB",
+      "rollback_and_drift_basis": "Exact pre-modification SHA256 and byte sizes because the server directory is not a Git worktree."
+    },
+    "source_bindings": {
+      "runner": {
+        "path": "tools/run_cranial_scqr_v11_l4_round_a_intervention.py",
+        "sha256": "bff73650017164043230c810f2eca0397b54a852dd6bbd96e8ca085992f3234b",
+        "bytes": 29715,
+        "ast_parse": "PASS"
+      },
+      "analyzer": {
+        "path": "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py",
+        "sha256": "180bc58b644d6042b50c6828cbf87df151110ae27f5fac5110a05b0fcdd0b012",
+        "bytes": 33138,
+        "ast_parse": "PASS"
+      },
+      "synthetic_contract_test": {
+        "path": "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py",
+        "sha256": "3e52c2d679eca490ec98d8d0f35b4898ef2631dca817cc84e874fa2b9d144fea",
+        "bytes": 23853,
+        "ast_parse": "PASS",
+        "current_test_method_count": 16
+      }
+    },
+    "static_findings": [
+      "The analyzer still binds the v1 protocol ID and v1 status.",
+      "The runner currently fails both attention and predicted-point equality thresholds; v2 permits only the unchanged attention threshold as the negative-control numerical acceptance gate.",
+      "The analyzer currently gates case_mean_probability versus bias_zero distance metrics, unit-interval metrics, integer fields and predicted-point error; v2 requires these to be finite/valid, recorded and explicitly non-gating.",
+      "The analyzer currently emits the misleading field case_mean_probability_equals_bias_zero_pass; v2 requires case_mean_probability_attention_equivalence_pass.",
+      "The case_mean_probability-minus-bias_zero comparison is already absent from the classification decision branches, but its diagnostic-only role is not yet encoded in delta rows, summaries and the classification receipt.",
+      "The current permutation helper derives its seed from analyzer.PROTOCOL_ID. Merely changing that ID to v2 would change fixed permutations, so the implementation must instead bind the frozen v1 permutation namespace.",
+      "Current attention instrumentation is sufficient; v2 does not require extra forwards or new logit instrumentation.",
+      "All formal counts, data/checkpoint bindings, condition order, native reproduction, coarse invariance and model-state safeguards can remain unchanged."
+    ],
+    "fixed_permutation_regression_anchors": {
+      "namespace_protocol_id": "cranial-scqr-v1.1-L4-roundA-I-same-QC-checkpoint-intervention-v1",
+      "derivation": "first eight bytes big-endian of SHA256(namespace + '|' + fold + '|' + case_id + '|probability_permutation'), modulo 2**63",
+      "values": [
+        {
+          "fold": "A",
+          "case_id": "synthetic",
+          "seed": 3303371663911662000
+        },
+        {
+          "fold": "B",
+          "case_id": "synthetic",
+          "seed": 6020625845059555000
+        },
+        {
+          "fold": "A",
+          "case_id": "train__000__frontoorbital",
+          "seed": 1522429693624157000
+        }
+      ]
+    },
+    "synthetic_suite_boundary": {
+      "cuda_visible_devices_set_empty_before_torch_import": true,
+      "synthetic_in_memory_inputs_only": true,
+      "temporary_files_root": "/tmp",
+      "real_torch_checkpoint_load_calls_found": 0,
+      "real_numpy_npz_load_calls_found": 0,
+      "network_clients_found": 0,
+      "ledger_npz_calls_are_counter_only": true
+    },
+    "test_environment": {
+      "python_executable": "/opt/conda/envs/adapointr-mamba/bin/python",
+      "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+      "python_version": "3.10.20",
+      "python_binary_sha256": "01b4275dc374dcae51d245bda004daad6d7882d3f5de7f9852567bb7ab83180d",
+      "python_binary_bytes": 17331920,
+      "bare_python_forbidden": true,
+      "environment_mutation_required": false
+    },
+    "zero_effect_counters": {
+      "files_modified_during_p1": 0,
+      "tests_executed_during_p1": 0,
+      "project_module_imports_during_p1": 0,
+      "checkpoint_deserializations": 0,
+      "npz_payload_opens": 0,
+      "model_forwards": 0,
+      "gpu_compute_runs": 0,
+      "optimizer_constructions": 0,
+      "optimizer_steps": 0,
+      "parameter_updates": 0,
+      "buffer_updates": 0,
+      "development_evaluations": 0,
+      "formal_statistics_runs": 0,
+      "round_a_i_retries": 0,
+      "round_b_runs": 0
+    }
+  },
+  "requested_existing_file_modifications": [
+    "tools/run_cranial_scqr_v11_l4_round_a_intervention.py",
+    "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py",
+    "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py"
+  ],
+  "requested_file_creations": [],
+  "requested_deletions_or_moves": [],
+  "requested_implementation_scope": {
+    "global_rules": [
+      "Bind implementation identity and protocol validation to the frozen v2 protocol and reject v1 for future v2 execution.",
+      "Do not modify models, metrics utilities, dataset code, configs, checkpoints, existing protocols, prior authorization chains, launchers, logs or results.",
+      "Preserve all four condition definitions and their order, all 840-forward/210-NPZ/2-checkpoint counts and all no-data-leakage/state-immutability safeguards.",
+      "Do not add a scale-aware output tolerance, threshold override, fallback, retry, resume, Round B path or automatic next-run path."
+    ],
+    "runner": [
+      "Retain the per-case finite query-attention max-absolute gate at <=1e-6 and fail before scientific analysis when it is exceeded.",
+      "Remove only the predicted_points_normalized_max_abs acceptance failure. Continue computing and recording negative_control_prediction_max_abs_normalized for every case.",
+      "Do not add centered-logit instrumentation or any extra forward; row-centered logits remain optional protocol-level context.",
+      "Introduce a fixed permutation namespace constant equal to the v1 protocol ID and derive every permutation from it rather than the new v2 protocol ID.",
+      "Retain temporary hook lifecycle checks, original tensor nonmutation, condition order, coarse invariance, member-access ledger, exact checkpoint state hashes and exclusive result writing.",
+      "Continue requiring a separate exact single-use formal execution authorization; this implementation request must never be accepted as one."
+    ],
+    "analyzer": [
+      "Bind PROTOCOL_ID and required protocol status to v2 and validate the v2 attention-only/non-gating schema, v1 permutation namespace, comparison roles, null downstream thresholds and locked authorization boundaries.",
+      "Keep native QC reproduction thresholds and exact native integer checks unchanged.",
+      "Keep coarse-condition invariance and the <=1e-6 per-case attention gate unchanged.",
+      "For case_mean_probability versus bias_zero, record finite prediction error, per-field finite-pair absolute distance/unit-interval metric differences, optional-NA mismatch counts and per-field integer mismatch counts without failing on their magnitude or equality.",
+      "Keep existing per-row metric validity: required numeric values must remain finite; only already permitted optional fields may be NA; infinities and invalid discrete domains remain failures.",
+      "Return case_mean_probability_attention_equivalence_pass=true only after all per-case attention gates pass; remove the misleading case_mean_probability_equals_bias_zero_pass field.",
+      "Expose downstream_negative_control_diagnostics_non_gating=true and structured maxima/mismatch counts in execution controls.",
+      "Add comparison_role to paired source deltas and summaries; mark case_mean_probability_minus_bias_zero as DIAGNOSTIC_ONLY_NOT_USED_FOR_SCIENTIFIC_CLASSIFICATION and the other three comparisons as scientific mechanism comparisons.",
+      "Include the scientific and diagnostic comparison lists in the mechanism receipt and assert that classification branches never consume the diagnostic-only comparison.",
+      "Retain bootstrap seed 20260910, 10000 samples, primary metric, aggregation, classification thresholds, Round B=false and automatic_next_run=false."
+    ],
+    "synthetic_contract_test": [
+      "Read only l4_round_a_intervention_protocol_v2.json and assert v1 protocol identity/status is rejected by the v2 analyzer.",
+      "Assert the three frozen permutation seed anchors and deterministic multiset-preserving permutation behavior.",
+      "Retain the synthetic attention softmax-equivalence, temporary-hook removal, state immutability, ledger, path containment, exact authorization, pairing, bootstrap and classification boundary tests.",
+      "Assert attention error above 1e-6 still fails closed.",
+      "Assert prediction error above the old 1e-6 value is recorded but does not fail.",
+      "Assert finite downstream distance/unit-interval differences, optional-NA mismatches and integer mismatches are recorded by field but do not fail the attention-equivalence gate.",
+      "Assert required nonfinite values, invalid discrete values, incomplete pairing, native reproduction drift, coarse drift, hash/path/authorization drift and unauthorized boundaries still fail closed.",
+      "Assert old equality-pass receipt wording is absent, the new attention-equivalence wording is present, downstream diagnostics are marked non-gating and the case-mean comparison cannot affect scientific classification.",
+      "Use only in-memory synthetic tensors/rows and temporary files beneath /tmp with CUDA hidden."
+    ]
+  },
+  "permitted_verification_if_explicitly_authorized": {
+    "python_environment": "/opt/conda/envs/adapointr-mamba/bin/python",
+    "environment_mutation": false,
+    "syntax_checks": {
+      "command_shape": "CUDA_VISIBLE_DEVICES='' PYTHONPYCACHEPREFIX=/tmp/cranial_scqr_v11_round_a_i_v2_pycache /opt/conda/envs/adapointr-mamba/bin/python -m py_compile <exactly the three authorized files>",
+      "files": [
+        "tools/run_cranial_scqr_v11_l4_round_a_intervention.py",
+        "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py",
+        "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py"
+      ],
+      "project_bytecode_cache_forbidden": true
+    },
+    "synthetic_cpu_contract_suite": {
+      "executions": 1,
+      "command": "CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 /opt/conda/envs/adapointr-mamba/bin/python tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py",
+      "complete_suite": true,
+      "temporary_directory_root": "/tmp",
+      "real_checkpoint_loads": 0,
+      "real_npz_opens": 0,
+      "gpu_forwards": 0,
+      "development_evaluations": 0,
+      "real_result_statistics": 0
+    },
+    "other_tests_authorized": false
+  },
+  "required_post_implementation_evidence": [
+    "SHA256 and byte size of each of the three modified files.",
+    "Proof that the frozen v2 protocol, revision request and all non-target bound sources remain unchanged.",
+    "Python syntax-check result with bytecode cache outside the project.",
+    "The single complete synthetic CPU suite command, exact discovered test count and result.",
+    "Regression evidence for all three fixed-permutation seed anchors.",
+    "Evidence that old equality-pass wording and output-level failure gates are absent while downstream diagnostic recording remains present.",
+    "Explicit zero counts for real checkpoint loads, NPZ opens, GPU forwards, optimizer steps, parameter/buffer updates, development evaluations, formal statistics, Round A-I retries and Round B runs.",
+    "A separate read-only P3 post-implementation audit and a new exact formal execution authorization request before any real execution."
+  ],
+  "failure_policy": {
+    "source_or_protocol_hash_drift": "Stop before modification and report exact drift; never adapt silently.",
+    "partial_edit_or_syntax_failure": "Stop, report changed paths and preserve evidence; request a separately authorized hotfix. Do not run a formal experiment.",
+    "synthetic_contract_failure": "Stop after the single suite, report failing tests and side-effect counters; do not weaken assertions, auto-fix, rerun, load a checkpoint or open an NPZ.",
+    "automatic_retry": false,
+    "automatic_next_stage": false
+  },
+  "explicitly_not_authorized_by_this_request_file_alone": [
+    "modifying any file before explicit user authorization",
+    "modifying l4_round_a_intervention_protocol_v2.json, any model/dataset/metric/config/checkpoint, any prior request/receipt/launcher/log/result, or any file other than the three exact targets",
+    "creating a new source, protocol, receipt, launcher, master log or formal result directory",
+    "running syntax checks, tests or project imports before explicit implementation authorization",
+    "loading or deserializing any real checkpoint or constructing a real model",
+    "opening any NPZ or reading partial, implant or gt",
+    "using GPU compute, inference, profiling, development evaluation, real-result statistics or formal timing",
+    "changing the 1e-6 attention threshold or introducing an output/metric acceptance tolerance",
+    "changing conditions, fixed permutations, data/checkpoint bindings, precision, batch size, metrics, bootstrap or classification rules",
+    "confirmation20, official test, old monitor or MUG payload access",
+    "optimizer construction, training, BNCal, parameter update or buffer update",
+    "automatic retry, resume, replacement execution, Round A-I formal retry, Round B or any subsequent run",
+    "Git initialization, commit, tag or push",
+    "archive creation, deletion, movement or cleanup"
+  ],
+  "required_user_authorization": "Explicitly authorize l4_round_a_intervention_v2_implementation_authorization_request_v1.json to modify only tools/run_cranial_scqr_v11_l4_round_a_intervention.py, tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py and tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py exactly as specified; then run only syntax checks with project bytecode redirected to /tmp and one complete synthetic CPU contract suite with CUDA hidden using /opt/conda/envs/adapointr-mamba/bin/python. Do not modify the frozen v2 protocol or any other file, load checkpoints, open NPZ payloads, use GPU compute, execute development evaluation or real statistics, create a formal launcher/output, retry Round A-I, change thresholds, enter Round B or launch any subsequent run."
+}

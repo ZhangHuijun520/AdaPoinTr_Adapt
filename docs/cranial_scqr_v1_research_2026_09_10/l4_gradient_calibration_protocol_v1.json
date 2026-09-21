@@ -1,0 +1,250 @@
+{
+  "protocol_id": "cranial-scqr-v1.1-L4-gradient-calibration-v1",
+  "status": "frozen_before_execution",
+  "authorized_by_user": "明确授权进入L4阶段；随后明确要求继续上一条未完成任务",
+  "created_at_utc": "2026-09-11T15:32:43+00:00",
+  "prerequisites": {
+    "experiment_plan": "docs/cranial_scqr_v1_research_2026_09_10/experiment_plan_zh.md",
+    "p0_receipt": "logs/cranial_scqr_v11/p0_data_audit/p0_data_audit_v1_20260910T115759Z/p0_data_audit_receipt.json",
+    "p0_selected_metadata": "logs/cranial_scqr_v11/p0_data_audit/p0_data_audit_v1_20260910T115759Z/selected_manifest_metadata.jsonl",
+    "l2_receipt": "logs/cranial_scqr_v11/l2_zero_update_preflight/l2_zero_update_preflight_hotfix2_v1_20260911T073931Z/l2_preflight_receipt.json",
+    "l3_receipt": "logs/cranial_scqr_v11/l3_synthetic_benchmark/l3_synthetic_benchmark_v1_20260911T082531Z/l3_benchmark_receipt.json",
+    "required_statuses": {
+      "p0": "PASS",
+      "l2": "PASS",
+      "l3": "GATE_PASS"
+    }
+  },
+  "selection_rule": {
+    "salt": "cranial-scqr-v1.1-lambda-calibration-v1",
+    "source_key": "skull_id",
+    "hash_input_encoding": "UTF-8(salt) + one NUL byte + UTF-8(skull_id)",
+    "ranking": "ascending SHA256 hex digest, then ascending skull_id",
+    "take_first_skulls": 4,
+    "defect_order": [
+      "bilateral",
+      "frontoorbital",
+      "parietotemporal",
+      "random_1",
+      "random_2"
+    ],
+    "batch_layout": "one defect type per batch, four selected skulls in hash rank order"
+  },
+  "folds": {
+    "A": {
+      "train_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_train_case_ids.txt",
+      "train_allowlist_count": 315,
+      "selected_skulls": [
+        "train:002",
+        "train:026",
+        "train:062",
+        "train:041"
+      ],
+      "selection_file": "docs/cranial_scqr_v1_research_2026_09_10/l4_calibration_foldA_case_ids_v1.txt",
+      "selection_count": 20,
+      "template": "cfgs/SkullBreak_models/cranial_scqr_v11/CranialSCQRV11_A1_foldA_seed0.yaml"
+    },
+    "B": {
+      "train_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_train_case_ids.txt",
+      "train_allowlist_count": 315,
+      "selected_skulls": [
+        "train:113",
+        "train:026",
+        "train:062",
+        "train:041"
+      ],
+      "selection_file": "docs/cranial_scqr_v1_research_2026_09_10/l4_calibration_foldB_case_ids_v1.txt",
+      "selection_count": 20,
+      "template": "cfgs/SkullBreak_models/cranial_scqr_v11/CranialSCQRV11_A1_foldB_seed0.yaml"
+    }
+  },
+  "calibration_contract": {
+    "folds": [
+      "A",
+      "B"
+    ],
+    "candidate": "A1",
+    "model_seed": 31002,
+    "skulls_per_fold": 4,
+    "cases_per_fold": 20,
+    "batches_per_fold": 5,
+    "batch_size": 4,
+    "full_model_forward_calls": 10,
+    "autograd_calls": 20,
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "bncal_runs": 0,
+    "forward_mode": "eval_with_autograd",
+    "temporary_residual_warmup_factor": 1.0,
+    "target_gradient_ratio": 0.1,
+    "weight_clip": [
+      1e-06,
+      1.0
+    ]
+  },
+  "formula": {
+    "gradient_target": "public encoder output F with shape Bx256x384",
+    "g_rec": "RMS(d(original coarse+fine reconstruction loss)/dF)",
+    "g_scf": "RMS(d(unweighted case-balanced SCF BCE)/dF)",
+    "per_batch_ratio": "g_rec/g_scf",
+    "lambda_unclipped": "0.1 * median(per_batch_ratio across 5 batches)",
+    "lambda_final": "clip(lambda_unclipped, 1e-6, 1)",
+    "reuse": "one frozen lambda per fold for A1/Q0/QC and all seeds in that fold"
+  },
+  "data_access": {
+    "dataset_root": "/home/jovyan/datasets/SkullBreakPC_out8192",
+    "manifest": "/home/jovyan/datasets/SkullBreakPC_out8192/manifest.jsonl",
+    "allowed_split": "development84 fold-train selected cases only",
+    "allowed_npz_keys": [
+      "partial",
+      "implant"
+    ],
+    "allowed_manifest_metadata": [
+      "case_id",
+      "skull_id",
+      "defect_type",
+      "point_path",
+      "normalization.centroid",
+      "normalization.scale"
+    ],
+    "payload_open_events": 40,
+    "unique_payload_cases": 25,
+    "fold_dev_payload_authorized": false,
+    "confirmation20_payload_authorized": false,
+    "official_test_payload_authorized": false,
+    "old_monitor_payload_authorized": false,
+    "mug_payload_authorized": false
+  },
+  "execution": {
+    "allowed_runs": 1,
+    "python_executable": "/opt/conda/envs/adapointr-mamba/bin/python",
+    "device": "cuda:0",
+    "tmux_session": "cranial_scqr_l4_cal_20260911T153243Z",
+    "output_dir": "logs/cranial_scqr_v11/l4_gradient_calibration/l4_gradient_calibration_v1_20260911T153243Z",
+    "launcher_log": "logs/cranial_scqr_v11/l4_gradient_calibration/l4_gradient_calibration_v1_20260911T153243Z.launcher.log",
+    "pid_file": "logs/cranial_scqr_v11/l4_gradient_calibration/l4_gradient_calibration_v1_20260911T153243Z.pid",
+    "exit_file": "logs/cranial_scqr_v11/l4_gradient_calibration/l4_gradient_calibration_v1_20260911T153243Z.exit_code",
+    "environment": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "precision": "FP32",
+      "TF32": false,
+      "deterministic_algorithms": true
+    }
+  },
+  "boundaries": {
+    "optimizer_construction_authorized": false,
+    "optimizer_step_authorized": false,
+    "model_parameter_update_authorized": false,
+    "model_buffer_update_authorized": false,
+    "checkpoint_load_authorized": false,
+    "checkpoint_write_authorized": false,
+    "bncal_authorized": false,
+    "round_A_training_authorized_by_this_protocol": false,
+    "runtime_config_materialization_authorized_by_this_protocol": false,
+    "automatic_rerun_authorized": false,
+    "L4_later_runs_authorized": false
+  },
+  "failure_policy": {
+    "on_error": "freeze error receipt and stop",
+    "on_nonfinite_or_zero_gradient": "stop without fallback",
+    "random_reinitialization_authorized": false,
+    "extra_batch_authorized": false,
+    "lambda_search_authorized": false,
+    "replacement_run_requires_new_explicit_authorization": true
+  },
+  "sha256_bindings": [
+    {
+      "path": "tools/run_cranial_scqr_v11_l4_gradient_calibration.py",
+      "sha256": "2da7b0a1fdc329244eeee9f67ad8e48ddd23d136900bb322734941b34828f792"
+    },
+    {
+      "path": "scripts/launch_cranial_scqr_v11_l4_calibration.sh",
+      "sha256": "01201afd682c374cd0eb43dea99805ff3990f19daba4bc3d83906d9bc1256c80"
+    },
+    {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_calibration_foldA_case_ids_v1.txt",
+      "sha256": "1a4969283471cebb24bb3818fd316c3928c6ed1dfd0a300700ebf819d286a518"
+    },
+    {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_calibration_foldB_case_ids_v1.txt",
+      "sha256": "7e4e696adb9b7d70fb72a834a2d0a0d21756167f11e638383c1c91872949775e"
+    },
+    {
+      "path": "cfgs/SkullBreak_models/cranial_scqr_v11/CranialSCQRV11_A1_foldA_seed0.yaml",
+      "sha256": "2d228ab6381779b9eb740b8e8dcb161ca863ff8503b87724edd23175937b4a81"
+    },
+    {
+      "path": "cfgs/SkullBreak_models/cranial_scqr_v11/CranialSCQRV11_A1_foldB_seed0.yaml",
+      "sha256": "9b509a41afb7e2b04194172159b898385de07198967c3f18df1ce35717a486b5"
+    },
+    {
+      "path": "cfgs/SkullBreak_models/cranial_scqr_v11/l1_configs_manifest.json",
+      "sha256": "5befda464a81d01ccdaf49297aa46ba1e427fa886319aced93d0abf9af61c3fb"
+    },
+    {
+      "path": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_train_case_ids.txt",
+      "sha256": "06cc0ef6a8a882956aa3136d57f999a1a9a945213c73f92c2f3026121b076dbd"
+    },
+    {
+      "path": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_train_case_ids.txt",
+      "sha256": "974d721eed8fe38f242e3b6f383634101af9823c17dd19e312d8fa9299fbd227"
+    },
+    {
+      "path": "logs/cranial_scqr_v11/p0_data_audit/p0_data_audit_v1_20260910T115759Z/p0_data_audit_receipt.json",
+      "sha256": "8317abd6bd942cb3bacef9a156e3248dea42aabbec06984e3aaa165e7ce396ac"
+    },
+    {
+      "path": "logs/cranial_scqr_v11/p0_data_audit/p0_data_audit_v1_20260910T115759Z/selected_manifest_metadata.jsonl",
+      "sha256": "2dfa04042b94c5e69c3c0651fa8a9b440515c5b11bb8e9cf8debad222219b4f0"
+    },
+    {
+      "path": "logs/cranial_scqr_v11/l2_zero_update_preflight/l2_zero_update_preflight_hotfix2_v1_20260911T073931Z/l2_preflight_receipt.json",
+      "sha256": "181af1e0495da4e172afbf95ad1d808a301ccfadee3f01218c8c9a5561db6497"
+    },
+    {
+      "path": "logs/cranial_scqr_v11/l3_synthetic_benchmark/l3_synthetic_benchmark_v1_20260911T082531Z/l3_benchmark_receipt.json",
+      "sha256": "4934396cc7fd0014cf2b9f63b2044eacbbf536ace536610945d0e7a97aaf5f32"
+    },
+    {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/experiment_plan_zh.md",
+      "sha256": "8b1fceb98d142466e5694ef9510f0c15ec5ec457b6713a41bcd92386f7aeaf37"
+    },
+    {
+      "path": "tools/runner.py",
+      "sha256": "91e29d62647e99c8bbfcc203ab4d233e5bf0c00d352f25dc3c09a73285512cb3"
+    },
+    {
+      "path": "datasets/SkullBreakDataset.py",
+      "sha256": "5c4c17c81f8a64c21bb239933a438b98c98f0ee587820dd1789f616f9cbd7fe2"
+    },
+    {
+      "path": "models/AdaPoinTr.py",
+      "sha256": "62a743c4c2143b77b0f1656c59d0482563976440d841f04bae995017dbf7588f"
+    },
+    {
+      "path": "models/cranial_scqr/__init__.py",
+      "sha256": "d2d85b33cff9689dd06f2c2a0845a6aebccba03b6e706904afc8f4d97851cc5b"
+    },
+    {
+      "path": "models/cranial_scqr/contact_support.py",
+      "sha256": "358ea31017344fa4905aac7e495dc87ed7f74496954fd34d7390cd0ea579028f"
+    },
+    {
+      "path": "models/cranial_scqr/local_geometry.py",
+      "sha256": "b533efead76c38ff7bc83a5245a88c98e275a37e0523cbbfb793a63b4d645665"
+    },
+    {
+      "path": "models/cranial_scqr/query_conditioning.py",
+      "sha256": "e631f6649b3a218e63c39f15f6232607469106ae63b0c7cdf578636b110d9057"
+    },
+    {
+      "path": "tools/run_cranial_scqr_v11_l2_preflight.py",
+      "sha256": "95a9f15e26c2ef96e072e3c7d58324db01cfc026dc81534d5ded46e60c1b3c48"
+    },
+    {
+      "path": "tools/run_cranial_scqr_v11_l3_benchmark.py",
+      "sha256": "0866f94dcda8b41bc0781096cbf22edc561ae425218efb57db01079edabc3f8b"
+    }
+  ]
+}

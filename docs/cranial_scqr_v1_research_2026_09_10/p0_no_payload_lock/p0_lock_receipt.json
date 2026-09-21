@@ -1,0 +1,68 @@
+{
+  "receipt_id": "cranial-scqr-v1.1-p0-no-payload-lock-v1-receipt",
+  "completed_at_utc": "2026-09-10T11:39:45Z",
+  "result": "PASS_WITH_DATA_GATES_PENDING",
+  "checks": {
+    "project_identity": "PASS",
+    "environment_recorded": "PASS",
+    "case_id_files_unique": "PASS",
+    "development_confirmation_disjoint": "PASS",
+    "fold_train_dev_disjoint": "PASS",
+    "fold_train_dev_cover_development84": "PASS",
+    "fold_dev_sets_pairwise_disjoint": "PASS",
+    "fold_dev_union_is_development84": "PASS",
+    "five_defects_per_skull": "PASS",
+    "model_contract_text_audit": "PASS",
+    "metric_contract_text_audit": "PASS",
+    "epoch_step_semantics_text_audit": "PASS",
+    "manifest_lineage_audit": "PENDING_EXPLICIT_AUTHORIZATION",
+    "development84_payload_representation_audit": "PENDING_EXPLICIT_AUTHORIZATION"
+  },
+  "observed_counts": {
+    "development_skulls": 84,
+    "development_cases": 420,
+    "confirmation_skulls": 20,
+    "confirmation_cases": 100,
+    "folds": 4,
+    "fold_train_skulls": 63,
+    "fold_train_cases": 315,
+    "fold_dev_skulls": 21,
+    "fold_dev_cases": 105,
+    "defects_per_skull": 5
+  },
+  "mutation_summary": {
+    "new_document_files": 5,
+    "model_or_config_files_changed": 0,
+    "dataset_files_changed": 0,
+    "existing_results_changed": 0,
+    "optimizer_steps": 0,
+    "gpu_runs": 0,
+    "deletions": 0
+  },
+  "artifacts": {
+    "protocol": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/p0_no_payload_lock/p0_no_payload_protocol_v1.json",
+      "bytes": 6322,
+      "sha256": "b2245970f7deacf3e742fd3d1979a6efda2dbb6a7a95e191eb33096c57029293"
+    },
+    "report": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/p0_no_payload_lock/p0_no_payload_audit_report_zh.md",
+      "bytes": 6827,
+      "sha256": "c77a26a9df08b69bafe59bd41a8ab48bffc4b633d13a600946b593ed35d23b39"
+    },
+    "ledger_skeleton": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/p0_no_payload_lock/source_use_ledger_skeleton.csv",
+      "bytes": 1449,
+      "sha256": "b0a4027563d1e69f2cad26259f4ca6d1d44ba95e851a9de8115f489414fa99ea"
+    }
+  },
+  "boundary_attestation": {
+    "data_manifest_read": false,
+    "data_payload_read": false,
+    "excluded_directory_accessed": false,
+    "windows_path_assumed_mounted": false,
+    "git_operation_performed": false,
+    "training_or_model_update_performed": false
+  },
+  "next_gate": "Explicit authorization for P0 metadata and development84-only representation audit"
+}

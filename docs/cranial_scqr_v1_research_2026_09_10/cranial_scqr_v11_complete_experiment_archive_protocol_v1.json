@@ -1,0 +1,106 @@
+{
+  "protocol_id": "cranial-scqr-v1.1-complete-experiment-archive-v1",
+  "protocol_version": 1,
+  "created_date_utc": "2026-09-21",
+  "project_root": "/home/jovyan/adapointr_work/PoinTr",
+  "purpose": "Freeze the Cranial-SCQR v1.1 protocol, authorization, implementation, execution evidence, metrics, reports, and integrity chain into a transportable archive with independent restore verification.",
+  "transport_target_declared_by_user": "E:\\ResearchBackups\\AdaPoinTr",
+  "transport_boundary": {
+    "windows_target_is_not_server_filesystem": true,
+    "server_task_must_not_translate_windows_path": true,
+    "local_backup_valid_only_after_user_download_and_hash_confirmation": true,
+    "server_originals_must_not_be_deleted_before_that_confirmation": true
+  },
+  "include_roots": [
+    "docs/cranial_scqr_v1_research_2026_09_10",
+    "cfgs/SkullBreak_models/cranial_scqr_v11",
+    "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1",
+    "logs/cranial_scqr_v11"
+  ],
+  "include_file_groups": {
+    "scripts": "scripts/*cranial_scqr_v11*.sh",
+    "tools": [
+      "tools/*cranial_scqr_v11*.py",
+      "tools/cranial_scqr_l4_audit.py",
+      "tools/builder.py",
+      "tools/runner.py"
+    ],
+    "models": [
+      "models/AdaPoinTr.py",
+      "models/__init__.py",
+      "models/build.py",
+      "models/cranial_scqr/*.py"
+    ],
+    "dataset_interface": [
+      "datasets/__init__.py",
+      "datasets/SkullBreakDataset.py"
+    ],
+    "entrypoint": [
+      "main.py"
+    ],
+    "utils": [
+      "utils/config.py",
+      "utils/registry.py",
+      "utils/misc.py",
+      "utils/skullfix_metrics.py",
+      "utils/logger.py",
+      "utils/AverageMeter.py",
+      "utils/metrics.py",
+      "utils/dist_utils.py",
+      "utils/checkpoint.py",
+      "utils/mamba_d22_geometry.py",
+      "utils/mamba_d3_contact.py"
+    ]
+  },
+  "explicit_exclusions": [
+    "raw datasets and NPZ payloads",
+    "confirmation20, official test, old monitor, and MUG payloads",
+    "checkpoint binaries, optimizer state, and training state binaries",
+    "Git credentials, tokens, cookies, auth.json, SSH material, and other secrets",
+    ".git metadata",
+    "__pycache__, .pyc, .orig, temporary files, and unrelated repository content"
+  ],
+  "required_archive_metadata": [
+    "metadata/README_zh.md",
+    "metadata/archive_creation_environment.txt",
+    "metadata/artifact_inventory.tsv",
+    "metadata/github_content_manifest.tsv",
+    "metadata/archive_freeze_receipt.json",
+    "metadata/recovery_verification_report.json",
+    "metadata/files.sha256"
+  ],
+  "required_transport_files": [
+    "cranial_scqr_v11_complete_experiment_archive_v1_20260921.tar.gz",
+    "cranial_scqr_v11_complete_experiment_archive_v1_20260921.tar.gz.sha256",
+    "cranial_scqr_v11_complete_experiment_archive_v1_20260921.bytes",
+    "cranial_scqr_v11_complete_experiment_archive_v1_20260921.tar_contents.txt",
+    "cranial_scqr_v11_complete_experiment_archive_v1_20260921.restore_verification_receipt.json",
+    "cranial_scqr_v11_complete_experiment_archive_v1_20260921.restore_verification_receipt.json.sha256"
+  ],
+  "verification_requirements": {
+    "all_existing_result_manifests_must_pass": true,
+    "archive_payload_manifest_must_pass_after_restore": true,
+    "json_syntax_must_pass": true,
+    "eight_training_completion_receipts_must_report_training_and_bncal_pass": true,
+    "each_training_receipt_optimizer_steps": 3939,
+    "development_gate_classification": "NO_GO",
+    "round_b_authorized": false,
+    "qc_intervention_execution_status": "PASS",
+    "q0_reverse_intervention_execution_status": "PASS",
+    "q0_reverse_overall_classification": "WEIGHT_STATE_DOMINANT_DIRECTIONAL",
+    "q0_reverse_effect_classification": "Q0_REVERSE_EFFECT_INACTIVE"
+  },
+  "github_policy": {
+    "server_project_is_expected_to_be_a_git_worktree": false,
+    "authoritative_commit_tag_and_push_location": "Windows canonical repository unless the user separately authorizes server Git execution",
+    "remote_repository": "ZhangHuijun520/AdaPoinTr_Adapt",
+    "branch": "feature/mamba-v12-mechanism-dev",
+    "force_push_allowed": false,
+    "github_manifest_must_exclude_execution_logs": true
+  },
+  "destructive_actions": {
+    "delete_server_originals": false,
+    "delete_server_archive": false,
+    "overwrite_existing_archive": false
+  }
+}

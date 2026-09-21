@@ -1,0 +1,266 @@
+{
+  "request_id": "cranial-scqr-v1.1-L4-roundA-development-evaluation-execution-request-v2",
+  "status": "PENDING_EXPLICIT_USER_AUTHORIZATION",
+  "authorization_effective": false,
+  "execution_authorized": false,
+  "created_at_utc": "2026-09-14T05:40:06Z",
+  "purpose": "Request one explicitly authorized replacement Round A development evaluation after the v1 attempt failed before checkpoint deserialization and NPZ access because the repository root was absent from sys.path.",
+  "protocol": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_development_evaluation_protocol_v1.json",
+  "protocol_id": "cranial-scqr-v1.1-L4-roundA-development-evaluation-v1",
+  "protocol_sha256": "04077152848c055c76fbc64f4427301af9809e2fda6cd2117d644088bad7e8ae",
+  "protocol_bytes": 21913,
+  "superseded_execution_chain": {
+    "v1_request": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_development_evaluation_execution_authorization_request_v1.json",
+    "v1_request_sha256": "90218b995f3d2b4890dd90dabc1621eb7aa1938202fd96f15eaabcb357f89d10",
+    "v1_authorization_receipt": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_development_evaluation_execution_authorization_receipt_v1.json",
+    "v1_authorization_receipt_sha256": "925184a61590d305d94daf475678e7c6e7a013d853ab143b9f6490f0ce46784a",
+    "v1_launcher": "scripts/run_cranial_scqr_v11_l4_round_a_dev_eval_once.sh",
+    "v1_launcher_sha256": "bb9f127b883f1ed7e02dff602f47b80943c616a420e82a291415a6f593826ac4",
+    "v1_output_directory": "logs/cranial_scqr_v11/l4_round_a_development_evaluation/cranial_scqr_v11_l4_round_a_dev_eval_v1_20260914T052540Z",
+    "v1_files_sha256_sha256": "ca4d410d4de167fb5d52c5871580e5b2d9f7a677e1bf5c0435c869776dc2a257",
+    "v1_failure_receipt_sha256": "69ad8727d38bb578b4de50be32939e65ab22900c1a44a74478972f57af83c7f4",
+    "v1_status": "FAILED_STOPPED_NO_RETRY",
+    "v1_error_type": "ModuleNotFoundError",
+    "v1_error": "No module named 'models'",
+    "v1_checkpoint_loads": 0,
+    "v1_npz_opens": 0,
+    "v1_gpu_forwards": 0,
+    "v1_optimizer_steps": 0,
+    "v1_parameter_updates": 0,
+    "v1_buffer_updates": 0,
+    "v1_output_is_immutable_and_must_not_be_overwritten_or_deleted": true,
+    "v1_authorization_consumed": true,
+    "v1_launcher_must_not_be_reused": true
+  },
+  "import_hotfix1": {
+    "authorization_source": "explicit user message in current Codex task",
+    "scope": [
+      "tools/run_cranial_scqr_v11_l4_round_a_dev_eval.py",
+      "tools/test_cranial_scqr_v11_l4_round_a_dev_eval_contract.py"
+    ],
+    "runner_change": "Insert the resolved repository root into sys.path before any deferred project import.",
+    "test_change": "Assert that the repository root is present and resolves models/__init__.py when the test is launched by absolute path outside the repository.",
+    "runner_before_sha256": "80de892923badb78bc4c2d0a5817ae18295cd7d7bf724153543c3a47d7377446",
+    "runner_after_sha256": "6be1c38b46270eff278ea7a54805ba0d572e8aef81a103350308072380c38798",
+    "runner_after_bytes": 32853,
+    "test_before_sha256": "64d99c0a4c36542ba1cee2151c9c73ebebdc4b4bc05fb71ea6544343e3901286",
+    "test_after_sha256": "d20c0f81f8b0bc49f72a90040ccdb52cb65ce475d30da9e7df989c4dc4e3b34b",
+    "test_after_bytes": 15281,
+    "analyzer_unchanged_sha256": "3a54206a950c5d6825373ca6364d41feacca44bac28e62b505a7d3d35d47985d",
+    "analyzer_unchanged_bytes": 23646,
+    "syntax_check": "PASS: SYNTAX_OK 2",
+    "synthetic_cpu_contract_tests": "PASS: 14/14",
+    "test_working_directory": "/tmp",
+    "test_entrypoint": "/home/jovyan/adapointr_work/PoinTr/tools/test_cranial_scqr_v11_l4_round_a_dev_eval_contract.py",
+    "cuda_visible_devices": "",
+    "pyc_created": false,
+    "checkpoint_loads": 0,
+    "npz_opens": 0,
+    "gpu_forwards": 0,
+    "development_evaluations": 0,
+    "formal_result_statistics": 0,
+    "optimizer_steps": 0,
+    "parameter_updates": 0,
+    "buffer_updates": 0
+  },
+  "frozen_implementation_bindings": {
+    "tools/run_cranial_scqr_v11_l4_round_a_dev_eval.py": "6be1c38b46270eff278ea7a54805ba0d572e8aef81a103350308072380c38798",
+    "tools/analyze_cranial_scqr_v11_l4_round_a.py": "3a54206a950c5d6825373ca6364d41feacca44bac28e62b505a7d3d35d47985d",
+    "tools/test_cranial_scqr_v11_l4_round_a_dev_eval_contract.py": "d20c0f81f8b0bc49f72a90040ccdb52cb65ce475d30da9e7df989c4dc4e3b34b"
+  },
+  "checkpoint_matrix": [
+    {
+      "run_key": "B0_foldA_seed0",
+      "bncal_checkpoint_sha256": "7d222bda667dd428199ce0696873e550d53d0ecf2004b24f887a46963024a549",
+      "bncal_checkpoint_bytes": 380342819
+    },
+    {
+      "run_key": "B0_foldB_seed0",
+      "bncal_checkpoint_sha256": "22d47a0939140c37bc6180f3e0a3fb4d743b09e661c0afc7ad0683b58f2954d8",
+      "bncal_checkpoint_bytes": 380342819
+    },
+    {
+      "run_key": "A1_foldA_seed0",
+      "bncal_checkpoint_sha256": "10e06314eb2aad849e45dabec4753a35c50b1b593fcc5d0f9045efdbd5708d5e",
+      "bncal_checkpoint_bytes": 382568951
+    },
+    {
+      "run_key": "A1_foldB_seed0",
+      "bncal_checkpoint_sha256": "6434707e670bee92fa3ffc02b77ec472393ea1068662d085b2e5eaf0d3508f40",
+      "bncal_checkpoint_bytes": 382568951
+    },
+    {
+      "run_key": "Q0_foldA_seed0",
+      "bncal_checkpoint_sha256": "267572474120963183a2e3ca9651cc2ea1f94b24937748cb67ca426ef92cc75f",
+      "bncal_checkpoint_bytes": 388540806
+    },
+    {
+      "run_key": "Q0_foldB_seed0",
+      "bncal_checkpoint_sha256": "edd496c3dc7e4cf894e95697bf89e965de353dc38d5173ca665d906f182e5b08",
+      "bncal_checkpoint_bytes": 388540806
+    },
+    {
+      "run_key": "QC_foldA_seed0",
+      "bncal_checkpoint_sha256": "b73e1090ce7aa2e81f2707ad63243a29108eca2f35f7e27ff8e7a9c755235358",
+      "bncal_checkpoint_bytes": 388540806
+    },
+    {
+      "run_key": "QC_foldB_seed0",
+      "bncal_checkpoint_sha256": "9069f456abaa66e61c3315a85f3e865becd2889b97475bf8469de9bacbfdee3b",
+      "bncal_checkpoint_bytes": 388540806
+    }
+  ],
+  "data_scope": {
+    "dataset": "SkullBreakPC_out8192 development84",
+    "data_root": "/home/jovyan/datasets/SkullBreakPC_out8192",
+    "manifest": "/home/jovyan/datasets/SkullBreakPC_out8192/manifest.jsonl",
+    "manifest_sha256": "f1f8cae47ed7d5529dc2ca244179cedddbc039981cdc0ff24b25a5c81ad30538",
+    "fold_a_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt",
+    "fold_a_allowlist_sha256": "83ec25f96831c7b5620fa94a2d255605668697bd3fa11ee5c6aab9f92c5dcd01",
+    "fold_b_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_dev_case_ids.txt",
+    "fold_b_allowlist_sha256": "803a313cdba850a3a277b3a253f4fc106b0bba0eb8289b12f59c38fa95175b1b",
+    "cases_per_checkpoint": 105,
+    "sources_per_fold": 21,
+    "cases_per_source": 5,
+    "combined_unique_cases": 210,
+    "combined_unique_sources": 42,
+    "fold_a_b_case_and_source_disjoint": true,
+    "model_input_members": [
+      "partial"
+    ],
+    "metric_only_members_read_after_forward": [
+      "implant",
+      "gt"
+    ],
+    "expected_npz_opens": 840,
+    "expected_member_reads": {
+      "partial": 840,
+      "implant": 840,
+      "gt": 840
+    },
+    "protected_payload_access": {
+      "train": false,
+      "confirmation20": false,
+      "official_test": false,
+      "old_monitor": false,
+      "MUG": false
+    }
+  },
+  "requested_replacement_execution": {
+    "replacement_attempt_authorized_once": true,
+    "checkpoint_order": [
+      "B0_foldA_seed0",
+      "B0_foldB_seed0",
+      "A1_foldA_seed0",
+      "A1_foldB_seed0",
+      "Q0_foldA_seed0",
+      "Q0_foldB_seed0",
+      "QC_foldA_seed0",
+      "QC_foldB_seed0"
+    ],
+    "checkpoint_loads": 8,
+    "model_case_forward_calls": 840,
+    "precision": "FP32",
+    "model_mode": "eval",
+    "torch_no_grad": true,
+    "batch_size": 1,
+    "num_workers": 0,
+    "shuffle": false,
+    "case_order": "exact allowlist order",
+    "one_checkpoint_resident_at_a_time": true,
+    "parameter_and_buffer_state_hash_before_and_after_each_partition": true,
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "parameter_updates": 0,
+    "buffer_updates": 0,
+    "prediction_pointcloud_files_saved": false,
+    "training": false,
+    "bncal": false,
+    "formal_timing": false,
+    "automatic_retry": false,
+    "automatic_next_run": false
+  },
+  "analysis_scope": {
+    "requires_all_eight_complete_partitions": true,
+    "pairing_key": "fold plus case_id plus seed",
+    "source_aggregation": "equal mean of five defect cases",
+    "fold_aggregation": "equal mean of 21 source skulls",
+    "combined_aggregation": "equal mean of 42 disjoint source skulls",
+    "comparison_order": [
+      "QC_minus_B0",
+      "QC_minus_Q0"
+    ],
+    "primary_metric": "rim_gt_rim_to_pred_p95_mm",
+    "bootstrap_seed": 20260910,
+    "bootstrap_samples": 10000,
+    "threshold_changes_authorized": false,
+    "round_b_authorized_by_pass": false
+  },
+  "resource_scope": {
+    "gpu_count": 1,
+    "gpu_model": "NVIDIA GeForce RTX 4090 D",
+    "gpu_uuid": "GPU-2f32f6fb-ea5d-730a-4ea2-2f6063e31065",
+    "minimum_free_gpu_memory_mib_at_launch": 22000,
+    "maximum_observed_gpu_memory_used_mib": 20480,
+    "minimum_free_disk_gib_at_launch": 8,
+    "maximum_walltime_hours": 4,
+    "resource_state_must_be_rechecked_immediately_before_launch": true
+  },
+  "proposed_v2_runtime": {
+    "authorization_receipt": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_development_evaluation_execution_authorization_receipt_v2.json",
+    "authorization_receipt_status": "NOT_CREATED_PENDING_EXPLICIT_AUTHORIZATION",
+    "launcher": "scripts/run_cranial_scqr_v11_l4_round_a_dev_eval_once_v2.sh",
+    "launcher_status": "NOT_CREATED_PENDING_EXPLICIT_AUTHORIZATION",
+    "run_id": "cranial_scqr_v11_l4_round_a_dev_eval_v2_20260914T054006Z",
+    "tmux_session": "scqr_l4_rounda_dev_eval_v2_20260914t054006z",
+    "output_directory": "logs/cranial_scqr_v11/l4_round_a_development_evaluation/cranial_scqr_v11_l4_round_a_dev_eval_v2_20260914T054006Z",
+    "authorization_receipt_exists": false,
+    "launcher_exists": false,
+    "output_directory_exists": false,
+    "tmux_started": false
+  },
+  "v2_authorization_receipt_contract": {
+    "authorization_effective": true,
+    "execution_authorized": true,
+    "protocol_id": "cranial-scqr-v1.1-L4-roundA-development-evaluation-v1",
+    "protocol_sha256": "04077152848c055c76fbc64f4427301af9809e2fda6cd2117d644088bad7e8ae",
+    "authorized_once": true,
+    "replacement_for_failed_v1": true,
+    "protected_payload_access": {
+      "confirmation20": false,
+      "official_test": false,
+      "old_monitor": false,
+      "MUG": false,
+      "train": false
+    }
+  },
+  "requested_file_creations_after_separate_v2_authorization": [
+    "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_development_evaluation_execution_authorization_receipt_v2.json",
+    "scripts/run_cranial_scqr_v11_l4_round_a_dev_eval_once_v2.sh",
+    "logs/cranial_scqr_v11/l4_round_a_development_evaluation/cranial_scqr_v11_l4_round_a_dev_eval_v2_20260914T054006Z"
+  ],
+  "stop_and_recovery": {
+    "hash_path_size_count_or_resource_mismatch": "Stop before checkpoint deserialization or NPZ access.",
+    "execution_failure": "Freeze evidence in the v2 output and stop.",
+    "automatic_retry": false,
+    "automatic_resume": false,
+    "batch_or_precision_fallback": false,
+    "threshold_change": false,
+    "reuse_v1_output_or_launcher": false,
+    "round_b_or_subsequent_run": false
+  },
+  "explicitly_not_authorized_by_this_request_file_alone": [
+    "creation of the v2 authorization receipt or launcher",
+    "checkpoint deserialization or NPZ access",
+    "GPU inference or development evaluation",
+    "analysis of real model outputs",
+    "training, BNCal, optimizer construction or model update",
+    "train, confirmation20, official test, old monitor or MUG payload",
+    "automatic retry, resume, fallback or threshold changes",
+    "Round B, intervention, seed stability or any subsequent run",
+    "modification, deletion or overwrite of the v1 failure evidence",
+    "Git commit, tag or push",
+    "archive creation or deletion"
+  ],
+  "required_user_authorization": "Explicitly authorize one replacement v2 L4 Round A development evaluation according to l4_round_a_development_evaluation_execution_authorization_request_v2.json: create only the fixed v2 authorization receipt and one-use v2 launcher, then use the fixed v2 tmux session, one RTX 4090 D and the fixed new v2 output directory to load the eight frozen BNCal checkpoints once each in B0-A, B0-B, A1-A, A1-B, Q0-A, Q0-B, QC-A, QC-B order; evaluate only each checkpoint's own 105-case dev allowlist with FP32, eval, no_grad, batch=1, workers=0 and exact order, opening each NPZ once, passing only partial to the model and reading implant/gt only after forward; then run the unchanged paired source-skull analysis and frozen gate. Preserve v1 failure evidence; prohibit train/confirmation20/official-test/old-monitor/MUG payload, prediction dumps, optimizer/model updates, training, BNCal, formal timing, automatic retry/resume/fallback/threshold changes, Round B and every subsequent run."
+}

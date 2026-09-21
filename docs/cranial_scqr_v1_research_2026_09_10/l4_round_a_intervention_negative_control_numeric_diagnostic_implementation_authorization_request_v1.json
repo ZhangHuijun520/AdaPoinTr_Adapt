@@ -1,0 +1,173 @@
+{
+  "request_id": "cranial-scqr-v1.1-L4-roundA-I-negative-control-numeric-diagnostic-implementation-request-v1",
+  "status": "PENDING_EXPLICIT_USER_AUTHORIZATION",
+  "authorization_effective": false,
+  "created_at_utc": "2026-09-15T04:59:48Z",
+  "purpose": "Request implementation only for the frozen one-case, two-condition, scalar-only numerical diagnostic. This file alone authorizes nothing and does not authorize real data or checkpoint execution.",
+  "protocol": {
+    "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_protocol_v1.json",
+    "protocol_id": "cranial-scqr-v1.1-L4-roundA-I-negative-control-numeric-diagnostic-v1",
+    "sha256": "10e7c777974f27fd92e55115942660910d18a21230a5699d244b9b3fffc2806f",
+    "bytes": 15114,
+    "status": "FROZEN_DESIGN_IMPLEMENTATION_AND_EXECUTION_NOT_AUTHORIZED"
+  },
+  "p4_read_only_review": {
+    "status": "PASS_DESIGN_AND_REQUEST_ONLY",
+    "checkpoint_deserialization_count": 0,
+    "npz_open_count": 0,
+    "gpu_inference_count": 0,
+    "model_forward_count": 0,
+    "training_count": 0,
+    "bncal_count": 0,
+    "existing_file_modification_count": 0,
+    "new_files_created_by_p4": [
+      "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_protocol_v1.json",
+      "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_implementation_authorization_request_v1.json"
+    ],
+    "finding": "The v3 evidence identifies a prediction-level negative-control failure but omits the scalar error. Since attention passed the parent 1e-6 check first, a threshold change would be unsupported. The minimal diagnostic must separate same-condition repeat variability from cross-condition FP32 constant-shift propagation and decoder amplification."
+  },
+  "bound_real_inputs_for_contract_constants_only": {
+    "case": {
+      "fold": "A",
+      "case_id": "train__000__frontoorbital",
+      "allowlist_path": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt",
+      "allowlist_sha256": "83ec25f96831c7b5620fa94a2d255605668697bd3fa11ee5c6aab9f92c5dcd01",
+      "manifest_path": "/home/jovyan/datasets/SkullBreakPC_out8192/manifest.jsonl",
+      "manifest_sha256": "f1f8cae47ed7d5529dc2ca244179cedddbc039981cdc0ff24b25a5c81ad30538",
+      "normalization_scale_mm_per_normalized_unit": 95.31487479704157
+    },
+    "checkpoint": {
+      "path": "experiments/CranialSCQRV11_QC_foldA_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/ckpt-last-bncal.pth",
+      "sha256": "b73e1090ce7aa2e81f2707ad63243a29108eca2f35f7e27ff8e7a9c755235358",
+      "bytes": 388540806,
+      "access_during_implementation": "FORBIDDEN"
+    },
+    "runtime_config": {
+      "path": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_QC_foldA_seed0.yaml",
+      "sha256": "b2b7c296e17ee0516393337704caa637b87b0002a4fe589545b8b80c94bc56f7",
+      "bytes": 5231,
+      "model_construction_during_implementation": "FORBIDDEN"
+    },
+    "v3_failure_receipt": {
+      "path": "logs/cranial_scqr_v11/l4_round_a_intervention/cranial_scqr_v11_l4_round_a_intervention_v3_20260914T140415Z/intervention_failure_receipt.json",
+      "sha256": "fdbc0822b0bf8550a19224e84692a811c058bec2c2d598d46e962ef1dd3fedb9",
+      "bytes": 735
+    }
+  },
+  "source_bindings": {
+    "tools/run_cranial_scqr_v11_l4_round_a_intervention.py": {
+      "sha256": "bff73650017164043230c810f2eca0397b54a852dd6bbd96e8ca085992f3234b",
+      "bytes": 29715,
+      "modification_authorized": false
+    },
+    "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py": {
+      "sha256": "180bc58b644d6042b50c6828cbf87df151110ae27f5fac5110a05b0fcdd0b012",
+      "bytes": 33138,
+      "modification_authorized": false
+    },
+    "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py": {
+      "sha256": "3e52c2d679eca490ec98d8d0f35b4898ef2631dca817cc84e874fa2b9d144fea",
+      "bytes": 23853,
+      "modification_authorized": false
+    },
+    "models/AdaPoinTr.py": {
+      "sha256": "62a743c4c2143b77b0f1656c59d0482563976440d841f04bae995017dbf7588f",
+      "modification_authorized": false
+    },
+    "models/cranial_scqr/query_conditioning.py": {
+      "sha256": "e631f6649b3a218e63c39f15f6232607469106ae63b0c7cdf578636b110d9057",
+      "modification_authorized": false
+    }
+  },
+  "implementation_scope": {
+    "create_only_new_files": true,
+    "exact_new_python_files": [
+      "tools/run_cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic.py",
+      "tools/analyze_cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic.py",
+      "tools/test_cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_contract.py"
+    ],
+    "existing_files_may_be_modified": false,
+    "protocol_may_be_modified": false,
+    "authorization_request_may_be_modified": false,
+    "implementation_requirements": {
+      "runner": [
+        "Bind and validate the frozen protocol ID, SHA256 and exact single-case/two-condition constants.",
+        "Reject any condition other than bias_zero and case_mean_probability and freeze forward order as bias_zero_rep0, case_mean_probability_rep0, bias_zero_rep1, case_mean_probability_rep1.",
+        "Provide access-ledger contracts for exactly one future checkpoint load, one future NPZ open, one partial read and four forwards, while forbidding implant and gt reads.",
+        "Capture only in-memory tensors needed to calculate frozen scalar summaries and pairwise scalar errors; never serialize raw tensors or point coordinates.",
+        "Calculate per-forward scalar summaries and tensor SHA256 digests for original/intervened probabilities and every available frozen stage.",
+        "Calculate bitwise equality, max_abs, mean_abs, RMS and p95_abs for both within-condition repeats and both paired cross-condition comparisons.",
+        "Calculate raw and row-centered logit diagnostics, normalized prediction-coordinate and point-L2 errors, and scale-approved millimetre conversions.",
+        "Preserve and compare full model parameter and buffer hashes before and after a future run.",
+        "Use intervention ContractError for all contract failures and emit no real output during implementation tests."
+      ],
+      "analyzer": [
+        "Validate scalar-only schema, exact identities, counters, pair names, stages, finite values, digest formats and absence of tensor payloads.",
+        "Derive descriptive evidence flags and earliest nonzero cross-condition stage without defining a new numerical tolerance.",
+        "Report within-condition versus cross-condition ratios, parent-threshold exceedance booleans and ratios, and downstream amplification scalars.",
+        "Mark the one-case result as diagnostic-only, non-generalizable, non-ranking and non-authorizing for threshold changes or later runs."
+      ],
+      "synthetic_contract_test": [
+        "Use synthetic CPU tensors and fake model/NPZ/checkpoint boundaries only; do not import or construct the real model.",
+        "Verify exact four-forward order and exact bias-zero/case-mean condition set.",
+        "Verify constant-shift exact-arithmetic behavior, injected same-condition nondeterminism classification, injected centered-logit roundoff classification and downstream amplification classification.",
+        "Verify scalar formulas, normalized-to-mm conversion, SHA256 stability, model-state immutability checks and failure receipts.",
+        "Verify raw-tensor, coordinate-list, implant/gt, extra-case, extra-condition, extra-forward and unauthorized-path rejection.",
+        "Verify no real checkpoint load, NPZ open, CUDA use, launcher creation or real output directory creation occurs."
+      ]
+    }
+  },
+  "authorized_checks_if_user_explicitly_approves_this_request": {
+    "python_syntax": "Parse/compile the three new Python source texts without creating repository bytecode artifacts.",
+    "stdlib_static_contract_checks": "AST and symtable checks limited to the three new Python files.",
+    "synthetic_cpu_contract_suite": "Run exactly one complete synthetic CPU contract suite from the new test file.",
+    "json_check": "Read-only validate the already frozen protocol and this request.",
+    "hash_and_size_check": "Hash/stat the three new Python files and verify every bound existing source remains unchanged.",
+    "real_checkpoint_or_data_use": false,
+    "gpu_use": false
+  },
+  "implementation_acceptance_criteria": {
+    "only_three_new_python_files_created": true,
+    "all_existing_files_unchanged": true,
+    "frozen_protocol_hash_unchanged": "10e7c777974f27fd92e55115942660910d18a21230a5699d244b9b3fffc2806f",
+    "syntax_checks_pass": true,
+    "stdlib_static_checks_pass": true,
+    "one_complete_synthetic_cpu_contract_suite_passes": true,
+    "checkpoint_deserialization_count": 0,
+    "npz_open_count": 0,
+    "cuda_device_query_or_use_count": 0,
+    "real_model_construction_count": 0,
+    "real_forward_count": 0,
+    "launcher_creation_count": 0,
+    "formal_output_directory_creation_count": 0,
+    "existing_artifact_modification_count": 0
+  },
+  "explicitly_forbidden_during_implementation": [
+    "modifying the existing Round A-I runner, analyzer or contract test",
+    "modifying the frozen diagnostic protocol or any existing file",
+    "loading or deserializing any real checkpoint",
+    "opening, mapping, hashing or reading any NPZ payload",
+    "reading implant or gt",
+    "constructing the real model",
+    "using or querying GPU/CUDA",
+    "running any real forward",
+    "creating an execution receipt, launcher, tmux session or formal output directory",
+    "executing the real one-case diagnostic",
+    "formal Round A-I retry or v4 execution",
+    "changing thresholds, batch size, precision or deterministic settings",
+    "accessing Fold B, Q0, native_qc or fixed permutation",
+    "accessing confirmation20, official test, old monitor or MUG payload",
+    "training, BNCal, optimizer operations or model updates",
+    "automatic retry or resume",
+    "Round B or any subsequent run"
+  ],
+  "post_implementation_boundary": {
+    "required_next_step": "A separate read-only post-implementation audit and a separate formal execution authorization request.",
+    "automatic_execution_after_tests": false,
+    "implementation_success_authorizes_real_execution": false,
+    "implementation_success_authorizes_threshold_change": false,
+    "implementation_success_authorizes_round_a_i_retry": false,
+    "implementation_success_authorizes_round_b": false
+  },
+  "required_user_authorization": "Explicitly authorize l4_round_a_intervention_negative_control_numeric_diagnostic_implementation_authorization_request_v1.json to create only the three listed new Python tools and then perform only in-memory Python syntax checks, stdlib AST/symtable checks, one complete synthetic CPU contract suite, JSON validation, and read-only hash/size verification. Do not modify any existing file, load a real checkpoint, open or hash NPZ payloads, construct the real model, query or use GPU, execute a real forward or diagnostic, create a launcher/tmux/formal output, retry Round A-I, alter thresholds, access Fold B/Q0/native_qc/fixed permutation or unauthorized datasets, train, BNCal, auto-retry, enter Round B, or start any later run."
+}

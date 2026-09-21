@@ -24,6 +24,14 @@ from utils.mamba_d3_contact import (
     diversified_topk_indices,
     gather_points,
 )
+from .cranial_scqr import (
+    ContactConditionedQueryAttention,
+    ContactSupportHead,
+    RawLocalGeometryResidual,
+    build_contact_support_labels,
+    case_balanced_binary_cross_entropy as scqr_case_balanced_bce,
+    validate_scqr_config,
+)
 
 
 def coarse_geometry_guard_components(
@@ -1486,6 +1494,33 @@ class PCTransformer(nn.Module):
         self.use_denoise = float(getattr(config, 'denoise_weight', 0.5)) > 0
         global_feature_dim = config.global_feature_dim
 
+        self.scqr_contract = validate_scqr_config(
+            getattr(config, 'cranial_scqr', None),
+            embed_dim=encoder_config.embed_dim,
+            num_query=self.num_query,
+            center_num=self.center_num,
+            denoise_weight=float(getattr(config, 'denoise_weight', 0.5)),
+        )
+        if self.scqr_contract.enabled:
+            legacy_conflicts = []
+            for name in (
+                'mamba_adapter',
+                'rim_query_allocation',
+                'local_rim_guard',
+                'dense_contact_objective',
+                'coarse_geometry_guard',
+            ):
+                candidate = getattr(config, name, None)
+                if candidate is not None and bool(
+                    getattr(candidate, 'enabled', False)
+                ):
+                    legacy_conflicts.append(name)
+            if legacy_conflicts:
+                raise ValueError(
+                    'Cranial-SCQR v1.1 forbids legacy optional modules: '
+                    f'{legacy_conflicts}'
+                )
+
         print_log(f'Transformer with config {config}', logger='MODEL')
         # base encoder
         if self.encoder_type == 'graph':
@@ -1553,6 +1588,36 @@ class PCTransformer(nn.Module):
         )
 
         self.apply(self._init_weights)
+        self.scqr_local_geometry = None
+        self.scqr_contact_head = None
+        self.scqr_query_conditioner = None
+        if self.scqr_contract.enabled:
+            # Keep all public backbone RNG draws identical to B0. New modules
+            # use a variant-independent private RNG stream.
+            with torch.random.fork_rng(devices=[]):
+                torch.manual_seed(self.scqr_contract.initialization_seed)
+                self.scqr_local_geometry = RawLocalGeometryResidual(
+                    embed_dim=encoder_config.embed_dim,
+                    small_k=16,
+                    large_k=32,
+                    alpha_init=0.01,
+                    warmup_epochs=20,
+                )
+                self.scqr_contact_head = ContactSupportHead(
+                    embed_dim=encoder_config.embed_dim,
+                    hidden_dim=128,
+                )
+                if self.scqr_contract.query_conditioning_enabled:
+                    self.scqr_query_conditioner = (
+                        ContactConditionedQueryAttention(
+                            embed_dim=decoder_config.embed_dim,
+                            attention_dim=128,
+                            beta=self.scqr_contract.contact_bias_beta,
+                            alpha_init=0.01,
+                            warmup_epochs=20,
+                            probability_floor=1.0e-4,
+                        )
+                    )
 
     def _init_weights(self, m):
         if isinstance(m, nn.Linear):
@@ -1596,17 +1661,70 @@ class PCTransformer(nn.Module):
         proxy_features = torch.cat([encoded, position], dim=-1)
         return coor, proxy_features, encoder_pre_adapter, encoded
 
-    def forward(self, xyz):
+    def _condition_scqr_queries(
+        self,
+        queries,
+        proxy_features,
+        position_embedding,
+        scqr_aux,
+        epoch,
+    ):
+        if self.scqr_query_conditioner is None:
+            return queries
+        conditioned = self.scqr_query_conditioner(
+            queries,
+            proxy_features,
+            position_embedding,
+            scqr_aux["contact_probability"],
+            epoch=epoch,
+        )
+        scqr_aux.update({
+            "query_attention": conditioned.attention.detach(),
+            "query_attention_logits": conditioned.logits.detach(),
+            "query_residual": conditioned.residual.detach(),
+            "query_warmup": conditioned.warmup,
+        })
+        return conditioned.queries
+
+    def forward(self, xyz, epoch=None):
         if self.full_instrumentation_enabled and self.training:
             raise RuntimeError(
                 'Full-model instrumentation is inference-only; call eval() first'
         )
+        if self.training and self.scqr_contract.enabled and epoch is None:
+            raise ValueError('SCQR training forward requires an explicit epoch')
         bs = xyz.size(0)
         coor, proxy_features, encoder_pre_adapter, x = (
             self.encode_rim_proxy_tokens(xyz)
         )
         pe = proxy_features[..., x.shape[-1]:]
         encoder_post_adapter = x
+        encoder_post_scqr = x
+        scqr_aux = None
+        if self.scqr_local_geometry is not None:
+            local_output = self.scqr_local_geometry(
+                x,
+                coor,
+                xyz,
+                epoch=epoch,
+            )
+            x = local_output.features
+            contact_logits, contact_probability = self.scqr_contact_head(x, pe)
+            scqr_aux = {
+                "protocol_version": "cranial-scqr-v1.1",
+                "variant": self.scqr_contract.variant,
+                "proxy_coordinates": coor,
+                "knn32_indices": local_output.knn32_indices,
+                "knn32_radius_normalized": (
+                    local_output.knn32_radius_normalized.detach()
+                ),
+                "local_embedding": local_output.local_embedding.detach(),
+                "local_residual": local_output.residual.detach(),
+                "local_warmup": local_output.warmup,
+                "contact_logits": contact_logits,
+                "contact_probability": contact_probability,
+            }
+            encoder_post_scqr = x
         global_feature = self.increase_dim(x) # B 1024 N 
         global_feature = torch.max(global_feature, dim=1)[0] # B 1024
 
@@ -1622,7 +1740,7 @@ class PCTransformer(nn.Module):
         coarse_candidates = None
         query_ranking = None
         selected_query_indices = None
-        rim_aux = None
+        rim_aux = scqr_aux
 
         if self.query_selection == 'ranking':
             coarse_candidates = torch.cat([learned_coarse, coarse_inp], dim=1)
@@ -1678,6 +1796,8 @@ class PCTransformer(nn.Module):
             torch.cat([
                 global_feature.unsqueeze(1).expand(-1, coarse.size(1), -1),
                 coarse], dim = -1)) # b n c
+            if scqr_aux is not None:
+                q = self._condition_scqr_queries(q, x, pe, scqr_aux, epoch)
             query_pre_decoder = q
 
             # forward decoder
@@ -1697,6 +1817,7 @@ class PCTransformer(nn.Module):
                     'encoder_coordinates': coor.detach(),
                     'encoder_pre_adapter': encoder_pre_adapter.detach(),
                     'encoder_post_adapter': encoder_post_adapter.detach(),
+                    'encoder_post_scqr': encoder_post_scqr.detach(),
                     'encoder_memory': mem.detach(),
                     'global_feature': global_feature.detach(),
                     'learned_coarse': learned_coarse.detach(),
@@ -1704,8 +1825,27 @@ class PCTransformer(nn.Module):
                     'coarse_candidates': None if coarse_candidates is None else coarse_candidates.detach(),
                     'query_ranking': None if query_ranking is None else query_ranking.detach(),
                     'selected_query_indices': None if selected_query_indices is None else selected_query_indices.detach(),
-                    'rim_logits': None if rim_aux is None else rim_aux['rim_logits'].detach(),
-                    'selected_rim_indices': None if rim_aux is None else rim_aux['selected_proxy_indices'].detach(),
+                    'rim_logits': (
+                        None if rim_aux is None or 'rim_logits' not in rim_aux
+                        else rim_aux['rim_logits'].detach()
+                    ),
+                    'selected_rim_indices': (
+                        None
+                        if rim_aux is None or 'selected_proxy_indices' not in rim_aux
+                        else rim_aux['selected_proxy_indices'].detach()
+                    ),
+                    'scqr_contact_logits': (
+                        None if scqr_aux is None
+                        else scqr_aux['contact_logits'].detach()
+                    ),
+                    'scqr_contact_probability': (
+                        None if scqr_aux is None
+                        else scqr_aux['contact_probability'].detach()
+                    ),
+                    'scqr_query_attention': (
+                        None if scqr_aux is None
+                        else scqr_aux.get('query_attention')
+                    ),
                     'coarse': coarse.detach(),
                     'query_pre_decoder': query_pre_decoder.detach(),
                     'query_post_decoder': q.detach(),
@@ -1720,6 +1860,8 @@ class PCTransformer(nn.Module):
             torch.cat([
                 global_feature.unsqueeze(1).expand(-1, coarse.size(1), -1),
                 coarse], dim = -1)) # b n c
+            if scqr_aux is not None:
+                q = self._condition_scqr_queries(q, x, pe, scqr_aux, epoch)
             query_pre_decoder = q
             
             # forward decoder
@@ -1738,6 +1880,7 @@ class PCTransformer(nn.Module):
                     'encoder_coordinates': coor.detach(),
                     'encoder_pre_adapter': encoder_pre_adapter.detach(),
                     'encoder_post_adapter': encoder_post_adapter.detach(),
+                    'encoder_post_scqr': encoder_post_scqr.detach(),
                     'encoder_memory': mem.detach(),
                     'global_feature': global_feature.detach(),
                     'learned_coarse': learned_coarse.detach(),
@@ -1745,8 +1888,27 @@ class PCTransformer(nn.Module):
                     'coarse_candidates': None if coarse_candidates is None else coarse_candidates.detach(),
                     'query_ranking': None if query_ranking is None else query_ranking.detach(),
                     'selected_query_indices': None if selected_query_indices is None else selected_query_indices.detach(),
-                    'rim_logits': None if rim_aux is None else rim_aux['rim_logits'].detach(),
-                    'selected_rim_indices': None if rim_aux is None else rim_aux['selected_proxy_indices'].detach(),
+                    'rim_logits': (
+                        None if rim_aux is None or 'rim_logits' not in rim_aux
+                        else rim_aux['rim_logits'].detach()
+                    ),
+                    'selected_rim_indices': (
+                        None
+                        if rim_aux is None or 'selected_proxy_indices' not in rim_aux
+                        else rim_aux['selected_proxy_indices'].detach()
+                    ),
+                    'scqr_contact_logits': (
+                        None if scqr_aux is None
+                        else scqr_aux['contact_logits'].detach()
+                    ),
+                    'scqr_contact_probability': (
+                        None if scqr_aux is None
+                        else scqr_aux['contact_probability'].detach()
+                    ),
+                    'scqr_query_attention': (
+                        None if scqr_aux is None
+                        else scqr_aux.get('query_attention')
+                    ),
                     'coarse': coarse.detach(),
                     'query_pre_decoder': query_pre_decoder.detach(),
                     'query_post_decoder': q.detach(),
@@ -1897,6 +2059,7 @@ class AdaPoinTr(nn.Module):
 
         self.fold_step = 8
         self.base_model = PCTransformer(config)
+        self.scqr_contract = self.base_model.scqr_contract
         
         if self.decoder_type == 'fold':
             self.factor = self.fold_step**2
@@ -2102,14 +2265,48 @@ class AdaPoinTr(nn.Module):
                 self.rim_query_classification_weight * classification_loss
             )
 
+        if self.scqr_contract.contact_supervision_enabled:
+            if partial is None or normalization_scale is None or rim_aux is None:
+                raise ValueError(
+                    'SCQR contact supervision requires partial, '
+                    'normalization_scale, and SCQR auxiliary output'
+                )
+            if rim_aux.get('protocol_version') != 'cranial-scqr-v1.1':
+                raise ValueError('SCQR auxiliary output has an invalid protocol')
+            if self.scqr_contract.auxiliary_loss_weight is None:
+                raise RuntimeError(
+                    'SCQR auxiliary loss weight is not calibrated; training is locked'
+                )
+            labels = build_contact_support_labels(
+                partial,
+                gt,
+                normalization_scale,
+                rim_aux['knn32_indices'],
+                rim_band_mm=2.0,
+            )
+            contact_loss = scqr_case_balanced_bce(
+                rim_aux['contact_logits'],
+                labels.proxy_labels,
+            )
+            loss_recon = loss_recon + (
+                self.scqr_contract.auxiliary_loss_weight * contact_loss
+            )
+            rim_aux['contact_labels'] = labels.proxy_labels.detach()
+            rim_aux['raw_positive_counts'] = labels.raw_positive_counts.detach()
+            rim_aux['positive_proxy_counts'] = (
+                labels.positive_proxy_counts.detach()
+            )
+
         return loss_denoised, loss_recon
 
-    def forward(self, xyz):
+    def forward(self, xyz, epoch=None):
         if self.full_instrumentation_enabled and self.training:
             raise RuntimeError(
                 'Full-model instrumentation is inference-only; call eval() first'
             )
-        q, coarse_point_cloud, denoise_length, rim_aux = self.base_model(xyz)
+        q, coarse_point_cloud, denoise_length, rim_aux = (
+            self.base_model(xyz, epoch=epoch)
+        )
     
         B, M ,C = q.shape
 

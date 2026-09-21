@@ -1,0 +1,117 @@
+{
+  "request_id": "cranial-scqr-v1.1-L4-roundA-development-evaluation-implementation-request-v1",
+  "status": "PENDING_EXPLICIT_USER_AUTHORIZATION",
+  "authorization_effective": false,
+  "created_at_utc": "2026-09-14T04:58:07Z",
+  "protocol": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_development_evaluation_protocol_v1.json",
+  "protocol_sha256": "04077152848c055c76fbc64f4427301af9809e2fda6cd2117d644088bad7e8ae",
+  "purpose": "Implement and CPU-test a fail-closed evaluator and paired Round A analyzer without loading real checkpoints or reading any dataset payload.",
+  "requested_file_creations": [
+    "tools/run_cranial_scqr_v11_l4_round_a_dev_eval.py",
+    "tools/analyze_cranial_scqr_v11_l4_round_a.py",
+    "tools/test_cranial_scqr_v11_l4_round_a_dev_eval_contract.py"
+  ],
+  "requested_existing_file_modifications": [],
+  "requested_implementation_scope": {
+    "protocol_validator": [
+      "validate protocol identity and SHA binding",
+      "validate exactly B0/A1/Q0/QC times Fold A/B times seed 0",
+      "validate completion receipt, runtime config, checkpoint and allowlist hashes before any checkpoint load or NPZ open",
+      "validate completion status TRAINING_AND_BNCAL_PASS and BNCal checkpoint selection",
+      "reject any unrecognized path, candidate, fold, seed, member, count or output target"
+    ],
+    "evaluation_runner": [
+      "process one checkpoint at a time in frozen order",
+      "force FP32, eval mode, torch.no_grad, batch size 1, workers 0 and exact allowlist order",
+      "open each allowlisted NPZ once per model-case and audit reads of partial, implant and gt",
+      "pass only partial to model forward",
+      "compute physical-space metrics using manifest centroid and scale",
+      "collect scalar-only SCQR mechanism diagnostics without saving prediction or raw instrumentation tensors",
+      "hash full model parameter and buffer state before and after all forwards and fail on any change",
+      "write exact payload, checkpoint-load, forward, optimizer and update counters",
+      "write per-model case metrics, per-model source metrics, mechanism diagnostics and an execution receipt"
+    ],
+    "paired_analyzer": [
+      "require all eight complete evaluation partitions before analysis",
+      "pair by fold, case_id and seed",
+      "aggregate five defect cases equally within each source skull",
+      "compute fold A, fold B and combined 42-source summaries",
+      "compute QC-minus-B0 before QC-minus-Q0 and report A1 secondarily",
+      "run deterministic 10000-sample source-skull cluster bootstrap with seed 20260910",
+      "never drop or nanmean nonfinite primary or guardrail values",
+      "apply the exact frozen Round A gate without changing thresholds",
+      "write paired deltas, summary and a non-authorizing gate receipt"
+    ],
+    "contract_tests": [
+      "use only synthetic in-memory records and temporary files",
+      "test matrix, path, hash, member and counter fail-closed behavior",
+      "test partial-only model input and post-forward-only metric target use",
+      "test state immutability checks",
+      "test nonfinite and empty-set policies",
+      "test source-skull aggregation, pairing and deterministic bootstrap",
+      "test every Round A pass and fail threshold boundary",
+      "test that a PASS result never grants Round B or any next-run authorization"
+    ]
+  },
+  "existing_source_bindings": {
+    "tools/evaluate_skullfix_implant.py": "2bc216724a8ef550625eb0242fc9a733fff1091e67589ccbec2a7bc0b53a6059",
+    "utils/skullfix_metrics.py": "0c4342cd19fb19a659302b0e350c3be34bd21447d2034bdc9d2e81a180174ee5",
+    "utils/evaluation_statistics.py": "e9dd5dbf822407933e68fcba5412789e8bba8cc44cb987fd29c1230f2f50bc17",
+    "datasets/SkullFixDataset.py": "cb26e98f22c9bbf08a6f58db8bcd26d1bf62f07d4334b818186570b1c797eb5a",
+    "tools/runner.py": "07d6b9b05ada5549d8ed4781f57f31c1655e50eb5917583cd0f4e9b151b61804",
+    "tools/builder.py": "8c6d2f436376e0075164413865a2ec68ea40f4f68e96a3011c07468280f6c3bf",
+    "utils/config.py": "2058b26feff2e513f3f9d9d0d350ebce13f5035d94b4ef5e3ef27a8142578a91",
+    "models/__init__.py": "72e5306c514605a1d05ae38c90b879d20103cd90f079286ec8988d9097fdd3d1",
+    "models/AdaPoinTr.py": "62a743c4c2143b77b0f1656c59d0482563976440d841f04bae995017dbf7588f",
+    "models/cranial_scqr/__init__.py": "d2d85b33cff9689dd06f2c2a0845a6aebccba03b6e706904afc8f4d97851cc5b",
+    "models/cranial_scqr/contact_support.py": "358ea31017344fa4905aac7e495dc87ed7f74496954fd34d7390cd0ea579028f",
+    "models/cranial_scqr/local_geometry.py": "b533efead76c38ff7bc83a5245a88c98e275a37e0523cbbfb793a63b4d645665",
+    "models/cranial_scqr/query_conditioning.py": "e631f6649b3a218e63c39f15f6232607469106ae63b0c7cdf578636b110d9057"
+  },
+  "permitted_verification_if_authorized": {
+    "python_environment": "/opt/conda/envs/adapointr-mamba/bin/python",
+    "syntax_checks": true,
+    "targeted_contract_test": "tools/test_cranial_scqr_v11_l4_round_a_dev_eval_contract.py",
+    "synthetic_in_memory_only": true,
+    "temporary_directory_root": "/tmp",
+    "real_checkpoint_loads": 0,
+    "real_npz_opens": 0,
+    "gpu_forwards": 0,
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "model_buffer_updates": 0,
+    "development_evaluations": 0,
+    "formal_statistics_on_model_results": 0
+  },
+  "explicitly_not_requested": [
+    "modification of any existing source, config, training output or checkpoint",
+    "creation of the formal execution launcher",
+    "deserialization or model loading of any of the eight real checkpoints",
+    "opening any NPZ dataset payload",
+    "GPU inference or formal timing",
+    "development evaluation",
+    "analysis of real model results",
+    "confirmation20, official test, old monitor or MUG access",
+    "training, BNCal, optimizer construction or any model update",
+    "Round B, seed stability, intervention or subsequent run",
+    "Git commit, tag or push",
+    "archive creation or deletion"
+  ],
+  "required_post_implementation_evidence": [
+    "SHA256 and byte size for each of the three new files",
+    "syntax-check result",
+    "targeted synthetic contract-test result",
+    "explicit zero counts for checkpoint loads, NPZ opens, GPU forwards, optimizer steps, parameter updates, buffer updates and development evaluations",
+    "a separate exact formal development-evaluation authorization request"
+  ],
+  "failure_policy": {
+    "test_failure": "stop, report and preserve evidence; do not relax the protocol or run real evaluation",
+    "source_hash_drift": "stop before implementation verification",
+    "unexpected_existing_target": "stop without overwrite",
+    "automatic_fix_and_real_rerun": false,
+    "automatic_formal_evaluation": false,
+    "automatic_next_stage": false
+  },
+  "required_user_authorization": "Explicitly authorize creation of only tools/run_cranial_scqr_v11_l4_round_a_dev_eval.py, tools/analyze_cranial_scqr_v11_l4_round_a.py and tools/test_cranial_scqr_v11_l4_round_a_dev_eval_contract.py according to the frozen protocol, followed only by syntax checks and synthetic CPU contract tests; prohibit modification of existing files, real checkpoint loading, NPZ access, GPU inference, development evaluation, real-result statistics, training, BNCal, formal launcher creation and any subsequent run."
+}

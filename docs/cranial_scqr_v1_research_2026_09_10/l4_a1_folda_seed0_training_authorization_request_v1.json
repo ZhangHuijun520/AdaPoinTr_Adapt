@@ -1,0 +1,179 @@
+{
+  "request_id": "cranial-scqr-v1.1-L4-A1-foldA-seed0-training-request-v1",
+  "status": "PENDING_EXPLICIT_USER_AUTHORIZATION",
+  "authorization_effective": false,
+  "created_at_utc": "2026-09-12T08:05:11Z",
+  "protocol": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_training_protocol_v1.json",
+  "protocol_sha256": "b7044f4f24e2f0b4a1e38a9d4ca466f2bb8168ffe1a0ad864b3e1c8f1c3f0fe9",
+  "sequence_prerequisites": [
+    {
+      "completed_run_key": "B0_foldA_seed0",
+      "completion_status": "TRAINING_AND_BNCAL_PASS",
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_B0_foldA_seed0_v1_20260911T160850Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "c4fa7eca0abcc63d48746ca5071ff201954f6202276b68604e4ffcbb91db5be1"
+    },
+    {
+      "completed_run_key": "B0_foldB_seed0",
+      "completion_status": "TRAINING_AND_BNCAL_PASS",
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_B0_foldB_seed0_v1_20260912T073100Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "89301e7a490b55b043e81cae3bf0c46579b4a1eeeaa254c94c06de1b1218de70"
+    }
+  ],
+  "calibration_binding": {
+    "receipt": "logs/cranial_scqr_v11/l4_gradient_calibration/l4_gradient_calibration_v1_20260911T153243Z/calibration_receipt.json",
+    "receipt_sha256": "6e29b78a9075bcfb6a85f63b2ed44ee8c273bf52de258df27bdac682ff5cd08c",
+    "status": "PASS",
+    "fold": "A",
+    "lambda_scf": 0.8852418767331852,
+    "optimizer_steps": 0,
+    "training_authorized_by_calibration_receipt": false
+  },
+  "requested_run_keys": [
+    "A1_foldA_seed0"
+  ],
+  "not_requested_run_keys": [
+    "B0_foldA_seed0",
+    "B0_foldB_seed0",
+    "A1_foldB_seed0",
+    "Q0_foldA_seed0",
+    "Q0_foldB_seed0",
+    "QC_foldA_seed0",
+    "QC_foldB_seed0"
+  ],
+  "data_scope": {
+    "dataset": "SkullBreakPC_out8192 development84",
+    "manifest": "/home/jovyan/datasets/SkullBreakPC_out8192/manifest.jsonl",
+    "manifest_sha256": "f1f8cae47ed7d5529dc2ca244179cedddbc039981cdc0ff24b25a5c81ad30538",
+    "train_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_train_case_ids.txt",
+    "train_allowlist_sha256": "06cc0ef6a8a882956aa3136d57f999a1a9a945213c73f92c2f3026121b076dbd",
+    "training_cases": 315,
+    "training_sources": 63,
+    "training_npz_members": [
+      "partial",
+      "implant"
+    ],
+    "bncal_npz_members": [
+      "partial"
+    ],
+    "development_payload_access": false,
+    "confirmation20_access": false,
+    "official_test_access": false,
+    "old_monitor_access": false,
+    "mug_payload_access": false
+  },
+  "model_scope": {
+    "candidate": "A1",
+    "fold": "A",
+    "seed": 0,
+    "initial_checkpoint": null,
+    "initial_state": "scratch",
+    "template": "cfgs/SkullBreak_models/cranial_scqr_v11/CranialSCQRV11_A1_foldA_seed0.yaml",
+    "template_sha256": "2d228ab6381779b9eb740b8e8dcb161ca863ff8503b87724edd23175937b4a81",
+    "auxiliary_loss_weight": 0.8852418767331852,
+    "enabled_changes_relative_to_matched_B0": [
+      "cranial_scqr.enabled",
+      "cranial_scqr.local_geometry_enabled",
+      "cranial_scqr.contact_supervision_enabled",
+      "cranial_scqr.auxiliary_loss_weight"
+    ],
+    "query_conditioning_enabled": false,
+    "contact_bias_beta": 0.0,
+    "mamba_adapter_enabled": false
+  },
+  "requested_updates": {
+    "optimizer": "AdamW",
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0005,
+    "scheduler": "frozen baseline LambdaLR plus BN momentum scheduler",
+    "gradient_clip_norm": 10,
+    "precision": "FP32",
+    "amp": false,
+    "tf32_change": false,
+    "batch_size": 8,
+    "step_per_update": 1,
+    "drop_last": true,
+    "epoch_labels": [
+      0,
+      100
+    ],
+    "epoch_traversals": 101,
+    "loader_batches_per_epoch": 39,
+    "optimizer_steps": 3939,
+    "model_updates": 3939,
+    "bncal_after_successful_training": {
+      "full_train_allowlist": true,
+      "batch_size": 8,
+      "drop_last": false,
+      "batches": 40,
+      "cases": 315,
+      "buffer_update_batches": 40,
+      "parameter_updates": 0,
+      "optimizer_constructions": 0,
+      "optimizer_steps": 0
+    }
+  },
+  "resource_scope": {
+    "gpu_count": 1,
+    "gpu_model": "NVIDIA GeForce RTX 4090 D",
+    "gpu_uuid": "GPU-a0dfa7e6-8845-5f74-8cf0-1cdf4b5aa719",
+    "minimum_free_gpu_memory_mib_at_launch": 22000,
+    "maximum_peak_allocated_gib": 20.0,
+    "minimum_free_disk_gib_at_launch": 8.0,
+    "maximum_walltime_hours": 2.0,
+    "resource_state_must_be_rechecked_immediately_before_launch": true
+  },
+  "prelaunch_verification": {
+    "checked_at_utc": "2026-09-12T08:05:11Z",
+    "host": "shu-common-25721452-notebook-os6lgf-0",
+    "user": "jovyan",
+    "project_root": "/home/jovyan/adapointr_work/PoinTr",
+    "fold_a_id_contract": "PASS",
+    "manifest_membership": "315/315",
+    "fold_a_train_dev_disjoint": true,
+    "fold_a_train_union_dev_equals_development84": true,
+    "a1_b0_template_difference_matches_frozen_design": true,
+    "b0_fold_a_and_fold_b_completion_prerequisites": "PASS",
+    "calibration_binding": "PASS",
+    "npz_files_opened": 0,
+    "npz_members_opened": 0,
+    "development_evaluations_run": 0,
+    "gpu_used_mib_observed": 2,
+    "gpu_utilization_percent_observed": 0,
+    "disk_available_gib_observed": 23,
+    "template_and_implementation_hashes_match_protocol": true,
+    "proposed_paths_absent": true
+  },
+  "implementation_bindings": {
+    "tools/runner.py": "07d6b9b05ada5549d8ed4781f57f31c1655e50eb5917583cd0f4e9b151b61804",
+    "tools/cranial_scqr_l4_audit.py": "b913eab4e5c779dd22adf029d2ed6f97a0f477e96fb090ca6e4d5975c69bd031",
+    "tools/run_cranial_scqr_v11_l4_bncal.py": "c6e4c4a67f6ebf684be618cec7eb9568d775cfb03205773fc901883516939102",
+    "tools/test_cranial_scqr_v11_l4_execution_contract.py": "4d4edf4218060b8de2820f801408b860d95668f90cf5031d37d725591a1d4623"
+  },
+  "proposed_runtime": {
+    "runtime_materialization_status": "NOT_CREATED_PENDING_EXPLICIT_AUTHORIZATION",
+    "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_A1_foldA_seed0.yaml",
+    "run_id": "cranial_scqr_v11_A1_foldA_seed0_v1_20260912T080511Z",
+    "tmux_session": "scqr_l4_a1_folda_s0_20260912t080511z",
+    "master_output": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_A1_foldA_seed0_v1_20260912T080511Z",
+    "experiment_output": "experiments/CranialSCQRV11_A1_foldA_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_A1_foldA_seed0_v1_20260912T080511Z",
+    "training_checkpoint": "ckpt-last.pth",
+    "bncal_checkpoint": "ckpt-last-bncal.pth",
+    "development_evaluation_in_this_run": false,
+    "launcher_created": false,
+    "tmux_started": false
+  },
+  "stop_and_recovery": {
+    "training_failure_nan_oom_nonzero_exit": "freeze available log, exit code and execution state; stop",
+    "count_or_hash_mismatch": "stop before next mutation",
+    "bncal_failure": "freeze training checkpoint and BNCal failure evidence; stop",
+    "automatic_retry": false,
+    "automatic_resume": false,
+    "batch_or_precision_fallback": false,
+    "repeat_completed_b0_runs": false,
+    "next_round_a_run": false,
+    "seed1": false,
+    "confirmation": false,
+    "development_evaluation": false
+  },
+  "required_user_authorization": "Explicitly authorize exactly A1/foldA/seed0 scratch training with fold-A lambda_scf=0.8852418767331852 for 3939 optimizer steps followed once by 315-case partial-only 40-batch BNCal, using one RTX 4090 D, tmux and the fixed proposed output paths, while prohibiting dev/confirmation20/official-test/old-monitor/MUG payload access, automatic retry, resume, batch or precision changes, repetition of completed B0 runs and any subsequent run."
+}

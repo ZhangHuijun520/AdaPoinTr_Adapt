@@ -1,0 +1,81 @@
+{
+  "protocol_id": "cranial-scqr-v1.1-L2-zero-update-preflight-v1",
+  "status": "frozen_before_l2_execution",
+  "authorization_date_utc": "2026-09-11",
+  "project_root": "/home/jovyan/adapointr_work/PoinTr",
+  "python_executable": "/opt/conda/envs/adapointr-mamba/bin/python",
+  "runner": "tools/run_cranial_scqr_v11_l2_preflight.py",
+  "runner_sha256": "13a0a1d6d231cdc28bc4f533636cf63a2e75c17396c1da55bc73bc23cf1fc58d",
+  "l1_configs_manifest": "cfgs/SkullBreak_models/cranial_scqr_v11/l1_configs_manifest.json",
+  "l1_configs_manifest_sha256": "5befda464a81d01ccdaf49297aa46ba1e427fa886319aced93d0abf9af61c3fb",
+  "output_dir": "logs/cranial_scqr_v11/l2_zero_update_preflight/l2_zero_update_preflight_v1_20260911T071812Z",
+  "input_contract": {
+    "source": "synthetic_only",
+    "generator": "deterministic_fibonacci_sphere_plus_northern_cap",
+    "synthetic_seed": 20260911,
+    "model_seed": 31002,
+    "component_seed": 31003,
+    "batch_size": 1,
+    "partial_points": 8192,
+    "target_points": 8192,
+    "output_points": 8192,
+    "normalization_scale_mm": 100.0,
+    "dtype": "float32",
+    "device": "cuda:0"
+  },
+  "execution_count_contract": {
+    "full_model_forward_calls": 7,
+    "full_model_backward_calls": 1,
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "bncal_runs": 0,
+    "formal_timing_iterations": 0,
+    "dataset_payload_files_opened": 0
+  },
+  "required_checks": [
+    "B0_A1_Q0_QC_public_initialization_identity",
+    "shape_and_finite_forward",
+    "QC_finite_backward",
+    "all_formal_parameters_and_buffers_unchanged",
+    "disposable_train_mode_clone_explains_BN_buffer_mutation",
+    "case_balanced_BCE_all_positive_and_all_negative",
+    "physical_mm_contact_label",
+    "stable_KNN_tie_order",
+    "beta0_equals_ordinary_attention",
+    "constant_probability_bias_cancels",
+    "alphaQ_zero_recovers_uncoupled_queries",
+    "contact_probability_bias_is_detached",
+    "fixed_upstream_Q0_QC_coarse_identity",
+    "GT_free_inference",
+    "instrumentation_toggle_output_identity",
+    "RimCover_P95_equals_existing_field_per_artificial_case",
+    "primary_RimCover_available_with_zero_predicted_contact",
+    "L1_training_execution_guard_remains_locked"
+  ],
+  "diagnostic_only": {
+    "auxiliary_loss_weight": 1.0,
+    "scope": "single synthetic QC backward only",
+    "is_calibration": false,
+    "may_be_written_to_runtime_config": false
+  },
+  "code_sha256": {
+    "models/AdaPoinTr.py": "62a743c4c2143b77b0f1656c59d0482563976440d841f04bae995017dbf7588f",
+    "tools/runner.py": "91e29d62647e99c8bbfcc203ab4d233e5bf0c00d352f25dc3c09a73285512cb3",
+    "models/cranial_scqr/__init__.py": "d2d85b33cff9689dd06f2c2a0845a6aebccba03b6e706904afc8f4d97851cc5b",
+    "models/cranial_scqr/local_geometry.py": "b533efead76c38ff7bc83a5245a88c98e275a37e0523cbbfb793a63b4d645665",
+    "models/cranial_scqr/contact_support.py": "358ea31017344fa4905aac7e495dc87ed7f74496954fd34d7390cd0ea579028f",
+    "models/cranial_scqr/query_conditioning.py": "e631f6649b3a218e63c39f15f6232607469106ae63b0c7cdf578636b110d9057"
+  },
+  "explicitly_forbidden": [
+    "any dataset manifest or NPZ payload read",
+    "confirmation20, official test, old monitor, or MUG payload access",
+    "optimizer construction or optimizer step",
+    "parameter update",
+    "BN calibration",
+    "training",
+    "formal latency or throughput loop",
+    "runtime config authorization",
+    "auxiliary loss calibration",
+    "archive creation or deletion"
+  ]
+}

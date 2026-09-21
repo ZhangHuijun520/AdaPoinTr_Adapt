@@ -1,0 +1,183 @@
+{
+  "protocol_id": "cranial-scqr-v1.1-L3-synthetic-performance-v1",
+  "status": "frozen_before_execution",
+  "authorized_by_user": "明确授权下一步的人工输入性能 benchmark",
+  "created_at_utc": "2026-09-11T08:25:31+00:00",
+  "prerequisite_l2": {
+    "status_required": "PASS",
+    "receipt": "logs/cranial_scqr_v11/l2_zero_update_preflight/l2_zero_update_preflight_hotfix2_v1_20260911T073931Z/l2_preflight_receipt.json",
+    "receipt_sha256": "181af1e0495da4e172afbf95ad1d808a301ccfadee3f01218c8c9a5561db6497",
+    "files_manifest_sha256": "6a6b0d42a6d8d799c24bb926b3d8ce37c2a88c957d9cf5baded05ddb3c112582"
+  },
+  "execution": {
+    "allowed_runs": 1,
+    "python_executable": "/opt/conda/envs/adapointr-mamba/bin/python",
+    "device": "cuda:0",
+    "tmux_session": "cranial_scqr_l3_20260911T082531Z",
+    "output_dir": "logs/cranial_scqr_v11/l3_synthetic_benchmark/l3_synthetic_benchmark_v1_20260911T082531Z",
+    "launcher_log": "logs/cranial_scqr_v11/l3_synthetic_benchmark/l3_synthetic_benchmark_v1_20260911T082531Z.launcher.log",
+    "pid_file": "logs/cranial_scqr_v11/l3_synthetic_benchmark/l3_synthetic_benchmark_v1_20260911T082531Z.pid",
+    "exit_file": "logs/cranial_scqr_v11/l3_synthetic_benchmark/l3_synthetic_benchmark_v1_20260911T082531Z.exit_code",
+    "environment": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "benchmark_contract": {
+    "candidates": [
+      "B0",
+      "QC"
+    ],
+    "modes": [
+      "inference_b1",
+      "forward_backward_b8"
+    ],
+    "block_orders": [
+      [
+        "B0",
+        "QC"
+      ],
+      [
+        "QC",
+        "B0"
+      ],
+      [
+        "B0",
+        "QC"
+      ],
+      [
+        "QC",
+        "B0"
+      ]
+    ],
+    "warmup_iterations_per_candidate_mode": 20,
+    "timed_iterations_per_block": 50,
+    "blocks_per_candidate_mode": 4,
+    "total_full_model_forward_calls": 880,
+    "total_full_model_backward_calls": 440,
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "bncal_runs": 0,
+    "dataset_manifest_files_opened": 0,
+    "dataset_payload_files_opened": 0
+  },
+  "synthetic_input": {
+    "seed": 20260911,
+    "model_seed": 31002,
+    "generator": "deterministic_fibonacci_sphere_plus_northern_cap",
+    "partial_points": 8192,
+    "target_points": 8192,
+    "proxies": 256,
+    "queries": 256,
+    "dtype": "float32",
+    "normalization_scale_mm": 100.0,
+    "dataset_derived": false
+  },
+  "measurement": {
+    "clock": "CUDA events",
+    "synchronize": "each timed iteration and block boundary",
+    "gradient_zeroing": "outside each timed CUDA event interval",
+    "inference": "whole model forward under eval and no_grad",
+    "forward_backward": "eval-mode training-compute proxy including whole base_model, dense rebuild, coarse/fine Chamfer loss, QC KNN32 contact labels, SCF BCE, all SCQR modules, and backward",
+    "diagnostic_auxiliary_loss_weight": 1.0,
+    "diagnostic_weight_is_calibration": false,
+    "report": [
+      "every block",
+      "overall median",
+      "overall P95",
+      "peak allocated bytes/GiB",
+      "peak reserved bytes/GiB"
+    ]
+  },
+  "resource_gates": {
+    "QC_over_B0_median_latency_ratio_max_each_mode": 1.5,
+    "QC_over_B0_peak_allocated_ratio_max_each_mode": 1.3,
+    "absolute_peak_allocated_gib_max_each_mode": 20.0,
+    "all_blocks_must_be_reported": true
+  },
+  "boundaries": {
+    "training_authorized": false,
+    "train_mode_step_authorized": false,
+    "optimizer_authorized": false,
+    "parameter_or_buffer_updates_authorized": false,
+    "bncal_authorized": false,
+    "auxiliary_loss_calibration_authorized": false,
+    "dataset_access_authorized": false,
+    "confirmation20_access_authorized": false,
+    "official_test_access_authorized": false,
+    "old_monitor_access_authorized": false,
+    "mug_payload_access_authorized": false,
+    "automatic_rerun_authorized": false,
+    "l4_authorized": false
+  },
+  "failure_policy": {
+    "on_error": "write immutable error receipt and stop",
+    "on_gate_fail": "write complete gate-fail receipt and stop",
+    "batch_reduction_authorized": false,
+    "precision_change_authorized": false,
+    "kernel_or_model_hotfix_authorized": false,
+    "replacement_run_requires_new_explicit_authorization": true
+  },
+  "sha256_bindings": [
+    {
+      "path": "tools/run_cranial_scqr_v11_l3_benchmark.py",
+      "sha256": "0866f94dcda8b41bc0781096cbf22edc561ae425218efb57db01079edabc3f8b"
+    },
+    {
+      "path": "scripts/launch_cranial_scqr_v11_l3_benchmark.sh",
+      "sha256": "e75edc10be43b32fd683146f0c3d3d0f9d012aba8c36dccfd090d573fa7c9309"
+    },
+    {
+      "path": "tools/run_cranial_scqr_v11_l2_preflight.py",
+      "sha256": "95a9f15e26c2ef96e072e3c7d58324db01cfc026dc81534d5ded46e60c1b3c48"
+    },
+    {
+      "path": "models/AdaPoinTr.py",
+      "sha256": "62a743c4c2143b77b0f1656c59d0482563976440d841f04bae995017dbf7588f"
+    },
+    {
+      "path": "models/cranial_scqr/__init__.py",
+      "sha256": "d2d85b33cff9689dd06f2c2a0845a6aebccba03b6e706904afc8f4d97851cc5b"
+    },
+    {
+      "path": "models/cranial_scqr/contact_support.py",
+      "sha256": "358ea31017344fa4905aac7e495dc87ed7f74496954fd34d7390cd0ea579028f"
+    },
+    {
+      "path": "models/cranial_scqr/local_geometry.py",
+      "sha256": "b533efead76c38ff7bc83a5245a88c98e275a37e0523cbbfb793a63b4d645665"
+    },
+    {
+      "path": "models/cranial_scqr/query_conditioning.py",
+      "sha256": "e631f6649b3a218e63c39f15f6232607469106ae63b0c7cdf578636b110d9057"
+    },
+    {
+      "path": "cfgs/SkullBreak_models/cranial_scqr_v11/CranialSCQRV11_B0_foldA_seed0.yaml",
+      "sha256": "e306079d76612fc9ff2fb2b277ef6f1cffcc467dcf5721f89efa55e51b1f017a"
+    },
+    {
+      "path": "cfgs/SkullBreak_models/cranial_scqr_v11/CranialSCQRV11_QC_foldA_seed0.yaml",
+      "sha256": "32957451d3ca8470258cfae0a0f7db0207e994bf07fcab4c2d21e123c11ae7dd"
+    },
+    {
+      "path": "cfgs/SkullBreak_models/cranial_scqr_v11/l1_configs_manifest.json",
+      "sha256": "5befda464a81d01ccdaf49297aa46ba1e427fa886319aced93d0abf9af61c3fb"
+    },
+    {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/experiment_plan_zh.md",
+      "sha256": "8b1fceb98d142466e5694ef9510f0c15ec5ec457b6713a41bcd92386f7aeaf37"
+    },
+    {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l2_zero_update_preflight_deterministic_launch_hotfix2_v1.json",
+      "sha256": "00065b293d69610056527e605d8dcd3fce168469a520b81262b0b8fb92e09e44"
+    },
+    {
+      "path": "logs/cranial_scqr_v11/l2_zero_update_preflight/l2_zero_update_preflight_hotfix2_v1_20260911T073931Z/l2_preflight_receipt.json",
+      "sha256": "181af1e0495da4e172afbf95ad1d808a301ccfadee3f01218c8c9a5561db6497"
+    },
+    {
+      "path": "logs/cranial_scqr_v11/l2_zero_update_preflight/l2_zero_update_preflight_hotfix2_v1_20260911T073931Z/files.sha256",
+      "sha256": "6a6b0d42a6d8d799c24bb926b3d8ce37c2a88c957d9cf5baded05ddb3c112582"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import json
 import math
 import hashlib
 from tools import builder
+from tools.cranial_scqr_l4_audit import ScqrL4Audit
 from utils import misc, dist_utils
 import time
 from tqdm import tqdm
@@ -66,6 +67,38 @@ def _requires_gt_rim_supervision(config):
         if candidate is not None and bool(getattr(candidate, 'enabled', False)):
             return True
     return False
+
+
+def _scqr_config(config):
+    model = getattr(config, 'model', None)
+    return getattr(model, 'cranial_scqr', None) if model is not None else None
+
+
+def _scqr_enabled(config):
+    scqr = _scqr_config(config)
+    return scqr is not None and bool(getattr(scqr, 'enabled', False))
+
+
+def _enforce_scqr_execution_guard(config):
+    scqr = _scqr_config(config)
+    if scqr is None:
+        return
+    execution = getattr(config, 'cranial_scqr_execution', None)
+    authorized = execution is not None and bool(
+        getattr(execution, 'training_authorized', False)
+    )
+    if not authorized:
+        variant = str(getattr(scqr, 'variant', 'unknown'))
+        raise RuntimeError(
+            'Cranial-SCQR training is locked for this L1 config template: '
+            f'variant={variant}. A separately authorized runtime config is required.'
+        )
+    if bool(getattr(scqr, 'contact_supervision_enabled', False)) and (
+        getattr(scqr, 'auxiliary_loss_weight', None) is None
+    ):
+        raise RuntimeError(
+            'Cranial-SCQR auxiliary loss weight has not been calibrated'
+        )
 
 
 def _enforce_d3_execution_guard(config):
@@ -178,7 +211,9 @@ def _d22_loss_kwargs(
         partial,
         teacher_cache):
     guard = _local_rim_config(config)
-    if not _requires_gt_rim_supervision(config):
+    requires_legacy_rim = _requires_gt_rim_supervision(config)
+    requires_scqr = _scqr_enabled(config)
+    if not requires_legacy_rim and not requires_scqr:
         return {}
     if not hasattr(train_dataset, 'get_normalization_scales'):
         raise TypeError('Rim supervision requires normalization metadata')
@@ -191,11 +226,12 @@ def _d22_loss_kwargs(
             device=partial.device,
             dtype=partial.dtype,
         ),
-        'gt_rim_mask': train_dataset.get_gt_rim_masks(
+    }
+    if requires_legacy_rim:
+        kwargs['gt_rim_mask'] = train_dataset.get_gt_rim_masks(
             case_ids,
             device=partial.device,
-        ),
-    }
+        )
     if guard is not None and bool(getattr(guard, 'trust_enabled', False)):
         if teacher_cache is None:
             raise RuntimeError('D2.2 R2 teacher cache was not loaded')
@@ -216,9 +252,21 @@ def _d22_loss_kwargs(
 def run_net(args, config, train_writer=None, val_writer=None):
     logger = get_logger(args.log_name)
     _enforce_d3_execution_guard(config)
+    _enforce_scqr_execution_guard(config)
     # build dataset
-    (train_sampler, train_dataloader), (_, test_dataloader) = builder.dataset_builder(args, config.dataset.train), \
-                                                            builder.dataset_builder(args, config.dataset.val)
+    train_sampler, train_dataloader = builder.dataset_builder(
+        args, config.dataset.train
+    )
+    execution = getattr(config, 'cranial_scqr_execution', None)
+    suppress_development = (
+        execution is not None
+        and str(getattr(execution, 'stage', '')) == 'L4_roundA_training'
+        and not bool(getattr(execution, 'development_payload_access_authorized', False))
+    )
+    test_dataloader = None if suppress_development else builder.dataset_builder(
+        args, config.dataset.val
+    )[1]
+    l4_audit = ScqrL4Audit(args, config, train_dataloader)
     teacher_cache = _load_d22_teacher_cache(
         config,
         train_dataloader.dataset,
@@ -268,6 +316,8 @@ def run_net(args, config, train_writer=None, val_writer=None):
     else:
         print_log('Using Data parallel ...' , logger = logger)
         base_model = nn.DataParallel(base_model).cuda()
+    if l4_audit.enabled:
+        torch.cuda.reset_peak_memory_stats()
     # optimizer & scheduler
     optimizer = builder.build_optimizer(base_model, config)
     
@@ -284,6 +334,7 @@ def run_net(args, config, train_writer=None, val_writer=None):
     # training
     base_model.zero_grad()
     for epoch in range(start_epoch, config.max_epoch + 1):
+        l4_audit.begin_epoch(epoch)
         if args.distributed:
             train_sampler.set_epoch(epoch)
         base_model.train()
@@ -332,7 +383,10 @@ def run_net(args, config, train_writer=None, val_writer=None):
 
             num_iter += 1
            
-            ret = base_model(partial)
+            if _scqr_enabled(config):
+                ret = base_model(partial, epoch=epoch)
+            else:
+                ret = base_model(partial)
             
             loss_kwargs = _d22_loss_kwargs(
                 config,
@@ -355,7 +409,9 @@ def run_net(args, config, train_writer=None, val_writer=None):
             if num_iter == config.step_per_update:
                 torch.nn.utils.clip_grad_norm_(base_model.parameters(), getattr(config, 'grad_norm_clip', 10), norm_type=2)
                 num_iter = 0
+                l4_audit.authorize_next_step()
                 optimizer.step()
+                l4_audit.record_completed_step()
                 base_model.zero_grad()
 
             if args.distributed:
@@ -398,6 +454,7 @@ def run_net(args, config, train_writer=None, val_writer=None):
         else:
             scheduler.step()
         epoch_end_time = time.time()
+        l4_audit.end_epoch()
 
         if train_writer is not None:
             train_writer.add_scalar('Loss/Epoch/Sparse', losses.avg(0), epoch)
@@ -405,7 +462,7 @@ def run_net(args, config, train_writer=None, val_writer=None):
         print_log('[Training] EPOCH: %d EpochTime = %.3f (s) Losses = %s' %
             (epoch,  epoch_end_time - epoch_start_time, ['%.4f' % l for l in losses.avg()]), logger = logger)
 
-        if epoch % args.val_freq == 0:
+        if test_dataloader is not None and epoch % args.val_freq == 0:
             # Validate the current model
             metrics = validate(base_model, test_dataloader, epoch, ChamferDisL1, ChamferDisL2, val_writer, args, config, logger=logger)
 
@@ -418,13 +475,20 @@ def run_net(args, config, train_writer=None, val_writer=None):
                 if save_best_checkpoint:
                     builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, 'ckpt-best', args, logger = logger)
         save_freq = max(int(getattr(config, 'save_freq', 1)), 1)
-        if epoch % save_freq == 0 or epoch == config.max_epoch:
+        save_final_only = l4_audit.enabled
+        should_save_last = (
+            epoch == config.max_epoch
+            if save_final_only
+            else epoch % save_freq == 0 or epoch == config.max_epoch
+        )
+        if should_save_last:
             builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, 'ckpt-last', args, logger = logger)
         save_final_epoch_checkpoints = bool(
             getattr(config, 'save_final_epoch_checkpoints', True)
         )
         if save_final_epoch_checkpoints and (config.max_epoch - epoch) < 2:
             builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, f'ckpt-epoch-{epoch:03d}', args, logger = logger)     
+    l4_audit.finish(os.path.join(args.experiment_path, 'ckpt-last.pth'))
     if train_writer is not None and val_writer is not None:
         train_writer.close()
         val_writer.close()

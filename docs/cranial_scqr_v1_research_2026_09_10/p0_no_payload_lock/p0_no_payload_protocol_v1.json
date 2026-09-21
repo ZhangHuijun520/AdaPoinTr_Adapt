@@ -1,0 +1,174 @@
+{
+  "protocol_id": "cranial-scqr-v1.1-p0-no-payload-lock-v1",
+  "created_at_utc": "2026-09-10T11:39:45Z",
+  "project_root": "/home/jovyan/adapointr_work/PoinTr",
+  "status": {
+    "no_payload_lock": "COMPLETE",
+    "data_metadata_audit": "PENDING_EXPLICIT_AUTHORIZATION",
+    "development84_representation_audit": "PENDING_EXPLICIT_AUTHORIZATION",
+    "l1_implementation": "NOT_AUTHORIZED",
+    "l2_preflight": "NOT_AUTHORIZED",
+    "l3_benchmark": "NOT_AUTHORIZED",
+    "l4_training": "NOT_AUTHORIZED"
+  },
+  "execution_boundary": {
+    "payload_files_opened": false,
+    "manifest_opened": false,
+    "model_forward_executed": false,
+    "optimizer_steps": 0,
+    "gpu_experiment_started": false,
+    "existing_results_modified": false,
+    "archives_deleted": false,
+    "excluded_path_accessed": false
+  },
+  "environment": {
+    "hostname": "shu-common-25721452-notebook-w5fqxk-0",
+    "user": "jovyan",
+    "python_executable": "/opt/conda/envs/adapointr-mamba/bin/python",
+    "python": "3.10.20",
+    "numpy": "2.2.6",
+    "torch": "2.4.1+cu118",
+    "torch_cuda": "11.8",
+    "scipy": "1.15.3",
+    "gpu": "NVIDIA GeForce RTX 4090 D",
+    "gpu_memory_total_mib": 24564,
+    "nvidia_driver": "570.190",
+    "git_worktree": false,
+    "version_identity_policy": "content_sha256"
+  },
+  "data_entry": {
+    "configured_root": "data/SkullBreakPC_out8192",
+    "symlink_target_metadata_only": "/home/jovyan/datasets/SkullBreakPC_out8192",
+    "configured_manifest_name": "manifest.jsonl",
+    "resolved_manifest_expected": "/home/jovyan/datasets/SkullBreakPC_out8192/manifest.jsonl",
+    "manifest_content_status": "NOT_READ",
+    "payload_status": "NOT_READ"
+  },
+  "split_contract": {
+    "development": {
+      "skulls": 84,
+      "cases": 420,
+      "case_ids_sha256": "78e28617281154f65aa4cd644337931602d4c8ec9833b1a0140c3826bdcf3e70"
+    },
+    "confirmation": {
+      "skulls": 20,
+      "cases": 100,
+      "case_ids_sha256": "203786a07aa42924d0e3be5facd25895801a1e89fb245a17545049ea81071315",
+      "current_role": "SEALED_PENDING_LINEAGE_DECISION"
+    },
+    "development_confirmation_intersection_cases": 0,
+    "strict_union_cases": 520,
+    "defects_per_skull": 5,
+    "defect_types": [
+      "bilateral",
+      "frontoorbital",
+      "parietotemporal",
+      "random_1",
+      "random_2"
+    ],
+    "folds": {
+      "A": {
+        "train_skulls": 63,
+        "train_cases": 315,
+        "dev_skulls": 21,
+        "dev_cases": 105,
+        "train_sha256": "06cc0ef6a8a882956aa3136d57f999a1a9a945213c73f92c2f3026121b076dbd",
+        "dev_sha256": "83ec25f96831c7b5620fa94a2d255605668697bd3fa11ee5c6aab9f92c5dcd01"
+      },
+      "B": {
+        "train_skulls": 63,
+        "train_cases": 315,
+        "dev_skulls": 21,
+        "dev_cases": 105,
+        "train_sha256": "974d721eed8fe38f242e3b6f383634101af9823c17dd19e312d8fa9299fbd227",
+        "dev_sha256": "803a313cdba850a3a277b3a253f4fc106b0bba0eb8289b12f59c38fa95175b1b"
+      },
+      "C": {
+        "train_skulls": 63,
+        "train_cases": 315,
+        "dev_skulls": 21,
+        "dev_cases": 105,
+        "train_sha256": "3c5883d1f582b90533ffed3ae61b1bbe8b88c39b75f40faddf25b63d8f93836d",
+        "dev_sha256": "0bc9286bea354c60870818e47207a9da7f156704557f366ef27847d589f5c0b0"
+      },
+      "D": {
+        "train_skulls": 63,
+        "train_cases": 315,
+        "dev_skulls": 21,
+        "dev_cases": 105,
+        "train_sha256": "682067ea877e8370e5c3d0ac7b2cdd7ae3b2b372a146829b42491899aa1c0aa1",
+        "dev_sha256": "7afc9edc6654891cc8593ab2ce172657e1227e4583ed3281b159ab3ae2be68ac"
+      }
+    },
+    "validated_invariants": [
+      "each ID list has no duplicates",
+      "development and confirmation are disjoint",
+      "each fold train and dev are disjoint",
+      "each fold train union dev equals development84",
+      "fold A-D dev sets are pairwise disjoint",
+      "fold A-D dev union equals development84",
+      "every skull has exactly the five locked defect types"
+    ]
+  },
+  "model_contract": {
+    "input_key": "partial",
+    "target_key": "implant",
+    "input_points": 8192,
+    "output_points": 8192,
+    "encoder_proxies": 256,
+    "queries": 256,
+    "embed_dim": 384,
+    "center_num": [512, 256],
+    "query_selection": "learned_only",
+    "denoise_weight": 0.0,
+    "dense_head": "fc_256x32",
+    "core_models": ["B0", "A1", "Q0", "QC"]
+  },
+  "metric_contract": {
+    "primary_display_name": "RimCover-P95",
+    "existing_field": "rim_gt_rim_to_pred_p95_mm",
+    "implementation": "utils/skullfix_metrics.py::point_rim_metrics",
+    "definition": "per-case 95th percentile of directed GT-rim-to-prediction nearest-neighbor distances in millimetres",
+    "quantile_implementation": "numpy.percentile(..., 95)",
+    "numpy_version": "2.2.6",
+    "aggregation": "case metric -> equal mean over five defects within skull -> equal mean over skulls",
+    "effect_sign": "candidate_minus_control; negative_is_better",
+    "engineering_target_mm": -0.10
+  },
+  "training_budget_contract": {
+    "batch_size_cases": 8,
+    "drop_last_train": true,
+    "configured_max_epoch": 100,
+    "executed_epoch_indices": "0..100",
+    "passes": 101,
+    "fold_train_cases": 315,
+    "fold_steps_per_pass": 39,
+    "fold_steps_per_run": 3939,
+    "full84_cases": 420,
+    "full84_steps_per_pass": 52,
+    "full84_steps_per_run": 5252,
+    "core_conditional_run_cap": 33,
+    "core_conditional_optimizer_step_cap": 141804,
+    "authorization_note": "These are preregistered conditional caps, not execution authorization."
+  },
+  "next_authorization_scope": {
+    "purpose": "P0 metadata/representation audit only",
+    "allowed_dataset": "development84 only",
+    "allowed_case_ids_file": "logs/skullbreak_mamba_v12_development/protocol_v1/development84_case_ids.txt",
+    "requested_reads": [
+      "/home/jovyan/datasets/SkullBreakPC_out8192/manifest.jsonl",
+      "only point_path files selected by development84 IDs",
+      "within selected NPZ: partial, implant, and only normalization/rim metadata needed by the frozen audit"
+    ],
+    "explicitly_forbidden": [
+      "confirmation20 payload",
+      "official test payload",
+      "old monitor payload",
+      "MUG payload",
+      "writing or changing dataset files",
+      "model training or optimizer steps",
+      "BN recalibration",
+      "formal latency loops"
+    ]
+  }
+}

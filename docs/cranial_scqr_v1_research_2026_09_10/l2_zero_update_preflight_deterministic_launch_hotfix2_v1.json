@@ -1,0 +1,53 @@
+{
+  "amendment_id": "cranial-scqr-v1.1-L2-zero-update-preflight-deterministic-launch-hotfix2-v1",
+  "status": "frozen_before_replacement_execution",
+  "authorized_by_user": "L2 deterministic-launch hotfix2 + one replacement zero-update preflight",
+  "base_protocol": "docs/cranial_scqr_v1_research_2026_09_10/l2_zero_update_preflight_protocol_v1.json",
+  "base_protocol_sha256": "e5e0555dd91cf866bb919a8ff5cd6f84ecf695d79693b36624e787922e17c3d8",
+  "import_hotfix1_amendment": "docs/cranial_scqr_v1_research_2026_09_10/l2_zero_update_preflight_import_hotfix1_v1.json",
+  "import_hotfix1_amendment_sha256": "4d5a71b56df78ccb42454e243df00941b6d69b8ac6ffb0c904d059e69f4001f4",
+  "frozen_predecessor_failure": {
+    "receipt": "logs/cranial_scqr_v11/l2_zero_update_preflight/l2_zero_update_preflight_hotfix1_v1_20260911T072948Z/l2_preflight_receipt.json",
+    "receipt_sha256": "9209197a426f9a7e61c127c47ff7acf3ea27d3337f68bda9b4483bd0343e8e42",
+    "files_manifest_sha256": "679a05bc6703d8e79981ca66a7f501db5c3c189f069559aab77bc7b38f045759",
+    "classification": "deterministic_cuda_environment_missing_before_first_cdist",
+    "full_model_forward_calls": 0,
+    "full_model_backward_calls": 0,
+    "optimizer_steps": 0,
+    "dataset_payload_files_opened": 0
+  },
+  "hotfix": {
+    "scope": "process_launch_environment_only",
+    "runner": "tools/run_cranial_scqr_v11_l2_preflight.py",
+    "runner_sha256_unchanged": "95a9f15e26c2ef96e072e3c7d58324db01cfc026dc81534d5ded46e60c1b3c48",
+    "environment": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    },
+    "reason": "Required by PyTorch deterministic algorithms for CUDA CuBLAS operations.",
+    "deterministic_algorithms_remain_enabled": true,
+    "model_code_changed": false,
+    "runner_code_changed": false,
+    "synthetic_input_changed": false,
+    "required_checks_changed": false,
+    "execution_counts_changed": false,
+    "diagnostic_auxiliary_weight_changed": false
+  },
+  "replacement_execution": {
+    "allowed_runs": 1,
+    "output_dir": "logs/cranial_scqr_v11/l2_zero_update_preflight/l2_zero_update_preflight_hotfix2_v1_20260911T073931Z",
+    "reuse_prior_output_dir": false,
+    "python_executable": "/opt/conda/envs/adapointr-mamba/bin/python"
+  },
+  "unchanged_boundaries": {
+    "full_model_forward_calls": 7,
+    "full_model_backward_calls": 1,
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "bncal_runs": 0,
+    "formal_timing_iterations": 0,
+    "dataset_manifest_files_opened": 0,
+    "dataset_payload_files_opened": 0,
+    "training_authorized": false,
+    "auxiliary_loss_calibration_authorized": false
+  }
+}

@@ -1,0 +1,554 @@
+{
+  "protocol_id": "cranial-scqr-v1.1-L4-roundA-I-same-QC-checkpoint-intervention-v2",
+  "protocol_version": 2,
+  "status": "FROZEN_REVISED_PROTOCOL_IMPLEMENTATION_AND_EXECUTION_NOT_AUTHORIZED",
+  "created_at_utc": "2026-09-15T06:38:04Z",
+  "parent_mechanism_plan": {
+    "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_mechanism_postmortem_and_intervention_plan_v1.md",
+    "sha256": "9ff0152bf2bf3f67f0651e0501ad0ad37c461036bcee3553c306d22459877113"
+  },
+  "objective": "Separate the immediate inference-time effect of beta=1 contact bias from the weight-state difference learned by independently trained Q0 and QC checkpoints, without entering Round B.",
+  "checkpoint_matrix": [
+    {
+      "run_key": "QC_foldA_seed0",
+      "candidate": "QC",
+      "fold": "A",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_QC_foldA_seed0.yaml",
+      "runtime_config_sha256": "b2b7c296e17ee0516393337704caa637b87b0002a4fe589545b8b80c94bc56f7",
+      "runtime_config_bytes": 5231,
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "45e9ea07fdd8c0980bde2e6dea3afde1818d3a9bb77be68c5ce1890c7a1e4eed",
+      "completion_receipt_bytes": 912,
+      "bncal_checkpoint": "experiments/CranialSCQRV11_QC_foldA_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_sha256": "b73e1090ce7aa2e81f2707ad63243a29108eca2f35f7e27ff8e7a9c755235358",
+      "bncal_checkpoint_bytes": 388540806,
+      "development_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt"
+    },
+    {
+      "run_key": "QC_foldB_seed0",
+      "candidate": "QC",
+      "fold": "B",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_QC_foldB_seed0.yaml",
+      "runtime_config_sha256": "89b0c118e29110b9450d1e398c0d8598beaa123fd73b0f7a316c9ed331636df9",
+      "runtime_config_bytes": 5231,
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_QC_foldB_seed0_v1_20260914T031939Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "d58142682ae30628bc08992377d30628a0634cc98355676da8938f8db27b18af",
+      "completion_receipt_bytes": 912,
+      "bncal_checkpoint": "experiments/CranialSCQRV11_QC_foldB_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldB_seed0_v1_20260914T031939Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_sha256": "9069f456abaa66e61c3315a85f3e865becd2889b97475bf8469de9bacbfdee3b",
+      "bncal_checkpoint_bytes": 388540806,
+      "development_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_dev_case_ids.txt"
+    }
+  ],
+  "development_allowlists": {
+    "A": {
+      "path": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt",
+      "sha256": "83ec25f96831c7b5620fa94a2d255605668697bd3fa11ee5c6aab9f92c5dcd01",
+      "bytes": 2478,
+      "cases": 105,
+      "sources": 21,
+      "cases_per_source": 5
+    },
+    "B": {
+      "path": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_dev_case_ids.txt",
+      "sha256": "803a313cdba850a3a277b3a253f4fc106b0bba0eb8289b12f59c38fa95175b1b",
+      "bytes": 2478,
+      "cases": 105,
+      "sources": 21,
+      "cases_per_source": 5
+    },
+    "fold_case_disjoint": true,
+    "fold_source_disjoint": true,
+    "combined_cases": 210,
+    "combined_sources": 42,
+    "defect_types": [
+      "bilateral",
+      "frontoorbital",
+      "parietotemporal",
+      "random_1",
+      "random_2"
+    ]
+  },
+  "data_binding": {
+    "manifest": "/home/jovyan/datasets/SkullBreakPC_out8192/manifest.jsonl",
+    "manifest_sha256": "f1f8cae47ed7d5529dc2ca244179cedddbc039981cdc0ff24b25a5c81ad30538",
+    "manifest_bytes": 734982,
+    "dataset_root": "/home/jovyan/datasets/SkullBreakPC_out8192",
+    "allowed_npz_members": [
+      "partial",
+      "implant",
+      "gt"
+    ],
+    "model_input_members": [
+      "partial"
+    ],
+    "metric_only_members": [
+      "implant",
+      "gt"
+    ],
+    "forbidden_payloads": [
+      "train outside the exact dev allowlists",
+      "confirmation20",
+      "official test",
+      "old monitor",
+      "MUG"
+    ]
+  },
+  "frozen_v2_reference": {
+    "directory": "logs/cranial_scqr_v11/l4_round_a_development_evaluation/cranial_scqr_v11_l4_round_a_dev_eval_v2_20260914T054006Z",
+    "files_sha256_sha256": "a203a4b3a9d9b154f0f22c1e967b407125f26903d22d348f27a7cd415a33df52",
+    "per_model_case_metrics": "logs/cranial_scqr_v11/l4_round_a_development_evaluation/cranial_scqr_v11_l4_round_a_dev_eval_v2_20260914T054006Z/per_model_case_metrics.csv",
+    "per_model_case_metrics_sha256": "c2e1317715fb037a73ab3e1054c573d0cd3efe4ea57cefb161de2b1d1bdec29e",
+    "mechanism_diagnostics_sha256": "8dee42b7a56efe154f046db70c8f4e8d91678389cb1c357b5e44b17906ad5ec3",
+    "fold_and_combined_summary_sha256": "62ce0326bd7c597bc929ca339658fdf1a2f1b359187e15cd430391d2fa867aef",
+    "round_a_gate_receipt_sha256": "70a4ab13bb18f4e2bb41faaca5c6814f639ae5ae8c69c86e33e8be552f36200c",
+    "q0_and_qc_case_rows_expected": 420,
+    "reuse_q0_without_rerun": true
+  },
+  "conditions": {
+    "order": [
+      "native_qc",
+      "bias_zero",
+      "case_mean_probability",
+      "fixed_seed_within_case_probability_permutation"
+    ],
+    "aliases": {
+      "fixed_permutation": "fixed_seed_within_case_probability_permutation"
+    },
+    "native_qc": "Use the QC checkpoint-native beta=1 conditioner without intervention.",
+    "bias_zero": "Replace the conditioner contact-probability argument with ones inside a temporary runner-local pre-hook; never mutate beta.",
+    "case_mean_probability": "Replace every proxy probability with the original case-wise mean probability inside the same temporary hook.",
+    "fixed_seed_within_case_probability_permutation": "Permute the original probability values within the case, preserving the exact multiset while destroying spatial correspondence.",
+    "case_mean_probability_is_bias_zero_softmax_negative_control": true,
+    "permutation_seed_derivation": "first eight bytes big-endian of SHA256(permutation_seed_namespace_protocol_id + '|' + fold + '|' + case_id + '|probability_permutation'), reduced modulo 2**63",
+    "python_hash_forbidden": true,
+    "permutation_seed_namespace_protocol_id": "cranial-scqr-v1.1-L4-roundA-I-same-QC-checkpoint-intervention-v1",
+    "permutation_namespace_policy": "Use the frozen v1 protocol identifier above, not the new v2 protocol_id, so every predeclared fixed permutation remains unchanged."
+  },
+  "numeric_contract": {
+    "native_reproduction": {
+      "distance_metrics_max_abs_mm": 0.00001,
+      "unit_interval_metrics_max_abs": 1e-8,
+      "integer_and_boolean_fields": "exact"
+    },
+    "case_mean_vs_bias_zero": {
+      "acceptance_layer": "query_attention",
+      "attention_max_abs": 0.000001,
+      "attention_comparison": "less_than_or_equal",
+      "gate_scope": "every evaluated case independently",
+      "threshold_origin": "unchanged from protocol v1; not calibrated from the one-case diagnostic",
+      "acceptance_receipt_field": "case_mean_probability_attention_equivalence_pass",
+      "output_level_equality_claim": false,
+      "downstream_equality_acceptance_gates": false,
+      "structural_guards": [
+        "bias_zero intervention remains torch.ones_like(original_probability)",
+        "case_mean_probability remains the finite FP32 case-wise mean expanded uniformly over the proxy axis",
+        "the original probability tensor and model state remain unchanged",
+        "temporary intervention hooks are removed after each forward",
+        "condition order, case order, checkpoint/data bindings and execution counts remain frozen"
+      ],
+      "nonfinite_policy": "fail for required finite tensors or scalar diagnostics; never drop or nanmean a required value",
+      "prediction_diagnostics": {
+        "role": "NON_GATING_DIAGNOSTIC",
+        "required_scalar": "negative_control_prediction_max_abs_normalized",
+        "physical_unit_summaries": "record where already available using the frozen per-case normalization scale",
+        "acceptance_threshold": null,
+        "scale_aware_tolerance_introduced": false
+      },
+      "derived_metric_diagnostics": {
+        "distance_metrics": "record paired differences without an equality acceptance threshold",
+        "unit_interval_metrics": "record paired differences without an equality acceptance threshold",
+        "integer_and_boolean_fields": "record mismatch counts; not an equality acceptance gate",
+        "existing_metric_validity_and_NA_policy": "preserve; required finite values and valid discrete domains remain mandatory",
+        "acceptance_threshold": null
+      },
+      "logit_diagnostics": {
+        "role": "OPTIONAL_NON_GATING_DIAGNOSTIC",
+        "raw_logits": "an intended common additive shift exists; raw-logit equality must not be asserted",
+        "row_centered_logits": "optional scalar diagnostic context; centering can itself incur FP32 rounding",
+        "acceptance_threshold": null,
+        "additional_forwards": 0,
+        "raw_arrays_saved": false
+      }
+    },
+    "coarse_condition_invariance_max_abs_normalized": 1e-7,
+    "conditioning_inactive_primary_max_abs_mm": 0.01,
+    "nonfinite_policy": "fail; never drop or nanmean a primary or guardrail value"
+  },
+  "analysis_contract": {
+    "primary_metric": "rim_gt_rim_to_pred_p95_mm",
+    "delta_definition": "left minus right; negative is better for distance metrics",
+    "comparison_order": [
+      "bias_zero_minus_native_qc",
+      "fixed_permutation_minus_native_qc",
+      "case_mean_probability_minus_bias_zero",
+      "bias_zero_minus_frozen_Q0"
+    ],
+    "bootstrap_seed": 20260910,
+    "bootstrap_samples": 10000,
+    "bootstrap_unit": "source skull after equal averaging of five defect cases",
+    "bootstrap_stratification": "resample 21 source skulls independently within Fold A and Fold B, then combine with equal fold weight",
+    "bootstrap_ci": "two-sided percentile 95 percent",
+    "classification_rules": {
+      "robust_immediate_bias_harm": "bias_zero-minus-native is <=0 in both folds and its combined CI upper bound is <0",
+      "directional_immediate_bias_harm": "bias_zero-minus-native combined point estimate is <0 but robust-harm criteria are not met",
+      "robust_spatial_alignment_benefit": "bias_zero-minus-native and fixed-permutation-minus-native combined CI lower bounds are both >0",
+      "conditioning_effect_inactive": "absolute Fold A, Fold B and combined primary deltas for bias_zero-minus-native and fixed-permutation-minus-native are all <=0.01 mm",
+      "training_path_residual_gap_robust": "bias_zero-minus-frozen-Q0 combined CI lower bound is >0",
+      "training_path_residual_gap_directional": "bias_zero-minus-frozen-Q0 combined point estimate is >0 but its CI crosses zero",
+      "otherwise": "mixed or inconclusive"
+    },
+    "round_b_authorized_by_any_result": false,
+    "automatic_beta_tuning": false,
+    "automatic_next_run": false,
+    "comparison_roles": {
+      "bias_zero_minus_native_qc": "SCIENTIFIC_MECHANISM_COMPARISON",
+      "fixed_permutation_minus_native_qc": "SCIENTIFIC_MECHANISM_COMPARISON",
+      "case_mean_probability_minus_bias_zero": "DIAGNOSTIC_ONLY_NOT_USED_FOR_SCIENTIFIC_CLASSIFICATION",
+      "bias_zero_minus_frozen_Q0": "SCIENTIFIC_MECHANISM_COMPARISON"
+    },
+    "scientific_classification_comparisons": [
+      "bias_zero_minus_native_qc",
+      "fixed_permutation_minus_native_qc",
+      "bias_zero_minus_frozen_Q0"
+    ],
+    "negative_control_interpretation": "An attention gate pass means softmax-equivalence within the unchanged numerical tolerance, not exact prediction or downstream-metric equality. Report downstream differences transparently without using them as acceptance gates or evidence of model benefit/harm."
+  },
+  "future_execution_contract": {
+    "execution_authorized_by_this_protocol": false,
+    "separate_exact_execution_authorization_required": true,
+    "gpu_count": 1,
+    "gpu_model": "NVIDIA GeForce RTX 4090 D",
+    "gpu_uuid": "bind only during a future immediate prelaunch audit",
+    "precision": "FP32",
+    "model_mode": "eval",
+    "torch_grad_enabled": false,
+    "batch_size": 1,
+    "num_workers": 0,
+    "shuffle": false,
+    "case_order": "exact allowlist order",
+    "checkpoint_loads_expected": 2,
+    "cases_per_checkpoint": 105,
+    "conditions_per_case": 4,
+    "model_case_forward_calls_expected": 840,
+    "npz_opens_expected": 210,
+    "partial_reads_expected": 210,
+    "implant_reads_expected": 210,
+    "gt_reads_expected": 210,
+    "temporary_probability_hooks_expected": 630,
+    "temporary_probability_hooks_removed_expected": 630,
+    "minimum_free_gpu_memory_mib_at_launch": 22000,
+    "maximum_observed_gpu_memory_used_mib": 20480,
+    "checkpoint_state_policy": "full parameter and buffer hashes must be identical before and after all 420 forwards for each fold checkpoint",
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "parameter_updates": 0,
+    "buffer_updates": 0,
+    "training": false,
+    "bncal": false,
+    "formal_timing": false,
+    "prediction_pointcloud_files_saved": false,
+    "automatic_retry": false,
+    "automatic_next_run": false,
+    "round_b": false
+  },
+  "implementation_bindings": {
+    "existing_read_only_sources": {
+      "tools/run_cranial_scqr_v11_l4_round_a_dev_eval.py": "6be1c38b46270eff278ea7a54805ba0d572e8aef81a103350308072380c38798",
+      "tools/analyze_cranial_scqr_v11_l4_round_a.py": "3a54206a950c5d6825373ca6364d41feacca44bac28e62b505a7d3d35d47985d",
+      "tools/test_cranial_scqr_v11_l4_round_a_dev_eval_contract.py": "d20c0f81f8b0bc49f72a90040ccdb52cb65ce475d30da9e7df989c4dc4e3b34b",
+      "models/AdaPoinTr.py": "62a743c4c2143b77b0f1656c59d0482563976440d841f04bae995017dbf7588f",
+      "models/cranial_scqr/query_conditioning.py": "e631f6649b3a218e63c39f15f6232607469106ae63b0c7cdf578636b110d9057",
+      "models/cranial_scqr/contact_support.py": "358ea31017344fa4905aac7e495dc87ed7f74496954fd34d7390cd0ea579028f",
+      "models/cranial_scqr/local_geometry.py": "b533efead76c38ff7bc83a5245a88c98e275a37e0523cbbfb793a63b4d645665",
+      "utils/skullfix_metrics.py": "0c4342cd19fb19a659302b0e350c3be34bd21447d2034bdc9d2e81a180174ee5",
+      "utils/evaluation_statistics.py": "e9dd5dbf822407933e68fcba5412789e8bba8cc44cb987fd29c1230f2f50bc17",
+      "datasets/SkullFixDataset.py": "cb26e98f22c9bbf08a6f58db8bcd26d1bf62f07d4334b818186570b1c797eb5a"
+    },
+    "current_round_a_i_sources_read_only": {
+      "runner": {
+        "path": "tools/run_cranial_scqr_v11_l4_round_a_intervention.py",
+        "sha256": "bff73650017164043230c810f2eca0397b54a852dd6bbd96e8ca085992f3234b",
+        "bytes": 29715
+      },
+      "analyzer": {
+        "path": "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py",
+        "sha256": "180bc58b644d6042b50c6828cbf87df151110ae27f5fac5110a05b0fcdd0b012",
+        "bytes": 33138
+      },
+      "synthetic_contract_test": {
+        "path": "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py",
+        "sha256": "3e52c2d679eca490ec98d8d0f35b4898ef2631dca817cc84e874fa2b9d144fea",
+        "bytes": 23853
+      }
+    },
+    "v2_implementation_status": "NOT_IMPLEMENTED_NOT_AUTHORIZED; existing runner/analyzer/tests still implement v1 and must not be used for a v2 formal execution before separate authorization, implementation, validation and P3."
+  },
+  "output_contract_for_future_execution": {
+    "output_directory": "must be a new non-existing path fixed by a separate execution authorization",
+    "required_outputs": [
+      "per_condition_case_metrics.csv",
+      "per_condition_source_metrics.csv",
+      "intervention_mechanism_diagnostics.csv",
+      "paired_intervention_deltas.csv",
+      "intervention_summary.json",
+      "mechanism_classification_receipt.json",
+      "intervention_execution_receipt.json"
+    ],
+    "raw_tensor_dump": false,
+    "pointcloud_prediction_dump": false,
+    "round_b_launcher": false,
+    "negative_control_reporting": {
+      "required_acceptance_semantics": "case_mean_probability_attention_equivalence_pass",
+      "misleading_old_semantics_forbidden": "case_mean_probability_equals_bias_zero_pass must not imply output-level equality",
+      "per_case_attention_error_required": true,
+      "per_case_prediction_max_abs_normalized_required": true,
+      "paired_distance_and_unit_interval_differences_required": true,
+      "integer_and_boolean_mismatch_counts_required": true,
+      "diagnostic_comparison_role_required": true,
+      "row_centered_logit_scalars_optional": true,
+      "raw_tensor_and_coordinate_persistence_forbidden": true
+    }
+  },
+  "authorization_boundary": {
+    "implementation_and_synthetic_cpu_tests_authorized_separately": true,
+    "real_checkpoint_loads_authorized": false,
+    "real_npz_opens_authorized": false,
+    "gpu_use_authorized": false,
+    "development_evaluation_authorized": false,
+    "training_or_bncal_authorized": false,
+    "round_b_authorized": false,
+    "protocol_document_creation_authorized": true,
+    "implementation_authorized_by_this_protocol": false,
+    "synthetic_cpu_tests_authorized_by_this_protocol": false,
+    "formal_round_a_i_retry_authorized": false,
+    "launcher_creation_authorized": false,
+    "real_result_statistics_authorized": false,
+    "threshold_tuning_authorized": false,
+    "automatic_next_stage": false
+  },
+  "parent_implementation_authorization_request_v1": {
+    "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_implementation_authorization_request_v1.json",
+    "sha256": "1de0e3136e11fde0530d9947157e90f92a2b89af7743d0019b9e54a40aca360b"
+  },
+  "protocol_revision_authorization": {
+    "request": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_protocol_revision_authorization_request_v1.json",
+      "sha256": "a80058196fc9cf760ba6a8aa4533c4728ba22dbf5b424e67f6b9d950d35a8000",
+      "bytes": 18930
+    },
+    "explicit_user_authorization": "好的，我明确授权该请求",
+    "authorized_scope": "create only this v2 protocol and perform JSON parsing, SHA256/byte and bound-file immutability checks; then stop",
+    "protocol_document_creation_authorized": true,
+    "implementation_authorized": false,
+    "synthetic_tests_authorized": false,
+    "formal_execution_authorized": false
+  },
+  "supersedes_for_future_execution": {
+    "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v1.json",
+    "sha256": "3c8b8e8e73b6e258e43bfa67a8a50d37b43fdfe27cdce450715b527acbf6a85a",
+    "bytes": 12603,
+    "immutability": "retain unchanged",
+    "parent_protocol_id": "cranial-scqr-v1.1-L4-roundA-I-same-QC-checkpoint-intervention-v1",
+    "preserve_parent_unchanged": true,
+    "retroactive_reclassification": false,
+    "v3_failure_status": "FAILED_STOPPED_NO_RETRY",
+    "new_implementation_and_execution_authorizations_required": true
+  },
+  "revision_provenance": {
+    "frozen_round_a_i_protocol_v1": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v1.json",
+      "sha256": "3c8b8e8e73b6e258e43bfa67a8a50d37b43fdfe27cdce450715b527acbf6a85a",
+      "bytes": 12603,
+      "immutability": "retain unchanged"
+    },
+    "failed_round_a_i_v3": {
+      "execution_authorization_request": {
+        "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_execution_authorization_request_v3.json",
+        "sha256": "b3c3de2c7f792999bde6566ab423ea5e230357eca08aa2db8dad2220480645ef",
+        "bytes": 28277
+      },
+      "execution_authorization_receipt": {
+        "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_execution_authorization_receipt_v3.json",
+        "sha256": "69a810c403683f16d6f6612a39a9a19ce2e71f983f7d4ed0f23cce76b3588a0a",
+        "bytes": 4780
+      },
+      "failure_receipt": {
+        "path": "logs/cranial_scqr_v11/l4_round_a_intervention/cranial_scqr_v11_l4_round_a_intervention_v3_20260914T140415Z/intervention_failure_receipt.json",
+        "sha256": "fdbc0822b0bf8550a19224e84692a811c058bec2c2d598d46e962ef1dd3fedb9",
+        "bytes": 735,
+        "status": "FAILED_STOPPED_NO_RETRY",
+        "error": "prediction negative control failed: A/train__000__frontoorbital"
+      },
+      "immutability": "retain the failed result and authorization chain unchanged; never relabel it as pass"
+    },
+    "numeric_diagnostic_protocol_v1": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_protocol_v1.json",
+      "sha256": "10e7c777974f27fd92e55115942660910d18a21230a5699d244b9b3fffc2806f",
+      "bytes": 15114
+    },
+    "numeric_diagnostic_execution_request_v3": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_execution_authorization_request_v3.json",
+      "sha256": "9f1ac60aa6d820d0a011e8c05e02891d9568819a271a0fc89b28de727e0fb6eb",
+      "bytes": 25260
+    },
+    "numeric_diagnostic_execution_receipt_v3": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_execution_authorization_receipt_v3.json",
+      "sha256": "51350afee70dae3f8dfd33af432bfda07a572b5f4830373a4266d4d51dc1041e",
+      "bytes": 5784
+    },
+    "numeric_diagnostic_scalars_v3": {
+      "path": "logs/cranial_scqr_v11/l4_round_a_intervention_negative_control_numeric_diagnostic/cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_v3_20260915T060436Z/numeric_diagnostic_scalars.json",
+      "sha256": "f61deff2b25c8000f759d02e666e75604aa9ca5fd29f5a91676902c2bc32d05c",
+      "bytes": 43257,
+      "manifest_check": "PASS"
+    },
+    "numeric_diagnostic_completion_receipt_v3": {
+      "path": "logs/cranial_scqr_v11/l4_round_a_intervention_negative_control_numeric_diagnostic/cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_v3_20260915T060436Z/diagnostic_completion_receipt.json",
+      "sha256": "7731deb82f195d20c20f6d257fee6aad93d0f04cc9db14b558e80a43f523ceba",
+      "bytes": 4184,
+      "status": "PASS_DIAGNOSTIC_ONLY",
+      "diagnosis": "CONSTANT_SHIFT_ROUNDOFF_BEFORE_SOFTMAX"
+    },
+    "current_implementation_read_only": {
+      "runner": {
+        "path": "tools/run_cranial_scqr_v11_l4_round_a_intervention.py",
+        "sha256": "bff73650017164043230c810f2eca0397b54a852dd6bbd96e8ca085992f3234b",
+        "bytes": 29715
+      },
+      "analyzer": {
+        "path": "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py",
+        "sha256": "180bc58b644d6042b50c6828cbf87df151110ae27f5fac5110a05b0fcdd0b012",
+        "bytes": 33138
+      },
+      "synthetic_contract_test": {
+        "path": "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py",
+        "sha256": "3e52c2d679eca490ec98d8d0f35b4898ef2631dca817cc84e874fa2b9d144fea",
+        "bytes": 23853
+      }
+    }
+  },
+  "revision_decision": {
+    "decision_id": "ATTENTION_GATE_LOGIT_DIAGNOSTIC_NO_OUTPUT_TOLERANCE_V1",
+    "rationale": {
+      "attention_layer_equivalence": {
+        "decision": "SELECT_AS_THE_SOLE_NUMERICAL_NEGATIVE_CONTROL_ACCEPTANCE_GATE",
+        "rationale": [
+          "The frozen theoretical identity is invariance of softmax to a common additive logit shift, so attention is the construct-aligned functional quantity.",
+          "The observed attention discrepancy is 1.3969838619232178e-09, only 0.0013969838619232178 of the already frozen 1e-6 attention threshold.",
+          "Retaining the existing 1e-6 attention threshold avoids tuning a new threshold from the failed case.",
+          "A per-case attention gate across all future authorized Round A-I cases remains fail-closed for an incorrect intervention or materially nonuniform bias."
+        ]
+      },
+      "logit_layer_equivalence": {
+        "decision": "RETAIN_AS_NON_GATING_DIAGNOSTIC_CONTEXT_ONLY",
+        "rationale": [
+          "Raw logits must differ by the intended common shift and therefore must not be compared directly for equality.",
+          "Row-centering is useful for locating nonconstant finite-precision residue, but the centering operation introduces its own magnitude-dependent FP32 rounding.",
+          "The one-case value 3.5762786865234375e-07 is descriptive evidence, not an independently justified acceptance threshold.",
+          "Attention directly tests the functional softmax invariance and is already available in the current formal instrumentation."
+        ]
+      },
+      "scale_aware_output_tolerance": {
+        "decision": "REJECT_FOR_CURRENT_PROTOCOL_REVISION",
+        "rationale": [
+          "Only one case has stage-wise scalar evidence, so neither a percentile nor a worst-case output tolerance can be estimated reliably.",
+          "Output error depends on downstream decoder sensitivity as well as normalization scale; millimetre conversion alone is not a sufficient conditioning model.",
+          "Choosing a new output threshold after observing the failing value would be post-hoc threshold tuning.",
+          "Output-level equality is not the mathematical claim made by the case-mean softmax negative control."
+        ],
+        "future_reconsideration_requirements": [
+          "a separately authorized, predeclared multi-case or synthetic numerical-stability study",
+          "a tolerance derivation independent of the acceptance cases",
+          "explicit separation of numerical-stability warning limits from the softmax-equivalence gate"
+        ]
+      }
+    },
+    "diagnostic_facts": {
+      "exact_case": "A/train__000__frontoorbital",
+      "precision": "FP32",
+      "within_condition_repeats": {
+        "bias_zero_all_compared_stages_max_abs": 0,
+        "case_mean_probability_all_compared_stages_max_abs": 0,
+        "repeat_nondeterminism_present": false
+      },
+      "cross_condition_repetitions_identical": true,
+      "raw_logit_common_shift": {
+        "expected_log_case_mean_probability": -2.919315005647119,
+        "observed_raw_delta_mean": -2.919315099857414,
+        "observed_minus_expected": -9.421029512068912e-8,
+        "raw_delta_std_population": 6.339982488958628e-8,
+        "raw_delta_max_deviation_from_mean": 1.1935051702494093e-7
+      },
+      "cross_condition_max_abs": {
+        "query_logits_row_centered": 3.5762786865234375e-7,
+        "query_attention": 1.3969838619232178e-9,
+        "query_residual": 4.3655745685100555e-11,
+        "query_pre_decoder": 7.450580596923828e-9,
+        "query_post_decoder": 0.0000011920928955078125,
+        "predicted_implant_normalized": 0.0000019222497940063477,
+        "predicted_implant_coordinate_mm": 0.00018321899844435396,
+        "predicted_implant_point_l2_max_mm": 0.00020048033791944504
+      },
+      "parent_reference_observation": {
+        "attention_threshold": 0.000001,
+        "attention_to_threshold_ratio": 0.0013969838619232178,
+        "attention_passed": true,
+        "prediction_threshold_normalized": 0.000001,
+        "prediction_to_threshold_ratio": 1.9222497940063477,
+        "prediction_passed": false
+      },
+      "causal_interpretation_limit": "The single-case diagnostic identifies the numerical mechanism of the observed failure but cannot estimate a cross-case output-error distribution or calibrate a new output tolerance."
+    },
+    "single_case_generalization": false,
+    "model_ranking_or_round_a_reclassification": false
+  },
+  "required_followup_after_protocol_revision": {
+    "next_stage": "separate read-only pre-implementation audit followed by a separate implementation-only authorization request",
+    "anticipated_but_not_authorized_files": [
+      "tools/run_cranial_scqr_v11_l4_round_a_intervention.py",
+      "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py",
+      "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py"
+    ],
+    "anticipated_implementation_goal": "Bind the runner and analyzer to protocol v2, retain the attention gate, remove downstream output/metric equality gates while preserving their diagnostic reporting, rename the acceptance receipt semantics, and update synthetic boundary tests.",
+    "formal_execution_after_implementation": "still requires successful synthetic CPU tests, a separate post-implementation P3 audit, and a new exact single-run execution authorization request"
+  },
+  "revision_preservation_contract": {
+    "unchanged_parent_sections": [
+      "objective",
+      "checkpoint_matrix",
+      "development_allowlists",
+      "data_binding",
+      "frozen_v2_reference",
+      "future_execution_contract",
+      "parent_mechanism_plan"
+    ],
+    "unchanged_numeric_gates": [
+      "native_reproduction",
+      "coarse_condition_invariance_max_abs_normalized",
+      "conditioning_inactive_primary_max_abs_mm",
+      "nonfinite_policy"
+    ],
+    "unchanged_analysis_fields": [
+      "primary_metric",
+      "delta_definition",
+      "comparison_order",
+      "bootstrap_seed",
+      "bootstrap_samples",
+      "bootstrap_unit",
+      "bootstrap_stratification",
+      "bootstrap_ci",
+      "classification_rules"
+    ],
+    "condition_definitions_and_order_unchanged": true,
+    "fixed_permutation_seed_namespace_preserved": "cranial-scqr-v1.1-L4-roundA-I-same-QC-checkpoint-intervention-v1",
+    "formal_forward_count_unchanged": 840,
+    "formal_checkpoint_loads_unchanged": 2,
+    "formal_npz_opens_unchanged": 210,
+    "existing_files_must_remain_unchanged": true,
+    "no_new_output_tolerance": true,
+    "no_real_execution_authorized": true
+  }
+}

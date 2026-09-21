@@ -1,0 +1,302 @@
+{
+  "request_id": "cranial-scqr-v1.1-L4-roundA-I-negative-control-protocol-revision-request-v1",
+  "status": "PENDING_EXPLICIT_USER_AUTHORIZATION",
+  "authorization_effective": false,
+  "created_at_utc": "2026-09-15T06:21:09Z",
+  "purpose": "Authorize only the creation and JSON validation of a new immutable Round A-I v2 protocol that replaces the output-level equality gate with an attention-level softmax-equivalence gate. This request does not authorize implementation changes, real execution, a Round A-I retry, or Round B.",
+  "post_diagnostic_read_only_review": {
+    "status": "PASS_DECISION_REACHED_EXECUTION_NOT_AUTHORIZED",
+    "review_scope": "Read-only review of the frozen Round A-I v1 protocol, v3 failed formal execution evidence, scalar-only v3 numerical diagnostic, and the existing runner/analyzer/contract-test gate implementation.",
+    "review_completed_at_utc": "2026-09-15T06:21:09Z",
+    "project_identity": {
+      "expected_project_root": "/home/jovyan/adapointr_work/PoinTr",
+      "actual_project_root": "/home/jovyan/adapointr_work/PoinTr",
+      "hostname": "shu-common-25721452-notebook-vzvww6-0",
+      "user": "jovyan",
+      "git_worktree": false,
+      "available_disk_at_review": "18 GiB",
+      "gpu_snapshot_read_only": {
+        "name": "NVIDIA GeForce RTX 4090 D",
+        "uuid": "GPU-6833d44f-1430-f95a-371b-15b67088153c",
+        "memory_used_mib": 2,
+        "utilization_percent": 0,
+        "gpu_compute_used": false,
+        "binding_role": "informational only; not a future execution binding"
+      }
+    },
+    "zero_effect_counters": {
+      "checkpoint_deserializations": 0,
+      "npz_payload_opens": 0,
+      "model_forwards": 0,
+      "gpu_compute_runs": 0,
+      "optimizer_constructions": 0,
+      "optimizer_steps": 0,
+      "parameter_updates": 0,
+      "buffer_updates": 0,
+      "development_evaluations": 0,
+      "round_a_i_retries": 0,
+      "round_b_runs": 0
+    }
+  },
+  "evidence_bindings": {
+    "frozen_round_a_i_protocol_v1": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v1.json",
+      "sha256": "3c8b8e8e73b6e258e43bfa67a8a50d37b43fdfe27cdce450715b527acbf6a85a",
+      "bytes": 12603,
+      "immutability": "retain unchanged"
+    },
+    "failed_round_a_i_v3": {
+      "execution_authorization_request": {
+        "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_execution_authorization_request_v3.json",
+        "sha256": "b3c3de2c7f792999bde6566ab423ea5e230357eca08aa2db8dad2220480645ef",
+        "bytes": 28277
+      },
+      "execution_authorization_receipt": {
+        "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_execution_authorization_receipt_v3.json",
+        "sha256": "69a810c403683f16d6f6612a39a9a19ce2e71f983f7d4ed0f23cce76b3588a0a",
+        "bytes": 4780
+      },
+      "failure_receipt": {
+        "path": "logs/cranial_scqr_v11/l4_round_a_intervention/cranial_scqr_v11_l4_round_a_intervention_v3_20260914T140415Z/intervention_failure_receipt.json",
+        "sha256": "fdbc0822b0bf8550a19224e84692a811c058bec2c2d598d46e962ef1dd3fedb9",
+        "bytes": 735,
+        "status": "FAILED_STOPPED_NO_RETRY",
+        "error": "prediction negative control failed: A/train__000__frontoorbital"
+      },
+      "immutability": "retain the failed result and authorization chain unchanged; never relabel it as pass"
+    },
+    "numeric_diagnostic_protocol_v1": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_protocol_v1.json",
+      "sha256": "10e7c777974f27fd92e55115942660910d18a21230a5699d244b9b3fffc2806f",
+      "bytes": 15114
+    },
+    "numeric_diagnostic_execution_request_v3": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_execution_authorization_request_v3.json",
+      "sha256": "9f1ac60aa6d820d0a011e8c05e02891d9568819a271a0fc89b28de727e0fb6eb",
+      "bytes": 25260
+    },
+    "numeric_diagnostic_execution_receipt_v3": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_execution_authorization_receipt_v3.json",
+      "sha256": "51350afee70dae3f8dfd33af432bfda07a572b5f4830373a4266d4d51dc1041e",
+      "bytes": 5784
+    },
+    "numeric_diagnostic_scalars_v3": {
+      "path": "logs/cranial_scqr_v11/l4_round_a_intervention_negative_control_numeric_diagnostic/cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_v3_20260915T060436Z/numeric_diagnostic_scalars.json",
+      "sha256": "f61deff2b25c8000f759d02e666e75604aa9ca5fd29f5a91676902c2bc32d05c",
+      "bytes": 43257,
+      "manifest_check": "PASS"
+    },
+    "numeric_diagnostic_completion_receipt_v3": {
+      "path": "logs/cranial_scqr_v11/l4_round_a_intervention_negative_control_numeric_diagnostic/cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_v3_20260915T060436Z/diagnostic_completion_receipt.json",
+      "sha256": "7731deb82f195d20c20f6d257fee6aad93d0f04cc9db14b558e80a43f523ceba",
+      "bytes": 4184,
+      "status": "PASS_DIAGNOSTIC_ONLY",
+      "diagnosis": "CONSTANT_SHIFT_ROUNDOFF_BEFORE_SOFTMAX"
+    },
+    "current_implementation_read_only": {
+      "runner": {
+        "path": "tools/run_cranial_scqr_v11_l4_round_a_intervention.py",
+        "sha256": "bff73650017164043230c810f2eca0397b54a852dd6bbd96e8ca085992f3234b",
+        "bytes": 29715
+      },
+      "analyzer": {
+        "path": "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py",
+        "sha256": "180bc58b644d6042b50c6828cbf87df151110ae27f5fac5110a05b0fcdd0b012",
+        "bytes": 33138
+      },
+      "synthetic_contract_test": {
+        "path": "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py",
+        "sha256": "3e52c2d679eca490ec98d8d0f35b4898ef2631dca817cc84e874fa2b9d144fea",
+        "bytes": 23853
+      }
+    }
+  },
+  "diagnostic_facts": {
+    "exact_case": "A/train__000__frontoorbital",
+    "precision": "FP32",
+    "within_condition_repeats": {
+      "bias_zero_all_compared_stages_max_abs": 0.0,
+      "case_mean_probability_all_compared_stages_max_abs": 0.0,
+      "repeat_nondeterminism_present": false
+    },
+    "cross_condition_repetitions_identical": true,
+    "raw_logit_common_shift": {
+      "expected_log_case_mean_probability": -2.919315005647119,
+      "observed_raw_delta_mean": -2.919315099857414,
+      "observed_minus_expected": -9.421029512068912e-08,
+      "raw_delta_std_population": 6.339982488958628e-08,
+      "raw_delta_max_deviation_from_mean": 1.1935051702494093e-07
+    },
+    "cross_condition_max_abs": {
+      "query_logits_row_centered": 3.5762786865234375e-07,
+      "query_attention": 1.3969838619232178e-09,
+      "query_residual": 4.3655745685100555e-11,
+      "query_pre_decoder": 7.450580596923828e-09,
+      "query_post_decoder": 1.1920928955078125e-06,
+      "predicted_implant_normalized": 1.9222497940063477e-06,
+      "predicted_implant_coordinate_mm": 0.00018321899844435396,
+      "predicted_implant_point_l2_max_mm": 0.00020048033791944504
+    },
+    "parent_reference_observation": {
+      "attention_threshold": 1e-06,
+      "attention_to_threshold_ratio": 0.0013969838619232178,
+      "attention_passed": true,
+      "prediction_threshold_normalized": 1e-06,
+      "prediction_to_threshold_ratio": 1.9222497940063477,
+      "prediction_passed": false
+    },
+    "causal_interpretation_limit": "The single-case diagnostic identifies the numerical mechanism of the observed failure but cannot estimate a cross-case output-error distribution or calibrate a new output tolerance."
+  },
+  "alternatives_review": {
+    "attention_layer_equivalence": {
+      "decision": "SELECT_AS_THE_SOLE_NUMERICAL_NEGATIVE_CONTROL_ACCEPTANCE_GATE",
+      "rationale": [
+        "The frozen theoretical identity is invariance of softmax to a common additive logit shift, so attention is the construct-aligned functional quantity.",
+        "The observed attention discrepancy is 1.3969838619232178e-09, only 0.0013969838619232178 of the already frozen 1e-6 attention threshold.",
+        "Retaining the existing 1e-6 attention threshold avoids tuning a new threshold from the failed case.",
+        "A per-case attention gate across all future authorized Round A-I cases remains fail-closed for an incorrect intervention or materially nonuniform bias."
+      ]
+    },
+    "logit_layer_equivalence": {
+      "decision": "RETAIN_AS_NON_GATING_DIAGNOSTIC_CONTEXT_ONLY",
+      "rationale": [
+        "Raw logits must differ by the intended common shift and therefore must not be compared directly for equality.",
+        "Row-centering is useful for locating nonconstant finite-precision residue, but the centering operation introduces its own magnitude-dependent FP32 rounding.",
+        "The one-case value 3.5762786865234375e-07 is descriptive evidence, not an independently justified acceptance threshold.",
+        "Attention directly tests the functional softmax invariance and is already available in the current formal instrumentation."
+      ]
+    },
+    "scale_aware_output_tolerance": {
+      "decision": "REJECT_FOR_CURRENT_PROTOCOL_REVISION",
+      "rationale": [
+        "Only one case has stage-wise scalar evidence, so neither a percentile nor a worst-case output tolerance can be estimated reliably.",
+        "Output error depends on downstream decoder sensitivity as well as normalization scale; millimetre conversion alone is not a sufficient conditioning model.",
+        "Choosing a new output threshold after observing the failing value would be post-hoc threshold tuning.",
+        "Output-level equality is not the mathematical claim made by the case-mean softmax negative control."
+      ],
+      "future_reconsideration_requirements": [
+        "a separately authorized, predeclared multi-case or synthetic numerical-stability study",
+        "a tolerance derivation independent of the acceptance cases",
+        "explicit separation of numerical-stability warning limits from the softmax-equivalence gate"
+      ]
+    }
+  },
+  "selected_protocol_decision": {
+    "decision_id": "ATTENTION_GATE_LOGIT_DIAGNOSTIC_NO_OUTPUT_TOLERANCE_V1",
+    "summary": "Use finite, per-case query-attention max-absolute difference at the unchanged 1e-6 threshold as the sole numerical case_mean_probability-versus-bias_zero equivalence gate. Keep row-centered-logit evidence as optional diagnostic context. Record prediction and derived-metric discrepancies without using them as acceptance gates.",
+    "negative_control_gate": {
+      "quantity": "max_abs(case_mean_probability.query_attention - bias_zero.query_attention)",
+      "threshold": 1e-06,
+      "comparison": "less_than_or_equal",
+      "scope": "every evaluated case independently",
+      "nonfinite_policy": "fail",
+      "threshold_origin": "unchanged from frozen Round A-I protocol v1; not calibrated from the one-case diagnostic"
+    },
+    "structural_guards": [
+      "bias_zero intervention remains torch.ones_like(original_probability)",
+      "case_mean_probability remains the finite FP32 case-wise mean expanded uniformly over the proxy axis",
+      "the original probability tensor and model state remain unchanged",
+      "temporary intervention hooks are removed after each forward",
+      "condition order, case order, checkpoint/data bindings and execution counts remain frozen"
+    ],
+    "diagnostic_only_fields": {
+      "row_centered_logits": "optional scalar context; no new threshold and no required extra forward",
+      "prediction_point_difference": "record max-absolute normalized difference and, where already available, physical-unit summaries; finite but non-gating",
+      "derived_distance_and_unit_interval_metrics": "record paired differences; finite but non-gating",
+      "integer_or_boolean_metric_mismatches": "record mismatch counts; non-gating for the softmax negative-control identity",
+      "case_mean_probability_minus_bias_zero": "diagnostic-only comparison excluded from scientific mechanism classification"
+    },
+    "unchanged_gates": [
+      "native QC reproduction against the frozen v2 development evaluation",
+      "coarse-output invariance across intervention conditions",
+      "finite-value validation",
+      "complete fold/case/condition pairing",
+      "model parameter and buffer immutability",
+      "access counters and forbidden-data boundaries"
+    ],
+    "scientific_comparisons_unchanged": [
+      "bias_zero_minus_native_qc",
+      "fixed_permutation_minus_native_qc",
+      "bias_zero_minus_frozen_Q0"
+    ],
+    "no_reclassification": "The failed v3 Round A-I execution remains FAILED_STOPPED_NO_RETRY under protocol v1. A future v2 execution, if ever separately authorized, must use a new authorization chain and output directory."
+  },
+  "requested_protocol_revision_scope": {
+    "requested_file_creation": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v2.json",
+    "requested_existing_file_modifications": [],
+    "target_absent_at_review": true,
+    "new_protocol_id": "cranial-scqr-v1.1-L4-roundA-I-same-QC-checkpoint-intervention-v2",
+    "required_status": "FROZEN_REVISED_PROTOCOL_IMPLEMENTATION_AND_EXECUTION_NOT_AUTHORIZED",
+    "must_supersede_for_future_execution": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v1.json",
+      "sha256": "3c8b8e8e73b6e258e43bfa67a8a50d37b43fdfe27cdce450715b527acbf6a85a",
+      "preserve_v1_unchanged": true
+    },
+    "required_v2_changes": [
+      "replace the case_mean_probability-versus-bias_zero output/metric equality acceptance contract with the selected attention-only gate",
+      "retain the unchanged 1e-6 per-case attention max-absolute threshold",
+      "make prediction, distance-metric, unit-interval-metric and integer/boolean differences diagnostic-only and non-gating",
+      "state that raw logits differ by an intended common shift and that row-centered logits are optional non-gating diagnostic context",
+      "exclude case_mean_probability-minus-bias_zero from scientific mechanism classification while retaining transparent diagnostic reporting",
+      "preserve all data, checkpoint, condition, order, count, model-state, native-reproduction, coarse-invariance and no-automatic-next-run boundaries",
+      "bind the v3 failed execution and v3 scalar diagnostic as immutable provenance",
+      "state that v2 protocol creation alone authorizes no implementation, checkpoint/NPZ access, GPU execution, retry, Round B or later run"
+    ],
+    "forbidden_v2_changes": [
+      "changing the 1e-6 attention threshold",
+      "introducing any output-level scale-aware acceptance tolerance",
+      "changing model code, weights, beta, probability floor, precision, batch size, case order, fold, checkpoint, data allowlist or condition definitions",
+      "changing primary scientific metrics, bootstrap seed/sample count, classification thresholds or Round A conclusions",
+      "authorizing a formal execution, automatic retry, Round A-I v4, Round B or any subsequent run"
+    ]
+  },
+  "requested_actions_if_explicitly_authorized": {
+    "create_files": [
+      "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v2.json"
+    ],
+    "modify_files": [],
+    "delete_or_move_files": [],
+    "permitted_validation": [
+      "verify the new target did not exist before creation",
+      "parse the new v2 protocol as JSON using the existing system Python without importing project modules",
+      "report the new file byte size and SHA256",
+      "recheck that every evidence-bound existing file SHA256 remains unchanged"
+    ],
+    "tests_authorized": false,
+    "project_python_imports_authorized": false,
+    "implementation_changes_authorized": false
+  },
+  "required_followup_after_protocol_revision": {
+    "next_stage": "separate read-only pre-implementation audit followed by a separate implementation-only authorization request",
+    "anticipated_but_not_authorized_files": [
+      "tools/run_cranial_scqr_v11_l4_round_a_intervention.py",
+      "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py",
+      "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py"
+    ],
+    "anticipated_implementation_goal": "Bind the runner and analyzer to protocol v2, retain the attention gate, remove downstream output/metric equality gates while preserving their diagnostic reporting, rename the acceptance receipt semantics, and update synthetic boundary tests.",
+    "formal_execution_after_implementation": "still requires successful synthetic CPU tests, a separate post-implementation P3 audit, and a new exact single-run execution authorization request"
+  },
+  "explicitly_not_authorized_by_this_request_file_alone": [
+    "creation of l4_round_a_intervention_protocol_v2.json before explicit user authorization",
+    "modification of the v1 protocol or any existing source, test, config, launcher, receipt, log, result, checkpoint or dataset file",
+    "Python project imports, syntax tests, synthetic contract tests or any test suite",
+    "checkpoint deserialization, model construction or model loading",
+    "opening any NPZ or reading partial, implant or gt",
+    "GPU inference, development evaluation, real-result statistical analysis or formal timing",
+    "creation of a launcher, execution receipt, master log or formal output directory",
+    "formal Round A-I retry, replacement execution, resume or automatic retry",
+    "threshold tuning or introduction of a scale-aware output acceptance tolerance",
+    "confirmation20, official test, old monitor or MUG payload access",
+    "training, BNCal, optimizer construction, parameter update or buffer update",
+    "Round B, beta tuning, seed stability or any subsequent run",
+    "Git initialization, commit, annotated tag or GitHub push",
+    "archive creation, deletion, movement or cleanup"
+  ],
+  "failure_policy": {
+    "target_exists_or_source_hash_drift": "Stop without overwrite and report the exact conflict.",
+    "json_validation_failure": "Preserve the new file as review evidence, stop, and request a separately authorized protocol-document hotfix; do not modify implementation or execute an experiment.",
+    "automatic_retry": false,
+    "automatic_next_stage": false
+  },
+  "required_user_authorization": "Explicitly authorize l4_round_a_intervention_negative_control_protocol_revision_authorization_request_v1.json to create only docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v2.json with the selected attention-only negative-control gate, perform only JSON parsing plus SHA256/byte and bound-source immutability checks, and stop. Do not modify any existing file, run tests, import project modules, load checkpoints, open NPZ files, use GPU compute, execute development evaluation or statistics, retry Round A-I, change thresholds, enter Round B, or launch any subsequent run."
+}

@@ -1,0 +1,323 @@
+{
+  "request_id": "cranial-scqr-v1.1-L4-roundA-I-intervention-implementation-request-v1",
+  "status": "PENDING_EXPLICIT_USER_AUTHORIZATION",
+  "authorization_effective": false,
+  "created_at_utc": "2026-09-14T12:47:17Z",
+  "purpose": "Implement and CPU-test a fail-closed same-QC-checkpoint Round A-I mechanism-intervention runner and analyzer without loading any real checkpoint, opening any NPZ payload, using a GPU, or entering Round B.",
+  "parent_plan": {
+    "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_mechanism_postmortem_and_intervention_plan_v1.md",
+    "sha256": "9ff0152bf2bf3f67f0651e0501ad0ad37c461036bcee3553c306d22459877113",
+    "status": "PLAN_ONLY_NOT_AUTHORIZED"
+  },
+  "p1_preimplementation_audit": {
+    "status": "PASS",
+    "completed_at_utc": "2026-09-14T12:47:17Z",
+    "project_identity": {
+      "expected_project_root": "/home/jovyan/adapointr_work/PoinTr",
+      "actual_project_root": "/home/jovyan/adapointr_work/PoinTr",
+      "hostname": "shu-common-25721452-notebook-x9umc5-0",
+      "user": "jovyan",
+      "git_worktree": false,
+      "available_disk_at_audit": "18 GiB",
+      "implementation_test_python": "/opt/conda/envs/adapointr-mamba/bin/python",
+      "implementation_test_python_version": "3.10.20"
+    },
+    "gpu_read_only_snapshot": {
+      "gpu_compute_used": false,
+      "name": "NVIDIA GeForce RTX 4090 D",
+      "uuid": "GPU-41b45aa3-f5e3-e609-53cb-9c48bc7716ed",
+      "driver_version": "575.51.03",
+      "memory_total_mib": 24564,
+      "memory_used_mib": 0,
+      "utilization_percent": 0,
+      "note": "The current UUID differs from the completed v2-evaluation container UUID. No future formal execution may reuse either UUID without a fresh immediate prelaunch binding."
+    },
+    "qc_bncal_checkpoint_bindings": [
+      {
+        "run_key": "QC_foldA_seed0",
+        "fold": "A",
+        "path": "experiments/CranialSCQRV11_QC_foldA_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/ckpt-last-bncal.pth",
+        "absolute_path": "/home/jovyan/adapointr_work/PoinTr/experiments/CranialSCQRV11_QC_foldA_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/ckpt-last-bncal.pth",
+        "bytes": 388540806,
+        "sha256": "b73e1090ce7aa2e81f2707ad63243a29108eca2f35f7e27ff8e7a9c755235358",
+        "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_QC_foldA_seed0.yaml",
+        "runtime_config_bytes": 5231,
+        "runtime_config_sha256": "b2b7c296e17ee0516393337704caa637b87b0002a4fe589545b8b80c94bc56f7",
+        "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/run_completion_receipt.json",
+        "completion_receipt_bytes": 912,
+        "completion_receipt_sha256": "45e9ea07fdd8c0980bde2e6dea3afde1818d3a9bb77be68c5ce1890c7a1e4eed",
+        "audit_method": "stat and streaming sha256 only; no checkpoint deserialization"
+      },
+      {
+        "run_key": "QC_foldB_seed0",
+        "fold": "B",
+        "path": "experiments/CranialSCQRV11_QC_foldB_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldB_seed0_v1_20260914T031939Z/ckpt-last-bncal.pth",
+        "absolute_path": "/home/jovyan/adapointr_work/PoinTr/experiments/CranialSCQRV11_QC_foldB_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldB_seed0_v1_20260914T031939Z/ckpt-last-bncal.pth",
+        "bytes": 388540806,
+        "sha256": "9069f456abaa66e61c3315a85f3e865becd2889b97475bf8469de9bacbfdee3b",
+        "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_QC_foldB_seed0.yaml",
+        "runtime_config_bytes": 5231,
+        "runtime_config_sha256": "89b0c118e29110b9450d1e398c0d8598beaa123fd73b0f7a316c9ed331636df9",
+        "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_QC_foldB_seed0_v1_20260914T031939Z/run_completion_receipt.json",
+        "completion_receipt_bytes": 912,
+        "completion_receipt_sha256": "d58142682ae30628bc08992377d30628a0634cc98355676da8938f8db27b18af",
+        "audit_method": "stat and streaming sha256 only; no checkpoint deserialization"
+      }
+    ],
+    "development_metadata_bindings": {
+      "manifest": "/home/jovyan/datasets/SkullBreakPC_out8192/manifest.jsonl",
+      "manifest_bytes": 734982,
+      "manifest_sha256": "f1f8cae47ed7d5529dc2ca244179cedddbc039981cdc0ff24b25a5c81ad30538",
+      "manifest_payload_files_opened": 0,
+      "fold_a_allowlist": {
+        "path": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt",
+        "bytes": 2478,
+        "sha256": "83ec25f96831c7b5620fa94a2d255605668697bd3fa11ee5c6aab9f92c5dcd01",
+        "cases": 105,
+        "unique_cases": 105,
+        "source_skulls": 21,
+        "cases_per_defect_type": 21
+      },
+      "fold_b_allowlist": {
+        "path": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_dev_case_ids.txt",
+        "bytes": 2478,
+        "sha256": "803a313cdba850a3a277b3a253f4fc106b0bba0eb8289b12f59c38fa95175b1b",
+        "cases": 105,
+        "unique_cases": 105,
+        "source_skulls": 21,
+        "cases_per_defect_type": 21
+      },
+      "combined_cases": 210,
+      "combined_source_skulls": 42,
+      "fold_case_disjoint": true,
+      "fold_source_disjoint": true,
+      "allowlist_manifest_matches": 210,
+      "missing_allowlist_manifest_records": 0,
+      "allowlisted_point_path_policy": "all 210 are unique relative points/*.npz strings, contain no parent traversal and resolve beneath the dataset root; none was opened",
+      "monitor_split_values_for_allowlisted_records": [
+        null
+      ],
+      "official_split_values_for_allowlisted_records": [
+        "train"
+      ]
+    },
+    "frozen_v2_result_binding": {
+      "directory": "logs/cranial_scqr_v11/l4_round_a_development_evaluation/cranial_scqr_v11_l4_round_a_dev_eval_v2_20260914T054006Z",
+      "files_sha256_sha256": "a203a4b3a9d9b154f0f22c1e967b407125f26903d22d348f27a7cd415a33df52",
+      "files_sha256_check_from_result_directory": "PASS_16_OF_16",
+      "mechanism_diagnostics_sha256": "8dee42b7a56efe154f046db70c8f4e8d91678389cb1c357b5e44b17906ad5ec3",
+      "per_model_case_metrics_sha256": "c2e1317715fb037a73ab3e1054c573d0cd3efe4ea57cefb161de2b1d1bdec29e",
+      "fold_and_combined_summary_sha256": "62ce0326bd7c597bc929ca339658fdf1a2f1b359187e15cd430391d2fa867aef",
+      "round_a_gate_receipt_sha256": "70a4ab13bb18f4e2bb41faaca5c6814f639ae5ae8c69c86e33e8be552f36200c",
+      "classification": "NO_GO",
+      "immutability_policy": "read-only parent; never modify, overwrite or delete"
+    },
+    "existing_source_bindings": {
+      "tools/run_cranial_scqr_v11_l4_round_a_dev_eval.py": "6be1c38b46270eff278ea7a54805ba0d572e8aef81a103350308072380c38798",
+      "tools/analyze_cranial_scqr_v11_l4_round_a.py": "3a54206a950c5d6825373ca6364d41feacca44bac28e62b505a7d3d35d47985d",
+      "tools/test_cranial_scqr_v11_l4_round_a_dev_eval_contract.py": "d20c0f81f8b0bc49f72a90040ccdb52cb65ce475d30da9e7df989c4dc4e3b34b",
+      "models/AdaPoinTr.py": "62a743c4c2143b77b0f1656c59d0482563976440d841f04bae995017dbf7588f",
+      "models/cranial_scqr/query_conditioning.py": "e631f6649b3a218e63c39f15f6232607469106ae63b0c7cdf578636b110d9057",
+      "models/cranial_scqr/contact_support.py": "358ea31017344fa4905aac7e495dc87ed7f74496954fd34d7390cd0ea579028f",
+      "models/cranial_scqr/local_geometry.py": "b533efead76c38ff7bc83a5245a88c98e275a37e0523cbbfb793a63b4d645665",
+      "utils/skullfix_metrics.py": "0c4342cd19fb19a659302b0e350c3be34bd21447d2034bdc9d2e81a180174ee5",
+      "utils/evaluation_statistics.py": "e9dd5dbf822407933e68fcba5412789e8bba8cc44cb987fd29c1230f2f50bc17",
+      "datasets/SkullFixDataset.py": "cb26e98f22c9bbf08a6f58db8bcd26d1bf62f07d4334b818186570b1c797eb5a"
+    },
+    "static_intervention_feasibility": {
+      "source_ast_parse": "PASS",
+      "conditioner_accepts_contact_probability": true,
+      "contact_probability_is_detached_in_log_bias": true,
+      "log_bias_is_added_before_proxy_softmax": true,
+      "softmax_dimension_is_proxy_dimension": true,
+      "query_conditioning_occurs_after_coarse_generation": true,
+      "eval_only_instrumentation_guard_exists": true,
+      "implementation_strategy": "temporary forward-input hook or equivalent runner-local stateless wrapper around the existing query conditioner; no persistent model-source or buffer change",
+      "case_mean_probability_softmax_equivalent_to_bias_zero": true
+    },
+    "proposed_target_absence": {
+      "tools/run_cranial_scqr_v11_l4_round_a_intervention.py": true,
+      "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py": true,
+      "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py": true,
+      "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v1.json": true,
+      "meaning": "all four paths were absent at P1 and therefore can be created without overwrite if separately authorized"
+    },
+    "resource_contract_for_future_execution_not_authorized_here": {
+      "gpu_count": 1,
+      "gpu_model": "NVIDIA GeForce RTX 4090 D",
+      "gpu_uuid": "must be freshly bound immediately before a separately authorized formal execution",
+      "minimum_free_gpu_memory_mib_at_launch": 22000,
+      "maximum_observed_gpu_memory_used_mib": 20480,
+      "checkpoint_loads_expected": 2,
+      "model_case_forward_calls_expected": 840,
+      "npz_opens_expected": 210,
+      "prediction_pointcloud_files_saved": false
+    },
+    "zero_effect_counters": {
+      "checkpoint_deserializations": 0,
+      "npz_payload_opens": 0,
+      "gpu_forwards": 0,
+      "optimizer_constructions": 0,
+      "optimizer_steps": 0,
+      "parameter_updates": 0,
+      "buffer_updates": 0,
+      "development_evaluations": 0,
+      "round_b_runs": 0
+    },
+    "non_mutating_command_notes": [
+      "An initial sha256sum -c invocation was issued from the project root although the frozen manifest uses result-directory-relative paths; it failed open without changing any file. Repeating the same check from the frozen result directory passed 16 of 16.",
+      "An initial path-containment assertion used pathlib.Path.is_relative_to under system Python 3.8 and stopped with AttributeError after confirming relative paths and no parent traversal. The Python-3.8-compatible os.path.commonpath assertion then passed for all 210 strings. No NPZ was opened in either check."
+    ]
+  },
+  "requested_file_creations": [
+    "tools/run_cranial_scqr_v11_l4_round_a_intervention.py",
+    "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py",
+    "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py",
+    "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v1.json"
+  ],
+  "requested_existing_file_modifications": [],
+  "requested_implementation_scope": {
+    "frozen_protocol": {
+      "protocol_id": "cranial-scqr-v1.1-L4-roundA-I-same-QC-checkpoint-intervention-v1",
+      "candidate": "QC",
+      "folds": [
+        "A",
+        "B"
+      ],
+      "seed": 0,
+      "condition_order": [
+        "native_qc",
+        "bias_zero",
+        "case_mean_probability",
+        "fixed_seed_within_case_probability_permutation"
+      ],
+      "condition_aliases": {
+        "fixed_permutation": "fixed_seed_within_case_probability_permutation"
+      },
+      "condition_definitions": {
+        "native_qc": "Use the checkpoint-native beta=1 conditioner without intervention.",
+        "bias_zero": "Runner-locally replace the conditioner contact_probability input by ones, making beta*log(p)=0 without changing beta or any persistent state.",
+        "case_mean_probability": "Runner-locally replace every proxy probability by the original case-wise mean probability.",
+        "fixed_seed_within_case_probability_permutation": "Permute original probability values within the case, preserving the exact multiset while destroying proxy-space alignment."
+      },
+      "negative_control_identity": "case_mean_probability and bias_zero must be softmax-equivalent because each differs only by a query-wise constant logit shift.",
+      "permutation_seed_derivation": "Take the first eight bytes, big-endian, of SHA256(protocol_id + '|' + fold + '|' + case_id + '|probability_permutation'), then reduce modulo 2**63; Python hash() is forbidden.",
+      "frozen_q0_reference": "Reuse only the frozen v2 Q0 per-case metrics; do not load or rerun Q0 in Round A-I.",
+      "future_execution_counts": {
+        "folds": 2,
+        "cases_per_fold": 105,
+        "conditions_per_case": 4,
+        "checkpoint_loads": 2,
+        "model_case_forward_calls": 840,
+        "npz_opens": 210,
+        "partial_reads": 210,
+        "implant_reads": 210,
+        "gt_reads": 210,
+        "optimizer_constructions": 0,
+        "optimizer_steps": 0,
+        "parameter_updates": 0,
+        "buffer_updates": 0
+      },
+      "future_data_order": "Open each allowlisted NPZ at most once; obtain partial for four forwards, then obtain metric-only implant and gt under the existing no-label-leakage contract.",
+      "native_reproduction_tolerances": {
+        "distance_metrics_max_abs_mm": 0.00001,
+        "unit_interval_metrics_max_abs": 1e-08,
+        "integer_and_boolean_fields": "exact"
+      },
+      "negative_control_tolerances": {
+        "attention_max_abs": 0.000001,
+        "predicted_points_normalized_max_abs": 0.000001,
+        "distance_metrics_max_abs_mm": 0.00001,
+        "unit_interval_metrics_max_abs": 1e-08,
+        "integer_and_boolean_fields": "exact"
+      },
+      "state_immutability": "Hash every parameter and buffer before the first condition and after the final condition for each checkpoint; require exact equality and require every temporary hook to be removed.",
+      "formal_execution_authorized_by_this_request": false,
+      "round_b_authorized_by_this_request": false
+    },
+    "intervention_runner": [
+      "validate the frozen protocol, both QC checkpoint metadata bindings, both runtime configs and completion receipts, both dev allowlists, the manifest and frozen v2 reference hashes before any future checkpoint load or NPZ open",
+      "implement all four conditions in the exact frozen order through a temporary runner-local stateless intervention at the query-conditioner contact_probability input",
+      "never modify models/AdaPoinTr.py, models/cranial_scqr/query_conditioning.py, a checkpoint tensor, persistent beta, parameter or buffer",
+      "compute deterministic permutation seeds exactly as frozen and verify value-multiset preservation",
+      "record scalar-only metrics and mechanism diagnostics; never save point-cloud predictions or raw tensors",
+      "enforce native-v2 reproduction and case-mean-versus-bias-zero negative-control tolerances before permitting scientific analysis",
+      "write fail-closed audit counters for checkpoint loads, NPZ opens and member reads, forwards, hooks, optimizer activity, state changes and unauthorized split access",
+      "contain no automatic retry, training, BNCal, Round B or next-run path"
+    ],
+    "intervention_analyzer": [
+      "reject analysis unless both folds, all 210 cases and all four conditions are complete and execution-valid",
+      "pair by fold, case_id and seed, then average the five defect cases equally within each source skull",
+      "report bias_zero-minus-native_qc, fixed-permutation-minus-native_qc, case_mean_probability-minus-bias_zero and bias_zero-minus-frozen_Q0 in the frozen order",
+      "use source-skull bootstrap stratified independently by Fold A/B with seed 20260910, 10000 samples and two-sided percentile 95 percent intervals",
+      "report both folds, combined point estimates, intervals and case/source win-tie-loss counts without selective omission",
+      "classify robust harm, directional harm, spatial-alignment benefit, training-path residual gap, conditioning inactivity or invalid execution using only the frozen rules",
+      "emit a non-authorizing mechanism receipt that can never launch or authorize Round B"
+    ],
+    "synthetic_cpu_contract_tests": [
+      "use only in-memory toy tensors, synthetic records and temporary files beneath /tmp",
+      "test exact condition order and names",
+      "test case_mean_probability and bias_zero softmax/output equivalence at the frozen tolerance",
+      "test deterministic probability permutation, multiset preservation and spatial reordering",
+      "test temporary hook removal and exact parameter/buffer immutability",
+      "test native-reference and negative-control tolerance boundaries",
+      "test pairing, five-case source aggregation, deterministic bootstrap and every classification boundary",
+      "test fail-closed rejection of hash, path, count, fold, condition, nonfinite, unauthorized split and existing-output mismatches",
+      "test that PASS or any mechanism classification never grants formal execution, training, confirmation access or Round B"
+    ]
+  },
+  "permitted_verification_if_authorized": {
+    "python_environment": "/opt/conda/envs/adapointr-mamba/bin/python",
+    "syntax_checks": [
+      "tools/run_cranial_scqr_v11_l4_round_a_intervention.py",
+      "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py",
+      "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py"
+    ],
+    "python_bytecode_cache_root": "/tmp/cranial_scqr_v11_round_a_intervention_pycache",
+    "targeted_contract_test": "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py",
+    "synthetic_in_memory_only": true,
+    "temporary_directory_root": "/tmp",
+    "real_checkpoint_loads": 0,
+    "real_npz_opens": 0,
+    "gpu_forwards": 0,
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "model_updates": 0,
+    "model_buffer_updates": 0,
+    "development_evaluations": 0,
+    "formal_statistics_on_model_results": 0
+  },
+  "explicitly_not_requested": [
+    "modification of any existing source, config, result, training output or checkpoint",
+    "checkpoint deserialization or model loading",
+    "opening any NPZ payload or reading partial, implant or gt",
+    "GPU use, inference, profiling or formal timing",
+    "development evaluation or analysis of new real-model results",
+    "creation of a formal launcher or formal output directory",
+    "confirmation20, official test, old monitor or MUG payload access",
+    "training, BNCal, optimizer construction, parameter update or buffer update",
+    "beta tuning, extra permutation seeds, automatic retry or replacement execution",
+    "Round B, seed stability or any subsequent run",
+    "Git initialization, commit, tag or push",
+    "archive creation, deletion, movement or cleanup"
+  ],
+  "required_post_implementation_evidence": [
+    "SHA256 and byte size for each of the four new files",
+    "JSON syntax validation for the frozen intervention protocol",
+    "Python syntax-check results with bytecode cache outside the project",
+    "targeted synthetic CPU contract-test command, test count and result",
+    "proof that every bound existing source hash remains unchanged",
+    "explicit zero counts for checkpoint loads, NPZ opens, GPU forwards, optimizer steps, parameter updates, buffer updates, development evaluations and Round B runs",
+    "a separate P3 post-implementation read-only audit and a separate exact formal Round A-I execution authorization request"
+  ],
+  "failure_policy": {
+    "source_hash_drift": "Stop before implementation and report the exact drift; do not overwrite or adapt silently.",
+    "unexpected_existing_target": "Stop without overwrite.",
+    "syntax_or_synthetic_test_failure": "Stop, preserve evidence and request a separately authorized hotfix if needed; do not load a real checkpoint or open an NPZ.",
+    "negative_control_contract_failure": "Treat as an implementation failure; never relax the tolerance after observing real data.",
+    "automatic_fix": false,
+    "automatic_formal_execution": false,
+    "automatic_round_b": false
+  },
+  "required_user_authorization": "Explicitly authorize creation of only tools/run_cranial_scqr_v11_l4_round_a_intervention.py, tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py, tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py and docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v1.json according to this request, followed only by JSON/Python syntax checks and synthetic CPU contract tests using /tmp; prohibit modification of existing files, real checkpoint loading, NPZ access, GPU use, development evaluation, real-result statistics, formal launcher/output creation, training, BNCal, automatic retry, Round B and any subsequent run."
+}

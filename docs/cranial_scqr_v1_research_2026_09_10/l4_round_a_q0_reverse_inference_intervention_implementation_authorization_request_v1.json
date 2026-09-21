@@ -1,0 +1,203 @@
+{
+  "request_id": "cranial-scqr-v1.1-L4-roundA-I-Q0-reverse-inference-intervention-implementation-request-v1",
+  "status": "PENDING_EXPLICIT_USER_AUTHORIZATION",
+  "authorization_effective": false,
+  "implementation_only": true,
+  "created_at_utc": "2026-09-18T14:09:29Z",
+  "protocol": {
+    "id": "cranial-scqr-v1.1-L4-roundA-I-Q0-reverse-inference-intervention-v1",
+    "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_q0_reverse_inference_intervention_protocol_v1.json",
+    "bytes": 20951,
+    "sha256": "bf447b2585aa799f00bd0f942033971a567eb2ebc527a6ef3d28664facfd3de0",
+    "status": "FROZEN_PENDING_IMPLEMENTATION_AND_SEPARATE_EXECUTION_AUTHORIZATION"
+  },
+  "p1_audit_result": {
+    "status": "PASS",
+    "existing_round_a_i_runner_direct_reuse": false,
+    "reason": "The existing runner requires native beta=1 QC checkpoints and changes contact-probability inputs; Q0 reverse intervention requires a dedicated, exception-safe temporary beta-buffer override from native 0 to inference 1.",
+    "q0_checkpoint_count": 2,
+    "q0_checkpoint_hashes_match_completion_receipts": true,
+    "development_cases": 210,
+    "development_sources": 42,
+    "fold_case_overlap": 0,
+    "frozen_round_a_manifest_check": "PASS_16_OF_16",
+    "frozen_round_a_i_v2_run1_manifest_check": "PASS_16_OF_16",
+    "checkpoint_deserializations": 0,
+    "npz_payload_opens": 0,
+    "gpu_forwards": 0,
+    "formal_statistics_runs": 0
+  },
+  "requested_file_scope": {
+    "creation_only": true,
+    "create_exactly": [
+      "tools/run_cranial_scqr_v11_l4_round_a_q0_reverse_intervention.py",
+      "tools/analyze_cranial_scqr_v11_l4_round_a_q0_reverse_intervention.py",
+      "tools/test_cranial_scqr_v11_l4_round_a_q0_reverse_intervention_contract.py"
+    ],
+    "modify_existing_files": false,
+    "delete_or_move_files": false,
+    "overwrite_if_any_target_exists": false,
+    "target_exists_policy": "stop before writing and report drift"
+  },
+  "bound_read_only_parent_sources": {
+    "tools/run_cranial_scqr_v11_l4_round_a_dev_eval.py": {
+      "bytes": 32853,
+      "sha256": "6be1c38b46270eff278ea7a54805ba0d572e8aef81a103350308072380c38798"
+    },
+    "tools/analyze_cranial_scqr_v11_l4_round_a.py": {
+      "bytes": 23646,
+      "sha256": "3a54206a950c5d6825373ca6364d41feacca44bac28e62b505a7d3d35d47985d"
+    },
+    "tools/test_cranial_scqr_v11_l4_round_a_dev_eval_contract.py": {
+      "bytes": 15281,
+      "sha256": "d20c0f81f8b0bc49f72a90040ccdb52cb65ce475d30da9e7df989c4dc4e3b34b"
+    },
+    "tools/run_cranial_scqr_v11_l4_round_a_intervention.py": {
+      "bytes": 29702,
+      "sha256": "d094ade877a64d0dd27646633095ef7963475f1b8a75c266c5c9825b71bd0ff8"
+    },
+    "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py": {
+      "bytes": 38466,
+      "sha256": "3cd1c618cde88fbd2bfce5dd96f3f666ab22b3b2c5b78ebe1887b3efa2872a28"
+    },
+    "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py": {
+      "bytes": 29452,
+      "sha256": "bf69116f38da7c231b5a409dc2a24bdc15d2772439b32e6b05e063c5688dc9b6"
+    },
+    "models/cranial_scqr/query_conditioning.py": {
+      "bytes": 4610,
+      "sha256": "e631f6649b3a218e63c39f15f6232607469106ae63b0c7cdf578636b110d9057"
+    },
+    "models/cranial_scqr/contact_support.py": {
+      "bytes": 6570,
+      "sha256": "358ea31017344fa4905aac7e495dc87ed7f74496954fd34d7390cd0ea579028f"
+    },
+    "models/cranial_scqr/local_geometry.py": {
+      "bytes": 6255,
+      "sha256": "b533efead76c38ff7bc83a5245a88c98e275a37e0523cbbfb793a63b4d645665"
+    },
+    "models/AdaPoinTr.py": {
+      "bytes": 102362,
+      "sha256": "62a743c4c2143b77b0f1656c59d0482563976440d841f04bae995017dbf7588f"
+    },
+    "utils/skullfix_metrics.py": {
+      "bytes": 9242,
+      "sha256": "0c4342cd19fb19a659302b0e350c3be34bd21447d2034bdc9d2e81a180174ee5"
+    },
+    "utils/evaluation_statistics.py": {
+      "bytes": 5224,
+      "sha256": "e9dd5dbf822407933e68fcba5412789e8bba8cc44cb987fd29c1230f2f50bc17"
+    },
+    "datasets/SkullFixDataset.py": {
+      "bytes": 5243,
+      "sha256": "cb26e98f22c9bbf08a6f58db8bcd26d1bf62f07d4334b818186570b1c797eb5a"
+    }
+  },
+  "implementation_requirements": {
+    "shared": [
+      "Importing any new module must perform no checkpoint, NPZ, CUDA, model-construction or filesystem-write work.",
+      "Bind the exact frozen protocol identity, SHA256, two Q0 configs, completion receipts, BNCal checkpoints, two development allowlists, manifest and both frozen result manifests.",
+      "Fail closed on path escape, hash/byte drift, duplicate or missing cases, wrong fold, wrong seed, wrong candidate, unexpected row count, nonfinite required value or authorization mismatch.",
+      "Require a separate exact, hashed, single-use execution authorization before any real checkpoint deserialization, NPZ open, CUDA use, model forward, development statistic or output-directory creation.",
+      "Do not modify or write any existing protocol, code, model, config, checkpoint, result, receipt, launcher or log."
+    ],
+    "runner": [
+      "Implement exactly two conditions in fixed order: native_q0, then q0_beta1, for each case in exact allowlist order.",
+      "Load exactly Q0_foldA_seed0 and Q0_foldB_seed0 only during a later separately authorized formal execution; assert the loaded query-conditioner beta is exactly 0 before any forward.",
+      "Implement q0_beta1 with a runner-local context manager that clones the original beta buffer, verifies scalar finite native value 0 plus dtype/device, assigns exactly 1 in-place under no_grad, and restores the exact original value in finally even if the forward raises.",
+      "After restoration, assert beta value, dtype and device are unchanged; after all 210 forwards per fold, require exact full parameter and buffer hashes equal to their pre-forward hashes.",
+      "Count exactly 2 checkpoint loads, 210 NPZ opens, 210 reads each of partial/implant/gt, 420 total forwards, 210 temporary beta assignments and 210 restorations; count zero QC checkpoint loads and zero QC forwards.",
+      "Use partial as the only model input; read implant and gt only for metrics; never save raw tensors or point-cloud predictions.",
+      "Compute the same frozen Round A metric fields and diagnostics for both conditions, enforce coarse-condition invariance <=1e-7 normalized, and record finite attention/query-residual diagnostics without adding an outcome-derived gate.",
+      "Reproduce every same-run native_q0 case against the frozen Round A Q0 row using <=1e-5 mm distance tolerance, <=1e-8 unit-interval tolerance and exact integer/boolean fields before permitting causal analysis.",
+      "Use exclusive file creation for any future formal output and preserve failure evidence; no retry or fallback."
+    ],
+    "analyzer": [
+      "Validate exactly 420 new rows: 105 cases per fold and exactly one native_q0 plus one q0_beta1 row per case.",
+      "Validate and reuse exactly the frozen native Q0 rows from the Round A development CSV and native_qc/bias_zero QC rows from the successful Round A-I protocol-v2/run1 CSV; never silently substitute or recompute a frozen cell.",
+      "Use primary metric rim_gt_rim_to_pred_p95_mm and delta left-minus-right, with lower better for distance metrics.",
+      "Compute q0_beta1-minus-native_q0, native_q0-minus-qc_bias_zero, q0_beta1-minus-native_qc and factorial interaction in the frozen order.",
+      "Use bootstrap seed 20260910, 10000 samples, source-skull aggregation after equal averaging of five defects, independent within-fold resampling of 21 sources and equal fold weight.",
+      "Apply only the predeclared 0.01 mm practical-inactivity threshold inherited from Round A-I v2; do not add or tune an equivalence, interaction or clinical threshold after observing results.",
+      "Implement the exact robust/directional/material/mixed classification rules in the frozen protocol, report all guardrails and the single-seed limitation, and keep Round B plus automatic next run false for every outcome."
+    ],
+    "synthetic_contract_test": [
+      "Use only in-memory synthetic tensors/rows and temporary files under /tmp with CUDA hidden.",
+      "Assert protocol identity, status, exact counts, conditions, comparison order, thresholds, authorization locks and parent hashes; reject mutated protocol fields.",
+      "Assert a synthetic beta buffer is exactly 0 outside the context, exactly 1 inside it and restored exactly after normal exit and after a raised exception, without parameter drift or dtype/device changes.",
+      "Assert wrong native beta, non-scalar/nonfinite beta, wrong condition, nested/duplicate intervention, restoration failure and state-hash drift fail closed.",
+      "Assert no Q0 checkpoint path, NPZ payload or CUDA device is touched by module import or the synthetic suite.",
+      "Assert native reproduction tolerance boundaries, coarse invariance boundary, complete two-condition pairing, exact fold/case counts, source aggregation and bootstrap determinism.",
+      "Assert the factorial interaction algebra and every classification boundary, including that no result authorizes Round B, retry, beta tuning or a subsequent run.",
+      "Assert execution authorization must be separate, exact, hashed, single-use and bound to a new non-existing output directory and a later-audited GPU UUID."
+    ]
+  },
+  "permitted_verification_only_after_explicit_implementation_authorization": {
+    "python_environment": {
+      "executable": "/opt/conda/envs/adapointr-mamba/bin/python",
+      "realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+      "version": "3.10.20",
+      "binary_bytes": 17331920,
+      "binary_sha256": "01b4275dc374dcae51d245bda004daad6d7882d3f5de7f9852567bb7ab83180d",
+      "bare_python_forbidden": true,
+      "environment_mutation": false
+    },
+    "json_protocol_check": {
+      "executions": 1,
+      "command": "/opt/conda/envs/adapointr-mamba/bin/python -m json.tool docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_q0_reverse_inference_intervention_protocol_v1.json",
+      "output_redirection": "/dev/null"
+    },
+    "python_syntax_check": {
+      "executions": 1,
+      "command_shape": "CUDA_VISIBLE_DEVICES='' PYTHONPYCACHEPREFIX=/tmp/cranial_scqr_v11_q0_reverse_pycache /opt/conda/envs/adapointr-mamba/bin/python -m py_compile <exactly the three newly created files>",
+      "project_bytecode_cache_forbidden": true
+    },
+    "synthetic_cpu_contract_suite": {
+      "executions": 1,
+      "command": "CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 /opt/conda/envs/adapointr-mamba/bin/python tools/test_cranial_scqr_v11_l4_round_a_q0_reverse_intervention_contract.py",
+      "complete_suite": true,
+      "temporary_directory_root": "/tmp",
+      "real_checkpoint_loads": 0,
+      "real_npz_opens": 0,
+      "gpu_forwards": 0,
+      "development_evaluations": 0,
+      "real_result_statistics": 0
+    },
+    "other_tests_or_commands": false
+  },
+  "required_post_implementation_evidence": [
+    "SHA256 and byte size of each of the three newly created Python files.",
+    "Proof that every bound existing source, frozen protocol, config, completion receipt, checkpoint, allowlist and frozen result remains unchanged.",
+    "Successful Python syntax check with bytecode cache outside the project.",
+    "The one complete synthetic CPU suite command, exact discovered test count and result.",
+    "Explicit evidence for beta override value/lifecycle, restoration on exception, exact state immutability, native-reproduction boundaries, factorial algebra and classification boundaries.",
+    "Explicit zero counts for real checkpoint deserializations, NPZ opens, GPU forwards, development evaluations, real-result statistics, optimizer operations, parameter/persistent-buffer updates, training, BNCal, launchers, formal outputs, retries and Round B runs.",
+    "A separate read-only P3 post-implementation audit and a new exact execution authorization request before any real execution."
+  ],
+  "failure_policy": {
+    "target_already_exists": "stop before writing; do not overwrite, merge or rename around it",
+    "parent_hash_or_size_drift": "stop before writing and report the exact drift; do not adapt silently",
+    "partial_creation_or_syntax_failure": "stop, report all created files and request a separately authorized hotfix; do not run the synthetic suite if syntax prerequisites fail",
+    "synthetic_contract_failure": "stop after the one suite, preserve output, do not weaken assertions, auto-fix, rerun, load a checkpoint, open an NPZ or use GPU",
+    "automatic_retry": false,
+    "automatic_next_stage": false
+  },
+  "explicitly_not_authorized_by_this_request_file_alone": [
+    "creating or modifying any file before the user explicitly authorizes this request",
+    "modifying any existing file, including the frozen protocol, prior tools, model code, configs, checkpoints, protocols, requests, receipts, launchers, logs or results",
+    "creating any file other than the three exact new Python implementation targets after authorization",
+    "loading or deserializing a real checkpoint or constructing a real model",
+    "opening an NPZ or reading partial, implant or gt",
+    "using GPU compute, running development inference, formal statistics, profiling or timing",
+    "creating a formal execution authorization receipt, launcher, tmux session, master log or result directory",
+    "changing beta in a real model, even temporarily",
+    "changing any checkpoint, case order, condition, metric, threshold, bootstrap, classification rule, precision or batch size",
+    "loading or rerunning a QC checkpoint",
+    "accessing confirmation20, official test, old monitor, MUG or train payloads outside the exact future dev allowlists",
+    "optimizer construction, optimizer step, training, BNCal, parameter update or persistent model-buffer update",
+    "automatic fix, retry, resume, replacement execution, Round B or any subsequent run",
+    "Git initialization, commit, tag or push",
+    "archive creation, deletion, movement or cleanup"
+  ],
+  "required_user_authorization": "Explicitly authorize l4_round_a_q0_reverse_inference_intervention_implementation_authorization_request_v1.json to create only tools/run_cranial_scqr_v11_l4_round_a_q0_reverse_intervention.py, tools/analyze_cranial_scqr_v11_l4_round_a_q0_reverse_intervention.py and tools/test_cranial_scqr_v11_l4_round_a_q0_reverse_intervention_contract.py exactly as specified; then run only the frozen JSON check, one syntax check with CUDA hidden and bytecode redirected to /tmp, and one complete synthetic CPU contract suite using /opt/conda/envs/adapointr-mamba/bin/python. Do not modify any existing file, load checkpoints, open NPZ payloads, use GPU, execute development inference or real statistics, create a formal launcher/output, change thresholds, retry any formal run, train, BNCal, enter Round B or launch any subsequent run."
+}

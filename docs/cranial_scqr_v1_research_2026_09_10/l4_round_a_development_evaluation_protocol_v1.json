@@ -1,0 +1,434 @@
+{
+  "protocol_id": "cranial-scqr-v1.1-L4-roundA-development-evaluation-v1",
+  "status": "FROZEN_PENDING_IMPLEMENTATION_AND_SEPARATE_EXECUTION_AUTHORIZATION",
+  "authorization_effective": false,
+  "created_at_utc": "2026-09-14T04:58:07Z",
+  "purpose": "Evaluate the eight completed Round A seed-0 BNCal checkpoints on their own held-out Fold A or Fold B development allowlists and apply the predeclared Round A gate.",
+  "parent_bindings": {
+    "experiment_plan": "docs/cranial_scqr_v1_research_2026_09_10/experiment_plan_zh.md",
+    "experiment_plan_sha256": "8b1fceb98d142466e5694ef9510f0c15ec5ec457b6713a41bcd92386f7aeaf37",
+    "round_a_training_protocol": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_training_protocol_v1.json",
+    "round_a_training_protocol_sha256": "b7044f4f24e2f0b4a1e38a9d4ca466f2bb8168ffe1a0ad864b3e1c8f1c3f0fe9"
+  },
+  "preparation_authorization": {
+    "source": "explicit user message in current Codex task",
+    "allowed_now": [
+      "read and hash eight completion receipts",
+      "read bytes only to hash and size eight BNCal checkpoints",
+      "read Fold A and Fold B development text allowlists",
+      "read existing evaluator, metric and instrumentation source code",
+      "write this protocol and its implementation authorization request"
+    ],
+    "checkpoint_deserializations_performed": 0,
+    "npz_files_opened": 0,
+    "npz_members_opened": 0,
+    "gpu_forwards_performed": 0,
+    "development_evaluations_performed": 0,
+    "statistics_computed_from_model_results": 0
+  },
+  "checkpoint_matrix": [
+    {
+      "run_key": "B0_foldA_seed0",
+      "candidate": "B0",
+      "fold": "A",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_B0_foldA_seed0.yaml",
+      "runtime_config_sha256": "b1b805708b41b48377fa58854936a4895db3561cb819c6e9917bbc42e1435702",
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_B0_foldA_seed0_v1_20260911T160850Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "c4fa7eca0abcc63d48746ca5071ff201954f6202276b68604e4ffcbb91db5be1",
+      "completion_receipt_bytes": 868,
+      "bncal_checkpoint": "experiments/CranialSCQRV11_B0_foldA_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_B0_foldA_seed0_v1_20260911T160850Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_sha256": "7d222bda667dd428199ce0696873e550d53d0ecf2004b24f887a46963024a549",
+      "bncal_checkpoint_bytes": 380342819,
+      "development_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt"
+    },
+    {
+      "run_key": "B0_foldB_seed0",
+      "candidate": "B0",
+      "fold": "B",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_B0_foldB_seed0.yaml",
+      "runtime_config_sha256": "f30e92e9fce8bb789fed93badc2bea947b6bc86e6d1116bbf4c7184edad11520",
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_B0_foldB_seed0_v1_20260912T073100Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "89301e7a490b55b043e81cae3bf0c46579b4a1eeeaa254c94c06de1b1218de70",
+      "completion_receipt_bytes": 904,
+      "bncal_checkpoint": "experiments/CranialSCQRV11_B0_foldB_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_B0_foldB_seed0_v1_20260912T073100Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_sha256": "22d47a0939140c37bc6180f3e0a3fb4d743b09e661c0afc7ad0683b58f2954d8",
+      "bncal_checkpoint_bytes": 380342819,
+      "development_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_dev_case_ids.txt"
+    },
+    {
+      "run_key": "A1_foldA_seed0",
+      "candidate": "A1",
+      "fold": "A",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_A1_foldA_seed0.yaml",
+      "runtime_config_sha256": "6073bbfec604e5dd3a65c4c5dabc49607401b5c174e53b53ed5eea3797cc77bb",
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_A1_foldA_seed0_v1_20260912T080511Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "0cc4748c2f62d920cfa831ecfa3bfafa21e605d4dd274d446ac7e7034c3bdc3b",
+      "completion_receipt_bytes": 911,
+      "bncal_checkpoint": "experiments/CranialSCQRV11_A1_foldA_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_A1_foldA_seed0_v1_20260912T080511Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_sha256": "10e06314eb2aad849e45dabec4753a35c50b1b593fcc5d0f9045efdbd5708d5e",
+      "bncal_checkpoint_bytes": 382568951,
+      "development_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt"
+    },
+    {
+      "run_key": "A1_foldB_seed0",
+      "candidate": "A1",
+      "fold": "B",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_A1_foldB_seed0.yaml",
+      "runtime_config_sha256": "8ad414d9dca7fd02ab035abc6eaf6b309ebf921295adfdfc6043c28f2e1b5b09",
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_A1_foldB_seed0_v1_20260912T083611Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "7072366d6dc07112be3ab9d23fab747c50ed1b7511f8cf9c273a663309cac30c",
+      "completion_receipt_bytes": 912,
+      "bncal_checkpoint": "experiments/CranialSCQRV11_A1_foldB_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_A1_foldB_seed0_v1_20260912T083611Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_sha256": "6434707e670bee92fa3ffc02b77ec472393ea1068662d085b2e5eaf0d3508f40",
+      "bncal_checkpoint_bytes": 382568951,
+      "development_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_dev_case_ids.txt"
+    },
+    {
+      "run_key": "Q0_foldA_seed0",
+      "candidate": "Q0",
+      "fold": "A",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_Q0_foldA_seed0.yaml",
+      "runtime_config_sha256": "4246419bd464f504072997b06bda15cd7805605e9f12c55f80a53e6edad95b70",
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_Q0_foldA_seed0_v1_20260912T091016Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "b37252fd0be2d5b74a33dd9bacc4974d306f7e5485fcf64eb0e519f78c7a40e0",
+      "completion_receipt_bytes": 912,
+      "bncal_checkpoint": "experiments/CranialSCQRV11_Q0_foldA_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_Q0_foldA_seed0_v1_20260912T091016Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_sha256": "267572474120963183a2e3ca9651cc2ea1f94b24937748cb67ca426ef92cc75f",
+      "bncal_checkpoint_bytes": 388540806,
+      "development_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt"
+    },
+    {
+      "run_key": "Q0_foldB_seed0",
+      "candidate": "Q0",
+      "fold": "B",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_Q0_foldB_seed0.yaml",
+      "runtime_config_sha256": "4a7739194bf7db34b48f2700bc502904cc460304802e89969877bfb641a8dad4",
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_Q0_foldB_seed0_v1_20260912T151201Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "a98dfc935e152b4543c9b449886ae17961b97488c3dd32b8113fa5aac5cefd61",
+      "completion_receipt_bytes": 912,
+      "bncal_checkpoint": "experiments/CranialSCQRV11_Q0_foldB_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_Q0_foldB_seed0_v1_20260912T151201Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_sha256": "edd496c3dc7e4cf894e95697bf89e965de353dc38d5173ca665d906f182e5b08",
+      "bncal_checkpoint_bytes": 388540806,
+      "development_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_dev_case_ids.txt"
+    },
+    {
+      "run_key": "QC_foldA_seed0",
+      "candidate": "QC",
+      "fold": "A",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_QC_foldA_seed0.yaml",
+      "runtime_config_sha256": "b2b7c296e17ee0516393337704caa637b87b0002a4fe589545b8b80c94bc56f7",
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "45e9ea07fdd8c0980bde2e6dea3afde1818d3a9bb77be68c5ce1890c7a1e4eed",
+      "completion_receipt_bytes": 912,
+      "bncal_checkpoint": "experiments/CranialSCQRV11_QC_foldA_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_sha256": "b73e1090ce7aa2e81f2707ad63243a29108eca2f35f7e27ff8e7a9c755235358",
+      "bncal_checkpoint_bytes": 388540806,
+      "development_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt"
+    },
+    {
+      "run_key": "QC_foldB_seed0",
+      "candidate": "QC",
+      "fold": "B",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_QC_foldB_seed0.yaml",
+      "runtime_config_sha256": "89b0c118e29110b9450d1e398c0d8598beaa123fd73b0f7a316c9ed331636df9",
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_QC_foldB_seed0_v1_20260914T031939Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "d58142682ae30628bc08992377d30628a0634cc98355676da8938f8db27b18af",
+      "completion_receipt_bytes": 912,
+      "bncal_checkpoint": "experiments/CranialSCQRV11_QC_foldB_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldB_seed0_v1_20260914T031939Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_sha256": "9069f456abaa66e61c3315a85f3e865becd2889b97475bf8469de9bacbfdee3b",
+      "bncal_checkpoint_bytes": 388540806,
+      "development_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_dev_case_ids.txt"
+    }
+  ],
+  "development_allowlists": {
+    "A": {
+      "path": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt",
+      "sha256": "83ec25f96831c7b5620fa94a2d255605668697bd3fa11ee5c6aab9f92c5dcd01",
+      "bytes": 2478,
+      "cases": 105,
+      "sources": 21,
+      "cases_per_source": 5,
+      "cases_per_defect_type": 21
+    },
+    "B": {
+      "path": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_dev_case_ids.txt",
+      "sha256": "803a313cdba850a3a277b3a253f4fc106b0bba0eb8289b12f59c38fa95175b1b",
+      "bytes": 2478,
+      "cases": 105,
+      "sources": 21,
+      "cases_per_source": 5,
+      "cases_per_defect_type": 21
+    },
+    "a_b_case_disjoint": true,
+    "a_b_source_disjoint": true,
+    "combined_cases": 210,
+    "combined_sources": 42,
+    "defect_types": [
+      "bilateral",
+      "frontoorbital",
+      "parietotemporal",
+      "random_1",
+      "random_2"
+    ]
+  },
+  "future_execution_contract": {
+    "execution_authorized_by_this_protocol": false,
+    "implementation_authorized_by_this_protocol": false,
+    "gpu_count": 1,
+    "gpu_model": "NVIDIA GeForce RTX 4090 D",
+    "precision": "FP32",
+    "model_mode": "eval",
+    "torch_grad_enabled": false,
+    "batch_size": 1,
+    "num_workers": 0,
+    "shuffle": false,
+    "case_order": "exact allowlist order",
+    "checkpoint_order": [
+      "B0_foldA_seed0",
+      "B0_foldB_seed0",
+      "A1_foldA_seed0",
+      "A1_foldB_seed0",
+      "Q0_foldA_seed0",
+      "Q0_foldB_seed0",
+      "QC_foldA_seed0",
+      "QC_foldB_seed0"
+    ],
+    "checkpoint_loads_expected": 8,
+    "model_case_forward_calls_expected": 840,
+    "cases_per_checkpoint": 105,
+    "checkpoint_state_policy": "hash before load; verify full parameter and buffer state unchanged after all 105 forwards",
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "model_parameter_updates": 0,
+    "model_buffer_updates": 0,
+    "training": false,
+    "bncal": false,
+    "formal_timing": false,
+    "prediction_pointcloud_files_saved": false,
+    "automatic_retry": false,
+    "automatic_next_run": false
+  },
+  "future_data_contract": {
+    "development_payload_authorization_required_separately": true,
+    "dataset": "SkullBreakPC_out8192 development84",
+    "fold_binding": "each checkpoint may access only its own 105-case held-out development allowlist",
+    "model_input_members": [
+      "partial"
+    ],
+    "metric_only_npz_members": [
+      "implant",
+      "gt"
+    ],
+    "metric_only_manifest_metadata": [
+      "case_id",
+      "skull_id",
+      "source_skull_id",
+      "defect_type",
+      "official_split",
+      "gate_split",
+      "monitor_split",
+      "normalization.centroid",
+      "normalization.scale"
+    ],
+    "npz_open_policy": "one explicit allowlisted open per model-case; audit exact member names",
+    "expected_npz_open_events": 840,
+    "expected_member_reads": {
+      "partial": 840,
+      "implant": 840,
+      "gt": 840
+    },
+    "gt_or_implant_may_enter_model_forward": false,
+    "confirmation20_payload_access": false,
+    "official_test_payload_access": false,
+    "old_monitor_payload_access": false,
+    "mug_payload_access": false,
+    "train_allowlist_payload_access": false
+  },
+  "metric_contract": {
+    "physical_space": "millimeters after manifest normalization inversion",
+    "rim_band_mm": 2.0,
+    "nsd_tolerances_mm": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "primary_display_name": "RimCover-P95",
+    "primary_field": "rim_gt_rim_to_pred_p95_mm",
+    "primary_definition": "per-case 95th percentile of reference defective-side rim point distance to predicted implant; numpy linear percentile convention",
+    "case_aggregation": "compute every case first",
+    "source_aggregation": "equal mean of the five defect cases for each source skull",
+    "fold_aggregation": "equal mean across 21 source skulls",
+    "combined_a_b_aggregation": "equal mean across 42 disjoint source skulls",
+    "required_surface_metrics": [
+      "implant_cd_l1_mm",
+      "implant_pred_to_ref_mean_mm",
+      "implant_ref_to_pred_mean_mm",
+      "implant_hd95_mm",
+      "implant_nsd_at_1mm",
+      "final_cd_l1_mm",
+      "final_hd95_mm",
+      "final_nsd_at_1mm"
+    ],
+    "required_contact_metrics": [
+      "rim_reference_rim_points",
+      "rim_predicted_rim_points",
+      "rim_gt_rim_to_pred_mean_mm",
+      "rim_gt_rim_to_pred_p95_mm",
+      "rim_contact_cd_l1_mm",
+      "rim_contact_hd95_mm",
+      "rim_contact_precision",
+      "rim_contact_recall",
+      "zero_contact_2mm"
+    ],
+    "required_tail_reports": [
+      "case_median",
+      "case_p90",
+      "case_p95",
+      "by_defect_type",
+      "per_source_delta_distribution",
+      "paired_improved_and_worsened_case_counts",
+      "paired_improved_and_worsened_source_counts"
+    ],
+    "nonfinite_policy": "never drop or nanmean a nonfinite primary or guardrail value; freeze the case and fail the applicable numeric gate",
+    "empty_prediction_policy": "empty or nonfinite model point output is an execution failure",
+    "empty_reference_rim_policy": "evaluation-data contract failure; freeze and stop without case exclusion",
+    "zero_predicted_contact_policy": "RimCover-P95 remains computed; contact HD95 may be NA but zero-contact and disaster counters must increment as specified",
+    "historical_disaster_policy": "count nonfinite core geometry or contact HD95 greater than 50 mm, while separately reporting zero-contact and numeric-failure causes"
+  },
+  "mechanism_diagnostics": {
+    "instrumentation_enabled_only_in_eval_mode": true,
+    "instrumentation_must_not_change_model_outputs": true,
+    "B0_not_applicable_fields_are_explicit_nulls": true,
+    "A1_required": [
+      "proxy_positive_prevalence",
+      "contact_auprc",
+      "contact_ap_minus_prevalence",
+      "knn32_radius_mm_distribution",
+      "local_residual_rms",
+      "alpha_local"
+    ],
+    "Q0_QC_required": [
+      "proxy_positive_prevalence",
+      "contact_auprc",
+      "contact_ap_minus_prevalence",
+      "positive_attention_mass",
+      "query_attention_entropy",
+      "inter_query_attention_similarity",
+      "query_residual_rms",
+      "alpha_query",
+      "coarse_rimcover_p95_mm"
+    ],
+    "label_construction": "after the model forward only, use metric-only implant plus partial and deterministic stable KNN32; labels never enter prediction",
+    "raw_tensor_dump": false,
+    "predeclared_qc_interventions": [
+      "bias_zero",
+      "case_mean_probability",
+      "fixed_seed_within_case_probability_permutation"
+    ],
+    "qc_interventions_in_primary_round_a_execution": false,
+    "qc_interventions_require_separate_future_execution_authorization": true
+  },
+  "round_a_analysis_contract": {
+    "pairing_key": "fold plus case_id plus seed",
+    "primary_comparison_order": [
+      "QC_minus_B0",
+      "QC_minus_Q0"
+    ],
+    "secondary_candidate": "A1",
+    "delta_definition": "candidate minus comparator; negative is better for distance metrics",
+    "bootstrap_seed": 20260910,
+    "bootstrap_samples": 10000,
+    "bootstrap_unit": "source skull after equal averaging of five defect cases",
+    "bootstrap_stratification": "resample 21 source skulls independently within Fold A and Fold B, then combine with equal fold weight",
+    "bootstrap_ci": "two-sided percentile 95 percent, exploratory and not an independent confirmation claim",
+    "round_a_gate_uses_predeclared_point_estimates_and_guardrails": true,
+    "pass_requirements": [
+      "QC-minus-B0 fold-A mean RimCover-P95 delta <= 0",
+      "QC-minus-B0 fold-B mean RimCover-P95 delta <= 0",
+      "combined QC-minus-B0 mean RimCover-P95 delta <= -0.10 mm",
+      "combined QC-minus-Q0 mean RimCover-P95 delta < 0",
+      "QC-minus-B0 implant CD delta <= 0.10 mm in each fold and combined",
+      "QC-minus-B0 final CD delta <= 0.10 mm in each fold and combined",
+      "QC-minus-B0 final HD95 delta <= 0.50 mm in each fold and combined",
+      "QC-minus-B0 final NSD at 1 mm delta >= -0.01 in each fold and combined",
+      "QC zero-contact count does not exceed B0 in either fold",
+      "QC disaster count does not exceed B0 in either fold",
+      "all required numeric, execution and resource gates pass"
+    ],
+    "classification_if_not_pass": [
+      "INCONCLUSIVE for mixed fold signs or unclear contact increment",
+      "NEGATIVE for clear worsening",
+      "NO_GO for failed guardrails or absent required improvement"
+    ],
+    "round_b_authorized_by_gate_result": false,
+    "automatic_beta_adjustment": false,
+    "automatic_candidate_exclusion": false
+  },
+  "required_outputs_for_future_execution": [
+    "per_model_case_metrics.csv",
+    "per_model_source_metrics.csv",
+    "mechanism_diagnostics.csv",
+    "fold_and_combined_summary.json",
+    "paired_deltas.csv",
+    "round_a_gate_receipt.json",
+    "evaluation_execution_receipt.json",
+    "files.sha256",
+    "console.log",
+    "exit_code",
+    "started_at_utc.txt",
+    "finished_at_utc.txt"
+  ],
+  "implementation_bindings": {
+    "existing_read_only_sources": {
+      "tools/evaluate_skullfix_implant.py": "2bc216724a8ef550625eb0242fc9a733fff1091e67589ccbec2a7bc0b53a6059",
+      "utils/skullfix_metrics.py": "0c4342cd19fb19a659302b0e350c3be34bd21447d2034bdc9d2e81a180174ee5",
+      "utils/evaluation_statistics.py": "e9dd5dbf822407933e68fcba5412789e8bba8cc44cb987fd29c1230f2f50bc17",
+      "datasets/SkullFixDataset.py": "cb26e98f22c9bbf08a6f58db8bcd26d1bf62f07d4334b818186570b1c797eb5a",
+      "tools/runner.py": "07d6b9b05ada5549d8ed4781f57f31c1655e50eb5917583cd0f4e9b151b61804",
+      "tools/builder.py": "8c6d2f436376e0075164413865a2ec68ea40f4f68e96a3011c07468280f6c3bf",
+      "utils/config.py": "2058b26feff2e513f3f9d9d0d350ebce13f5035d94b4ef5e3ef27a8142578a91",
+      "models/__init__.py": "72e5306c514605a1d05ae38c90b879d20103cd90f079286ec8988d9097fdd3d1",
+      "models/AdaPoinTr.py": "62a743c4c2143b77b0f1656c59d0482563976440d841f04bae995017dbf7588f",
+      "models/cranial_scqr/__init__.py": "d2d85b33cff9689dd06f2c2a0845a6aebccba03b6e706904afc8f4d97851cc5b",
+      "models/cranial_scqr/contact_support.py": "358ea31017344fa4905aac7e495dc87ed7f74496954fd34d7390cd0ea579028f",
+      "models/cranial_scqr/local_geometry.py": "b533efead76c38ff7bc83a5245a88c98e275a37e0523cbbfb793a63b4d645665",
+      "models/cranial_scqr/query_conditioning.py": "e631f6649b3a218e63c39f15f6232607469106ae63b0c7cdf578636b110d9057"
+    },
+    "new_files_proposed": [
+      "tools/run_cranial_scqr_v11_l4_round_a_dev_eval.py",
+      "tools/analyze_cranial_scqr_v11_l4_round_a.py",
+      "tools/test_cranial_scqr_v11_l4_round_a_dev_eval_contract.py"
+    ],
+    "existing_files_to_modify": [],
+    "formal_launcher_deferred_until_execution_authorization": "scripts/run_cranial_scqr_v11_l4_round_a_dev_eval_once.sh"
+  },
+  "generic_evaluator_gaps_requiring_wrapper": [
+    "no binding to eight completion receipts and checkpoint hashes",
+    "randomized case order",
+    "dataset access plus load_full_sample causes duplicate NPZ opens",
+    "nanmean and finite filtering can hide nonfinite gate values",
+    "bootstrap is case-level rather than paired source-skull clustered across models",
+    "no eight-model pairing or Round A gate",
+    "no parameter and buffer immutability audit",
+    "no protected-split payload ledger",
+    "no SCQR mechanism diagnostic collection"
+  ],
+  "stop_policy": {
+    "hash_or_size_mismatch": "stop before checkpoint load or NPZ access",
+    "wrong_fold_or_allowlist": "stop before NPZ access",
+    "nonfinite_or_empty_model_output": "freeze evidence and stop without excluding the case",
+    "parameter_or_buffer_change": "fail execution, freeze evidence and stop",
+    "count_mismatch": "fail execution and stop",
+    "execution_failure": "no retry without new explicit authorization",
+    "development_result": "freeze positive, negative or inconclusive result without changing thresholds",
+    "next_stage": "never automatic"
+  }
+}

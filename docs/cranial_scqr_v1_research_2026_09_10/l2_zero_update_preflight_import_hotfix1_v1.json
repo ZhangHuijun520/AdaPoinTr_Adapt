@@ -1,0 +1,46 @@
+{
+  "amendment_id": "cranial-scqr-v1.1-L2-zero-update-preflight-import-hotfix1-v1",
+  "status": "frozen_before_replacement_execution",
+  "authorized_by_user": "L2 import hotfix1 + one replacement zero-update preflight",
+  "amends_protocol": "docs/cranial_scqr_v1_research_2026_09_10/l2_zero_update_preflight_protocol_v1.json",
+  "amends_protocol_sha256": "e5e0555dd91cf866bb919a8ff5cd6f84ecf695d79693b36624e787922e17c3d8",
+  "frozen_failure": {
+    "receipt": "logs/cranial_scqr_v11/l2_zero_update_preflight/l2_zero_update_preflight_v1_20260911T071812Z/l2_preflight_receipt.json",
+    "receipt_sha256": "529b6ca223adb5a12784f63571098f83fc006f5c31df3aa76873a1f46defabad",
+    "files_manifest_sha256": "4bd4bf48a9aa5946fac59a116bb14f6d53d441f541083400ff72a72ddf1104db",
+    "classification": "harness_import_failure_before_runner_main",
+    "full_model_forward_calls": 0,
+    "full_model_backward_calls": 0,
+    "optimizer_steps": 0,
+    "dataset_payload_files_opened": 0
+  },
+  "hotfix": {
+    "scope": "entry_point_import_path_only",
+    "old_runner_sha256": "13a0a1d6d231cdc28bc4f533636cf63a2e75c17396c1da55bc73bc23cf1fc58d",
+    "new_runner_sha256": "95a9f15e26c2ef96e072e3c7d58324db01cfc026dc81534d5ded46e60c1b3c48",
+    "change": "Before project-local imports, resolve Path(__file__).parents[1] and prepend it to sys.path only if absent.",
+    "model_code_changed": false,
+    "synthetic_input_changed": false,
+    "required_checks_changed": false,
+    "execution_counts_changed": false,
+    "diagnostic_auxiliary_weight_changed": false
+  },
+  "replacement_execution": {
+    "allowed_runs": 1,
+    "output_dir": "logs/cranial_scqr_v11/l2_zero_update_preflight/l2_zero_update_preflight_hotfix1_v1_20260911T072948Z",
+    "reuse_failed_output_dir": false,
+    "python_executable": "/opt/conda/envs/adapointr-mamba/bin/python"
+  },
+  "unchanged_boundaries": {
+    "full_model_forward_calls": 7,
+    "full_model_backward_calls": 1,
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "bncal_runs": 0,
+    "formal_timing_iterations": 0,
+    "dataset_manifest_files_opened": 0,
+    "dataset_payload_files_opened": 0,
+    "training_authorized": false,
+    "auxiliary_loss_calibration_authorized": false
+  }
+}

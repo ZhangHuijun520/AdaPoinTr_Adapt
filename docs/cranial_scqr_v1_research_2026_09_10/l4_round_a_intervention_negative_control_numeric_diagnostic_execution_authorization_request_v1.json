@@ -1,0 +1,368 @@
+{
+  "request_id": "cranial-scqr-v1.1-L4-roundA-I-negative-control-numeric-diagnostic-execution-request-v1",
+  "status": "PENDING_EXPLICIT_USER_AUTHORIZATION",
+  "authorization_effective": false,
+  "created_at_utc": "2026-09-15T05:47:49Z",
+  "purpose": "Request exactly one formal scalar-only numerical diagnostic for the single failed Fold A Round A-I case. This request file alone authorizes nothing.",
+  "protocol": {
+    "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_protocol_v1.json",
+    "protocol_id": "cranial-scqr-v1.1-L4-roundA-I-negative-control-numeric-diagnostic-v1",
+    "sha256": "10e7c777974f27fd92e55115942660910d18a21230a5699d244b9b3fffc2806f",
+    "bytes": 15114,
+    "status": "FROZEN_DESIGN_IMPLEMENTATION_AND_EXECUTION_NOT_AUTHORIZED"
+  },
+  "p3_post_implementation_audit": {
+    "status": "PASS_EXECUTION_NOT_STARTED",
+    "audit_at_utc": "2026-09-15T05:47:49Z",
+    "methods": [
+      "in-memory Python compile",
+      "AST parsing",
+      "symtable parsing",
+      "JSON contract inspection",
+      "SHA256 and byte-size checks",
+      "Fold A allowlist text inspection",
+      "manifest JSONL metadata-only inspection",
+      "proposed-path absence checks",
+      "read-only disk-capacity query"
+    ],
+    "synthetic_contract_history": [
+      {
+        "stage": "implementation_initial",
+        "result": "10_PASS_8_ERROR",
+        "single_cause": "Python runtime lacks str.removeprefix",
+        "real_resource_access": false
+      },
+      {
+        "stage": "implementation_hotfix1_replacement",
+        "result": "11_PASS_7_ERROR",
+        "single_cause": "Installed Torch lacks torch.linalg.vector_norm",
+        "real_resource_access": false
+      },
+      {
+        "stage": "implementation_hotfix2_replacement",
+        "result": "PASS_18_OF_18",
+        "tests": 18,
+        "runtime_seconds": 0.059,
+        "cuda_hidden": true,
+        "python_bytecode_writes_disabled": true,
+        "real_checkpoint_npz_cuda_and_model_boundaries_mocked_to_fail": true,
+        "real_resource_access": false
+      }
+    ],
+    "checkpoint_deserialization_count": 0,
+    "npz_open_count": 0,
+    "npz_payload_hash_count": 0,
+    "npz_member_read_count": 0,
+    "gpu_query_count": 0,
+    "gpu_inference_count": 0,
+    "real_model_construction_count": 0,
+    "real_forward_count": 0,
+    "formal_output_creation_count": 0,
+    "launcher_creation_count": 0,
+    "tmux_launch_count": 0,
+    "training_count": 0,
+    "bncal_count": 0,
+    "existing_artifact_modification_count": 0,
+    "available_disk_kib_at_p3": 18762752
+  },
+  "implementation_bindings": {
+    "runner": {
+      "path": "tools/run_cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic.py",
+      "sha256": "a125013e9aa8d6ba03f7108b7ae1218f0be6f63fad16a64b8326cc5d0dcbae20",
+      "bytes": 40226,
+      "syntax_ast_symtable": "PASS"
+    },
+    "analyzer": {
+      "path": "tools/analyze_cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic.py",
+      "sha256": "f8f6b0980d5ae309c18e9c90d2e21018f7859ee459c3e3ad915ba77b935d7fe1",
+      "bytes": 23463,
+      "syntax_ast_symtable": "PASS"
+    },
+    "synthetic_contract_test": {
+      "path": "tools/test_cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_contract.py",
+      "sha256": "d5eadd3db3b45baf43d118ebe249640e56dbd2a86187a3ae0f05d55bf7643499",
+      "bytes": 21999,
+      "syntax_ast_symtable": "PASS",
+      "final_replacement_suite": "PASS_18_OF_18"
+    },
+    "implementation_authorization_request": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_implementation_authorization_request_v1.json",
+      "sha256": "f9dfea79c005ea60eeee1d5f0c92aeaacb40344d7f575e7cc065866871276b25",
+      "bytes": 11379
+    }
+  },
+  "parent_failure_evidence": {
+    "formal_round_a_i_v3_output": "logs/cranial_scqr_v11/l4_round_a_intervention/cranial_scqr_v11_l4_round_a_intervention_v3_20260914T140415Z",
+    "failure_receipt": {
+      "path": "logs/cranial_scqr_v11/l4_round_a_intervention/cranial_scqr_v11_l4_round_a_intervention_v3_20260914T140415Z/intervention_failure_receipt.json",
+      "sha256": "fdbc0822b0bf8550a19224e84692a811c058bec2c2d598d46e962ef1dd3fedb9",
+      "bytes": 735,
+      "status": "FAILED_STOPPED_NO_RETRY",
+      "error": "prediction negative control failed: A/train__000__frontoorbital"
+    },
+    "must_remain_immutable": true,
+    "reuse_or_overwrite_authorized": false
+  },
+  "exact_case_binding": {
+    "fold": "A",
+    "case_id": "train__000__frontoorbital",
+    "source_skull_id": "000",
+    "defect_type": "frontoorbital",
+    "allowlist": {
+      "path": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt",
+      "sha256": "83ec25f96831c7b5620fa94a2d255605668697bd3fa11ee5c6aab9f92c5dcd01",
+      "bytes": 2478,
+      "cases": 105,
+      "target_line_one_based": 2
+    },
+    "manifest": {
+      "path": "/home/jovyan/datasets/SkullBreakPC_out8192/manifest.jsonl",
+      "sha256": "f1f8cae47ed7d5529dc2ca244179cedddbc039981cdc0ff24b25a5c81ad30538",
+      "bytes": 734982,
+      "target_line_one_based": 102,
+      "dataset": "SkullBreak",
+      "official_split": "train",
+      "gate_split": "train",
+      "monitor_split": null,
+      "point_path": "points/train__000__frontoorbital.npz",
+      "p3_npz_open_count": 0
+    },
+    "normalization_scale_mm_per_normalized_unit": 95.31487479704157
+  },
+  "exact_checkpoint_binding": {
+    "run_key": "QC_foldA_seed0",
+    "candidate": "QC",
+    "seed": 0,
+    "lambda_scf": 0.8852418767331852,
+    "contact_bias_beta": 1.0,
+    "runtime_config": {
+      "path": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_QC_foldA_seed0.yaml",
+      "sha256": "b2b7c296e17ee0516393337704caa637b87b0002a4fe589545b8b80c94bc56f7",
+      "bytes": 5231
+    },
+    "completion_receipt": {
+      "path": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/run_completion_receipt.json",
+      "sha256": "45e9ea07fdd8c0980bde2e6dea3afde1818d3a9bb77be68c5ce1890c7a1e4eed",
+      "bytes": 912,
+      "status": "TRAINING_AND_BNCAL_PASS"
+    },
+    "bncal_checkpoint": {
+      "path": "experiments/CranialSCQRV11_QC_foldA_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/ckpt-last-bncal.pth",
+      "sha256": "b73e1090ce7aa2e81f2707ad63243a29108eca2f35f7e27ff8e7a9c755235358",
+      "bytes": 388540806,
+      "p3_deserialization_count": 0
+    }
+  },
+  "requested_formal_execution": {
+    "executions": 1,
+    "checkpoint_loads": 1,
+    "npz_open_events": 1,
+    "npz_member_reads": {
+      "partial": 1,
+      "implant": 0,
+      "gt": 0
+    },
+    "model_case_forward_calls": 4,
+    "conditions": [
+      "bias_zero",
+      "case_mean_probability"
+    ],
+    "replicates_per_condition": 2,
+    "forward_order": [
+      "bias_zero_rep0",
+      "case_mean_probability_rep0",
+      "bias_zero_rep1",
+      "case_mean_probability_rep1"
+    ],
+    "same_partial_tensor_reused": true,
+    "precision": "FP32",
+    "model_mode": "eval",
+    "torch_grad_enabled": false,
+    "batch_size": 1,
+    "num_workers": 0,
+    "deterministic_flags_may_be_changed": false,
+    "reseeding_between_forwards": false,
+    "model_parameter_or_buffer_updates": 0,
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "threshold_change": false,
+    "classification_role": "DESCRIPTIVE_ONE_CASE_NUMERIC_DIAGNOSIS_ONLY"
+  },
+  "scalar_output_contract": {
+    "raw_tensor_or_point_cloud_files": false,
+    "predicted_coordinates": false,
+    "partial_coordinates": false,
+    "attention_logit_or_residual_arrays": false,
+    "allowed_numerical_outputs": [
+      "finite scalar summaries",
+      "pairwise max_abs, mean_abs, RMS and p95_abs",
+      "normalized and millimetre prediction-error scalars",
+      "constant-shift logit scalars",
+      "threshold-reference ratios",
+      "counts, shapes, dtypes and SHA256 digests"
+    ],
+    "interpretation": [
+      "within-condition repeated-forward variability",
+      "cross-condition centered-logit or softmax roundoff",
+      "downstream amplification",
+      "inconclusive when repeat variability is comparable to or larger than cross-condition prediction error"
+    ],
+    "new_tolerance_or_acceptance_gate": false,
+    "one_case_generalization": false,
+    "model_ranking": false,
+    "scientific_significance_claim": false
+  },
+  "resource_scope": {
+    "gpu_count": 1,
+    "gpu_model": "NVIDIA GeForce RTX 4090 D",
+    "gpu_uuid": "GPU-41b45aa3-f5e3-e609-53cb-9c48bc7716ed",
+    "gpu_state_at_p3": "NOT_QUERIED_BY_AUTHORIZATION",
+    "minimum_free_gpu_memory_mib_at_launch": 22000,
+    "minimum_free_disk_gib_at_launch": 8,
+    "maximum_walltime_hours": 1,
+    "resource_identity_and_capacity_recheck_immediately_before_launch": true,
+    "resource_mismatch_policy": "stop before checkpoint deserialization or NPZ access"
+  },
+  "proposed_runtime": {
+    "authorization_receipt": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_execution_authorization_receipt_v1.json",
+    "authorization_receipt_status": "NOT_CREATED_PENDING_EXPLICIT_AUTHORIZATION",
+    "launcher": "scripts/run_cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_once_v1.sh",
+    "launcher_status": "NOT_CREATED_PENDING_EXPLICIT_AUTHORIZATION",
+    "run_id": "cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_v1_20260915T054749Z",
+    "tmux_session": "scqr_l4_rounda_i_ncdiag_v1_20260915t054749z",
+    "master_log": "logs/cranial_scqr_v11/l4_round_a_intervention_negative_control_numeric_diagnostic/tmux_v1/cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_v1_20260915T054749Z.log",
+    "output_directory": "logs/cranial_scqr_v11/l4_round_a_intervention_negative_control_numeric_diagnostic/cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_v1_20260915T054749Z",
+    "authorization_receipt_exists": false,
+    "launcher_exists": false,
+    "master_log_exists": false,
+    "output_directory_exists": false,
+    "tmux_started": false
+  },
+  "execution_authorization_receipt_contract": {
+    "authorization_effective": true,
+    "execution_authorized": true,
+    "authorized_once": true,
+    "protocol_id": "cranial-scqr-v1.1-L4-roundA-I-negative-control-numeric-diagnostic-v1",
+    "protocol_sha256": "10e7c777974f27fd92e55115942660910d18a21230a5699d244b9b3fffc2806f",
+    "output_directory": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_scqr_v11/l4_round_a_intervention_negative_control_numeric_diagnostic/cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_v1_20260915T054749Z",
+    "fold": "A",
+    "case_id": "train__000__frontoorbital",
+    "forward_order": [
+      "bias_zero_rep0",
+      "case_mean_probability_rep0",
+      "bias_zero_rep1",
+      "case_mean_probability_rep1"
+    ],
+    "conditions": [
+      "bias_zero",
+      "case_mean_probability"
+    ],
+    "allowed_npz_members": [
+      "partial"
+    ],
+    "authorized_counts": {
+      "checkpoint_loads": 1,
+      "npz_opens": 1,
+      "partial_reads": 1,
+      "model_case_forward_calls": 4,
+      "conditions": 2,
+      "replicates_per_condition": 2
+    },
+    "resource_scope": {
+      "gpu_count": 1,
+      "gpu_model": "NVIDIA GeForce RTX 4090 D",
+      "gpu_uuid": "GPU-41b45aa3-f5e3-e609-53cb-9c48bc7716ed",
+      "minimum_free_gpu_memory_mib_at_launch": 22000,
+      "minimum_free_disk_gib_at_launch": 8,
+      "maximum_walltime_hours": 1,
+      "immediate_prelaunch_recheck_required": true
+    },
+    "protected_payload_access": {
+      "implant": false,
+      "gt": false,
+      "Fold_B": false,
+      "Q0": false,
+      "native_qc": false,
+      "fixed_permutation": false,
+      "confirmation20": false,
+      "official_test": false,
+      "old_monitor": false,
+      "MUG": false
+    },
+    "automatic_retry": false,
+    "formal_round_a_i_retry": false,
+    "threshold_change_authorized": false,
+    "training_authorized": false,
+    "bncal_authorized": false,
+    "round_b_authorized": false,
+    "automatic_next_run": false,
+    "runner_sha256": "a125013e9aa8d6ba03f7108b7ae1218f0be6f63fad16a64b8326cc5d0dcbae20",
+    "analyzer_sha256": "f8f6b0980d5ae309c18e9c90d2e21018f7859ee459c3e3ad915ba77b935d7fe1",
+    "contract_test_sha256": "d5eadd3db3b45baf43d118ebe249640e56dbd2a86187a3ae0f05d55bf7643499",
+    "raw_tensor_dumps_authorized": false,
+    "prediction_pointcloud_files_authorized": false,
+    "formal_launcher_creation_authorized": true,
+    "tmux_launch_authorized": true,
+    "failure_policy": "Freeze scalar-only failure evidence in the fixed output directory and stop; do not retry, resume, modify thresholds, execute Round A-I v4, enter Round B or launch any subsequent run without new explicit authorization."
+  },
+  "requested_creations_after_explicit_execution_authorization": [
+    "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_negative_control_numeric_diagnostic_execution_authorization_receipt_v1.json",
+    "scripts/run_cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_once_v1.sh",
+    "logs/cranial_scqr_v11/l4_round_a_intervention_negative_control_numeric_diagnostic/tmux_v1/cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_v1_20260915T054749Z.log",
+    "logs/cranial_scqr_v11/l4_round_a_intervention_negative_control_numeric_diagnostic/cranial_scqr_v11_l4_round_a_i_negative_control_numeric_diagnostic_v1_20260915T054749Z"
+  ],
+  "required_formal_output_files": [
+    "numeric_diagnostic_scalars.json",
+    "diagnostic_completion_receipt.json",
+    "files.sha256"
+  ],
+  "failure_output_files": [
+    "numeric_diagnostic_failure_receipt.json",
+    "files.sha256"
+  ],
+  "launch_contract": {
+    "single_use_launcher": true,
+    "cuda_visible_devices": "0",
+    "runner_device_argument": "cuda:0",
+    "protocol_sha256_argument": "10e7c777974f27fd92e55115942660910d18a21230a5699d244b9b3fffc2806f",
+    "manifest_sha256_argument": "f1f8cae47ed7d5529dc2ca244179cedddbc039981cdc0ff24b25a5c81ad30538",
+    "data_root": "/home/jovyan/datasets/SkullBreakPC_out8192",
+    "stdout_and_stderr": "append to the fixed external master log",
+    "runner_output_is_scalar_only": true,
+    "no_shell_retry_loop": true,
+    "no_resume_or_fallback": true,
+    "no_threshold_override": true
+  },
+  "stop_and_recovery": {
+    "hash_path_size_count_authorization_or_resource_mismatch": "stop before checkpoint deserialization or NPZ access",
+    "unexpected_runtime_failure": "write only scalar-safe failure receipt and files.sha256, preserve evidence, then stop",
+    "automatic_retry": false,
+    "automatic_resume": false,
+    "precision_or_batch_fallback": false,
+    "threshold_change": false,
+    "formal_round_a_i_retry": false,
+    "round_b_or_subsequent_run": false,
+    "execution_by_this_request_file_alone": false
+  },
+  "explicitly_not_authorized_by_this_request_file_alone": [
+    "creation of the authorization receipt, launcher, master log or formal output directory",
+    "checkpoint deserialization or model construction",
+    "opening any NPZ or reading partial, implant or gt",
+    "GPU query or GPU inference",
+    "the formal scalar diagnostic",
+    "Fold B access",
+    "Q0 checkpoint loading or rerun",
+    "native_qc or fixed-permutation forward",
+    "any case other than A/train__000__frontoorbital",
+    "confirmation20, official test, old monitor or MUG payload access",
+    "raw tensor or point-cloud dumps",
+    "optimizer construction, model update, training or BNCal",
+    "automatic retry, resume, fallback or threshold changes",
+    "formal Round A-I v4 retry",
+    "Round B, beta tuning, seed stability or any subsequent run",
+    "modification, overwrite, deletion or reuse of frozen v1-v3 failure evidence or training outputs",
+    "Git commit, tag or push",
+    "archive creation, deletion, movement or cleanup"
+  ],
+  "required_user_authorization": "Explicitly authorize exactly one formal scalar-only numerical diagnostic according to l4_round_a_intervention_negative_control_numeric_diagnostic_execution_authorization_request_v1.json: create only its fixed authorization receipt and one-use launcher, use the fixed tmux session, one bound RTX 4090 D, fixed external master log and new output directory; load the QC Fold A BNCal checkpoint once, open only A/train__000__frontoorbital NPZ once, read only partial once, reuse the same FP32 partial tensor, and execute exactly bias_zero_rep0, case_mean_probability_rep0, bias_zero_rep1, case_mean_probability_rep1. Save only the three frozen scalar-safe output files and stop. Prohibit implant/gt, Fold B, Q0, native_qc, fixed permutation, other cases or datasets, raw tensors or point clouds, model updates, training, BNCal, threshold changes, formal Round A-I retry, automatic retry/resume/fallback, Round B and every subsequent run."
+}

@@ -1,0 +1,252 @@
+{
+  "protocol_id": "cranial-scqr-v1.1-L4-roundA-I-same-QC-checkpoint-intervention-v1",
+  "protocol_version": 1,
+  "status": "FROZEN_IMPLEMENTATION_PROTOCOL_EXECUTION_NOT_AUTHORIZED",
+  "created_at_utc": "2026-09-14T12:47:17Z",
+  "implementation_authorization_request": {
+    "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_implementation_authorization_request_v1.json",
+    "sha256": "1de0e3136e11fde0530d9947157e90f92a2b89af7743d0019b9e54a40aca360b"
+  },
+  "parent_mechanism_plan": {
+    "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_mechanism_postmortem_and_intervention_plan_v1.md",
+    "sha256": "9ff0152bf2bf3f67f0651e0501ad0ad37c461036bcee3553c306d22459877113"
+  },
+  "objective": "Separate the immediate inference-time effect of beta=1 contact bias from the weight-state difference learned by independently trained Q0 and QC checkpoints, without entering Round B.",
+  "checkpoint_matrix": [
+    {
+      "run_key": "QC_foldA_seed0",
+      "candidate": "QC",
+      "fold": "A",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_QC_foldA_seed0.yaml",
+      "runtime_config_sha256": "b2b7c296e17ee0516393337704caa637b87b0002a4fe589545b8b80c94bc56f7",
+      "runtime_config_bytes": 5231,
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "45e9ea07fdd8c0980bde2e6dea3afde1818d3a9bb77be68c5ce1890c7a1e4eed",
+      "completion_receipt_bytes": 912,
+      "bncal_checkpoint": "experiments/CranialSCQRV11_QC_foldA_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_sha256": "b73e1090ce7aa2e81f2707ad63243a29108eca2f35f7e27ff8e7a9c755235358",
+      "bncal_checkpoint_bytes": 388540806,
+      "development_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt"
+    },
+    {
+      "run_key": "QC_foldB_seed0",
+      "candidate": "QC",
+      "fold": "B",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_QC_foldB_seed0.yaml",
+      "runtime_config_sha256": "89b0c118e29110b9450d1e398c0d8598beaa123fd73b0f7a316c9ed331636df9",
+      "runtime_config_bytes": 5231,
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_QC_foldB_seed0_v1_20260914T031939Z/run_completion_receipt.json",
+      "completion_receipt_sha256": "d58142682ae30628bc08992377d30628a0634cc98355676da8938f8db27b18af",
+      "completion_receipt_bytes": 912,
+      "bncal_checkpoint": "experiments/CranialSCQRV11_QC_foldB_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldB_seed0_v1_20260914T031939Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_sha256": "9069f456abaa66e61c3315a85f3e865becd2889b97475bf8469de9bacbfdee3b",
+      "bncal_checkpoint_bytes": 388540806,
+      "development_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_dev_case_ids.txt"
+    }
+  ],
+  "development_allowlists": {
+    "A": {
+      "path": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt",
+      "sha256": "83ec25f96831c7b5620fa94a2d255605668697bd3fa11ee5c6aab9f92c5dcd01",
+      "bytes": 2478,
+      "cases": 105,
+      "sources": 21,
+      "cases_per_source": 5
+    },
+    "B": {
+      "path": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_dev_case_ids.txt",
+      "sha256": "803a313cdba850a3a277b3a253f4fc106b0bba0eb8289b12f59c38fa95175b1b",
+      "bytes": 2478,
+      "cases": 105,
+      "sources": 21,
+      "cases_per_source": 5
+    },
+    "fold_case_disjoint": true,
+    "fold_source_disjoint": true,
+    "combined_cases": 210,
+    "combined_sources": 42,
+    "defect_types": [
+      "bilateral",
+      "frontoorbital",
+      "parietotemporal",
+      "random_1",
+      "random_2"
+    ]
+  },
+  "data_binding": {
+    "manifest": "/home/jovyan/datasets/SkullBreakPC_out8192/manifest.jsonl",
+    "manifest_sha256": "f1f8cae47ed7d5529dc2ca244179cedddbc039981cdc0ff24b25a5c81ad30538",
+    "manifest_bytes": 734982,
+    "dataset_root": "/home/jovyan/datasets/SkullBreakPC_out8192",
+    "allowed_npz_members": [
+      "partial",
+      "implant",
+      "gt"
+    ],
+    "model_input_members": [
+      "partial"
+    ],
+    "metric_only_members": [
+      "implant",
+      "gt"
+    ],
+    "forbidden_payloads": [
+      "train outside the exact dev allowlists",
+      "confirmation20",
+      "official test",
+      "old monitor",
+      "MUG"
+    ]
+  },
+  "frozen_v2_reference": {
+    "directory": "logs/cranial_scqr_v11/l4_round_a_development_evaluation/cranial_scqr_v11_l4_round_a_dev_eval_v2_20260914T054006Z",
+    "files_sha256_sha256": "a203a4b3a9d9b154f0f22c1e967b407125f26903d22d348f27a7cd415a33df52",
+    "per_model_case_metrics": "logs/cranial_scqr_v11/l4_round_a_development_evaluation/cranial_scqr_v11_l4_round_a_dev_eval_v2_20260914T054006Z/per_model_case_metrics.csv",
+    "per_model_case_metrics_sha256": "c2e1317715fb037a73ab3e1054c573d0cd3efe4ea57cefb161de2b1d1bdec29e",
+    "mechanism_diagnostics_sha256": "8dee42b7a56efe154f046db70c8f4e8d91678389cb1c357b5e44b17906ad5ec3",
+    "fold_and_combined_summary_sha256": "62ce0326bd7c597bc929ca339658fdf1a2f1b359187e15cd430391d2fa867aef",
+    "round_a_gate_receipt_sha256": "70a4ab13bb18f4e2bb41faaca5c6814f639ae5ae8c69c86e33e8be552f36200c",
+    "q0_and_qc_case_rows_expected": 420,
+    "reuse_q0_without_rerun": true
+  },
+  "conditions": {
+    "order": [
+      "native_qc",
+      "bias_zero",
+      "case_mean_probability",
+      "fixed_seed_within_case_probability_permutation"
+    ],
+    "aliases": {
+      "fixed_permutation": "fixed_seed_within_case_probability_permutation"
+    },
+    "native_qc": "Use the QC checkpoint-native beta=1 conditioner without intervention.",
+    "bias_zero": "Replace the conditioner contact-probability argument with ones inside a temporary runner-local pre-hook; never mutate beta.",
+    "case_mean_probability": "Replace every proxy probability with the original case-wise mean probability inside the same temporary hook.",
+    "fixed_seed_within_case_probability_permutation": "Permute the original probability values within the case, preserving the exact multiset while destroying spatial correspondence.",
+    "case_mean_probability_is_bias_zero_softmax_negative_control": true,
+    "permutation_seed_derivation": "first eight bytes big-endian of SHA256(protocol_id + '|' + fold + '|' + case_id + '|probability_permutation'), reduced modulo 2**63",
+    "python_hash_forbidden": true
+  },
+  "numeric_contract": {
+    "native_reproduction": {
+      "distance_metrics_max_abs_mm": 0.00001,
+      "unit_interval_metrics_max_abs": 1e-08,
+      "integer_and_boolean_fields": "exact"
+    },
+    "case_mean_vs_bias_zero": {
+      "attention_max_abs": 0.000001,
+      "predicted_points_normalized_max_abs": 0.000001,
+      "distance_metrics_max_abs_mm": 0.00001,
+      "unit_interval_metrics_max_abs": 1e-08,
+      "integer_and_boolean_fields": "exact"
+    },
+    "coarse_condition_invariance_max_abs_normalized": 1e-07,
+    "conditioning_inactive_primary_max_abs_mm": 0.01,
+    "nonfinite_policy": "fail; never drop or nanmean a primary or guardrail value"
+  },
+  "analysis_contract": {
+    "primary_metric": "rim_gt_rim_to_pred_p95_mm",
+    "delta_definition": "left minus right; negative is better for distance metrics",
+    "comparison_order": [
+      "bias_zero_minus_native_qc",
+      "fixed_permutation_minus_native_qc",
+      "case_mean_probability_minus_bias_zero",
+      "bias_zero_minus_frozen_Q0"
+    ],
+    "bootstrap_seed": 20260910,
+    "bootstrap_samples": 10000,
+    "bootstrap_unit": "source skull after equal averaging of five defect cases",
+    "bootstrap_stratification": "resample 21 source skulls independently within Fold A and Fold B, then combine with equal fold weight",
+    "bootstrap_ci": "two-sided percentile 95 percent",
+    "classification_rules": {
+      "robust_immediate_bias_harm": "bias_zero-minus-native is <=0 in both folds and its combined CI upper bound is <0",
+      "directional_immediate_bias_harm": "bias_zero-minus-native combined point estimate is <0 but robust-harm criteria are not met",
+      "robust_spatial_alignment_benefit": "bias_zero-minus-native and fixed-permutation-minus-native combined CI lower bounds are both >0",
+      "conditioning_effect_inactive": "absolute Fold A, Fold B and combined primary deltas for bias_zero-minus-native and fixed-permutation-minus-native are all <=0.01 mm",
+      "training_path_residual_gap_robust": "bias_zero-minus-frozen-Q0 combined CI lower bound is >0",
+      "training_path_residual_gap_directional": "bias_zero-minus-frozen-Q0 combined point estimate is >0 but its CI crosses zero",
+      "otherwise": "mixed or inconclusive"
+    },
+    "round_b_authorized_by_any_result": false,
+    "automatic_beta_tuning": false,
+    "automatic_next_run": false
+  },
+  "future_execution_contract": {
+    "execution_authorized_by_this_protocol": false,
+    "separate_exact_execution_authorization_required": true,
+    "gpu_count": 1,
+    "gpu_model": "NVIDIA GeForce RTX 4090 D",
+    "gpu_uuid": "bind only during a future immediate prelaunch audit",
+    "precision": "FP32",
+    "model_mode": "eval",
+    "torch_grad_enabled": false,
+    "batch_size": 1,
+    "num_workers": 0,
+    "shuffle": false,
+    "case_order": "exact allowlist order",
+    "checkpoint_loads_expected": 2,
+    "cases_per_checkpoint": 105,
+    "conditions_per_case": 4,
+    "model_case_forward_calls_expected": 840,
+    "npz_opens_expected": 210,
+    "partial_reads_expected": 210,
+    "implant_reads_expected": 210,
+    "gt_reads_expected": 210,
+    "temporary_probability_hooks_expected": 630,
+    "temporary_probability_hooks_removed_expected": 630,
+    "minimum_free_gpu_memory_mib_at_launch": 22000,
+    "maximum_observed_gpu_memory_used_mib": 20480,
+    "checkpoint_state_policy": "full parameter and buffer hashes must be identical before and after all 420 forwards for each fold checkpoint",
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "parameter_updates": 0,
+    "buffer_updates": 0,
+    "training": false,
+    "bncal": false,
+    "formal_timing": false,
+    "prediction_pointcloud_files_saved": false,
+    "automatic_retry": false,
+    "automatic_next_run": false,
+    "round_b": false
+  },
+  "implementation_bindings": {
+    "existing_read_only_sources": {
+      "tools/run_cranial_scqr_v11_l4_round_a_dev_eval.py": "6be1c38b46270eff278ea7a54805ba0d572e8aef81a103350308072380c38798",
+      "tools/analyze_cranial_scqr_v11_l4_round_a.py": "3a54206a950c5d6825373ca6364d41feacca44bac28e62b505a7d3d35d47985d",
+      "tools/test_cranial_scqr_v11_l4_round_a_dev_eval_contract.py": "d20c0f81f8b0bc49f72a90040ccdb52cb65ce475d30da9e7df989c4dc4e3b34b",
+      "models/AdaPoinTr.py": "62a743c4c2143b77b0f1656c59d0482563976440d841f04bae995017dbf7588f",
+      "models/cranial_scqr/query_conditioning.py": "e631f6649b3a218e63c39f15f6232607469106ae63b0c7cdf578636b110d9057",
+      "models/cranial_scqr/contact_support.py": "358ea31017344fa4905aac7e495dc87ed7f74496954fd34d7390cd0ea579028f",
+      "models/cranial_scqr/local_geometry.py": "b533efead76c38ff7bc83a5245a88c98e275a37e0523cbbfb793a63b4d645665",
+      "utils/skullfix_metrics.py": "0c4342cd19fb19a659302b0e350c3be34bd21447d2034bdc9d2e81a180174ee5",
+      "utils/evaluation_statistics.py": "e9dd5dbf822407933e68fcba5412789e8bba8cc44cb987fd29c1230f2f50bc17",
+      "datasets/SkullFixDataset.py": "cb26e98f22c9bbf08a6f58db8bcd26d1bf62f07d4334b818186570b1c797eb5a"
+    }
+  },
+  "output_contract_for_future_execution": {
+    "output_directory": "must be a new non-existing path fixed by a separate execution authorization",
+    "required_outputs": [
+      "per_condition_case_metrics.csv",
+      "per_condition_source_metrics.csv",
+      "intervention_mechanism_diagnostics.csv",
+      "paired_intervention_deltas.csv",
+      "intervention_summary.json",
+      "mechanism_classification_receipt.json",
+      "intervention_execution_receipt.json"
+    ],
+    "raw_tensor_dump": false,
+    "pointcloud_prediction_dump": false,
+    "round_b_launcher": false
+  },
+  "authorization_boundary": {
+    "implementation_and_synthetic_cpu_tests_authorized_separately": true,
+    "real_checkpoint_loads_authorized": false,
+    "real_npz_opens_authorized": false,
+    "gpu_use_authorized": false,
+    "development_evaluation_authorized": false,
+    "training_or_bncal_authorized": false,
+    "round_b_authorized": false
+  }
+}

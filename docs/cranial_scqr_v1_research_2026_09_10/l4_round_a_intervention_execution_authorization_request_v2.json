@@ -1,0 +1,469 @@
+{
+  "request_id": "cranial-scqr-v1.1-L4-roundA-I-intervention-execution-request-v2",
+  "status": "PENDING_EXPLICIT_USER_AUTHORIZATION",
+  "authorization_effective": false,
+  "created_at_utc": "2026-09-14T13:49:20Z",
+  "purpose": "Request exactly one replacement v2 formal Round A-I same-QC-checkpoint intervention after the v1 attempt stopped on the first native forward because the runner read query attention from the wrapper instrumentation top level instead of its backbone mapping; this request file alone authorizes nothing.",
+  "protocol": {
+    "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v1.json",
+    "protocol_id": "cranial-scqr-v1.1-L4-roundA-I-same-QC-checkpoint-intervention-v1",
+    "bytes": 12603,
+    "sha256": "3c8b8e8e73b6e258e43bfa67a8a50d37b43fdfe27cdce450715b527acbf6a85a",
+    "status": "FROZEN_IMPLEMENTATION_PROTOCOL_EXECUTION_NOT_AUTHORIZED"
+  },
+  "p3_postimplementation_audit": {
+    "status": "PASS",
+    "completed_at_utc": "2026-09-14T13:49:20Z",
+    "project_identity": {
+      "expected_project_root": "/home/jovyan/adapointr_work/PoinTr",
+      "actual_project_root": "/home/jovyan/adapointr_work/PoinTr",
+      "hostname": "shu-common-25721452-notebook-x9umc5-0",
+      "user": "jovyan",
+      "git_worktree": false,
+      "available_disk": "18 GiB"
+    },
+    "implementation_bindings": {
+      "tools/run_cranial_scqr_v11_l4_round_a_intervention.py": {
+        "bytes": 29694,
+        "sha256": "dc5df77e2029b396b499e7736757a00a1c0297182ea7cd34b592fb69d319e279",
+        "ast_parse": "PASS"
+      },
+      "tools/analyze_cranial_scqr_v11_l4_round_a_intervention.py": {
+        "bytes": 33138,
+        "sha256": "180bc58b644d6042b50c6828cbf87df151110ae27f5fac5110a05b0fcdd0b012",
+        "ast_parse": "PASS"
+      },
+      "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py": {
+        "bytes": 23759,
+        "sha256": "8d32ac35bf320ac847f3651b0344d09ab5cfbfe8b2cdef18df42fe2e2ff1db49",
+        "ast_parse": "PASS"
+      },
+      "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_protocol_v1.json": {
+        "bytes": 12603,
+        "sha256": "3c8b8e8e73b6e258e43bfa67a8a50d37b43fdfe27cdce450715b527acbf6a85a",
+        "json_parse": "PASS"
+      }
+    },
+    "implementation_hotfix1": {
+      "scope": [
+        "tools/run_cranial_scqr_v11_l4_round_a_intervention.py",
+        "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py"
+      ],
+      "runner_before_sha256": "33602cc32c4e1a23422d796c8f0b2e54fae22e309ca4b488cfd5a87b7e4d16e6",
+      "runner_after_sha256": "57288c1888c3dbb995e60e62e3e159a238af05cd9d6bfe3a198d65b3fe16aedf",
+      "test_before_sha256": "c2892f47589076bc94d1253bc8716ec5bf15e8995e06132e1a6be0fca6cfd0d2",
+      "test_after_sha256": "d540beff893e3b549c22971de33b83f4d51b81ccbcb778141496510bfd0432d7",
+      "analyzer_unchanged_sha256": "180bc58b644d6042b50c6828cbf87df151110ae27f5fac5110a05b0fcdd0b012",
+      "protocol_unchanged_sha256": "3c8b8e8e73b6e258e43bfa67a8a50d37b43fdfe27cdce450715b527acbf6a85a"
+    },
+    "synthetic_cpu_contract_test": {
+      "python": "/opt/conda/envs/adapointr-mamba/bin/python",
+      "python_version": "3.10.20",
+      "cuda_visible_devices": "",
+      "test_file": "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py",
+      "test_methods": 16,
+      "result": "PASS_16_OF_16",
+      "elapsed_seconds": 2.213,
+      "checkpoint_loads": 0,
+      "npz_opens": 0,
+      "gpu_forwards": 0,
+      "development_evaluations": 0
+    },
+    "static_execution_guard_audit": {
+      "top_level_torch_imports": 0,
+      "guarded_main": true,
+      "torch_load_occurrences": [
+        {
+          "line": 362,
+          "enclosing_function": "_load_model"
+        }
+      ],
+      "np_load_occurrences": [
+        {
+          "line": 452,
+          "enclosing_function": "_evaluate_partition"
+        }
+      ],
+      "separate_execution_authorization_required": true,
+      "existing_output_rejected": true,
+      "checkpoint_load_ledger": true,
+      "single_npz_open_ledger": true,
+      "four_condition_order_frozen": true,
+      "automatic_retry": false,
+      "round_b_authorized": false,
+      "wrapper_backbone_query_attention_contract_checked": true
+    },
+    "bound_parent_sources_unchanged": {
+      "tools/run_cranial_scqr_v11_l4_round_a_dev_eval.py": "6be1c38b46270eff278ea7a54805ba0d572e8aef81a103350308072380c38798",
+      "tools/analyze_cranial_scqr_v11_l4_round_a.py": "3a54206a950c5d6825373ca6364d41feacca44bac28e62b505a7d3d35d47985d",
+      "tools/test_cranial_scqr_v11_l4_round_a_dev_eval_contract.py": "d20c0f81f8b0bc49f72a90040ccdb52cb65ce475d30da9e7df989c4dc4e3b34b",
+      "models/AdaPoinTr.py": "62a743c4c2143b77b0f1656c59d0482563976440d841f04bae995017dbf7588f",
+      "models/cranial_scqr/query_conditioning.py": "e631f6649b3a218e63c39f15f6232607469106ae63b0c7cdf578636b110d9057",
+      "models/cranial_scqr/contact_support.py": "358ea31017344fa4905aac7e495dc87ed7f74496954fd34d7390cd0ea579028f",
+      "models/cranial_scqr/local_geometry.py": "b533efead76c38ff7bc83a5245a88c98e275a37e0523cbbfb793a63b4d645665",
+      "utils/skullfix_metrics.py": "0c4342cd19fb19a659302b0e350c3be34bd21447d2034bdc9d2e81a180174ee5",
+      "utils/evaluation_statistics.py": "e9dd5dbf822407933e68fcba5412789e8bba8cc44cb987fd29c1230f2f50bc17",
+      "datasets/SkullFixDataset.py": "cb26e98f22c9bbf08a6f58db8bcd26d1bf62f07d4334b818186570b1c797eb5a"
+    },
+    "checkpoint_deserialization_performed": 0,
+    "npz_payload_opens_performed": 0,
+    "gpu_forwards_performed": 0,
+    "tests_rerun_during_p3": 0,
+    "formal_output_created": false,
+    "launcher_created": false,
+    "round_b_started": false,
+    "non_mutating_command_note": "P3 used AST parsing, stat, SHA256, allowlist text counts, frozen-manifest checks and read-only GPU identity/status queries only. No implementation test was rerun during P3.",
+    "implementation_hotfix2": {
+      "authorization_source": "explicit user message in current Codex task",
+      "scope": [
+        "tools/run_cranial_scqr_v11_l4_round_a_intervention.py",
+        "tools/test_cranial_scqr_v11_l4_round_a_intervention_contract.py"
+      ],
+      "runner_before_sha256": "57288c1888c3dbb995e60e62e3e159a238af05cd9d6bfe3a198d65b3fe16aedf",
+      "runner_after_sha256": "dc5df77e2029b396b499e7736757a00a1c0297182ea7cd34b592fb69d319e279",
+      "runner_after_bytes": 29694,
+      "runner_change": "Require wrapper instrumentation.backbone to be a mapping and read scqr_query_attention from that backbone mapping.",
+      "test_before_sha256": "d540beff893e3b549c22971de33b83f4d51b81ccbcb778141496510bfd0432d7",
+      "test_after_sha256": "8d32ac35bf320ac847f3651b0344d09ab5cfbfe8b2cdef18df42fe2e2ff1db49",
+      "test_after_bytes": 23759,
+      "test_change": "Add a CPU toy wrapped-model fixture whose query attention exists only under instrumentation.backbone, reproducing the real AdaPoinTr wrapper contract.",
+      "analyzer_unchanged_sha256": "180bc58b644d6042b50c6828cbf87df151110ae27f5fac5110a05b0fcdd0b012",
+      "protocol_unchanged_sha256": "3c8b8e8e73b6e258e43bfa67a8a50d37b43fdfe27cdce450715b527acbf6a85a",
+      "syntax_check": "PASS: SYNTAX_OK 2/2",
+      "synthetic_cpu_contract_tests": "PASS: 16/16",
+      "elapsed_seconds": 2.213,
+      "cuda_visible_devices": "",
+      "checkpoint_loads": 0,
+      "npz_opens": 0,
+      "gpu_forwards": 0,
+      "development_evaluations": 0,
+      "optimizer_steps": 0,
+      "parameter_updates": 0,
+      "buffer_updates": 0,
+      "temporary_patch_artifacts_remaining": false
+    }
+  },
+  "checkpoint_matrix": [
+    {
+      "run_key": "QC_foldA_seed0",
+      "candidate": "QC",
+      "fold": "A",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_QC_foldA_seed0.yaml",
+      "runtime_config_bytes": 5231,
+      "runtime_config_sha256": "b2b7c296e17ee0516393337704caa637b87b0002a4fe589545b8b80c94bc56f7",
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/run_completion_receipt.json",
+      "completion_receipt_bytes": 912,
+      "completion_receipt_sha256": "45e9ea07fdd8c0980bde2e6dea3afde1818d3a9bb77be68c5ce1890c7a1e4eed",
+      "bncal_checkpoint": "experiments/CranialSCQRV11_QC_foldA_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldA_seed0_v1_20260912T160825Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_bytes": 388540806,
+      "bncal_checkpoint_sha256": "b73e1090ce7aa2e81f2707ad63243a29108eca2f35f7e27ff8e7a9c755235358",
+      "audit_method": "stat plus sha256 only; not deserialized"
+    },
+    {
+      "run_key": "QC_foldB_seed0",
+      "candidate": "QC",
+      "fold": "B",
+      "seed": 0,
+      "runtime_config": "cfgs/SkullBreak_models/cranial_scqr_v11_l4_round_a_authorized_v1/CranialSCQRV11_QC_foldB_seed0.yaml",
+      "runtime_config_bytes": 5231,
+      "runtime_config_sha256": "89b0c118e29110b9450d1e398c0d8598beaa123fd73b0f7a316c9ed331636df9",
+      "completion_receipt": "logs/cranial_scqr_v11/l4_round_a/cranial_scqr_v11_QC_foldB_seed0_v1_20260914T031939Z/run_completion_receipt.json",
+      "completion_receipt_bytes": 912,
+      "completion_receipt_sha256": "d58142682ae30628bc08992377d30628a0634cc98355676da8938f8db27b18af",
+      "bncal_checkpoint": "experiments/CranialSCQRV11_QC_foldB_seed0/cranial_scqr_v11_l4_round_a_authorized_v1/cranial_scqr_v11_QC_foldB_seed0_v1_20260914T031939Z/ckpt-last-bncal.pth",
+      "bncal_checkpoint_bytes": 388540806,
+      "bncal_checkpoint_sha256": "9069f456abaa66e61c3315a85f3e865becd2889b97475bf8469de9bacbfdee3b",
+      "audit_method": "stat plus sha256 only; not deserialized"
+    }
+  ],
+  "data_scope": {
+    "manifest": "/home/jovyan/datasets/SkullBreakPC_out8192/manifest.jsonl",
+    "manifest_bytes": 734982,
+    "manifest_sha256": "f1f8cae47ed7d5529dc2ca244179cedddbc039981cdc0ff24b25a5c81ad30538",
+    "dataset_root": "/home/jovyan/datasets/SkullBreakPC_out8192",
+    "fold_a_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldA_dev_case_ids.txt",
+    "fold_a_allowlist_bytes": 2478,
+    "fold_a_allowlist_sha256": "83ec25f96831c7b5620fa94a2d255605668697bd3fa11ee5c6aab9f92c5dcd01",
+    "fold_b_allowlist": "logs/skullbreak_mamba_v12_development/protocol_v1/foldB_dev_case_ids.txt",
+    "fold_b_allowlist_bytes": 2478,
+    "fold_b_allowlist_sha256": "803a313cdba850a3a277b3a253f4fc106b0bba0eb8289b12f59c38fa95175b1b",
+    "cases_per_fold": 105,
+    "combined_cases": 210,
+    "combined_source_skulls": 42,
+    "npz_opens": 210,
+    "allowed_members": [
+      "partial",
+      "implant",
+      "gt"
+    ],
+    "partial_is_only_model_input": true,
+    "implant_and_gt_are_metric_only": true,
+    "implant_and_gt_read_only_after_all_four_forwards_for_the_case": true,
+    "confirmation20": false,
+    "official_test": false,
+    "old_monitor": false,
+    "MUG": false,
+    "train_outside_exact_dev_allowlists": false
+  },
+  "frozen_v2_reference": {
+    "directory": "logs/cranial_scqr_v11/l4_round_a_development_evaluation/cranial_scqr_v11_l4_round_a_dev_eval_v2_20260914T054006Z",
+    "files_sha256_sha256": "a203a4b3a9d9b154f0f22c1e967b407125f26903d22d348f27a7cd415a33df52",
+    "files_sha256_check": "PASS_16_OF_16",
+    "per_model_case_metrics": "logs/cranial_scqr_v11/l4_round_a_development_evaluation/cranial_scqr_v11_l4_round_a_dev_eval_v2_20260914T054006Z/per_model_case_metrics.csv",
+    "per_model_case_metrics_sha256": "c2e1317715fb037a73ab3e1054c573d0cd3efe4ea57cefb161de2b1d1bdec29e",
+    "q0_reference_reused_without_checkpoint_load": true,
+    "parent_directory_immutable": true
+  },
+  "requested_once_execution": {
+    "checkpoint_order": [
+      "QC_foldA_seed0",
+      "QC_foldB_seed0"
+    ],
+    "condition_order_per_case": [
+      "native_qc",
+      "bias_zero",
+      "case_mean_probability",
+      "fixed_seed_within_case_probability_permutation"
+    ],
+    "checkpoint_loads": 2,
+    "cases_per_checkpoint": 105,
+    "conditions_per_case": 4,
+    "model_case_forward_calls": 840,
+    "npz_opens": 210,
+    "partial_reads": 210,
+    "implant_reads": 210,
+    "gt_reads": 210,
+    "temporary_probability_hooks_registered": 630,
+    "temporary_probability_hooks_removed": 630,
+    "precision": "FP32",
+    "model_mode": "eval",
+    "torch_grad_enabled": false,
+    "batch_size": 1,
+    "num_workers": 0,
+    "shuffle": false,
+    "case_order": "exact fold allowlist order",
+    "same_checkpoint_condition_comparison": true,
+    "native_qc_must_reproduce_frozen_v2": true,
+    "case_mean_probability_must_equal_bias_zero_within_frozen_tolerance": true,
+    "coarse_output_must_be_condition_invariant": true,
+    "checkpoint_parameter_and_buffer_hashes_must_remain_exactly_unchanged": true,
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "parameter_updates": 0,
+    "buffer_updates": 0,
+    "prediction_pointcloud_files_saved": false,
+    "formal_timing": false,
+    "automatic_retry": false,
+    "automatic_resume": false,
+    "automatic_next_run": false,
+    "round_b": false,
+    "execution_kind": "replacement_v2",
+    "supersedes_failed_v1_attempt": true,
+    "replacement_execution_authorized_by_this_request_file_alone": false
+  },
+  "analysis_scope": {
+    "requires_both_folds_all_cases_all_conditions": true,
+    "pairing_key": "fold plus case_id plus seed",
+    "source_aggregation": "equal mean of five defect cases",
+    "comparison_order": [
+      "bias_zero_minus_native_qc",
+      "fixed_permutation_minus_native_qc",
+      "case_mean_probability_minus_bias_zero",
+      "bias_zero_minus_frozen_Q0"
+    ],
+    "primary_metric": "rim_gt_rim_to_pred_p95_mm",
+    "bootstrap_seed": 20260910,
+    "bootstrap_samples": 10000,
+    "bootstrap_unit": "source skull stratified independently within Fold A and Fold B",
+    "threshold_or_classification_changes_authorized": false,
+    "formal_confirmation_claim": false,
+    "round_b_authorized_by_any_classification": false
+  },
+  "resource_scope": {
+    "gpu_count": 1,
+    "gpu_model": "NVIDIA GeForce RTX 4090 D",
+    "gpu_uuid": "GPU-41b45aa3-f5e3-e609-53cb-9c48bc7716ed",
+    "driver_version": "575.51.03",
+    "gpu_memory_total_mib": 24564,
+    "gpu_memory_used_mib_at_p3": 0,
+    "gpu_utilization_percent_at_p3": 0,
+    "minimum_free_gpu_memory_mib_at_launch": 22000,
+    "maximum_observed_gpu_memory_used_mib": 20480,
+    "minimum_free_disk_gib_at_launch": 8,
+    "maximum_walltime_hours": 4,
+    "resource_state_and_uuid_must_be_rechecked_immediately_before_launch": true,
+    "resource_mismatch_policy": "stop before checkpoint deserialization or NPZ access",
+    "gpu_free_memory_mib_at_p3": 24082,
+    "available_disk_at_p3": "18 GiB"
+  },
+  "proposed_runtime": {
+    "authorization_receipt": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_execution_authorization_receipt_v2.json",
+    "authorization_receipt_status": "NOT_CREATED_PENDING_EXPLICIT_AUTHORIZATION",
+    "launcher": "scripts/run_cranial_scqr_v11_l4_round_a_intervention_once_v2.sh",
+    "launcher_status": "NOT_CREATED_PENDING_EXPLICIT_AUTHORIZATION",
+    "run_id": "cranial_scqr_v11_l4_round_a_intervention_v2_20260914T134525Z",
+    "tmux_session": "scqr_l4_rounda_intervention_v2_20260914t134525z",
+    "master_log": "logs/cranial_scqr_v11/l4_round_a_intervention/tmux_v2/cranial_scqr_v11_round_a_intervention_v2_20260914T134525Z.log",
+    "output_directory": "logs/cranial_scqr_v11/l4_round_a_intervention/cranial_scqr_v11_l4_round_a_intervention_v2_20260914T134525Z",
+    "authorization_receipt_exists": false,
+    "launcher_exists": false,
+    "master_log_exists": false,
+    "output_directory_exists": false,
+    "tmux_session_exists": false,
+    "tmux_started": false,
+    "v1_output_or_launcher_reused": false
+  },
+  "execution_authorization_receipt_contract": {
+    "authorization_effective": true,
+    "execution_authorized": true,
+    "authorized_once": true,
+    "protocol_id": "cranial-scqr-v1.1-L4-roundA-I-same-QC-checkpoint-intervention-v1",
+    "protocol_sha256": "3c8b8e8e73b6e258e43bfa67a8a50d37b43fdfe27cdce450715b527acbf6a85a",
+    "output_directory": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_scqr_v11/l4_round_a_intervention/cranial_scqr_v11_l4_round_a_intervention_v2_20260914T134525Z",
+    "authorized_counts": {
+      "checkpoint_loads": 2,
+      "npz_opens": 210,
+      "model_case_forward_calls": 840,
+      "conditions_per_case": 4
+    },
+    "resource_scope": {
+      "gpu_uuid": "GPU-41b45aa3-f5e3-e609-53cb-9c48bc7716ed"
+    },
+    "protected_payload_access": {
+      "confirmation20": false,
+      "official_test": false,
+      "old_monitor": false,
+      "MUG": false,
+      "train_outside_dev": false
+    },
+    "q0_checkpoint_rerun": false,
+    "round_b_authorized": false,
+    "replacement_execution_authorized_once": true,
+    "v1_output_reuse_authorized": false,
+    "v1_launcher_reuse_authorized": false,
+    "runner_sha256": "dc5df77e2029b396b499e7736757a00a1c0297182ea7cd34b592fb69d319e279",
+    "analyzer_sha256": "180bc58b644d6042b50c6828cbf87df151110ae27f5fac5110a05b0fcdd0b012",
+    "contract_test_sha256": "8d32ac35bf320ac847f3651b0344d09ab5cfbfe8b2cdef18df42fe2e2ff1db49"
+  },
+  "requested_file_and_directory_creations_after_separate_authorization": [
+    "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_execution_authorization_receipt_v2.json",
+    "scripts/run_cranial_scqr_v11_l4_round_a_intervention_once_v2.sh",
+    "logs/cranial_scqr_v11/l4_round_a_intervention/tmux_v2/cranial_scqr_v11_round_a_intervention_v2_20260914T134525Z.log",
+    "logs/cranial_scqr_v11/l4_round_a_intervention/cranial_scqr_v11_l4_round_a_intervention_v2_20260914T134525Z"
+  ],
+  "required_formal_outputs": [
+    "invocation.json",
+    "per_condition_case_metrics.csv",
+    "per_condition_source_metrics.csv",
+    "intervention_mechanism_diagnostics.csv",
+    "paired_intervention_deltas.csv",
+    "intervention_summary.json",
+    "mechanism_classification_receipt.json",
+    "intervention_execution_receipt.json",
+    "console.log",
+    "environment.json",
+    "resource_monitor.tsv",
+    "launcher_validation_receipt.json",
+    "exit_code",
+    "started_at_utc.txt",
+    "finished_at_utc.txt",
+    "formal_intervention_report_zh.md",
+    "files.sha256"
+  ],
+  "stop_and_recovery": {
+    "hash_path_size_count_authorization_or_resource_mismatch": "stop before checkpoint deserialization or NPZ access",
+    "native_reproduction_or_negative_control_failure": "freeze failure evidence and stop without scientific classification",
+    "execution_failure": "Freeze evidence in the fixed v2 output directory and stop.",
+    "automatic_retry": false,
+    "automatic_resume": false,
+    "batch_or_precision_fallback": false,
+    "threshold_change": false,
+    "round_b_or_subsequent_run": false,
+    "replacement_execution_by_this_request_file_alone": false,
+    "reuse_v1_output_or_launcher": false
+  },
+  "explicitly_not_authorized_by_this_request_file_alone": [
+    "creation of the v2 authorization receipt, v2 launcher, v2 master log or formal v2 output directory",
+    "checkpoint deserialization or model loading",
+    "opening any NPZ payload or reading partial, implant or gt",
+    "GPU inference or development evaluation",
+    "analysis of new real model outputs",
+    "reuse, overwrite, modification or deletion of the frozen v1 failure evidence",
+    "reuse of the consumed v1 authorization receipt or pre-hotfix2 v1 launcher",
+    "Q0 checkpoint loading or rerun",
+    "confirmation20, official test, old monitor, MUG or train-outside-dev payload access",
+    "prediction point-cloud dumps or raw tensor dumps",
+    "optimizer construction, model update, training or BNCal",
+    "formal timing, automatic retry, resume, fallback or threshold changes",
+    "Round B, seed stability, beta tuning or any subsequent run",
+    "modification, deletion or overwrite of frozen v2 evidence or training outputs",
+    "Git initialization, commit, tag or push",
+    "archive creation, deletion, movement or cleanup"
+  ],
+  "required_user_authorization": "Explicitly authorize exactly one replacement v2 formal Round A-I intervention execution according to l4_round_a_intervention_execution_authorization_request_v2.json: create only the fixed v2 authorization receipt and one-use v2 launcher, use the fixed v2 tmux session, bound single RTX 4090 D and fixed new v2 output/master-log paths; load each QC Fold A/B BNCal checkpoint once, evaluate only its exact 105-case development allowlist in FP32 eval/no_grad batch=1 workers=0 order, open each NPZ once, pass only partial through the four ordered conditions native_qc, bias_zero, case_mean_probability and fixed-seed within-case probability permutation, then read metric-only implant/gt and execute the frozen paired source-skull analysis. Require 2 checkpoint loads, 210 NPZ opens, 840 forwards, native-v2 reproduction, case-mean/bias-zero equivalence, coarse invariance and unchanged model state; reuse frozen Q0 metrics without loading Q0. Preserve the complete v1 failure evidence and prohibit confirmation20, official-test, old-monitor, MUG, train-outside-dev, prediction dumps, optimizer/model updates, training, BNCal, formal timing, automatic retry/resume/fallback/threshold changes, Round B and every subsequent run.",
+  "superseded_execution_chain": {
+    "status": "V1_FAILED_EVIDENCE_FROZEN_NOT_REUSABLE",
+    "request": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_execution_authorization_request_v1.json",
+      "bytes": 18296,
+      "sha256": "3728cf1c833115b7ec74f42a59165010a1010f8ff64fc8a398b7babfbc0f9a15"
+    },
+    "authorization_receipt": {
+      "path": "docs/cranial_scqr_v1_research_2026_09_10/l4_round_a_intervention_execution_authorization_receipt_v1.json",
+      "bytes": 4126,
+      "sha256": "f591489d3d4006fef36a8a659a23034b089e58eb9df1286fe277461d8e82f91d",
+      "consumed": true
+    },
+    "launcher": {
+      "path": "scripts/run_cranial_scqr_v11_l4_round_a_intervention_once.sh",
+      "bytes": 15024,
+      "sha256": "cb1f69f7c3974a5586d6507e64741a81d3f7e581257ceeb46a1f0fd7ea7f0973",
+      "reusable": false,
+      "reason": "It binds the pre-hotfix2 runner SHA256."
+    },
+    "master_log": {
+      "path": "logs/cranial_scqr_v11/l4_round_a_intervention/tmux_v1/cranial_scqr_v11_round_a_intervention_v1_20260914T131311Z.log",
+      "bytes": 3320,
+      "sha256": "96415f4c3c731d34fcc94e3852661b571e9b16394263c27844cd43f987ba0648"
+    },
+    "output_directory": "logs/cranial_scqr_v11/l4_round_a_intervention/cranial_scqr_v11_l4_round_a_intervention_v1_20260914T131311Z",
+    "files_sha256": {
+      "bytes": 706,
+      "sha256": "7a724e4e874318313144f75a8c00d05b2f4d3c833a9acb2c22ad606b2ac71196",
+      "check": "PASS_8_OF_8"
+    },
+    "failure_receipt": {
+      "bytes": 732,
+      "sha256": "54aeaf0dc1b131c6f2df0868adc3112b2c0e1f23fd2140933319abde8f5884cf",
+      "status": "FAILED_STOPPED_NO_RETRY",
+      "error_type": "ContractError",
+      "error": "missing query diagnostics: A/train__000__bilateral/native_qc",
+      "counters": {
+        "checkpoint_loads": 1,
+        "npz_open_events": 1,
+        "member_partial": 1,
+        "member_implant": 0,
+        "member_gt": 0,
+        "model_case_forward_calls": 1,
+        "probability_hooks_registered": 0,
+        "probability_hooks_removed": 0,
+        "optimizer_constructions": 0,
+        "optimizer_steps": 0,
+        "model_parameter_updates": 0,
+        "model_buffer_updates": 0
+      }
+    },
+    "launcher_failure_receipt": {
+      "bytes": 220,
+      "sha256": "26cc8021c7c0615e3fa6274954a0209242fba603d261509d715269bd0b2dcf15",
+      "exit_code": 1,
+      "observed_peak_gpu_memory_used_mib": 1109,
+      "automatic_retry": false,
+      "round_b_authorized": false
+    },
+    "root_cause": "The real wrapper returns query attention under instrumentation.backbone; the v1 runner incorrectly looked at the wrapper top level.",
+    "hotfix2_resolves_observed_failure_contract": true,
+    "v1_output_must_remain_immutable": true
+  }
+}
