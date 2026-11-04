@@ -1,0 +1,37 @@
+{
+  "status": "LOCAL_READONLY_FAILURE_CAUSE_CONFIRMED_NO_RETRY",
+  "audit_result_sha256": "1acc2bcdc42fcb5173de2ce69909bfebfff05e68b8b4b7d6b0305dbd0f4e29a5",
+  "root_cause": "Known exact-bound Python executable was classified under the generic non-checkpoint 16MiB cap",
+  "python_frozen_binding": {
+    "path": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "bytes": 17331920,
+    "sha256": "01b4275dc374dcae51d245bda004daad6d7882d3f5de7f9852567bb7ab83180d"
+  },
+  "generic_file_limit": 16777216,
+  "excess_bytes": 554704,
+  "bytes_read_before_failure": 390377539,
+  "projected_bytes_with_python": 407709459,
+  "total_limit": 805306368,
+  "total_limit_was_not_triggered": true,
+  "completed_checks": 29,
+  "all_completed_checks_pass": true,
+  "measured_checkpoint": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_ab_foldC_V1_in8192_out8192_seed0_train_v1/ckpt-last.pth",
+    "bytes": 380368111,
+    "sha256": "bef638c807de8ea41f79862311138f42d9993dcc6fb5a09d5321642a57acfa51",
+    "uid": 1000,
+    "mode": "0o600",
+    "mtime_ns": 1793693541000000000,
+    "inode": 17474406156
+  },
+  "null_summary_fields": "Failure JSON omits success-only checkpoint/initialization/counts keys; the invoker renders missing fields as null. Not evidence of missing or corrupted artifacts.",
+  "remaining": [
+    "Python and remaining bound assets",
+    "candidate315 file hashes and metadata pairing",
+    "candidate new path/session absence and current GPU identity",
+    "final all-file and output-tree stability"
+  ],
+  "server_operations_this_diagnosis": 0,
+  "audit_retried": false,
+  "candidate_request_created": false
+}

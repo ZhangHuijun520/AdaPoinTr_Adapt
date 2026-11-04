@@ -1,0 +1,256 @@
+{
+  "status": "PASS_READONLY_POST_TEST_FREEZE_AUDIT_WITH_INTEGRATION_GAPS",
+  "test_status": "53_PASS_0_FAIL_0_ERROR_0_SKIP",
+  "implementation_readiness": "NOT_FULL_P3_NOT_DEPLOYMENT_OR_TRAINING_READY",
+  "audit_mode": "hash_bytes_json_log_ast_only_no_candidate_imports",
+  "test_reruns": 0,
+  "model_calls": 0,
+  "GPU_calls": 0,
+  "real_dataset_payloads_opened": 0,
+  "checkpoint_loads": 0,
+  "server_operations": 0,
+  "implementation_edits": 0,
+  "artifacts_verified": 21,
+  "prior_and_parent_bindings_verified": 17,
+  "artifact_exact_set_verified": true,
+  "fixture_directories_retained": 18,
+  "fixture_files": 18,
+  "total_artifact_bytes": 4443086,
+  "test_log_counts_and_static_identities_match": true,
+  "exit_code_evidence": "Prior execution tool reported 0 (chunk 221f9a); existing manifest records 0. This audit did not execute tests or independently reproduce exit code.",
+  "execution_count_evidence": "One prior versioned attempt recorded; audit cannot forensically exclude every unrecorded process.",
+  "scope_counters_evidence": "Consistent with runner/test source and saved result; not an OS-wide activity trace.",
+  "coverage_limits": [
+    "Actual PyTorch CPU tensor KNN exercised, including 16k keys and only 257 queries in bounded oracle comparison; not B8 full 16k self-KNN runtime/VRAM test",
+    "One synthetic DataLoader traversal (315 records/39 batches); records reuse one synthetic source/NPZ, not 63 real sources",
+    "Remaining traversals validate counter protocol using range batches; fake optimizer, not real optimizer state/NN updates",
+    "Candidate direct KNN function tested, fork patch not applied to an actual AdaPoinTr module",
+    "No full model/production runner, loss/backward/clip/scheduler/checkpoint lifecycle tested",
+    "No CUDA FPS/KNN equivalence, AMP/deterministic GPU contract, or VRAM certificate"
+  ],
+  "remaining_integration_gaps": [
+    {
+      "id": "I1",
+      "scope": "Isolated BCSP production-call-chain candidate",
+      "needed": "Explicit new-stage runner and dataset/builder selection, apply hash-bound KNN replacement in candidate fork only; no edits to frozen parents/legacy paths. CPU facade is not a deployed registry/runner."
+    },
+    {
+      "id": "I2",
+      "scope": "Training lifecycle semantics",
+      "needed": "Bind exact common data/order and actual optimizer/model lifecycle, seed/determinism, loss/backward/clip, LR/BN scheduler invocation, final-only checkpoint and completion receipt. Guard callback counts are not independent observation of optimizer.step."
+    },
+    {
+      "id": "I3",
+      "scope": "Data readiness, separate from implementation",
+      "needed": "New BCSP source-level derived assets, world frame/normalization QC, common GT and hashes, source/fold allowlists; 315-case guard only validates conditional design, not actual source semantics."
+    },
+    {
+      "id": "I4",
+      "scope": "GPU readiness, separately authorized",
+      "needed": "Artificial zero-update real-model path, CUDA operators/equivalence and bounded resource check; no inference from CPU success."
+    }
+  ],
+  "nonblocking_caveats": [
+    "NPZ whole-file hashing reads bytes of GT members even during inference, though GT arrays are not decoded/used to construct input. Semantic GT independence test does not prove no GT bytes were read.",
+    "Schema/frame strings are asserted metadata, not geometric truth certificates.",
+    "Counter guard cannot roll back a failed optimizer or prevent arbitrary trusted callback from stepping independently.",
+    "CPU entry hard-binds local parent paths and torch CPU device; it is validation scaffolding, not server-portable production entry."
+  ],
+  "next_recommended_scope": "One bounded isolated integration-only closure for I1/I2 with artificial CPU call-chain tests; do not expand generic framework. Keep I3/I4 separate; do not create training execution request yet.",
+  "artifact_rows": [
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\run_cpu_fixture_attempt_v3.py",
+      "bytes": 5675,
+      "sha256": "23cc79a8adcc2f86ce2cb2ec5415072e6222e94f147b0817885c243ae20bf167"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_artificial_267e11c2347b4438a6d1c9aa7d8a76ee\\case.npz",
+      "bytes": 197122,
+      "sha256": "15af741e205fa16e3869d65f41ee3d1ba6e91c05694539d9a327bf77f5c62baf"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_artificial_2e0ca401bd6e4381b6bbd846e84de8fb\\case.npz",
+      "bytes": 197122,
+      "sha256": "15af741e205fa16e3869d65f41ee3d1ba6e91c05694539d9a327bf77f5c62baf"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_artificial_5dedc6b9859449e9b7df4945f25a48cf\\case.npz",
+      "bytes": 197122,
+      "sha256": "d7865ff5c9b70b449bc171124479edd9b3193f3989c9ebac7af187e9b3d18104"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_artificial_baafc486151645cdaa342a9a17e64055\\case.npz",
+      "bytes": 197122,
+      "sha256": "15af741e205fa16e3869d65f41ee3d1ba6e91c05694539d9a327bf77f5c62baf"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_artificial_bfda5833e02b47d0acbccc00a0aa6043\\case.npz",
+      "bytes": 197122,
+      "sha256": "15af741e205fa16e3869d65f41ee3d1ba6e91c05694539d9a327bf77f5c62baf"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_artificial_ccb4dec9bc0d45d6b9b2d190a294b004\\case.npz",
+      "bytes": 197122,
+      "sha256": "15af741e205fa16e3869d65f41ee3d1ba6e91c05694539d9a327bf77f5c62baf"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_artificial_e94e2cbfc6374cb896f2f53eb31d121e\\case.npz",
+      "bytes": 197122,
+      "sha256": "15af741e205fa16e3869d65f41ee3d1ba6e91c05694539d9a327bf77f5c62baf"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_artificial_f90a048fb98d4cd3b30916940b64c0d9\\case.npz",
+      "bytes": 197122,
+      "sha256": "15af741e205fa16e3869d65f41ee3d1ba6e91c05694539d9a327bf77f5c62baf"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_cpu_v2_artificial_03c56529581642f898c928a80a8990a3\\synthetic.npz",
+      "bytes": 295426,
+      "sha256": "124cfa9e30f14972639de599391c3cf308715e76f538cb01df90c26a6784cbe2"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_cpu_v2_artificial_2a19036c814b4cff96d0d09e083e6449\\synthetic.npz",
+      "bytes": 295426,
+      "sha256": "124cfa9e30f14972639de599391c3cf308715e76f538cb01df90c26a6784cbe2"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_cpu_v2_artificial_2cb9e16b70b744d5a8572e753513c610\\synthetic.npz",
+      "bytes": 295426,
+      "sha256": "124cfa9e30f14972639de599391c3cf308715e76f538cb01df90c26a6784cbe2"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_cpu_v2_artificial_5d1ca1b684ad453b84caa1c21c0d72b4\\synthetic.npz",
+      "bytes": 295426,
+      "sha256": "124cfa9e30f14972639de599391c3cf308715e76f538cb01df90c26a6784cbe2"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_cpu_v2_artificial_7e9cdc3a80e349d79ce833ae41afb65f\\synthetic.npz",
+      "bytes": 196876,
+      "sha256": "2bafe392de3aeaaa3842bd83899fa99af8feb3964a2fc19c9df87f0fae4c7485"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_cpu_v2_artificial_acf4b5a19c2244b3a92889250d21ee0a\\synthetic.npz",
+      "bytes": 295426,
+      "sha256": "124cfa9e30f14972639de599391c3cf308715e76f538cb01df90c26a6784cbe2"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_cpu_v2_artificial_d40a2b206a76444f8e14a77957599215\\synthetic.npz",
+      "bytes": 295426,
+      "sha256": "124cfa9e30f14972639de599391c3cf308715e76f538cb01df90c26a6784cbe2"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_cpu_v2_artificial_d56c838e34294bc69c38f762e865bb39\\synthetic.npz",
+      "bytes": 295426,
+      "sha256": "124cfa9e30f14972639de599391c3cf308715e76f538cb01df90c26a6784cbe2"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_cpu_v2_artificial_d7041c2b848a41ed9280660d5289dc06\\synthetic.npz",
+      "bytes": 295426,
+      "sha256": "124cfa9e30f14972639de599391c3cf308715e76f538cb01df90c26a6784cbe2"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\fixtures\\bcsp_cpu_v2_artificial_dee7dc72f7834c2c967a2fc1292d7e7c\\synthetic.npz",
+      "bytes": 295426,
+      "sha256": "124cfa9e30f14972639de599391c3cf308715e76f538cb01df90c26a6784cbe2"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\result.json",
+      "bytes": 1132,
+      "sha256": "c1ca29602d0d99f4fe754158b7757781fc2302f8c42a3acd08d22bae5c529786"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\cpu_tensor_attempt_v3\\stdout.txt",
+      "bytes": 3593,
+      "sha256": "ca9871afbb76e9cd547548c382006ca987190387d3c25255eeef33dd00754294"
+    }
+  ],
+  "prior_and_parent_rows": [
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v1\\bcsp_adapter.py",
+      "bytes": 7297,
+      "sha256": "2f7d3050cfb6ac2602cc17a95b860da2204daef2dfa63dab63d233e899b7dd55"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v1\\bcsp_fork_knn.patch",
+      "bytes": 339,
+      "sha256": "cb025fc66dcd24f4804f688149be139d1f2f4199918f6218df4cf729afde33f9"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v1\\cpu_tests_v1\\result.json",
+      "bytes": 323,
+      "sha256": "5dc7ee0e1a3e82c3650610dec600e3d03b8dfdf47e34b2de746c1de4dd89c88f"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v1\\cpu_tests_v1\\stdout.txt",
+      "bytes": 1594,
+      "sha256": "d4beaea16d94c92f575d766e36a3f57b9e46b0cd70da2579ea3d1f646a250946"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v1\\implementation_status_zh_v1.md",
+      "bytes": 4608,
+      "sha256": "bcaacb65c67a012701969cc28bfa74c4e39e9c7e9bbb98eb2b7128f1d08b535c"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v1\\test_bcsp_adapter.py",
+      "bytes": 7387,
+      "sha256": "dd659f1c8c0fd95895e59424f2b77ea2d9d2e077ba89aef3e568bf6e76b9eb92"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v2\\bcsp_cpu_entry_v2.py",
+      "bytes": 4711,
+      "sha256": "d6e4ee567ba523760848388bfc20288aef8ca3d82da69db41dbc301d8fd07030"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v2\\cpu_tensor_results_v2\\result.json",
+      "bytes": 872,
+      "sha256": "a1c821d94fd63037d6af613644698380a227f1b92eb85cee3734ec020d85d028"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v2\\cpu_tensor_results_v2\\stdout.txt",
+      "bytes": 2128,
+      "sha256": "49a145612c40c1de2ca9757a2be62ffc89199b1f91085a529c9baf138dddd0f2"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v2\\test_cpu_integration_v2.py",
+      "bytes": 10525,
+      "sha256": "8a152ed81add65712ed3839f8576d258c8bd83f88bb186fea16c730cea79157d"
+    },
+    {
+      "path": "outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\AdaPoinTr.py",
+      "bytes": 103347,
+      "sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4"
+    },
+    {
+      "path": "outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\Transformer_utils.py",
+      "bytes": 52826,
+      "sha256": "44d4aaabf9cbb09a4b7b9b4c1518b7901481a28304502508962b2e2d1082d289"
+    },
+    {
+      "path": "outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\pointnet2_utils.py",
+      "bytes": 4275,
+      "sha256": "6e814a64b244d018047ffefa92004dd4e59fc941145476af1424aae1742c43ec"
+    },
+    {
+      "path": "outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\misc.py",
+      "bytes": 12544,
+      "sha256": "65338858a2f2f87cc6040a7525a57beff26f0acc665caaedfb18bae5ab3d1a87"
+    },
+    {
+      "path": "outputs\\cranial_scqr_v12_qa_github_publish_20261019\\tools\\runner.py",
+      "bytes": 33085,
+      "sha256": "12159b380b53736dfa929c0618cb8fda280ec89600d14677545aa07b17961d55"
+    },
+    {
+      "path": "outputs\\cranial_scqr_v12_qa_github_publish_20261019\\tools\\builder.py",
+      "bytes": 7807,
+      "sha256": "8c6d2f436376e0075164413865a2ec68ea40f4f68e96a3011c07468280f6c3bf"
+    },
+    {
+      "path": "outputs\\cranial_scqr_v12_qa_github_publish_20261019\\datasets\\SkullBreakDataset.py",
+      "bytes": 20701,
+      "sha256": "e747f99e36243846c205bf77d4344670efaebb72ba14eac9e0481de6e36787b0"
+    }
+  ],
+  "evidence_manifest_sha256": "e28be11249e462f6705cacb47d8c6650c76eb08d1c5d56bebc5443d823acd33c",
+  "audit_script_sha256": "bb87446bf85f63b58be423760d989cd222ba1a88e3e58e67e3192aa6835e3470"
+}

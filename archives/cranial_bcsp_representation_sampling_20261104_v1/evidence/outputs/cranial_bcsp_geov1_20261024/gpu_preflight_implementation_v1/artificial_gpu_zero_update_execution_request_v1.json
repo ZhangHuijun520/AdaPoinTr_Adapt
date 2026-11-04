@@ -1,0 +1,588 @@
+{
+  "schema": "bcsp-artificial-gpu-zero-update-execution-request-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "date_Asia_Shanghai": "2026-10-24",
+  "execution_authorized": false,
+  "is_execution_request": true,
+  "server_operations_performed_during_creation": 0,
+  "scope_sha256": "2a69aed239c309e2579abdad0003878c2c30f7281194a77a6a7b78abb5657980",
+  "entry_sha256": "9eab8e90302500c11d4fb16e6aa0307d565b9e767a5319eb8e4725b513b82c79",
+  "test_sha256": "40360718e87ebb34680034a6680848019136a11cfd8080da27850716224e62ff",
+  "P3": {
+    "path": "E:/Codex/2026-06-06/mamba-ccf-c-1-high-resolution/outputs/cranial_bcsp_geov1_20261024/gpu_preflight_implementation_v1/p3_receipt_v2.json",
+    "sha256": "f8f96abbb68741b3b9872f2aebaee36d731c0fce1dcb8d81d89c2b61a26e9106",
+    "bytes": 10152
+  },
+  "CPU_evidence": {
+    "result": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\result.json",
+      "bytes": 636,
+      "sha256": "58a55dabe194240c819983d4a3652f85c8cf7f29b9a0361692ef591764fa1feb"
+    },
+    "log": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\cpu_contract_log.txt",
+      "bytes": 1690,
+      "sha256": "88e875386cd448e51abce9d0e6432b0ac64625ed11fc8a307dc229072f48a2a8"
+    },
+    "tests": 24,
+    "errors": 0,
+    "failures": 0,
+    "attempts": 1,
+    "CUDA_not_proven": true
+  },
+  "purpose": "One artificial-only actual B0 model forward/loss/backward per 8192/16384 arm under the already confirmed PyTorch cdist loss backend; zero optimizer/model updates, no real data.",
+  "inherit_all_frozen_scope_fields_unmodified": true,
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-o9mz8z-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-2f32f6fb-ea5d-730a-4ea2-2f6063e31065",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "575.51.03",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity."
+  },
+  "model": {
+    "config_section_only": "model",
+    "dataset_sections_never_used": true,
+    "baseline": "B0/new-task AdaPoinTr Transformer; not Mamba comparison",
+    "num_query": 256,
+    "num_points": 8192,
+    "center_num": [
+      512,
+      256
+    ],
+    "decoder_type": "fc",
+    "factor": 32,
+    "encoder_type": "graph",
+    "query_selection": "learned_only",
+    "denoise_weight": 0,
+    "fine_coverage_weight": 1,
+    "fine_local_weight": 0,
+    "mamba_adapter_enabled": false,
+    "scqr_enabled": false,
+    "other_optional_geometry_contact_guards_enabled": false,
+    "weights": "fresh scratch CPU initialization seed 0 per arm; require identical initial parameter hashes",
+    "knn": {
+      "candidate_function": "models.Transformer_utils.knn_point -> tools.bcsp_adapter.torch_knn",
+      "enable_only_new_process": true,
+      "query_chunk": 256,
+      "all_keys_retained": true,
+      "approximation": false,
+      "record_actual_input_and_key_counts": true
+    }
+  },
+  "input": {
+    "type": "synthetic_in_memory_only",
+    "implementation": "NumPy default_rng/PCG64; generate float32 uniform(-0.5,0.5), transfer with torch.from_numpy to exercise actual NumPy/Torch bridge; failures stop, no environment repair",
+    "input_seed": 20261024,
+    "target_seed": 20261025,
+    "knn_query_seed": 20261026,
+    "input_master_shape": [
+      8,
+      16384,
+      3
+    ],
+    "arms": [
+      8192,
+      16384
+    ],
+    "arm_order": [
+      8192,
+      16384
+    ],
+    "target_shape": [
+      8,
+      8192,
+      3
+    ],
+    "prefix_8192_of_16384": true,
+    "same_target_both_arms": true,
+    "no_real_patient_files_or_synthetic_npz_required": true
+  },
+  "operations": {
+    "same_process": true,
+    "model_instances": 2,
+    "full_model_forwards_per_arm": 1,
+    "total_full_model_forwards": 2,
+    "project_get_loss_calls_per_arm": 1,
+    "total_backward_calls": 2,
+    "backward_per_arm": 1,
+    "loss": "existing AdaPoinTr.get_loss(ret,target,epoch=0,partial=input); sparse+dense scalar; denoising disabled",
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "scheduler_steps": 0,
+    "BNCal_runs": 0,
+    "development_evaluations": 0,
+    "warmups": 0,
+    "benchmark_repeats": 0,
+    "training_checkpoint_writes": 0,
+    "one_attempt_no_retry_or_resume": true,
+    "fail_first_arm_skips_second": true,
+    "launch_failure_consumes_attempt": true
+  },
+  "loss_backend": {
+    "user_confirmed": true,
+    "implementation": "exact existing project extensions/chamfer_dist/__init__.py PyTorch branch: torch.cdist(p=2, default compute_mode), square, directional reductions and sqrt as coded",
+    "runtime_assert_module_chamfer_is_none": true,
+    "do_not_monkeypatch_backend_to_pass_assert": true,
+    "compiled_chamfer_allowed": false,
+    "pointnet2_compiled_required": true,
+    "pointnet2_torch_fallback_allowed": false,
+    "downloads_builds_installs_upgrades_allowed": false,
+    "success_scope": "only this explicit PyTorch Chamfer backend; not compiled Chamfer, historical QA numerical equivalence, or any other backend"
+  },
+  "numerical": {
+    "FP32": true,
+    "AMP": false,
+    "torch_deterministic_algorithms": true,
+    "torch_float32_matmul_precision": "highest",
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "unsupported_deterministic_operator": "fail stop; do not relax"
+  },
+  "state_protection": {
+    "model_train_branch": true,
+    "batchnorm": "Keep training batch-stat computation, temporarily set track_running_stats=False so no running_mean/running_var/num_batches_tracked writes; restore original flags afterwards. CPU contract must verify this before request creation.",
+    "parameters_and_persistent_buffers": "exact byte fingerprints before/after each arm; no optimizer; require unchanged",
+    "rng": "save/restore Python, NumPy legacy global, torch CPU and selected CUDA RNG states per arm; require exact equality after restoration",
+    "module_training_flags": "restore and compare",
+    "gradients": "require present nonzero finite gradients in active grouper/encoder/decoder; all non-None gradients finite; clear after evidence capture",
+    "nonpersistent_diagnostics": "not a claim of identical ordinary Python diagnostic attributes; fresh model per arm, never reused for training",
+    "limitation": "Disabling BN running-stat tracking is a declared preflight-only difference. Do not certify exact complete training memory/updates semantics from this test alone."
+  },
+  "knn_oracle": {
+    "standalone_calls_per_arm": {
+      "candidate": 1,
+      "dense_frozen_parent": 1
+    },
+    "batch": 1,
+    "queries": 257,
+    "keys": [
+      8192,
+      16384
+    ],
+    "k": 16,
+    "query_chunk": 256,
+    "maximum_dense_reference_shape": [
+      1,
+      257,
+      16384
+    ],
+    "no_dense_16k_square": true,
+    "comparison": "unique in-range indices, sorted selected squared distances vs dense parent, and tie-valid cutoff membership; not mandatory exact tied-index order",
+    "atol": 0.00001,
+    "rtol": 0.00001,
+    "full_model_internal_calls": "record all candidate KNN invocations/chunks/key counts, no hidden input truncation; these are part of the fixed two full forwards, not extra forwards"
+  },
+  "resources": {
+    "single_GPU": true,
+    "batch": 8,
+    "total_wall_timeout_seconds": 900,
+    "kill_grace_seconds": 5,
+    "process_RSS_monitored_limit_bytes": 8589934592,
+    "torch_peak_allocated_limit_bytes": 21474836480,
+    "torch_peak_reserved_limit_bytes": 21474836480,
+    "device_memory_stop_MiB": 22528,
+    "maximum_initial_gpu_used_MiB": 256,
+    "require_no_other_compute_processes": true,
+    "minimum_free_disk_bytes": 2147483648,
+    "result_output_limit_bytes": 16777216,
+    "no_dedicated_cgroup_claim": true,
+    "monitoring_semantics": "OS timeout is enforced externally; RSS/device memory thresholds are monitored/cooperative, not exclusive hard isolation. Torch peak stats checked each arm; OOM or over-budget stops without batch reduction.",
+    "memory_measurement": "synchronize, reset peak stats after model transfer and before forward; record current baseline, full forward/loss/backward max allocated/reserved and device usage. Same process, fresh model and released owned allocator cache between arms; no speed ranking."
+  },
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "GPU-2f32f6fb-ea5d-730a-4ea2-2f6063e31065",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "MPLBACKEND": "Agg",
+    "MPLCONFIGDIR": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v1/mplconfig",
+    "CUDA_CACHE_DISABLE": "1",
+    "TMPDIR": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v1/tmp",
+    "TMPDIR_note": "Owned temporary directory explicitly set by the unchanged entry before library import; no global config change."
+  },
+  "future_limited_deployment": {
+    "authorized_now": false,
+    "files": [
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\tools\\runner.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/tools/runner.py",
+        "bytes": 32455,
+        "sha256": "e378ab4ab7a26f6b370b4263788ca51e413b47ca3827cf404dd6ac4d9aaa0f32",
+        "mode": "create_only_no_overwrite",
+        "use": "static_hash_only_never_import"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\models\\Transformer_utils.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/models/Transformer_utils.py",
+        "bytes": 52026,
+        "sha256": "cd562e02755ffd46382cc539cdb361225b844b12e89df9d98741d37238a6bf5f",
+        "mode": "create_only_no_overwrite",
+        "use": "executed_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\tools\\bcsp_runtime.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/tools/bcsp_runtime.py",
+        "bytes": 7320,
+        "sha256": "8cbb5389e074347f6bf6e776755d22bbdaedaf5dba5102d51866d1b1e49b3615",
+        "mode": "create_only_no_overwrite",
+        "use": "static_hash_only_never_import"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\tools\\bcsp_adapter.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/tools/bcsp_adapter.py",
+        "bytes": 7297,
+        "sha256": "2f7d3050cfb6ac2602cc17a95b860da2204daef2dfa63dab63d233e899b7dd55",
+        "mode": "create_only_no_overwrite",
+        "use": "executed_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\AdaPoinTr.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/models/AdaPoinTr.py",
+        "bytes": 103347,
+        "sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\build.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/models/build.py",
+        "bytes": 342,
+        "sha256": "9c85271220ba992d56d4285b1ef51de939f7471b0712028af8d07880fed9680f",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\cranial_scqr\\__init__.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/models/cranial_scqr/__init__.py",
+        "bytes": 5859,
+        "sha256": "c4fab9f4cc19bf5c461930749cccea56cb5b3e7432172d2a4959d2cbc2d69634",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\cranial_scqr\\contact_support.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/models/cranial_scqr/contact_support.py",
+        "bytes": 6731,
+        "sha256": "2c92404ba4bd5634a49f396904b2d6f69a22aa2c87bb72f6ee32672ee9d735d1",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\cranial_scqr\\local_geometry.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/models/cranial_scqr/local_geometry.py",
+        "bytes": 6413,
+        "sha256": "e3e2eb20aed6afb3024f8b3c10c79ac0f64f288f3892495668980028793ba768",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\cranial_scqr\\query_conditioning.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/models/cranial_scqr/query_conditioning.py",
+        "bytes": 4719,
+        "sha256": "7c09def4ea7f2d65906e7fc3de753cae699be6d2d4ad3dcbb33e231be37a6942",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\registry.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/utils/registry.py",
+        "bytes": 11111,
+        "sha256": "a7c49418d587ae84778390b67a50c2bd98cbc93da2e0a506e6d309b5c159ecf7",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\config.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/utils/config.py",
+        "bytes": 2438,
+        "sha256": "39d487ab6eadcd0a157167cfdf0d1797255f6403828f2653ba7802da6f2ac819",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\logger.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/utils/logger.py",
+        "bytes": 5048,
+        "sha256": "12e50962ca4594ddd573d9a76524ac912ddf55bfc297fa8008a30b20dca28e0c",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\misc.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/utils/misc.py",
+        "bytes": 12544,
+        "sha256": "65338858a2f2f87cc6040a7525a57beff26f0acc665caaedfb18bae5ab3d1a87",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\pointnet2_utils.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/utils/pointnet2_utils.py",
+        "bytes": 4275,
+        "sha256": "6e814a64b244d018047ffefa92004dd4e59fc941145476af1424aae1742c43ec",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\mamba_d22_geometry.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/utils/mamba_d22_geometry.py",
+        "bytes": 12533,
+        "sha256": "8b3b56344f7e9c97a3cd1ee141964bc7797faae4f094df9404dedaee07e6c804",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\mamba_d3_contact.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/utils/mamba_d3_contact.py",
+        "bytes": 11021,
+        "sha256": "10c5bb39a8cf3860ed28b65d2c9257ae1ff4e63c4b69228504dd663f0604e5cb",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\extensions\\chamfer_dist\\__init__.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/extensions/chamfer_dist/__init__.py",
+        "bytes": 6551,
+        "sha256": "6456934164750c2d326236effe4827dc37c77a7d6d915d3c28fa65a90a9b1c50",
+        "mode": "create_only_no_overwrite",
+        "use": "frozen_mother_source"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\cfgs\\SkullFix_models\\AdaPoinTr_implant_full100_out8192_bncal.yaml",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/base_model.yaml",
+        "bytes": 2082,
+        "sha256": "e18feb90d782506f864560ce5513b3077f840f9d6365308b03493f80f8c57dc4",
+        "mode": "create_only_no_overwrite",
+        "use": "parse_model_section_only"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\bcsp_artificial_gpu_preflight_v1.py",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/bcsp_artificial_gpu_preflight_v1.py",
+        "bytes": 26429,
+        "sha256": "9eab8e90302500c11d4fb16e6aa0307d565b9e767a5319eb8e4725b513b82c79",
+        "mode": "create_only_no_overwrite",
+        "use": "dedicated_entry"
+      },
+      {
+        "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_scope_v1\\artificial_gpu_zero_update_frozen_scope_v1.json",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/evidence/frozen_scope_v1.json",
+        "bytes": 21101,
+        "sha256": "2a69aed239c309e2579abdad0003878c2c30f7281194a77a6a7b78abb5657980",
+        "mode": "create_only_no_overwrite",
+        "use": "immutable_scope"
+      },
+      {
+        "local_source": "E:/Codex/2026-06-06/mamba-ccf-c-1-high-resolution/outputs/cranial_bcsp_geov1_20261024/gpu_preflight_implementation_v1/p3_receipt_v2.json",
+        "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/evidence/p3_receipt_v2.json",
+        "bytes": 10152,
+        "sha256": "f8f96abbb68741b3b9872f2aebaee36d731c0fce1dcb8d81d89c2b61a26e9106",
+        "mode": "create_only_no_overwrite",
+        "use": "local_P3_evidence"
+      }
+    ],
+    "count": 22,
+    "preconditions": [
+      "Recheck fixed hostname/uid/project/Python/GPU UUID and provider hashes; no resource rebind without separate authority",
+      "Rehash all supplied inputs, including exact local P3/CPU evidence; check all mapped server targets and entire isolated root absent, no symlink parents",
+      "Use exclusive create/non-overwrite copies, preserve bytes; verify every installed hash; stop immediately on any mismatch or partial failure",
+      "No parent models/tools initializers or test-only tools/__init__.py shim; never overwrite production project sources or existing provider"
+    ],
+    "scope_provider_bindings": [
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/__init__.py",
+        "exists": true,
+        "bytes": 123,
+        "sha256": "d8a0921aeb90349a0659799a22ccf00ccd31707b226426ff4118eeb65ae0ada2"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/pointnet2_utils.py",
+        "exists": true,
+        "bytes": 9943,
+        "sha256": "ec597d77b1215fbc87bdb452b8ce04b85eb0b816d5e39e7696fc792a2f61ea5b"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/_ext.cpython-310-x86_64-linux-gnu.so",
+        "exists": true,
+        "bytes": 301640,
+        "sha256": "e70d00108bacba4a905dc011f4b8c4868f06ec2d44d8e322148e2e452578fbb5"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/wheelhouse/pointnet2_ops-3.0.0-cp310-cp310-linux_x86_64.whl",
+        "exists": true,
+        "bytes": 123291,
+        "sha256": "530496a0d1d5dea6151a466b7c0874632322223308a7016910fb1bfbaaaab1e5"
+      }
+    ],
+    "scope_environment_metadata_bindings": [
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch/version.py",
+        "exists": true,
+        "bytes": 248,
+        "sha256": "b10649fd636e7404398d608b84a2cacc6645e3952f043b439d4c50c95a26a1b5",
+        "assignments": {
+          "__version__": "2.4.1+cu118",
+          "debug": false,
+          "git_version": "38b96d3399a695e704ed39b60dac733c3fbf20e2"
+        }
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+        "exists": true,
+        "bytes": 17331920,
+        "sha256": "01b4275dc374dcae51d245bda004daad6d7882d3f5de7f9852567bb7ab83180d"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch-2.4.1+cu118.dist-info/METADATA",
+        "exists": true,
+        "bytes": 26707,
+        "sha256": "11606497a9792f0d040ad062064ee1c024dde8b10fc38bed361134d0b7ec429a",
+        "name_version": [
+          "Name: torch",
+          "Version: 2.4.1+cu118"
+        ]
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm-1.0.27.dist-info/METADATA",
+        "exists": true,
+        "bytes": 40196,
+        "sha256": "b6ecaedbcaea5d0d5e431983c3df8e05113a51a2dad062e51dab0500ac6f2bb4",
+        "name_version": [
+          "Name: timm",
+          "Version: 1.0.27"
+        ]
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/numpy-2.2.6.dist-info/METADATA",
+        "exists": true,
+        "bytes": 62026,
+        "sha256": "22d648f53848429464ca643b40d73b49a920d47876fc77c395d4dca4e834904a",
+        "name_version": [
+          "Name: numpy",
+          "Version: 2.2.6"
+        ]
+      }
+    ],
+    "excluded_from_deployment": [
+      "CPU test and fixture execution",
+      "datasets or NPZ",
+      "checkpoints",
+      "compiled Chamfer",
+      "new dependencies",
+      "general inventory tools"
+    ]
+  },
+  "future_control_paths": {
+    "request": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/evidence/execution_request_v1.json",
+    "authorization": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/control/authorization_v1.json",
+    "runtime": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/control/runtime_v1.json",
+    "launcher": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/control/launcher_v1.sh",
+    "attempt_marker": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/control/launch_attempt_v1.json",
+    "pid": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v1/worker.pid",
+    "log": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v1/launch.log",
+    "exit": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v1/exit_code.txt",
+    "summary": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v1/summary.json",
+    "startup_failure": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v1/startup_failure.json",
+    "monitor_failure": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v1/monitor_failure.json"
+  },
+  "request_self_binding": {
+    "destination": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/evidence/execution_request_v1.json",
+    "sha256": "The complete final request byte hash reported to the user; calculated after freeze, not embedded recursively.",
+    "create_only": true
+  },
+  "future_authorization_materialization": {
+    "authorized_now": false,
+    "order": [
+      "User explicitly authorizes the complete final request SHA256",
+      "Create exclusive authorization receipt binding request SHA256 and the user's actual authorization text, not runtime SHA256",
+      "Calculate receipt SHA256",
+      "Create exclusive runtime config binding receipt SHA256 and request SHA256",
+      "Create single-use launcher and exclusive attempt marker only within this frozen scope"
+    ],
+    "authorization_schema": {
+      "schema": "bcsp-preflight-authorization-v1",
+      "request_sha256": "<final_request_SHA256>",
+      "explicit_user_authorization": true,
+      "user_authorization_text": "<actual separate future user authorization>"
+    },
+    "runtime_schema": {
+      "schema": "bcsp-preflight-runtime-v1",
+      "request_sha256": "<final_request_SHA256>",
+      "authorization_sha256": "<calculated_receipt_SHA256>"
+    }
+  },
+  "future_start_contract": {
+    "authorized_now": false,
+    "tmux_session": "bcsp_geov1_artificial_gpu_zero_update_v1",
+    "prelaunch": [
+      "Use existing byte-safe WebShell transport; bootstrap <=2048 characters; no guessed Linux translation of Windows paths",
+      "Check tmux session absent and entire result directory absent before launch; no existing-result reuse",
+      "Before transfer of runtime, create and verify its exact parent directory without following links; exclusive files only",
+      "Validate receipt/runtime/request/installed hashes and startup environment before starting tmux",
+      "Claim an exclusive launch attempt marker before tmux creation; even tmux/startup failure consumes this request",
+      "Create fresh output parent and result directory before launch.log redirection; only launch.log may exist when entry claims worker.pid",
+      "Capture shell exit immediately; write exit_code.txt exclusively, propagate nonzero; PowerShell must explicitly exit $LASTEXITCODE"
+    ],
+    "worker_argv": [
+      "/usr/bin/timeout",
+      "--signal=TERM",
+      "--kill-after=5s",
+      "900s",
+      "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+      "-I",
+      "-S",
+      "-B",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/bcsp_artificial_gpu_preflight_v1.py",
+      "--request",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/evidence/execution_request_v1.json",
+      "--request-sha256",
+      "<final_request_SHA256>",
+      "--authorization",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/control/authorization_v1.json",
+      "--runtime",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/control/runtime_v1.json",
+      "--scope",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1/evidence/frozen_scope_v1.json"
+    ],
+    "failure_policy": "STOP immediately; no automatic repair/retry/resume, batch reduction, fallback acceptance, or next stage",
+    "success_policy": "Stop after the two arms. Only a separately authorized read-only post-preflight freeze audit can confirm evidence; no automatic training."
+  },
+  "success_criteria": [
+    "External exit code 0, summary PASS, no monitor/startup failure, exactly two ordered fresh model arms",
+    "Exactly 2 full real model forwards, 2 actual get_loss calls and 2 backward calls; every forbidden operation counter zero",
+    "Equal initial parameter hashes across arms; unchanged persistent model state; restored BN flags and Python/NumPy/CPU/CUDA RNG",
+    "Finite FP32 outputs/loss/grads; nonzero active grouper/encoder/decoder gradients",
+    "Native frozen PointNet2 provider and existing cdist Chamfer branch only; strict deterministic/TF32 assertions unchanged",
+    "KNN oracle and actual all-key counts pass; memory/time/disk/output budgets respected; exact result manifest frozen"
+  ],
+  "limitations": [
+    "CPU tests and local P3 are not CUDA or training success",
+    "No exclusive cgroup/hard memory-isolation claim; monitor is cooperative and external wall timeout mandatory",
+    "Python audit is a best-effort accidental-access guard, not a hostile-native-code security sandbox",
+    "BN running-stat tracking disabled for preflight only; does not certify exact full training update semantics"
+  ],
+  "permissions_now": {
+    "server_connect": false,
+    "upload": false,
+    "install": false,
+    "materialize_authorization_runtime_launcher": false,
+    "GPU": false,
+    "training": false,
+    "BNCal": false,
+    "development_evaluation": false
+  },
+  "transport_archive_created": false,
+  "authorization_runtime_launcher_created": false,
+  "no_general_framework_expansion": true
+}

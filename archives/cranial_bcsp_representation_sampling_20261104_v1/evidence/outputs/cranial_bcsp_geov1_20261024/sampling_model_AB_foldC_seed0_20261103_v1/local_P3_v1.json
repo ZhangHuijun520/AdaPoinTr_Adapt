@@ -1,0 +1,30 @@
+{
+  "status": "LOCAL_CPU_P3_PASS_WITH_EXPLICIT_LIMITS",
+  "implementation_hashes": {
+    "bcsp_sampling_training_contract_v1.py": "b49c8839a53f6c1c86c537e43ece351dd165896bbda8d947318b42ba60f30418",
+    "bcsp_sampling_training_entry_v1.py": "6802da2e38c36598329beb8a71a963524eabd91401c5f0d58d799713be4eb779",
+    "bcsp_sampling_training_runtime_v1.py": "97b767ef6596deb5951ae799aecc8306530f3c2ec4c07ae12bbbd5a1fb335d06",
+    "test_sampling_training_contract_v1.py": "cf5c8c4b232e0c7ecafaa77eaafe28377671a2143aab527d08dcd01e7da43aa8"
+  },
+  "CPU_tests": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\sampling_model_AB_foldC_seed0_20261103_v1\\cpu_contract_attempt_v2\\result.json",
+    "sha256": "0756c6bb4ea46b0b8492781518d82f753380e2414744c174bab3aab57c3d1e97",
+    "checks": 12,
+    "attempt": "v2 after adding pre-update paired-initialization equality checks; prior passing v1 and source snapshot retained"
+  },
+  "science_unchanged": [
+    "model weights architecture code",
+    "3900-step arithmetic",
+    "optimizer/LR/BN lifecycle",
+    "full-key chunk256 KNN",
+    "same PointNet2 and cdist loss"
+  ],
+  "data": "630 NPZ roundtrip checks; same targets/frames and fixed per-case input permutation verified",
+  "authorization_tests": "RAM-only fixtures, no actual user authorization/runtime created",
+  "limits": [
+    "Metadata/bootstrap CPU tests, no real model or gradient calls",
+    "Authorization test replaces file resolution/resource lookup with RAM fixtures; real server entry not run",
+    "No current CUDA validation or training claim",
+    "Training data only, no development payload read this turn"
+  ]
+}

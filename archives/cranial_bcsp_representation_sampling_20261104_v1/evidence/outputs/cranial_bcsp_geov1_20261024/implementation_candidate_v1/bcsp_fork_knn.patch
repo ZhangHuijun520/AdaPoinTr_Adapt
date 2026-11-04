@@ -1,0 +1,8 @@
+--- a/models/Transformer_utils.py
++++ b/models/Transformer_utils.py
+@@ -26,3 +26,2 @@
+-    sqrdists = square_distance(new_xyz, xyz)
+-    _, group_idx = torch.topk(sqrdists, nsample, dim = -1, largest=False, sorted=False)
+-    return group_idx
++    from bcsp_adapter import torch_knn
++    return torch_knn(nsample, xyz, new_xyz, chunk=256)

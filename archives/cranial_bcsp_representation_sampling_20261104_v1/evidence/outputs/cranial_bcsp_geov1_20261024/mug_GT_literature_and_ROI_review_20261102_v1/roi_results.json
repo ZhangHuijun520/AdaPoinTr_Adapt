@@ -1,0 +1,52 @@
+{
+  "status": "READONLY_REVIEW_COMPLETED_NO_TRAINING_MASK_ADMITTED",
+  "source_hash_unchanged": true,
+  "old_6_component_crop_exactly_reproduced": true,
+  "center_LPS_mm": [
+    48.0,
+    0.0,
+    65.0
+  ],
+  "radii_mm": [
+    16.0,
+    20.0,
+    22.0
+  ],
+  "connectivity_comparison": {
+    "6": {
+      "component_count": 335551,
+      "main_voxels": 4770384,
+      "raw_voxels": 5534664,
+      "removed_global": 764280,
+      "raw_in_fixed_ellipsoid": 79217,
+      "retained_in_fixed_ellipsoid": 70929,
+      "excluded_in_fixed_ellipsoid": 8288,
+      "excluded_in_saved_support_crop": 24473,
+      "not_a_segmentation_accuracy": true
+    },
+    "26": {
+      "component_count": 129515,
+      "main_voxels": 5128850,
+      "raw_voxels": 5534664,
+      "removed_global": 405814,
+      "raw_in_fixed_ellipsoid": 79217,
+      "retained_in_fixed_ellipsoid": 76565,
+      "excluded_in_fixed_ellipsoid": 2652,
+      "excluded_in_saved_support_crop": 12213,
+      "not_a_segmentation_accuracy": true
+    }
+  },
+  "difference_26_vs_6": {
+    "C26_minus_C6_in_cut": 5636,
+    "C6_minus_C26_in_cut": 0,
+    "C26_minus_C6_in_saved_crop": 12260
+  },
+  "elapsed_seconds": 2.0,
+  "sampled_RSS_max_bytes": 258441216,
+  "limitations": [
+    "Connectivity differences are not independently labeled bone/noise errors",
+    "Main-component selection does not remove attached false-positive structures",
+    "No original grayscale CT or expert annotation read in this review",
+    "This crop is a diagnostic artifact, not a new complete skull or training dataset"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "bcsp-artificial-preflight-execution-observation-v1",
+  "status": "FAILED_STOPPED_NO_RETRY",
+  "request_sha256": "68938b967e6c84702e980d6d1ee43435d8cb6408d6b5748b83b33eef83d66738",
+  "entry_sha256": "9eab8e90302500c11d4fb16e6aa0307d565b9e767a5319eb8e4725b513b82c79",
+  "deployment": {
+    "status": "EXCLUSIVE_INSTALL_PASS",
+    "files_installed": 26,
+    "production_overwrites": 0,
+    "provider_changes": 0,
+    "upload_root_user_confirmed": "/home/jovyan"
+  },
+  "launch": {
+    "UTC": "2026-10-24T14:27:30.421940+00:00",
+    "tmux_returncode": 0,
+    "session": "bcsp_geov1_artificial_gpu_zero_update_v1",
+    "worker_pid": 683,
+    "worker_exit": 143,
+    "attempt_consumed": true
+  },
+  "observed": {
+    "last_phase": "dependency_import",
+    "tmux_exists": false,
+    "monitor_failure_file": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v1/monitor_failure.json",
+    "monitor_error": "Fixed /usr/bin/nvidia-smi --id=GPU-2f32f6fb-ea5d-730a-4ea2-2f6063e31065 --query-gpu=memory.used --format=csv,noheader,nounits timed out after 3 seconds; monitor terminated its worker.",
+    "arm_start_log_seen": false,
+    "summary_seen": false
+  },
+  "interpretation": {
+    "termination_trigger": "Resource-monitor subprocess timeout, not an observed numerical/model assertion or OOM.",
+    "full_model_forward_backward": "No arm_start/forward/loss/backward phase observed; verified entry ordering puts all full model calls after arm_start. No completed real-model validation.",
+    "not_concluded": [
+      "CUDA success or incompatibility",
+      "model loss/backward or memory admissibility",
+      "nvidia-smi timeout root cause"
+    ],
+    "scope": "Startup observation only, not formal post-preflight freeze audit."
+  },
+  "captures": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v1\\upload_identity_capture_v1.json",
+      "bytes": 1775,
+      "sha256": "551602d76178ea5f1895c1bd101830c248bce0c3a4bb412bf37d362053169869",
+      "transport_returncode": 0
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v1\\upload_readiness_capture_v1.json",
+      "bytes": 571,
+      "sha256": "556b5451d9ccd0eba32d5ce41ff62e7f9c890a57fdc157847bcfa2fab8c3fcae",
+      "transport_returncode": 0
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v1\\installation_capture_v1.json",
+      "bytes": 4271,
+      "sha256": "1fbd7ca19ffef4dd90ec6d82a43a342b1ff87df9d892f2d0da951e12c39cbbf1",
+      "transport_returncode": 0
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v1\\startup_capture_v1.json",
+      "bytes": 359,
+      "sha256": "a96401d5c3a13dca9fb5846ea29e1c21df0d7381feb4659e76b8754bcd5ab62e",
+      "transport_returncode": 0
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v1\\observation_capture_v1.json",
+      "bytes": 723,
+      "sha256": "c86e27f58f69802eb3919130636ca88793339b5b5b7a91a476ea2666fb57c3b2",
+      "transport_returncode": 0
+    }
+  ],
+  "after_failure": {
+    "retry": false,
+    "resume": false,
+    "hotfix": false,
+    "timeout_relaxation": false,
+    "new_forward": false,
+    "training": false,
+    "BNCal": false,
+    "development_evaluation": false,
+    "deletion": false
+  },
+  "retained": "Uploaded five transport files, all 26 installed files, consumed attempt marker, launch.log, worker.pid, exit_code.txt and monitor_failure.json retained.",
+  "next_requires_separate_authorization": "Bounded read-only failed-artifact audit and investigation of this monitoring timeout; no retry, forward or code/config changes. This consumed request cannot execute again."
+}

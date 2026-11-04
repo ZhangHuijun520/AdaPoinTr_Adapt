@@ -1,0 +1,348 @@
+{
+  "status": "PASS_READONLY_POST_TEST_FREEZE_AUDIT_WITH_DECLARED_LIMITS",
+  "checks": [
+    {
+      "check": "no_candidate_symlinks",
+      "pass": true
+    },
+    {
+      "check": "handoff_previously_reported_hash",
+      "pass": true
+    },
+    {
+      "check": "bound_file_test_isolated_closure_v4.py",
+      "pass": true
+    },
+    {
+      "check": "bound_file_closure_cpu_v4\\result.json",
+      "pass": true
+    },
+    {
+      "check": "bound_file_overlay\\models\\Transformer_utils.py",
+      "pass": true
+    },
+    {
+      "check": "bound_file_overlay\\tools\\__init__.py",
+      "pass": true
+    },
+    {
+      "check": "bound_file_overlay\\tools\\bcsp_adapter.py",
+      "pass": true
+    },
+    {
+      "check": "bound_file_overlay\\tools\\bcsp_runtime.py",
+      "pass": true
+    },
+    {
+      "check": "bound_file_overlay\\tools\\runner.py",
+      "pass": true
+    },
+    {
+      "check": "artifact_input_manifest.json",
+      "pass": true
+    },
+    {
+      "check": "artifact_stdout.txt",
+      "pass": true
+    },
+    {
+      "check": "artifact_synthetic_data\\artificial.npz",
+      "pass": true
+    },
+    {
+      "check": "artifact_synthetic_nonfinite\\failure.json",
+      "pass": true
+    },
+    {
+      "check": "artifact_synthetic_step_failure\\failure.json",
+      "pass": true
+    },
+    {
+      "check": "artifact_synthetic_success\\ckpt-last.pth",
+      "pass": true
+    },
+    {
+      "check": "artifact_synthetic_success\\completion.json",
+      "pass": true
+    },
+    {
+      "check": "exact_output_file_set",
+      "pass": true
+    },
+    {
+      "check": "exact_test_input_set",
+      "pass": true
+    },
+    {
+      "check": "input_overlay\\models\\Transformer_utils.py",
+      "pass": true
+    },
+    {
+      "check": "input_overlay\\tools\\__init__.py",
+      "pass": true
+    },
+    {
+      "check": "input_overlay\\tools\\bcsp_adapter.py",
+      "pass": true
+    },
+    {
+      "check": "input_overlay\\tools\\bcsp_runtime.py",
+      "pass": true
+    },
+    {
+      "check": "input_overlay\\tools\\runner.py",
+      "pass": true
+    },
+    {
+      "check": "input_test_isolated_closure_v4.py",
+      "pass": true
+    },
+    {
+      "check": "mother_models/AdaPoinTr.py",
+      "pass": true
+    },
+    {
+      "check": "mother_models/Transformer_utils.py",
+      "pass": true
+    },
+    {
+      "check": "mother_utils/pointnet2_utils.py",
+      "pass": true
+    },
+    {
+      "check": "mother_utils/misc.py",
+      "pass": true
+    },
+    {
+      "check": "mother_tools/runner.py",
+      "pass": true
+    },
+    {
+      "check": "mother_tools/builder.py",
+      "pass": true
+    },
+    {
+      "check": "mother_datasets/SkullBreakDataset.py",
+      "pass": true
+    },
+    {
+      "check": "v1_adapter_exact_copy",
+      "pass": true
+    },
+    {
+      "check": "static_log_result_exact_12",
+      "pass": true
+    },
+    {
+      "check": "only_stage_dispatch_added",
+      "pass": true
+    },
+    {
+      "check": "entire_remaining_ast_unchanged_tools/runner.py",
+      "pass": true
+    },
+    {
+      "check": "only_knn_branch_added",
+      "pass": true
+    },
+    {
+      "check": "entire_remaining_ast_unchanged_models/Transformer_utils.py",
+      "pass": true
+    },
+    {
+      "check": "completion_counts",
+      "pass": true
+    },
+    {
+      "check": "no_bncal_eval_resume",
+      "pass": true
+    },
+    {
+      "check": "checkpoint_hash_matches_completion",
+      "pass": true
+    },
+    {
+      "check": "synthetic_checkpoint_3900_steps",
+      "pass": true
+    },
+    {
+      "check": "scheduler_checkpoint_100",
+      "pass": true
+    },
+    {
+      "check": "checkpoint_all_cpu",
+      "pass": true
+    },
+    {
+      "check": "expected_negative_synthetic_nonfinite",
+      "pass": true
+    },
+    {
+      "check": "expected_negative_synthetic_step_failure",
+      "pass": true
+    },
+    {
+      "check": "test_shim_not_installable",
+      "pass": true
+    },
+    {
+      "check": "no_candidate_symlinks",
+      "pass": true
+    },
+    {
+      "check": "all_audited_candidate_bytes_size_mtime_unchanged",
+      "pass": true
+    }
+  ],
+  "candidate_files": 15,
+  "candidate_bytes": 320778,
+  "handoff_sha256": "99a5d63b8d9f0756723fff896ab6765fe846c97d321217d9926a99cf11cde9a2",
+  "test_result_sha256": "778786b5e7b33baaf4a3520d26b6302f0e86d891c83af2c1767dd097f45c56f4",
+  "synthetic_checkpoint_sha256": "c4b3203448f0a1f2128781ae49f5a39c134bd7bbba157cd272d998244456ca36",
+  "optimizer_parameter_state_steps": [
+    3900,
+    3900,
+    3900
+  ],
+  "test_ids": [
+    "test_01_frozen_mother_identity",
+    "test_02_legacy_runner_suffix_unchanged",
+    "test_03_dispatch_actual_branch_fails_closed",
+    "test_04_actual_model_import_and_legacy_knn",
+    "test_05_actual_knn_16k_full_keys_chunked",
+    "test_06_dataset_loader_real_synthetic_arrays",
+    "test_07_dataset_rejects_wrong_counts_duplicates",
+    "test_08_real_optimizer_full_lifecycle",
+    "test_09_nonfinite_loss_stops_no_final",
+    "test_10_optimizer_failure_stops_no_commit",
+    "test_11_existing_output_not_reused",
+    "test_12_static_all_overlay_and_no_model_import"
+  ],
+  "snapshot": {
+    "implementation_handoff_v4.json": {
+      "bytes": 5104,
+      "mtime_ns": 1792836844585179100,
+      "sha256": "99a5d63b8d9f0756723fff896ab6765fe846c97d321217d9926a99cf11cde9a2"
+    },
+    "test_isolated_closure_v4.py": {
+      "bytes": 9920,
+      "mtime_ns": 1792836759449709800,
+      "sha256": "a9ee97f0221f631fac4dfa72c8a6709979d4e914dc4620320398bd934de44dd3"
+    },
+    "closure_cpu_v4\\input_manifest.json": {
+      "bytes": 631,
+      "mtime_ns": 1792836772862523600,
+      "sha256": "e578ba7d7c1cf1c36676978d4c9983c5371d5b1a4c01330533bb91fa8979fab7"
+    },
+    "closure_cpu_v4\\result.json": {
+      "bytes": 1587,
+      "mtime_ns": 1792836781577674200,
+      "sha256": "778786b5e7b33baaf4a3520d26b6302f0e86d891c83af2c1767dd097f45c56f4"
+    },
+    "closure_cpu_v4\\stdout.txt": {
+      "bytes": 919,
+      "mtime_ns": 1792836781552883000,
+      "sha256": "c4be2172d2c0c3c4c27341896d0a7dda3a245746ac088faf82b277c8fa6723d5"
+    },
+    "closure_cpu_v4\\synthetic_data\\artificial.npz": {
+      "bytes": 197122,
+      "mtime_ns": 1792836773050470400,
+      "sha256": "15af741e205fa16e3869d65f41ee3d1ba6e91c05694539d9a327bf77f5c62baf"
+    },
+    "closure_cpu_v4\\synthetic_nonfinite\\failure.json": {
+      "bytes": 225,
+      "mtime_ns": 1792836781519866000,
+      "sha256": "a29a9fb9307d8652353291d89bbc8803034e371cdc2f5432fe857c0f6c37d3ce"
+    },
+    "closure_cpu_v4\\synthetic_step_failure\\failure.json": {
+      "bytes": 238,
+      "mtime_ns": 1792836781529502200,
+      "sha256": "6c03a70fb4e54b62a1520c99932abc375bfd655b1e1a97f500d81604365614eb"
+    },
+    "closure_cpu_v4\\synthetic_success\\ckpt-last.pth": {
+      "bytes": 5417,
+      "mtime_ns": 1792836781498347000,
+      "sha256": "c4b3203448f0a1f2128781ae49f5a39c134bd7bbba157cd272d998244456ca36"
+    },
+    "closure_cpu_v4\\synthetic_success\\completion.json": {
+      "bytes": 448,
+      "mtime_ns": 1792836781511687700,
+      "sha256": "b0392d62d375a3661a21a8b669f28059b5952bc4de101049b7f311ddc6cbb897"
+    },
+    "overlay\\models\\Transformer_utils.py": {
+      "bytes": 52026,
+      "mtime_ns": 1792836666186477800,
+      "sha256": "cd562e02755ffd46382cc539cdb361225b844b12e89df9d98741d37238a6bf5f"
+    },
+    "overlay\\tools\\bcsp_adapter.py": {
+      "bytes": 7297,
+      "mtime_ns": 1792836668870183200,
+      "sha256": "2f7d3050cfb6ac2602cc17a95b860da2204daef2dfa63dab63d233e899b7dd55"
+    },
+    "overlay\\tools\\bcsp_runtime.py": {
+      "bytes": 7320,
+      "mtime_ns": 1792836694281748500,
+      "sha256": "8cbb5389e074347f6bf6e776755d22bbdaedaf5dba5102d51866d1b1e49b3615"
+    },
+    "overlay\\tools\\runner.py": {
+      "bytes": 32455,
+      "mtime_ns": 1792836667530833000,
+      "sha256": "e378ab4ab7a26f6b370b4263788ca51e413b47ca3827cf404dd6ac4d9aaa0f32"
+    },
+    "overlay\\tools\\__init__.py": {
+      "bytes": 69,
+      "mtime_ns": 1792836669233784800,
+      "sha256": "ddfa85f51d917f94b9e69a69b7c10da474c5327f3f49957bffdd4f599d76060c"
+    }
+  },
+  "audit_runtime": {
+    "python": "3.9.21 (main, Dec 11 2024, 16:35:24) [MSC v.1929 64 bit (AMD64)]",
+    "torch": "2.5.1",
+    "cuda_visible_devices": ""
+  },
+  "actions": {
+    "tests_rerun": false,
+    "candidate_imported_or_executed": false,
+    "real_model_constructed": false,
+    "synthetic_checkpoint_read_weights_only_cpu": true,
+    "real_data_read": false,
+    "gpu_used": false,
+    "server_contacted": false,
+    "production_modified": false
+  },
+  "limits": [
+    "Original process exit 0 comes from prior tool transcript and handoff; not a new test process",
+    "Checkpoint and logs substantiate synthetic CPU lifecycle only, not real cranial training",
+    "Actual complete model imports/forward, CUDA and full data QC remain unverified",
+    "Provisional execution gate and global KNN activation require review in the actual isolated GPU context before training; not permission to use legacy paths in the same activated process",
+    "No deployment or training request readiness is certified"
+  ],
+  "checks_passed": 48,
+  "provenance": {
+    "kind": "one_off_inline_readonly_audit",
+    "audit_process_exit_code": 0,
+    "checkpoint_loading": "torch.load(weights_only=True,map_location=cpu); only hash-bound 5417-byte synthetic checkpoint",
+    "receipt_write": "New audit receipt only, after unchanged input snapshot comparison; no generic audit utility created"
+  },
+  "next_research_scope_not_executed": {
+    "data_qc": {
+      "sources": "Previously approved development/train sources only; bind actual raw and derived manifest before reading; no held-out source expansion",
+      "geometry": "Verify residual full boundary input and missing solid fragment full boundary target; preserve inner/outer/exposed cut-wall labels and native-surface/interface evaluation masks",
+      "pairing": "Compare 8192/16384 inputs against same-case 8192 targets, identical defective-bbox normalization and common geometry mother; report surface coverage/contact-support and anomalies without outcome-based filtering",
+      "folds": "Verify source-disjoint C/D assignment, 63 train sources/315 cases and 21 development sources/105 cases per fold; counts must be supported by actual manifest, not synthetic aliases",
+      "failure": "List exact anomalies and stop before training; no silently dropping cases or changing thresholds"
+    },
+    "gpu_validation": {
+      "intent": "One bounded artificial zero-optimizer-update validation of real isolated model path for both 8k/16k input arms, fixed 8k target and batch 8, FP32",
+      "checks": [
+        "Exact candidate/mother/config/provider identity",
+        "Actual model/package import and full forward/backward, no optimizer.step",
+        "Chunked KNN CUDA comparison on bounded queries; full-key coverage retained",
+        "Finite output/loss/gradients and peak allocated/reserved device memory",
+        "Record device identity and fixed timeout/memory stop budgets before execution"
+      ],
+      "bounds": "No real patient payload, external checkpoint, training, BNCal, evaluation, parameter scan or automatic retry; actual server identity and numerical/resource budgets must be bound before execution"
+    },
+    "current_status": "Scope recorded only; no QC data processing, GPU execution, deployment, transport preparation or request creation in this audit"
+  }
+}

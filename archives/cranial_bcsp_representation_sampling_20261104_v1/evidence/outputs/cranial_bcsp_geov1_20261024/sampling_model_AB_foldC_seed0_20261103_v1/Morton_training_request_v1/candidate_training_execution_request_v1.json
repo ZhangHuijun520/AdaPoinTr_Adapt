@@ -1,0 +1,268 @@
+{
+  "schema": "bcsp-sampling-candidate-execution-scope-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "execution_authorized": false,
+  "stage": "BCSP_SAMPLING_AB_V1",
+  "run_id": "bcsp_sampling_ab_foldC_Morton_in8192_out8192_seed0_train_v1",
+  "arm": "Morton_area_stratified8k",
+  "authorized_training_attempts": 1,
+  "scope": "Install only three new control metadata files without overwrites, reuse exact installed code/candidate315 data, one scratch candidate Fold C seed0 training after separate full-hash authorization",
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-v2iwsa-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-34a1b996-2bd7-88e6-9dca-164b718caea6",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity."
+  },
+  "inner_request": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_Morton_v1/training_entry_request_v1.json",
+    "bytes": 5931,
+    "sha256": "b4d5c09a270972327e4f8ded21a8697d10d8c724c2c0faa9e2b5a3b384aa2859"
+  },
+  "parent_baseline_audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\sampling_model_AB_foldC_seed0_20261103_v1\\post_V1_training_freeze_audit_v2\\audit_report_v2.json",
+    "sha256": "7a6c002e45160cfdf11cb53686639f61d945a1255460bfafa271c75af63e17b1",
+    "status": "FORMAL_POST_TRAINING_FREEZE_AUDIT_PASS",
+    "checkpoint_sha256": "bef638c807de8ea41f79862311138f42d9993dcc6fb5a09d5321642a57acfa51"
+  },
+  "paired_initialization": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_Morton_v1/paired_initialization_receipt_v1.json",
+    "bytes": 3936,
+    "sha256": "01b3c7f7d0697563c955ff9418b4956576ed991d9f6092d6bfffd78841b06227"
+  },
+  "scientific_config": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/static_training_config_v1.json",
+    "bytes": 2118,
+    "sha256": "e0ec59c20fdbc9a0809532233760a5b4ac1c116f6f4e8315948ef917e078136a"
+  },
+  "order_plan": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/shared_order_foldC_seed0_v1.json",
+    "bytes": 1248506,
+    "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+  },
+  "training_counts": {
+    "sources": 63,
+    "cases": 315,
+    "input": 8192,
+    "target": 8192,
+    "batch": 8,
+    "traversals": 100,
+    "updates": 3900,
+    "exposures": 31200,
+    "dropped_exposures": 300
+  },
+  "resources_per_run": {
+    "wall_seconds": 86400,
+    "RSS_bytes": 8589934592,
+    "device_MiB": 22528,
+    "torch_peak_bytes": 21474836480,
+    "output_bytes": 2147483648,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "same_science_as_baseline": {
+    "model": "B0 AdaPoinTr, not Mamba",
+    "input": 8192,
+    "target": 8192,
+    "sampler_seed": 0,
+    "training_seed": 0,
+    "target_normalization_and_permutation": "identical fixed targets, D frame and per-case permutation",
+    "batch_exposure_order": "byte-identical order plan,3900 updates,31200 exposures,300 drops",
+    "numerics": "FP32 deterministic, TF32/AMP off",
+    "backend": "same native PointNet2/full-key chunk256 KNN/torch.cdist loss",
+    "checkpoint_initialization": "scratch; compare parameter and persistent state fingerprints before first update; never load final V1 weights"
+  },
+  "transport": {
+    "files": [
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\sampling_model_AB_foldC_seed0_20261103_v1\\Morton_training_request_v1\\transport_v1\\bcsp_sampling_ab_foldc_morton_control_v1.tar.gz",
+        "filename": "bcsp_sampling_ab_foldc_morton_control_v1.tar.gz",
+        "bytes": 3311,
+        "sha256": "af4b57c7ab6e27b98c89e083fd80eb1f4af486ef9bf0f64cf7352972406c71d0",
+        "upload_directory": "/home/jovyan"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\sampling_model_AB_foldC_seed0_20261103_v1\\Morton_training_request_v1\\transport_v1\\bcsp_sampling_ab_foldc_morton_control_v1.tar.gz.sha256",
+        "filename": "bcsp_sampling_ab_foldc_morton_control_v1.tar.gz.sha256",
+        "bytes": 114,
+        "sha256": "5b41ad1b990075319567979a47e95d8040d62fc4124997806e31f26f329f3efc",
+        "upload_directory": "/home/jovyan"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\sampling_model_AB_foldC_seed0_20261103_v1\\Morton_training_request_v1\\transport_v1\\bcsp_sampling_ab_foldc_morton_control_v1.bytes",
+        "filename": "bcsp_sampling_ab_foldc_morton_control_v1.bytes",
+        "bytes": 5,
+        "sha256": "835897ac3a5015bd5134d02adb899004daba0cf7312a764e019dbf0d2e36b54f",
+        "upload_directory": "/home/jovyan"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\sampling_model_AB_foldC_seed0_20261103_v1\\Morton_training_request_v1\\transport_v1\\bcsp_sampling_ab_foldc_morton_control_v1.contents.sha256",
+        "filename": "bcsp_sampling_ab_foldc_morton_control_v1.contents.sha256",
+        "bytes": 302,
+        "sha256": "e1cd6d03e5548dc1079f5214e882f9647bafbe12af42a32b9826fcca58780607",
+        "upload_directory": "/home/jovyan"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\sampling_model_AB_foldC_seed0_20261103_v1\\Morton_training_request_v1\\transport_v1\\bcsp_sampling_ab_foldc_morton_control_v1.contents.sha256.sha256",
+        "filename": "bcsp_sampling_ab_foldc_morton_control_v1.contents.sha256.sha256",
+        "bytes": 123,
+        "sha256": "17f015660c7a7d12a6a148791d38508b4618d9ec962a0ed8d20fe00ae170a00c",
+        "upload_directory": "/home/jovyan"
+      }
+    ],
+    "archive_sha256": "af4b57c7ab6e27b98c89e083fd80eb1f4af486ef9bf0f64cf7352972406c71d0",
+    "members": 3,
+    "installation_mapping": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\sampling_model_AB_foldC_seed0_20261103_v1\\Morton_training_request_v1\\non_overwrite_control_installation_mapping_v1.json",
+      "sha256": "71b119df7d9f7393e403b8bbad69ad9a9da83d70cd3f43a6033b89e5d22eebc2"
+    }
+  },
+  "reused_bindings": [
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/static_training_config_v1.json",
+      "bytes": 2118,
+      "sha256": "e0ec59c20fdbc9a0809532233760a5b4ac1c116f6f4e8315948ef917e078136a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/shared_order_foldC_seed0_v1.json",
+      "bytes": 1248506,
+      "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/resource_binding_v1.json",
+      "bytes": 1911,
+      "sha256": "7ba8bd95efc02907940144699d00b3292f510e930434d5eff88a6cf1f6215a4a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/paired_train_data_receipt.json",
+      "bytes": 224850,
+      "sha256": "ae11a97351725ffbe55cb868cdeb75524caba1e699b10204f595ad52d889d2f5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/fold_binding.json",
+      "bytes": 35012,
+      "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/V1_train_manifest_8192.jsonl",
+      "bytes": 447585,
+      "sha256": "65754f73a1cb92a805436a3fc1e379b5af159b7b315cc3ec7c63a7eb653b4758"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/Morton_area_stratified8k_train_manifest_8192.jsonl",
+      "bytes": 474045,
+      "sha256": "b22ea9dfe3cd78b2cd09c4fb7a97d3450d9fc4ea321135ba5aed5420373ff3e7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/implementation/bcsp_sampling_training_entry_v1.py",
+      "bytes": 16395,
+      "sha256": "6802da2e38c36598329beb8a71a963524eabd91401c5f0d58d799713be4eb779"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/implementation/bcsp_sampling_training_contract_v1.py",
+      "bytes": 12584,
+      "sha256": "b49c8839a53f6c1c86c537e43ece351dd165896bbda8d947318b42ba60f30418"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/implementation/bcsp_sampling_training_runtime_v1.py",
+      "bytes": 10216,
+      "sha256": "97b767ef6596deb5951ae799aecc8306530f3c2ec4c07ae12bbbd5a1fb335d06"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+      "bytes": 32728,
+      "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+      "bytes": 23220,
+      "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/post_preflight_freeze_audit_report_v1.json",
+      "bytes": 31109,
+      "sha256": "af3c3053be96a443d203c486ccede4d2bf2f0799ae753294ee946618726cf000"
+    }
+  ],
+  "reused_payload": {
+    "root": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_v1/Morton_area_stratified8k",
+    "manifest": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/Morton_area_stratified8k_train_manifest_8192.jsonl",
+      "bytes": 474045,
+      "sha256": "b22ea9dfe3cd78b2cd09c4fb7a97d3450d9fc4ea321135ba5aed5420373ff3e7"
+    },
+    "files": 315,
+    "already_installed_and_stream_hash_verified": true,
+    "audit_sha256": "7a6c002e45160cfdf11cb53686639f61d945a1255460bfafa271c75af63e17b1",
+    "require_recheck_before_execution": true
+  },
+  "future_paths": {
+    "control": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_Morton_v1",
+    "authorization": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_Morton_v1/authorization_v1.json",
+    "runtime": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_Morton_v1/runtime_v1.json",
+    "launcher": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_Morton_v1/launch_once_v1.sh",
+    "launch_attempt": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_Morton_v1/launch_attempt_v1.json",
+    "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_ab_foldC_Morton_in8192_out8192_seed0_train_v1",
+    "log": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_ab_foldC_Morton_in8192_out8192_seed0_train_v1/launch.log",
+    "PID": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_ab_foldC_Morton_in8192_out8192_seed0_train_v1/worker.pid",
+    "exit_code": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_ab_foldC_Morton_in8192_out8192_seed0_train_v1/exit_code.txt",
+    "checkpoint": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_ab_foldC_Morton_in8192_out8192_seed0_train_v1/ckpt-last.pth",
+    "completion": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_ab_foldC_Morton_in8192_out8192_seed0_train_v1/completion.json",
+    "tmux": "bcsp_sampling_ab_foldc_morton_seed0_train_v1"
+  },
+  "launcher_contract": {
+    "environment": {
+      "CUDA_VISIBLE_DEVICES": "GPU-34a1b996-2bd7-88e6-9dca-164b718caea6",
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "OMP_NUM_THREADS": "2",
+      "MKL_NUM_THREADS": "2",
+      "OPENBLAS_NUM_THREADS": "2",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "MPLBACKEND": "Agg",
+      "MPLCONFIGDIR": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_ab_foldC_Morton_in8192_out8192_seed0_train_v1/mplconfig",
+      "CUDA_CACHE_DISABLE": "1",
+      "TMPDIR": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_ab_foldC_Morton_in8192_out8192_seed0_train_v1/tmp"
+    },
+    "python": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "flags": [
+      "-I",
+      "-S",
+      "-B"
+    ],
+    "entry": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/implementation/bcsp_sampling_training_entry_v1.py",
+    "entry_sha256": "6802da2e38c36598329beb8a71a963524eabd91401c5f0d58d799713be4eb779",
+    "external_timeout_seconds": 86400,
+    "kill_after_seconds": 5,
+    "order": "recheck identity/source/data/baseline evidence/new paths/idle GPU/disk, exclusive metadata install, authorization -> authorization SHA -> runtime -> launcher; mkdir verified log parent before redirect, attempt marker before sole tmux start, propagate actual exit code including PowerShell LASTEXITCODE",
+    "control_initial_filenames": [
+      "paired_initialization_receipt_v1.json",
+      "qualified_training_receipt_v1.json",
+      "training_entry_request_v1.json"
+    ]
+  },
+  "no_materialization_performed": true,
+  "completion_boundary": "stop after this one candidate attempt; independent post-training audit and later two-arm evaluation each require separate explicit scope",
+  "forbidden": [
+    "no V1 retraining",
+    "no baseline checkpoint load/resume",
+    "no retry",
+    "no development payload/evaluation or BNCal",
+    "no Fold D/extra seeds/SkullFix/MUG",
+    "no scientific code or parameter changes",
+    "no overwrite/delete",
+    "no dependency install/rebuild/download or environment upgrade"
+  ],
+  "limitations": [
+    "Formal baseline audit verifies saved initialization records, not independently reconstructed initial weights",
+    "Byte hashing does not deserialize checkpoint or NPZ",
+    "Baseline loss is not prediction quality; candidate benefit unknown",
+    "GPU PIDs remain diagnostic; no exclusive cgroup guarantee"
+  ]
+}

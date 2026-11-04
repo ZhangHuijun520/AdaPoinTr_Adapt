@@ -1,0 +1,184 @@
+{
+  "schema": "bcsp-preflight-local-implementation-P3-v2",
+  "status": "PASS_LOCAL_IMPLEMENTATION_ONLY",
+  "date_Asia_Shanghai": "2026-10-24",
+  "scope": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_scope_v1\\artificial_gpu_zero_update_frozen_scope_v1.json",
+    "bytes": 21101,
+    "sha256": "2a69aed239c309e2579abdad0003878c2c30f7281194a77a6a7b78abb5657980"
+  },
+  "entry": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\bcsp_artificial_gpu_preflight_v1.py",
+    "bytes": 26429,
+    "sha256": "9eab8e90302500c11d4fb16e6aa0307d565b9e767a5319eb8e4725b513b82c79"
+  },
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\test_bcsp_artificial_gpu_preflight_v2.py",
+    "bytes": 17542,
+    "sha256": "40360718e87ebb34680034a6680848019136a11cfd8080da27850716224e62ff"
+  },
+  "authorization_boundary": "One test admission correction and one new versioned CPU attempt; entry and production sources unchanged. P3 and pending request only; no server actions.",
+  "change_review": {
+    "old_test_preserved": true,
+    "new_test": "test_bcsp_artificial_gpu_preflight_v2.py",
+    "semantic_change": "Replace CPU-only build-marker requirement with CUDA_VISIBLE_DEVICES empty AND default tensor device CPU.",
+    "path_only_changes": "cpu_attempt_v1 -> cpu_attempt_v2 in fixture and result locations",
+    "all_other_test_bytes_equal_after_expected_substitution": true,
+    "unchanged_source_and_config_count": 19,
+    "entry_sha256_unchanged": true
+  },
+  "validation": {
+    "syntax": "PASS_Python_3.10_AST",
+    "test_runtime": "C:/Users/zhj/.conda/envs/adapointr/python.exe",
+    "torch": "2.5.1",
+    "numpy": "1.26.4",
+    "tests_planned": 24,
+    "tests_run": 24,
+    "failures": 0,
+    "errors": 0,
+    "attempts_this_version": 1,
+    "contract_log": "24 individual ok entries and final OK",
+    "fixture_root": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures",
+    "fixtures_retained": true,
+    "cpu_artifacts": [
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\attempt_started.json",
+        "bytes": 211,
+        "sha256": "3ebe5086fc88c632d9c52bce058f81f9811eb6aa11126cbff25b528a324903be"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\cpu_contract_log.txt",
+        "bytes": 1690,
+        "sha256": "88e875386cd448e51abce9d0e6432b0ac64625ed11fc8a307dc229072f48a2a8"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures\\auth7\\auth.json",
+        "bytes": 240,
+        "sha256": "5889000da575f609db45a9901243e2725418932252ef8dfacbaf85cf52cd6e55"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures\\auth7\\request.json",
+        "bytes": 134,
+        "sha256": "70b70028ecc00ef3c780ecfe40b8091c750aae373fb720c109e89cb924b8eebe"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures\\auth7\\runtime.json",
+        "bytes": 217,
+        "sha256": "779990a4f5c9c783561e8fb30cf217b3c1468f4a0de6347f493af0ceed86817e"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures\\auth8\\auth.json",
+        "bytes": 326,
+        "sha256": "8295d0c3253ccf0fd4e26adb4fa26df6e4082619ba53f7ad91dd201c0a795d14"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures\\auth8\\request.json",
+        "bytes": 134,
+        "sha256": "70b70028ecc00ef3c780ecfe40b8091c750aae373fb720c109e89cb924b8eebe"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures\\auth8\\runtime.json",
+        "bytes": 217,
+        "sha256": "779990a4f5c9c783561e8fb30cf217b3c1468f4a0de6347f493af0ceed86817e"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures\\exact.txt",
+        "bytes": 8,
+        "sha256": "689f6a627384c7dcb2dcc1487e540223e77bdf9dcd0d8be8a326eda65b0ce9a4"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures\\exclusive.json",
+        "bytes": 17,
+        "sha256": "12b34da73b0c67a0319e6eddbd3582af66e3b558b4d44e4a6860e0cec20d726f"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures\\launcher_only\\launch.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures\\launcher_only\\worker.pid",
+        "bytes": 7,
+        "sha256": "09cff257e8396ee74df911a5cb206baad6231b455095a97b63fd1106e5dced24"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures\\namespace\\models\\__init__.py",
+        "bytes": 38,
+        "sha256": "dfc35ec874fb0251e98ac21d3622c67377cb4d952f191cedbf550ef814b8a0e9"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\fixtures\\namespace\\tools\\__init__.py",
+        "bytes": 38,
+        "sha256": "dfc35ec874fb0251e98ac21d3622c67377cb4d952f191cedbf550ef814b8a0e9"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v2\\result.json",
+        "bytes": 636,
+        "sha256": "58a55dabe194240c819983d4a3652f85c8cf7f29b9a0361692ef591764fa1feb"
+      }
+    ]
+  },
+  "coverage": [
+    [
+      "01-04",
+      "19 frozen source/config hashes; exclusive files/PID; namespace initializer bypass; finite project import rejection"
+    ],
+    [
+      "05-08",
+      "Read/write/payload/secret/process policy helpers and one-way request/receipt/runtime authorization binding"
+    ],
+    [
+      "09-11",
+      "No training/optimizer/checkpoint call sites; model-section-only load; deterministic/TF32 assertions; tensor hashing without NumPy bridge"
+    ],
+    [
+      "12-16",
+      "Training BatchNorm uses batch statistics without persistent running-stat writes; flag/gradient cleanup; mutation detection; RNG restore including exception paths"
+    ],
+    [
+      "17-19",
+      "Synthetic shapes, FP32/prefix/common target; native-provider/fallback/backend rejection; actual existing cdist wrapper CPU backward"
+    ],
+    [
+      "20-21",
+      "Actual candidate KNN AST subset against frozen dense branch at 8192 and 16384 keys, 257 queries, 16 neighbors"
+    ],
+    [
+      "22-24",
+      "Two tiny synthetic forward/loss/backward calls with zero parameter updates; ordered fail-first-arm code structure; budget threshold helpers"
+    ]
+  ],
+  "gap_review": {
+    "blocking_local_implementation_gaps": [],
+    "not_executed_and_must_remain_runtime_gates": [
+      "Current server identity, GPU idleness, disk space, installed hashes and fresh paths must be rechecked immediately before separately authorized deployment/execution",
+      "Linux namespace/dependency imports under real -I -S -B and I/O audit; real native PointNet2 binary loading",
+      "Remote NumPy 2.2.6 to torch 2.4.1 bridge; CUDA deterministic operator support",
+      "Full real-model 8k/16k forward/get_loss/backward, CUDA RNG restore and actual memory limits",
+      "Materialized single-use tmux launcher and external timeout/exit propagation must be checked after separate execution authorization, before launch"
+    ],
+    "limitations": [
+      "Local CPU contracts do not establish CUDA success, training admission, clinical/representation accuracy, or compiled-Chamfer equivalence",
+      "Python audit hooks and cooperative RSS/device monitoring are not OS hard isolation or exclusive cgroups",
+      "BN running-stat tracking is disabled for this preflight only; not exact complete training-state/update semantics",
+      "KNN logging chunk sizes derive from the bound candidate implementation, not a CUDA allocator trace"
+    ]
+  },
+  "prior_failed_attempt": {
+    "result": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v1\\result.json",
+      "bytes": 649,
+      "sha256": "a55a76ce80b5a8311447f674677ecfd9c8e726f5c8dcdc504eb0266ec2bcace0"
+    },
+    "status": "FAIL_STOP_NO_RETRY",
+    "tests_run": 0,
+    "preserved": true,
+    "reused": false
+  },
+  "server_operations": 0,
+  "GPU_operations": 0,
+  "real_payload_reads": 0,
+  "real_model_forwards": 0,
+  "authorization_runtime_launcher_materialized": false,
+  "next": "Create only a final immutable AWAITING_EXPLICIT_USER_AUTHORIZATION request bound to this P3 and exact input hashes; do not execute."
+}

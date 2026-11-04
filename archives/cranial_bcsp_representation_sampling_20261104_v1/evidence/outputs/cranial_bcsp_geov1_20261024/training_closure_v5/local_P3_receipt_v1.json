@@ -1,0 +1,499 @@
+{
+  "schema": "bcsp-training-specific-implementation-P3-v5",
+  "date_Asia_Shanghai": "2026-10-25",
+  "status": "LOCAL_IMPLEMENTATION_P3_PASS_WITH_SEPARATE_DEPLOYMENT_AND_TRAINING_GATES",
+  "scope": "One bounded implementation-only closure of G1-G4. No dataset/model/3900-step contract changes, generic framework, server or GPU execution.",
+  "parent_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_readiness_joint_review_20261025_v1.json",
+    "sha256": "f82a188f11bc26c92fe7a6c3e641cff613e63cf92ac2fb14d257dee4d4b6b980"
+  },
+  "implementation_inputs": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\bcsp_training_contract_v1.py",
+      "bytes": 10048,
+      "sha256": "e57d0b6b23fe6a741d82e6de65e4ab7f911d8bb06c2d767ec19465ee92324b91"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\bcsp_training_runtime_v5.py",
+      "bytes": 10171,
+      "sha256": "55ad69b0e87f3fc4ecac68a5ebcc4cdd560c4825ff01363ba9868de5875f0847"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\bcsp_training_entry_v1.py",
+      "bytes": 14452,
+      "sha256": "978326c599100dc5e131239254db44dd5a1a40625fa2eccbb21c583290aa60d4"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\test_training_closure_v1.py",
+      "bytes": 26143,
+      "sha256": "e9d14001d65eee7bee2ffb34fa55986f2910a2c8075beb5d30e4de8cf3af8f17"
+    }
+  ],
+  "P1_static": {
+    "status": "PASS",
+    "files": 4,
+    "contract_bootstrap_SHA_pinned": true,
+    "isolated_no_site_bootstrap": "Entry loads only the hash-pinned sibling contract explicitly, rather than relying on script-directory sys.path under -I.",
+    "optimizer_constructor_AST_preserved": true,
+    "BN_momentum_formula_AST_preserved": true,
+    "single_100_epoch_loop": true,
+    "single_optimizer_step_call_per_batch": true
+  },
+  "P2_CPU": {
+    "status": "PASS_ARTIFICIAL_CPU_ONLY",
+    "attempts": 1,
+    "tests": 24,
+    "passed": 24,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "process_returncode": 0,
+    "process_wall_seconds": 18.40599999999995,
+    "process_timeout_seconds": 120,
+    "python": "3.9.21 (main, Dec 11 2024, 16:35:24) [MSC v.1929 64 bit (AMD64)]",
+    "torch": "2.5.1",
+    "numpy": "1.26.4",
+    "CUDA_VISIBLE_DEVICES": "",
+    "actual_artificial_AdamW_updates": 3900,
+    "actual_optimizer_post_hook_observations": 3900,
+    "artificial_traversals": 100,
+    "artificial_case_exposures": 31200,
+    "artificial_dropped_exposures": 300,
+    "case_exposure_range": [
+      96,
+      100
+    ],
+    "source_exposure_range": [
+      490,
+      500
+    ],
+    "ordinary_BN_num_batches_tracked": 3900,
+    "ordinary_BN_tracking_preserved": true,
+    "synthetic_checkpoint_and_completion": {
+      "stage": "BCSP_INPUT_DENSITY_V1",
+      "optimizer_updates": 3900,
+      "traversals": 100,
+      "case_exposures": 31200,
+      "counts": {
+        "forward": 3900,
+        "backward": 3900,
+        "clip": 3900,
+        "step": 3900,
+        "lr_scheduler": 100,
+        "bn_scheduler": 100
+      },
+      "checkpoint_sha256": "7bbe1f03e51d2ceabf2097f672a7001b42a0c6d77637070e4cacb41138a81e8e",
+      "order_sha256": "9990f98cce53f2196fd0b330fccdea1bd28370a08349050109abf96243be6c23",
+      "elapsed_seconds": 6.125,
+      "bncal_executed": false,
+      "evaluation_executed": false,
+      "resume": false
+    },
+    "fixture_scope": "Artificial Tiny CPU network, 8x2x3 tensors through full loop; separate actual 8192/16384 partial and 8192 target NPZ Dataset checks. No real cranial model or patient payload.",
+    "test_ids": [
+      "test_01_all_parent_evidence_preserved",
+      "test_02_static_sources_and_frozen_unchanged_model_bindings",
+      "test_03_qualified_QC_positive_and_limits_retained",
+      "test_04_unqualified_PASS_and_erased_limit_rejected",
+      "test_05_paired_target_drift_rejected",
+      "test_06_wrong_source_fold_rejected",
+      "test_07_single_direction_authorization_positive",
+      "test_08_reverse_bindings_or_recursive_static_config_rejected",
+      "test_09_hash_drift_and_missing_authorization_rejected",
+      "test_10_boolean_GPU_or_implicit_resource_budget_rejected",
+      "test_11_numeric_strict_settings_and_TF32_failure",
+      "test_12_shared_order_matches_prior_loader_permutations",
+      "test_13_duplicate_or_missing_order_rejected",
+      "test_14_real_artificial_NPZ_dataset_shapes_and_identity",
+      "test_15_dataset_counts_and_link_guard",
+      "test_16_exact_315_payload_policy_and_checkpoint_boundary",
+      "test_17_process_and_network_guards_remain",
+      "test_18_namespace_skips_initializers_and_rejects_unbound_import",
+      "test_19_external_timeout_and_artificial_resource_sample",
+      "test_20_resource_overrun_stops_no_success_record",
+      "test_21_actual_CPU_3900_step_lifecycle_logs_and_BN",
+      "test_22_nonfinite_loss_stops_without_final_checkpoint",
+      "test_23_optimizer_failure_and_order_drift_stop",
+      "test_24_existing_output_refused_and_entry_fails_before_GPU"
+    ],
+    "CPU_tests_not_CUDA_or_training_acceptance": true
+  },
+  "P3_gap_review": [
+    {
+      "id": "G1",
+      "local_implementation": "CLOSED",
+      "details": "Qualified QC receipt builder/reader binds original verification, both manifest hashes, source/fold counts, 315-case allowlist, shared GT/frame provenance and retained anatomical limitations. Production entry hard-pins original QC and fold evidence; synthetic fixtures cannot pass these pins. New stage-specific policy permits only the exact 315 approved NPZ reads and final checkpoint, retaining all other payload/secret/network/link denials."
+    },
+    {
+      "id": "G2",
+      "local_implementation": "CLOSED",
+      "details": "Static config has an exact field schema excluding execution/request hash; request binds static, separate authorization binds request, runtime binds authorization SHA only. Production entry requires actual prior GPU audit and scope hashes, not a readiness boolean. No runner/parent package initializer; reuse fixed finite imports, actual model class and native backend checks."
+    },
+    {
+      "id": "G3",
+      "local_implementation": "CLOSED_WITH_DECLARED_RUNTIME_LIMITS",
+      "details": "Reuse exact configure_numeric/assert_numeric from unchanged verified GPU helper before and through training; ordinary BN remains active. Require explicit positive wall/output budgets and unchanged RSS/GPU thresholds. Verify external timeout parent contract. Per-step prechecks and after-step GPU/allocator checks plus final-save checks, finite 3902 resource records and fail-stop; no retries, cgroup claim or batch reduction."
+    },
+    {
+      "id": "G4",
+      "local_implementation": "CLOSED",
+      "details": "Explicit shared order artifact, 39 fixed 8-case batches and 3 dropped IDs each epoch; actual returned case/source identity checked before each step. Record initial parameter/state hash, 3900 loss/LR/clip records, actual optimizer defaults, per-case/source exposures and dropped counts, 100 scheduler/BN assignments, final-only checkpoint SHA and exact completion counters."
+    }
+  ],
+  "unchanged_proof": {
+    "parent_evidence_files_rehashed": 26,
+    "all_match": true,
+    "parent_research_data_reads": 0,
+    "parent_code_edits": 0,
+    "scientific_model_changes": 0,
+    "KNN_or_adapter_changes": 0,
+    "provider_or_wheel_changes": 0,
+    "original_CPU_GPU_evidence_preserved": true,
+    "old_QA_3939_path_not_imported_or_modified": true,
+    "stage": "BCSP_INPUT_DENSITY_V1",
+    "updates": 3900,
+    "epochs": 100,
+    "batch": 8,
+    "seed": 0,
+    "no_new_true_training_request": true
+  },
+  "local_evidence_recheck": {
+    "status": "POST_TEST_LOCAL_EVIDENCE_RECHECK_PASS",
+    "artifacts": 60,
+    "total_bytes": 7614846,
+    "manifest": [
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\bcsp_training_contract_v1.py",
+        "bytes": 10048,
+        "sha256": "e57d0b6b23fe6a741d82e6de65e4ab7f911d8bb06c2d767ec19465ee92324b91"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\bcsp_training_entry_v1.py",
+        "bytes": 14452,
+        "sha256": "978326c599100dc5e131239254db44dd5a1a40625fa2eccbb21c583290aa60d4"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\bcsp_training_runtime_v5.py",
+        "bytes": 10171,
+        "sha256": "55ad69b0e87f3fc4ecac68a5ebcc4cdd560c4825ff01363ba9868de5875f0847"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\attempt_started.json",
+        "bytes": 1161,
+        "sha256": "c561cb0243c8fbe3ffd8fc8cfad4d6bec1bf7e13e5b63a965779e219f07dddfe"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\cpu_contract_log.txt",
+        "bytes": 2011,
+        "sha256": "5fd0946bc534ee76d6e69ea8265b41f0d82da14ac202fa0e25ec0889620f10dc"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\array_16384\\points\\ART_000_0_16384.npz",
+        "bytes": 295426,
+        "sha256": "485d9b8f144c63d4c54cf4bd426ece9bb17fc6676ef0431fd5b1543753306fce"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\array_8192\\points\\ART_000_0_8192.npz",
+        "bytes": 197122,
+        "sha256": "15af741e205fa16e3869d65f41ee3d1ba6e91c05694539d9a327bf77f5c62baf"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\artificial_authorization.json",
+        "bytes": 257,
+        "sha256": "caf163ef0f940703dc90418e1c7465565a1994c8c848766173834eb9f5ccbd6e"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\artificial_folds.json",
+        "bytes": 18085,
+        "sha256": "7a055f52180dce3651bc5045a0d56218d31be298da5b78704d526181f7c8e6a5"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\artificial_GPU_audit.json",
+        "bytes": 92,
+        "sha256": "ef170b1719ce04880b2ab0f7d3084335c3806aa13683afbb081a4d1b22029c10"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\artificial_manifest_16384.jsonl",
+        "bytes": 194460,
+        "sha256": "044421b59890bb6bb248ef3859178821ddd344cfe7da71daa810e5e861a0758f"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\artificial_manifest_8192.jsonl",
+        "bytes": 193620,
+        "sha256": "82ac8af88f38afe24c267fdb92a8684d92baa0516f5d9be8734fc6f900510e60"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\artificial_order.json",
+        "bytes": 815822,
+        "sha256": "6b5704aa4ffdc789fafece192a63fa4753dbf2202abf74e3d4c2383f2a42cbe6"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\artificial_QC.json",
+        "bytes": 474,
+        "sha256": "373a18be4cbb9de511bf959b069d07c4bd2a2d61a81284c283b7eddf16fa7f5a"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\artificial_qualified.json",
+        "bytes": 1841,
+        "sha256": "6e8eda997625439829e89a244362dd2ec6e02ddf59137bbc930226ef89f22998"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\artificial_request.json",
+        "bytes": 3502,
+        "sha256": "3f02cc97bb19062c3d35159cd053968ee4627c7685d99af919ebba7f6b7cc8d0"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\artificial_runtime.json",
+        "bytes": 225,
+        "sha256": "e37050611df495b8d7a0803b03584b96093c03161fc89008a9605cac66a775e6"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\artificial_static.json",
+        "bytes": 986,
+        "sha256": "b10ce93ce0bba8ab1fd48815835ee323d77683e69bbca251025134238646b6eb"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\bad_QC_status.json",
+        "bytes": 416,
+        "sha256": "53c3952650cbce0b144266de141cbd7c8c8f0bfc20d9387c74e68f9502822391"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\bad_reverse_auth.json",
+        "bytes": 345,
+        "sha256": "b8f788dc5fb3b23755f3e532eefb9062c1cd3d7d4f21e6378b8e52a3c2228451"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\bad_source_fold.json",
+        "bytes": 18078,
+        "sha256": "946731a59c56d25605d512cf57c6df39dc8b94e645f64522c40ac102bfdc0030"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\bad_target_manifest.jsonl",
+        "bytes": 194460,
+        "sha256": "7384ee05202cb73b5f7ba84b478ea94fd0c54483de6f8a2d404813e033c4fc6c"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\bad_target_QC.json",
+        "bytes": 474,
+        "sha256": "e8d57b997e8f4f3e5d211bd85bd2729fdd7e16189862a41d8b837fc36a8c2bfe"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\bad_unauthorized.json",
+        "bytes": 258,
+        "sha256": "4f49297eb42f316a35b26adb604f2da9d3b438d8dd8c4a9f05ca21452d3e6c55"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\existing24\\keep.txt",
+        "bytes": 6,
+        "sha256": "fad52e054709c0a6e3d94b349a00469dd2157389b8e8597ca1d9897bccf95d5f"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\namespace18\\models\\__init__.py",
+        "bytes": 42,
+        "sha256": "f7cbc4178c02fdc88084331c075cc54cfea5fa6efb9894343380ff92d10a98c1"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\namespace18\\models\\artificial.py",
+        "bytes": 24,
+        "sha256": "f6792e64a6d0af59791c930ac4037ebe5bfeedf929fa0860cb9f880ed76183d2"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\namespace18\\tools\\__init__.py",
+        "bytes": 42,
+        "sha256": "f7cbc4178c02fdc88084331c075cc54cfea5fa6efb9894343380ff92d10a98c1"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\resource19\\resources.jsonl",
+        "bytes": 192,
+        "sha256": "ac41c517c8ac3d771e5bed72fcc62299c3d987adae293147f7c0fc4684378d7a"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\resource20\\resources.jsonl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_nan\\failure.json",
+        "bytes": 241,
+        "sha256": "3bb9ea64e37ad6cf72216c659d6205d32578291e90a41386c685d02aadae776f"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_nan\\initialization.json",
+        "bytes": 289,
+        "sha256": "1d53b44157296064dfe729e3503a53e65808b49e053c5e7a947b4501360aa73b"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_nan\\metrics.jsonl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_nan\\optimizer_actual_defaults.json",
+        "bytes": 223,
+        "sha256": "9d63cc1e4fb32d46c348688146a9e8b10356a7bc3e8c1eabb9c483bac7c6e592"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_nan\\order_plan.json",
+        "bytes": 815822,
+        "sha256": "6b5704aa4ffdc789fafece192a63fa4753dbf2202abf74e3d4c2383f2a42cbe6"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_nan\\worker.pid",
+        "bytes": 7,
+        "sha256": "d175de38a2d3f6f961ef27a28f3d48bc9c65a38d09982a1bf80ac2dc417cc313"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_optimizer_failure\\failure.json",
+        "bytes": 253,
+        "sha256": "c9b47e50443a20a65c0fdadc7b7be243860bc16649c44b65d3653ee87f00984f"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_optimizer_failure\\initialization.json",
+        "bytes": 289,
+        "sha256": "6d320dbdae7c9ad9b1f89937cd7a1bf0c1a13e4bd21a43604c1ef841087314a1"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_optimizer_failure\\metrics.jsonl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_optimizer_failure\\optimizer_actual_defaults.json",
+        "bytes": 223,
+        "sha256": "9d63cc1e4fb32d46c348688146a9e8b10356a7bc3e8c1eabb9c483bac7c6e592"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_optimizer_failure\\order_plan.json",
+        "bytes": 815822,
+        "sha256": "6b5704aa4ffdc789fafece192a63fa4753dbf2202abf74e3d4c2383f2a42cbe6"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_optimizer_failure\\worker.pid",
+        "bytes": 7,
+        "sha256": "d175de38a2d3f6f961ef27a28f3d48bc9c65a38d09982a1bf80ac2dc417cc313"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_order_failure\\failure.json",
+        "bytes": 247,
+        "sha256": "a5905a589b7cf4855748ddd6e362ecc864957331c36b9f822e3bbea9c5330dd7"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_order_failure\\initialization.json",
+        "bytes": 289,
+        "sha256": "fd73dd12a67d903cb1d02f240331e169aed2a9f58b5f3396b36c21311ff1c628"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_order_failure\\metrics.jsonl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_order_failure\\optimizer_actual_defaults.json",
+        "bytes": 223,
+        "sha256": "9d63cc1e4fb32d46c348688146a9e8b10356a7bc3e8c1eabb9c483bac7c6e592"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_order_failure\\order_plan.json",
+        "bytes": 815822,
+        "sha256": "6b5704aa4ffdc789fafece192a63fa4753dbf2202abf74e3d4c2383f2a42cbe6"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_order_failure\\worker.pid",
+        "bytes": 7,
+        "sha256": "d175de38a2d3f6f961ef27a28f3d48bc9c65a38d09982a1bf80ac2dc417cc313"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_success\\ckpt-last.pth",
+        "bytes": 6493,
+        "sha256": "7bbe1f03e51d2ceabf2097f672a7001b42a0c6d77637070e4cacb41138a81e8e"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_success\\completion.json",
+        "bytes": 546,
+        "sha256": "fa7d05148838a27ea7b1fe361727276f0f9b031bfbf0be5a9f5a79a8890321fd"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_success\\exposure.json",
+        "bytes": 12711,
+        "sha256": "5398697dd7b498916fa0a26d85efeaaf8997360fa0a5f79a3c39f3b1e84cd39a"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_success\\initialization.json",
+        "bytes": 289,
+        "sha256": "0703571d94e6f8c8a0c60b12f6baae49271dfcbf862eaf1b7f1a4788791927b7"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_success\\metrics.jsonl",
+        "bytes": 2321650,
+        "sha256": "b31f49ffce9f0e187fe1b4cf1ad9d5aa5fd8a4a6508d5dc9ca054c5e72ee5ec9"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_success\\optimizer_actual_defaults.json",
+        "bytes": 223,
+        "sha256": "9d63cc1e4fb32d46c348688146a9e8b10356a7bc3e8c1eabb9c483bac7c6e592"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_success\\order_plan.json",
+        "bytes": 815822,
+        "sha256": "6b5704aa4ffdc789fafece192a63fa4753dbf2202abf74e3d4c2383f2a42cbe6"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\fixtures\\tiny_success\\worker.pid",
+        "bytes": 7,
+        "sha256": "d175de38a2d3f6f961ef27a28f3d48bc9c65a38d09982a1bf80ac2dc417cc313"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_attempt_v1\\result.json",
+        "bytes": 1931,
+        "sha256": "2eacfe59f9bcf15bc0b83077bd5c8f85c66ace9aafa9a12e2d9b9a8fa74913a8"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\cpu_process_capture_v1.json",
+        "bytes": 2500,
+        "sha256": "3560b6f0bca7a76800e8acebd8c2edf72d965f523ce3d7127e4bb5e8e6ada674"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\static_review_v1.json",
+        "bytes": 2675,
+        "sha256": "f7b8c4cf9188c9e5e1fb16bb756d9bd3e47dc62a54401eaafade2283b130d021"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\test_training_closure_v1.py",
+        "bytes": 26143,
+        "sha256": "e9d14001d65eee7bee2ffb34fa55986f2910a2c8075beb5d30e4de8cf3af8f17"
+      }
+    ],
+    "checkpoint_note": "Only the new artificial CPU fixture checkpoint was byte-hashed; no research checkpoint loaded or read."
+  },
+  "declared_limits": [
+    "Actual Linux -I -S -B production main, pinned real QC/server paths and native CUDA optimizer/ordinary-BN memory have not run. CPU main fail-closed path and individual components were tested, not a full live-server end-to-end training run.",
+    "The prior artificial GPU preflight remains valid for its frozen scope and is not repeated. It did not exercise optimizer-state allocations or ordinary training BN updates; actual first GPU update must stay inside separate training authorization and monitoring.",
+    "Per-step resource checks are cooperative, not continuous peak RSS/device monitoring or exclusive hard isolation. Torch allocator peaks are cumulative from before model transfer. Queries may take 10 seconds plus bounded reap on failure; external wall timeout remains mandatory.",
+    "Resource summary wall timing starts after startup/model CPU initialization; external timeout covers the complete worker. Process creation/I/O/kernel delays are not hard bounded by Python sampling.",
+    "Abrupt OS kill, filesystem failure or partially failing optimizer can leave incomplete artifacts or partial updates; no rollback/atomic-step guarantee and no resume/retry. Exit marker and partial logs must be audited separately.",
+    "Order generation matches the prior local loader's seeded permutation for tested epochs 0,1,99. PyTorch RNG sequence equivalence across local 2.5.1 and server 2.4.1 is not claimed: freeze one explicit shared order file before request, and use that file unchanged at launch rather than regenerate a platform-specific permutation.",
+    "All CPU QC/request/authorization/runtime artifacts are explicit artificial fixtures under cpu_attempt_v1/fixtures, not real execution contents. Fixed production evidence pins and Linux/identity checks reject them.",
+    "Separate inner/outer plate anatomical coverage is still unresolved. Qualified QC mapping does not erase that limitation or prove model accuracy."
+  ],
+  "remaining_before_first_training_request": [
+    "Separately freeze the first run's static model/training config (exact original model section), explicit wall/output budgets and immutable run/output/session/control paths; do not insert request hash into static config.",
+    "Prepare real qualified QC mapping/order evidence and code/data transport scope under separate authority. Original point files/manifests/fold bytes remain unchanged; do not rerun generation or geometry QC.",
+    "After manual upload and separately authorized exact server readiness/deployment, verify actual data hashes, fixed source allowlist and current identity/resource/package bindings. Only then create first pending training execution request.",
+    "Any model/backend/data/split/3900-step change or new container identity requires separate scope review; no automatic rebind or new GPU trial."
+  ],
+  "actions": {
+    "new_implementation_files": 3,
+    "new_test_file": 1,
+    "CPU_batches": 1,
+    "real_data_reads": 0,
+    "real_model_forwards": 0,
+    "GPU_queries_or_forwards": 0,
+    "server_operations": 0,
+    "build_or_install": 0,
+    "production_edits": 0,
+    "training_requests_created": 0,
+    "real_authorization_runtime_launcher_materialized": 0,
+    "tests_retried": 0
+  },
+  "next": "Stop after local implementation handoff. No deployment or training automatically; no more generic framework preparation."
+}

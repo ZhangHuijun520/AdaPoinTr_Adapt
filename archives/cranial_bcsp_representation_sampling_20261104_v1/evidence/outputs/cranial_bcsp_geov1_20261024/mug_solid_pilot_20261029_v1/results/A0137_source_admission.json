@@ -1,0 +1,220 @@
+{
+  "source_id": "A0137",
+  "status": "UNRESOLVED_SOURCE_NOT_ADMITTED_NO_DEFECT_GENERATED",
+  "blocking_reasons": [
+    "SCALAR_VALUES_ARE_NOT_A_BINARY_BONE_MASK",
+    "LESS_THAN_THREE_SLICES_ON_ONE_AXIS_NOT_A_COMPLETE_3D_SKULL_VOLUME",
+    "NRRD_CENTER_BOUNDS_DO_NOT_CONTAIN_CLEAR_STL_UNDER_IDENTITY_COORDINATES",
+    "NO_VERIFIED_NRRD_TO_STL_PHYSICAL_CORRESPONDENCE_FOR_CUT_PARAMETERS"
+  ],
+  "nrrd": {
+    "member": "A0136-A0140/A0137/A0137.nrrd",
+    "bytes": 264494,
+    "sha256": "2393021643a92b7d8a11bb0dbe84bba5d5b6c3c12eab7cc30aaf7e3b542e73ff",
+    "header": {
+      "type": "short",
+      "dimension": "3",
+      "space": "left-posterior-superior",
+      "sizes": "512 512 2",
+      "space directions": "(1,0,0) (0,0,-1) (0,1,0)",
+      "kinds": "domain domain domain",
+      "endian": "little",
+      "encoding": "gzip",
+      "space origin": "(-255.5,-0.49999999999995309,255.5)"
+    },
+    "shape": [
+      512,
+      512,
+      2
+    ],
+    "dtype": "int16",
+    "directions": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "origin": [
+      -255.5,
+      -0.4999999999999531,
+      255.5
+    ],
+    "physical_bounds": {
+      "minimum": [
+        -255.5,
+        -0.4999999999999531,
+        -255.5
+      ],
+      "maximum": [
+        255.5,
+        0.5000000000000469,
+        255.5
+      ],
+      "center_span_mm": [
+        511.0,
+        1.0,
+        511.0
+      ],
+      "axis_center_lengths_mm": [
+        511.0,
+        511.0,
+        1.0
+      ]
+    },
+    "scalar_statistics": {
+      "unique_values": 564,
+      "minimum": -1024,
+      "maximum": 583,
+      "negative_voxels": 453086,
+      "zero_voxels": 680,
+      "positive_voxels": 70522,
+      "percentiles": {
+        "0.5": -1024,
+        "1": -1024,
+        "5": -1024,
+        "50": -70,
+        "95": 59,
+        "99": 110,
+        "99.5": 138
+      },
+      "most_frequent": [
+        {
+          "value": -1024,
+          "count": 253952
+        },
+        {
+          "value": -50,
+          "count": 15124
+        },
+        {
+          "value": -49,
+          "count": 14690
+        },
+        {
+          "value": -51,
+          "count": 14616
+        },
+        {
+          "value": -52,
+          "count": 13116
+        },
+        {
+          "value": -48,
+          "count": 13024
+        },
+        {
+          "value": -47,
+          "count": 10744
+        },
+        {
+          "value": -53,
+          "count": 10218
+        },
+        {
+          "value": -46,
+          "count": 8282
+        },
+        {
+          "value": -54,
+          "count": 7782
+        },
+        {
+          "value": -45,
+          "count": 6188
+        },
+        {
+          "value": -55,
+          "count": 5650
+        }
+      ],
+      "binary_value_candidate": false,
+      "label_semantics": "UNCONFIRMED_NO_BONE_MASK_METADATA"
+    }
+  },
+  "clear_stl": {
+    "path": "E:\\dataset\\MUG500plus\\raw_v20\\clear_stl\\d6_development100_v1\\batch_001\\A0137_clear.stl",
+    "bytes": 219072484,
+    "triangles": 4381448,
+    "minimum": [
+      -79.07337951660156,
+      -94.9725112915039,
+      -122.15270233154297
+    ],
+    "maximum": [
+      75.87081146240234,
+      90.42027282714844,
+      112.47191619873047
+    ],
+    "span_mm": [
+      154.9441909790039,
+      185.39278411865234,
+      234.62461853027344
+    ],
+    "sha256": "42ddbdd7c5745e40b6d9d3332aaa4854719ac33ca89a4c67c4bc043fbcbc8993"
+  },
+  "historical_ellipsoid": {
+    "cut_center_mm": [
+      50.3347523224316,
+      51.42914694720396,
+      -5.19848750114441
+    ],
+    "direction": [
+      0.7642755404909315,
+      0.6441322346438614,
+      -0.03125
+    ],
+    "direction_slot": 16,
+    "frame": [
+      [
+        -0.5764750143587674,
+        -0.289066525262531,
+        0.7642755404909315
+      ],
+      [
+        0.660671929567418,
+        0.3854948323575429,
+        0.6441322346438614
+      ],
+      [
+        -0.4808213382346124,
+        0.87626153527259,
+        -0.03125
+      ]
+    ],
+    "geometry_attempt": 0,
+    "radii_mm": [
+      30.50120040893555,
+      37.53993896484375,
+      46.92492370605469
+    ],
+    "remaining_triangles": 4194373,
+    "removed_surface_area_fraction": 0.04343863681881941,
+    "removed_triangles": 187075,
+    "rotation_rad": 2.6397334811852255,
+    "surface_anchor_mm": [
+      61.093823750813804,
+      60.49690373738607,
+      -5.638408660888672
+    ]
+  },
+  "coordinate_comparison": {
+    "identity_mapping_verified": false,
+    "STL_inside_NRRD_center_AABB": false,
+    "interpretation": "Bounds compared without fitting;STL has no coordinate-system declaration;no ICP/shift/scale applied"
+  },
+  "segmentation_applied": false,
+  "threshold_applied": false,
+  "defects_generated": 0,
+  "point_pairs_generated": 0
+}

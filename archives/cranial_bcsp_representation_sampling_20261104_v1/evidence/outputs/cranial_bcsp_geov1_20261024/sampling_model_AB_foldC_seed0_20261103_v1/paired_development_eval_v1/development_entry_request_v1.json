@@ -1,0 +1,114 @@
+{
+  "schema": "bcsp-sampling-pair-development-prediction-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "run_id": "bcsp_sampling_pair_foldC_seed0_dev_v1",
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-v2iwsa-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-34a1b996-2bd7-88e6-9dca-164b718caea6",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity."
+  },
+  "model_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3",
+  "entry": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/bcsp_sampling_pair_predict_v1.py",
+    "bytes": 15633,
+    "sha256": "17f7091b75805def522eed7f1f2a132b1b395f820382875a596032639588126b"
+  },
+  "input_index": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/development_pair_input_index_v1.json",
+    "bytes": 195219,
+    "sha256": "fb358cb0103f35ddb81eb02682a0d79df0d615c5d00bcce10914de3d7c89c9e3"
+  },
+  "paired_data_receipt": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/paired_development_data_receipt_v1.json",
+    "bytes": 117219,
+    "sha256": "62d9aadea5e6c1cfd72809b9f1bd40286590a3a5f32a66ea43038be93d64ed81"
+  },
+  "fold_binding": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/fold_binding.json",
+    "bytes": 35012,
+    "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+  },
+  "static_config": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/static_training_config_v1.json",
+    "bytes": 2118,
+    "sha256": "e0ec59c20fdbc9a0809532233760a5b4ac1c116f6f4e8315948ef917e078136a"
+  },
+  "preflight_scope": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+    "bytes": 23220,
+    "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+  },
+  "helper": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+    "bytes": 32728,
+    "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+  },
+  "control": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_eval_sampling_pair_v1",
+  "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1",
+  "launch_attempt": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_eval_sampling_pair_v1/launch_attempt.json",
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "GPU-34a1b996-2bd7-88e6-9dca-164b718caea6",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "MPLBACKEND": "Agg",
+    "MPLCONFIGDIR": "<owned_output>/mplconfig",
+    "CUDA_CACHE_DISABLE": "1",
+    "TMPDIR": "<owned_output>/tmp"
+  },
+  "limits": {
+    "wall_seconds": 7200,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "science": {
+    "models": 2,
+    "arms": [
+      "V1",
+      "Morton_area_stratified8k"
+    ],
+    "fold": "C",
+    "training_seed": 0,
+    "sampling_seed": 0,
+    "cases_per_arm": 105,
+    "sources": 21,
+    "defects_per_source": 5,
+    "total_forwards": 210,
+    "n_input": 8192,
+    "n_output": 8192,
+    "checkpoint_stage": "BCSP_SAMPLING_AB_V1",
+    "checkpoint_epoch": 99,
+    "checkpoint_updates": 3900,
+    "BNCal": false,
+    "training_updates": 0,
+    "loss": false,
+    "backward": false,
+    "mode": "native eval/inference_mode",
+    "precision": "FP32",
+    "TF32": false,
+    "AMP": false,
+    "deterministic": true,
+    "warmup": 0,
+    "voting": 0,
+    "TTA": 0,
+    "parameter_and_BN_state_invariance": true,
+    "CPU_CUDA_Python_numpy_RNG_invariance": true,
+    "loss_backend_during_training": "same torch.cdist branch; loss not called in evaluation",
+    "PID_policy": "DIAGNOSTIC_ONLY_NO_OWNERSHIP_GUARANTEE"
+  }
+}

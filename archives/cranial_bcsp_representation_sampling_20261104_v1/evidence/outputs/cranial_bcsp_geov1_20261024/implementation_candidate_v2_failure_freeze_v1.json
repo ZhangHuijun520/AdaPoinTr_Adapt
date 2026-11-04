@@ -1,0 +1,83 @@
+{
+  "parent_unchanged": true,
+  "v1_unchanged": true,
+  "result": {
+    "status": "FAILED_OR_INCOMPLETE_STOP",
+    "tests_run": 12,
+    "failures": 0,
+    "errors": 1,
+    "skipped": [],
+    "seconds": 0.031000000002677552,
+    "python": "C:\\Users\\zhj\\.conda\\envs\\adapointr\\python.exe",
+    "python_version": "3.9.21 (main, Dec 11 2024, 16:35:24) [MSC v.1929 64 bit (AMD64)]",
+    "torch": "2.5.1",
+    "numpy": "1.26.4",
+    "cuda_initialized": false,
+    "real_model_calls": 0,
+    "real_data_access": 0,
+    "real_optimizer_updates": 0,
+    "synthetic_counter_commits": null,
+    "limitations": [
+      "CPU-only validation; no CUDA equivalence or VRAM certification",
+      "Only one real synthetic DataLoader traversal; remaining traversals use counter-only batches",
+      "No full production runner, NN forward, scheduler, loss/clip or checkpoint integration",
+      "Legacy registry not changed; BCSPDataset explicit candidate API only"
+    ]
+  },
+  "files": [
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v2\\bcsp_cpu_entry_v2.py",
+      "bytes": 4711,
+      "sha256": "d6e4ee567ba523760848388bfc20288aef8ca3d82da69db41dbc301d8fd07030"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v2\\cpu_tensor_results_v2\\result.json",
+      "bytes": 872,
+      "sha256": "a1c821d94fd63037d6af613644698380a227f1b92eb85cee3734ec020d85d028"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v2\\cpu_tensor_results_v2\\stdout.txt",
+      "bytes": 2128,
+      "sha256": "49a145612c40c1de2ca9757a2be62ffc89199b1f91085a529c9baf138dddd0f2"
+    },
+    {
+      "path": "outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v2\\test_cpu_integration_v2.py",
+      "bytes": 10525,
+      "sha256": "8a152ed81add65712ed3839f8576d258c8bd83f88bb186fea16c730cea79157d"
+    }
+  ],
+  "status": "FAILED_STOP_FIXTURE_WRITE_PERMISSION_NOT_KNN_VERDICT",
+  "failure": {
+    "tool_chunk_id": "2698b3",
+    "process_exit_code": 1,
+    "first_error": "PermissionError [Errno 13] writing synthetic case.npz in tempfile.TemporaryDirectory",
+    "failed_test": "bcsp_previous_tests.DataTests.test_escape",
+    "phase": "fixture setUp before test assertion",
+    "tests_completed_successfully": 11,
+    "temporary_directory": "C:/Users/zhj/AppData/Local/Packages/sandbox.{1681bebf-f51c-4d0b-bf5b-eb07b5b15a71}/AC/Temp/bcsp_artificial_mx_vc3d8",
+    "secondary_error": "TemporaryDirectory finalizer cleanup also returned WinError 5",
+    "residue_state": "directory may remain; not deleted or recursively inspected"
+  },
+  "environment": {
+    "python": "C:/Users/zhj/.conda/envs/adapointr/python.exe",
+    "python_version": "3.9.21",
+    "torch": "2.5.1",
+    "numpy": "1.26.4",
+    "cpu_tensor_matmul_initial_check": "PASS",
+    "cuda_initialized": false,
+    "conda_launcher": "conda.exe enumeration failed with invalid system DLL relocation; direct interpreter worked; no environment changes"
+  },
+  "not_performed": [
+    "real tensor KNN regression",
+    "new minimal Dataset/DataLoader/KNN/guard tests",
+    "real model forward/backward",
+    "GPU execution",
+    "real dataset/checkpoint access",
+    "server operations",
+    "dependency install",
+    "production edits",
+    "retry",
+    "training request"
+  ],
+  "next_proposed": "Separate limited test-driver fixture-path revision to fresh workspace-local directories, retain fixtures; no core changes, then one newly versioned CPU attempt. No automatic retry."
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "bcsp-foldC-16384-authorization-hotfix-installation-v2",
+  "status": "PREPARED_NOT_DEPLOYED",
+  "expected_identity": {
+    "hostname": "shu-common-25721452-notebook-01dt08-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-e763d389-b4c2-4dc8-9571-d7343ec328b1",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity."
+  },
+  "files": [
+    {
+      "archive_member": "bcsp_training_entry_foldC_16384_v6.py",
+      "target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_entry_foldC_16384_v6.py",
+      "bytes": 16064,
+      "sha256": "f9bb9291851ec735f06549be6f1f5eeb9734f29b272dfe99fa3bd33c45411941",
+      "local_file": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldC_16384_training_v1\\authorize_gate_hotfix_v2\\bcsp_training_entry_foldC_16384_v6.py"
+    },
+    {
+      "archive_member": "bcsp_training_contract_foldC_16384_v4.py",
+      "target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_contract_foldC_16384_v4.py",
+      "bytes": 16529,
+      "sha256": "084039b9e17907ea543c6b31f2402799a4d22751232dddeda419d6fdeb97b2f3",
+      "local_file": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldC_16384_training_v1\\authorize_gate_hotfix_v2\\bcsp_training_contract_foldC_16384_v4.py"
+    }
+  ],
+  "new_directories": [],
+  "code_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1",
+  "reuse_installed_data": true,
+  "data_root": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_16384_seed0_v1",
+  "reused_data_installation": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldC_16384_training_v1\\authorized_execution_v2\\install_server_events_v1.json",
+    "bytes": 1208,
+    "sha256": "21371a709778912181f505a8c930db41c29bedf6b2039c243b448bc30ec5d3e4"
+  },
+  "reused315_data_mapping": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldC_16384_training_v1\\minimal_installation_mapping_v1.json",
+    "bytes": 158619,
+    "sha256": "5415f15a1154adb82e62aa6d71e7c247cbad260f5d5c3aecc1fb7d8215a87a0b"
+  },
+  "qualified_QC": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/qualified_data_qc_foldC_16384_v1.json",
+    "bytes": 1660,
+    "sha256": "f6f62540a811416d82321100e453676f031d0e9cabb19798fcbc24d8b222041b"
+  },
+  "rules": [
+    "Recheck identity,upload hash,two exact targets absent and safe existing parent",
+    "Exclusive no-follow creation;no overwrite;read back both hashes",
+    "Do not reinstall315 point files orQC;reverify existing315 payload/QC hashes before launch",
+    "Old control/output/request remain consumed and unchanged",
+    "Any execution failure stops;no automatic retry/resume/backend or batch changes"
+  ]
+}

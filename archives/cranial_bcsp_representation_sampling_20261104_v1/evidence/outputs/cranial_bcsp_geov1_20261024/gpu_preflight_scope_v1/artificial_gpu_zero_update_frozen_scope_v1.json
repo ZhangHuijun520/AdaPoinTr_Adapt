@@ -1,0 +1,467 @@
+{
+  "schema": "bcsp-artificial-gpu-zero-update-frozen-scope-v1",
+  "status": "FROZEN_SCOPE_AWAITING_MINIMAL_ENTRY_IMPLEMENTATION",
+  "is_execution_request": false,
+  "execution_ready": false,
+  "execution_authorized": false,
+  "date_Asia_Shanghai": "2026-10-24",
+  "purpose": "Validate actual selected B0 AdaPoinTr model forward, true project loss, backward and monitored memory for input 8192/16384 using identical 8192 target; no research accuracy or training claim",
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-o9mz8z-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-2f32f6fb-ea5d-730a-4ea2-2f6063e31065",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "575.51.03",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity."
+  },
+  "bindings": {
+    "candidate": [
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\tools\\runner.py",
+        "relative_target": "tools/runner.py",
+        "sha256": "e378ab4ab7a26f6b370b4263788ca51e413b47ca3827cf404dd6ac4d9aaa0f32",
+        "bytes": 32455
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\models\\Transformer_utils.py",
+        "relative_target": "models/Transformer_utils.py",
+        "sha256": "cd562e02755ffd46382cc539cdb361225b844b12e89df9d98741d37238a6bf5f",
+        "bytes": 52026
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\tools\\bcsp_runtime.py",
+        "relative_target": "tools/bcsp_runtime.py",
+        "sha256": "8cbb5389e074347f6bf6e776755d22bbdaedaf5dba5102d51866d1b1e49b3615",
+        "bytes": 7320
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\tools\\bcsp_adapter.py",
+        "relative_target": "tools/bcsp_adapter.py",
+        "sha256": "2f7d3050cfb6ac2602cc17a95b860da2204daef2dfa63dab63d233e899b7dd55",
+        "bytes": 7297
+      }
+    ],
+    "isolated_model_project_sources": [
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\AdaPoinTr.py",
+        "relative_path": "models/AdaPoinTr.py",
+        "sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4",
+        "bytes": 103347
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\build.py",
+        "relative_path": "models/build.py",
+        "sha256": "9c85271220ba992d56d4285b1ef51de939f7471b0712028af8d07880fed9680f",
+        "bytes": 342
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\cranial_scqr\\__init__.py",
+        "relative_path": "models/cranial_scqr/__init__.py",
+        "sha256": "c4fab9f4cc19bf5c461930749cccea56cb5b3e7432172d2a4959d2cbc2d69634",
+        "bytes": 5859
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\cranial_scqr\\contact_support.py",
+        "relative_path": "models/cranial_scqr/contact_support.py",
+        "sha256": "2c92404ba4bd5634a49f396904b2d6f69a22aa2c87bb72f6ee32672ee9d735d1",
+        "bytes": 6731
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\cranial_scqr\\local_geometry.py",
+        "relative_path": "models/cranial_scqr/local_geometry.py",
+        "sha256": "e3e2eb20aed6afb3024f8b3c10c79ac0f64f288f3892495668980028793ba768",
+        "bytes": 6413
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\cranial_scqr\\query_conditioning.py",
+        "relative_path": "models/cranial_scqr/query_conditioning.py",
+        "sha256": "7c09def4ea7f2d65906e7fc3de753cae699be6d2d4ad3dcbb33e231be37a6942",
+        "bytes": 4719
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\registry.py",
+        "relative_path": "utils/registry.py",
+        "sha256": "a7c49418d587ae84778390b67a50c2bd98cbc93da2e0a506e6d309b5c159ecf7",
+        "bytes": 11111
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\config.py",
+        "relative_path": "utils/config.py",
+        "sha256": "39d487ab6eadcd0a157167cfdf0d1797255f6403828f2653ba7802da6f2ac819",
+        "bytes": 2438
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\logger.py",
+        "relative_path": "utils/logger.py",
+        "sha256": "12e50962ca4594ddd573d9a76524ac912ddf55bfc297fa8008a30b20dca28e0c",
+        "bytes": 5048
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\misc.py",
+        "relative_path": "utils/misc.py",
+        "sha256": "65338858a2f2f87cc6040a7525a57beff26f0acc665caaedfb18bae5ab3d1a87",
+        "bytes": 12544
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\pointnet2_utils.py",
+        "relative_path": "utils/pointnet2_utils.py",
+        "sha256": "6e814a64b244d018047ffefa92004dd4e59fc941145476af1424aae1742c43ec",
+        "bytes": 4275
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\mamba_d22_geometry.py",
+        "relative_path": "utils/mamba_d22_geometry.py",
+        "sha256": "8b3b56344f7e9c97a3cd1ee141964bc7797faae4f094df9404dedaee07e6c804",
+        "bytes": 12533
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\mamba_d3_contact.py",
+        "relative_path": "utils/mamba_d3_contact.py",
+        "sha256": "10c5bb39a8cf3860ed28b65d2c9257ae1ff4e63c4b69228504dd663f0604e5cb",
+        "bytes": 11021
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\extensions\\chamfer_dist\\__init__.py",
+        "relative_path": "extensions/chamfer_dist/__init__.py",
+        "sha256": "6456934164750c2d326236effe4827dc37c77a7d6d915d3c28fa65a90a9b1c50",
+        "bytes": 6551
+      }
+    ],
+    "base_config": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\cfgs\\SkullFix_models\\AdaPoinTr_implant_full100_out8192_bncal.yaml",
+      "sha256": "e18feb90d782506f864560ce5513b3077f840f9d6365308b03493f80f8c57dc4",
+      "bytes": 2082
+    },
+    "provider": [
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/__init__.py",
+        "exists": true,
+        "bytes": 123,
+        "sha256": "d8a0921aeb90349a0659799a22ccf00ccd31707b226426ff4118eeb65ae0ada2"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/pointnet2_utils.py",
+        "exists": true,
+        "bytes": 9943,
+        "sha256": "ec597d77b1215fbc87bdb452b8ce04b85eb0b816d5e39e7696fc792a2f61ea5b"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/_ext.cpython-310-x86_64-linux-gnu.so",
+        "exists": true,
+        "bytes": 301640,
+        "sha256": "e70d00108bacba4a905dc011f4b8c4868f06ec2d44d8e322148e2e452578fbb5"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/wheelhouse/pointnet2_ops-3.0.0-cp310-cp310-linux_x86_64.whl",
+        "exists": true,
+        "bytes": 123291,
+        "sha256": "530496a0d1d5dea6151a466b7c0874632322223308a7016910fb1bfbaaaab1e5"
+      }
+    ],
+    "environment_metadata": [
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch/version.py",
+        "exists": true,
+        "bytes": 248,
+        "sha256": "b10649fd636e7404398d608b84a2cacc6645e3952f043b439d4c50c95a26a1b5",
+        "assignments": {
+          "__version__": "2.4.1+cu118",
+          "debug": false,
+          "git_version": "38b96d3399a695e704ed39b60dac733c3fbf20e2"
+        }
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+        "exists": true,
+        "bytes": 17331920,
+        "sha256": "01b4275dc374dcae51d245bda004daad6d7882d3f5de7f9852567bb7ab83180d"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch-2.4.1+cu118.dist-info/METADATA",
+        "exists": true,
+        "bytes": 26707,
+        "sha256": "11606497a9792f0d040ad062064ee1c024dde8b10fc38bed361134d0b7ec429a",
+        "name_version": [
+          "Name: torch",
+          "Version: 2.4.1+cu118"
+        ]
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm-1.0.27.dist-info/METADATA",
+        "exists": true,
+        "bytes": 40196,
+        "sha256": "b6ecaedbcaea5d0d5e431983c3df8e05113a51a2dad062e51dab0500ac6f2bb4",
+        "name_version": [
+          "Name: timm",
+          "Version: 1.0.27"
+        ]
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/numpy-2.2.6.dist-info/METADATA",
+        "exists": true,
+        "bytes": 62026,
+        "sha256": "22d648f53848429464ca643b40d73b49a920d47876fc77c395d4dca4e834904a",
+        "name_version": [
+          "Name: numpy",
+          "Version: 2.2.6"
+        ]
+      }
+    ],
+    "prior_data_qc": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_verification_v1.json",
+      "sha256": "54fcd0018f9a51f04b8408b3842b6d5c4243777979a0e0add31541e04fa3c55b",
+      "bytes": 5769
+    }
+  },
+  "isolation": {
+    "future_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v1",
+    "copy_exact_archived_bytes_only": true,
+    "production_overwrite_allowed": false,
+    "use_server_modified_AdaPoinTr_or_runner": false,
+    "load_project_packages_as_controlled_namespaces": [
+      "models",
+      "utils",
+      "tools",
+      "extensions"
+    ],
+    "do_not_execute_parent_package_initializers": [
+      "models/__init__.py",
+      "tools/__init__.py"
+    ],
+    "do_not_deploy_test_only_shim": "implementation_candidate_v4/overlay/tools/__init__.py",
+    "require_actual_project_module_origins_under_isolated_root": true,
+    "do_not_import_or_call": [
+      "tools.runner",
+      "tools.bcsp_runtime",
+      "run_bcsp",
+      "train_lifecycle"
+    ],
+    "static_only_candidate_files": [
+      "tools/runner.py",
+      "tools/bcsp_runtime.py"
+    ],
+    "full_model_executed_files": [
+      "models/AdaPoinTr.py",
+      "models/Transformer_utils.py",
+      "tools/bcsp_adapter.py",
+      "selected finite project import sources"
+    ],
+    "provider_precedence": "exact existing pointnet2 provider before environment site; no .pth, installation or global PYTHONPATH edits",
+    "python_flags": [
+      "-I",
+      "-S",
+      "-B"
+    ]
+  },
+  "model": {
+    "config_section_only": "model",
+    "dataset_sections_never_used": true,
+    "baseline": "B0/new-task AdaPoinTr Transformer; not Mamba comparison",
+    "num_query": 256,
+    "num_points": 8192,
+    "center_num": [
+      512,
+      256
+    ],
+    "decoder_type": "fc",
+    "factor": 32,
+    "encoder_type": "graph",
+    "query_selection": "learned_only",
+    "denoise_weight": 0,
+    "fine_coverage_weight": 1,
+    "fine_local_weight": 0,
+    "mamba_adapter_enabled": false,
+    "scqr_enabled": false,
+    "other_optional_geometry_contact_guards_enabled": false,
+    "weights": "fresh scratch CPU initialization seed 0 per arm; require identical initial parameter hashes",
+    "knn": {
+      "candidate_function": "models.Transformer_utils.knn_point -> tools.bcsp_adapter.torch_knn",
+      "enable_only_new_process": true,
+      "query_chunk": 256,
+      "all_keys_retained": true,
+      "approximation": false,
+      "record_actual_input_and_key_counts": true
+    }
+  },
+  "input": {
+    "type": "synthetic_in_memory_only",
+    "implementation": "NumPy default_rng/PCG64; generate float32 uniform(-0.5,0.5), transfer with torch.from_numpy to exercise actual NumPy/Torch bridge; failures stop, no environment repair",
+    "input_seed": 20261024,
+    "target_seed": 20261025,
+    "knn_query_seed": 20261026,
+    "input_master_shape": [
+      8,
+      16384,
+      3
+    ],
+    "arms": [
+      8192,
+      16384
+    ],
+    "arm_order": [
+      8192,
+      16384
+    ],
+    "target_shape": [
+      8,
+      8192,
+      3
+    ],
+    "prefix_8192_of_16384": true,
+    "same_target_both_arms": true,
+    "no_real_patient_files_or_synthetic_npz_required": true
+  },
+  "operations": {
+    "same_process": true,
+    "model_instances": 2,
+    "full_model_forwards_per_arm": 1,
+    "total_full_model_forwards": 2,
+    "project_get_loss_calls_per_arm": 1,
+    "total_backward_calls": 2,
+    "backward_per_arm": 1,
+    "loss": "existing AdaPoinTr.get_loss(ret,target,epoch=0,partial=input); sparse+dense scalar; denoising disabled",
+    "optimizer_constructions": 0,
+    "optimizer_steps": 0,
+    "scheduler_steps": 0,
+    "BNCal_runs": 0,
+    "development_evaluations": 0,
+    "warmups": 0,
+    "benchmark_repeats": 0,
+    "training_checkpoint_writes": 0,
+    "one_attempt_no_retry_or_resume": true,
+    "fail_first_arm_skips_second": true,
+    "launch_failure_consumes_attempt": true
+  },
+  "loss_backend": {
+    "user_confirmed": true,
+    "implementation": "exact existing project extensions/chamfer_dist/__init__.py PyTorch branch: torch.cdist(p=2, default compute_mode), square, directional reductions and sqrt as coded",
+    "runtime_assert_module_chamfer_is_none": true,
+    "do_not_monkeypatch_backend_to_pass_assert": true,
+    "compiled_chamfer_allowed": false,
+    "pointnet2_compiled_required": true,
+    "pointnet2_torch_fallback_allowed": false,
+    "downloads_builds_installs_upgrades_allowed": false,
+    "success_scope": "only this explicit PyTorch Chamfer backend; not compiled Chamfer, historical QA numerical equivalence, or any other backend"
+  },
+  "numerical": {
+    "FP32": true,
+    "AMP": false,
+    "torch_deterministic_algorithms": true,
+    "torch_float32_matmul_precision": "highest",
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "unsupported_deterministic_operator": "fail stop; do not relax"
+  },
+  "state_protection": {
+    "model_train_branch": true,
+    "batchnorm": "Keep training batch-stat computation, temporarily set track_running_stats=False so no running_mean/running_var/num_batches_tracked writes; restore original flags afterwards. CPU contract must verify this before request creation.",
+    "parameters_and_persistent_buffers": "exact byte fingerprints before/after each arm; no optimizer; require unchanged",
+    "rng": "save/restore Python, NumPy legacy global, torch CPU and selected CUDA RNG states per arm; require exact equality after restoration",
+    "module_training_flags": "restore and compare",
+    "gradients": "require present nonzero finite gradients in active grouper/encoder/decoder; all non-None gradients finite; clear after evidence capture",
+    "nonpersistent_diagnostics": "not a claim of identical ordinary Python diagnostic attributes; fresh model per arm, never reused for training",
+    "limitation": "Disabling BN running-stat tracking is a declared preflight-only difference. Do not certify exact complete training memory/updates semantics from this test alone."
+  },
+  "knn_oracle": {
+    "standalone_calls_per_arm": {
+      "candidate": 1,
+      "dense_frozen_parent": 1
+    },
+    "batch": 1,
+    "queries": 257,
+    "keys": [
+      8192,
+      16384
+    ],
+    "k": 16,
+    "query_chunk": 256,
+    "maximum_dense_reference_shape": [
+      1,
+      257,
+      16384
+    ],
+    "no_dense_16k_square": true,
+    "comparison": "unique in-range indices, sorted selected squared distances vs dense parent, and tie-valid cutoff membership; not mandatory exact tied-index order",
+    "atol": 0.00001,
+    "rtol": 0.00001,
+    "full_model_internal_calls": "record all candidate KNN invocations/chunks/key counts, no hidden input truncation; these are part of the fixed two full forwards, not extra forwards"
+  },
+  "resources": {
+    "single_GPU": true,
+    "batch": 8,
+    "total_wall_timeout_seconds": 900,
+    "kill_grace_seconds": 5,
+    "process_RSS_monitored_limit_bytes": 8589934592,
+    "torch_peak_allocated_limit_bytes": 21474836480,
+    "torch_peak_reserved_limit_bytes": 21474836480,
+    "device_memory_stop_MiB": 22528,
+    "maximum_initial_gpu_used_MiB": 256,
+    "require_no_other_compute_processes": true,
+    "minimum_free_disk_bytes": 2147483648,
+    "result_output_limit_bytes": 16777216,
+    "no_dedicated_cgroup_claim": true,
+    "monitoring_semantics": "OS timeout is enforced externally; RSS/device memory thresholds are monitored/cooperative, not exclusive hard isolation. Torch peak stats checked each arm; OOM or over-budget stops without batch reduction.",
+    "memory_measurement": "synchronize, reset peak stats after model transfer and before forward; record current baseline, full forward/loss/backward max allocated/reserved and device usage. Same process, fresh model and released owned allocator cache between arms; no speed ranking."
+  },
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "GPU-2f32f6fb-ea5d-730a-4ea2-2f6063e31065",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "MPLBACKEND": "Agg",
+    "MPLCONFIGDIR": "<owned_output>/mplconfig",
+    "CUDA_CACHE_DISABLE": "1"
+  },
+  "filesystem": {
+    "future_output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v1",
+    "future_tmux_session": "bcsp_geov1_artificial_gpu_zero_update_v1",
+    "future_pid": "<owned_output>/worker.pid",
+    "future_log": "<owned_output>/launch.log",
+    "future_exit": "<owned_output>/exit_code.txt",
+    "future_summary": "<owned_output>/summary.json",
+    "fresh_directory_required": true,
+    "parent_directory_before_redirection": true,
+    "allowed_server_writes_now": [],
+    "future_writes_only_after_execution_authorization": [
+      "fresh isolated staging tree from separately authorized installation map",
+      "owned result tree and explicitly versioned authorization/runtime/launcher files"
+    ],
+    "no_real_payload_or_checkpoint_reads": true,
+    "no_secret_reads": true,
+    "no_network_downloads_or_dependency_build_subprocesses": true,
+    "project_data_paths_denied": [
+      "data",
+      "datasets",
+      "dataset",
+      "checkpoints",
+      "sealed"
+    ],
+    "dependency_named_data_directory_not_itself_project_payload": true
+  },
+  "materialization": {
+    "not_done": true,
+    "authorization_chain": "final execution request -> separate explicit user authorization -> authorization receipt SHA -> runtime config binding receipt SHA -> single-use launcher",
+    "no_circular_hash_binding": true,
+    "powershell_explicit_exit_LASTEXITCODE": true,
+    "use_existing_byte_safe_transport": true,
+    "remote_bootstrap_command_max_chars": 2048
+  },
+  "remaining_before_execution_request": [
+    "One dedicated short preflight entry and one targeted artificial CPU test file, no changes to four candidate source files",
+    "Implement controlled isolated source import, actual backend assertions, no-update/BN/RNG/call-count/resource controls as frozen here",
+    "One bounded CPU contract batch and implementation P3; CPU does not imply CUDA success",
+    "Bind final entry/test/P3 hashes and exact non-overwrite installation map; current scope SHA alone is not executable authorization"
+  ],
+  "no_general_framework_expansion": true
+}

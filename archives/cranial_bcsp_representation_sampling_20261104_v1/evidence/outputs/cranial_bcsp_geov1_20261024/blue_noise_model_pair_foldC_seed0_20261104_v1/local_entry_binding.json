@@ -1,0 +1,70 @@
+{
+  "status": "LOCAL_CANDIDATE_BOUND_SERVER_RESOURCE_PENDING",
+  "stage": "BCSP_BLUE_NOISE_AB_V1",
+  "arms": [
+    "Euclidean_elimination",
+    "surface_graph"
+  ],
+  "counts": {
+    "cases": 315,
+    "sources": 63,
+    "batch": 8,
+    "epochs": 100,
+    "batches_per_epoch": 39,
+    "updates": 3900,
+    "exposures": 31200
+  },
+  "immutable_local_data": {
+    "static_config": "18aa3d941ca8957fc1ecafbcd1a054b4e6ea326d3641cb6955ba204736c4d713",
+    "order_plan": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d",
+    "training_runtime": "84bdf882ead11282b01556d6ed302ab46b7112dc3445e6cd3e6cde24d09aa9dc",
+    "resource_binding": "UNBOUND_PENDING_CURRENT_SERVER_READINESS"
+  },
+  "entry_constants": {
+    "CONTRACT_SHA": "15b18750ac37a269e2578b746822bef9386ce9fdc4c1922435883e4374f7f055",
+    "QC_SHA": "fbd41368eaa74c788d42b3848f93c7050272719ac6600f8ba1123ac5a060a229",
+    "FOLD_SHA": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+  },
+  "implementation": {
+    "bcsp_blue_noise_training_contract_v1.py": {
+      "sha256": "15b18750ac37a269e2578b746822bef9386ce9fdc4c1922435883e4374f7f055",
+      "bytes": 13018
+    },
+    "bcsp_blue_noise_training_entry_v1.py": {
+      "sha256": "597c14da157a00eb60555a68d111d4ca1835e94b4ceb6ca2d3a38b77784e4abb",
+      "bytes": 16397
+    },
+    "bcsp_blue_noise_training_runtime_v1.py": {
+      "sha256": "84bdf882ead11282b01556d6ed302ab46b7112dc3445e6cd3e6cde24d09aa9dc",
+      "bytes": 10220
+    },
+    "test_blue_noise_pair_entry_v1.py": {
+      "sha256": "65d0695b888897dabacf7dd4e1f190e2ee53630f24e4bad6fed6bcd04eea6754",
+      "bytes": 11287
+    }
+  },
+  "parent_sources": {
+    "bcsp_sampling_training_contract_v1.py": "b49c8839a53f6c1c86c537e43ece351dd165896bbda8d947318b42ba60f30418",
+    "bcsp_sampling_training_entry_v1.py": "6802da2e38c36598329beb8a71a963524eabd91401c5f0d58d799713be4eb779",
+    "bcsp_sampling_training_runtime_v1.py": "97b767ef6596deb5951ae799aecc8306530f3c2ec4c07ae12bbbd5a1fb335d06"
+  },
+  "historical_parent_request_sha256": "a3a2870248e7a0759362f6dec337ce6768e8edfabb585e8d63def1ed3a90a680",
+  "changes": [
+    "new stage/arms/schema names",
+    "train/dev metadata identity",
+    "same initialization receipt now references fresh Euclidean baseline",
+    "final data/config/order/runtime hashes",
+    "bootstrap contract sibling/hash"
+  ],
+  "unchanged": [
+    "model config",
+    "optimizer groups and schedules",
+    "exact training loop and3900 counting",
+    "FP32/TF32/AMP policy",
+    "memory thresholds",
+    "PID diagnostic-only policy",
+    "one-way authorization"
+  ],
+  "execution_blocker": "resource_binding intentionally unbound until separately scoped current server readiness; no old GPU identity reuse",
+  "no_request_runtime_launcher_or_real_authorization_created": true
+}

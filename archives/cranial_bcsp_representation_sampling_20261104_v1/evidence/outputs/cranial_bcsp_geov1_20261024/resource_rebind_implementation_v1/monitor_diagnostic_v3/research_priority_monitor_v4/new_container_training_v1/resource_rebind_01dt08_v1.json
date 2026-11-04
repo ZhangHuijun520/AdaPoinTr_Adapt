@@ -1,0 +1,75 @@
+{
+  "schema": "bcsp-resource-rebind-receipt-v1",
+  "status": "IDENTITY_METADATA_BOUND_NOT_EXECUTION_AUTHORIZATION",
+  "old_scope_sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6",
+  "historical_GPU_audit_sha256": "af3c3053be96a443d203c486ccede4d2bf2f0799ae753294ee946618726cf000",
+  "new_readonly_report": {
+    "path": "readonly_identity_assets_01dt08_v1.json",
+    "bytes": 10514,
+    "sha256": "efdf3b521d661291af88be7feff9e8bd8cf83dd499d4a5a93ce6c8799e51d85c"
+  },
+  "old_identity": {
+    "hostname": "shu-common-25721452-notebook-o9mz8z-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-2f32f6fb-ea5d-730a-4ea2-2f6063e31065",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "575.51.03",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity."
+  },
+  "new_identity": {
+    "hostname": "shu-common-25721452-notebook-01dt08-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-e763d389-b4c2-4dc8-9571-d7343ec328b1",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity."
+  },
+  "identity_differences": [
+    {
+      "field": "hostname",
+      "old": "shu-common-25721452-notebook-o9mz8z-0",
+      "new": "shu-common-25721452-notebook-01dt08-0"
+    },
+    {
+      "field": "gpu_uuid",
+      "old": "GPU-2f32f6fb-ea5d-730a-4ea2-2f6063e31065",
+      "new": "GPU-e763d389-b4c2-4dc8-9571-d7343ec328b1"
+    },
+    {
+      "field": "driver_version",
+      "old": "575.51.03",
+      "new": "570.190"
+    }
+  ],
+  "immutable_sha256": {
+    "static_config": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647",
+    "order_plan": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d",
+    "training_runtime": "55ad69b0e87f3fc4ecac68a5ebcc4cdd560c4825ff01363ba9868de5875f0847",
+    "transport_scope": "19bb88a4a63484d39a3f42146802af29cc695fc3dbae5ae5488df36046f770c3",
+    "original_archive": "fc3c4daa64f7a90ff6396d039c43344ab4d07947d12b675c1ecd4d6c54a08c0d",
+    "original_manifest": "1d5f43673c76b93d3195aad25e19de4a229fdc2c23505395d993c548175b823e"
+  },
+  "identity_binding_verified": true,
+  "new_gpu_execution_validated": false,
+  "historical_GPU_evidence_only": true,
+  "limitations": [
+    "New UUID and driver CUDA execution not validated",
+    "Driver compatibility and full training memory unmeasured on new device",
+    "Requires separate future execution authorization and explicit migration-risk acceptance or separately authorized new-device validation",
+    "Live identity, hashes, idle capacity, disk and freshness must be rechecked; no automatic retry"
+  ]
+}

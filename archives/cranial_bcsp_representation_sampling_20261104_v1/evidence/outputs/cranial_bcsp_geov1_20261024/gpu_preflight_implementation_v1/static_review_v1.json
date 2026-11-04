@@ -1,0 +1,32 @@
+{
+  "schema": "bcsp-preflight-local-static-review-v1",
+  "status": "PASS_STATIC_ONLY",
+  "scope_sha256": "2a69aed239c309e2579abdad0003878c2c30f7281194a77a6a7b78abb5657980",
+  "entry_sha256": "9eab8e90302500c11d4fb16e6aa0307d565b9e767a5319eb8e4725b513b82c79",
+  "test_sha256": "8003dfb4f7262bc3a2c621dbb123cdaf28872dcf5f8829d416ccc53dbe871524",
+  "AST_parse": "PASS_Python_3.10",
+  "unchanged_frozen_source_and_config_hashes": 19,
+  "reviewed": [
+    "No training runner/runtime import or optimizer/scheduler/checkpoint operation",
+    "Isolated namespaces bypass production package initializers; finite source hash gate",
+    "Native PointNet2 required; compiled Chamfer forbidden; existing cdist wrapper only",
+    "Two arms in order, one forward/get_loss/backward each; outer fail-stop without retry",
+    "BatchNorm training batch statistics with disabled running-stat writes; exact state comparison",
+    "Python/NumPy/torch CPU and selected CUDA RNG restoration",
+    "Whole-process resource monitoring starts before dependency imports; external timeout required",
+    "Launcher-only fresh directory permitted; exclusive worker PID rejects reuse",
+    "No reverse runtime hash in authorization receipt"
+  ],
+  "cpu_batch": {
+    "attempts_permitted": 1,
+    "test_count": 24,
+    "timeout_seconds": 120,
+    "interpreter": "C:/Users/zhj/.conda/envs/adapointr/python.exe",
+    "CUDA_VISIBLE_DEVICES": "",
+    "threads": 2,
+    "fixture_root": "outputs/cranial_bcsp_geov1_20261024/gpu_preflight_implementation_v1/cpu_attempt_v1/fixtures",
+    "fixtures_retained": true,
+    "failure_policy": "STOP_NO_REPAIR_NO_RETRY"
+  },
+  "not_claimed": ["CUDA success", "actual model CPU execution", "training readiness", "full GPU P3", "server deployment readiness revalidation"]
+}

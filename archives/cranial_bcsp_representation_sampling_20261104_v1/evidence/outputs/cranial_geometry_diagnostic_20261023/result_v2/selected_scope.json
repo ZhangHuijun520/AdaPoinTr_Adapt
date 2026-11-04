@@ -1,0 +1,674 @@
+{
+  "selection": "Lexicographically first three distinct training/development sources per dataset; SkullBreak bilateral, MUG ellipsoid_medium; no outcome-based selection",
+  "cases": [
+    {
+      "dataset": "SkullFix",
+      "root": "/home/jovyan/datasets/SkullFixPC",
+      "record": {
+        "dataset": "SkullFix",
+        "case_id": "002",
+        "split": "train",
+        "point_path": "points/002.npz",
+        "raw": {
+          "complete": "complete_skull/002.nrrd",
+          "defective": "defective_skull/002.nrrd",
+          "implant": "implant/002.nrrd"
+        },
+        "n_partial": 8192,
+        "n_complete": 8192,
+        "n_implant": 4096,
+        "normalization": {
+          "source": "defective_surface",
+          "centroid": [
+            -1.8076553272109395,
+            -61.956256685770384,
+            -459.67598783358056
+          ],
+          "scale": 106.89349690446711
+        },
+        "voxel_shape": [
+          512,
+          512,
+          337
+        ],
+        "space_directions": [
+          [
+            0.488281,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.488281,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.5
+          ]
+        ],
+        "space_origin": [
+          -125.0,
+          -176.10000610351562,
+          -525.0
+        ],
+        "quality": {
+          "implant_missing_iou": 1.0,
+          "reconstruction_iou": 1.0,
+          "defective_extra_fraction": 0.0,
+          "complete_voxels": 6032887,
+          "defective_voxels": 5559888,
+          "implant_voxels": 472999,
+          "missing_voxels": 472999
+        }
+      }
+    },
+    {
+      "dataset": "SkullFix",
+      "root": "/home/jovyan/datasets/SkullFixPC",
+      "record": {
+        "dataset": "SkullFix",
+        "case_id": "003",
+        "split": "train",
+        "point_path": "points/003.npz",
+        "raw": {
+          "complete": "complete_skull/003.nrrd",
+          "defective": "defective_skull/003.nrrd",
+          "implant": "implant/003.nrrd"
+        },
+        "n_partial": 8192,
+        "n_complete": 8192,
+        "n_implant": 4096,
+        "normalization": {
+          "source": "defective_surface",
+          "centroid": [
+            -4.797380364470761,
+            -10.347189012830713,
+            61.829072770923936
+          ],
+          "scale": 96.99462036045493
+        },
+        "voxel_shape": [
+          512,
+          512,
+          223
+        ],
+        "space_directions": [
+          [
+            0.4316409999999999,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.4303103971950765,
+            -0.033866132740768294
+          ],
+          [
+            0.0,
+            0.04919372353881364,
+            0.6250660764111636
+          ]
+        ],
+        "space_origin": [
+          -110.5,
+          -117.99328954244741,
+          19.842546488033484
+        ],
+        "quality": {
+          "implant_missing_iou": 1.0,
+          "reconstruction_iou": 1.0,
+          "defective_extra_fraction": 0.0,
+          "complete_voxels": 3685475,
+          "defective_voxels": 3345307,
+          "implant_voxels": 340168,
+          "missing_voxels": 340168
+        }
+      }
+    },
+    {
+      "dataset": "SkullFix",
+      "root": "/home/jovyan/datasets/SkullFixPC",
+      "record": {
+        "dataset": "SkullFix",
+        "case_id": "004",
+        "split": "train",
+        "point_path": "points/004.npz",
+        "raw": {
+          "complete": "complete_skull/004.nrrd",
+          "defective": "defective_skull/004.nrrd",
+          "implant": "implant/004.nrrd"
+        },
+        "n_partial": 8192,
+        "n_complete": 8192,
+        "n_implant": 4096,
+        "normalization": {
+          "source": "defective_surface",
+          "centroid": [
+            -1.92035543136147,
+            -1.3370148316056927,
+            36.09123938170364
+          ],
+          "scale": 98.96418462377176
+        },
+        "voxel_shape": [
+          512,
+          512,
+          256
+        ],
+        "space_directions": [
+          [
+            0.429688,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.429688,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.6249999999999999
+          ]
+        ],
+        "space_origin": [
+          -110.0,
+          -107.1,
+          -23.187999999999988
+        ],
+        "quality": {
+          "implant_missing_iou": 1.0,
+          "reconstruction_iou": 1.0,
+          "defective_extra_fraction": 0.0,
+          "complete_voxels": 4325307,
+          "defective_voxels": 3920768,
+          "implant_voxels": 404539,
+          "missing_voxels": 404539
+        }
+      }
+    },
+    {
+      "dataset": "SkullBreak",
+      "root": "/home/jovyan/datasets/SkullBreakPC",
+      "record": {
+        "dataset": "SkullBreak",
+        "case_id": "train__000__bilateral",
+        "skull_id": "train:000",
+        "source_skull_id": "000",
+        "defect_type": "bilateral",
+        "split": "train",
+        "official_split": "train",
+        "gate_split": "train",
+        "monitor_split": null,
+        "point_path": "points/train__000__bilateral.npz",
+        "raw": {
+          "complete": "train/complete_skull/000.nrrd",
+          "defective": "train/defective_skull/bilateral/000.nrrd",
+          "implant": "train/implant/bilateral/000.nrrd"
+        },
+        "n_partial": 8192,
+        "n_complete": 8192,
+        "n_implant": 4096,
+        "normalization": {
+          "source": "defective_surface",
+          "centroid": [
+            102.96835579372643,
+            100.55656736806162,
+            43.54427456852463
+          ],
+          "scale": 94.38882269054001
+        },
+        "voxel_shape": [
+          512,
+          512,
+          512
+        ],
+        "space_directions": [
+          [
+            0.4,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.4,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.4
+          ]
+        ],
+        "space_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "complete_mask_sha256": "da528e8f0aa52b49c9ac811118c98ac2e0eecb183b84cafe10295bbf3ecc81c9",
+        "quality": {
+          "implant_missing_iou": 1.0,
+          "reconstruction_iou": 1.0,
+          "defective_extra_fraction": 0.0,
+          "complete_voxels": 5863700,
+          "defective_voxels": 5127461,
+          "implant_voxels": 736239,
+          "missing_voxels": 736239
+        }
+      }
+    },
+    {
+      "dataset": "SkullBreak",
+      "root": "/home/jovyan/datasets/SkullBreakPC",
+      "record": {
+        "dataset": "SkullBreak",
+        "case_id": "train__001__bilateral",
+        "skull_id": "train:001",
+        "source_skull_id": "001",
+        "defect_type": "bilateral",
+        "split": "train",
+        "official_split": "train",
+        "gate_split": "train",
+        "monitor_split": null,
+        "point_path": "points/train__001__bilateral.npz",
+        "raw": {
+          "complete": "train/complete_skull/001.nrrd",
+          "defective": "train/defective_skull/bilateral/001.nrrd",
+          "implant": "train/implant/bilateral/001.nrrd"
+        },
+        "n_partial": 8192,
+        "n_complete": 8192,
+        "n_implant": 4096,
+        "normalization": {
+          "source": "defective_surface",
+          "centroid": [
+            99.14175301979837,
+            95.70992604781871,
+            44.02290800840972
+          ],
+          "scale": 99.55097923930464
+        },
+        "voxel_shape": [
+          512,
+          512,
+          512
+        ],
+        "space_directions": [
+          [
+            0.4,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.4,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.4
+          ]
+        ],
+        "space_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "complete_mask_sha256": "3217867b59b4cb15d23ba56c2b9ad5a1982781b7ac823442d44e9ddcc71f7dfc",
+        "quality": {
+          "implant_missing_iou": 1.0,
+          "reconstruction_iou": 1.0,
+          "defective_extra_fraction": 0.0,
+          "complete_voxels": 5755828,
+          "defective_voxels": 5197347,
+          "implant_voxels": 558481,
+          "missing_voxels": 558481
+        }
+      }
+    },
+    {
+      "dataset": "SkullBreak",
+      "root": "/home/jovyan/datasets/SkullBreakPC",
+      "record": {
+        "dataset": "SkullBreak",
+        "case_id": "train__002__bilateral",
+        "skull_id": "train:002",
+        "source_skull_id": "002",
+        "defect_type": "bilateral",
+        "split": "train",
+        "official_split": "train",
+        "gate_split": "train",
+        "monitor_split": null,
+        "point_path": "points/train__002__bilateral.npz",
+        "raw": {
+          "complete": "train/complete_skull/002.nrrd",
+          "defective": "train/defective_skull/bilateral/002.nrrd",
+          "implant": "train/implant/bilateral/002.nrrd"
+        },
+        "n_partial": 8192,
+        "n_complete": 8192,
+        "n_implant": 4096,
+        "normalization": {
+          "source": "defective_surface",
+          "centroid": [
+            102.03259558280888,
+            106.59798393044306,
+            36.8813655242017
+          ],
+          "scale": 97.51935987291012
+        },
+        "voxel_shape": [
+          512,
+          512,
+          512
+        ],
+        "space_directions": [
+          [
+            0.4,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.4,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.4
+          ]
+        ],
+        "space_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "complete_mask_sha256": "fdb88300f22656319b1eb92fc8ca989f17d1efb6e5d2fd06ff1affcdad30671b",
+        "quality": {
+          "implant_missing_iou": 1.0,
+          "reconstruction_iou": 1.0,
+          "defective_extra_fraction": 0.0,
+          "complete_voxels": 6146345,
+          "defective_voxels": 4515515,
+          "implant_voxels": 1630830,
+          "missing_voxels": 1630830
+        }
+      }
+    },
+    {
+      "dataset": "MUG500plus",
+      "root": "/home/jovyan/datasets/MUG500plusD6Development400_v1",
+      "record": {
+        "case_id": "mug500plus__A0136__ellipsoid_medium",
+        "d6_fold": "B",
+        "d6_partition": "development",
+        "defect_type": "ellipsoid_medium",
+        "derived_case_sha256": "94489a88440e4cdf2e84638feb719326ed0c71405ebea12cc440c6d1f29be97d",
+        "generator_sha256": "793306c4b0ec9ed0079c891f4f4c1b82590fb4b77dce5f9cd7a8a8885fe99a84",
+        "geometry": {
+          "cut_center_mm": [
+            -10.72016341849284,
+            -54.01058903145815,
+            90.4954790687561
+          ],
+          "direction": [
+            0.04692456666828282,
+            -0.5346812345154763,
+            0.84375
+          ],
+          "direction_slot": 2,
+          "frame": [
+            [
+              -0.6598442758825867,
+              0.7499357416658967,
+              0.04692456666828282
+            ],
+            [
+              -0.6507464555705493,
+              -0.5391150415443565,
+              -0.5346812345154763
+            ],
+            [
+              -0.3756788284523788,
+              -0.383342347455441,
+              0.84375
+            ]
+          ],
+          "geometry_attempt": 0,
+          "radii_mm": [
+            27.90456268310547,
+            34.3440771484375,
+            42.93009643554688
+          ],
+          "remaining_triangles": 2993022,
+          "removed_surface_area_fraction": 0.020986728381580836,
+          "removed_triangles": 70515,
+          "rotation_rad": 2.420012338182558,
+          "surface_anchor_mm": [
+            -10.11582056681315,
+            -60.89676411946615,
+            101.3621597290039
+          ]
+        },
+        "normalization": {
+          "centroid": [
+            -9.81546449985748,
+            9.617222755493794,
+            -4.0409916309822425
+          ],
+          "scale": 125.49439485042521,
+          "source": "defective_partial_only"
+        },
+        "point_audit": {
+          "point_sampling_attempt": 0,
+          "reference_rim_band_mm": 2.0,
+          "reference_rim_points": 19
+        },
+        "point_path": "cases/mug500plus__A0136__ellipsoid_medium.npz",
+        "skull_id": "mug500plus__A0136",
+        "source_asset_path": "../MUG500plusD6Development100_v1/raw_v20/clear_stl/d6_development100_v1/batch_001/A0136_clear.stl",
+        "source_asset_sha256": "dd93e89139408c31724af3e74cc49413ab110e2ced52f0d27d3cecf4462d6baf",
+        "source_dataset": "mug500plus-v20-d6-development100",
+        "source_surface_fingerprint_sha256": "3e682aa96f6d0bf375ce297735d01ddd4b963afcb05d50754f147789b5711d7a",
+        "surface_fingerprint_algorithm_sha256": "b947368b9d226fd752b1d683356ba18373517c3afb5890ca987afde78d9310a2"
+      }
+    },
+    {
+      "dataset": "MUG500plus",
+      "root": "/home/jovyan/datasets/MUG500plusD6Development400_v1",
+      "record": {
+        "case_id": "mug500plus__A0137__ellipsoid_medium",
+        "d6_fold": "B",
+        "d6_partition": "development",
+        "defect_type": "ellipsoid_medium",
+        "derived_case_sha256": "37f061ecd4ea6ff7f9784e8b282f1ca5511376179612fd4ff77fb14417add153",
+        "generator_sha256": "793306c4b0ec9ed0079c891f4f4c1b82590fb4b77dce5f9cd7a8a8885fe99a84",
+        "geometry": {
+          "cut_center_mm": [
+            50.3347523224316,
+            51.42914694720396,
+            -5.19848750114441
+          ],
+          "direction": [
+            0.7642755404909315,
+            0.6441322346438614,
+            -0.03125
+          ],
+          "direction_slot": 16,
+          "frame": [
+            [
+              -0.5764750143587674,
+              -0.289066525262531,
+              0.7642755404909315
+            ],
+            [
+              0.660671929567418,
+              0.3854948323575429,
+              0.6441322346438614
+            ],
+            [
+              -0.4808213382346124,
+              0.87626153527259,
+              -0.03125
+            ]
+          ],
+          "geometry_attempt": 0,
+          "radii_mm": [
+            30.50120040893555,
+            37.53993896484375,
+            46.92492370605469
+          ],
+          "remaining_triangles": 4194373,
+          "removed_surface_area_fraction": 0.04343863681881941,
+          "removed_triangles": 187075,
+          "rotation_rad": 2.6397334811852255,
+          "surface_anchor_mm": [
+            61.093823750813804,
+            60.49690373738607,
+            -5.638408660888672
+          ]
+        },
+        "normalization": {
+          "centroid": [
+            -1.5532221849766341,
+            -1.167917516910002,
+            -6.719245613400215
+          ],
+          "scale": 124.2490413856759,
+          "source": "defective_partial_only"
+        },
+        "point_audit": {
+          "point_sampling_attempt": 0,
+          "reference_rim_band_mm": 2.0,
+          "reference_rim_points": 35
+        },
+        "point_path": "cases/mug500plus__A0137__ellipsoid_medium.npz",
+        "skull_id": "mug500plus__A0137",
+        "source_asset_path": "../MUG500plusD6Development100_v1/raw_v20/clear_stl/d6_development100_v1/batch_001/A0137_clear.stl",
+        "source_asset_sha256": "42ddbdd7c5745e40b6d9d3332aaa4854719ac33ca89a4c67c4bc043fbcbc8993",
+        "source_dataset": "mug500plus-v20-d6-development100",
+        "source_surface_fingerprint_sha256": "8b002b102cbb3b4d66f4ed511cea522387b52e26c42f82500a5ac51694bb6813",
+        "surface_fingerprint_algorithm_sha256": "b947368b9d226fd752b1d683356ba18373517c3afb5890ca987afde78d9310a2"
+      }
+    },
+    {
+      "dataset": "MUG500plus",
+      "root": "/home/jovyan/datasets/MUG500plusD6Development400_v1",
+      "record": {
+        "case_id": "mug500plus__A0138__ellipsoid_medium",
+        "d6_fold": "D",
+        "d6_partition": "development",
+        "defect_type": "ellipsoid_medium",
+        "derived_case_sha256": "e115c5587a57c651d814c5f0926afdfd38769420a12afda94592556cc5c88b74",
+        "generator_sha256": "793306c4b0ec9ed0079c891f4f4c1b82590fb4b77dce5f9cd7a8a8885fe99a84",
+        "geometry": {
+          "cut_center_mm": [
+            -10.204931808520882,
+            83.66832043425381,
+            -102.559361410141
+          ],
+          "direction": [
+            -0.04507273241260886,
+            0.9747393940396897,
+            -0.21875000000000003
+          ],
+          "direction_slot": 19,
+          "frame": [
+            [
+              -0.42003866874347434,
+              0.9063862121375585,
+              -0.04507273241260886
+            ],
+            [
+              0.18018398751394105,
+              0.13197289248445898,
+              0.9747393940396897
+            ],
+            [
+              0.8894387260535632,
+              0.40130685278999934,
+              -0.21875000000000003
+            ]
+          ],
+          "geometry_attempt": 0,
+          "radii_mm": [
+            27.614298248291018,
+            33.98682861328125,
+            42.48353576660156
+          ],
+          "remaining_triangles": 2871029,
+          "removed_surface_area_fraction": 0.01790458606961469,
+          "removed_triangles": 52264,
+          "rotation_rad": 2.707633804049948,
+          "surface_anchor_mm": [
+            -10.779386520385742,
+            96.09143320719402,
+            -105.34734344482422
+          ]
+        },
+        "normalization": {
+          "centroid": [
+            3.9937546628027456,
+            -5.615264983109891,
+            -2.228315823835863
+          ],
+          "scale": 128.46578568358578,
+          "source": "defective_partial_only"
+        },
+        "point_audit": {
+          "point_sampling_attempt": 1,
+          "reference_rim_band_mm": 2.0,
+          "reference_rim_points": 11
+        },
+        "point_path": "cases/mug500plus__A0138__ellipsoid_medium.npz",
+        "skull_id": "mug500plus__A0138",
+        "source_asset_path": "../MUG500plusD6Development100_v1/raw_v20/clear_stl/d6_development100_v1/batch_001/A0138_clear.stl",
+        "source_asset_sha256": "2d15ac09193c493437f48ce368a2f4f8433df44c0c6d35b94f737b7fb5ff14d2",
+        "source_dataset": "mug500plus-v20-d6-development100",
+        "source_surface_fingerprint_sha256": "46f65bca851ed3e25c6afc4a080f3a355e22f3e3e649c27112a47af85db808c9",
+        "surface_fingerprint_algorithm_sha256": "b947368b9d226fd752b1d683356ba18373517c3afb5890ca987afde78d9310a2"
+      }
+    }
+  ],
+  "metadata": [
+    {
+      "path": "/home/jovyan/datasets/SkullFixPC/manifest.jsonl",
+      "sha256": "e778efe7fef30f70ce3cb497da5fd7594f7d5dfd079bef592be7e7141f4ade56"
+    },
+    {
+      "path": "/home/jovyan/datasets/SkullFixPC/splits.json",
+      "sha256": "0ac443eb3c712ff7ae2bce4ac302b5b9f7c71c77f2c73f1db3ee6b4356f47989"
+    },
+    {
+      "path": "/home/jovyan/datasets/SkullFixPC/SHA256SUMS",
+      "sha256": "2ef2917e90117d87ff1b49a682202dc27c8a8e0679a6eb810362849692a7d72c"
+    },
+    {
+      "path": "/home/jovyan/datasets/SkullBreakPC/manifest.jsonl",
+      "sha256": "6a6b5aa3ba4e09758bd0f74a59b0f26f8edeac77614f45d522e65c2d98dc776e"
+    },
+    {
+      "path": "/home/jovyan/datasets/SkullBreakPC/group_splits.json",
+      "sha256": "ef756dd819f65dd851ce669ebcc7d02720bb4b86096bb5769fcb088e3743c0a3"
+    },
+    {
+      "path": "/home/jovyan/datasets/SkullBreakPC/SHA256SUMS",
+      "sha256": "896e978564c5daf1d712891f97d78b22d50574c7ed1e3faa86f9b68a15c26ddd"
+    },
+    {
+      "path": "/home/jovyan/datasets/MUG500plusD6Development400_v1/manifest.jsonl",
+      "sha256": "37fca6b9436233053ce142d1fcb9504d0fb17c79123e1d78a1514f87b2528bdb"
+    }
+  ],
+  "tolerances_mm": [
+    1.0,
+    2.0
+  ],
+  "raw_geometry_available": false,
+  "limitations": "Original voxel masks unavailable at documented Windows paths; D6 source STL parent directory empty. Do not interpret any point metric as raw-surface coverage."
+}

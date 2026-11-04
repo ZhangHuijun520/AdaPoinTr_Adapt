@@ -1,0 +1,93 @@
+{
+  "status": "FAILED_AT_AUTHORIZATION_BEFORE_MODEL_IMPORT_STOP_NO_RETRY",
+  "execution_scope_sha256": "ebb8d4051cc405939930a41fc292d55a81fe6cf5dc786c77a62b5a6317c46a4a",
+  "installation": "316_FILES_EXCLUSIVELY_INSTALLED_AND_HASH_VERIFIED",
+  "tmux_launch_attempts": 1,
+  "exit_code": 1,
+  "optimizer_steps": 0,
+  "model_forward_calls": 0,
+  "counts_basis": "Pinned entry invokes authorize before model/CUDA import;captured traceback stops inside authorize;no worker PID materialized",
+  "root_cause": "bcsp_training_contract_01dt08_v3.authorize still restricts n_input == 8192",
+  "review_gap": "16k data reader and launcher metadata predicates were checked,but actual authorize gate was missed",
+  "retry_performed": false,
+  "resume": false,
+  "BNCal": false,
+  "evaluation": false,
+  "formal_failure_freeze_audit_performed": false,
+  "control_files": [
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/training_execution_scope_v1.json",
+      "bytes": 23107,
+      "sha256": "ebb8d4051cc405939930a41fc292d55a81fe6cf5dc786c77a62b5a6317c46a4a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/migration_uncertainty_acceptance_v1.json",
+      "bytes": 1567,
+      "sha256": "fecd9f4924c7c6c17d3f33ad11e2cfa2a2d05619b44bc30d4afd41b8bcd91985"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/training_execution_request_v1.json",
+      "bytes": 5448,
+      "sha256": "847ccee79e6a29241c7f0b5c8f67d790f856014fe24c75a2123b234c337a8404"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/training_authorization_v1.json",
+      "bytes": 538,
+      "sha256": "64fcc5a83c271f9534fc168cd37ad128fb41ba6b7c3ead5507710d4add2d820e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/training_runtime_v1.json",
+      "bytes": 225,
+      "sha256": "91f5431a4b6842f051b6f7f7e2f570cd8daaaaa8cf944ba2ead8d35dd35d06d6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/train_once_v1.sh",
+      "bytes": 3081,
+      "sha256": "e08291416406498cb0269ee8a68a85df26d07523d452d40849528be75db9575b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/launch_attempt_v1.json",
+      "bytes": 295,
+      "sha256": "25f31553a58ba5d8eb649e800a260f83579a8096352eee621ef624d6b2a0fa7b"
+    }
+  ],
+  "startup_failure": {
+    "status": "FAILED_STOP_NO_RETRY",
+    "phase": "READONLY_STARTUP_CONFIRMATION",
+    "error": "RuntimeError(\"training startup failed: {'tmux_present': False, 'worker_pid': None, 'worker_live': False, 'exit_code': 1, 'last_committed_step': None, 'completion_present': False, 'failure_present': False}\")",
+    "created_files": [
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/training_execution_scope_v1.json",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/migration_uncertainty_acceptance_v1.json",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/training_execution_request_v1.json",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/training_authorization_v1.json",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/training_runtime_v1.json",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/train_once_v1.sh",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1/launch_attempt_v1.json"
+    ],
+    "created_directories": [
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_foldC_16384_v1"
+    ],
+    "tmux_attempted": true,
+    "scope_sha256": "ebb8d4051cc405939930a41fc292d55a81fe6cf5dc786c77a62b5a6317c46a4a",
+    "no_retry": true,
+    "no_resume": true,
+    "no_cleanup": true,
+    "launch_log_tail": "Traceback (most recent call last):\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_entry_research_v5.py\", line 291, in <module>\n    main()\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_entry_research_v5.py\", line 171, in main\n    q, static = authorize(request_record, record(args.authorization, args.authorization_sha256),\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_contract_01dt08_v3.py\", line 168, in authorize\n    require(q['fold'] == 'C' and q['n_input'] == 8192, 'first rebound run only')\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_contract_01dt08_v3.py\", line 18, in require\n    raise ValueError(message)\nValueError: first rebound run only\n",
+    "exit_code_text": "1\n",
+    "failure": "",
+    "startup_failure": ""
+  },
+  "evidence": [
+    {
+      "file": "authorized_execution_v2\\install_process_capture_v1.json",
+      "bytes": 1676,
+      "sha256": "43c87b486b5884c4544ef887fe57649d6843e31eabcafa0fdaf0e4ff21056c5f"
+    },
+    {
+      "file": "authorized_execution_v2\\training_process_capture_v1.json",
+      "bytes": 14676,
+      "sha256": "919d7f7662067219a5f2869ca366323c96d34c1caa9e1cc1d8bbf40c24ea19d4"
+    }
+  ],
+  "next_not_executed": "Minimal exact16k authorization gate and sibling entry binding adaptation;exercise actual authorize function in CPU contracts;new pending request reusing316 installed files,no reinstall"
+}

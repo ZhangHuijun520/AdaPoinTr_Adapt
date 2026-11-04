@@ -1,0 +1,212 @@
+{
+  "schema": "bcsp-resource-rebind-supplement-installation-map-v1",
+  "status": "FROZEN_LOCAL_TRANSPORT_ONLY_AWAITING_SEPARATE_SERVER_AUTHORIZATION",
+  "date_Asia_Shanghai": "2026-10-25",
+  "is_execution_request": false,
+  "installation_authorized": false,
+  "training_authorized": false,
+  "new_gpu_execution_validated": false,
+  "scope": "Only package final identity overlay and exact no-overwrite installation map locally. No server connection, upload, installation, tests, G3, GPU or training.",
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-3x9rq5-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-4b19574a-832d-b4fe-e655-a57462954d6a",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity."
+  },
+  "run_unchanged": {
+    "run_id": "bcsp_geov1_b0_foldC_in8192_out8192_seed0_train_v1",
+    "stage": "BCSP_INPUT_DENSITY_V1",
+    "fold": "C",
+    "seed": 0,
+    "input_points": 8192,
+    "target_points": 8192,
+    "model": "Frozen B0 AdaPoinTr Transformer, not Mamba/SCQR",
+    "sources": 63,
+    "cases": 315,
+    "batch": 8,
+    "epochs": 100,
+    "epoch_labels": [
+      0,
+      99
+    ],
+    "batches_each": 39,
+    "optimizer_updates": 3900,
+    "case_exposures": 31200,
+    "drop_last": true,
+    "step_per_update": 1,
+    "scratch": true,
+    "final_only": true,
+    "BNCal": false,
+    "development_evaluation": false,
+    "automatic_retry_or_resume": false
+  },
+  "code_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1",
+  "installation_map": [
+    {
+      "kind": "identity_contract",
+      "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\bcsp_training_contract_v2.py",
+      "archive_member": "code/bcsp_training_contract_v2.py",
+      "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_contract_v2.py",
+      "bytes": 16538,
+      "sha256": "88b0098ec199fcba7e37c9ca2be7a8d6b69ff246ab0f1b9494445e4a72b41db3",
+      "mode": "create_only_no_overwrite",
+      "installed_permissions": "0644"
+    },
+    {
+      "kind": "identity_entry",
+      "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\bcsp_training_entry_v2.py",
+      "archive_member": "code/bcsp_training_entry_v2.py",
+      "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_entry_v2.py",
+      "bytes": 14714,
+      "sha256": "eb2f2f0f53aa9e36636e576dc3e25b4fee86df276eb476e79f5f1e1bee804852",
+      "mode": "create_only_no_overwrite",
+      "installed_permissions": "0644"
+    },
+    {
+      "kind": "identity_metadata_not_authorization",
+      "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\resource_rebind_receipt_v1.json",
+      "archive_member": "code/resource_rebind_receipt_v1.json",
+      "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/resource_rebind_receipt_v1.json",
+      "bytes": 3601,
+      "sha256": "11afc76b0a130f5c6a6c5a28fb147e7ab7d144cddb55c213f9f3ab3dc07c33b0",
+      "mode": "create_only_no_overwrite",
+      "installed_permissions": "0644"
+    },
+    {
+      "kind": "pinned_readonly_evidence",
+      "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\readonly_identity_assets_upload_report_v1.json",
+      "archive_member": "code/readonly_identity_assets_upload_report_v1.json",
+      "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/readonly_identity_assets_upload_report_v1.json",
+      "bytes": 22014,
+      "sha256": "1ccb8c7fc712cdecb04f260d84b827e422fb1d6926110664783f0033ef9a33c6",
+      "mode": "create_only_no_overwrite",
+      "installed_permissions": "0644"
+    },
+    {
+      "kind": "local_P3_provenance",
+      "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\local_P3_receipt_v1.json",
+      "archive_member": "code/evidence/resource_rebind_v1/local_P3_receipt_v1.json",
+      "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1/local_P3_receipt_v1.json",
+      "bytes": 26625,
+      "sha256": "2954424b806c37a9262f5c57a357e5b9105fe0e972e80e3a614bc866d55a1b36",
+      "mode": "create_only_no_overwrite",
+      "installed_permissions": "0644"
+    },
+    {
+      "kind": "static_review",
+      "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\static_review_v1.json",
+      "archive_member": "code/evidence/resource_rebind_v1/static_review_v1.json",
+      "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1/static_review_v1.json",
+      "bytes": 2154,
+      "sha256": "ab0a96290e9caa7ebee819d79032da260b2da8bba71ce3d2fbf5cb8002287fa6",
+      "mode": "create_only_no_overwrite",
+      "installed_permissions": "0644"
+    },
+    {
+      "kind": "CPU_results",
+      "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\artificial_cpu_batch_v1\\results_v1.json",
+      "archive_member": "code/evidence/resource_rebind_v1/results_v1.json",
+      "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1/results_v1.json",
+      "bytes": 956,
+      "sha256": "27c4f1a11803e70b82b679892fbc33648d66b6aa934d4a6d537aa2449e9cec3e",
+      "mode": "create_only_no_overwrite",
+      "installed_permissions": "0644"
+    },
+    {
+      "kind": "CPU_process_capture",
+      "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\cpu_batch_process_capture_v1.json",
+      "archive_member": "code/evidence/resource_rebind_v1/cpu_batch_process_capture_v1.json",
+      "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1/cpu_batch_process_capture_v1.json",
+      "bytes": 1120,
+      "sha256": "672839103ae5ab58228608a66bda553090051bf9219bd2e07858f101ad836fca",
+      "mode": "create_only_no_overwrite",
+      "installed_permissions": "0644"
+    },
+    {
+      "kind": "CPU_stdout",
+      "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\cpu_batch_stdout_v1.log",
+      "archive_member": "code/evidence/resource_rebind_v1/cpu_batch_stdout_v1.log",
+      "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1/cpu_batch_stdout_v1.log",
+      "bytes": 120,
+      "sha256": "ef1077aacc7447c9a2ad5d6e7e250ecfbc459915a397ed401ff7d95f06ce7f24",
+      "mode": "create_only_no_overwrite",
+      "installed_permissions": "0644"
+    },
+    {
+      "kind": "CPU_stderr_empty_allowed",
+      "local_source": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\cpu_batch_stderr_v1.log",
+      "archive_member": "code/evidence/resource_rebind_v1/cpu_batch_stderr_v1.log",
+      "server_target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1/cpu_batch_stderr_v1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "create_only_no_overwrite",
+      "installed_permissions": "0644"
+    }
+  ],
+  "member_count": 10,
+  "uncompressed_member_bytes": 87842,
+  "P3_sha256": "2954424b806c37a9262f5c57a357e5b9105fe0e972e80e3a614bc866d55a1b36",
+  "preserve_original": {
+    "archive_filename": "bcsp_foldc_8192_train_inputs_v1.tar.gz",
+    "archive_bytes": 49773476,
+    "archive_sha256": "fc3c4daa64f7a90ff6396d039c43344ab4d07947d12b675c1ecd4d6c54a08c0d",
+    "scope_sha256": "19bb88a4a63484d39a3f42146802af29cc695fc3dbae5ae5488df36046f770c3",
+    "member_count": 327,
+    "repackage_or_reupload": false,
+    "replace_old_v1_entry_contract": false,
+    "original_327_member_installation_status": "NOT_ESTABLISHED_BY_THIS_LOCAL_FREEZE; remains a separately authorized prerequisite, not performed or assumed here"
+  },
+  "runtime_path_contract": {
+    "active_entry": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_entry_v2.py",
+    "active_contract": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_contract_v2.py",
+    "logical_contract_module": "bcsp_training_contract_v1",
+    "resource_rebind": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/resource_rebind_receipt_v1.json",
+    "new_readonly_report": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/readonly_identity_assets_upload_report_v1.json",
+    "required_sibling_relationships": [
+      "entry_v2 and contract_v2 must share parent",
+      "receipt and exact readonly report must share parent"
+    ],
+    "unchanged_runtime": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_runtime_v5.py",
+    "unchanged_runtime_sha256": "55ad69b0e87f3fc4ecac68a5ebcc4cdd560c4825ff01363ba9868de5875f0847",
+    "metadata_windows_paths": "Historical provenance only. Never execute or resolve these as server paths; server mapping is exclusively server_target."
+  },
+  "future_installation_contract": {
+    "authorization": "Separate explicit authorization required before all server reads/writes; this map does not authorize installation.",
+    "identity": "Recheck exact hostname, uid, project, GPU UUID/name/capacity and driver. Any new difference stops; no automatic rebind.",
+    "upload": "Verify exact archive hash/bytes, map hash, member set, regular-file type, size and per-member SHA256 before writes.",
+    "targets": "Check ALL 10 targets with lstat/lexists before any write; every target must be absent, including dangling links. Recheck all existing parents as directories without symlinks. All targets must stay within exact code_root under authorized project.",
+    "writes": "Create only explicitly mapped parents under code_root; write each regular file with exclusive create/no-follow semantics. Never extractall, overwrite, rename over, chmod existing files, delete, or execute installed files.",
+    "ordering": "Preserve original 327-file installation as a separately authorized prerequisite. If scheduling together later, original original-map installation precedes this side-by-side overlay; do not infer either installation has happened.",
+    "failure": "Stop immediately and retain exact partial-installation receipt; no automatic retry, cleanup, overwrite or version/path substitution.",
+    "post_installation": "Independently read back all 10 targets for exact size/SHA256 and retain original v1 files; no tests or model calls.",
+    "forbidden": [
+      "No installation script",
+      "No training request/authorization/runtime config/launcher creation",
+      "No GPU preflight, forward/backward, optimizer step, BNCal or evaluation"
+    ]
+  },
+  "exclusions": [
+    "Test source and all synthetic fixtures",
+    "Models, providers, training runtime and third-party dependencies",
+    "NPZ payloads and checkpoints",
+    "Original 327 archive members or regenerated static config/order",
+    "Real execution request, authorization, runtime config, launcher or installer"
+  ],
+  "evidence_limits": [
+    "Only selected summaries and raw CPU stdout/stderr accompany the P3. Full 57-file local evidence manifest remains on Windows and is not a claim all those files are installed.",
+    "Old GPU audit remains historical; new GPU CUDA compatibility/full training memory not validated.",
+    "Future training requires separate migration-risk decision and execution authorization."
+  ],
+  "suggested_upload_directory": "/home/jovyan",
+  "upload_mode": "Manual user upload only; no transfer performed",
+  "next": "Manual upload of package and sidecars, then separately authorized read-only upload verification; no automatic installation."
+}

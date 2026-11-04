@@ -1,0 +1,387 @@
+{
+  "schema": "bcsp-monitor-diagnostic-local-P3-v3",
+  "status": "LOCAL_P3_PASS_IMPLEMENTATION_ONLY_NOT_DEPLOYED_NOT_TRAINING_ADMISSION",
+  "date_Asia_Shanghai": "2026-10-25",
+  "user_authorized_scope": "Minimal monitor diagnostic fix: persist actual values/per-condition outcomes before original stopping assertion, targeted artificial CPU regressions and P3 only. No automatic retraining.",
+  "change": {
+    "production_candidate": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\bcsp_training_entry_v3.py",
+      "bytes": 15516,
+      "sha256": "b7e00e78b61dd1f193cc28bb0801d5b9e381d8acb37f357a52a9734615f08322"
+    },
+    "method_only": "TrainingBudget.sample",
+    "all_other_entry_AST_unchanged": true,
+    "contract_v2_exact_copy_for_hash_pinned_sibling_bootstrap": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\bcsp_training_contract_v2.py",
+      "bytes": 16538,
+      "sha256": "88b0098ec199fcba7e37c9ca2be7a8d6b69ff246ab0f1b9494445e4a72b41db3"
+    },
+    "original_combined_stopping_assertion_AST_unchanged": true,
+    "record_cap": 3902,
+    "persist_sequence": [
+      "sample raw allocated,reserved,device usage and PIDs as before",
+      "derive all four condition booleans and failed-check list without short-circuiting diagnostics",
+      "retain fixed resource record cap",
+      "append sample JSONL including rawvalues,thresholds,ownPID,allPIDs,condition booleans",
+      "flush and fsync; propagate any logging failure",
+      "execute exactly original combined GPU/other-process require"
+    ],
+    "no_extra_SMI_or_CUDA_query_added": true,
+    "failure_behavior": "An over-budget sample is durable before the original ValueError; a write/fsync error stops execution immediately and cannot be considered an accepted sample. No automatic recovery."
+  },
+  "static_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\static_review_v1.json",
+    "bytes": 857,
+    "sha256": "f9ba6e350ee39366fd23a9202883d7f4e84a7e33748071757eb99b83c613a9cc"
+  },
+  "CPU_process": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_process_capture_v1.json",
+    "bytes": 461,
+    "sha256": "2f99f964068158774c9cbcafaab1b989f12c4edfe6492a40e0e79cd587e33889"
+  },
+  "CPU_results": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\results_v1.json",
+    "bytes": 513,
+    "sha256": "4acee5e956d72691635a3de132e56dfb8dc8ea2ac0951371f1d9a883cd6be8d0"
+  },
+  "test_source": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\test_monitor_diagnostic_v3.py",
+    "bytes": 8021,
+    "sha256": "5a13885a2720869745e46857d9ae2cccb6243f230bee68745d78b66a0f950618"
+  },
+  "test_counts": {
+    "passed": 10,
+    "failed": 0,
+    "errors": 0,
+    "batch_attempts": 1,
+    "budget_seconds": 60,
+    "process_elapsed_seconds": 0.375
+  },
+  "coverage": [
+    "Equality at unchanged thresholds passes and logs",
+    "Allocated overrun stops after raw value persisted",
+    "Reserved overrun stops after raw value persisted",
+    "Device-MiB overrun stops after raw value persisted",
+    "ForeignPID stops with fullPID list",
+    "All four simultaneous failures individually visible",
+    "fsync observes complete flushed failed record before assertion",
+    "Journal open/write error stops",
+    "fsync error stops even if resource checks pass",
+    "3902 record cap unchanged,extra record not written"
+  ],
+  "fixtures": {
+    "test_R01_equal_thresholds_pass_and_log": {
+      "record_count": 1,
+      "file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R01_equal_thresholds_pass_and_log.jsonl",
+        "bytes": 595,
+        "sha256": "1e432d5da4a5ad36744c0fbb8a895aed6db7a5a33dd56b734d09c1d9561fe1ed"
+      },
+      "failed_checks": [],
+      "checks": {
+        "allocated_within_limit": true,
+        "reserved_within_limit": true,
+        "device_within_limit": true,
+        "compute_PIDs_owned": true
+      }
+    },
+    "test_R02_allocated_over_stops_after_persist": {
+      "record_count": 1,
+      "file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R02_allocated_over_stops_after_persist.jsonl",
+        "bytes": 607,
+        "sha256": "398adeda02d3d8903c96ed7e691b5dd1b36f173b5543386c1d408973c18657b9"
+      },
+      "failed_checks": [
+        "allocated_within_limit"
+      ],
+      "checks": {
+        "allocated_within_limit": false,
+        "reserved_within_limit": true,
+        "device_within_limit": true,
+        "compute_PIDs_owned": true
+      }
+    },
+    "test_R03_reserved_over_stops_after_persist": {
+      "record_count": 1,
+      "file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R03_reserved_over_stops_after_persist.jsonl",
+        "bytes": 606,
+        "sha256": "9e23561cd1c20c9dcc8a9f186cf1e850e5ba7fb8df6c816e7f13c90ca472a89e"
+      },
+      "failed_checks": [
+        "reserved_within_limit"
+      ],
+      "checks": {
+        "allocated_within_limit": true,
+        "reserved_within_limit": false,
+        "device_within_limit": true,
+        "compute_PIDs_owned": true
+      }
+    },
+    "test_R04_device_over_stops_after_persist": {
+      "record_count": 1,
+      "file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R04_device_over_stops_after_persist.jsonl",
+        "bytes": 598,
+        "sha256": "e5c9e658f32b7984d39a6bc2db309bc11a4cc68afe4f25338f12145ba4c53067"
+      },
+      "failed_checks": [
+        "device_within_limit"
+      ],
+      "checks": {
+        "allocated_within_limit": true,
+        "reserved_within_limit": true,
+        "device_within_limit": false,
+        "compute_PIDs_owned": true
+      }
+    },
+    "test_R05_foreign_PID_stops_and_records_full_list": {
+      "record_count": 1,
+      "file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R05_foreign_PID_stops_and_records_full_list.jsonl",
+        "bytes": 600,
+        "sha256": "1736efd059b6e41f3bf083303d57d70f28bf0c19492916871e32123f09895f60"
+      },
+      "failed_checks": [
+        "compute_PIDs_owned"
+      ],
+      "checks": {
+        "allocated_within_limit": true,
+        "reserved_within_limit": true,
+        "device_within_limit": true,
+        "compute_PIDs_owned": false
+      }
+    },
+    "test_R06_multiple_failures_all_reported": {
+      "record_count": 1,
+      "file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R06_multiple_failures_all_reported.jsonl",
+        "bytes": 694,
+        "sha256": "e5211d3d01b22cd05dc927623aec53153906ff3a61d1b36ac3cb84cd3a7aa593"
+      },
+      "failed_checks": [
+        "allocated_within_limit",
+        "reserved_within_limit",
+        "device_within_limit",
+        "compute_PIDs_owned"
+      ],
+      "checks": {
+        "allocated_within_limit": false,
+        "reserved_within_limit": false,
+        "device_within_limit": false,
+        "compute_PIDs_owned": false
+      }
+    },
+    "test_R07_fsync_observes_record_before_assertion": {
+      "record_count": 1,
+      "file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R07_fsync_observes_record_before_assertion.jsonl",
+        "bytes": 607,
+        "sha256": "398adeda02d3d8903c96ed7e691b5dd1b36f173b5543386c1d408973c18657b9"
+      },
+      "failed_checks": [
+        "allocated_within_limit"
+      ],
+      "checks": {
+        "allocated_within_limit": false,
+        "reserved_within_limit": true,
+        "device_within_limit": true,
+        "compute_PIDs_owned": true
+      }
+    },
+    "test_R08_journal_write_failure_stops": {
+      "record_count": 0,
+      "file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R08_journal_write_failure_stops.jsonl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "test_R09_fsync_failure_stops_even_with_valid_resources": {
+      "record_count": 1,
+      "file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R09_fsync_failure_stops_even_with_valid_resources.jsonl",
+        "bytes": 571,
+        "sha256": "3b6fba435fe6308dfcb9236f67ea1aa85e96b73aeee24916e865621a04fab50b"
+      },
+      "failed_checks": [],
+      "checks": {
+        "allocated_within_limit": true,
+        "reserved_within_limit": true,
+        "device_within_limit": true,
+        "compute_PIDs_owned": true
+      }
+    },
+    "test_R10_record_cap_unchanged_no_extra_write": {
+      "record_count": 0,
+      "file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R10_record_cap_unchanged_no_extra_write.jsonl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "unchanged_parent_evidence": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\bcsp_training_entry_v2.py",
+      "bytes": 14714,
+      "sha256": "eb2f2f0f53aa9e36636e576dc3e25b4fee86df276eb476e79f5f1e1bee804852"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\bcsp_training_contract_v2.py",
+      "bytes": 16538,
+      "sha256": "88b0098ec199fcba7e37c9ca2be7a8d6b69ff246ab0f1b9494445e4a72b41db3"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\bcsp_training_runtime_v5.py",
+      "bytes": 10171,
+      "sha256": "55ad69b0e87f3fc4ecac68a5ebcc4cdd560c4825ff01363ba9868de5875f0847"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\first_run_freeze_foldC_8192_v1\\static_training_config_v1.json",
+      "bytes": 2024,
+      "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\first_run_freeze_foldC_8192_v1\\shared_order_foldC_seed0_v1.json",
+      "bytes": 1248506,
+      "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\training_execution_request_v2.json",
+      "bytes": 21541,
+      "sha256": "64197a335140475e71dddd9033acc067c4bb84231ac21c2c60e0b58de289b105"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\failure_audit_report_v1.json",
+      "bytes": 30249,
+      "sha256": "453f0e235ca8fe38ddcb1eeda19362a51b2460b6e8097ddc55dcb6d9fa7ab233"
+    }
+  ],
+  "evidence_manifest": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\bcsp_training_contract_v2.py",
+      "bytes": 16538,
+      "sha256": "88b0098ec199fcba7e37c9ca2be7a8d6b69ff246ab0f1b9494445e4a72b41db3"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\bcsp_training_entry_v3.py",
+      "bytes": 15516,
+      "sha256": "b7e00e78b61dd1f193cc28bb0801d5b9e381d8acb37f357a52a9734615f08322"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_process_capture_v1.json",
+      "bytes": 461,
+      "sha256": "2f99f964068158774c9cbcafaab1b989f12c4edfe6492a40e0e79cd587e33889"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R01_equal_thresholds_pass_and_log.jsonl",
+      "bytes": 595,
+      "sha256": "1e432d5da4a5ad36744c0fbb8a895aed6db7a5a33dd56b734d09c1d9561fe1ed"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R02_allocated_over_stops_after_persist.jsonl",
+      "bytes": 607,
+      "sha256": "398adeda02d3d8903c96ed7e691b5dd1b36f173b5543386c1d408973c18657b9"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R03_reserved_over_stops_after_persist.jsonl",
+      "bytes": 606,
+      "sha256": "9e23561cd1c20c9dcc8a9f186cf1e850e5ba7fb8df6c816e7f13c90ca472a89e"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R04_device_over_stops_after_persist.jsonl",
+      "bytes": 598,
+      "sha256": "e5c9e658f32b7984d39a6bc2db309bc11a4cc68afe4f25338f12145ba4c53067"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R05_foreign_PID_stops_and_records_full_list.jsonl",
+      "bytes": 600,
+      "sha256": "1736efd059b6e41f3bf083303d57d70f28bf0c19492916871e32123f09895f60"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R06_multiple_failures_all_reported.jsonl",
+      "bytes": 694,
+      "sha256": "e5211d3d01b22cd05dc927623aec53153906ff3a61d1b36ac3cb84cd3a7aa593"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R07_fsync_observes_record_before_assertion.jsonl",
+      "bytes": 607,
+      "sha256": "398adeda02d3d8903c96ed7e691b5dd1b36f173b5543386c1d408973c18657b9"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R08_journal_write_failure_stops.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R09_fsync_failure_stops_even_with_valid_resources.jsonl",
+      "bytes": 571,
+      "sha256": "3b6fba435fe6308dfcb9236f67ea1aa85e96b73aeee24916e865621a04fab50b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\fixtures\\test_R10_record_cap_unchanged_no_extra_write.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_regression_v1\\results_v1.json",
+      "bytes": 513,
+      "sha256": "4acee5e956d72691635a3de132e56dfb8dc8ea2ac0951371f1d9a883cd6be8d0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_stderr_v1.log",
+      "bytes": 905,
+      "sha256": "01adfe1c846b0829934f6ac7e27ea6c8d066001db04c16b45e4793822a94573b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\cpu_stdout_v1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\static_review_v1.json",
+      "bytes": 857,
+      "sha256": "f9ba6e350ee39366fd23a9202883d7f4e84a7e33748071757eb99b83c613a9cc"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\test_monitor_diagnostic_v3.py",
+      "bytes": 8021,
+      "sha256": "5a13885a2720869745e46857d9ae2cccb6243f230bee68745d78b66a0f950618"
+    }
+  ],
+  "limits_preserved": {
+    "wall_seconds": 86400,
+    "RSS_bytes": 8589934592,
+    "device_MiB": 22528,
+    "torch_peak_bytes": 21474836480,
+    "output_bytes": 2147483648,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "known_limits": [
+    "CPU fixtures inject artificial tensor allocator/SMI readings; no real CUDA,model,real NPZ or training is exercised.",
+    "Windows flush/fsync checks demonstrate local ordering and fail-stop semantics,not remote filesystem durability or runtime performance certification.",
+    "No proof of the previous historical trigger is created: old failed sample peaks/PIDs remain unavailable.",
+    "Each sample now adds flush/fsync I/O; duration and log-growth remain governed by unchanged wall/output/record caps. No training-time speed guarantee.",
+    "A future deployment/request must bind entry_v3 SHA and distinct fresh execution/output/launch paths; the prior failed run and its grant remain consumed and must not be resumed or overwritten."
+  ],
+  "permissions": {
+    "server_connections": 0,
+    "server_file_changes": 0,
+    "GPU_queries": 0,
+    "CUDA_calls": 0,
+    "model_imports": 0,
+    "new_forwards": 0,
+    "optimizer_steps": 0,
+    "real_payload_reads": 0,
+    "production_lifecycle_runs": 0,
+    "training_requests_created": 0,
+    "real_authorization_runtime_launcher_created": false,
+    "automatic_retraining": false,
+    "threshold_changes": false,
+    "model_data_or3900_step_changes": false
+  },
+  "next_boundary": "Only if separately authorized: freeze the minimal entry_v3 and necessary evidence transport/no-overwrite mapping,then explicit upload/install/freeze stages and new pending request. This P3 does not deploy,retry,resume or create an execution request.",
+  "stop_status": "IMPLEMENTATION_AND_ARTIFICIAL_CPU_P3_COMPLETE_NO_DEPLOYMENT_OR_RETRAIN"
+}

@@ -1,0 +1,146 @@
+{
+  "schema": "bcsp-lazy-plotting-local-P3-v3",
+  "status": "LOCAL_P3_PASS_REMOTE_GATES_PENDING",
+  "date_Asia_Shanghai": "2026-10-24",
+  "authorization": "Implementation-only lazy plotting imports in isolated misc, targeted CPU regression and P3; create new pending request only.",
+  "change": {
+    "derived_file": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_plotting_lazy_v3\\overlay\\utils\\misc.py",
+      "bytes": 12290,
+      "sha256": "3063afb490840dd417c2e0cc00f2d5fdfe49ba2074396099c39a112026906485"
+    },
+    "parent_misc_sha256": "65338858a2f2f87cc6040a7525a57beff26f0acc665caaedfb18bae5ab3d1a87",
+    "description": "Remove module-scope pyplot/Axes3D imports; place both imports at start of get_ptcloud_img and visualize_KITTI. No plot function called by preflight. Preserve every computational function and every plot body after import normalization.",
+    "formatting": "New isolated derived file has LF rather than archived CRLF, with terminal blank lines normalized. Archived mother file is unmodified; exact normalized-text transform and whole-module AST parity were checked.",
+    "entry_adaptation": "New versioned entry differs from v2 only in SCOPE_SHA assignment; entire normalized module AST identical, including FilePolicy, FiniteProjectImports, numerical settings, counters, monitor and run.",
+    "scope_adaptation": "Only new versioned isolation/result/session paths, precise misc source binding, explicit archived-byte exception, parent provenance and descriptive revision fields. Identity, provider/environment, scientific and monitoring contracts unchanged."
+  },
+  "P1_static": {
+    "status": "PASS",
+    "Python_sources_parsed": 3,
+    "JSON_scope_parsed": true,
+    "exact_normalized_text_change_contract": true,
+    "CPU_was_not_run_before_static_gate": true
+  },
+  "P2_CPU": {
+    "status": "PASS",
+    "tests_run": 12,
+    "errors": 0,
+    "failures": 0,
+    "attempts": 1,
+    "torch": "2.5.1",
+    "numpy": "1.26.4",
+    "server_operations": 0,
+    "GPU_operations": 0,
+    "model_forwards": 0,
+    "native_provider_calls": 0,
+    "fc_list_calls": 0,
+    "fixtures_retained": true,
+    "entry_sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291",
+    "test_sha256": "e370635966f68f30b74cc2b1e7de7a66d11b6b53d3da0cc3261e622a30a84dba",
+    "misc_sha256": "3063afb490840dd417c2e0cc00f2d5fdfe49ba2074396099c39a112026906485",
+    "scope_sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6",
+    "tests_seconds": 0.357,
+    "environment": "C:\\Users\\zhj\\.conda\\envs\\adapointr\\python.exe; CUDA_VISIBLE_DEVICES empty before import; OMP/MKL/OPENBLAS threads 2; Python -B",
+    "coverage": [
+      "All 18 finite source hashes plus model config verified; original misc and v2 entry identities checked",
+      "Whole misc AST parity except only the two plotting import relocations",
+      "Normal candidate misc import with plotting imports denied, subprocess spawn forbidden; Python/NumPy/torch CPU RNG unchanged",
+      "Actual CPU float32 tensor FPS routing, shapes, dtype, contiguity into provider and RNG checked with a named CPU provider fixture against parent oracle for N=17/33",
+      "jitter exact parent CPU output and resulting RNG parity",
+      "Both plotting functions request plotting dependencies only when explicitly invoked; imports blocked before rendering/writing",
+      "Whole v3 entry AST equals v2 except scope hash",
+      "All scientific/resource/identity/provider/monitor contracts and all non-misc bindings unchanged",
+      "fc-list --help/--format/absolute path, network, payload, secret and out-of-owned writes still rejected",
+      "Original AdaPoinTr retains unconditional FPS call and has no plotting calls"
+    ]
+  },
+  "P3_review": {
+    "status": "PASS_FOR_LOCAL_IMPLEMENTATION_AND_PENDING_REQUEST_CREATION",
+    "verified_local_source_and_config_bindings": 19,
+    "unchanged_original_bindings": 18,
+    "exactly_one_derived_project_file": true,
+    "original_sources_and_consumed_v2_preserved": true,
+    "blocking_local_gaps": [],
+    "scope_status_note": "Immutable scope records its prevalidation candidate status; this separately hash-bound P3 and CPU result supply completed local validation. execution_ready/execution_authorized remain false; no server readiness claim.",
+    "retained_gaps": [
+      "Actual Python 3.10 / torch 2.4.1 server import and native PointNet2 behavior not re-executed",
+      "CPU provider fixture is routing-only, not validation of native CUDA FPS/gather",
+      "Actual cdist loss, backward, deterministic CUDA operators and NumPy 2.2.6 bridge pending",
+      "8k/16k peak memory, exact model state/CUDA RNG restoration and all counters remain unproven",
+      "Plot rendering intentionally not tested or required; lazy plotting imports do not certify plotting functionality",
+      "Current remote identity/resources/provider/target freshness must be checked only after separate deployment/execution authority",
+      "Other runtime import or CUDA blockers can still occur; no guarantee this is the final blocker"
+    ],
+    "unchanged_limitations": [
+      "Cooperative monitoring, not hard-exclusive cgroup memory isolation",
+      "900-second external timeout with 5-second kill grace; memory thresholds unchanged",
+      "BN running statistics disabled only for preflight; not proof of full training semantics",
+      "Prior 36-contract monitor batch is historical evidence, not rerun here; unchanged entry AST supports inherited behavior but is not CUDA acceptance"
+    ]
+  },
+  "parent_failure_audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v2\\failed_freeze_audit_and_visual_import_report_v1.json",
+    "bytes": 7366,
+    "sha256": "3f8ede8043e2413d5582120ee307916a9a2eb2d83086474c488e4ed346870428"
+  },
+  "inherited_monitor_P3": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\monitor_p3_receipt_v2.json",
+    "sha256": "9d9d4b224875c602e0ae0dfcd948398a773df43cb6fa5513701019e0116382d4",
+    "tests": 36,
+    "note": "Historical accepted local evidence; no rerun"
+  },
+  "artifact_manifest": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_plotting_lazy_v3\\artificial_gpu_zero_update_frozen_scope_v3.json",
+      "bytes": 23220,
+      "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_plotting_lazy_v3\\bcsp_artificial_gpu_preflight_v3.py",
+      "bytes": 32728,
+      "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_plotting_lazy_v3\\cpu_attempt_v1\\attempt_started.json",
+      "bytes": 388,
+      "sha256": "1f44e6bb3619d285c1c05168c7cc4fce8079c79d2cf0307c7d1c449db8f41b5a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_plotting_lazy_v3\\cpu_attempt_v1\\cpu_contract_log.txt",
+      "bytes": 1174,
+      "sha256": "f602f4bea0192c69a8ee358d8e41448d67aad4912e4086cce4ae8ee207d0aea9"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_plotting_lazy_v3\\cpu_attempt_v1\\result.json",
+      "bytes": 644,
+      "sha256": "3e4455810893672eeb0732e37be2703a46df920007cc7d9d5df5b9f0fe8116b3"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_plotting_lazy_v3\\overlay\\utils\\misc.py",
+      "bytes": 12290,
+      "sha256": "3063afb490840dd417c2e0cc00f2d5fdfe49ba2074396099c39a112026906485"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_plotting_lazy_v3\\test_lazy_plotting_contracts_v1.py",
+      "bytes": 13928,
+      "sha256": "e370635966f68f30b74cc2b1e7de7a66d11b6b53d3da0cc3261e622a30a84dba"
+    }
+  ],
+  "actual_operations": {
+    "server_connections": 0,
+    "deployments": 0,
+    "fc_list": 0,
+    "GPU": 0,
+    "model_forwards": 0,
+    "builds_or_installs": 0,
+    "real_payload_or_checkpoint_reads": 0,
+    "optimizer_steps": 0,
+    "production_source_edits": 0,
+    "CPU_test_batches": 1
+  },
+  "no_general_framework_expansion": true,
+  "transport_created": false,
+  "authorization_runtime_launcher_created": false,
+  "next": "Create only v3 execution request bound to these final hashes; AWAITING_EXPLICIT_USER_AUTHORIZATION. Do not reuse consumed v2 request, stage, control, session or output."
+}

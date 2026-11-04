@@ -1,0 +1,111 @@
+{
+  "schema": "bcsp-artificial-preflight-execution-observation-v2",
+  "status": "FAILED_STOPPED_NO_RETRY",
+  "request_sha256": "18432038d32c4857452c96f0795dd4b072a57fa9d38916cf87e10e8215700bc7",
+  "entry_sha256": "347cc350454143b17bc4d8033b2c685b5665076a020058d05f8d87f416586da4",
+  "deployment": {
+    "status": "EXCLUSIVE_INSTALL_PASS",
+    "files_installed": 26,
+    "production_overwrites": 0,
+    "provider_changes": 0,
+    "v1_files_retained": true
+  },
+  "launch": {
+    "UTC": "2026-10-24T15:08:55.518397+00:00",
+    "tmux_returncode": 0,
+    "session": "bcsp_geov1_artificial_gpu_zero_update_v2",
+    "worker_pid": 1025,
+    "worker_exit": 1,
+    "attempt_consumed": true
+  },
+  "observed": {
+    "last_phase": "import:isolated_model",
+    "prior_phases": [
+      "import:numpy",
+      "import:torch",
+      "import:timm",
+      "import:yaml",
+      "import:easydict",
+      "cuda:initialization",
+      "import:chamfer_wrapper",
+      "import:pointnet2_provider"
+    ],
+    "tmux_exists": false,
+    "startup_failure": "RuntimeError('only fixed read-only nvidia-smi permitted')",
+    "monitor_failure_seen": false,
+    "arm_start_seen": false,
+    "summary_seen": false,
+    "import_chain": [
+      "models.AdaPoinTr",
+      "from utils import misc",
+      "matplotlib.pyplot",
+      "matplotlib.font_manager.FontManager",
+      "_get_fontconfig_fonts",
+      "subprocess.check_output(['fc-list','--help'])",
+      "FilePolicy.audit denies subprocess before execution"
+    ],
+    "monitor_observation": "Captured observations show successful query results with detailed phase/PID/timing, including query 56 returncode 0. This run's recorded terminating error is import subprocess denial, not a repeat of the earlier timeout. The full monitor event stream has not yet undergone formal freeze audit."
+  },
+  "interpretation": {
+    "failure_class": "Frozen import dependency side effect conflicts with frozen subprocess allow rule.",
+    "not_concluded": [
+      "Actual model forward/loss/backward success or failure",
+      "8k/16k memory admissibility",
+      "CUDA numerical contract completion",
+      "Original timeout underlying cause solved permanently"
+    ],
+    "real_model_call_evidence": "No arm_start or forward/loss/backward phase; these occur after the failed import in the verified entry.",
+    "audit_boundary": "Startup/execution observation only, not formal failed-artifact freeze audit."
+  },
+  "captures": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v2\\upload_identity_capture_v2.json",
+      "bytes": 1775,
+      "sha256": "a18d21ba1674b4212b4997e60dfc37ef465046f975f3d5192e2c4b0d0d543eb7",
+      "transport_returncode": 0
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v2\\upload_readiness_capture_v2.json",
+      "bytes": 571,
+      "sha256": "84b7a33df98752396e9a2c4fa95f4e6db4f3713723fcf8a4d3df4865cf4caa09",
+      "transport_returncode": 0
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v2\\installation_capture_v2.json",
+      "bytes": 4283,
+      "sha256": "0b4249133c306f02127477faba641fb24777b028a5b5bfaa68a0b57859ffebc9",
+      "transport_returncode": 0
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v2\\startup_capture_v2.json",
+      "bytes": 359,
+      "sha256": "fb9fffe3ddd5ebc764e70d0f4a293a5df55b5a27c4a70a2c66d80cd5ac2368ec",
+      "transport_returncode": 0
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v2\\observation_capture_v2_01.json",
+      "bytes": 6223,
+      "sha256": "25be378586a66d46f0b42fc4762dd4222b33e9eb8bf0504cb7667514775c3b8c",
+      "transport_returncode": 0
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v2\\observation_capture_v2_02.json",
+      "bytes": 8259,
+      "sha256": "c955f623557f2127b66a9722cbcc8762bec7eb497a0d588b0362fab26331cdc5",
+      "transport_returncode": 0
+    }
+  ],
+  "after_failure": {
+    "retry": false,
+    "hotfix": false,
+    "allowlist_expansion": false,
+    "fc_list_invocation_by_agent": false,
+    "training": false,
+    "BNCal": false,
+    "development_evaluation": false,
+    "environment_repair": false,
+    "deletion": false
+  },
+  "retained": "Uploaded five v2 files, 26 installed v2 files, consumed marker and owned failure/log/monitor event artifacts retained; old v1 retained.",
+  "next_requires_separate_authorization": "Read-only failed-artifact audit and bounded necessity/side-effect review of utils.misc -> matplotlib.pyplot -> font discovery. Do not execute fc-list, change frozen source/allowlist, or retry consumed v2."
+}

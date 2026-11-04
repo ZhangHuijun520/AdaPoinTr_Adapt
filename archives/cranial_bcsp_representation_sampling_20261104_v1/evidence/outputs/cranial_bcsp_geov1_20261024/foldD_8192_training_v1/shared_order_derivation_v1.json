@@ -1,0 +1,27 @@
+{
+  "status": "FROZEN_FOLD_D_SHARED_POSITIONAL_PERMUTATIONS",
+  "source": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\first_run_freeze_foldC_8192_v1\\shared_order_foldC_seed0_v1.json",
+    "bytes": 1248506,
+    "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+  },
+  "fold_binding": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\consolidated_binding_v1\\fold_binding.json",
+    "bytes": 35012,
+    "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+  },
+  "output": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldD_8192_training_v1\\shared_order_foldD_seed0_v1.json",
+    "bytes": 1248506,
+    "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+  },
+  "algorithm": "For each already frozen315-position permutation,substitute the Fold D fixed case at that position;no new RNG,shuffle or result-dependent selection",
+  "justification": "Original make_order shuffles range315 with per-epoch generator;its indices do not depend on case strings;both folds have315 cases",
+  "use_for_both_D_input_arms": true,
+  "epochs": 100,
+  "updates": 3900,
+  "case_exposures": 31200,
+  "dropped_exposures": 300,
+  "chronological_case_order_changed_from_C": true,
+  "order_is_not_shared_case_ids_across_folds": true
+}

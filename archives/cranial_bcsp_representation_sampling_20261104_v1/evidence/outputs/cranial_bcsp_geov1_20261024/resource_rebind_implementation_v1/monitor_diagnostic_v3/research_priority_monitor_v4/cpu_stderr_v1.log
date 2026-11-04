@@ -1,0 +1,23 @@
+test_01_original_failure_PID_mismatch_now_diagnostic (__main__.Contracts) ... ok
+test_02_multiple_PIDs_no_ownership_claim (__main__.Contracts) ... ok
+test_03_empty_PID_list_no_false_ownership (__main__.Contracts) ... ok
+test_04_PID_query_error_logged_no_retry (__main__.Contracts) ... ok
+test_05_equal_memory_thresholds_pass (__main__.Contracts) ... ok
+test_06_each_memory_over_limit_stops_after_fsync (__main__.Contracts) ... ERROR
+
+======================================================================
+ERROR: test_06_each_memory_over_limit_stops_after_fsync (__main__.Contracts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Codex\2026-06-06\mamba-ccf-c-1-high-resolution\outputs\cranial_bcsp_geov1_20261024\resource_rebind_implementation_v1\monitor_diagnostic_v3\research_priority_monitor_v4\test_research_priority_monitor_v4.py", line 93, in test_06_each_memory_over_limit_stops_after_fsync
+    o = self.budget(**args)
+  File "E:\Codex\2026-06-06\mamba-ccf-c-1-high-resolution\outputs\cranial_bcsp_geov1_20261024\resource_rebind_implementation_v1\monitor_diagnostic_v3\research_priority_monitor_v4\test_research_priority_monitor_v4.py", line 26, in budget
+    self.path.open('x').close()
+  File "C:\Program Files\Python310\lib\pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\monitor_diagnostic_v3\\research_priority_monitor_v4\\cpu_verification_v1\\fixtures\\test_06_each_memory_over_limit_stops_after_fsync_allocated_within_limit.jsonl'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.067s
+
+FAILED (errors=1)

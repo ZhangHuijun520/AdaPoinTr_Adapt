@@ -1,0 +1,300 @@
+{
+  "schema": "bcsp-first-run-training-execution-scope-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "date_Asia_Shanghai": "2026-10-25",
+  "execution_authorized": false,
+  "request_kind": "Single first real training run, not a new implementation or GPU preflight",
+  "run_id": "bcsp_geov1_b0_foldC_in8192_out8192_seed0_train_v1",
+  "entry_interface_schema": "bcsp-training-request-v2",
+  "first_training_attempt_not_previously_started": true,
+  "entry_request": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\training_entry_request_v2.json",
+    "bytes": 5370,
+    "sha256": "aaa92444334ec61d57f593d51f983e79db1aa4d954d15a487b715e911e34dbc9",
+    "future_server_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/training_execution_request_v1.json"
+  },
+  "migration_acceptance": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\migration_uncertainty_acceptance_v1.json",
+    "bytes": 2259,
+    "sha256": "28588c5ea4d5ad14cdb60f1e8fc52f9474629230ef1150c11f61888322a20527",
+    "future_server_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/migration_uncertainty_acceptance_v1.json"
+  },
+  "new_gpu_execution_validated": false,
+  "historical_GPU_evidence_only": true,
+  "parent_evidence": {
+    "post_installation_freeze_audit": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v2\\post_installation_freeze_audit_v1\\post_installation_freeze_audit_report_v1.json",
+      "bytes": 173511,
+      "sha256": "d91302e1c360bf56323c4ae2dedc7605b6a80dce1b8816ca552b0c2ea6577fb4"
+    },
+    "contract_resource_review": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_run_contract_resource_review_v1\\first_run_contract_resource_migration_review_v1.json",
+      "bytes": 15295,
+      "sha256": "9cb6af6512867f13b1b9acc176a73c2682ea17b155969d720f4e0fb7614f0c56"
+    },
+    "resource_rebind": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\resource_rebind_receipt_v1.json",
+      "bytes": 3601,
+      "sha256": "11afc76b0a130f5c6a6c5a28fb147e7ab7d144cddb55c213f9f3ab3dc07c33b0"
+    },
+    "implementation_P3": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\local_P3_receipt_v1.json",
+      "bytes": 26625,
+      "sha256": "2954424b806c37a9262f5c57a357e5b9105fe0e972e80e3a614bc866d55a1b36"
+    },
+    "installed_scope": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\readonly_installation_readiness_v1\\combined_no_overwrite_installation_scope_v1.json",
+      "bytes": 232620,
+      "sha256": "42d0b302e40ec0d127c147063b0df9ddd662aa1ef37d964387dd3c8081cd6e62"
+    }
+  },
+  "scientific_contract": {
+    "stage": "BCSP_INPUT_DENSITY_V1",
+    "baseline": "B0 AdaPoinTr Transformer; not Mamba/SCQR",
+    "fold": "C",
+    "seed": 0,
+    "input_points": 8192,
+    "target_points": 8192,
+    "sources": 63,
+    "cases": 315,
+    "defects_per_source": 5,
+    "batch": 8,
+    "epochs": 100,
+    "epoch_labels": [
+      0,
+      99
+    ],
+    "batches_per_epoch": 39,
+    "optimizer_updates": 3900,
+    "case_exposures": 31200,
+    "dropped_exposures": 300,
+    "drop_last": true,
+    "step_per_update": 1,
+    "scratch": true,
+    "final_only": true,
+    "precision": "FP32",
+    "deterministic": true,
+    "TF32": false,
+    "AMP": false,
+    "optimizer": {
+      "seed": 0,
+      "precision": "FP32",
+      "optimizer": "AdamW",
+      "lr": 0.0001,
+      "weight_decay": 0.0005,
+      "clip": 10,
+      "step_per_update": 1,
+      "drop_last": true,
+      "checkpoint": "scratch_final_only",
+      "BNCal": false,
+      "evaluation": false,
+      "resume": false
+    },
+    "LR_scheduler": "max(0.9**(e/21),0.02) after each epoch,100 calls",
+    "BN_scheduler": "ordinary training BN tracks running stats; momentum=max(0.9*0.5**(e/21),0.01) at epoch start,100 calls",
+    "KNN": "Full keys,query chunk256,no key truncation",
+    "PointNet2": "Existing fixed cp310 native provider",
+    "Chamfer": "Existing torch.cdist branch; no installed/compiled Chamfer swap",
+    "static_config": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/static_training_config_v1.json",
+      "bytes": 2024,
+      "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+    },
+    "order_plan": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/shared_order_foldC_seed0_v1.json",
+      "bytes": 1248506,
+      "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+    },
+    "qualified_QC": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/qualified_data_qc_foldC_8192_v1.json",
+      "bytes": 1659,
+      "sha256": "1f574ad3f4eff4c6dc70f6065432705aa3286819f1637801f506afc8916799aa"
+    },
+    "training_runtime": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_runtime_v5.py",
+      "bytes": 10171,
+      "sha256": "55ad69b0e87f3fc4ecac68a5ebcc4cdd560c4825ff01363ba9868de5875f0847"
+    },
+    "real_payload_scope": "Only315 exact FoldC training NPZ files in installed337 map; no new/confirmation/development payload access",
+    "anatomical_semantic_limits": [
+      "Separate inner/outer plate coverage not certified",
+      "Representation QC is not prediction or clinical accuracy",
+      "Artificial GPU zero-update success is not complete training memory proof"
+    ]
+  },
+  "resources_unchanged": {
+    "static": {
+      "wall_seconds": 86400,
+      "RSS_bytes": 8589934592,
+      "device_MiB": 22528,
+      "torch_peak_bytes": 21474836480,
+      "output_bytes": 2147483648,
+      "minimum_free_disk_bytes": 4294967296
+    },
+    "GPU_initial_used_MiB_at_most": 256,
+    "require_no_other_compute_processes": true,
+    "threads": 2,
+    "loader_workers": 0,
+    "external_timeout_seconds": 86400,
+    "kill_grace_seconds": 5,
+    "max_resource_records": 3902,
+    "SMI_query_seconds": 10,
+    "SMI_reap_seconds": 2,
+    "limits": "Monitored/cooperative resource stopping, not exclusive cgroup/hard continuous-memory isolation. /proc/meminfo andcpu_count are recorded host-visible observations, not dedicated allocations."
+  },
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "GPU-4b19574a-832d-b4fe-e655-a57462954d6a",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "MPLBACKEND": "Agg",
+    "MPLCONFIGDIR": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/mplconfig",
+    "CUDA_CACHE_DISABLE": "1",
+    "TMPDIR": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/tmp"
+  },
+  "resource_snapshot_evidence": {
+    "UTC": "2026-10-25T14:03:05.400570+00:00",
+    "gates": {
+      "GPU_idle_at_most256MiB": true,
+      "no_GPU_compute_processes": true,
+      "free_disk_at_least4GiB": true,
+      "fixed_python_identity": true,
+      "fresh_owned_output_and_control": true,
+      "unused_tmux_session": true
+    },
+    "disk_free_GiB": 13.08203125,
+    "not_persistent_admission": true,
+    "recheck_before_launch": true
+  },
+  "future_paths": {
+    "execution_scope": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/training_execution_scope_v1.json",
+    "migration_acceptance": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/migration_uncertainty_acceptance_v1.json",
+    "entry_request": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/training_execution_request_v1.json",
+    "authorization": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/training_authorization_v1.json",
+    "runtime": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/training_runtime_v1.json",
+    "launcher": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/train_once_v1.sh",
+    "launch_attempt": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/launch_attempt_v1.json",
+    "tmux_session": "bcsp_geov1_b0_foldc_in8192_seed0_train_v1",
+    "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1",
+    "log": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/launch.log",
+    "worker_pid": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/worker.pid",
+    "exit_code": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/exit_code.txt",
+    "final_checkpoint": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/ckpt-last.pth",
+    "completion": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/completion.json",
+    "failure": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/failure.json",
+    "startup_failure": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/startup_failure.json",
+    "metrics": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/metrics.jsonl",
+    "resources": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/resources.jsonl",
+    "exposure": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/exposure.json",
+    "order_copy": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/order_plan.json"
+  },
+  "future_materialization_contract": {
+    "requires_separate_user_authorization_of_full_execution_scope_SHA256": true,
+    "no_materialization_performed_now": true,
+    "strict_entry_compatibility": "Entry request remains exact installed bcsp-training-request-v2 schema. This execution scope and acceptance are caller-reviewed metadata; installed entry does not parse this envelope. Authorized materializer must verify full envelope hash, exact inner request/acceptance hashes and all frozen fields before any launch.",
+    "one_way_order": [
+      "Verify this execution scope fullSHA and bound entry_request / migration_acceptance / prior evidence; refresh metadata/resource/source/QC guards without model calls",
+      "Create exact pending-scope,acceptance and strict-entry-request copies without overwrites under control; all remain metadata until full authorization",
+      "Create separate training authorization binding strict entry_request SHA and exact user grant text naming this scope SHA; no runtime-config hash",
+      "Compute authorization SHA,then create runtime JSON binding strict entry_request SHA and authorization SHA only",
+      "Create exclusive single launcher,verify its frozen argument/environment/timeout contract",
+      "Create exclusive launch_attempt with strict entry_request SHA and CLAIMED_BEFORE_TMUX before the one tmux launch; any tmux failure consumes attempt,never retry"
+    ],
+    "authorization_schema": {
+      "schema": "bcsp-training-authorization-v1",
+      "request_sha256": "aaa92444334ec61d57f593d51f983e79db1aa4d954d15a487b715e911e34dbc9",
+      "explicit_user_authorization": "Must become true only after a new explicit grant of this scope full SHA",
+      "user_authorization_text": "Exact future user grant text; include execution scope SHA and inner request SHA context; no fabrication"
+    },
+    "runtime_schema": {
+      "schema": "bcsp-training-runtime-v1",
+      "request_sha256": "aaa92444334ec61d57f593d51f983e79db1aa4d954d15a487b715e911e34dbc9",
+      "authorization_sha256": "Computed only after real authorization file exists; not reverse-bound by authorization"
+    },
+    "launcher_rules": [
+      "Verify all authorization/runtime links before invoking entry; exact record hashes and frozen schemas, no extra fields",
+      "Recheck project identity,no links,unused tmux/control launch_attempt and nonexistent owned result before launch",
+      "Create and verify log parent before redirecting; entry must see fresh output containing only launch.log, then creates worker PID/resources/tmp itself",
+      "Use only frozen inherited environment plus new exact UUID and owned TMPDIR; no model/backend/threshold changes",
+      "Call the exact external timeout parent and Python -I -S -B argv below; retain request/authorization/runtime exact hashes",
+      "Record child return code in frozen exit_code.txt and propagate it; PowerShell caller must explicitly exit $LASTEXITCODE, raw stdout/stderr byte capture",
+      "Verify actual startup/session/PID or immediate exit; shell/client rc0 alone is not launch/training success. On ambiguous connection loss stop,do not launch again"
+    ],
+    "external_training_argv": [
+      "/usr/bin/timeout",
+      "--signal=TERM",
+      "--kill-after=5s",
+      "86400s",
+      "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+      "-I",
+      "-S",
+      "-B",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_entry_v2.py",
+      "--request",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/training_execution_request_v1.json",
+      "--request-sha256",
+      "aaa92444334ec61d57f593d51f983e79db1aa4d954d15a487b715e911e34dbc9",
+      "--authorization",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/training_authorization_v1.json",
+      "--authorization-sha256",
+      "<computed_authorization_SHA256>",
+      "--runtime",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/training_runtime_v1.json",
+      "--runtime-sha256",
+      "<computed_runtime_SHA256>"
+    ]
+  },
+  "prelaunch_guards": [
+    "Exact current hostname/uid/project/Python/new GPU UUID/model/capacity/driver; any new resource identity difference stops,not auto-rebound",
+    "Recheck installed implementation/QC/config/order/data and existing frozen model/provider/environment bindings,using exact scopes; no broad inventory expansion or dependency downloads",
+    "Current GPU memory<=256MiB,no other compute processes,disk>=4GiB,all resource ceilings unchanged",
+    "Frozen source/fold315-case allowlist and authoritative shared_order file; do not regenerate random order",
+    "Output/control execution artifacts,tmux session and launch marker must be fresh/exclusive; never overwrite",
+    "New-device acceptance is only acceptance of uncertainty; never change new_gpu_execution_validated to true or substitute historical GPU report"
+  ],
+  "failure_policy": {
+    "stop_immediately": true,
+    "automatic_retry": false,
+    "resume": false,
+    "automatic_batch_or_precision_reduction": false,
+    "backend_fallback": false,
+    "parameter_or_case_scan": false,
+    "automatic_new_GPU_preflight": false,
+    "BNCal": false,
+    "development_evaluation": false,
+    "followup_training_runs": false,
+    "retain_partial_files_and_committed_step_counts": true,
+    "no_automatic_cleanup": true,
+    "timeout_or_ambiguous_start": "Attempt consumed; inspect only under appropriate authorization before considering a new request."
+  },
+  "success_requires": {
+    "training_exit_code": 0,
+    "forward": 3900,
+    "backward": 3900,
+    "clip": 3900,
+    "optimizer_step": 3900,
+    "LR_scheduler_calls": 100,
+    "BN_scheduler_calls": 100,
+    "case_exposures": 31200,
+    "final_checkpoint_SHA256": true,
+    "BNCal": false,
+    "development_evaluation": false,
+    "resume": false,
+    "post_training_freeze_audit": "Separate explicit authorization required; no automatic next-stage training/BNCal/evaluation"
+  },
+  "current_task_boundary": {
+    "files_created": "Pending execution scope,strict entry request,and migration acceptance metadata only,on Windows normative workspace",
+    "server_operations": 0,
+    "runtime_config_created": false,
+    "launcher_created": false,
+    "training_execution_authorization_created": false,
+    "launch_attempt_created": false,
+    "tests": 0,
+    "GPU_calls": 0,
+    "training_steps": 0
+  },
+  "provenance_path_note": "Windows paths in evidence records are local provenance only. Never convert or execute them on server. Only future_server_path/future_paths/strict request server paths define permitted remote paths.",
+  "next": "Await separate explicit user authorization of this execution scope full SHA256. Neither accepting migration uncertainty nor creating this pending request authorizes execution."
+}

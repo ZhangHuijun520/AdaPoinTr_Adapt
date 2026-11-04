@@ -1,0 +1,28 @@
+# -*- coding: utf-8 -*-
+import os
+os.environ.update(CUDA_VISIBLE_DEVICES='',OPENBLAS_NUM_THREADS='2',MPLBACKEND='Agg')
+import pathlib,json,hashlib,sys,importlib.util
+import numpy as np
+from scipy.spatial import cKDTree
+N=pathlib.Path(__file__).resolve().parent/'outputs/cranial_bcsp_geov1_20261024';O=N/'interface_stageA_20261102_v1';os.environ['MPLCONFIGDIR']=str(O/'mplconfig')
+import matplotlib.pyplot as plt
+s=json.loads((O/'summary.json').read_text());rows=[]
+for p in O.glob('*_seed*.json'):
+ r=json.loads(p.read_text());
+ if not r['artificial']:rows.append(r)
+assert len(rows)==18
+sp=importlib.util.spec_from_file_location('geo',N/'cpu_geometry_package_v1.py');geo=importlib.util.module_from_spec(sp);sp.loader.exec_module(geo)
+layers=[]
+for h,phase,angle in [(1.,0.,0.),(.7,.23,.4),(1.2,.31,.7)]:
+ ax=np.arange(-24,24+h,h);x=np.stack(np.meshgrid(ax,ax,ax,indexing='ij'),-1)+phase*h;rad=np.linalg.norm(x,axis=-1);C=(rad<=20)&(rad>=17);G=C&(x@np.array([np.cos(angle),np.sin(angle),0])>10);D=C&~G;S=geo.surf(D,G,np.eye(3)*h,np.full(3,ax[0]+phase*h));radius=np.linalg.norm(S[0],axis=1);inner=(abs(radius-17)<abs(radius-20))&~S[2];outer=~inner&~S[2];saved=np.load(O/('phantom_'+str(h)+'_seed0_anchors.npz'))
+ for name in ['anchors','global_FPS32']:
+  d=cKDTree(saved[name]).query(S[0])[0];layers.append({'phantom':h,'method':name,'inner_cover6':float(np.average(d[inner]<=6,weights=S[3][inner])),'outer_cover6':float(np.average(d[outer]<=6,weights=S[3][outer]))})
+(O/'phantom_layer_coverage.json').write_text(json.dumps(layers,indent=2))
+# Mislocalization visualization for the only real run with any valid candidate anchors.
+scope=json.loads((N.parent/'cranial_geometry_diagnostic_20261023/raw_pairing_v1/scope.json').read_text());c=next(c for c in scope['cases'] if c['dataset']=='SkullFix' and c['case_id']=='003');D,A,o=geo.prior.read_mask(pathlib.Path(c['raw_paths']['defective']));G,B,b=geo.prior.read_mask(pathlib.Path(c['raw_paths']['implant']));S=geo.surf(D,G,A,o);q=S[0][S[2]];raw=np.load(N/'cpu_result_v1/SkullFix_003_D_V1_8192.npz')['xyz'];v=np.load(O/'SkullFix_003_seed0_anchors.npz')
+fig=plt.figure(figsize=(10,7));a=fig.add_subplot(111,projection='3d');a.scatter(*raw[::4].T,c='gray',s=1,alpha=.2,label='D input');ids=np.linspace(0,len(q)-1,min(5000,len(q)),dtype=int);a.scatter(*q[ids].T,c='#0072b2',s=2,label='true J: evaluation only');a.scatter(*v['valid_anchors'].T,c='#d55e00',s=32,label='12 valid locator anchors');a.set_title('SkullFix003 seed0: candidates do not localize the contact interface\nNo source mask modifications; not a clinical anatomical annotation');a.set_xlabel('x mm');a.set_ylabel('y mm');a.set_zlabel('z mm');a.set_box_aspect(np.maximum(np.ptp(raw,axis=0),1));a.legend();fig.tight_layout();fig.savefig(O/'mislocalization_SkullFix003_seed0.png',dpi=140);plt.close(fig)
+precision=float(np.mean([r['precision2'] for r in s['cases']]));gain=float(np.mean([r['gain6'] for r in s['cases']]));ins=float(np.mean([r['patch_counts']['insufficient_neighbors'] for r in rows]));npfits=float(np.mean([r['patch_counts']['insufficient_planes'] for r in rows]))
+lines=['# 阶段 A：D-only三平面定位实现与几何验证报告','日期：2026-11-02。单一参数版本、一次冻结CPU批次，无GPU／训练／新来源核验。','## 结论','**科学准入失败，停止本候选；不进入12来源核验、局部分支实施或Fold C训练。**执行正常退出0，失败来自方法表现及几何稳定性，不是运行崩溃。','## 冻结实现','按确认方案实现512个D-only FPS检查中心、8mm球邻域、最多128点/最少24点、至多三平面/每次96三点假设、1mm内点阈值、平行/横向/间距/连接判据、6mm候选聚类、32anchor及不足回退。参数JSON、代码SHA256和原计划SHA256在 frozen_parameters.json。所有选点仅接收8192×3输入点，真实G仅在同例三个seed完成选点后读取评价。','RANSAC并列支持时按较小平均残差、再假设顺序选择。三点退化拒绝；没有为凑成功扩大半径或迭代。所有被接受patch的最小支持比例均保存；候选去重及聚类后使用FPS取anchor。','## CPU实现合同','8项人工检查通过：D-only接口、输入不变、点序置换坐标完全相同、低证据拒绝、回退不冒充定位成功、错误点数/NaN/重复坐标拒绝。这不是定位科学有效性的证明。','## 真实六例结果',f'18份输入全部定位失败。六例平均precision@2mm为 **{precision*100:.3f}%**，J Cover@6mm相对全局FPS32平均变化 **{gain*100:.3f}个百分点**。这些指标包含全局补点，不能当作有效局部候选的精确率。','|病例|成功seed/3|平均precision@2mm|J Cover@6mm变化，百分点|','|---|---:|---:|---:|']
+for r in s['cases']:lines.append('|%s|%d|%.3f%%|%+.3f|'%(r['case'],r['successful_seeds'],r['precision2']*100,r['gain6']*100))
+lines += ['仅SkullFix003 seed0形成12个有效局部anchor，其余17份为0；12仍未达到16的最低数量，补20全局点不能将其变为成功。该份J Cover@6mm下降3.506个百分点；其余全部回退组与全局FPS32相同，不是候选改善。',f'平均每例512个检查中心中，**{ins:.1f}** 个邻域不足24点，**{npfits:.1f}** 个未形成三个足够支持的平面。说明这一固定8mm/多平面结构假设在现有均匀8k输入下缺少局部证据；不能直接外推为真实颅骨不存在切壁，也不能据此宣布全部D-only方法不可行。','## 人工几何与负例','三组切开球壳均返回32个局部anchor，但precision@2mm分别为46.875%、0%、75%；J Cover@6mm较全局FPS32分别下降13.028、86.430、44.086个百分点。数量充足不代表定位正确；相同物理球壳在不同离散设置表现差异显著。内外侧原生表面Cover@6mm另存 phantom_layer_coverage.json，仅为解析半径17/20mm的标签，不外推真实内外板。','未切球壳和双平行面负例被拒绝；自然孔洞近似球壳仍触发定位，说明该局部构型不能可靠区分自然孔洞和人工切除接口。','对第一组人工几何进行唯一一次固定旋转平移：success布尔值不变，但逆变换后的anchor集合Hausdorff为 **34.336mm**，未满足执行前冻结的2mm几何一致性容差；唯一点序置换检查精确一致。固定随机三点序列与FPS平距在对称几何下未保证刚体协变。本轮保留该失败，不改变tie或RANSAC规则重跑。','## 准入门复核','成功病例至少5例：失败；precision均值≥50%：失败；Cover@6mm增加≥10个百分点：失败；任一病例不下降超过5个百分点：通过；未切球壳拒绝：通过；人工几何一致性：失败。自然孔洞误报另作为适用性限制。','本轮数据均是已观察的开发pilot，没有进行总体显著性推断；3个sampling seed不是3个独立病例。','## 科研决定','停止当前三平面定位候选，不继续局部修补、半径扫描或扩大数据以寻找通过病例。此前高曲率候选与本次三平面候选均失败，现阶段没有可靠D-only接口定位证据，不能以此为前提启动局部分支训练。','保留既有均匀8k基线及实际轨迹诊断。下一阶段宜重新审核研究假设是否真的需要显式定位，考虑不依赖定位的局部多表面表征，或在有独立标签和匹配对照时研究可学习定位；这些是待制定的新路线，不是本轮自动切换内容。','## 核验与产物',f'批次用时{s["seconds"]:.2f}秒，RSS采样峰值{s["sampled_peak_RSS_bytes"]} bytes；30分钟/8GiB/512MiB守卫通过。原D/G文件哈希前后符合既有scope；六份固定G8192目标记录哈希，未重新采目标。seed0输入与旧保存点集逐元素相同，seed1/2按同一冻结算法与seed重建；不是新增采样参数版本。','summary.json、18份真实病例指标与anchor点集、人工结果、失败定位图及本报告均保留。所见部位只作几何误选展示，没有解剖专家标注，不将全部误选自动命名为特定颅底结构。代码和报告不构成生产P3或训练授权。']
+text='\n\n'.join(lines).replace('|\n\n|','|\n|');(O/'report_zh_v1.md').write_text(text,encoding='utf-8');print('precision',precision,'gain',gain,'insufficient',ins,'planes',npfits,'seconds',s['seconds'])

@@ -1,0 +1,365 @@
+{
+  "schema": "bcsp-first-run-contract-resources-migration-review-v1",
+  "status": "STATIC_CONTRACT_AND_RESOURCE_SNAPSHOT_PASS_MIGRATION_POLICY_UNRESOLVED_NOT_TRAINING_ADMISSION",
+  "date_Asia_Shanghai": "2026-10-25",
+  "结论": [
+    "首运行安装冻结证据齐全；训练合同、QC映射及病例顺序元数据一致。",
+    "当前资源快照通过既定空闲/磁盘/固定Python/输出新鲜性检查；这不是持续可用承诺。",
+    "新容器GPU UUID和驱动570.190尚未进行CUDA执行或完整AdamW训练显存实测；需单独明确迁移准入策略。",
+    "本次不创建训练request、授权回执、runtime config或launcher，也不进行测试、模型导入或训练。"
+  ],
+  "training_contract": {
+    "run": {
+      "run_id": "bcsp_geov1_b0_foldC_in8192_out8192_seed0_train_v1",
+      "stage": "BCSP_INPUT_DENSITY_V1",
+      "fold": "C",
+      "seed": 0,
+      "input_points": 8192,
+      "target_points": 8192,
+      "model": "Frozen B0 AdaPoinTr Transformer, not Mamba/SCQR",
+      "sources": 63,
+      "cases": 315,
+      "batch": 8,
+      "epochs": 100,
+      "epoch_labels": [
+        0,
+        99
+      ],
+      "batches_each": 39,
+      "optimizer_updates": 3900,
+      "case_exposures": 31200,
+      "drop_last": true,
+      "step_per_update": 1,
+      "scratch": true,
+      "final_only": true,
+      "BNCal": false,
+      "development_evaluation": false,
+      "automatic_retry_or_resume": false
+    },
+    "baseline": "B0 AdaPoinTr Transformer; not Mamba/SCQR innovation run",
+    "input_output_points": [
+      8192,
+      8192
+    ],
+    "normalization": "defective_bbox BCSP-normalized-v1",
+    "counts": {
+      "cases": 315,
+      "sources": 63,
+      "batch": 8,
+      "epochs": 100,
+      "batches_per_epoch": 39,
+      "updates": 3900,
+      "exposures": 31200
+    },
+    "data_scope": "315 cases from63 fixed SkullBreak train sources;five defects per source;21 development sources excluded from training;confirmation_count_excluded retained",
+    "source_leakage_check": "63 train /21 dev disjoint",
+    "QC_record_paths_match_installed_map": true,
+    "shared_order": {
+      "epochs": 100,
+      "batches_each": 39,
+      "batch_size": 8,
+      "updates": 3900,
+      "exposures": 31200,
+      "dropped_total": 300,
+      "case_exposure_min": 96,
+      "case_exposure_max": 100,
+      "authoritative_file_sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d",
+      "regenerate_at_launch": false
+    },
+    "model": {
+      "NAME": "AdaPoinTr",
+      "num_query": 256,
+      "num_points": 8192,
+      "center_num": [
+        512,
+        256
+      ],
+      "global_feature_dim": 1024,
+      "encoder_type": "graph",
+      "decoder_type": "fc",
+      "query_selection": "learned_only",
+      "denoise_weight": 0,
+      "fine_coverage_weight": 1,
+      "fine_local_weight": 0,
+      "encoder_config": {
+        "embed_dim": 384,
+        "depth": 6,
+        "num_heads": 6,
+        "k": 8,
+        "n_group": 2,
+        "mlp_ratio": 2,
+        "block_style_list": [
+          "attn-graph",
+          "attn",
+          "attn",
+          "attn",
+          "attn",
+          "attn"
+        ],
+        "combine_style": "concat"
+      },
+      "decoder_config": {
+        "embed_dim": 384,
+        "depth": 8,
+        "num_heads": 6,
+        "k": 8,
+        "n_group": 2,
+        "mlp_ratio": 2,
+        "self_attn_block_style_list": [
+          "attn-graph",
+          "attn",
+          "attn",
+          "attn",
+          "attn",
+          "attn",
+          "attn",
+          "attn"
+        ],
+        "self_attn_combine_style": "concat",
+        "cross_attn_block_style_list": [
+          "attn-graph",
+          "attn",
+          "attn",
+          "attn",
+          "attn",
+          "attn",
+          "attn",
+          "attn"
+        ],
+        "cross_attn_combine_style": "concat"
+      }
+    },
+    "training": {
+      "seed": 0,
+      "precision": "FP32",
+      "optimizer": "AdamW",
+      "lr": 0.0001,
+      "weight_decay": 0.0005,
+      "clip": 10,
+      "step_per_update": 1,
+      "drop_last": true,
+      "checkpoint": "scratch_final_only",
+      "BNCal": false,
+      "evaluation": false,
+      "resume": false
+    },
+    "optimizer_details": "AdamW lr1e-4,weight_decay5e-4;bias/1D no decay;clip10;ordinary training BN tracks running stats. No AMP, BNCal, development evaluation,resume or auto-retry.",
+    "schedules": {
+      "LR_after_epoch": "max(0.9**(e/21),0.02),100 calls",
+      "BN_at_epoch_start": "max(0.9*0.5**(e/21),0.01),100 calls"
+    },
+    "backend_numeric": "Existing native Python3.10 PointNet2; existing torch.cdist Chamfer;full-key chunked KNN;FP32 strict deterministic and TF32 disabled; no backend substitution",
+    "successful_completion_requires": "Exact3900 forward/backward/clip/optimizer steps,100 LR/BN scheduler traversals,31200 exposures,final-only checkpoint hash,BNCal/evaluation false; failure stops without resume/retry.",
+    "qualification_limits": [
+      "Separate inner/outer plate coverage not certified",
+      "Representation QC is not prediction or clinical accuracy",
+      "Artificial GPU zero-update success is not complete training memory proof"
+    ],
+    "review_method": "Read-only JSON metadata/count checks and previously frozen source review; no contract-test batch or training lifecycle executed."
+  },
+  "resources_snapshot": {
+    "hostname": "shu-common-25721452-notebook-3x9rq5-0",
+    "uid": 1000,
+    "UTC": "2026-10-25T14:03:05.400570+00:00",
+    "disk": {
+      "total": 53687091200,
+      "used": 39640367104,
+      "free": 14046724096
+    },
+    "memory": {
+      "MemTotal_bytes": 540678500352,
+      "MemAvailable_bytes": 517070344192
+    },
+    "cpu_count": 64,
+    "gpu": {
+      "returncode": 0,
+      "stdout": "GPU-4b19574a-832d-b4fe-e655-a57462954d6a, NVIDIA GeForce RTX 4090 D, 570.190, 24564, 1, 0\n",
+      "stderr": ""
+    },
+    "compute_processes": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "CUDA_VISIBLE_DEVICES_record_only": null,
+    "server_writes": 0,
+    "seconds": 0.054519180208444595
+  },
+  "path_and_interpreter_snapshot": {
+    "paths": [
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1",
+        "exists": false,
+        "nearest_existing_parent": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1",
+        "parent_writable": true
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control",
+        "exists": false,
+        "nearest_existing_parent": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1",
+        "parent_writable": true
+      }
+    ],
+    "python": {
+      "path": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+      "bytes": 17331920,
+      "sha256": "01b4275dc374dcae51d245bda004daad6d7882d3f5de7f9852567bb7ab83180d",
+      "executable": true,
+      "returncode": 0,
+      "version": "Python 3.10.20\n"
+    },
+    "tmux": {
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "error connecting to /tmp//tmux-1000/default (No such file or directory)\n"
+    },
+    "server_writes": 0,
+    "seconds": 0.05385103216394782
+  },
+  "snapshot_gates": {
+    "GPU_idle_at_most256MiB": true,
+    "no_GPU_compute_processes": true,
+    "free_disk_at_least4GiB": true,
+    "fixed_python_identity": true,
+    "fresh_owned_output_and_control": true,
+    "unused_tmux_session": true
+  },
+  "disk_free_GiB": 13.08203125,
+  "resource_stop_contract_unchanged": {
+    "static": {
+      "wall_seconds": 86400,
+      "RSS_bytes": 8589934592,
+      "device_MiB": 22528,
+      "torch_peak_bytes": 21474836480,
+      "output_bytes": 2147483648,
+      "minimum_free_disk_bytes": 4294967296
+    },
+    "GPU_initial_used_MiB_at_most": 256,
+    "require_no_other_compute_processes": true,
+    "threads": 2,
+    "loader_workers": 0,
+    "external_timeout_seconds": 86400,
+    "kill_grace_seconds": 5,
+    "max_resource_records": 3902,
+    "SMI_query_seconds": 10,
+    "SMI_reap_seconds": 2,
+    "limits": "Monitored/cooperative resource stopping, not exclusive cgroup/hard continuous-memory isolation. /proc/meminfo andcpu_count are recorded host-visible observations, not dedicated allocations."
+  },
+  "launch_environment": "Current WebShell CUDA_VISIBLE_DEVICES is record-only and unset; a separately authorized future launcher must explicitly set the rebound UUID plus all inherited frozen environment values. This review does not set environment or run launcher.",
+  "migration_policy": {
+    "changed_fields": [
+      {
+        "field": "hostname",
+        "old": "shu-common-25721452-notebook-o9mz8z-0",
+        "new": "shu-common-25721452-notebook-3x9rq5-0"
+      },
+      {
+        "field": "gpu_uuid",
+        "old": "GPU-2f32f6fb-ea5d-730a-4ea2-2f6063e31065",
+        "new": "GPU-4b19574a-832d-b4fe-e655-a57462954d6a"
+      },
+      {
+        "field": "driver_version",
+        "old": "575.51.03",
+        "new": "570.190"
+      }
+    ],
+    "historical_GPU_audit_sha256": "af3c3053be96a443d203c486ccede4d2bf2f0799ae753294ee946618726cf000",
+    "new_gpu_execution_validated": false,
+    "user_acceptance_of_migration_uncertainty_recorded": false,
+    "option_A_recommended_for_minimal_path": {
+      "name": "Explicitly accept bounded direct-training migration uncertainty",
+      "meaning": "User separately accepts absence of new-UUID/driver CUDA/native-op and full AdamW memory measurements. Then only create a pending first-run training request which states this uncertainty, binds the current evidence and retains all stopping rules. Full request SHA still needs separate execution authorization.",
+      "not_claimed": "No compatibility certificate or guaranteed3900-step completion; a driver/operation/OOM/budget failure may stop at0 or partial committed updates, with evidence retained and no automatic changes/retry."
+    },
+    "option_B_if_new_device_empirical_admission_required": {
+      "name": "Separately authorize fixed new-device artificial GPU zero-update validation",
+      "meaning": "Use an explicitly frozen existing minimal artificial protocol,without real data,case screening,parameter scan or threshold changes; requires separate authorization.",
+      "limit": "Zero-update success still does not measure AdamW full-training optimizer memory or prove full3900-step completion."
+    },
+    "recommendation": "Given completed installation/CPU evidence and the user priority to minimize preparation, optionA is the shorter scientific path, conditional on explicit user acceptance. No option selected or executed by this review."
+  },
+  "parent_evidence": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\first_run_freeze_foldC_8192_v1\\static_training_config_v1.json",
+      "bytes": 2024,
+      "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\first_run_freeze_foldC_8192_v1\\shared_order_foldC_seed0_v1.json",
+      "bytes": 1248506,
+      "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\first_run_freeze_foldC_8192_v1\\qualified_data_qc_foldC_8192_v1.json",
+      "bytes": 1659,
+      "sha256": "1f574ad3f4eff4c6dc70f6065432705aa3286819f1637801f506afc8916799aa"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\consolidated_binding_v1\\fold_binding.json",
+      "bytes": 35012,
+      "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\training_closure_v5\\bcsp_training_runtime_v5.py",
+      "bytes": 10171,
+      "sha256": "55ad69b0e87f3fc4ecac68a5ebcc4cdd560c4825ff01363ba9868de5875f0847"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\bcsp_training_entry_v2.py",
+      "bytes": 14714,
+      "sha256": "eb2f2f0f53aa9e36636e576dc3e25b4fee86df276eb476e79f5f1e1bee804852"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\bcsp_training_contract_v2.py",
+      "bytes": 16538,
+      "sha256": "88b0098ec199fcba7e37c9ca2be7a8d6b69ff246ab0f1b9494445e4a72b41db3"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\resource_rebind_receipt_v1.json",
+      "bytes": 3601,
+      "sha256": "11afc76b0a130f5c6a6c5a28fb147e7ab7d144cddb55c213f9f3ab3dc07c33b0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v2\\post_installation_freeze_audit_v1\\post_installation_freeze_audit_report_v1.json",
+      "bytes": 173511,
+      "sha256": "d91302e1c360bf56323c4ae2dedc7605b6a80dce1b8816ca552b0c2ea6577fb4"
+    }
+  ],
+  "raw_evidence": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_run_contract_resource_review_v1\\paths_readonly_capture_v1.json",
+      "bytes": 1768,
+      "sha256": "6a98eac7e40f4dd0817aa9c927a1a46dc0ad44ca05a773e4da522469921929b0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_run_contract_resource_review_v1\\paths_readonly_probe_v1.py",
+      "bytes": 1578,
+      "sha256": "2c7ee1aa368b795e893b9b1dcbbc415dd4526bcedd88cdb796d37c5c9abdb20d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_run_contract_resource_review_v1\\resources_readonly_capture_v1.json",
+      "bytes": 1295,
+      "sha256": "61ecdfd8e1a8bcb053f44449713cfbe1c5048a19db77c8866f8df76d1d192fe3"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_run_contract_resource_review_v1\\resources_readonly_probe_v1.py",
+      "bytes": 1325,
+      "sha256": "96c9a8477c5b6e44a29fff3a68608511b31bafc1793c507c724080a6bd6223c9"
+    }
+  ],
+  "permissions": {
+    "server_writes": 0,
+    "GPU_compute": 0,
+    "torch_or_model_imports": 0,
+    "NPZ_payload_decodes": 0,
+    "tests": 0,
+    "forward_backward_calls": 0,
+    "optimizer_steps": 0,
+    "new_training_requests": 0,
+    "authorization_runtime_launcher_materialized": false,
+    "scientific_config_or_data_changes": 0
+  },
+  "next_boundary": "Await explicit user migration-policy choice. This review neither grants training admission nor authorizes request creation or execution.",
+  "stop_status": "READONLY_REVIEW_COMPLETE_NO_AUTOMATIC_NEXT_STAGE"
+}

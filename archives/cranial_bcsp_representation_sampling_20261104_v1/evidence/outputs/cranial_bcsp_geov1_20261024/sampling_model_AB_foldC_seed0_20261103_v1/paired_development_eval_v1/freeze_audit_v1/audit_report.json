@@ -1,0 +1,3397 @@
+{
+  "status": "FORMAL_POST_PREDICTION_FREEZE_AUDIT_PASS",
+  "UTC": "2026-11-03T12:18:26.741467+00:00",
+  "hostname": "shu-common-25721452-notebook-v2iwsa-0",
+  "uid": 1000,
+  "outer_request_sha256": "76673ba94626253161dc70f0a33006d21c8094bced8148496c68c6c3490f0f4c",
+  "inner_request_sha256": "2f6865ebc1a0557d8c1a3df589d8cca87df5312447eea1cab04cb6524c1c0414",
+  "checks": [
+    "identity_correct_session_ended_exit0",
+    "controls_authorization_runtime_claim_unchanged_and_two_checkpoint_SHA_recomputed",
+    "two_models_105_dev_cases_each_21_shared_development_sources",
+    "all219_installed_files_controls_and_bound_source_provider_checkpoint_hashes_verified",
+    "same105_cases_GT_frame_permutation_and_source_exclusion",
+    "consecutive210_records_two105_forwards_model_and_recorded_CPU_RNG_invariance_zero_updates_BNCal",
+    "210_live_prediction_SHA_and_regular_NPZ_finite_float32_8192x3_independently_verified",
+    "423_resource_records_exact_sequence_and_original_thresholds_independently_recomputed",
+    "archive213_members_match_live_files_and_all_four_download_artifacts_independently_hashed",
+    "strict_output_set_no_failure_receipt_no_weight_payload_in_prediction_archive",
+    "complete221_file_output_manifest_and_all_read_fingerprints_stable_atime_excluded"
+  ],
+  "exit_code": 0,
+  "forwards": 210,
+  "unique_cases": 105,
+  "unique_sources": 21,
+  "per_run": {
+    "C_V1": 105,
+    "C_Morton_area_stratified8k": 105
+  },
+  "state_evidence": [
+    {
+      "run": "C_V1",
+      "forwards": 105,
+      "state_before": "c50c0d1ffe07baa5af57b116a4580edf618ad7fbd4308a466ed7895e3e20afe8",
+      "state_after": "c50c0d1ffe07baa5af57b116a4580edf618ad7fbd4308a466ed7895e3e20afe8",
+      "CPU_rng_before": "57ca75b907f0dd2361c0d7d376b486934260caad99fb7b959bddc149cb3a84be",
+      "CPU_rng_after": "57ca75b907f0dd2361c0d7d376b486934260caad99fb7b959bddc149cb3a84be",
+      "CUDA_rng_before": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+      "CUDA_rng_after": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+      "Python_numpy_RNG_unchanged": true,
+      "mode": "eval_inference_mode",
+      "BNCal": 0,
+      "optimizer": 0,
+      "backward": 0
+    },
+    {
+      "run": "C_Morton_area_stratified8k",
+      "forwards": 105,
+      "state_before": "7198b37dfef97b90705016ab1d0a600a2d4467bb33cb732f6fd767deb2e4f137",
+      "state_after": "7198b37dfef97b90705016ab1d0a600a2d4467bb33cb732f6fd767deb2e4f137",
+      "CPU_rng_before": "57ca75b907f0dd2361c0d7d376b486934260caad99fb7b959bddc149cb3a84be",
+      "CPU_rng_after": "57ca75b907f0dd2361c0d7d376b486934260caad99fb7b959bddc149cb3a84be",
+      "CUDA_rng_before": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+      "CUDA_rng_after": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+      "Python_numpy_RNG_unchanged": true,
+      "mode": "eval_inference_mode",
+      "BNCal": 0,
+      "optimizer": 0,
+      "backward": 0
+    }
+  ],
+  "training_updates": 0,
+  "BNCal": 0,
+  "loss": 0,
+  "backward": 0,
+  "resource_records": 423,
+  "resource_maxima": {
+    "RSS_bytes": 1498550272,
+    "device_MiB": 678,
+    "peak_allocated": 205540352,
+    "peak_reserved": 239075328,
+    "output_bytes": 19157704
+  },
+  "recorded_inference_budget_seconds": 44.00607324624434,
+  "checkpoint_hashes": [
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_ab_foldC_V1_in8192_out8192_seed0_train_v1/ckpt-last.pth",
+      "bytes": 380368111,
+      "sha256": "bef638c807de8ea41f79862311138f42d9993dcc6fb5a09d5321642a57acfa51"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_ab_foldC_Morton_in8192_out8192_seed0_train_v1/ckpt-last.pth",
+      "bytes": 380368111,
+      "sha256": "2c27034cda17ee55f6724bf14d53ba305ba2410531cf23a4c694dafdec1cbb84"
+    }
+  ],
+  "control_hashes": [
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/bcsp_sampling_pair_predict_v1.py",
+      "bytes": 15633,
+      "sha256": "17f7091b75805def522eed7f1f2a132b1b395f820382875a596032639588126b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/development_pair_input_index_v1.json",
+      "bytes": 195219,
+      "sha256": "fb358cb0103f35ddb81eb02682a0d79df0d615c5d00bcce10914de3d7c89c9e3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/evidence/paired_development_data_receipt_v1.json",
+      "bytes": 117219,
+      "sha256": "62d9aadea5e6c1cfd72809b9f1bd40286590a3a5f32a66ea43038be93d64ed81"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__001__bilateral_8192.npz",
+      "bytes": 157051,
+      "sha256": "0cd2057f9bda6ea095d6f4219792f62770ae885f86906a820901453fe20b6093"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__001__frontoorbital_8192.npz",
+      "bytes": 156645,
+      "sha256": "9af75e8b4a0611f6670e1dd189b87399b633aec9cc3509d450ef7575380e7725"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__001__parietotemporal_8192.npz",
+      "bytes": 157287,
+      "sha256": "9c166e1ed2d9d20522319ab3c74bd9cd747177bfcc041568793826ee38b6f8ab"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__001__random_1_8192.npz",
+      "bytes": 157863,
+      "sha256": "d90f57e2d09d9f97aa3ea32c67d8f1c4f48a16d4554adcdc90990b23ca5be50f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__001__random_2_8192.npz",
+      "bytes": 157805,
+      "sha256": "32e101a0e6c0df8bcce0ef1b40ae75f17b574fb74c941fbb05efeb8a6daa98c0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__003__bilateral_8192.npz",
+      "bytes": 155795,
+      "sha256": "6c538727068f3269b040b3d2735860879c11d6e190b152128a300e03a5a14559"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__003__frontoorbital_8192.npz",
+      "bytes": 153097,
+      "sha256": "3fda50ac05c4a8c4ff580a02b6c2effab484c9848b8f0ca10b5c82cb54a74512"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__003__parietotemporal_8192.npz",
+      "bytes": 156588,
+      "sha256": "5f6f913a257f6487e4c34a0725a50d99b546e38032eb79f0611d672f28ab2e7a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__003__random_1_8192.npz",
+      "bytes": 156334,
+      "sha256": "1a6f7c9d3436f06a9ee3bae3dd65301aac5960a753424b9ea9776ac8c728dfed"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__003__random_2_8192.npz",
+      "bytes": 157976,
+      "sha256": "cf63784c9f4c541459ff6fe537b7a79746a4a22cc6296b5918c41d5c6fbedbad"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__012__bilateral_8192.npz",
+      "bytes": 156791,
+      "sha256": "b813bec395522de496358045cbc82a5d001a125d4ee6252704f399c2fdf7388d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__012__frontoorbital_8192.npz",
+      "bytes": 155370,
+      "sha256": "2f2f1bdd416b7c9ad9f50dc27ec93a2db78d7de4dbe0909fa2d5d2a91c32221f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__012__parietotemporal_8192.npz",
+      "bytes": 155985,
+      "sha256": "023011fe919520ec392a6e3dcf81f9a2b29a04947aef760e577d26c6eebe56b6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__012__random_1_8192.npz",
+      "bytes": 156463,
+      "sha256": "1a25a0ba009ea8fc930f2658d778d5a2131980f457253e2953b02eb66f5b68dc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__012__random_2_8192.npz",
+      "bytes": 154912,
+      "sha256": "ba230334080e051e25f1d0874d17851029e5c7bd84b62e3f6f96c3c423ac7193"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__013__bilateral_8192.npz",
+      "bytes": 157469,
+      "sha256": "78f504875cc65fbfaa1273bb1b022fa74ddf86a9ffea6e11ff678a33a0edf029"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__013__frontoorbital_8192.npz",
+      "bytes": 155836,
+      "sha256": "e328d8e9164fa86991d7e3919e4a7c8c80643bfe64b4cc96a924fd09ebd39b44"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__013__parietotemporal_8192.npz",
+      "bytes": 157162,
+      "sha256": "a7002ca79e69ec58de150b3ac3864b0fcde1530f2243bdf359294b8f87eb04b9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__013__random_1_8192.npz",
+      "bytes": 156513,
+      "sha256": "ed77d35d67975a66781c4a77bed429cda7e6c356378604483dad01983727be81"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__013__random_2_8192.npz",
+      "bytes": 156047,
+      "sha256": "4608fbfa36ba45d62580b6c00b65a62f64b55c08a3faa5904fd34bdfa603e063"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__025__bilateral_8192.npz",
+      "bytes": 157420,
+      "sha256": "d35be3d0321bc6b0619df31f448d608209d9b79db29e74aaab08d0cff36897b1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__025__frontoorbital_8192.npz",
+      "bytes": 155811,
+      "sha256": "5265b519c6496358e1bf994bd2349c31847ee73372a4cdd14b3ec86830092392"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__025__parietotemporal_8192.npz",
+      "bytes": 155169,
+      "sha256": "acadb5871cc81282409f9ee974a34793768689cc9fee5c25b0e1c1b7fbed5507"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__025__random_1_8192.npz",
+      "bytes": 156768,
+      "sha256": "253dd53edc207edc7c9e413871baf1d171d8d7d471807c6a6954d509ce354676"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__025__random_2_8192.npz",
+      "bytes": 157136,
+      "sha256": "ab221c8f5a07292170368743da95cca3e7a44c8bd2c1cd032dba0acc9780d609"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__026__bilateral_8192.npz",
+      "bytes": 156992,
+      "sha256": "d77f711b23e77eb50e46b15c42f4a2b94ac0dcf9cade50b99f54862dba6899f7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__026__frontoorbital_8192.npz",
+      "bytes": 156694,
+      "sha256": "458dcd585d980380ff7892283b8126c359e12ef832f3c48615c4ec793a4af247"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__026__parietotemporal_8192.npz",
+      "bytes": 156626,
+      "sha256": "6dff1f7c293a95248dc96ad8bb4a5e890f15b6ccc9ff457775ce1f04a9643176"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__026__random_1_8192.npz",
+      "bytes": 156813,
+      "sha256": "2a2dbf2b5826838dde62f3758cdb900ce022def688c58188c7553f5d119e385c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__026__random_2_8192.npz",
+      "bytes": 156675,
+      "sha256": "6fad46d450ec9b387e99b1df8f77d2836b9af3b41c90df326ee7f187b7cabfa1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__036__bilateral_8192.npz",
+      "bytes": 157752,
+      "sha256": "3a4f85051bccb158cbee1e815bf528f9665c3894c2fe488d0602d89e172af065"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__036__frontoorbital_8192.npz",
+      "bytes": 155746,
+      "sha256": "8b5896d59621ad30bde140cf5f23d10df96bfa58856e6ab61f1c4d05512a0893"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__036__parietotemporal_8192.npz",
+      "bytes": 156152,
+      "sha256": "a888ad4fd7591f168d4fbee560ad40843effa3d68b0de96c880eee7396c7f235"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__036__random_1_8192.npz",
+      "bytes": 157260,
+      "sha256": "451331f14f438a1481c993dc42fd4b31fa8d94a57a57aba606a5ff6738bef073"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__036__random_2_8192.npz",
+      "bytes": 156562,
+      "sha256": "ebe1afa50fdc5e896b4ea26efc7f7e7ce13eb8db646e5f2d8f4081b23ccee442"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__038__bilateral_8192.npz",
+      "bytes": 157806,
+      "sha256": "15d4283f4d1be7bd7ba82a4736fdb59deb449878a25a1f18f22b041c69af969b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__038__frontoorbital_8192.npz",
+      "bytes": 155463,
+      "sha256": "30b5cd745aa7af86e042c5eb146da448cf6c246c8be7a9c328817fa3173b7a05"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__038__parietotemporal_8192.npz",
+      "bytes": 156756,
+      "sha256": "92942014a3be81f7edd24a40f104f8dc9313bbc5c0768d7774b2b03e90085401"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__038__random_1_8192.npz",
+      "bytes": 157869,
+      "sha256": "0824637b48da1236e878e8246d56079188d677484b2a1c87b67bf95ebcd9efb0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__038__random_2_8192.npz",
+      "bytes": 158267,
+      "sha256": "ba483ef5a4ef38b7a3ac4714a2328a2c7846c551943440451513bbfc9f95e47b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__041__bilateral_8192.npz",
+      "bytes": 157898,
+      "sha256": "ffaac19768cbfd0e7da4cc29a5f6137d6a07aba5304a17b26b16958b46b3fd0b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__041__frontoorbital_8192.npz",
+      "bytes": 156854,
+      "sha256": "655fea8b692abd12efded1d028da078058f7fb49f2be38ae837fc5f7cf0ac79f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__041__parietotemporal_8192.npz",
+      "bytes": 157616,
+      "sha256": "8cf94deebe110073ad9c4de00860daa415419ba96a736f74a63b3120f816b436"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__041__random_1_8192.npz",
+      "bytes": 157668,
+      "sha256": "87d392453c3e11ab0933d76ba8d7353c8883480e11ea5bb9ccb75ef6e5067ffe"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__041__random_2_8192.npz",
+      "bytes": 156836,
+      "sha256": "65153d8c1637b53932b63c83dc3a8174aef794ca2c3312e649e1ed657fdee8b9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__042__bilateral_8192.npz",
+      "bytes": 157712,
+      "sha256": "a2ad79f0b89d4bf41f9493fb27475e0364fa917e14f55fc23284ed668430ce10"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__042__frontoorbital_8192.npz",
+      "bytes": 155454,
+      "sha256": "a3562f13189fc39fb0f40431d32fb4ae031ce3b95c7c13c73e931740c15a9223"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__042__parietotemporal_8192.npz",
+      "bytes": 156139,
+      "sha256": "dd2682aac570fd1c95d38bb765313df65e1d14043b6a171cbd949643a3a45b7b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__042__random_1_8192.npz",
+      "bytes": 156481,
+      "sha256": "0f9057f05b397b60eb3e97530a6b23bfd5bcf95f1b938c65cefd3daf3c280792"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__042__random_2_8192.npz",
+      "bytes": 157551,
+      "sha256": "84b51375e4de44ba0f63f1cb61503e73e72ae71b06af917ab12277681c577613"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__047__bilateral_8192.npz",
+      "bytes": 156803,
+      "sha256": "154ae3922fb00b6baa7116efd7916ba9f8800e0b4224f677e5cbcb695b42d851"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__047__frontoorbital_8192.npz",
+      "bytes": 155377,
+      "sha256": "f6794b4b64c68a1b71afc6b8e61ad3685ebfe52737638ee5f9f0e160c2c53d4f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__047__parietotemporal_8192.npz",
+      "bytes": 155810,
+      "sha256": "56734c33491f360e9d3f35f94d9eb4293fe51ba0cbd9affc52bed62f3dffa401"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__047__random_1_8192.npz",
+      "bytes": 158010,
+      "sha256": "62b52ede6b2decf91d6a4c19ae6702bb33811b8c92647d05489a282cc750a2c1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__047__random_2_8192.npz",
+      "bytes": 157017,
+      "sha256": "b9993d901b3816fd00744ea2fbb740cbd7f3c978bc573a6c4eff3cb04e21f6f4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__051__bilateral_8192.npz",
+      "bytes": 157890,
+      "sha256": "0758e5d7ec8f94d6ea2f1f9cdf932884e7c894ba8fd23d9ca193fdd73e1f13be"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__051__frontoorbital_8192.npz",
+      "bytes": 156393,
+      "sha256": "59b6dfc8f288375772f9e2e97cb2dd2fd3866b9ae880ddc9b430b7ad205e0964"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__051__parietotemporal_8192.npz",
+      "bytes": 155985,
+      "sha256": "9e83b6f7092f731df25de1ee5f008be1aa53a15ba1551acc1ac30ee8f3eeab31"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__051__random_1_8192.npz",
+      "bytes": 157802,
+      "sha256": "45254f4ab5d19c81f4c1b166bfd1ae952d080a7fe2068c63e4818d0a3d4488a9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__051__random_2_8192.npz",
+      "bytes": 156427,
+      "sha256": "591d5d5236faffb9ef76ef06d960734d13f6b827a826e32de13835b39ab721a5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__053__bilateral_8192.npz",
+      "bytes": 156956,
+      "sha256": "fa27b4da42d60792aa18404bf11433f2c9fe34c9ea8d89ff12c01346e3e3cebb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__053__frontoorbital_8192.npz",
+      "bytes": 155558,
+      "sha256": "8a5c6c1712a76714e21dec3cd2342f21117b11b78adbc0b49776a07427e818d0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__053__parietotemporal_8192.npz",
+      "bytes": 157109,
+      "sha256": "0c9d079713cc1ec0efb813ae6b68181c9cf35cecced48278160447cef4ff30cd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__053__random_1_8192.npz",
+      "bytes": 157309,
+      "sha256": "07b60684e65a36d01db9e42a60937548890b2a901a5c6be76dde4f8f5edfa3c0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__053__random_2_8192.npz",
+      "bytes": 156986,
+      "sha256": "0e6a33096fc72b5063f1fd99b1a409c783c6c63d2c9dc415ef2fcc0b1d11e16d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__061__bilateral_8192.npz",
+      "bytes": 155451,
+      "sha256": "2bc5194e6aabb6e6da58c66d8f87901bedd1fcd23048810edfd3db940325d4ed"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__061__frontoorbital_8192.npz",
+      "bytes": 155529,
+      "sha256": "4fdc68b12e73f20b105a02d652cf2934b9fbc452c562a76c80a6caa6a3accf15"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__061__parietotemporal_8192.npz",
+      "bytes": 157130,
+      "sha256": "45dc250d153feebfa2182a6e9a6435c6e0ae6b430b665d676d87341d31d8598d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__061__random_1_8192.npz",
+      "bytes": 156995,
+      "sha256": "8b3c818a2fbbacf1667f4ec9257aa6714b51604d41d6353de366d11aeaec6d19"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__061__random_2_8192.npz",
+      "bytes": 156165,
+      "sha256": "0435adda8c6d10db5d1615be755250388f0ed769fe49474c2dc0d1e350d03dae"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__066__bilateral_8192.npz",
+      "bytes": 156392,
+      "sha256": "080d66a2d6555f88dd7e479d9a8f78448ec15cde86b88c0754663c1f973f4c91"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__066__frontoorbital_8192.npz",
+      "bytes": 156345,
+      "sha256": "6151957eb4526b8b9e760fc9e93e39bcdda8332f18ea88e8e330ad805db21576"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__066__parietotemporal_8192.npz",
+      "bytes": 157433,
+      "sha256": "4c2120b124231f9de487b32007de90ad6fc491e95da0c1e257e2f61576e704ec"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__066__random_1_8192.npz",
+      "bytes": 156099,
+      "sha256": "eea8859640678d39dcbc260a1c50b60d71a6cbefc167c4b9081de639f81213f2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__066__random_2_8192.npz",
+      "bytes": 157894,
+      "sha256": "14f2e111cf12f0311a68b7969f882f9d4ec1ee247d8c2387545f8b9a4a344778"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__072__bilateral_8192.npz",
+      "bytes": 158009,
+      "sha256": "3f90f16df680158cee3998bede9007dd65d4f673b5340c5287739e54afae6f79"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__072__frontoorbital_8192.npz",
+      "bytes": 156330,
+      "sha256": "aaeaf4a6ec68d6f8ecb1177243791840372d92bf3ef585fdebff252e9c7b0588"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__072__parietotemporal_8192.npz",
+      "bytes": 157236,
+      "sha256": "d298caedf9e38e41a20b8804c64cdb88fcaaaa1963a3d6a70cd22b1de0b8ce8b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__072__random_1_8192.npz",
+      "bytes": 155272,
+      "sha256": "bb6d072461f19f3354790de7a3e2551887c4d1614f416aa321ce7409e774fd28"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__072__random_2_8192.npz",
+      "bytes": 158057,
+      "sha256": "2a314f02d53701e8b8a0d0431eac3520b4a55708ca51b26e6cbbf01fde205d80"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__076__bilateral_8192.npz",
+      "bytes": 157847,
+      "sha256": "9ad69c1bd07de23b9b7f40110ce348c501600583947f228562fc9e9b755f2917"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__076__frontoorbital_8192.npz",
+      "bytes": 156632,
+      "sha256": "2a01759eff8129cfea1933be6876b66bad014e92bd1803d071ba94ddf912d16f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__076__parietotemporal_8192.npz",
+      "bytes": 157620,
+      "sha256": "2c905aba0bf76dfa878552c82e0e4d3c4e8ea8db9dcb8529e9e7ae3854576907"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__076__random_1_8192.npz",
+      "bytes": 157075,
+      "sha256": "065a07bb4c8c1f58918adc20e36af6438c8dfe31a2943cfe73f1c770a4240bc7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__076__random_2_8192.npz",
+      "bytes": 158111,
+      "sha256": "781e03dae93a67d2035bd8579c9e1a3ebc3985a8962449a60182d43f74a551e7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__081__bilateral_8192.npz",
+      "bytes": 157372,
+      "sha256": "ba2469f2ce7c01d83b4354f357aa6a94449fc88ae40ed680a855e5f95502cae6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__081__frontoorbital_8192.npz",
+      "bytes": 155806,
+      "sha256": "15bb719d0b740d6ea8716f0d1689ce13fc819e135c7d40c4af42af16353c8406"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__081__parietotemporal_8192.npz",
+      "bytes": 157171,
+      "sha256": "2ea49439831a7854796a883e14ccde7768b545b30199d1e18f8893c90bf0bfbc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__081__random_1_8192.npz",
+      "bytes": 158082,
+      "sha256": "70b312e7e0424ae760c33945b8f5a1c481e7739c4c54b9d8a76d0be80bf23d54"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__081__random_2_8192.npz",
+      "bytes": 156911,
+      "sha256": "d301f7567371c35066e9c5421498ca22f3386f528eafc349417b66cc1184206c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__094__bilateral_8192.npz",
+      "bytes": 157570,
+      "sha256": "b6efa3f476d7113c2d1cc4ec0742f4c4c05a98cb9219d044f698747b0124a15d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__094__frontoorbital_8192.npz",
+      "bytes": 154977,
+      "sha256": "3cee3cb482d3e93e2091863bb19db9179f5d8c2c03cf2b7a1a0ffec79c150926"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__094__parietotemporal_8192.npz",
+      "bytes": 154897,
+      "sha256": "18df9463405ee39c5406fb1c0319ac44e0d471b073cccc25f7f3a401526fda7c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__094__random_1_8192.npz",
+      "bytes": 156515,
+      "sha256": "c8ac6ebeaac19f38012c461fe40124e1f05c65d25e243520bec7b4cdc922f89c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__094__random_2_8192.npz",
+      "bytes": 154754,
+      "sha256": "cac76d14d602b630857e87803fc96e7cb555523f7083ae14817994765aa65aef"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__105__bilateral_8192.npz",
+      "bytes": 157418,
+      "sha256": "135ed6588090b83a021c9767e20720e90e837e8ab9cf27de097a785604fcda50"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__105__frontoorbital_8192.npz",
+      "bytes": 154978,
+      "sha256": "2acb00076198a64ab4231314a9b9cafe2c412a784869be46f0fb59e29e40ab00"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__105__parietotemporal_8192.npz",
+      "bytes": 156379,
+      "sha256": "428e9f9af3648037878361384134926016aa0444f6a128115313fb4cf20eedd4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__105__random_1_8192.npz",
+      "bytes": 156087,
+      "sha256": "a92f5f6eb1b855166e241d285dbe2cdc28427bddd5160d2e272cd2d66de5c02f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__105__random_2_8192.npz",
+      "bytes": 158389,
+      "sha256": "63a2c7b77edccc45b796ad2584a20958287e3ef1936d514430d0e2193bad400f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__107__bilateral_8192.npz",
+      "bytes": 157757,
+      "sha256": "da88ffb678ad1c91cbc24f99a1c4243ede38aa37a74d016df200819359fd45c6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__107__frontoorbital_8192.npz",
+      "bytes": 155837,
+      "sha256": "c25ae4616cd407657f36595c5cb3a2f57832740b9d1b0d469a59bca2686eac1f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__107__parietotemporal_8192.npz",
+      "bytes": 156492,
+      "sha256": "6d8aadfda6ad22668bf3fb3300aebca87b65ccfa4536e44f295921f4402e59fd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__107__random_1_8192.npz",
+      "bytes": 157153,
+      "sha256": "e10994a680709c25f8b4e823d73150c0a293d1746f5c107f5149d019fc7cfee8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/V1/points/train__107__random_2_8192.npz",
+      "bytes": 157707,
+      "sha256": "868e5c06b93b424f8c978f64392605df2e83e6731ebecf43e8d7970f1c4472e1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__001__bilateral_8192.npz",
+      "bytes": 157051,
+      "sha256": "2b4838d6236b5a1d630c780c466c3100b039d4c38faf62e6dbb7604ce8116e62"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__001__frontoorbital_8192.npz",
+      "bytes": 156731,
+      "sha256": "8d4a5d22bafb99a402590412299c1e455be55e5e823f22ace508f51cba06d1f7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__001__parietotemporal_8192.npz",
+      "bytes": 157213,
+      "sha256": "58d58bf3773e57dacd32a5ef4905b61fe90b7fb27ef89e6593713e65622bea43"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__001__random_1_8192.npz",
+      "bytes": 157939,
+      "sha256": "f1c6472a57d182552ad294fd9063623de2008a5c5fde0cb9e4f3dd13200f41c8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__001__random_2_8192.npz",
+      "bytes": 157808,
+      "sha256": "1a248c1829bd8c527f254967f24fe47023a269073baa2c3e71116433c0820073"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__003__bilateral_8192.npz",
+      "bytes": 155881,
+      "sha256": "a279d1f886363920c7a8bd25991ef3d7b0c876ae7a00a3f7cf3b1ab07c6ec20c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__003__frontoorbital_8192.npz",
+      "bytes": 153108,
+      "sha256": "93d27703e13397a650b9ae460b6c94c907b537fbcc5ec04b989c5c6e67ea72a8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__003__parietotemporal_8192.npz",
+      "bytes": 156490,
+      "sha256": "0c49aa51b64d3368abac707dd865320d0014758ce146f37d7f97081bb1e20807"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__003__random_1_8192.npz",
+      "bytes": 156239,
+      "sha256": "529ab2b992cc73b71ae614535bb82d9f6eca469389dc701e95c6f49ed005ef2a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__003__random_2_8192.npz",
+      "bytes": 157986,
+      "sha256": "9512d9b994d0f4b935fa01becb0de8bb9b93ff344862e7e65fc520257fe2954f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__012__bilateral_8192.npz",
+      "bytes": 156835,
+      "sha256": "91949fce2c4a9273619794aa3f005c7a37d0efbdc17895830326654cf6e9129b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__012__frontoorbital_8192.npz",
+      "bytes": 155363,
+      "sha256": "31c023cd596e2e2a383320ee246ffcee6e5b99cdfa4f6326a7e139b3392dc7a4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__012__parietotemporal_8192.npz",
+      "bytes": 155923,
+      "sha256": "7a0c53944896b13b249aa5cf14d854239f713e85c6657617166d699580186cc5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__012__random_1_8192.npz",
+      "bytes": 156483,
+      "sha256": "9f028cceec046d82e615f3de8df01f94d19ac27f02ef7afb80de276e35aa5319"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__012__random_2_8192.npz",
+      "bytes": 154949,
+      "sha256": "180efe81b5cfcbc650493cb312a3b65cd43bf0084b5e20564f1fc5f9641a2922"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__013__bilateral_8192.npz",
+      "bytes": 157607,
+      "sha256": "e250b58cfd5ea040c5b6fb28dfb76579fd3a08f8dcec28130b37271422268adf"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__013__frontoorbital_8192.npz",
+      "bytes": 155824,
+      "sha256": "a9b59d52a87633f3e7f084e726e56e4f4fce3e79a35c47e19c0be3ce7fa2726d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__013__parietotemporal_8192.npz",
+      "bytes": 157178,
+      "sha256": "be27ce368f1b0d813978576f9199f9285933974ccc22aec5415211967abf1329"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__013__random_1_8192.npz",
+      "bytes": 156571,
+      "sha256": "2d2591410978ae0f40e73fb1478a3ea53e4803c4f4584a4f9f6238fc37158356"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__013__random_2_8192.npz",
+      "bytes": 156119,
+      "sha256": "6d30280074e56379882836af634c40d7dd3509a88ea28d7561a4baa11af0aaa4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__025__bilateral_8192.npz",
+      "bytes": 157444,
+      "sha256": "bb9203638b354f2954d137ed10c74ae34e3e4174f7321cf9b5587c76893aa5ce"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__025__frontoorbital_8192.npz",
+      "bytes": 155840,
+      "sha256": "125433b564d812d6aff301edcb9e260c82723a43ff1214383695087c7402e4aa"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__025__parietotemporal_8192.npz",
+      "bytes": 155046,
+      "sha256": "f49f09de4e0a7be8d6e0846f034062f286d608032ac529ccad58e1865dda72d8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__025__random_1_8192.npz",
+      "bytes": 156846,
+      "sha256": "dccfe1530f7aeee92e89f9fe1a6ec215bc1252c16f24e981997bf0a4f52a5301"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__025__random_2_8192.npz",
+      "bytes": 157171,
+      "sha256": "f5c37fc9746e17a535fe807423425a7b075f324306ca4d7fec4c2ed617e30499"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__026__bilateral_8192.npz",
+      "bytes": 157003,
+      "sha256": "68df93dcb534c9f3a38ff134578aad9d1b4fe60bf65b1ae0aa7a8e3545529f65"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__026__frontoorbital_8192.npz",
+      "bytes": 156664,
+      "sha256": "ec1714b43396026bc968d3ff1a2441606bd0ada4fa81074b4a3e894390a3452a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__026__parietotemporal_8192.npz",
+      "bytes": 156672,
+      "sha256": "b93fc827875c58a3da55803b246407d0d9585abb1625bf1f9e77ddce060bc905"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__026__random_1_8192.npz",
+      "bytes": 156806,
+      "sha256": "9fc787b6569b80831d4a1c60a5db01bb09202f09d75ea593196cdc775df9f12e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__026__random_2_8192.npz",
+      "bytes": 156731,
+      "sha256": "a2213998010f45757b6156384148d419710cbc37a0c8f48ab1f0ce9d1a0c4e21"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__036__bilateral_8192.npz",
+      "bytes": 157855,
+      "sha256": "97014718da72e943d39c5de5499c9a975f3bbd1935ee545ea10c2b7c7fe84771"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__036__frontoorbital_8192.npz",
+      "bytes": 155695,
+      "sha256": "56a2faa9f595cd3cca0919e3ad1669f9e964b6705e0f50f4401466bc95b09b77"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__036__parietotemporal_8192.npz",
+      "bytes": 156183,
+      "sha256": "8a07d2fc3d5a7674280037910db4fb739891cd0997c0a0aad0d54928b2653f77"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__036__random_1_8192.npz",
+      "bytes": 157331,
+      "sha256": "777fa03fe604ac59facc688c96f7535ee83cc396e835d9bc7e53d86e3f29a06d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__036__random_2_8192.npz",
+      "bytes": 156639,
+      "sha256": "0226247cf805256f31354460155fc1d9b2a072f18685577c808064aeca9a6155"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__038__bilateral_8192.npz",
+      "bytes": 157861,
+      "sha256": "a1285ad944cb43d446649566b9e894fd4588d64dbbc73e6d658ec331b05269ce"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__038__frontoorbital_8192.npz",
+      "bytes": 155436,
+      "sha256": "4d51214fd70eb70e182268c249e19126bcbb048a917bbccf519dba82fd58fe41"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__038__parietotemporal_8192.npz",
+      "bytes": 156815,
+      "sha256": "b7e09d4fdd14125d8e74f5ad11d4e48b7bbd5ff37ad37a1fdaa16ca064e5924e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__038__random_1_8192.npz",
+      "bytes": 157816,
+      "sha256": "078e5c055c890d064b6bb31ce98989cda0e7e406e1032892beb7781fc3c3638c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__038__random_2_8192.npz",
+      "bytes": 158242,
+      "sha256": "346d3ea07e265414a0a8c14cfd2f182e1c446ed2cf8c4cbe22d4bf40a88a827e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__041__bilateral_8192.npz",
+      "bytes": 157912,
+      "sha256": "ec45a004967a867c2acbca26c93bab9ab90fb628258b2afb844226ac7e0dbf5d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__041__frontoorbital_8192.npz",
+      "bytes": 156931,
+      "sha256": "2f470af58c02edb9651a47918c8fcf132e979d510b7a45961fe9c3c24ac1e121"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__041__parietotemporal_8192.npz",
+      "bytes": 157648,
+      "sha256": "afb9dc159646037a79a2ad539f88a961ac2cdddd728e2d9e7ec214ff16871186"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__041__random_1_8192.npz",
+      "bytes": 157695,
+      "sha256": "80a2e6b234f3b16471867b024312d52e91c8f19abf0f4d05249def47e04ce2b1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__041__random_2_8192.npz",
+      "bytes": 156854,
+      "sha256": "66a0cbbe99571caa49dbd1e4cce107275938dd5c63175b99db1439f383fd2e2d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__042__bilateral_8192.npz",
+      "bytes": 157705,
+      "sha256": "fef6796d2e7249b2eb9772541363eabbd7a15f5504ed820fb1f5ba1f0ce91013"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__042__frontoorbital_8192.npz",
+      "bytes": 155461,
+      "sha256": "d9b2323482a08d2a2a6fb35534e721f201d4a8bcbf6567f8e0bd9dcac1ee96f2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__042__parietotemporal_8192.npz",
+      "bytes": 156087,
+      "sha256": "55306792d9e756506fdbb132f65d2e1ddc675243389addaa7e906265e1eb4997"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__042__random_1_8192.npz",
+      "bytes": 156560,
+      "sha256": "2651d18a5df6a2dddd12279e6a049cde4476ec3fc7db717dee197843ee0db55a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__042__random_2_8192.npz",
+      "bytes": 157566,
+      "sha256": "8fc147533a621b30e94e45ccca2ad0033a31c75b1e4c92b5b8d52785ef754c9d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__047__bilateral_8192.npz",
+      "bytes": 156761,
+      "sha256": "2ff3a31ad247468e2d17a65a56c71eb8d6bcde552ffdf80b2a98e3427b978685"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__047__frontoorbital_8192.npz",
+      "bytes": 155351,
+      "sha256": "715d7c3399fb06a3a06b8e87bee1559e03a3191da94292465876fe1d4103572f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__047__parietotemporal_8192.npz",
+      "bytes": 155913,
+      "sha256": "08f43696730bc1827b5c096a55c91baed87495f9534ff4d934150f68c0a3b3d8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__047__random_1_8192.npz",
+      "bytes": 158059,
+      "sha256": "555d5af06fba1f6704774df9e8f89cfbc21be5466b0067aa06e5a58bc6dbc53a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__047__random_2_8192.npz",
+      "bytes": 157106,
+      "sha256": "b7fb800bc8517334236d23b0f212a1cd74dc63d27608fb3e13893958647138b4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__051__bilateral_8192.npz",
+      "bytes": 157894,
+      "sha256": "3bd43bcfcacfb84906af4c6759de84a7d942debe3d52b842150a0d06301826c9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__051__frontoorbital_8192.npz",
+      "bytes": 156485,
+      "sha256": "bdca6d4313b71ba8e3277e03340b6e54fa7930c9fdbf42bd90f9b19d8198aeb2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__051__parietotemporal_8192.npz",
+      "bytes": 155999,
+      "sha256": "d4c988b22f0ed0fb44a9f1da9fbccea74a5a2fb79b9a2443070a7bab2035c2b9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__051__random_1_8192.npz",
+      "bytes": 157855,
+      "sha256": "1142a02c3e0e608b986007002c870180735a181e87d4ae5fd5be6fc9f5fac2a3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__051__random_2_8192.npz",
+      "bytes": 156466,
+      "sha256": "1d37920d9f68a2b71b67b3dbbe7fdb68e6f583967f03f2622d9ad0e014857039"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__053__bilateral_8192.npz",
+      "bytes": 156925,
+      "sha256": "4e3c06760e8c64eef5485d86e77adbf7080c58dda7adc38f3299f8e4b95c5bbd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__053__frontoorbital_8192.npz",
+      "bytes": 155525,
+      "sha256": "8f12e96bc4b31fd490aa406955c529ed35d8c1f5fb7f4f9441e57200468e4d9a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__053__parietotemporal_8192.npz",
+      "bytes": 157113,
+      "sha256": "09eb949b181c34fbecc915e32d54bb0a25dcc484286dd02dcd373c6645fc6ecf"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__053__random_1_8192.npz",
+      "bytes": 157395,
+      "sha256": "84c9765acc9c01d20d5eff24ba64d445356cc27a2461b33067a6348c962119eb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__053__random_2_8192.npz",
+      "bytes": 157010,
+      "sha256": "7fb9ad0b48535164a8d941b874d9f00af8830f9df4da736d7ba784282f649aa4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__061__bilateral_8192.npz",
+      "bytes": 155510,
+      "sha256": "d9b7f717f154723ceba0fe08cd28ca5da470c27726427c4797459d5137a8be5d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__061__frontoorbital_8192.npz",
+      "bytes": 155573,
+      "sha256": "16488e0a409d6edf6de64ec273a4a3b647768e396d3a64f54fb60a7ab49e0446"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__061__parietotemporal_8192.npz",
+      "bytes": 157243,
+      "sha256": "a98ebbbd6745d5ca5200bab3d1ee55936840442473cf846e7c6f097bcdcd536a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__061__random_1_8192.npz",
+      "bytes": 156978,
+      "sha256": "962464ce098b856fece11b69cc6c17ed70a1cdbd3ee5226c333483aa02d8cde9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__061__random_2_8192.npz",
+      "bytes": 156135,
+      "sha256": "3fa557282e2a37ad746415fac40068a95854277f48bace2e5f267c5ba018ed17"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__066__bilateral_8192.npz",
+      "bytes": 156344,
+      "sha256": "1bd7f4d7b200daec9d81cda449ad0e01f246bb53db7f2d7d31b83353a433c045"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__066__frontoorbital_8192.npz",
+      "bytes": 156396,
+      "sha256": "c60d0a7da83856240eb154e1a24186b24991c28a4e359ba82bc49adb24dd1a69"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__066__parietotemporal_8192.npz",
+      "bytes": 157468,
+      "sha256": "347529924b5f5ce510380b86c5cfde4e9d55a1a4829da0cd6d3e920ac4b3c377"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__066__random_1_8192.npz",
+      "bytes": 156127,
+      "sha256": "8deff6678de8a5cb77811b54fee3b324602987d319b9e7af3c2dcbdc2a25d74d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__066__random_2_8192.npz",
+      "bytes": 157925,
+      "sha256": "2104f69ec66130296a14f3a2098fac6f853bd33ec996a12b9ff2e09394871d55"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__072__bilateral_8192.npz",
+      "bytes": 158064,
+      "sha256": "42f261c96d4a493941076653acc6ccc12a2de7e31a4cc13bcd0c79ac44dfdffb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__072__frontoorbital_8192.npz",
+      "bytes": 156404,
+      "sha256": "806090d2471851951c8ded391b5be0b50c806451b8e43da64bdf6d84374c626a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__072__parietotemporal_8192.npz",
+      "bytes": 157235,
+      "sha256": "1097ae9c61ac8ada0b79c777478b7b54eee1c5f8d3cd133a47f9ffc87dda8e5d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__072__random_1_8192.npz",
+      "bytes": 155301,
+      "sha256": "d02260f36587963e67eeaf5b72267565ec294becc7e2f92534aecb7a8e86672d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__072__random_2_8192.npz",
+      "bytes": 158066,
+      "sha256": "710de7c304e85d93431b6fd5cbbfc5c3b6e521dedb561be6c2ff17453f119d0f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__076__bilateral_8192.npz",
+      "bytes": 157937,
+      "sha256": "22256544b0036e7611ec904d384f14c0f2292ac88c51656046bd82953207e519"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__076__frontoorbital_8192.npz",
+      "bytes": 156638,
+      "sha256": "1657fb3bfb00077dbe5f31eeedacf5a6865bb962d1949188260ce0a179eb8823"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__076__parietotemporal_8192.npz",
+      "bytes": 157563,
+      "sha256": "8b13bfd0d41e6788e401f64ee7005ae6ad6c2650c8f70ad2c434b88d7423cbd6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__076__random_1_8192.npz",
+      "bytes": 157033,
+      "sha256": "e4ef8fcaf6b5623ecd0094cb728c3e47698d1d97b10aef278c97954e743a8eaa"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__076__random_2_8192.npz",
+      "bytes": 158179,
+      "sha256": "686b52e96d79388ad8aa370a53496c0c1e317b74e472965084a895324ddb393b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__081__bilateral_8192.npz",
+      "bytes": 157320,
+      "sha256": "4248cdd3befc5202fbcc4513e2d49a75d00bf1169b7cc8a32875f631499b6424"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__081__frontoorbital_8192.npz",
+      "bytes": 155834,
+      "sha256": "cce8819030dc6e4a876ba98c7cf37ab401eebe059bedf4b5c8e0450e9ab237b3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__081__parietotemporal_8192.npz",
+      "bytes": 157145,
+      "sha256": "1dac637e86fdc2bcedb95089c21640e7baa0b87cbc80379445891b62c28d1a3c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__081__random_1_8192.npz",
+      "bytes": 158134,
+      "sha256": "4e8bbf568b4f845c32d3ee045c74dc17146bc0ada0c94b10468316c197de8f8c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__081__random_2_8192.npz",
+      "bytes": 157029,
+      "sha256": "3b6afa1505bc18b650b514de364d2029c5716c600611f792f09758e9e317c85b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__094__bilateral_8192.npz",
+      "bytes": 157725,
+      "sha256": "8e1a5859ca77c8172efe6071f8cdeedb35a11254e93734977abfe29af0c4bf11"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__094__frontoorbital_8192.npz",
+      "bytes": 155060,
+      "sha256": "c1f33ef8f391f07cd66d7b2156038bdf5159fded3a967c2f286c4250489a1844"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__094__parietotemporal_8192.npz",
+      "bytes": 154968,
+      "sha256": "b01394664a254572679133aeb19ecf84cb22709b0a842a009c4291cdc0471a00"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__094__random_1_8192.npz",
+      "bytes": 156434,
+      "sha256": "6ae7ede4e5ab832a8b4af92a454e1186d9d12ebffb9ce94ac41037f070c587b0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__094__random_2_8192.npz",
+      "bytes": 154785,
+      "sha256": "236f70e87429bd17f680c9f9f8eb1a6d0d8b045db245baef1d8730cbb45d5d26"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__105__bilateral_8192.npz",
+      "bytes": 157422,
+      "sha256": "50cf40cb15d0134669c532e92204b86a0babebbe32fcafe7b5456fb021cab276"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__105__frontoorbital_8192.npz",
+      "bytes": 155041,
+      "sha256": "2dce25bc23077ac66e81f8da3c0e1fd05e1336d157873f39b68cc1da4f015c5a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__105__parietotemporal_8192.npz",
+      "bytes": 156388,
+      "sha256": "49db3b5c08a8893187b042da8303d9644f5769147d0535b9462c3f954f9c73f6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__105__random_1_8192.npz",
+      "bytes": 156204,
+      "sha256": "9b27801cd4cc8837826570af8d499c46b4952c782c7ad2aa6c1d7ffad1d11254"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__105__random_2_8192.npz",
+      "bytes": 158349,
+      "sha256": "137e6f339cb64513161248cc486da134abd6be239b4f6335113001391f541436"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__107__bilateral_8192.npz",
+      "bytes": 157716,
+      "sha256": "d6121218a87e97de48a307d1d0c4fbb0e1387a660dba347bca1d074f0ba16ecd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__107__frontoorbital_8192.npz",
+      "bytes": 155802,
+      "sha256": "70672413818e466df41a411dbe9a3851fd6d3d63a850c73e15df113f30697f40"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__107__parietotemporal_8192.npz",
+      "bytes": 156482,
+      "sha256": "b6268596097d8040e118cc93f8a9daac8b0af1caa76f9e03d9f155acc446671c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__107__random_1_8192.npz",
+      "bytes": 157038,
+      "sha256": "029bf3863b325b6308307e6a81c7b43f5e9b3d8b977a026940c63242ab6d2472"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_sampling_ab_foldc_seed0_dev_v1/Morton_area_stratified8k/points/train__107__random_2_8192.npz",
+      "bytes": 157747,
+      "sha256": "2bf5e0f59fa2e2039adbfa42598aabe1521012fa27a7c3088af7c431e921b179"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_eval_sampling_pair_v1/execution_scope.json",
+      "bytes": 93571,
+      "sha256": "76673ba94626253161dc70f0a33006d21c8094bced8148496c68c6c3490f0f4c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_eval_sampling_pair_v1/entry_request.json",
+      "bytes": 4913,
+      "sha256": "2f6865ebc1a0557d8c1a3df589d8cca87df5312447eea1cab04cb6524c1c0414"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_eval_sampling_pair_v1/authorization.json",
+      "bytes": 570,
+      "sha256": "32fd8cbdf9e3caf639ca3ab6499ee4e1503053d6fb90f02d7e6caa5156666d51"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_eval_sampling_pair_v1/runtime.json",
+      "bytes": 228,
+      "sha256": "d6eb4e67e8f9412b9ddedbb671089c6b6398f4f184764c5aa425e56108af3500"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_eval_sampling_pair_v1/evaluate_once.sh",
+      "bytes": 2859,
+      "sha256": "6b96a3ccc6cffb7f025ba3e5d933cbfcfeb38f129e912a804c645333f9d283a6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_sampling_ab_foldc_seed0_v1/control_eval_sampling_pair_v1/launch_attempt.json",
+      "bytes": 126,
+      "sha256": "62a1b5881c9f3b70d5cf754c194c29daf100e0dc67c3007d97209ddfe60a1ced"
+    }
+  ],
+  "output_manifest": [
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/completion.json",
+      "bytes": 43307,
+      "sha256": "bf94b57f098450bda3b185406253806c68aba5037113e94f336fc1e524f647c7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz",
+      "bytes": 18902839,
+      "sha256": "152a904ab7d5df856e1c8ea63320225f3c20c318c8c797127f5a89d869acc1dc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz.bytes",
+      "bytes": 9,
+      "sha256": "4d0341280e7dcd245e5005fbb53e32234eca69be40bbffbb21e899b3c54245ed"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz.contents.sha256",
+      "bytes": 26009,
+      "sha256": "22bcb34a4d8a84e97633f1dc3fdcf70c53b96148f15e054e2325d3c4c7a588ae"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz.sha256",
+      "bytes": 100,
+      "sha256": "b0e1d2a5a43ed59b40776387d06b36fea61c959321b6a968f04f0dbe565dd623"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/exit_code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/inference_complete.json",
+      "bytes": 1754,
+      "sha256": "81b87a875d4552c8b32525206c7f66b191161b0c6a87fb3dbbab907e243cf384"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/inference_manifest.jsonl",
+      "bytes": 116525,
+      "sha256": "5218fcaa0dc72135ef63eba65e076a4af69ebc6aa52fe639d59c543c8eb03ed7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/launch.log",
+      "bytes": 2188,
+      "sha256": "ee9171169f7cb7a64702733fa1734aff810fdbe685a3c63486c06df6574b9cef"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__001__bilateral.npz",
+      "bytes": 89152,
+      "sha256": "0fed49c6701d7d4270dfdd83e8c8f1ead1bd8e22f7f2e9780e3a8714db2c667b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__001__frontoorbital.npz",
+      "bytes": 90573,
+      "sha256": "e8c45eb12ab9cb9acca2ec0c43219408252878cb9a918f34138801bed22fc019"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__001__parietotemporal.npz",
+      "bytes": 89730,
+      "sha256": "4129e3badc0f1aa78c47e5dd73600b1ee789695424bac37a58ad9243039c71e2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__001__random_1.npz",
+      "bytes": 90141,
+      "sha256": "e97da7db1cd0e2c8753149dfb03d30da332026c58292e0d783d52426256163c2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__001__random_2.npz",
+      "bytes": 89268,
+      "sha256": "9e8850956e73b92506ff14055c60e077458aa0994edca2bcc295bfb5eb3cc619"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__003__bilateral.npz",
+      "bytes": 89650,
+      "sha256": "a97cf93c364261a9adcc5d8d1e641a87600151fea50c2775a54568c78878d794"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__003__frontoorbital.npz",
+      "bytes": 88736,
+      "sha256": "71c20c8afa9b720866010082d582cee542e626f1697a22f3e307005082e82fe3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__003__parietotemporal.npz",
+      "bytes": 89901,
+      "sha256": "a59465c33d5a72d4dd58169ee39e0f2df99498682bbe2b8d9c1b46ffde0e478c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__003__random_1.npz",
+      "bytes": 89715,
+      "sha256": "9e32f9978db4e766bf8e0dac0767e5fb40ded496a28dcb2005e143837f7e6706"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__003__random_2.npz",
+      "bytes": 89836,
+      "sha256": "edb04ee84debfe57cad4597fc40f45ab41e3aa32a824587f16221bb5f2fe5207"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__012__bilateral.npz",
+      "bytes": 89477,
+      "sha256": "7ca11f57c78cdd092a7bb07fe3c02f52c48fbd1f2f7c4b4fbb592fae7dcb0ea9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__012__frontoorbital.npz",
+      "bytes": 90178,
+      "sha256": "904d24cbd8bc285261340b9d4314db51f601d97ff65fa06ae7b84f379d30ae89"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__012__parietotemporal.npz",
+      "bytes": 90538,
+      "sha256": "762148c03b107810aefca09d6470285fda55184e8690d93920f084f768e77d6b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__012__random_1.npz",
+      "bytes": 90693,
+      "sha256": "52c5efd40fffb3e54d013fe487cf0cba5cecc5e47bada5bdfb02db3f972b9b47"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__012__random_2.npz",
+      "bytes": 88186,
+      "sha256": "100b61e8173fc469e3a67ab000fe4614c5f1b35699eff5ba73959d83adfeb145"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__013__bilateral.npz",
+      "bytes": 89999,
+      "sha256": "93b3418483639bcf77eb1aa653e269ecf78a97db0ed793d80cf6fc50b195e90f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__013__frontoorbital.npz",
+      "bytes": 89844,
+      "sha256": "616cc13b2b45b61acca2cd815bf6f288607225f6f13c76a3f1564c0f36498631"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__013__parietotemporal.npz",
+      "bytes": 89563,
+      "sha256": "9a15958a4b7d2520c696c50aeef588969dd1d9e2308d16e37f533bab236b46a6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__013__random_1.npz",
+      "bytes": 89988,
+      "sha256": "0cfe927353f80df485f4bc8db0c595d73f9a4259b9e75e82c356d78de5ecb852"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__013__random_2.npz",
+      "bytes": 89387,
+      "sha256": "484ff5f3aec0f965a76926478ff472b2506913325c4b95d130cead984f4fd563"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__025__bilateral.npz",
+      "bytes": 89111,
+      "sha256": "280353b848fd94ec91c2428374c36d47f5fba85723060e6c60b9763598affc5d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__025__frontoorbital.npz",
+      "bytes": 89182,
+      "sha256": "4e0c99d4fc98d36fd3d5f877d53733286643fccb76ca556ee2ac6e1b622dde11"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__025__parietotemporal.npz",
+      "bytes": 90666,
+      "sha256": "5ae63f41b333008c7d50b49ce3e19dd15020cf36fb1ff4bed514a423c8af072a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__025__random_1.npz",
+      "bytes": 89341,
+      "sha256": "42a069ea11cde6177d22c44def6b8247448b7829feb0054227d7a226e890d4ce"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__025__random_2.npz",
+      "bytes": 91174,
+      "sha256": "632737bdf5c565ed201189f5840f5c542aaf4cc8f2616667490367d147a4d7d4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__026__bilateral.npz",
+      "bytes": 89337,
+      "sha256": "4c59fa5792e9f004c30e669a02ddf125a99788625210dd95a9c2e00ee7bb37c3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__026__frontoorbital.npz",
+      "bytes": 90389,
+      "sha256": "6bddc7146b79e4655b3f34da556891c54accde1c9282c5060b0a883dc54f4267"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__026__parietotemporal.npz",
+      "bytes": 88837,
+      "sha256": "4ea17f71ece33f5903cc3f7661dbb7559427529c0694212f6e9d3bbb8424c1c9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__026__random_1.npz",
+      "bytes": 89973,
+      "sha256": "bc5459ba275ecd5a1b5ca65eb49ae3aed37aee76ad891d8a53d91a7cee651536"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__026__random_2.npz",
+      "bytes": 88465,
+      "sha256": "af05d2c04ffb3b639cbf8ccb8080f3d681eebd759075fc980d1f6123b478f410"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__036__bilateral.npz",
+      "bytes": 89719,
+      "sha256": "ee7aa9c3ad3342cc8ea30047e198cd6b91d6e3b6016ed23f15dcca88dfbdc07c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__036__frontoorbital.npz",
+      "bytes": 90881,
+      "sha256": "497cfc4a69e3a20161466fc92ab9bb917f6d6dc50055d04671d540e32b30ec4a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__036__parietotemporal.npz",
+      "bytes": 89624,
+      "sha256": "a21a51e5d0ffa418521112070d6758cf14d2580a14731ef7ecde02509731d08c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__036__random_1.npz",
+      "bytes": 88743,
+      "sha256": "427a04b7786c26839753286ccb876512b9bba370d486542a298e28488e01eca4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__036__random_2.npz",
+      "bytes": 90457,
+      "sha256": "7f31b88ca308a53fb3c1d1a284f3c78395356aae0310c688d1a645da880fac28"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__038__bilateral.npz",
+      "bytes": 90420,
+      "sha256": "114828f0bbb6c0f4121c909bd84dc943dc373efcf7bd73dbcc197a1499bec65f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__038__frontoorbital.npz",
+      "bytes": 88906,
+      "sha256": "c5ac584e80e3a3953ce3e028fc0ed14e44cb9a3db10af40533c137c233f585d1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__038__parietotemporal.npz",
+      "bytes": 88850,
+      "sha256": "9d17b22b0f74cdbddeeb290b1513d69ab627793ad1b3b9df08300f18e6d31415"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__038__random_1.npz",
+      "bytes": 89885,
+      "sha256": "e30ab22b69872fe6aee664fb725f393af673b08a7d78b8b4e2bdb246974c70e8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__038__random_2.npz",
+      "bytes": 90059,
+      "sha256": "e676d6bd317bb5c83082b26557557693229e41b3ed74ec02c97662f69abeb269"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__041__bilateral.npz",
+      "bytes": 89945,
+      "sha256": "b9adbe27454ccbd9ef225d35004875a3c6b77150f88a8d3bc2b9a290f19a73d8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__041__frontoorbital.npz",
+      "bytes": 89793,
+      "sha256": "9b08c3bbed4accac42297eb45c054b3e7e4553f61b1009c53fb7b68867167432"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__041__parietotemporal.npz",
+      "bytes": 90288,
+      "sha256": "6de314bb82f83443ae807189ca4a15e394afaaafe4f302b981089c7daebcd1a8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__041__random_1.npz",
+      "bytes": 90135,
+      "sha256": "fab5ff947d56fdb827bdb9c7c88d70fc8ebe62c59cc025f18d42e06cf70cfb59"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__041__random_2.npz",
+      "bytes": 89758,
+      "sha256": "fcb5bece025fa88ae0bf23dfa7ced0c979983fdf2d6727265869b8bc02c0767e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__042__bilateral.npz",
+      "bytes": 90964,
+      "sha256": "995eb93448812675270434ba0d6eb7db286edee5e92057bc3d028a770caf6dfd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__042__frontoorbital.npz",
+      "bytes": 89491,
+      "sha256": "64159ecc74f132d248b000c36eb69efc5220d2deaae3da791906c9d538b87a41"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__042__parietotemporal.npz",
+      "bytes": 88816,
+      "sha256": "58af54fb3ab4b27d97b6d67451a1334ebde5eb52096940359b9fd31e93f58de8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__042__random_1.npz",
+      "bytes": 90098,
+      "sha256": "0ac6e09d8bf903d1b6256f5487b644fea375d104173c4a7348c01157ebf3e736"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__042__random_2.npz",
+      "bytes": 89997,
+      "sha256": "39bc92d71e9cb18e8ad41d723430345fc2cdc9889752d7f34e32ffcd74037aba"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__047__bilateral.npz",
+      "bytes": 90159,
+      "sha256": "a400e8329f6dbe91beb26a4f06af7986ef9809453433db2a7d4c15a5283a4e4f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__047__frontoorbital.npz",
+      "bytes": 90317,
+      "sha256": "f7f125ef8f94214ea3084fcb84e50903b56da7d31d964c444ba58da7981a09bd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__047__parietotemporal.npz",
+      "bytes": 88083,
+      "sha256": "cf914c0172598c1b7ace2c8416004f9615e8f762d0603fe4ff57b59b916d1479"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__047__random_1.npz",
+      "bytes": 89742,
+      "sha256": "9a029601179690417f88fee6ed6046ef8d0f60edbf1eab616d155844a86ba907"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__047__random_2.npz",
+      "bytes": 89425,
+      "sha256": "03a1aba2b22c81e19c7788eccf0e8268ceb5e3d60b3df69facd3ef1e7cc4d3b2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__051__bilateral.npz",
+      "bytes": 90716,
+      "sha256": "ad5f4b39b7364c40b0e0ba9bccdad1f2cb36515997c5073bbc5f0d55707c3322"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__051__frontoorbital.npz",
+      "bytes": 88887,
+      "sha256": "2606366f908215b793e442a76c199ddbd1d009daa255319a25dc20fee6949e03"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__051__parietotemporal.npz",
+      "bytes": 88631,
+      "sha256": "be43a7cf7a9b4d8c08cc395d59b8ed9ebf5cd9e0a0a40fd03ef3bfc0f7e98197"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__051__random_1.npz",
+      "bytes": 89702,
+      "sha256": "a93adebdc9e8897f1e8ae4bfe1c1550a8052a22fd0c9a6740748ba9a4d7d0171"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__051__random_2.npz",
+      "bytes": 89526,
+      "sha256": "72e3eb425aed0292165aea2c5954b9e9adbd96e58ae97b4f427fa93b5976e06f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__053__bilateral.npz",
+      "bytes": 89215,
+      "sha256": "f05fd8a9ae4c36529e64b5baed5ef8b614d493f4136d8b49602af39a62d6fb71"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__053__frontoorbital.npz",
+      "bytes": 88263,
+      "sha256": "74422518a72eef25bc20ed2e003ef2c93cdb8ccb863fea3edd8ffa4b08a55b60"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__053__parietotemporal.npz",
+      "bytes": 90282,
+      "sha256": "3a7d00d8c45e41ae55e0fde3ce397e1bef91c761806254b8773af007124eafea"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__053__random_1.npz",
+      "bytes": 88780,
+      "sha256": "ad458df29adfe7247fc20d4d6198dc66c326e9422a3ff7ec5eb7c1c8bc20eb29"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__053__random_2.npz",
+      "bytes": 89919,
+      "sha256": "099dc5b1d0f5ac2a282a7d0890eb5d8c4299f36d3e84edac97d5284a1d108d37"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__061__bilateral.npz",
+      "bytes": 89387,
+      "sha256": "b8c9c0982bdb385ee68dc18607c5ad92384d234bece0e4474c4c612003c02397"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__061__frontoorbital.npz",
+      "bytes": 89652,
+      "sha256": "f7c623ff7aada5e80714b9a898ba89246b8afde68eac078a72850cd3b9a850b7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__061__parietotemporal.npz",
+      "bytes": 89203,
+      "sha256": "85fa4239ef63192afa4c6dbbf9e44b27fa3b223ac5443dbbaa94fbd5b268a48e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__061__random_1.npz",
+      "bytes": 90206,
+      "sha256": "5bb849dbbcecc1f643f07734d206aebef433c663d0e1be7ed7fe99030446de90"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__061__random_2.npz",
+      "bytes": 90334,
+      "sha256": "331914a456677d5ee371ad7dfa429b1e6592b30b94491fff4a53a3e28ce1815f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__066__bilateral.npz",
+      "bytes": 89727,
+      "sha256": "4648c69b35525a28882b3cad5e3e7599c269db7ca9ed90cb3576a71ca7caf041"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__066__frontoorbital.npz",
+      "bytes": 90945,
+      "sha256": "f4989fd9fdd5557108873377e4271eacf9416ddfef23444a701af1e43fa04408"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__066__parietotemporal.npz",
+      "bytes": 89015,
+      "sha256": "150c6d129bc20b7bf22313d41e52d3b8277d3978036dde8cc0efd29d5310125a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__066__random_1.npz",
+      "bytes": 88846,
+      "sha256": "67e92beada2235963ee36160352f2bb3949cd76a75b4bec53f024bbc9ef8fdbc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__066__random_2.npz",
+      "bytes": 89731,
+      "sha256": "b59028dba83c14b78b08a234a1896929a17667e5392e8715181056158a8985ff"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__072__bilateral.npz",
+      "bytes": 90628,
+      "sha256": "a281cdb946d6f34b739f2a8c90a00df2b3009d7df9c67e9395fd556017e839ba"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__072__frontoorbital.npz",
+      "bytes": 90657,
+      "sha256": "64581483285f9cdb8720a7b761703dd037c04af9e87523e19597883bf67c2ce7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__072__parietotemporal.npz",
+      "bytes": 90102,
+      "sha256": "293e11f5f2f2e8094186b365b966d9371646a5f08e424f1b516ffa0287d0e14b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__072__random_1.npz",
+      "bytes": 90120,
+      "sha256": "3e2e6112386bdc88718313941db249f10540e03067842218f3076c4f6433cf73"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__072__random_2.npz",
+      "bytes": 89810,
+      "sha256": "5f8dc9007af47c7ed3c7f302049be0fe42ef0803fb956bdd02ba3daa8e7c6883"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__076__bilateral.npz",
+      "bytes": 89712,
+      "sha256": "8f637643e4e72f84d3a7b5a9a914a263d1172551bfb86d12855ea22806af8943"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__076__frontoorbital.npz",
+      "bytes": 90166,
+      "sha256": "d248c48841b2d07b22c1ccbc0bd628b79c070f053d2ab0f64a36720db6d70a36"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__076__parietotemporal.npz",
+      "bytes": 88703,
+      "sha256": "7f5a5bc71ee02107a9620cb7bf8f6823411531fee369f5b2261cf6418cbc48dd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__076__random_1.npz",
+      "bytes": 88138,
+      "sha256": "101256b87ee07a14f22bf7915f010082594bdeba2aadf0ea591b113a7f6967d6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__076__random_2.npz",
+      "bytes": 90186,
+      "sha256": "47965c9e077de8249351a3b308ee56ae51550eca9495aac7cecd80e96d6940c2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__081__bilateral.npz",
+      "bytes": 89132,
+      "sha256": "01e3b142b8f3abb003df449a361f90e4327d516d90792c435f5085befd042377"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__081__frontoorbital.npz",
+      "bytes": 89937,
+      "sha256": "5fda2cc52a3c0a84ee5e21bfdafa0ef15189c9ddd3e890ac77662c4980734d5a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__081__parietotemporal.npz",
+      "bytes": 89438,
+      "sha256": "ec49ad62031f05ed7b75b135b07987fc0a37d4caa3110ee7e6a96046e0b88015"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__081__random_1.npz",
+      "bytes": 90455,
+      "sha256": "da3b488d611809a6ee484713b9509a6e6445f565b93d2f24a84239f1e59a17ff"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__081__random_2.npz",
+      "bytes": 89130,
+      "sha256": "8ff75ace5aab8cac39b937d7d47c35a2d24cd58d3ac09e0531f0aac04b16617b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__094__bilateral.npz",
+      "bytes": 88833,
+      "sha256": "1a1ab0ee998aab7e43f6b6d4f0abe4a379f0cfac45bb3efc3c2bca3df8cee8c9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__094__frontoorbital.npz",
+      "bytes": 90325,
+      "sha256": "ce4121423ffa20c45b1661ecf1616a42ffbc809abdffd506f6c4ede466dd92e0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__094__parietotemporal.npz",
+      "bytes": 86026,
+      "sha256": "3c4661bac29c6bb1a4817290206aed05dcd08763d961cf8b761deef1434cce49"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__094__random_1.npz",
+      "bytes": 90931,
+      "sha256": "34950d42ea24626d92e8bde94e09bc073fee957baec70ad900d4c4beade05008"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__094__random_2.npz",
+      "bytes": 87022,
+      "sha256": "85e75c2f9d6b765447bd4317c3e5d1bfddcb229be61440b458132ad130eeffbb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__105__bilateral.npz",
+      "bytes": 91080,
+      "sha256": "268d2705d202c46480c5411fddde6f100e3b7be82425fcee275efa3ea6f75dd9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__105__frontoorbital.npz",
+      "bytes": 89095,
+      "sha256": "7eb942b39e44e50d7a4af32cf63704bb3517640301f5ee6324d2492a195f87c7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__105__parietotemporal.npz",
+      "bytes": 88824,
+      "sha256": "daad80fc6f3f48b0083db0d1f405e6f6790318e2cef2bea86bb16846457bc623"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__105__random_1.npz",
+      "bytes": 89525,
+      "sha256": "9c9e683aa9f3d7d01562392459d9c34d7397742e7ffc216da505e5811583779d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__105__random_2.npz",
+      "bytes": 90181,
+      "sha256": "1e403e2c56c3050e83256fbd4ce5dec5a6dabd9b4093ce44aef077b3c3322698"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__107__bilateral.npz",
+      "bytes": 90821,
+      "sha256": "c8976f125fc34d4b673f4ac11768bdc4b23463fe27cde27bff39f0344bb1bca4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__107__frontoorbital.npz",
+      "bytes": 88941,
+      "sha256": "3fb7cb8d19e3da3934f4d05a1c52df91b25bf65dfaf049d8ff2a56948a7368aa"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__107__parietotemporal.npz",
+      "bytes": 88002,
+      "sha256": "5f426e327ce4a2c1774ee4da6a212eaeffe96fbe69bd52e4a7ef167f06a08e90"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__107__random_1.npz",
+      "bytes": 89945,
+      "sha256": "9c1c639e9c1f184bffdfcf94b55b33534dcbb833fecbfecef089305100f3480a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_Morton_area_stratified8k__train__107__random_2.npz",
+      "bytes": 89365,
+      "sha256": "bfb26af1a0f72e57b4706618e54ff3835e3e3b3c56005cb9d7c614d4c3d5ad6a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__001__bilateral.npz",
+      "bytes": 89689,
+      "sha256": "140826c9563eb752d6f1a43e0fb1173cde98adcc286ec15d4ed968b04551cbd5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__001__frontoorbital.npz",
+      "bytes": 89698,
+      "sha256": "f2c18505c5f72092dd128f7610a6b36b60fd93da8fe11e0134c6aaff896ce107"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__001__parietotemporal.npz",
+      "bytes": 89680,
+      "sha256": "d70d93640fc1df9aff2a8c25a3632106cea437c8a00a33db1d8459098b90104b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__001__random_1.npz",
+      "bytes": 90837,
+      "sha256": "0cb4eebf3c25d958206089141f0390e5f976aa9203087a99d20af53d57a033ef"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__001__random_2.npz",
+      "bytes": 89489,
+      "sha256": "e712d57bae119974faeeffa94dcab00aeef5d2e8167e3d03cdcedd42409385c4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__003__bilateral.npz",
+      "bytes": 89898,
+      "sha256": "4c3740e625dcaad7d143b6b411bd9c466fd0cb69f97755c952677b4405045af3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__003__frontoorbital.npz",
+      "bytes": 88154,
+      "sha256": "83291f979ac7f947a13554638458e099dfa131a02f74700ecc25b8d99e9df554"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__003__parietotemporal.npz",
+      "bytes": 89978,
+      "sha256": "f496a54806cc9a54becad2cd4cc12f84133ca445c95457ca474d858e8dd82d84"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__003__random_1.npz",
+      "bytes": 89533,
+      "sha256": "789c142114400abf1a1ce9578a84801ab7545515940d783c88ad21184db78c71"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__003__random_2.npz",
+      "bytes": 89867,
+      "sha256": "14d0b98e9cd6fb31b29f612a3a6b59001ede784d1024862f74248965f53b7921"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__012__bilateral.npz",
+      "bytes": 89533,
+      "sha256": "57ad6e6f6b56b62141ac03e722b53e89f97e3cb68d44dfefdd721ccc05f2ee9a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__012__frontoorbital.npz",
+      "bytes": 90190,
+      "sha256": "c8b87b195cf4d10c92aa0491e2cb9edbf8a965850ec94222a7d0a11fca08e2fc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__012__parietotemporal.npz",
+      "bytes": 90090,
+      "sha256": "f272b4e97beef134d75aedb1a37f37b7f18ce0538a2bf8ee293cbe9b661ec1c0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__012__random_1.npz",
+      "bytes": 90459,
+      "sha256": "e7fad47e89e69a1a140cfbce128f148ebb0c3a867af4b1ac5972858131aa09dd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__012__random_2.npz",
+      "bytes": 87836,
+      "sha256": "4d171a360ff12ccb0b90fe7b46eb2a71dd2e614c66fd4cd4b62aba23a4275b48"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__013__bilateral.npz",
+      "bytes": 89566,
+      "sha256": "e8b2fb023d1beabc40d92df0301805d8e6547472355185aa5b2100308c83aa8d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__013__frontoorbital.npz",
+      "bytes": 86548,
+      "sha256": "373a4205f8c1eff4ac54c181578e8e737b7cc7d724c66dc18a43ab199066be4d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__013__parietotemporal.npz",
+      "bytes": 89442,
+      "sha256": "2502bb67a845d215dfa3cc1b14c4a582da37a2eaaccd929b2e4a6ceec69c5dec"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__013__random_1.npz",
+      "bytes": 89682,
+      "sha256": "724dd4b49693be0664a3e90406c56583d04b0fd5d347325c85d19ce7b45277f0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__013__random_2.npz",
+      "bytes": 89552,
+      "sha256": "1ac9215bb2fe0356c39427c09b70803d26914b85720da4f3ffb74fd8511d2704"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__025__bilateral.npz",
+      "bytes": 89256,
+      "sha256": "ff6c361c4ee0ae55097a973a938a261e531ea06f071ef5df5c82b4fd71b44572"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__025__frontoorbital.npz",
+      "bytes": 89463,
+      "sha256": "ef757314950dfa41cc7abede42b35fd6c8eeb8633b422cc580d6e7ca11bc38e0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__025__parietotemporal.npz",
+      "bytes": 90440,
+      "sha256": "007d3f30dd209536ac9546844677a77b21168c9914e0a1de77837fc90c51770c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__025__random_1.npz",
+      "bytes": 89191,
+      "sha256": "2ed9b5e8e8db8f8e2d95181fe848814b9d9b06fb094a5bf2fb814615867b4f08"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__025__random_2.npz",
+      "bytes": 90874,
+      "sha256": "a70dccb3ceab39c6fda11832e3c7c2794d452476a708de7528f850686fbb1ffa"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__026__bilateral.npz",
+      "bytes": 89365,
+      "sha256": "a142fa305aa1f8b2b0a2819178283c84bef1f4635685ad6474c4486b795bc0a9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__026__frontoorbital.npz",
+      "bytes": 90456,
+      "sha256": "c4e2033c7b01851b643e203d4dca924693c78d275c658283f6faac6bc093343a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__026__parietotemporal.npz",
+      "bytes": 89159,
+      "sha256": "b738335c4385edd9030937029fe824e710735349acfe9ff0772f36493969bb44"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__026__random_1.npz",
+      "bytes": 90134,
+      "sha256": "76db784ab591cb5170c84f6e8261f2b53571b7f58a74d4126cc98bc657d371e1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__026__random_2.npz",
+      "bytes": 87714,
+      "sha256": "ac7bd6775ecb07043fada849762321a3600ad05110d84a6936f0fe4a6e308174"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__036__bilateral.npz",
+      "bytes": 89880,
+      "sha256": "8bdd2da761fa3242c28c9f03720f75564c0e3f01d3a7ac953ed25854cedf59f6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__036__frontoorbital.npz",
+      "bytes": 90218,
+      "sha256": "53e4f155fc1a1822863e557a2e586fead2dde5b8b0f53cbff2de92c847ff323f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__036__parietotemporal.npz",
+      "bytes": 90195,
+      "sha256": "536c6a4ae3ce6b1576afcf4d1bea3e4840ffefac9f1044a4c14bc00d53b22089"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__036__random_1.npz",
+      "bytes": 88911,
+      "sha256": "8f17115544f4fa843251cd7602d7b0178f2dfad13a9fd841c70e67802a26606d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__036__random_2.npz",
+      "bytes": 90483,
+      "sha256": "19ffe6cbb4e2bcf566fd8cbede9dbca46cf5fe15af009de7e90b599559d9c6f7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__038__bilateral.npz",
+      "bytes": 90788,
+      "sha256": "a1da9ceb472488ebccbb7bc9cc7b162e89c4b423bf05757fe7454c505df7329e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__038__frontoorbital.npz",
+      "bytes": 88842,
+      "sha256": "44c26dc48a9eee82fe43008eeade55f772a1566b626f8c88062da2acc31936fc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__038__parietotemporal.npz",
+      "bytes": 90055,
+      "sha256": "40cff9f0013c2ed89feb310e6de4100b10711d0dc27f2b0c90057bba81104fc9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__038__random_1.npz",
+      "bytes": 90917,
+      "sha256": "91294f8ca19deeef3013d560475e4c0ecfb48dc2d1b74bfe384dc7f217ee89e7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__038__random_2.npz",
+      "bytes": 90243,
+      "sha256": "9e9a84d03c564d3fa36e944e88a25f06312b8a137457b3de72bcdac134f902cd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__041__bilateral.npz",
+      "bytes": 89854,
+      "sha256": "e125731b9b7219a5713639e11384e222cbe8b37b91a70216ed0bc37da6a622ff"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__041__frontoorbital.npz",
+      "bytes": 86853,
+      "sha256": "31499f51aff34542713d972aff9ff84f639010f7d138387e5755100c6e9cd4e7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__041__parietotemporal.npz",
+      "bytes": 89983,
+      "sha256": "fc3ebed6ccb0c5ab533f7685556f1f1f22b7ef06ee60d7caf1e7f4d1b0deb5d3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__041__random_1.npz",
+      "bytes": 90410,
+      "sha256": "867f3953788c6a6139117a5138e7c446350cbc845d441ab36a31c94e31cffac2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__041__random_2.npz",
+      "bytes": 89431,
+      "sha256": "b3e6e588960bd64d09ee924b0850bdfd7fce8eea23ee5ec890b775739e627662"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__042__bilateral.npz",
+      "bytes": 90744,
+      "sha256": "47bb1a23598253c503c2c9f2c1379850d58b0e4ae9fe62b5bdb1dda14282f524"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__042__frontoorbital.npz",
+      "bytes": 89087,
+      "sha256": "cee6e63b9b3cf00f0a6e136d96001a2db79022e054bdbc98ecffc761ed59f414"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__042__parietotemporal.npz",
+      "bytes": 89517,
+      "sha256": "9b0656a7b5d3250c6de49b2970c7ede0c884ee2f87d1b3f84e20336d7cdd8e21"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__042__random_1.npz",
+      "bytes": 90234,
+      "sha256": "13ed5369a52ed853909a32b98ae1208537d1eb165049ef3fd5418a784be61a54"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__042__random_2.npz",
+      "bytes": 90134,
+      "sha256": "703c6cdd1179a0ac2a9305ce78869c1b2e84db2fe4893d95b9b54f09e6b6bda9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__047__bilateral.npz",
+      "bytes": 89883,
+      "sha256": "c007f9356f0da4243d409770853dd236397c8fa8eca4b314299b877d5e329eae"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__047__frontoorbital.npz",
+      "bytes": 89548,
+      "sha256": "88bb87aee0a5508a40e28909affaaf0803979e903f73a76516c4e57e962694cb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__047__parietotemporal.npz",
+      "bytes": 87589,
+      "sha256": "f53d3e8345317fab6c759acde132bfffd4ef3fd8f583b6f38d6865345f260c90"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__047__random_1.npz",
+      "bytes": 90262,
+      "sha256": "6f40cf1f8508bc09b3efad05ffff889e4ed6544bf89d129c27e6d9253cd3930d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__047__random_2.npz",
+      "bytes": 89097,
+      "sha256": "13dc2546490c0c8c99eb1f2f1eb488256694b2fa47ab33d538fc3f56b17d38cf"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__051__bilateral.npz",
+      "bytes": 90685,
+      "sha256": "bbef0c9e25ca5694c6afe3be3c957c51f560338db817b199f0cb1140d8ce7c3e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__051__frontoorbital.npz",
+      "bytes": 90700,
+      "sha256": "af7e728e0d77d4f8345ab5020f4f0d1e73c894a5e1a636e977fd450828ad658e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__051__parietotemporal.npz",
+      "bytes": 88927,
+      "sha256": "902f3cb0828d6089be0ef6eb05c28a6ba70b1fe82af78f89ae9e197a76e14840"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__051__random_1.npz",
+      "bytes": 89566,
+      "sha256": "5057006899d507adaeec72c6abde395d3c0a2ba29cb424cecbd110c3567a39e0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__051__random_2.npz",
+      "bytes": 89509,
+      "sha256": "f66b722bd1fee99477865e08d73a3696a4c9cfc0eab86e99c27c30c1e4d582ef"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__053__bilateral.npz",
+      "bytes": 89054,
+      "sha256": "ff5ba1d79cbabed0a5281de759d0ef24468987ac924ccf4ada9ee7fa8a2987b1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__053__frontoorbital.npz",
+      "bytes": 88073,
+      "sha256": "3ec16f7005140f06064840a90c3e48b0622df46de37a45c4a494b61bd0b28fd1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__053__parietotemporal.npz",
+      "bytes": 90559,
+      "sha256": "76320c67e1cf72ac6a6f64ffda1546cd0140f9d47ef4b470599e02f0f5a87a50"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__053__random_1.npz",
+      "bytes": 88936,
+      "sha256": "d4f68f5a89da82c5f36d39fde2912f713c8dfa84a71caace15589aaab8733401"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__053__random_2.npz",
+      "bytes": 89850,
+      "sha256": "9c7ea201999a17038518c13d08c3e5818028536361aeed234bc74b6d46d3a7cb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__061__bilateral.npz",
+      "bytes": 89354,
+      "sha256": "e931271bff99121a599b3c89dbcda6ba461832ebffa210c65826e4c903dafab7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__061__frontoorbital.npz",
+      "bytes": 90580,
+      "sha256": "363488021f7ddd0799d180864f579ba429a3035d49d5c972cb9f408fd6a90b64"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__061__parietotemporal.npz",
+      "bytes": 88732,
+      "sha256": "f24f80c637b374865ec373b8ad4c6a51fed9560ade3fd5db60bd2a4dd33a8cee"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__061__random_1.npz",
+      "bytes": 90336,
+      "sha256": "ee5ab6347e1c588c7334e9f9508dc7e530dcb540878cf8579840ffec67e57df3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__061__random_2.npz",
+      "bytes": 90205,
+      "sha256": "55dd7000fee164840d0fc9ac4d0252b866393240059eeddc5cb42c967abf9ad2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__066__bilateral.npz",
+      "bytes": 89547,
+      "sha256": "df783c87e69bcab1ae779c888e51001177805b300e373191b9d19d2cefa73805"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__066__frontoorbital.npz",
+      "bytes": 90466,
+      "sha256": "33c351cd4d9d2ec317166c3c356e650a36957e5fa04ce48fad2c596df5efd86e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__066__parietotemporal.npz",
+      "bytes": 88689,
+      "sha256": "a3e5f9264712964b48de2bc9874dce5ca08417909f3e0c60f83f7c589dce3dfc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__066__random_1.npz",
+      "bytes": 88583,
+      "sha256": "b245067ff32db3a50c0fa78fffc85a6ab0bf4c7670d1efd26c58ba144bdda103"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__066__random_2.npz",
+      "bytes": 89716,
+      "sha256": "440568773d13e3c9d689d248bd949b4af445928120e7241c3980ffb482092bee"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__072__bilateral.npz",
+      "bytes": 90723,
+      "sha256": "a36e99d5209b5ce32bf9937ab0204009d857050a7251abe50afff1287039f56a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__072__frontoorbital.npz",
+      "bytes": 90697,
+      "sha256": "0977e6496d84993d2d71780b4822c29b0dee6c30e79915cfd831e3baa010a993"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__072__parietotemporal.npz",
+      "bytes": 90321,
+      "sha256": "811c455e486f78f9ade8bc37da17db24a7a672c93d01b69557da6e69b8b2581b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__072__random_1.npz",
+      "bytes": 88436,
+      "sha256": "4ec8e29902c89781f626184d5d6ca13c6585e9fcf2b35d56c9305d0749b6e9b6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__072__random_2.npz",
+      "bytes": 90262,
+      "sha256": "39562c4c1c8867bb1324c1e09acad2672bcef782e181d65f0207b2b6ce244c65"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__076__bilateral.npz",
+      "bytes": 89758,
+      "sha256": "c37f57fd1288cc2adc1509662016dca7e20ce8b3327c9ac11e0ee2392029017b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__076__frontoorbital.npz",
+      "bytes": 89295,
+      "sha256": "6d6285259bfd19a61a1a0bca1861412642fb34789bf9d468133991cc3c5e7591"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__076__parietotemporal.npz",
+      "bytes": 88472,
+      "sha256": "50201d430303e437a8e782f3b1f49c2b2cfa97220ca9aa78038fb646c766eb55"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__076__random_1.npz",
+      "bytes": 89060,
+      "sha256": "aee77b7e04f961855eb8b3eb94a8b92c053bce7772da6f2f5c97e85fc9618691"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__076__random_2.npz",
+      "bytes": 90564,
+      "sha256": "f2e4f421eed9aafd5b03b4558e17166a4ff2f40b9c71d5dc41138ed8214937cd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__081__bilateral.npz",
+      "bytes": 89498,
+      "sha256": "bce113586c429c67feebccb9e8fd343135ee6a3ab9174c79322b2cfb6a5cad28"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__081__frontoorbital.npz",
+      "bytes": 90280,
+      "sha256": "d6ca199c242e2e0f9a07b5be73836a07b25c17a810b25808e8a8032266bdd23c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__081__parietotemporal.npz",
+      "bytes": 88786,
+      "sha256": "0790551d5166f9901c1c393e742c17208da782810c3f7f9cc749f6c695b8a47e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__081__random_1.npz",
+      "bytes": 90567,
+      "sha256": "f948eceec35b392fec72c280a9dcd80d04a94bf10b01e5cc4ad68d8da683013c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__081__random_2.npz",
+      "bytes": 89035,
+      "sha256": "e172268bd2357746842bd63007d280d31798dcb59ed8907b20602da41622d1a9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__094__bilateral.npz",
+      "bytes": 88956,
+      "sha256": "e124e08573adad318b27aa8777089b3e6850eeec76721e55b19946360f47a670"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__094__frontoorbital.npz",
+      "bytes": 89053,
+      "sha256": "14dd946943d005efada74918c6b99fbe57d984f784cf651f728ddd018b900d4f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__094__parietotemporal.npz",
+      "bytes": 88037,
+      "sha256": "56b39f94940e15721d01cb5439a4b1dd0dabbb07f5305fd0c03dc38d7f748bc0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__094__random_1.npz",
+      "bytes": 90931,
+      "sha256": "665b3b4b9771773ccf83705db2932c5cbdc35182709c27fa5987bd050e0fa1e8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__094__random_2.npz",
+      "bytes": 86304,
+      "sha256": "c7551bd8efc2aadc085729f2362737f7f672850988503bd8f539ea2d994db86a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__105__bilateral.npz",
+      "bytes": 91102,
+      "sha256": "053b73c2a8c911270461d0d16be69c8c6638c6a4cad5111cb89c9cf6b62eb7bf"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__105__frontoorbital.npz",
+      "bytes": 88299,
+      "sha256": "f24ab509bd1b8c7a5eed3fc6df0999a1e14332f4143b9bb0e1105d552382c5d2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__105__parietotemporal.npz",
+      "bytes": 89128,
+      "sha256": "a74cf9be420ca0d1217949d45bf1cce18c71a93dc892b0bcae0b1c450e2e8093"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__105__random_1.npz",
+      "bytes": 89547,
+      "sha256": "643d8ebc7b03c8db1bf7372a53f3d1e4eca6a135103ef7edc7f2959c7263bd3b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__105__random_2.npz",
+      "bytes": 90261,
+      "sha256": "2cb63baf2e2a75c0475683910b92d9371f3a605d6f8ef2124c220ce553638d69"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__107__bilateral.npz",
+      "bytes": 91229,
+      "sha256": "4c15d314a444e0b6daa60cd14014d9b5f270c1bd14b2f76d5ed77f2380840e2f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__107__frontoorbital.npz",
+      "bytes": 88806,
+      "sha256": "de9a3e426df4d9f884a3ffdbef33f9eda5de989dffdfb6404f0e667dc342f847"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__107__parietotemporal.npz",
+      "bytes": 87358,
+      "sha256": "07589da2d0ce4a3f63139e2edeea12dbae406ce7ddb818746f8ec4d7e48d8b5a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__107__random_1.npz",
+      "bytes": 90039,
+      "sha256": "b4822e5cecd116c3b2a1803c76269570908b8aea13dedcf1dd9a1811cec377cf"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/predictions/C_V1__train__107__random_2.npz",
+      "bytes": 89518,
+      "sha256": "e73b523b44e5c533e5d5805a40a252afa1842b75de34270322bf65b61bc11d8e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/resources.jsonl",
+      "bytes": 222453,
+      "sha256": "0a8d447eb3db7375e08bf71e7a8c39a5cbc9c6ab2ed1c63f4a87131778b1eb84"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/worker.pid",
+      "bytes": 5,
+      "sha256": "d145f9010016b5288efc82d76c8a2812c44d101cc0418ffe843b34b62e1677d0"
+    }
+  ],
+  "prediction_manifest": [
+    {
+      "name": "predictions/C_V1__train__001__bilateral.npz",
+      "bytes": 89689,
+      "sha256": "140826c9563eb752d6f1a43e0fb1173cde98adcc286ec15d4ed968b04551cbd5"
+    },
+    {
+      "name": "predictions/C_V1__train__001__frontoorbital.npz",
+      "bytes": 89698,
+      "sha256": "f2c18505c5f72092dd128f7610a6b36b60fd93da8fe11e0134c6aaff896ce107"
+    },
+    {
+      "name": "predictions/C_V1__train__001__parietotemporal.npz",
+      "bytes": 89680,
+      "sha256": "d70d93640fc1df9aff2a8c25a3632106cea437c8a00a33db1d8459098b90104b"
+    },
+    {
+      "name": "predictions/C_V1__train__001__random_1.npz",
+      "bytes": 90837,
+      "sha256": "0cb4eebf3c25d958206089141f0390e5f976aa9203087a99d20af53d57a033ef"
+    },
+    {
+      "name": "predictions/C_V1__train__001__random_2.npz",
+      "bytes": 89489,
+      "sha256": "e712d57bae119974faeeffa94dcab00aeef5d2e8167e3d03cdcedd42409385c4"
+    },
+    {
+      "name": "predictions/C_V1__train__003__bilateral.npz",
+      "bytes": 89898,
+      "sha256": "4c3740e625dcaad7d143b6b411bd9c466fd0cb69f97755c952677b4405045af3"
+    },
+    {
+      "name": "predictions/C_V1__train__003__frontoorbital.npz",
+      "bytes": 88154,
+      "sha256": "83291f979ac7f947a13554638458e099dfa131a02f74700ecc25b8d99e9df554"
+    },
+    {
+      "name": "predictions/C_V1__train__003__parietotemporal.npz",
+      "bytes": 89978,
+      "sha256": "f496a54806cc9a54becad2cd4cc12f84133ca445c95457ca474d858e8dd82d84"
+    },
+    {
+      "name": "predictions/C_V1__train__003__random_1.npz",
+      "bytes": 89533,
+      "sha256": "789c142114400abf1a1ce9578a84801ab7545515940d783c88ad21184db78c71"
+    },
+    {
+      "name": "predictions/C_V1__train__003__random_2.npz",
+      "bytes": 89867,
+      "sha256": "14d0b98e9cd6fb31b29f612a3a6b59001ede784d1024862f74248965f53b7921"
+    },
+    {
+      "name": "predictions/C_V1__train__012__bilateral.npz",
+      "bytes": 89533,
+      "sha256": "57ad6e6f6b56b62141ac03e722b53e89f97e3cb68d44dfefdd721ccc05f2ee9a"
+    },
+    {
+      "name": "predictions/C_V1__train__012__frontoorbital.npz",
+      "bytes": 90190,
+      "sha256": "c8b87b195cf4d10c92aa0491e2cb9edbf8a965850ec94222a7d0a11fca08e2fc"
+    },
+    {
+      "name": "predictions/C_V1__train__012__parietotemporal.npz",
+      "bytes": 90090,
+      "sha256": "f272b4e97beef134d75aedb1a37f37b7f18ce0538a2bf8ee293cbe9b661ec1c0"
+    },
+    {
+      "name": "predictions/C_V1__train__012__random_1.npz",
+      "bytes": 90459,
+      "sha256": "e7fad47e89e69a1a140cfbce128f148ebb0c3a867af4b1ac5972858131aa09dd"
+    },
+    {
+      "name": "predictions/C_V1__train__012__random_2.npz",
+      "bytes": 87836,
+      "sha256": "4d171a360ff12ccb0b90fe7b46eb2a71dd2e614c66fd4cd4b62aba23a4275b48"
+    },
+    {
+      "name": "predictions/C_V1__train__013__bilateral.npz",
+      "bytes": 89566,
+      "sha256": "e8b2fb023d1beabc40d92df0301805d8e6547472355185aa5b2100308c83aa8d"
+    },
+    {
+      "name": "predictions/C_V1__train__013__frontoorbital.npz",
+      "bytes": 86548,
+      "sha256": "373a4205f8c1eff4ac54c181578e8e737b7cc7d724c66dc18a43ab199066be4d"
+    },
+    {
+      "name": "predictions/C_V1__train__013__parietotemporal.npz",
+      "bytes": 89442,
+      "sha256": "2502bb67a845d215dfa3cc1b14c4a582da37a2eaaccd929b2e4a6ceec69c5dec"
+    },
+    {
+      "name": "predictions/C_V1__train__013__random_1.npz",
+      "bytes": 89682,
+      "sha256": "724dd4b49693be0664a3e90406c56583d04b0fd5d347325c85d19ce7b45277f0"
+    },
+    {
+      "name": "predictions/C_V1__train__013__random_2.npz",
+      "bytes": 89552,
+      "sha256": "1ac9215bb2fe0356c39427c09b70803d26914b85720da4f3ffb74fd8511d2704"
+    },
+    {
+      "name": "predictions/C_V1__train__025__bilateral.npz",
+      "bytes": 89256,
+      "sha256": "ff6c361c4ee0ae55097a973a938a261e531ea06f071ef5df5c82b4fd71b44572"
+    },
+    {
+      "name": "predictions/C_V1__train__025__frontoorbital.npz",
+      "bytes": 89463,
+      "sha256": "ef757314950dfa41cc7abede42b35fd6c8eeb8633b422cc580d6e7ca11bc38e0"
+    },
+    {
+      "name": "predictions/C_V1__train__025__parietotemporal.npz",
+      "bytes": 90440,
+      "sha256": "007d3f30dd209536ac9546844677a77b21168c9914e0a1de77837fc90c51770c"
+    },
+    {
+      "name": "predictions/C_V1__train__025__random_1.npz",
+      "bytes": 89191,
+      "sha256": "2ed9b5e8e8db8f8e2d95181fe848814b9d9b06fb094a5bf2fb814615867b4f08"
+    },
+    {
+      "name": "predictions/C_V1__train__025__random_2.npz",
+      "bytes": 90874,
+      "sha256": "a70dccb3ceab39c6fda11832e3c7c2794d452476a708de7528f850686fbb1ffa"
+    },
+    {
+      "name": "predictions/C_V1__train__026__bilateral.npz",
+      "bytes": 89365,
+      "sha256": "a142fa305aa1f8b2b0a2819178283c84bef1f4635685ad6474c4486b795bc0a9"
+    },
+    {
+      "name": "predictions/C_V1__train__026__frontoorbital.npz",
+      "bytes": 90456,
+      "sha256": "c4e2033c7b01851b643e203d4dca924693c78d275c658283f6faac6bc093343a"
+    },
+    {
+      "name": "predictions/C_V1__train__026__parietotemporal.npz",
+      "bytes": 89159,
+      "sha256": "b738335c4385edd9030937029fe824e710735349acfe9ff0772f36493969bb44"
+    },
+    {
+      "name": "predictions/C_V1__train__026__random_1.npz",
+      "bytes": 90134,
+      "sha256": "76db784ab591cb5170c84f6e8261f2b53571b7f58a74d4126cc98bc657d371e1"
+    },
+    {
+      "name": "predictions/C_V1__train__026__random_2.npz",
+      "bytes": 87714,
+      "sha256": "ac7bd6775ecb07043fada849762321a3600ad05110d84a6936f0fe4a6e308174"
+    },
+    {
+      "name": "predictions/C_V1__train__036__bilateral.npz",
+      "bytes": 89880,
+      "sha256": "8bdd2da761fa3242c28c9f03720f75564c0e3f01d3a7ac953ed25854cedf59f6"
+    },
+    {
+      "name": "predictions/C_V1__train__036__frontoorbital.npz",
+      "bytes": 90218,
+      "sha256": "53e4f155fc1a1822863e557a2e586fead2dde5b8b0f53cbff2de92c847ff323f"
+    },
+    {
+      "name": "predictions/C_V1__train__036__parietotemporal.npz",
+      "bytes": 90195,
+      "sha256": "536c6a4ae3ce6b1576afcf4d1bea3e4840ffefac9f1044a4c14bc00d53b22089"
+    },
+    {
+      "name": "predictions/C_V1__train__036__random_1.npz",
+      "bytes": 88911,
+      "sha256": "8f17115544f4fa843251cd7602d7b0178f2dfad13a9fd841c70e67802a26606d"
+    },
+    {
+      "name": "predictions/C_V1__train__036__random_2.npz",
+      "bytes": 90483,
+      "sha256": "19ffe6cbb4e2bcf566fd8cbede9dbca46cf5fe15af009de7e90b599559d9c6f7"
+    },
+    {
+      "name": "predictions/C_V1__train__038__bilateral.npz",
+      "bytes": 90788,
+      "sha256": "a1da9ceb472488ebccbb7bc9cc7b162e89c4b423bf05757fe7454c505df7329e"
+    },
+    {
+      "name": "predictions/C_V1__train__038__frontoorbital.npz",
+      "bytes": 88842,
+      "sha256": "44c26dc48a9eee82fe43008eeade55f772a1566b626f8c88062da2acc31936fc"
+    },
+    {
+      "name": "predictions/C_V1__train__038__parietotemporal.npz",
+      "bytes": 90055,
+      "sha256": "40cff9f0013c2ed89feb310e6de4100b10711d0dc27f2b0c90057bba81104fc9"
+    },
+    {
+      "name": "predictions/C_V1__train__038__random_1.npz",
+      "bytes": 90917,
+      "sha256": "91294f8ca19deeef3013d560475e4c0ecfb48dc2d1b74bfe384dc7f217ee89e7"
+    },
+    {
+      "name": "predictions/C_V1__train__038__random_2.npz",
+      "bytes": 90243,
+      "sha256": "9e9a84d03c564d3fa36e944e88a25f06312b8a137457b3de72bcdac134f902cd"
+    },
+    {
+      "name": "predictions/C_V1__train__041__bilateral.npz",
+      "bytes": 89854,
+      "sha256": "e125731b9b7219a5713639e11384e222cbe8b37b91a70216ed0bc37da6a622ff"
+    },
+    {
+      "name": "predictions/C_V1__train__041__frontoorbital.npz",
+      "bytes": 86853,
+      "sha256": "31499f51aff34542713d972aff9ff84f639010f7d138387e5755100c6e9cd4e7"
+    },
+    {
+      "name": "predictions/C_V1__train__041__parietotemporal.npz",
+      "bytes": 89983,
+      "sha256": "fc3ebed6ccb0c5ab533f7685556f1f1f22b7ef06ee60d7caf1e7f4d1b0deb5d3"
+    },
+    {
+      "name": "predictions/C_V1__train__041__random_1.npz",
+      "bytes": 90410,
+      "sha256": "867f3953788c6a6139117a5138e7c446350cbc845d441ab36a31c94e31cffac2"
+    },
+    {
+      "name": "predictions/C_V1__train__041__random_2.npz",
+      "bytes": 89431,
+      "sha256": "b3e6e588960bd64d09ee924b0850bdfd7fce8eea23ee5ec890b775739e627662"
+    },
+    {
+      "name": "predictions/C_V1__train__042__bilateral.npz",
+      "bytes": 90744,
+      "sha256": "47bb1a23598253c503c2c9f2c1379850d58b0e4ae9fe62b5bdb1dda14282f524"
+    },
+    {
+      "name": "predictions/C_V1__train__042__frontoorbital.npz",
+      "bytes": 89087,
+      "sha256": "cee6e63b9b3cf00f0a6e136d96001a2db79022e054bdbc98ecffc761ed59f414"
+    },
+    {
+      "name": "predictions/C_V1__train__042__parietotemporal.npz",
+      "bytes": 89517,
+      "sha256": "9b0656a7b5d3250c6de49b2970c7ede0c884ee2f87d1b3f84e20336d7cdd8e21"
+    },
+    {
+      "name": "predictions/C_V1__train__042__random_1.npz",
+      "bytes": 90234,
+      "sha256": "13ed5369a52ed853909a32b98ae1208537d1eb165049ef3fd5418a784be61a54"
+    },
+    {
+      "name": "predictions/C_V1__train__042__random_2.npz",
+      "bytes": 90134,
+      "sha256": "703c6cdd1179a0ac2a9305ce78869c1b2e84db2fe4893d95b9b54f09e6b6bda9"
+    },
+    {
+      "name": "predictions/C_V1__train__047__bilateral.npz",
+      "bytes": 89883,
+      "sha256": "c007f9356f0da4243d409770853dd236397c8fa8eca4b314299b877d5e329eae"
+    },
+    {
+      "name": "predictions/C_V1__train__047__frontoorbital.npz",
+      "bytes": 89548,
+      "sha256": "88bb87aee0a5508a40e28909affaaf0803979e903f73a76516c4e57e962694cb"
+    },
+    {
+      "name": "predictions/C_V1__train__047__parietotemporal.npz",
+      "bytes": 87589,
+      "sha256": "f53d3e8345317fab6c759acde132bfffd4ef3fd8f583b6f38d6865345f260c90"
+    },
+    {
+      "name": "predictions/C_V1__train__047__random_1.npz",
+      "bytes": 90262,
+      "sha256": "6f40cf1f8508bc09b3efad05ffff889e4ed6544bf89d129c27e6d9253cd3930d"
+    },
+    {
+      "name": "predictions/C_V1__train__047__random_2.npz",
+      "bytes": 89097,
+      "sha256": "13dc2546490c0c8c99eb1f2f1eb488256694b2fa47ab33d538fc3f56b17d38cf"
+    },
+    {
+      "name": "predictions/C_V1__train__051__bilateral.npz",
+      "bytes": 90685,
+      "sha256": "bbef0c9e25ca5694c6afe3be3c957c51f560338db817b199f0cb1140d8ce7c3e"
+    },
+    {
+      "name": "predictions/C_V1__train__051__frontoorbital.npz",
+      "bytes": 90700,
+      "sha256": "af7e728e0d77d4f8345ab5020f4f0d1e73c894a5e1a636e977fd450828ad658e"
+    },
+    {
+      "name": "predictions/C_V1__train__051__parietotemporal.npz",
+      "bytes": 88927,
+      "sha256": "902f3cb0828d6089be0ef6eb05c28a6ba70b1fe82af78f89ae9e197a76e14840"
+    },
+    {
+      "name": "predictions/C_V1__train__051__random_1.npz",
+      "bytes": 89566,
+      "sha256": "5057006899d507adaeec72c6abde395d3c0a2ba29cb424cecbd110c3567a39e0"
+    },
+    {
+      "name": "predictions/C_V1__train__051__random_2.npz",
+      "bytes": 89509,
+      "sha256": "f66b722bd1fee99477865e08d73a3696a4c9cfc0eab86e99c27c30c1e4d582ef"
+    },
+    {
+      "name": "predictions/C_V1__train__053__bilateral.npz",
+      "bytes": 89054,
+      "sha256": "ff5ba1d79cbabed0a5281de759d0ef24468987ac924ccf4ada9ee7fa8a2987b1"
+    },
+    {
+      "name": "predictions/C_V1__train__053__frontoorbital.npz",
+      "bytes": 88073,
+      "sha256": "3ec16f7005140f06064840a90c3e48b0622df46de37a45c4a494b61bd0b28fd1"
+    },
+    {
+      "name": "predictions/C_V1__train__053__parietotemporal.npz",
+      "bytes": 90559,
+      "sha256": "76320c67e1cf72ac6a6f64ffda1546cd0140f9d47ef4b470599e02f0f5a87a50"
+    },
+    {
+      "name": "predictions/C_V1__train__053__random_1.npz",
+      "bytes": 88936,
+      "sha256": "d4f68f5a89da82c5f36d39fde2912f713c8dfa84a71caace15589aaab8733401"
+    },
+    {
+      "name": "predictions/C_V1__train__053__random_2.npz",
+      "bytes": 89850,
+      "sha256": "9c7ea201999a17038518c13d08c3e5818028536361aeed234bc74b6d46d3a7cb"
+    },
+    {
+      "name": "predictions/C_V1__train__061__bilateral.npz",
+      "bytes": 89354,
+      "sha256": "e931271bff99121a599b3c89dbcda6ba461832ebffa210c65826e4c903dafab7"
+    },
+    {
+      "name": "predictions/C_V1__train__061__frontoorbital.npz",
+      "bytes": 90580,
+      "sha256": "363488021f7ddd0799d180864f579ba429a3035d49d5c972cb9f408fd6a90b64"
+    },
+    {
+      "name": "predictions/C_V1__train__061__parietotemporal.npz",
+      "bytes": 88732,
+      "sha256": "f24f80c637b374865ec373b8ad4c6a51fed9560ade3fd5db60bd2a4dd33a8cee"
+    },
+    {
+      "name": "predictions/C_V1__train__061__random_1.npz",
+      "bytes": 90336,
+      "sha256": "ee5ab6347e1c588c7334e9f9508dc7e530dcb540878cf8579840ffec67e57df3"
+    },
+    {
+      "name": "predictions/C_V1__train__061__random_2.npz",
+      "bytes": 90205,
+      "sha256": "55dd7000fee164840d0fc9ac4d0252b866393240059eeddc5cb42c967abf9ad2"
+    },
+    {
+      "name": "predictions/C_V1__train__066__bilateral.npz",
+      "bytes": 89547,
+      "sha256": "df783c87e69bcab1ae779c888e51001177805b300e373191b9d19d2cefa73805"
+    },
+    {
+      "name": "predictions/C_V1__train__066__frontoorbital.npz",
+      "bytes": 90466,
+      "sha256": "33c351cd4d9d2ec317166c3c356e650a36957e5fa04ce48fad2c596df5efd86e"
+    },
+    {
+      "name": "predictions/C_V1__train__066__parietotemporal.npz",
+      "bytes": 88689,
+      "sha256": "a3e5f9264712964b48de2bc9874dce5ca08417909f3e0c60f83f7c589dce3dfc"
+    },
+    {
+      "name": "predictions/C_V1__train__066__random_1.npz",
+      "bytes": 88583,
+      "sha256": "b245067ff32db3a50c0fa78fffc85a6ab0bf4c7670d1efd26c58ba144bdda103"
+    },
+    {
+      "name": "predictions/C_V1__train__066__random_2.npz",
+      "bytes": 89716,
+      "sha256": "440568773d13e3c9d689d248bd949b4af445928120e7241c3980ffb482092bee"
+    },
+    {
+      "name": "predictions/C_V1__train__072__bilateral.npz",
+      "bytes": 90723,
+      "sha256": "a36e99d5209b5ce32bf9937ab0204009d857050a7251abe50afff1287039f56a"
+    },
+    {
+      "name": "predictions/C_V1__train__072__frontoorbital.npz",
+      "bytes": 90697,
+      "sha256": "0977e6496d84993d2d71780b4822c29b0dee6c30e79915cfd831e3baa010a993"
+    },
+    {
+      "name": "predictions/C_V1__train__072__parietotemporal.npz",
+      "bytes": 90321,
+      "sha256": "811c455e486f78f9ade8bc37da17db24a7a672c93d01b69557da6e69b8b2581b"
+    },
+    {
+      "name": "predictions/C_V1__train__072__random_1.npz",
+      "bytes": 88436,
+      "sha256": "4ec8e29902c89781f626184d5d6ca13c6585e9fcf2b35d56c9305d0749b6e9b6"
+    },
+    {
+      "name": "predictions/C_V1__train__072__random_2.npz",
+      "bytes": 90262,
+      "sha256": "39562c4c1c8867bb1324c1e09acad2672bcef782e181d65f0207b2b6ce244c65"
+    },
+    {
+      "name": "predictions/C_V1__train__076__bilateral.npz",
+      "bytes": 89758,
+      "sha256": "c37f57fd1288cc2adc1509662016dca7e20ce8b3327c9ac11e0ee2392029017b"
+    },
+    {
+      "name": "predictions/C_V1__train__076__frontoorbital.npz",
+      "bytes": 89295,
+      "sha256": "6d6285259bfd19a61a1a0bca1861412642fb34789bf9d468133991cc3c5e7591"
+    },
+    {
+      "name": "predictions/C_V1__train__076__parietotemporal.npz",
+      "bytes": 88472,
+      "sha256": "50201d430303e437a8e782f3b1f49c2b2cfa97220ca9aa78038fb646c766eb55"
+    },
+    {
+      "name": "predictions/C_V1__train__076__random_1.npz",
+      "bytes": 89060,
+      "sha256": "aee77b7e04f961855eb8b3eb94a8b92c053bce7772da6f2f5c97e85fc9618691"
+    },
+    {
+      "name": "predictions/C_V1__train__076__random_2.npz",
+      "bytes": 90564,
+      "sha256": "f2e4f421eed9aafd5b03b4558e17166a4ff2f40b9c71d5dc41138ed8214937cd"
+    },
+    {
+      "name": "predictions/C_V1__train__081__bilateral.npz",
+      "bytes": 89498,
+      "sha256": "bce113586c429c67feebccb9e8fd343135ee6a3ab9174c79322b2cfb6a5cad28"
+    },
+    {
+      "name": "predictions/C_V1__train__081__frontoorbital.npz",
+      "bytes": 90280,
+      "sha256": "d6ca199c242e2e0f9a07b5be73836a07b25c17a810b25808e8a8032266bdd23c"
+    },
+    {
+      "name": "predictions/C_V1__train__081__parietotemporal.npz",
+      "bytes": 88786,
+      "sha256": "0790551d5166f9901c1c393e742c17208da782810c3f7f9cc749f6c695b8a47e"
+    },
+    {
+      "name": "predictions/C_V1__train__081__random_1.npz",
+      "bytes": 90567,
+      "sha256": "f948eceec35b392fec72c280a9dcd80d04a94bf10b01e5cc4ad68d8da683013c"
+    },
+    {
+      "name": "predictions/C_V1__train__081__random_2.npz",
+      "bytes": 89035,
+      "sha256": "e172268bd2357746842bd63007d280d31798dcb59ed8907b20602da41622d1a9"
+    },
+    {
+      "name": "predictions/C_V1__train__094__bilateral.npz",
+      "bytes": 88956,
+      "sha256": "e124e08573adad318b27aa8777089b3e6850eeec76721e55b19946360f47a670"
+    },
+    {
+      "name": "predictions/C_V1__train__094__frontoorbital.npz",
+      "bytes": 89053,
+      "sha256": "14dd946943d005efada74918c6b99fbe57d984f784cf651f728ddd018b900d4f"
+    },
+    {
+      "name": "predictions/C_V1__train__094__parietotemporal.npz",
+      "bytes": 88037,
+      "sha256": "56b39f94940e15721d01cb5439a4b1dd0dabbb07f5305fd0c03dc38d7f748bc0"
+    },
+    {
+      "name": "predictions/C_V1__train__094__random_1.npz",
+      "bytes": 90931,
+      "sha256": "665b3b4b9771773ccf83705db2932c5cbdc35182709c27fa5987bd050e0fa1e8"
+    },
+    {
+      "name": "predictions/C_V1__train__094__random_2.npz",
+      "bytes": 86304,
+      "sha256": "c7551bd8efc2aadc085729f2362737f7f672850988503bd8f539ea2d994db86a"
+    },
+    {
+      "name": "predictions/C_V1__train__105__bilateral.npz",
+      "bytes": 91102,
+      "sha256": "053b73c2a8c911270461d0d16be69c8c6638c6a4cad5111cb89c9cf6b62eb7bf"
+    },
+    {
+      "name": "predictions/C_V1__train__105__frontoorbital.npz",
+      "bytes": 88299,
+      "sha256": "f24ab509bd1b8c7a5eed3fc6df0999a1e14332f4143b9bb0e1105d552382c5d2"
+    },
+    {
+      "name": "predictions/C_V1__train__105__parietotemporal.npz",
+      "bytes": 89128,
+      "sha256": "a74cf9be420ca0d1217949d45bf1cce18c71a93dc892b0bcae0b1c450e2e8093"
+    },
+    {
+      "name": "predictions/C_V1__train__105__random_1.npz",
+      "bytes": 89547,
+      "sha256": "643d8ebc7b03c8db1bf7372a53f3d1e4eca6a135103ef7edc7f2959c7263bd3b"
+    },
+    {
+      "name": "predictions/C_V1__train__105__random_2.npz",
+      "bytes": 90261,
+      "sha256": "2cb63baf2e2a75c0475683910b92d9371f3a605d6f8ef2124c220ce553638d69"
+    },
+    {
+      "name": "predictions/C_V1__train__107__bilateral.npz",
+      "bytes": 91229,
+      "sha256": "4c15d314a444e0b6daa60cd14014d9b5f270c1bd14b2f76d5ed77f2380840e2f"
+    },
+    {
+      "name": "predictions/C_V1__train__107__frontoorbital.npz",
+      "bytes": 88806,
+      "sha256": "de9a3e426df4d9f884a3ffdbef33f9eda5de989dffdfb6404f0e667dc342f847"
+    },
+    {
+      "name": "predictions/C_V1__train__107__parietotemporal.npz",
+      "bytes": 87358,
+      "sha256": "07589da2d0ce4a3f63139e2edeea12dbae406ce7ddb818746f8ec4d7e48d8b5a"
+    },
+    {
+      "name": "predictions/C_V1__train__107__random_1.npz",
+      "bytes": 90039,
+      "sha256": "b4822e5cecd116c3b2a1803c76269570908b8aea13dedcf1dd9a1811cec377cf"
+    },
+    {
+      "name": "predictions/C_V1__train__107__random_2.npz",
+      "bytes": 89518,
+      "sha256": "e73b523b44e5c533e5d5805a40a252afa1842b75de34270322bf65b61bc11d8e"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__001__bilateral.npz",
+      "bytes": 89152,
+      "sha256": "0fed49c6701d7d4270dfdd83e8c8f1ead1bd8e22f7f2e9780e3a8714db2c667b"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__001__frontoorbital.npz",
+      "bytes": 90573,
+      "sha256": "e8c45eb12ab9cb9acca2ec0c43219408252878cb9a918f34138801bed22fc019"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__001__parietotemporal.npz",
+      "bytes": 89730,
+      "sha256": "4129e3badc0f1aa78c47e5dd73600b1ee789695424bac37a58ad9243039c71e2"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__001__random_1.npz",
+      "bytes": 90141,
+      "sha256": "e97da7db1cd0e2c8753149dfb03d30da332026c58292e0d783d52426256163c2"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__001__random_2.npz",
+      "bytes": 89268,
+      "sha256": "9e8850956e73b92506ff14055c60e077458aa0994edca2bcc295bfb5eb3cc619"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__003__bilateral.npz",
+      "bytes": 89650,
+      "sha256": "a97cf93c364261a9adcc5d8d1e641a87600151fea50c2775a54568c78878d794"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__003__frontoorbital.npz",
+      "bytes": 88736,
+      "sha256": "71c20c8afa9b720866010082d582cee542e626f1697a22f3e307005082e82fe3"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__003__parietotemporal.npz",
+      "bytes": 89901,
+      "sha256": "a59465c33d5a72d4dd58169ee39e0f2df99498682bbe2b8d9c1b46ffde0e478c"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__003__random_1.npz",
+      "bytes": 89715,
+      "sha256": "9e32f9978db4e766bf8e0dac0767e5fb40ded496a28dcb2005e143837f7e6706"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__003__random_2.npz",
+      "bytes": 89836,
+      "sha256": "edb04ee84debfe57cad4597fc40f45ab41e3aa32a824587f16221bb5f2fe5207"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__012__bilateral.npz",
+      "bytes": 89477,
+      "sha256": "7ca11f57c78cdd092a7bb07fe3c02f52c48fbd1f2f7c4b4fbb592fae7dcb0ea9"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__012__frontoorbital.npz",
+      "bytes": 90178,
+      "sha256": "904d24cbd8bc285261340b9d4314db51f601d97ff65fa06ae7b84f379d30ae89"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__012__parietotemporal.npz",
+      "bytes": 90538,
+      "sha256": "762148c03b107810aefca09d6470285fda55184e8690d93920f084f768e77d6b"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__012__random_1.npz",
+      "bytes": 90693,
+      "sha256": "52c5efd40fffb3e54d013fe487cf0cba5cecc5e47bada5bdfb02db3f972b9b47"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__012__random_2.npz",
+      "bytes": 88186,
+      "sha256": "100b61e8173fc469e3a67ab000fe4614c5f1b35699eff5ba73959d83adfeb145"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__013__bilateral.npz",
+      "bytes": 89999,
+      "sha256": "93b3418483639bcf77eb1aa653e269ecf78a97db0ed793d80cf6fc50b195e90f"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__013__frontoorbital.npz",
+      "bytes": 89844,
+      "sha256": "616cc13b2b45b61acca2cd815bf6f288607225f6f13c76a3f1564c0f36498631"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__013__parietotemporal.npz",
+      "bytes": 89563,
+      "sha256": "9a15958a4b7d2520c696c50aeef588969dd1d9e2308d16e37f533bab236b46a6"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__013__random_1.npz",
+      "bytes": 89988,
+      "sha256": "0cfe927353f80df485f4bc8db0c595d73f9a4259b9e75e82c356d78de5ecb852"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__013__random_2.npz",
+      "bytes": 89387,
+      "sha256": "484ff5f3aec0f965a76926478ff472b2506913325c4b95d130cead984f4fd563"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__025__bilateral.npz",
+      "bytes": 89111,
+      "sha256": "280353b848fd94ec91c2428374c36d47f5fba85723060e6c60b9763598affc5d"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__025__frontoorbital.npz",
+      "bytes": 89182,
+      "sha256": "4e0c99d4fc98d36fd3d5f877d53733286643fccb76ca556ee2ac6e1b622dde11"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__025__parietotemporal.npz",
+      "bytes": 90666,
+      "sha256": "5ae63f41b333008c7d50b49ce3e19dd15020cf36fb1ff4bed514a423c8af072a"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__025__random_1.npz",
+      "bytes": 89341,
+      "sha256": "42a069ea11cde6177d22c44def6b8247448b7829feb0054227d7a226e890d4ce"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__025__random_2.npz",
+      "bytes": 91174,
+      "sha256": "632737bdf5c565ed201189f5840f5c542aaf4cc8f2616667490367d147a4d7d4"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__026__bilateral.npz",
+      "bytes": 89337,
+      "sha256": "4c59fa5792e9f004c30e669a02ddf125a99788625210dd95a9c2e00ee7bb37c3"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__026__frontoorbital.npz",
+      "bytes": 90389,
+      "sha256": "6bddc7146b79e4655b3f34da556891c54accde1c9282c5060b0a883dc54f4267"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__026__parietotemporal.npz",
+      "bytes": 88837,
+      "sha256": "4ea17f71ece33f5903cc3f7661dbb7559427529c0694212f6e9d3bbb8424c1c9"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__026__random_1.npz",
+      "bytes": 89973,
+      "sha256": "bc5459ba275ecd5a1b5ca65eb49ae3aed37aee76ad891d8a53d91a7cee651536"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__026__random_2.npz",
+      "bytes": 88465,
+      "sha256": "af05d2c04ffb3b639cbf8ccb8080f3d681eebd759075fc980d1f6123b478f410"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__036__bilateral.npz",
+      "bytes": 89719,
+      "sha256": "ee7aa9c3ad3342cc8ea30047e198cd6b91d6e3b6016ed23f15dcca88dfbdc07c"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__036__frontoorbital.npz",
+      "bytes": 90881,
+      "sha256": "497cfc4a69e3a20161466fc92ab9bb917f6d6dc50055d04671d540e32b30ec4a"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__036__parietotemporal.npz",
+      "bytes": 89624,
+      "sha256": "a21a51e5d0ffa418521112070d6758cf14d2580a14731ef7ecde02509731d08c"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__036__random_1.npz",
+      "bytes": 88743,
+      "sha256": "427a04b7786c26839753286ccb876512b9bba370d486542a298e28488e01eca4"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__036__random_2.npz",
+      "bytes": 90457,
+      "sha256": "7f31b88ca308a53fb3c1d1a284f3c78395356aae0310c688d1a645da880fac28"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__038__bilateral.npz",
+      "bytes": 90420,
+      "sha256": "114828f0bbb6c0f4121c909bd84dc943dc373efcf7bd73dbcc197a1499bec65f"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__038__frontoorbital.npz",
+      "bytes": 88906,
+      "sha256": "c5ac584e80e3a3953ce3e028fc0ed14e44cb9a3db10af40533c137c233f585d1"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__038__parietotemporal.npz",
+      "bytes": 88850,
+      "sha256": "9d17b22b0f74cdbddeeb290b1513d69ab627793ad1b3b9df08300f18e6d31415"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__038__random_1.npz",
+      "bytes": 89885,
+      "sha256": "e30ab22b69872fe6aee664fb725f393af673b08a7d78b8b4e2bdb246974c70e8"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__038__random_2.npz",
+      "bytes": 90059,
+      "sha256": "e676d6bd317bb5c83082b26557557693229e41b3ed74ec02c97662f69abeb269"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__041__bilateral.npz",
+      "bytes": 89945,
+      "sha256": "b9adbe27454ccbd9ef225d35004875a3c6b77150f88a8d3bc2b9a290f19a73d8"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__041__frontoorbital.npz",
+      "bytes": 89793,
+      "sha256": "9b08c3bbed4accac42297eb45c054b3e7e4553f61b1009c53fb7b68867167432"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__041__parietotemporal.npz",
+      "bytes": 90288,
+      "sha256": "6de314bb82f83443ae807189ca4a15e394afaaafe4f302b981089c7daebcd1a8"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__041__random_1.npz",
+      "bytes": 90135,
+      "sha256": "fab5ff947d56fdb827bdb9c7c88d70fc8ebe62c59cc025f18d42e06cf70cfb59"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__041__random_2.npz",
+      "bytes": 89758,
+      "sha256": "fcb5bece025fa88ae0bf23dfa7ced0c979983fdf2d6727265869b8bc02c0767e"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__042__bilateral.npz",
+      "bytes": 90964,
+      "sha256": "995eb93448812675270434ba0d6eb7db286edee5e92057bc3d028a770caf6dfd"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__042__frontoorbital.npz",
+      "bytes": 89491,
+      "sha256": "64159ecc74f132d248b000c36eb69efc5220d2deaae3da791906c9d538b87a41"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__042__parietotemporal.npz",
+      "bytes": 88816,
+      "sha256": "58af54fb3ab4b27d97b6d67451a1334ebde5eb52096940359b9fd31e93f58de8"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__042__random_1.npz",
+      "bytes": 90098,
+      "sha256": "0ac6e09d8bf903d1b6256f5487b644fea375d104173c4a7348c01157ebf3e736"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__042__random_2.npz",
+      "bytes": 89997,
+      "sha256": "39bc92d71e9cb18e8ad41d723430345fc2cdc9889752d7f34e32ffcd74037aba"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__047__bilateral.npz",
+      "bytes": 90159,
+      "sha256": "a400e8329f6dbe91beb26a4f06af7986ef9809453433db2a7d4c15a5283a4e4f"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__047__frontoorbital.npz",
+      "bytes": 90317,
+      "sha256": "f7f125ef8f94214ea3084fcb84e50903b56da7d31d964c444ba58da7981a09bd"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__047__parietotemporal.npz",
+      "bytes": 88083,
+      "sha256": "cf914c0172598c1b7ace2c8416004f9615e8f762d0603fe4ff57b59b916d1479"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__047__random_1.npz",
+      "bytes": 89742,
+      "sha256": "9a029601179690417f88fee6ed6046ef8d0f60edbf1eab616d155844a86ba907"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__047__random_2.npz",
+      "bytes": 89425,
+      "sha256": "03a1aba2b22c81e19c7788eccf0e8268ceb5e3d60b3df69facd3ef1e7cc4d3b2"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__051__bilateral.npz",
+      "bytes": 90716,
+      "sha256": "ad5f4b39b7364c40b0e0ba9bccdad1f2cb36515997c5073bbc5f0d55707c3322"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__051__frontoorbital.npz",
+      "bytes": 88887,
+      "sha256": "2606366f908215b793e442a76c199ddbd1d009daa255319a25dc20fee6949e03"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__051__parietotemporal.npz",
+      "bytes": 88631,
+      "sha256": "be43a7cf7a9b4d8c08cc395d59b8ed9ebf5cd9e0a0a40fd03ef3bfc0f7e98197"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__051__random_1.npz",
+      "bytes": 89702,
+      "sha256": "a93adebdc9e8897f1e8ae4bfe1c1550a8052a22fd0c9a6740748ba9a4d7d0171"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__051__random_2.npz",
+      "bytes": 89526,
+      "sha256": "72e3eb425aed0292165aea2c5954b9e9adbd96e58ae97b4f427fa93b5976e06f"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__053__bilateral.npz",
+      "bytes": 89215,
+      "sha256": "f05fd8a9ae4c36529e64b5baed5ef8b614d493f4136d8b49602af39a62d6fb71"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__053__frontoorbital.npz",
+      "bytes": 88263,
+      "sha256": "74422518a72eef25bc20ed2e003ef2c93cdb8ccb863fea3edd8ffa4b08a55b60"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__053__parietotemporal.npz",
+      "bytes": 90282,
+      "sha256": "3a7d00d8c45e41ae55e0fde3ce397e1bef91c761806254b8773af007124eafea"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__053__random_1.npz",
+      "bytes": 88780,
+      "sha256": "ad458df29adfe7247fc20d4d6198dc66c326e9422a3ff7ec5eb7c1c8bc20eb29"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__053__random_2.npz",
+      "bytes": 89919,
+      "sha256": "099dc5b1d0f5ac2a282a7d0890eb5d8c4299f36d3e84edac97d5284a1d108d37"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__061__bilateral.npz",
+      "bytes": 89387,
+      "sha256": "b8c9c0982bdb385ee68dc18607c5ad92384d234bece0e4474c4c612003c02397"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__061__frontoorbital.npz",
+      "bytes": 89652,
+      "sha256": "f7c623ff7aada5e80714b9a898ba89246b8afde68eac078a72850cd3b9a850b7"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__061__parietotemporal.npz",
+      "bytes": 89203,
+      "sha256": "85fa4239ef63192afa4c6dbbf9e44b27fa3b223ac5443dbbaa94fbd5b268a48e"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__061__random_1.npz",
+      "bytes": 90206,
+      "sha256": "5bb849dbbcecc1f643f07734d206aebef433c663d0e1be7ed7fe99030446de90"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__061__random_2.npz",
+      "bytes": 90334,
+      "sha256": "331914a456677d5ee371ad7dfa429b1e6592b30b94491fff4a53a3e28ce1815f"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__066__bilateral.npz",
+      "bytes": 89727,
+      "sha256": "4648c69b35525a28882b3cad5e3e7599c269db7ca9ed90cb3576a71ca7caf041"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__066__frontoorbital.npz",
+      "bytes": 90945,
+      "sha256": "f4989fd9fdd5557108873377e4271eacf9416ddfef23444a701af1e43fa04408"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__066__parietotemporal.npz",
+      "bytes": 89015,
+      "sha256": "150c6d129bc20b7bf22313d41e52d3b8277d3978036dde8cc0efd29d5310125a"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__066__random_1.npz",
+      "bytes": 88846,
+      "sha256": "67e92beada2235963ee36160352f2bb3949cd76a75b4bec53f024bbc9ef8fdbc"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__066__random_2.npz",
+      "bytes": 89731,
+      "sha256": "b59028dba83c14b78b08a234a1896929a17667e5392e8715181056158a8985ff"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__072__bilateral.npz",
+      "bytes": 90628,
+      "sha256": "a281cdb946d6f34b739f2a8c90a00df2b3009d7df9c67e9395fd556017e839ba"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__072__frontoorbital.npz",
+      "bytes": 90657,
+      "sha256": "64581483285f9cdb8720a7b761703dd037c04af9e87523e19597883bf67c2ce7"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__072__parietotemporal.npz",
+      "bytes": 90102,
+      "sha256": "293e11f5f2f2e8094186b365b966d9371646a5f08e424f1b516ffa0287d0e14b"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__072__random_1.npz",
+      "bytes": 90120,
+      "sha256": "3e2e6112386bdc88718313941db249f10540e03067842218f3076c4f6433cf73"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__072__random_2.npz",
+      "bytes": 89810,
+      "sha256": "5f8dc9007af47c7ed3c7f302049be0fe42ef0803fb956bdd02ba3daa8e7c6883"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__076__bilateral.npz",
+      "bytes": 89712,
+      "sha256": "8f637643e4e72f84d3a7b5a9a914a263d1172551bfb86d12855ea22806af8943"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__076__frontoorbital.npz",
+      "bytes": 90166,
+      "sha256": "d248c48841b2d07b22c1ccbc0bd628b79c070f053d2ab0f64a36720db6d70a36"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__076__parietotemporal.npz",
+      "bytes": 88703,
+      "sha256": "7f5a5bc71ee02107a9620cb7bf8f6823411531fee369f5b2261cf6418cbc48dd"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__076__random_1.npz",
+      "bytes": 88138,
+      "sha256": "101256b87ee07a14f22bf7915f010082594bdeba2aadf0ea591b113a7f6967d6"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__076__random_2.npz",
+      "bytes": 90186,
+      "sha256": "47965c9e077de8249351a3b308ee56ae51550eca9495aac7cecd80e96d6940c2"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__081__bilateral.npz",
+      "bytes": 89132,
+      "sha256": "01e3b142b8f3abb003df449a361f90e4327d516d90792c435f5085befd042377"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__081__frontoorbital.npz",
+      "bytes": 89937,
+      "sha256": "5fda2cc52a3c0a84ee5e21bfdafa0ef15189c9ddd3e890ac77662c4980734d5a"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__081__parietotemporal.npz",
+      "bytes": 89438,
+      "sha256": "ec49ad62031f05ed7b75b135b07987fc0a37d4caa3110ee7e6a96046e0b88015"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__081__random_1.npz",
+      "bytes": 90455,
+      "sha256": "da3b488d611809a6ee484713b9509a6e6445f565b93d2f24a84239f1e59a17ff"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__081__random_2.npz",
+      "bytes": 89130,
+      "sha256": "8ff75ace5aab8cac39b937d7d47c35a2d24cd58d3ac09e0531f0aac04b16617b"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__094__bilateral.npz",
+      "bytes": 88833,
+      "sha256": "1a1ab0ee998aab7e43f6b6d4f0abe4a379f0cfac45bb3efc3c2bca3df8cee8c9"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__094__frontoorbital.npz",
+      "bytes": 90325,
+      "sha256": "ce4121423ffa20c45b1661ecf1616a42ffbc809abdffd506f6c4ede466dd92e0"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__094__parietotemporal.npz",
+      "bytes": 86026,
+      "sha256": "3c4661bac29c6bb1a4817290206aed05dcd08763d961cf8b761deef1434cce49"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__094__random_1.npz",
+      "bytes": 90931,
+      "sha256": "34950d42ea24626d92e8bde94e09bc073fee957baec70ad900d4c4beade05008"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__094__random_2.npz",
+      "bytes": 87022,
+      "sha256": "85e75c2f9d6b765447bd4317c3e5d1bfddcb229be61440b458132ad130eeffbb"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__105__bilateral.npz",
+      "bytes": 91080,
+      "sha256": "268d2705d202c46480c5411fddde6f100e3b7be82425fcee275efa3ea6f75dd9"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__105__frontoorbital.npz",
+      "bytes": 89095,
+      "sha256": "7eb942b39e44e50d7a4af32cf63704bb3517640301f5ee6324d2492a195f87c7"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__105__parietotemporal.npz",
+      "bytes": 88824,
+      "sha256": "daad80fc6f3f48b0083db0d1f405e6f6790318e2cef2bea86bb16846457bc623"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__105__random_1.npz",
+      "bytes": 89525,
+      "sha256": "9c9e683aa9f3d7d01562392459d9c34d7397742e7ffc216da505e5811583779d"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__105__random_2.npz",
+      "bytes": 90181,
+      "sha256": "1e403e2c56c3050e83256fbd4ce5dec5a6dabd9b4093ce44aef077b3c3322698"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__107__bilateral.npz",
+      "bytes": 90821,
+      "sha256": "c8976f125fc34d4b673f4ac11768bdc4b23463fe27cde27bff39f0344bb1bca4"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__107__frontoorbital.npz",
+      "bytes": 88941,
+      "sha256": "3fb7cb8d19e3da3934f4d05a1c52df91b25bf65dfaf049d8ff2a56948a7368aa"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__107__parietotemporal.npz",
+      "bytes": 88002,
+      "sha256": "5f426e327ce4a2c1774ee4da6a212eaeffe96fbe69bd52e4a7ef167f06a08e90"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__107__random_1.npz",
+      "bytes": 89945,
+      "sha256": "9c1c639e9c1f184bffdfcf94b55b33534dcbb833fecbfecef089305100f3480a"
+    },
+    {
+      "name": "predictions/C_Morton_area_stratified8k__train__107__random_2.npz",
+      "bytes": 89365,
+      "sha256": "bfb26af1a0f72e57b4706618e54ff3835e3e3b3c56005cb9d7c614d4c3d5ad6a"
+    },
+    {
+      "name": "inference_manifest.jsonl",
+      "bytes": 116525,
+      "sha256": "5218fcaa0dc72135ef63eba65e076a4af69ebc6aa52fe639d59c543c8eb03ed7"
+    },
+    {
+      "name": "inference_complete.json",
+      "bytes": 1754,
+      "sha256": "81b87a875d4552c8b32525206c7f66b191161b0c6a87fb3dbbab907e243cf384"
+    },
+    {
+      "name": "resources.jsonl",
+      "bytes": 222453,
+      "sha256": "0a8d447eb3db7375e08bf71e7a8c39a5cbc9c6ab2ed1c63f4a87131778b1eb84"
+    }
+  ],
+  "archive_members": 213,
+  "download_files": [
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz",
+      "bytes": 18902839,
+      "sha256": "152a904ab7d5df856e1c8ea63320225f3c20c318c8c797127f5a89d869acc1dc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz.sha256",
+      "bytes": 100,
+      "sha256": "b0e1d2a5a43ed59b40776387d06b36fea61c959321b6a968f04f0dbe565dd623"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz.bytes",
+      "bytes": 9,
+      "sha256": "4d0341280e7dcd245e5005fbb53e32234eca69be40bbffbb21e899b3c54245ed"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz.contents.sha256",
+      "bytes": 26009,
+      "sha256": "22bcb34a4d8a84e97633f1dc3fdcf70c53b96148f15e054e2325d3c4c7a588ae"
+    }
+  ],
+  "actual_output_bytes": 38132293,
+  "free_disk_bytes": 10934550528,
+  "read_bytes": 889769903,
+  "seconds": 1.472072830889374,
+  "temporary_entry_count": 0,
+  "limitations": [
+    "Recorded model state and CPU/CUDA RNG fingerprints plus Python/NumPy invariant assertion verified; no independent reconstruction",
+    "No independent proof of CUDA numerical equality or clinical implant contact",
+    "Sampled resource monitoring is not a hard cgroup limit"
+  ],
+  "server_writes": 0,
+  "checkpoint_deserialization": false,
+  "model_imports": 0,
+  "CUDA_calls": 0,
+  "forward_calls": 0,
+  "scoring_executed": false,
+  "downloaded_to_Windows": false
+}

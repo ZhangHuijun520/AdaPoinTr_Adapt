@@ -1,0 +1,102 @@
+{
+  "schema": "bcsp-actual-proxy-trace-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "run_id": "bcsp_actual_proxy_trace_20261102_v1",
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-v2iwsa-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-34a1b996-2bd7-88e6-9dca-164b718caea6",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity."
+  },
+  "model_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3",
+  "entry": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_actual_proxy_trace_20261102_v1/bcsp_actual_proxy_trace_v1.py",
+    "bytes": 15485,
+    "sha256": "3078c47852133f038a269ea8d33a20b4b8c923639378e95506dd202f8f447f49"
+  },
+  "input_index": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/development_input_index_v1.json",
+    "bytes": 208927,
+    "sha256": "7fbae8f119757dad3d4c3195a53b75a7f023eb1af6242a752e5d30da3a8f5b8e"
+  },
+  "fold_binding": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/fold_binding.json",
+    "bytes": 35012,
+    "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+  },
+  "static_config": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/static_training_config_v1.json",
+    "bytes": 2024,
+    "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+  },
+  "preflight_scope": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+    "bytes": 23220,
+    "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+  },
+  "helper": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+    "bytes": 32728,
+    "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+  },
+  "control": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_actual_proxy_trace_20261102_v1/control",
+  "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/actual_proxy_trace_20261102_v1",
+  "launch_attempt": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_actual_proxy_trace_20261102_v1/control/launch_attempt.json",
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "GPU-34a1b996-2bd7-88e6-9dca-164b718caea6",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "MPLBACKEND": "Agg",
+    "MPLCONFIGDIR": "<owned_output>/mplconfig",
+    "CUDA_CACHE_DISABLE": "1",
+    "TMPDIR": "<owned_output>/tmp"
+  },
+  "limits": {
+    "wall_seconds": 900,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "science": {
+    "models": 4,
+    "forwards_per_model": 1,
+    "total_forwards": 4,
+    "unique_cases": 2,
+    "unique_sources": 2,
+    "seed": 0,
+    "n_output": 8192,
+    "training_updates": 0,
+    "BNCal": false,
+    "loss": false,
+    "backward": false,
+    "precision": "FP32",
+    "deterministic": true,
+    "TF32": false,
+    "mode": "eval/inference_mode",
+    "checkpoint": "scratch_final_epoch99_updates3900",
+    "state_invariance_required": true,
+    "loss_backend_during_parent_training": "existing_torch_cdist;no loss called during inference",
+    "PID_policy": "DIAGNOSTIC_ONLY_NO_OWNERSHIP_GUARANTEE",
+    "scope": "one fixed own-fold case per model; not cross-fold seen-source inference",
+    "actual_trace_fields": "two FPS index/coordinate sets; four graph query/key coordinates and KNN indices; final prediction"
+  },
+  "trace_capture": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_actual_proxy_trace_20261102_v1/trace_capture_v1.py",
+    "bytes": 2714,
+    "sha256": "bb449b79a61931474912d03daa340693621a90c52feb18a274cccf5c3fd88676"
+  }
+}

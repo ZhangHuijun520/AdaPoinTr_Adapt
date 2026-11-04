@@ -1,0 +1,119 @@
+{
+  "status": "DESIGN_BOUND_NOT_EXECUTION_READY",
+  "selected_parent_root": "outputs/cranial_scqr_v12_qa_github_publish_20261019",
+  "selection_reason": "Frozen local published archive, not drifting work tree; no claim this is current server installation",
+  "files": [
+    {
+      "relative_path": "models/AdaPoinTr.py",
+      "parent_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\AdaPoinTr.py",
+      "sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4",
+      "bytes": 103347
+    },
+    {
+      "relative_path": "models/Transformer_utils.py",
+      "parent_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\models\\Transformer_utils.py",
+      "sha256": "44d4aaabf9cbb09a4b7b9b4c1518b7901481a28304502508962b2e2d1082d289",
+      "bytes": 52826
+    },
+    {
+      "relative_path": "utils/pointnet2_utils.py",
+      "parent_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\pointnet2_utils.py",
+      "sha256": "6e814a64b244d018047ffefa92004dd4e59fc941145476af1424aae1742c43ec",
+      "bytes": 4275
+    },
+    {
+      "relative_path": "utils/misc.py",
+      "parent_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\utils\\misc.py",
+      "sha256": "65338858a2f2f87cc6040a7525a57beff26f0acc665caaedfb18bae5ab3d1a87",
+      "bytes": 12544
+    },
+    {
+      "relative_path": "tools/runner.py",
+      "parent_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\tools\\runner.py",
+      "sha256": "12159b380b53736dfa929c0618cb8fda280ec89600d14677545aa07b17961d55",
+      "bytes": 33085
+    },
+    {
+      "relative_path": "tools/builder.py",
+      "parent_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\tools\\builder.py",
+      "sha256": "8c6d2f436376e0075164413865a2ec68ea40f4f68e96a3011c07468280f6c3bf",
+      "bytes": 7807
+    },
+    {
+      "relative_path": "datasets/SkullBreakDataset.py",
+      "parent_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_scqr_v12_qa_github_publish_20261019\\datasets\\SkullBreakDataset.py",
+      "sha256": "e747f99e36243846c205bf77d4344670efaebb72ba14eac9e0481de6e36787b0",
+      "bytes": 20701
+    }
+  ],
+  "fold_C_historical_expected": "3c5883d1f582b90533ffed3ae61b1bbe8b88c39b75f40faddf25b63d8f93836d",
+  "knn_strategy": {
+    "mode": "proposed_query_chunked_exact_full_key_knn",
+    "query_chunk": 256,
+    "key_count": 16384,
+    "k": 16,
+    "batch": 8,
+    "fp32_distance_block_mib": 128,
+    "implementation_authorized": false,
+    "cuda_equivalence_verified": false,
+    "notes": "Keep all keys; no approximate KNN; ties and floating error require bounded regression. Do not change global batch or BN semantics silently."
+  },
+  "training": {
+    "input_mother": "V1 voxel-face area samples",
+    "arms_input_points": [
+      8192,
+      16384
+    ],
+    "target_points": 8192,
+    "final_proxy_count": 256,
+    "center_num": [
+      512,
+      256
+    ],
+    "query_count": 256,
+    "decoder": "fc",
+    "factor": 32,
+    "folds": [
+      "C",
+      "D"
+    ],
+    "seed": 0,
+    "runs_max": 4,
+    "epochs": 100,
+    "epoch_labels": [
+      0,
+      99
+    ],
+    "train_sources_per_fold": 63,
+    "train_cases_per_fold": 315,
+    "dev_sources_per_fold": 21,
+    "dev_cases_per_fold": 105,
+    "batch": 8,
+    "drop_last": true,
+    "step_per_update": 1,
+    "batches_per_traversal": 39,
+    "optimizer_updates_per_run": 3900,
+    "case_exposures_per_run": 31200,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0005,
+    "precision": "FP32",
+    "gradient_clip": 10,
+    "bncal_auto": false,
+    "checkpoint": "scratch_final_only",
+    "execution_authorized": false
+  },
+  "remaining": [
+    "New derived data generation and all-source geometry QC not executed; counts conditional on preserving all 315 cases",
+    "Minimal new training entry/count guard not implemented; historical 3939 guard cannot be reused",
+    "Query-chunk KNN contract implementation/regression and CUDA resource check pending",
+    "Single-seed CPU geometry surrogate does not prove trained feature retention or CUDA FPS equivalence"
+  ],
+  "forbidden": {
+    "model_calls": true,
+    "gpu_calls": true,
+    "server_operations": true,
+    "production_edits": true,
+    "training_request_creation": true
+  }
+}

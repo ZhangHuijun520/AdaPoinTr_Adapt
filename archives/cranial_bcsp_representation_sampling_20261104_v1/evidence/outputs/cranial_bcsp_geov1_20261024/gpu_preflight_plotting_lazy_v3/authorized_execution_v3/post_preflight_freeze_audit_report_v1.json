@@ -1,0 +1,912 @@
+{
+  "schema": "bcsp-v3-formal-post-preflight-freeze-audit-v1",
+  "status": "FORMAL_POST_PREFLIGHT_FREEZE_AUDIT_PASS",
+  "date_Asia_Shanghai": "2026-10-25",
+  "authorization_scope": "Bounded read-only formal post-preflight freeze audit of v3 inventory, hashes, counters, state/RNG and memory evidence. No forward, test, new GPU query, modification or automatic training.",
+  "request_sha256": "7a7a74fcec86bb4fa6c7ab77b74e8d509a26ae75ade73a05d9c8cab183ef2365",
+  "request_disposition": "CONSUMED_COMPLETED_DO_NOT_REUSE",
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-o9mz8z-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-2f32f6fb-ea5d-730a-4ea2-2f6063e31065",
+    "identity_check": "Current hostname/uid checked by audit; GPU identity checked from existing hash-frozen runtime evidence, no new driver query."
+  },
+  "bounds": {
+    "maximum_files": 64,
+    "maximum_hashed_bytes": 33554432,
+    "remote_read_budget_seconds": 45,
+    "maximum_directories_per_tree": 32,
+    "maximum_directory_depth": 6,
+    "bootstrap_characters_at_most": 2048
+  },
+  "artifact_integrity": {
+    "status": "PASS",
+    "files": 42,
+    "hashed_bytes": 18340281,
+    "remote_probe_seconds": 0.09950275532901287,
+    "groups": {
+      "uploaded_member_manifest": 1,
+      "installed_files": 26,
+      "provider_and_environment_files": 9,
+      "consumed_attempt_marker": 1,
+      "result_files": 5
+    },
+    "installation_exact_set": "26 manifest members plus exactly control/launch_attempt_v3.json; no other files. All installed bytes match immutable upload member manifest; all 22 mapped inputs also match current local source hashes.",
+    "result_exact_set": [
+      "exit_code.txt",
+      "launch.log",
+      "monitor_events.jsonl",
+      "summary.json",
+      "worker.pid"
+    ],
+    "result_directories": [
+      ".",
+      "tmp"
+    ],
+    "result_total_bytes": 40384,
+    "unexpected_files": false,
+    "unexpected_links": false,
+    "original_observed_summary_unchanged": true,
+    "installed_file_mode": "0600 and uid1000",
+    "stability": "For every read, size, mtime_ns and inode unchanged across read; atime excluded from content identity. This is bounded per-file stability, not an atomic filesystem snapshot.",
+    "manifest": [
+      {
+        "path": "/home/jovyan/bcsp_gpu_preflight_v3.contents.sha256",
+        "bytes": 2406,
+        "sha256": "3b5cf48a982443c80f1210962759696f5bda05aface141f2688ef8bd7557ade5",
+        "mtime_ns": 1792857949000000000,
+        "mode": 420,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/base_model.yaml",
+        "bytes": 2082,
+        "sha256": "e18feb90d782506f864560ce5513b3077f840f9d6365308b03493f80f8c57dc4",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+        "bytes": 32728,
+        "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/control/authorization_v3.json",
+        "bytes": 299,
+        "sha256": "d5bc0e462eb2fd488def9735d98bdd78e22eb452164d3dd26d43f01493ac2452",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/control/launcher_v3.sh",
+        "bytes": 4398,
+        "sha256": "ea0f881df7b6482746f2949b2294b4a6956008ed07e628326b24a598304e5474",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/control/runtime_v3.json",
+        "bytes": 226,
+        "sha256": "44a93bc5ef04c460be2c1a65f3b2edc42492610ca15bb00955afe157a9529aab",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/execution_request_v3.json",
+        "bytes": 37407,
+        "sha256": "7a7a74fcec86bb4fa6c7ab77b74e8d509a26ae75ade73a05d9c8cab183ef2365",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+        "bytes": 23220,
+        "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/lazy_plotting_p3_receipt_v3.json",
+        "bytes": 9012,
+        "sha256": "830f3a3d0d43e936db216fd76f6f0193b77f2df2e227d2d949bfaeff5fb90cc8",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/extensions/chamfer_dist/__init__.py",
+        "bytes": 6551,
+        "sha256": "6456934164750c2d326236effe4827dc37c77a7d6d915d3c28fa65a90a9b1c50",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/AdaPoinTr.py",
+        "bytes": 103347,
+        "sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/Transformer_utils.py",
+        "bytes": 52026,
+        "sha256": "cd562e02755ffd46382cc539cdb361225b844b12e89df9d98741d37238a6bf5f",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/build.py",
+        "bytes": 342,
+        "sha256": "9c85271220ba992d56d4285b1ef51de939f7471b0712028af8d07880fed9680f",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/cranial_scqr/__init__.py",
+        "bytes": 5859,
+        "sha256": "c4fab9f4cc19bf5c461930749cccea56cb5b3e7432172d2a4959d2cbc2d69634",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/cranial_scqr/contact_support.py",
+        "bytes": 6731,
+        "sha256": "2c92404ba4bd5634a49f396904b2d6f69a22aa2c87bb72f6ee32672ee9d735d1",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/cranial_scqr/local_geometry.py",
+        "bytes": 6413,
+        "sha256": "e3e2eb20aed6afb3024f8b3c10c79ac0f64f288f3892495668980028793ba768",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/cranial_scqr/query_conditioning.py",
+        "bytes": 4719,
+        "sha256": "7c09def4ea7f2d65906e7fc3de753cae699be6d2d4ad3dcbb33e231be37a6942",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/tools/bcsp_adapter.py",
+        "bytes": 7297,
+        "sha256": "2f7d3050cfb6ac2602cc17a95b860da2204daef2dfa63dab63d233e899b7dd55",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/tools/bcsp_runtime.py",
+        "bytes": 7320,
+        "sha256": "8cbb5389e074347f6bf6e776755d22bbdaedaf5dba5102d51866d1b1e49b3615",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/tools/runner.py",
+        "bytes": 32455,
+        "sha256": "e378ab4ab7a26f6b370b4263788ca51e413b47ca3827cf404dd6ac4d9aaa0f32",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/config.py",
+        "bytes": 2438,
+        "sha256": "39d487ab6eadcd0a157167cfdf0d1797255f6403828f2653ba7802da6f2ac819",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/logger.py",
+        "bytes": 5048,
+        "sha256": "12e50962ca4594ddd573d9a76524ac912ddf55bfc297fa8008a30b20dca28e0c",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/mamba_d22_geometry.py",
+        "bytes": 12533,
+        "sha256": "8b3b56344f7e9c97a3cd1ee141964bc7797faae4f094df9404dedaee07e6c804",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/mamba_d3_contact.py",
+        "bytes": 11021,
+        "sha256": "10c5bb39a8cf3860ed28b65d2c9257ae1ff4e63c4b69228504dd663f0604e5cb",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/misc.py",
+        "bytes": 12290,
+        "sha256": "3063afb490840dd417c2e0cc00f2d5fdfe49ba2074396099c39a112026906485",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/pointnet2_utils.py",
+        "bytes": 4275,
+        "sha256": "6e814a64b244d018047ffefa92004dd4e59fc941145476af1424aae1742c43ec",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/registry.py",
+        "bytes": 11111,
+        "sha256": "a7c49418d587ae84778390b67a50c2bd98cbc93da2e0a506e6d309b5c159ecf7",
+        "mtime_ns": 1792858129000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/__init__.py",
+        "bytes": 123,
+        "sha256": "d8a0921aeb90349a0659799a22ccf00ccd31707b226426ff4118eeb65ae0ada2",
+        "mtime_ns": 1792318520000000000,
+        "mode": 420,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/pointnet2_utils.py",
+        "bytes": 9943,
+        "sha256": "ec597d77b1215fbc87bdb452b8ce04b85eb0b816d5e39e7696fc792a2f61ea5b",
+        "mtime_ns": 1792318520000000000,
+        "mode": 420,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/_ext.cpython-310-x86_64-linux-gnu.so",
+        "bytes": 301640,
+        "sha256": "e70d00108bacba4a905dc011f4b8c4868f06ec2d44d8e322148e2e452578fbb5",
+        "mtime_ns": 1792318520000000000,
+        "mode": 420,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/wheelhouse/pointnet2_ops-3.0.0-cp310-cp310-linux_x86_64.whl",
+        "bytes": 123291,
+        "sha256": "530496a0d1d5dea6151a466b7c0874632322223308a7016910fb1bfbaaaab1e5",
+        "mtime_ns": 1792312185000000000,
+        "mode": 420,
+        "uid": 1000
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch/version.py",
+        "bytes": 248,
+        "sha256": "b10649fd636e7404398d608b84a2cacc6645e3952f043b439d4c50c95a26a1b5",
+        "mtime_ns": 1783746385000000000,
+        "mode": 420,
+        "uid": 1000
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+        "bytes": 17331920,
+        "sha256": "01b4275dc374dcae51d245bda004daad6d7882d3f5de7f9852567bb7ab83180d",
+        "mtime_ns": 1783606085000000000,
+        "mode": 509,
+        "uid": 1000
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch-2.4.1+cu118.dist-info/METADATA",
+        "bytes": 26707,
+        "sha256": "11606497a9792f0d040ad062064ee1c024dde8b10fc38bed361134d0b7ec429a",
+        "mtime_ns": 1783746456000000000,
+        "mode": 420,
+        "uid": 1000
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm-1.0.27.dist-info/METADATA",
+        "bytes": 40196,
+        "sha256": "b6ecaedbcaea5d0d5e431983c3df8e05113a51a2dad062e51dab0500ac6f2bb4",
+        "mtime_ns": 1783675445000000000,
+        "mode": 420,
+        "uid": 1000
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/numpy-2.2.6.dist-info/METADATA",
+        "bytes": 62026,
+        "sha256": "22d648f53848429464ca643b40d73b49a920d47876fc77c395d4dca4e834904a",
+        "mtime_ns": 1783667875000000000,
+        "mode": 420,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/control/launch_attempt_v3.json",
+        "bytes": 249,
+        "sha256": "8a47d7a8f655808bd12679fb99b4f2bd33aa47becf48493b4f20d16edafe8da1",
+        "mtime_ns": 1792858145000000000,
+        "mode": 420,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v3/exit_code.txt",
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "mtime_ns": 1792858164000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v3/launch.log",
+        "bytes": 2815,
+        "sha256": "d302f481e11025f6045d29978ae13f27eb25543f905cd96dd7b2bff2e54749d4",
+        "mtime_ns": 1792858163000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v3/monitor_events.jsonl",
+        "bytes": 30343,
+        "sha256": "c2efbfee7f20dba2bda0ef1fd218a28823d0171836df974b25a7de56ef96853e",
+        "mtime_ns": 1792858164000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v3/summary.json",
+        "bytes": 7219,
+        "sha256": "e0b5c2bc4e5b59c7a857acdc908337228f9e8e0a84fa4950739b138dcf06eced",
+        "mtime_ns": 1792858164000000000,
+        "mode": 384,
+        "uid": 1000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v3/worker.pid",
+        "bytes": 5,
+        "sha256": "93a90ba2021f69c8e65988d71645d53efd5fa0eedf3abec9094b496800cd696c",
+        "mtime_ns": 1792858146000000000,
+        "mode": 384,
+        "uid": 1000
+      }
+    ]
+  },
+  "authorization_and_launch_chain": {
+    "status": "PASS",
+    "request_bound_to_frozen_manifest": true,
+    "authorization_exactly_matches_local_materialized_bytes": true,
+    "runtime_single_way_authorization_SHA_binding": true,
+    "reverse_runtime_SHA_binding": false,
+    "launcher_sha256": "ea0f881df7b6482746f2949b2294b4a6956008ed07e628326b24a598304e5474",
+    "attempt_marker_request_and_launcher_bindings_match": true,
+    "exclusive_attempt_marker": "CLAIMED_BEFORE_TMUX",
+    "original_worker_pid": 1485,
+    "tmux_absent": true,
+    "original_worker_absent": true,
+    "exit_code": 0,
+    "startup_or_monitor_failure_artifacts_absent": true
+  },
+  "semantic_audit": {
+    "status": "PASS",
+    "ordered_arms": [
+      8192,
+      16384
+    ],
+    "batch": 8,
+    "target_points": 8192,
+    "backend": "existing_project_torch_cdist",
+    "counters": {
+      "forward": 2,
+      "loss": 2,
+      "backward": 2,
+      "optimizer": 0,
+      "scheduler": 0,
+      "BNCal": 0,
+      "development": 0,
+      "checkpoint_write": 0
+    },
+    "fresh_model_initial_parameter_hashes_equal": true,
+    "initial_parameter_sha256": "c864e2f77fc7c5999cf1df615ed720f4fc10ae0a6d19888e28e5058879f70a99",
+    "state_hashes_exactly_unchanged_each_arm": true,
+    "state_before_and_after_sha256": "9649b96c1f1287fa7d5670815b3e48798ab1a3883bb200f5a9db027980852f37",
+    "python_numpy_CPU_CUDA_RNG_restoration": true,
+    "module_training_flags_and_BN_tracking_restored": true,
+    "both_oracles_passed": true,
+    "all_key_KNN_path_preserved": true,
+    "oracle_definition": {
+      "queries": 257,
+      "k": 16,
+      "chunk": 256,
+      "tail": 1,
+      "atol": 0.00001,
+      "rtol": 0.00001
+    },
+    "full_input_first_KNN": {
+      "8192": {
+        "keys": 8192,
+        "queries": 8192,
+        "chunks": 32
+      },
+      "16384": {
+        "keys": 16384,
+        "queries": 16384,
+        "chunks": 64
+      }
+    },
+    "FP32_finite_output_loss_and_gradients": "Supported by successful assertions in the exact hash-bound entry and recorded per-arm losses/gradient counts; no numerical replay was performed.",
+    "RNG_evidence_basis": "Successful exact restoration assertions in the frozen entry and per-arm rng_restored=true, corroborated by CPU contracts and unchanged implementation hash. Raw pre/post RNG state bytes were not separately persisted, so audit does not independently reconstruct them.",
+    "numeric_settings_evidence_basis": "Frozen configure_numeric/assert_numeric and successful control flow, not a newly measured numeric-settings telemetry dump.",
+    "no_optimization_or_training_claim": true
+  },
+  "resources": {
+    "status": "PASS",
+    "arms": [
+      {
+        "input_points": 8192,
+        "peak_allocated_bytes": 12897085952,
+        "peak_reserved_bytes": 14153678848,
+        "peak_allocated_GiB": 12.01134729385376,
+        "peak_reserved_GiB": 13.181640625,
+        "loss_denoised": 0,
+        "loss_recon": 0.4196154475212097,
+        "nonzero_gradient_parameters": {
+          "grouper": 14,
+          "encoder": 76,
+          "decoder": 200
+        }
+      },
+      {
+        "input_points": 16384,
+        "peak_allocated_bytes": 13306743296,
+        "peak_reserved_bytes": 14550040576,
+        "peak_allocated_GiB": 12.392870426177979,
+        "peak_reserved_GiB": 13.55078125,
+        "loss_denoised": 0,
+        "loss_recon": 0.4182843565940857,
+        "nonzero_gradient_parameters": {
+          "grouper": 14,
+          "encoder": 76,
+          "decoder": 200
+        }
+      }
+    ],
+    "torch_allocated_and_reserved_limit_bytes": 21474836480,
+    "sampled_peak_RSS_bytes": 1249431552,
+    "RSS_limit_bytes": 8589934592,
+    "sampled_peak_device_MiB": 14361,
+    "device_stop_MiB": 22528,
+    "summary_wall_seconds": 17.94290172494948,
+    "outer_timeout_seconds": 900,
+    "time_scope": "summary.wall_seconds ends with run() finally, before final main-thread budget.sample()/monitor join; it is not end-to-end launcher duration or a speed benchmark. Existing monotonic event span is reported separately.",
+    "no_exclusive_cgroup_or_hard_memory_isolation_claim": true,
+    "sampling_limitation": "Device memory and RSS are sampled maxima, not continuous/exclusive bounds. PyTorch allocator peak stats are per-arm GPU process measurements, not all-device occupancy or full-training memory."
+  },
+  "monitor_audit": {
+    "status": "PASS",
+    "event_count": 74,
+    "query_pairs": 26,
+    "phase_count": 22,
+    "all_queries_success": true,
+    "single_attempt_each": true,
+    "elapsed_seconds_min": 0.023222963,
+    "elapsed_seconds_max": 0.117335999,
+    "sampled_device_peak_MiB": 14361,
+    "unknown_compute_PIDs": [],
+    "monotonic_event_span_seconds": 18.067223174,
+    "commands": "Only frozen /usr/bin/nvidia-smi UUID-scoped memory/physical-identity/PID queries in existing events.",
+    "query_budget_seconds": 10,
+    "reap_budget_seconds": 2,
+    "start_end_ids_match": true,
+    "all_26_ids_unique_and_complete": true,
+    "bounded_streams_not_truncated": true,
+    "phases_match_launch_log": true,
+    "no_failure_decode_or_cleanup_event": true,
+    "prior_timeout_causality_not_established": "All queries were also below the former 3-second deadline; do not attribute success specifically to the 10-second budget or claim the previous timeout root cause was resolved."
+  },
+  "full_summary": {
+    "status": "PASS",
+    "backend": "existing_project_torch_cdist",
+    "arms": [
+      {
+        "input_points": 8192,
+        "knn_calls": [
+          {
+            "batch": 8,
+            "keys": 8192,
+            "queries": 8192,
+            "k": 16,
+            "chunks": [
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256
+            ]
+          },
+          {
+            "batch": 8,
+            "keys": 8192,
+            "queries": 512,
+            "k": 16,
+            "chunks": [
+              256,
+              256
+            ]
+          },
+          {
+            "batch": 8,
+            "keys": 512,
+            "queries": 512,
+            "k": 16,
+            "chunks": [
+              256,
+              256
+            ]
+          },
+          {
+            "batch": 8,
+            "keys": 512,
+            "queries": 256,
+            "k": 16,
+            "chunks": [
+              256
+            ]
+          },
+          {
+            "batch": 8,
+            "keys": 256,
+            "queries": 256,
+            "k": 8,
+            "chunks": [
+              256
+            ]
+          },
+          {
+            "batch": 8,
+            "keys": 256,
+            "queries": 256,
+            "k": 8,
+            "chunks": [
+              256
+            ]
+          },
+          {
+            "batch": 8,
+            "keys": 256,
+            "queries": 256,
+            "k": 8,
+            "chunks": [
+              256
+            ]
+          }
+        ],
+        "oracle": {
+          "queries": 257,
+          "keys": 8192,
+          "k": 16,
+          "chunks": [
+            256,
+            1
+          ],
+          "candidate_calls": 1,
+          "dense_parent_calls": 1,
+          "distance_comparison_pass": true
+        },
+        "initial_parameter_sha256": "c864e2f77fc7c5999cf1df615ed720f4fc10ae0a6d19888e28e5058879f70a99",
+        "baseline_allocated": 164971520,
+        "baseline_reserved": 174063616,
+        "loss_denoised": 0,
+        "loss_recon": 0.4196154475212097,
+        "output_shapes": [
+          [
+            8,
+            256,
+            3
+          ],
+          [
+            8,
+            0,
+            3
+          ],
+          [
+            8,
+            0,
+            3
+          ],
+          [
+            8,
+            8192,
+            3
+          ]
+        ],
+        "nonzero_gradient_parameters": {
+          "grouper": 14,
+          "encoder": 76,
+          "decoder": 200
+        },
+        "state_before": "9649b96c1f1287fa7d5670815b3e48798ab1a3883bb200f5a9db027980852f37",
+        "state_after": "9649b96c1f1287fa7d5670815b3e48798ab1a3883bb200f5a9db027980852f37",
+        "bn_modules": 1,
+        "flags_restored": true,
+        "bn_tracking_restored": true,
+        "peak_allocated": 12897085952,
+        "peak_reserved": 14153678848,
+        "rng_restored": true
+      },
+      {
+        "input_points": 16384,
+        "knn_calls": [
+          {
+            "batch": 8,
+            "keys": 16384,
+            "queries": 16384,
+            "k": 16,
+            "chunks": [
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256
+            ]
+          },
+          {
+            "batch": 8,
+            "keys": 16384,
+            "queries": 512,
+            "k": 16,
+            "chunks": [
+              256,
+              256
+            ]
+          },
+          {
+            "batch": 8,
+            "keys": 512,
+            "queries": 512,
+            "k": 16,
+            "chunks": [
+              256,
+              256
+            ]
+          },
+          {
+            "batch": 8,
+            "keys": 512,
+            "queries": 256,
+            "k": 16,
+            "chunks": [
+              256
+            ]
+          },
+          {
+            "batch": 8,
+            "keys": 256,
+            "queries": 256,
+            "k": 8,
+            "chunks": [
+              256
+            ]
+          },
+          {
+            "batch": 8,
+            "keys": 256,
+            "queries": 256,
+            "k": 8,
+            "chunks": [
+              256
+            ]
+          },
+          {
+            "batch": 8,
+            "keys": 256,
+            "queries": 256,
+            "k": 8,
+            "chunks": [
+              256
+            ]
+          }
+        ],
+        "oracle": {
+          "queries": 257,
+          "keys": 16384,
+          "k": 16,
+          "chunks": [
+            256,
+            1
+          ],
+          "candidate_calls": 1,
+          "dense_parent_calls": 1,
+          "distance_comparison_pass": true
+        },
+        "initial_parameter_sha256": "c864e2f77fc7c5999cf1df615ed720f4fc10ae0a6d19888e28e5058879f70a99",
+        "baseline_allocated": 198263808,
+        "baseline_reserved": 218103808,
+        "loss_denoised": 0,
+        "loss_recon": 0.4182843565940857,
+        "output_shapes": [
+          [
+            8,
+            256,
+            3
+          ],
+          [
+            8,
+            0,
+            3
+          ],
+          [
+            8,
+            0,
+            3
+          ],
+          [
+            8,
+            8192,
+            3
+          ]
+        ],
+        "nonzero_gradient_parameters": {
+          "grouper": 14,
+          "encoder": 76,
+          "decoder": 200
+        },
+        "state_before": "9649b96c1f1287fa7d5670815b3e48798ab1a3883bb200f5a9db027980852f37",
+        "state_after": "9649b96c1f1287fa7d5670815b3e48798ab1a3883bb200f5a9db027980852f37",
+        "bn_modules": 1,
+        "flags_restored": true,
+        "bn_tracking_restored": true,
+        "peak_allocated": 13306743296,
+        "peak_reserved": 14550040576,
+        "rng_restored": true
+      }
+    ],
+    "counters": {
+      "forward": 2,
+      "loss": 2,
+      "backward": 2,
+      "optimizer": 0,
+      "scheduler": 0,
+      "BNCal": 0,
+      "development": 0,
+      "checkpoint_write": 0
+    },
+    "SMI_physical": "GPU-2f32f6fb-ea5d-730a-4ea2-2f6063e31065, NVIDIA GeForce RTX 4090 D, 575.51.03, 24564, 0",
+    "torch_logical": {
+      "name": "NVIDIA GeForce RTX 4090 D",
+      "bytes": 25251676160
+    },
+    "no_exclusive_cgroup_claim": true,
+    "BN_tracking_disabled_preflight_only": true,
+    "peak_RSS": 1249431552,
+    "peak_device_MiB": 14361,
+    "wall_seconds": 17.94290172494948
+  },
+  "raw_evidence_capture": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_plotting_lazy_v3\\authorized_execution_v3\\post_preflight_artifact_audit_capture_v1.json",
+    "bytes": 75075,
+    "sha256": "bfc69056a48e69f7c1f1920dedc2bae9a158efe5207c7e50c46037ce5a5e4eee"
+  },
+  "limitations": [
+    "Acceptance is restricted to this artificial B0 Transformer, batch8, 8k/16k input, 8192 target, existing cdist loss, native frozen PointNet2 and declared BN tracking policy.",
+    "This does not establish 16k reconstruction superiority, real-case geometry quality, full training-update feasibility, Mamba comparison results or any clinical conclusion.",
+    "Artificial losses from freshly initialized models are smoke-test values, not accuracy comparison metrics.",
+    "No new rendering/font-chain execution was performed; no fc-list permission added.",
+    "No training, BNCal, development evaluation, parameter scan or retry authorization follows from PASS."
+  ],
+  "this_audit_operations": {
+    "server_writes": 0,
+    "model_imports": 0,
+    "forwards": 0,
+    "tests": 0,
+    "new_GPU_queries": 0,
+    "fc_list": 0,
+    "payload_or_checkpoint_reads": 0,
+    "training": 0,
+    "local_new_files": "Dedicated read-only audit probe, raw capture and this formal report only."
+  },
+  "next": "Stop after formal freeze. A separately authorized bounded review may combine existing real-data QC evidence with the first training contract; do not create or execute training contents automatically."
+}

@@ -1,0 +1,100 @@
+{
+  "status": "ISOLATED_CANDIDATE_IMPLEMENTED_CPU_CONTRACTS_PASS_NOT_EXECUTION_READY",
+  "scope": "Limited BCSP integration closure; no generic inventory, transport, or audit framework added",
+  "files": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\test_isolated_closure_v4.py",
+      "sha256": "a9ee97f0221f631fac4dfa72c8a6709979d4e914dc4620320398bd934de44dd3",
+      "bytes": 9920
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\closure_cpu_v4\\result.json",
+      "sha256": "778786b5e7b33baaf4a3520d26b6302f0e86d891c83af2c1767dd097f45c56f4",
+      "bytes": 1587
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\models\\Transformer_utils.py",
+      "sha256": "cd562e02755ffd46382cc539cdb361225b844b12e89df9d98741d37238a6bf5f",
+      "bytes": 52026
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\tools\\__init__.py",
+      "sha256": "ddfa85f51d917f94b9e69a69b7c10da474c5327f3f49957bffdd4f599d76060c",
+      "bytes": 69
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\tools\\bcsp_adapter.py",
+      "sha256": "2f7d3050cfb6ac2602cc17a95b860da2204daef2dfa63dab63d233e899b7dd55",
+      "bytes": 7297
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\tools\\bcsp_runtime.py",
+      "sha256": "8cbb5389e074347f6bf6e776755d22bbdaedaf5dba5102d51866d1b1e49b3615",
+      "bytes": 7320
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\implementation_candidate_v4\\overlay\\tools\\runner.py",
+      "sha256": "e378ab4ab7a26f6b370b4263788ca51e413b47ca3827cf404dd6ac4d9aaa0f32",
+      "bytes": 32455
+    }
+  ],
+  "candidate_installation_intent": [
+    {
+      "candidate": "overlay/tools/runner.py",
+      "relative_target": "tools/runner.py",
+      "change": "new-stage early dispatch only; legacy function body AST unchanged"
+    },
+    {
+      "candidate": "overlay/models/Transformer_utils.py",
+      "relative_target": "models/Transformer_utils.py",
+      "change": "explicit new-stage full-key query-chunk KNN; default legacy branch unchanged"
+    },
+    {
+      "candidate": "overlay/tools/bcsp_runtime.py",
+      "relative_target": "tools/bcsp_runtime.py",
+      "change": "new task dataset and guarded lifecycle"
+    },
+    {
+      "candidate": "overlay/tools/bcsp_adapter.py",
+      "relative_target": "tools/bcsp_adapter.py",
+      "change": "existing adapter copied into isolated namespace"
+    }
+  ],
+  "test_only_do_not_install": [
+    "overlay/tools/__init__.py",
+    "test_isolated_closure_v4.py"
+  ],
+  "package_semantics": "overlay is a candidate file set, not a standalone runnable repository. Preserve mother tools/__init__.py and models package; the empty candidate tools package is only for dependency-free artificial CPU tests. No installation performed or authorized.",
+  "verification": {
+    "static_parse_files": 6,
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "exit_code": 0,
+    "actual_adamw_step_post_hooks": 3900,
+    "traversals": 100,
+    "lr_scheduler_steps": 100,
+    "bn_schedule_assignments": 100,
+    "final_synthetic_checkpoint_optimizer_step": 3900,
+    "parent_files_hash_verified": 7,
+    "real_dataloader_traversals": 1,
+    "repeated_tiny_tensor_traversals": 99,
+    "knn_query_test": 257,
+    "knn_key_test": 16384
+  },
+  "limits": [
+    "Dispatcher and actual KNN function were AST-extracted for contract execution; complete runner dependency imports and real AdaPoinTr forward were not executed",
+    "Synthetic checkpoint is only a tiny artificial CPU network, not a cranial model weight",
+    "BN momentum is assigned at traversal start; this schedule is explicit candidate behavior, not a claim of historical numerical equivalence",
+    "Future training gate is provisional: exact code/environment/GPU binding and model config/fold semantics still require bounded readiness verification; boolean resource_preflight flag alone is not evidence",
+    "No data conversion or all-source QC performed",
+    "No CUDA equivalence or peak memory measured",
+    "No deployment, server operation, execution request, real training, evaluation or BNCal",
+    "This receipt is implementation handoff, not formal post-test freeze audit or full P3"
+  ],
+  "next_minimal_path": [
+    "Formal read-only post-test freeze audit of these fixed artifacts; no rerun",
+    "Then prioritize new-task data generation/QC and single bounded artificial GPU readiness check before any of at most four training requests; do not extend generic framework"
+  ]
+}

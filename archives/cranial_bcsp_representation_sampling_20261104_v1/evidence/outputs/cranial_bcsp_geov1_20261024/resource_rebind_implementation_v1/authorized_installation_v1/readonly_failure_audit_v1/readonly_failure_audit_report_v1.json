@@ -1,0 +1,1532 @@
+{
+  "schema": "bcsp-installation-failure-readonly-audit-v1",
+  "status": "AUDIT_COMPLETE_ALL337_TARGETS_ABSENT_NO_MATCHING_ACTIVE_INSTALLER_OBSERVED",
+  "date_Asia_Shanghai": "2026-10-25",
+  "authorization": "Bounded read-only failed-attempt audit: current identity, exact related local/remote process metadata and337 frozen targets. No reinstall, process termination or file changes.",
+  "authorized_installation_scope": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\readonly_installation_readiness_v1\\combined_no_overwrite_installation_scope_v1.json",
+    "bytes": 232620,
+    "sha256": "42d0b302e40ec0d127c147063b0df9ddd662aa1ef37d964387dd3c8081cd6e62"
+  },
+  "failed_attempt_report": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v1\\installation_attempt_freeze_report_v1.json",
+    "bytes": 3974,
+    "sha256": "21c24a61cbb01216d8d6ceb11d934bdc8f9d4991ce077085a211b04ecf36f37e"
+  },
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-3x9rq5-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "project_and_existing_ancestors_directory_only": true,
+    "GPU_not_queried": true
+  },
+  "process_findings": {
+    "local_WSL": {
+      "uid": 1000,
+      "processes": [
+        {
+          "pid": 954,
+          "comm": "python3",
+          "state": "S (sleeping)",
+          "ppid": "937",
+          "hpc_client": true,
+          "installation_marker": false,
+          "argument_bytes": 135
+        }
+      ],
+      "scanned": 60,
+      "seconds": 0.0038168989995028824,
+      "no_signals_sent": true
+    },
+    "remote_after_excluding_audit_ancestors": {
+      "hostname": "shu-common-25721452-notebook-3x9rq5-0",
+      "uid": 1000,
+      "processes": [
+        {
+          "pid": 462,
+          "comm": "bash",
+          "ppid": "0",
+          "state": "S (sleeping)",
+          "installation_marker": false,
+          "isolated_stdin_python": false
+        }
+      ],
+      "audit_ancestors_excluded": [
+        643,
+        658,
+        661,
+        662,
+        663
+      ],
+      "scanned": 10,
+      "seconds": 0.0010739844292402267,
+      "server_writes": 0,
+      "no_signals_sent": true
+    },
+    "matching_installation_clients": 0,
+    "matching_active_installer_python_or_timeout": 0,
+    "initial_marker_match_limitation": "The first process query included its own timeout ancestor because the probe text contains the search marker. Its marker flag was not treated as installation evidence. The v2 observation explicitly excludes the current audit process and its ancestor chain; no installer match remains.",
+    "remaining_remote_shells": "One non-matching sleeping bash was observed; no claim about its unrelated origin.",
+    "limits": "Snapshot of at most512 numeric /proc entries, UID-filtered candidates, no command/token text in retained output; no signals sent. Process absence cannot prove the prior script never began."
+  },
+  "target_findings": {
+    "original327": {
+      "absent": 327,
+      "present": 0
+    },
+    "supplement10": {
+      "absent": 10,
+      "present": 0
+    },
+    "total_absent": 337,
+    "present_matching": 0,
+    "present_mismatched": 0,
+    "planned_new_directories_absent": [
+      "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1",
+      "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence",
+      "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1"
+    ],
+    "all_observations": [
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_contract_v1.py",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_entry_v1.py",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_runtime_v5.py",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/fold_binding.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/local_P3_receipt_v1.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/manifest_16384.jsonl",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/manifest_8192.jsonl",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/post_preflight_freeze_audit_report_v1.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/qualified_data_qc_foldC_8192_v1.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/real_data_qc_verification_v1.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/shared_order_foldC_seed0_v1.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/static_training_config_v1.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__000__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__000__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__000__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__000__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__000__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__002__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__002__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__002__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__002__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__002__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__004__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__004__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__004__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__004__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__004__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__005__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__005__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__005__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__005__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__005__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__006__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__006__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__006__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__006__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__006__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__008__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__008__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__008__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__008__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__008__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__009__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__009__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__009__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__009__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__009__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__010__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__010__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__010__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__010__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__010__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__017__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__017__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__017__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__017__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__017__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__018__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__018__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__018__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__018__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__018__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__019__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__019__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__019__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__019__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__019__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__021__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__021__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__021__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__021__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__021__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__022__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__022__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__022__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__022__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__022__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__023__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__023__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__023__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__023__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__023__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__024__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__024__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__024__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__024__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__024__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__028__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__028__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__028__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__028__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__028__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__029__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__029__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__029__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__029__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__029__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__031__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__031__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__031__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__031__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__031__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__033__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__033__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__033__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__033__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__033__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__034__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__034__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__034__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__034__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__034__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__035__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__035__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__035__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__035__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__035__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__037__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__037__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__037__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__037__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__037__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__039__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__039__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__039__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__039__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__039__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__044__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__044__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__044__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__044__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__044__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__045__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__045__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__045__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__045__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__045__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__046__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__046__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__046__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__046__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__046__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__049__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__049__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__049__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__049__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__049__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__052__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__052__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__052__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__052__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__052__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__054__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__054__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__054__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__054__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__054__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__055__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__055__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__055__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__055__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__055__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__056__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__056__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__056__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__056__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__056__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__057__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__057__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__057__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__057__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__057__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__058__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__058__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__058__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__058__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__058__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__060__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__060__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__060__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__060__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__060__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__062__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__062__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__062__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__062__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__062__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__063__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__063__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__063__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__063__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__063__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__067__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__067__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__067__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__067__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__067__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__068__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__068__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__068__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__068__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__068__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__069__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__069__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__069__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__069__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__069__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__071__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__071__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__071__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__071__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__071__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__073__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__073__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__073__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__073__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__073__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__074__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__074__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__074__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__074__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__074__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__075__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__075__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__075__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__075__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__075__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__078__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__078__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__078__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__078__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__078__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__079__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__079__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__079__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__079__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__079__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__080__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__080__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__080__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__080__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__080__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__082__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__082__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__082__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__082__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__082__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__084__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__084__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__084__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__084__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__084__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__085__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__085__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__085__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__085__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__085__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__087__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__087__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__087__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__087__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__087__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__089__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__089__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__089__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__089__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__089__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__091__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__091__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__091__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__091__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__091__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__092__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__092__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__092__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__092__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__092__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__093__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__093__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__093__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__093__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__093__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__095__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__095__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__095__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__095__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__095__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__099__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__099__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__099__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__099__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__099__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__101__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__101__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__101__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__101__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__101__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__102__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__102__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__102__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__102__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__102__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__109__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__109__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__109__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__109__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__109__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__110__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__110__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__110__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__110__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__110__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__111__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__111__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__111__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__111__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__111__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__112__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__112__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__112__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__112__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__112__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__113__bilateral_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__113__frontoorbital_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__113__parietotemporal_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__113__random_1_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__113__random_2_8192.npz",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_contract_v2.py",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_entry_v2.py",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/resource_rebind_receipt_v1.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/readonly_identity_assets_upload_report_v1.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1/local_P3_receipt_v1.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1/static_review_v1.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1/results_v1.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1/cpu_batch_process_capture_v1.json",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1/cpu_batch_stdout_v1.log",
+        "status": "ABSENT"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/resource_rebind_v1/cpu_batch_stderr_v1.log",
+        "status": "ABSENT"
+      }
+    ],
+    "hashed_target_bytes": 0,
+    "hash_interpretation": "No installed target exists, so target content hashing is not applicable. No claim of337 hash matches.",
+    "partial_installation_residue_observed": false
+  },
+  "conclusions": [
+    "At the audit snapshots all337 exact target files and all five planned new directories were absent; no partial installation residue is present within the frozen range.",
+    "No matching installation client or installer Python/timeout remained after excluding the audit itself. Short read-only WebShell commands succeed on the intended current container.",
+    "These observations resolve current target/process uncertainty, but do not prove the old call never reached an early prewrite check or explain its missing stdout.",
+    "Previous failure remains a local/WebShell invocation timeout with undetermined layer; the evidence does not establish a dataset, CUDA or scientific-code failure."
+  ],
+  "permissions": {
+    "server_writes": 0,
+    "installation_retries": 0,
+    "signals_sent": 0,
+    "deletions": 0,
+    "overwrites": 0,
+    "NPZ_decodes": 0,
+    "GPU_queries": 0,
+    "tests": 0,
+    "forwards": 0,
+    "training_steps": 0,
+    "real_execution_material_created": false
+  },
+  "bounds": {
+    "process_scan_maximum_pids_per_query": 512,
+    "process_probe_cooperative_seconds": 10,
+    "process_remote_timeout_seconds": 15,
+    "target_max_files": 337,
+    "target_hash_limit_bytes_per_group": 67108864,
+    "target_remote_timeout_seconds_per_group": 45,
+    "short_remote_command_maximum_bytes": 2048
+  },
+  "raw_evidence": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v1\\readonly_failure_audit_v1\\hpc_status_capture_v1.json",
+      "bytes": 497,
+      "sha256": "43ccb77b8968e17263f365f7ff148771a20c82e7d86b5634e059265a168a5b7a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v1\\readonly_failure_audit_v1\\local_wsl_process_capture_v1.json",
+      "bytes": 687,
+      "sha256": "1eafbb10ddc300d341f5532ca4f28d3326707e564b28de5db8b0b8e6efebca8f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v1\\readonly_failure_audit_v1\\local_wsl_process_probe_v1.py",
+      "bytes": 1177,
+      "sha256": "70a57d7694513c1db6d430d09e86ee1a86b0d859f18206bd6b43f01ebcba9e59"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v1\\readonly_failure_audit_v1\\original_targets_after_timeout_capture_v1.json",
+      "bytes": 63845,
+      "sha256": "d8f0262a0c9f5e07ad5deb52d50769cef2b15a22622ded638330cbb21992334f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v1\\readonly_failure_audit_v1\\original_targets_after_timeout_probe_v1.py",
+      "bytes": 1783,
+      "sha256": "a3fa3c55445553db70210a92de0e8a9a664304bdc736520c4b6a64df3befcbff"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v1\\readonly_failure_audit_v1\\remote_process_capture_v1.json",
+      "bytes": 1569,
+      "sha256": "c4d88d43a4dedc2c940b27eca48eb21b90c61aec0f8b85d1a3491520f2768e32"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v1\\readonly_failure_audit_v1\\remote_process_capture_v2.json",
+      "bytes": 941,
+      "sha256": "58a48c6357f03cdbdae29e273b9f66062ceddf8dbd78ae0f6372e9aa9e7b526b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v1\\readonly_failure_audit_v1\\remote_process_probe_v1.py",
+      "bytes": 1344,
+      "sha256": "c49afa2c1117d0f4efe2c41744304ece4385e3e9474d3539da0cafc0725794ce"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v1\\readonly_failure_audit_v1\\remote_process_probe_v2.py",
+      "bytes": 1597,
+      "sha256": "17d1e6e9bf872766e531140de5c85f1daecaa1d91b96c9919b8a154a25d892fa"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v1\\readonly_failure_audit_v1\\supplement_targets_after_timeout_capture_v1.json",
+      "bytes": 3205,
+      "sha256": "6376f85390a8d8a82b50c0515fba0098a4b2ea2897c277537303f34e46541469"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\authorized_installation_v1\\readonly_failure_audit_v1\\supplement_targets_after_timeout_probe_v1.py",
+      "bytes": 1681,
+      "sha256": "3a24f6eb4778348d4acfac6a0b39c2528dbb1c8d2d2b46b5c9ad6b0e8ec68ac5"
+    }
+  ],
+  "next_not_authorized": "Do not replay the consumed installation attempt. A separately authorized new attempt may retain the same337 contents/no-overwrite mapping while using a bounded short invocation instead of the prior13893-byte multiline invocation; all uploads, identity, paths and resource reserve must be rechecked before writes. No generic framework, repackaging, scientific code or GPU changes are needed by these findings.",
+  "stop_status": "AUDIT_FINISHED_NO_REINSTALL_OR_CLEANUP"
+}

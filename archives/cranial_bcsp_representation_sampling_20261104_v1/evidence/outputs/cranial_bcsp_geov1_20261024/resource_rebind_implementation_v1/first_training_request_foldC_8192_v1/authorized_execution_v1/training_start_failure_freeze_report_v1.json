@@ -1,0 +1,122 @@
+{
+  "schema": "bcsp-authorized-first-training-start-failure-freeze-v1",
+  "status": "FAILED_BEFORE_MATERIALIZATION_OR_TMUX_STOP_NO_RETRY",
+  "date_Asia_Shanghai": "2026-10-25",
+  "execution_scope_sha256": "1614cd0bf883b8a700a633d3a8fe5f21981f5a3f9c9729bf36ab19b0d89bd7ed",
+  "entry_request_sha256": "aaa92444334ec61d57f593d51f983e79db1aa4d954d15a487b715e911e34dbc9",
+  "attempts": 1,
+  "controller_returncode": 1,
+  "controller_elapsed_seconds": 1.3280000000013388,
+  "remote_failure": {
+    "status": "FAILED_STOP_NO_RETRY",
+    "phase": "FROZEN_REQUEST",
+    "error": "RuntimeError('migration_acceptance binding')",
+    "created_files": [],
+    "created_directories": [],
+    "tmux_attempted": false,
+    "scope_sha256": "1614cd0bf883b8a700a633d3a8fe5f21981f5a3f9c9729bf36ab19b0d89bd7ed",
+    "no_retry": true,
+    "no_resume": true,
+    "no_cleanup": true
+  },
+  "local_byte_diagnostic": [
+    {
+      "payload": "SCOPE_RAW",
+      "frozen_file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\training_execution_request_v1.json",
+        "bytes": 17659,
+        "sha256": "1614cd0bf883b8a700a633d3a8fe5f21981f5a3f9c9729bf36ab19b0d89bd7ed"
+      },
+      "embedded_bytes": 17659,
+      "embedded_sha256": "1614cd0bf883b8a700a633d3a8fe5f21981f5a3f9c9729bf36ab19b0d89bd7ed",
+      "equal": true,
+      "changed_JSON_fields": []
+    },
+    {
+      "payload": "Q_RAW",
+      "frozen_file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\training_entry_request_v2.json",
+        "bytes": 5370,
+        "sha256": "aaa92444334ec61d57f593d51f983e79db1aa4d954d15a487b715e911e34dbc9"
+      },
+      "embedded_bytes": 5370,
+      "embedded_sha256": "aaa92444334ec61d57f593d51f983e79db1aa4d954d15a487b715e911e34dbc9",
+      "equal": true,
+      "changed_JSON_fields": []
+    },
+    {
+      "payload": "ACCEPT_RAW",
+      "frozen_file": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\migration_uncertainty_acceptance_v1.json",
+        "bytes": 2259,
+        "sha256": "28588c5ea4d5ad14cdb60f1e8fc52f9474629230ef1150c11f61888322a20527"
+      },
+      "embedded_bytes": 2309,
+      "embedded_sha256": "5ec37b3ac8a6717bef6c90792b8e8c211c070849a773d80d6a013af67144de4d",
+      "equal": false,
+      "changed_JSON_fields": [
+        "user_message"
+      ]
+    }
+  ],
+  "结论": [
+    "远端载荷在FROZEN_REQUEST阶段因migration_acceptance绑定不符而停止，未进入资源查询、文件材料化或tmux启动。",
+    "冻结的总request和入口request字节一致；本机嵌入的迁移接受记录仅user_message字段与原文件不同，字节数2259变为2309，SHA256发生变化。",
+    "本机调用载荷的中文文本保真及静态逐字节检查存在遗漏；这是调用封装问题，不是训练、数据、GPU或冻结科研配置失败。",
+    "冻结原文件未改；本次尝试不重用、不修复重跑。下一版如获授权，应由原文件read_bytes直接Base64封装并逐个核验原始字节，不经过工具文本往返转码。"
+  ],
+  "operation_boundary": {
+    "server_files_created_per_bound_controller_receipt": 0,
+    "server_directories_created_per_bound_controller_receipt": 0,
+    "GPU_queries_per_reached_code_path": 0,
+    "tmux_attempted": false,
+    "training_started": false,
+    "training_steps": 0,
+    "training_authorization_runtime_launcher_materialized": false,
+    "independent_post_failure_server_audit_performed": false,
+    "local_failure_artifacts_only_after_stop": true,
+    "automatic_retry": false,
+    "resume": false,
+    "cleanup": false,
+    "scientific_code_or_config_changes": 0
+  },
+  "old_attempt_disposition": "ATTEMPTED_START_FAILED_BEFORE_TMUX_NOT_REEXECUTABLE; no real training run began",
+  "evidence": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v1\\controller_attempt_started_v1.json",
+      "bytes": 196,
+      "sha256": "f3f013e313f96e549b4495c5c3f18812a96b3b52dc03c2b33444377700cca25e"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v1\\controller_process_capture_v1.json",
+      "bytes": 1738,
+      "sha256": "aea84889c95dcc418f1325b4c3cb99bd3672be207d77fda2ac6933907f89ffba"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v1\\controller_server_events_v1.json",
+      "bytes": 750,
+      "sha256": "3130486323ac3b56ac154f0cbc1116c309e62a2af82e5fd63fce9540013f3642"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v1\\execution_grant_record_v1.json",
+      "bytes": 780,
+      "sha256": "6007a80e7c457817afc8933a8f1b3a901d9565e59b84f9fde26bc4a49efa3a50"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v1\\invoke_short_training_once_v1.py",
+      "bytes": 4145,
+      "sha256": "d30e0a9c08e7ca35df3abe7997f6365899728e0115ab9ae00be905e590ab545e"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v1\\materialize_and_start_once_v1.py",
+      "bytes": 44401,
+      "sha256": "ef518a17a58bc5129d7ef3e59c46fcd5d0710d0b92909779aeecf3a6f750e175"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v1\\short_invocation_static_capture_v1.json",
+      "bytes": 1073,
+      "sha256": "c2c8795527770cc4fd702dfa85115cfa64f2f06a1c456c9f65878bb30ca4c6c0"
+    }
+  ],
+  "next_requires_separate_authorization": "Only correct local original-byte serialization and static byte/hash checks, retain all frozen scientific/resources/content, then create a new versioned pending execution request describing this consumed failed attempt. Do not reuse the current grant or start again automatically."
+}

@@ -1,0 +1,29 @@
+{
+  "status": "PROPOSED_NOT_IMPLEMENTED_NOT_EXECUTED",
+  "change_scope": "one new v2 read-only auditor, no production training files or environment changes",
+  "only_binary_exception": {
+    "path": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "bytes": 17331920,
+    "sha256": "01b4275dc374dcae51d245bda004daad6d7882d3f5de7f9852567bb7ab83180d"
+  },
+  "ordinary_file_limit_unchanged": 16777216,
+  "checkpoint_limit_unchanged": 536870912,
+  "total_limit_unchanged": 805306368,
+  "other_guards_unchanged": [
+    "regular files/no links",
+    "before-after fingerprints excluding atime",
+    "frozen hashes",
+    "source/fold/order/exposure checks",
+    "no checkpoint or NPZ deserialization",
+    "no model/GPU execution",
+    "no server writes"
+  ],
+  "diagnostics": "distinguish exact failing path, file size, per-file limit and total budget; preserve available completed checks in failure output",
+  "future_execution": "one fresh versioned read-only audit, old failed attempt not reused; candidate request only after complete PASS",
+  "not_authorized_now": [
+    "audit rerun",
+    "candidate execution or new training",
+    "environment repair",
+    "threshold changes in science"
+  ]
+}

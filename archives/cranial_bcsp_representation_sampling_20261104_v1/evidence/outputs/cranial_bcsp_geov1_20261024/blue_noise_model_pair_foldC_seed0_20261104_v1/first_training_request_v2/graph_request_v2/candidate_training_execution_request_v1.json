@@ -1,0 +1,269 @@
+{
+  "schema": "bcsp-blue-noise-candidate-execution-scope-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "execution_authorized": false,
+  "stage": "BCSP_BLUE_NOISE_AB_V1",
+  "run_id": "bcsp_blue_noise_foldC_surface_graph_in8192_out8192_seed0_train_v1",
+  "arm": "surface_graph",
+  "authorized_training_attempts": 1,
+  "scope": "Install only three new control metadata files without overwrites, reuse exact installed code/candidate315 data, one scratch candidate Fold C seed0 training after separate full-hash authorization",
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-v2iwsa-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-34a1b996-2bd7-88e6-9dca-164b718caea6",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity."
+  },
+  "inner_request": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_surface_graph_v1/training_entry_request_v1.json",
+    "bytes": 5998,
+    "sha256": "373c3e330426697d0639c93e4d5f283935e25157afee750e21f9bed25a8569bb"
+  },
+  "parent_baseline_audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_noise_model_pair_foldC_seed0_20261104_v1\\first_training_request_v2\\post_Euclidean_training_freeze_audit_v1\\audit_report_v1.json",
+    "sha256": "4fad73d8458e5788b6cfb23113a84f98601f45cc8b47c7827ac9ffe2a44cb689",
+    "status": "FORMAL_POST_TRAINING_FREEZE_AUDIT_PASS",
+    "checkpoint_sha256": "f2ec18c5f3e6ded420f5c3026e1a0046346589121b354225c9b9b39ac789e624"
+  },
+  "paired_initialization": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_surface_graph_v1/paired_initialization_receipt_v1.json",
+    "bytes": 4018,
+    "sha256": "a41f5cc47db9ee94c75a6cb37864405333ecdb9a7bd8389fe7dbd4cf3cf9a893"
+  },
+  "scientific_config": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/evidence/static_training_config_v1.json",
+    "bytes": 2120,
+    "sha256": "18aa3d941ca8957fc1ecafbcd1a054b4e6ea326d3641cb6955ba204736c4d713"
+  },
+  "order_plan": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/evidence/shared_order_foldC_seed0_v1.json",
+    "bytes": 1248506,
+    "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+  },
+  "training_counts": {
+    "sources": 63,
+    "cases": 315,
+    "input": 8192,
+    "target": 8192,
+    "batch": 8,
+    "traversals": 100,
+    "updates": 3900,
+    "exposures": 31200,
+    "dropped_exposures": 300
+  },
+  "resources_per_run": {
+    "wall_seconds": 86400,
+    "RSS_bytes": 8589934592,
+    "device_MiB": 22528,
+    "torch_peak_bytes": 21474836480,
+    "output_bytes": 2147483648,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "same_science_as_baseline": {
+    "model": "B0 AdaPoinTr, not Mamba",
+    "input": 8192,
+    "target": 8192,
+    "sampler_seed": 0,
+    "training_seed": 0,
+    "target_normalization_and_permutation": "identical fixed targets, D frame and per-case permutation",
+    "batch_exposure_order": "byte-identical order plan,3900 updates,31200 exposures,300 drops",
+    "numerics": "FP32 deterministic, TF32/AMP off",
+    "backend": "same native PointNet2/full-key chunk256 KNN/torch.cdist loss",
+    "checkpoint_initialization": "scratch; compare parameter and persistent state fingerprints before first update; never load final Euclidean weights"
+  },
+  "transport": {
+    "files": [
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_noise_model_pair_foldC_seed0_20261104_v1\\first_training_request_v2\\graph_request_v2\\transport_v1\\bcsp_graph_control_v1.tar.gz",
+        "filename": "bcsp_graph_control_v1.tar.gz",
+        "bytes": 3328,
+        "sha256": "3483d0903e69023d7a43d850643dc6d266973ce8c600ae72105975b11f529cba",
+        "upload_directory": "/home/jovyan"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_noise_model_pair_foldC_seed0_20261104_v1\\first_training_request_v2\\graph_request_v2\\transport_v1\\bcsp_graph_control_v1.tar.gz.sha256",
+        "filename": "bcsp_graph_control_v1.tar.gz.sha256",
+        "bytes": 95,
+        "sha256": "d00384151587203f023f23695e850d8312d832344d9773e088c6e21d3ae130d9",
+        "upload_directory": "/home/jovyan"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_noise_model_pair_foldC_seed0_20261104_v1\\first_training_request_v2\\graph_request_v2\\transport_v1\\bcsp_graph_control_v1.bytes",
+        "filename": "bcsp_graph_control_v1.bytes",
+        "bytes": 5,
+        "sha256": "9f0212e387fcb1766e8a99fe7a0ef5b823748cf264573bf08a8171ce9901eed2",
+        "upload_directory": "/home/jovyan"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_noise_model_pair_foldC_seed0_20261104_v1\\first_training_request_v2\\graph_request_v2\\transport_v1\\bcsp_graph_control_v1.contents.sha256",
+        "filename": "bcsp_graph_control_v1.contents.sha256",
+        "bytes": 302,
+        "sha256": "cbf279bf8db0ebc9bf64120c98e09a296d0c48385e14c0810be017f4e2bd386e",
+        "upload_directory": "/home/jovyan"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_noise_model_pair_foldC_seed0_20261104_v1\\first_training_request_v2\\graph_request_v2\\transport_v1\\bcsp_graph_control_v1.contents.sha256.sha256",
+        "filename": "bcsp_graph_control_v1.contents.sha256.sha256",
+        "bytes": 104,
+        "sha256": "4aa7ce285705f42a209e1b503c86ebf11531ca0aed95272ea29c2bbf54d11db3",
+        "upload_directory": "/home/jovyan"
+      }
+    ],
+    "archive_sha256": "3483d0903e69023d7a43d850643dc6d266973ce8c600ae72105975b11f529cba",
+    "members": 3,
+    "installation_mapping": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_noise_model_pair_foldC_seed0_20261104_v1\\first_training_request_v2\\graph_request_v2\\non_overwrite_control_installation_mapping_v1.json",
+      "sha256": "04247c2bdf552964d1a6709003b7c1903778d034a96a6d7f6907688058a9f9f1"
+    }
+  },
+  "reused_bindings": [
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/evidence/static_training_config_v1.json",
+      "bytes": 2120,
+      "sha256": "18aa3d941ca8957fc1ecafbcd1a054b4e6ea326d3641cb6955ba204736c4d713"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/evidence/shared_order_foldC_seed0_v1.json",
+      "bytes": 1248506,
+      "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/evidence/resource_binding_v1.json",
+      "bytes": 2059,
+      "sha256": "e033666f097bfc457237f3ae3c36d81ac73d47da10d7353a0b985faf71d0e362"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/evidence/paired_train_data_receipt.json",
+      "bytes": 291162,
+      "sha256": "fbd41368eaa74c788d42b3848f93c7050272719ac6600f8ba1123ac5a060a229"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/evidence/fold_binding.json",
+      "bytes": 35012,
+      "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/evidence/Euclidean_elimination_train_manifest_8192.jsonl",
+      "bytes": 488220,
+      "sha256": "5e7a754a6ae723b3dbaf93cc43e447460b5c4ec36a8fbea2afe1d7da647d2c12"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/evidence/surface_graph_train_manifest_8192.jsonl",
+      "bytes": 485700,
+      "sha256": "a098e6fc7e6394d0d3f66326ac71b8f0580288148b52381715c5f215926a379b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/implementation/bcsp_blue_noise_training_entry_v1.py",
+      "bytes": 16397,
+      "sha256": "9af12f41c29fcad54358fbad34414c0966d1289fdca4d50c6e1c4cf3ed0a54b1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/implementation/bcsp_blue_noise_training_contract_v1.py",
+      "bytes": 13042,
+      "sha256": "24b35893040df12ec665f7e5417eff8fa8c20070ba4ec2e61e3b6f9289172cdf"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/implementation/bcsp_blue_noise_training_runtime_v1.py",
+      "bytes": 10220,
+      "sha256": "84bdf882ead11282b01556d6ed302ab46b7112dc3445e6cd3e6cde24d09aa9dc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+      "bytes": 32728,
+      "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+      "bytes": 23220,
+      "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/post_preflight_freeze_audit_report_v1.json",
+      "bytes": 31109,
+      "sha256": "af3c3053be96a443d203c486ccede4d2bf2f0799ae753294ee946618726cf000"
+    }
+  ],
+  "reused_payload": {
+    "root": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_noise_ab_foldc_seed0_v1/surface_graph",
+    "manifest": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/evidence/surface_graph_train_manifest_8192.jsonl",
+      "bytes": 485700,
+      "sha256": "a098e6fc7e6394d0d3f66326ac71b8f0580288148b52381715c5f215926a379b"
+    },
+    "files": 315,
+    "installed_hash_verified_at_initial_deployment": true,
+    "post_baseline_audit_stream_rehashed": false,
+    "audit_sha256": "4fad73d8458e5788b6cfb23113a84f98601f45cc8b47c7827ac9ffe2a44cb689",
+    "require_recheck_before_execution": true
+  },
+  "future_paths": {
+    "control": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_surface_graph_v1",
+    "authorization": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_surface_graph_v1/authorization_v1.json",
+    "runtime": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_surface_graph_v1/runtime_v1.json",
+    "launcher": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_surface_graph_v1/launch_once_v1.sh",
+    "launch_attempt": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_surface_graph_v1/launch_attempt_v1.json",
+    "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_noise_foldC_surface_graph_in8192_out8192_seed0_train_v1",
+    "log": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_noise_foldC_surface_graph_in8192_out8192_seed0_train_v1/launch.log",
+    "PID": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_noise_foldC_surface_graph_in8192_out8192_seed0_train_v1/worker.pid",
+    "exit_code": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_noise_foldC_surface_graph_in8192_out8192_seed0_train_v1/exit_code.txt",
+    "checkpoint": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_noise_foldC_surface_graph_in8192_out8192_seed0_train_v1/ckpt-last.pth",
+    "completion": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_noise_foldC_surface_graph_in8192_out8192_seed0_train_v1/completion.json",
+    "tmux": "bcsp_blue_noise_foldc_graph_seed0_train_v1"
+  },
+  "launcher_contract": {
+    "environment": {
+      "CUDA_VISIBLE_DEVICES": "GPU-34a1b996-2bd7-88e6-9dca-164b718caea6",
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "OMP_NUM_THREADS": "2",
+      "MKL_NUM_THREADS": "2",
+      "OPENBLAS_NUM_THREADS": "2",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "MPLBACKEND": "Agg",
+      "MPLCONFIGDIR": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_noise_foldC_surface_graph_in8192_out8192_seed0_train_v1/mplconfig",
+      "CUDA_CACHE_DISABLE": "1",
+      "TMPDIR": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_noise_foldC_surface_graph_in8192_out8192_seed0_train_v1/tmp"
+    },
+    "python": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "flags": [
+      "-I",
+      "-S",
+      "-B"
+    ],
+    "entry": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/implementation/bcsp_blue_noise_training_entry_v1.py",
+    "entry_sha256": "9af12f41c29fcad54358fbad34414c0966d1289fdca4d50c6e1c4cf3ed0a54b1",
+    "external_timeout_seconds": 86400,
+    "kill_after_seconds": 5,
+    "order": "recheck identity/source/data/baseline evidence/new paths/idle GPU/disk, exclusive metadata install, authorization -> authorization SHA -> runtime -> launcher; mkdir verified log parent before redirect, attempt marker before sole tmux start, propagate actual exit code including PowerShell LASTEXITCODE",
+    "control_initial_filenames": [
+      "paired_initialization_receipt_v1.json",
+      "qualified_training_receipt_v1.json",
+      "training_entry_request_v1.json"
+    ]
+  },
+  "no_materialization_performed": true,
+  "completion_boundary": "stop after this one candidate attempt; independent post-training audit and later two-arm evaluation each require separate explicit scope",
+  "forbidden": [
+    "no Euclidean baseline retraining",
+    "no baseline checkpoint load/resume",
+    "no retry",
+    "no development payload/evaluation or BNCal",
+    "no Fold D/extra seeds/SkullFix/MUG",
+    "no scientific code or parameter changes",
+    "no overwrite/delete",
+    "no dependency install/rebuild/download or environment upgrade"
+  ],
+  "limitations": [
+    "Formal baseline audit verifies saved initialization records, not independently reconstructed initial weights",
+    "Byte hashing does not deserialize checkpoint or NPZ",
+    "Baseline loss is not prediction quality; candidate benefit unknown",
+    "GPU PIDs remain diagnostic; no exclusive cgroup guarantee"
+  ]
+}

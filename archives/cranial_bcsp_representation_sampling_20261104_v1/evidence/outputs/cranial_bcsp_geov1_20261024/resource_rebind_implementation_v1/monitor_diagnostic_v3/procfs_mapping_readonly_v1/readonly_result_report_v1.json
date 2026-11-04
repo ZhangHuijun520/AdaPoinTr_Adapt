@@ -1,0 +1,55 @@
+{
+  "schema": "bounded-procfs-namespace-readonly-result-v1",
+  "date_Asia_Shanghai": "2026-10-26",
+  "status": "STOPPED_IDENTITY_PRECONDITION_FAILED_NO_MOUNT_OBSERVATION",
+  "expected_hostname": "shu-common-25721452-notebook-3x9rq5-0",
+  "expected_uid": 1000,
+  "attempts": 1,
+  "returncode": 1,
+  "timeout": false,
+  "failed_source_line": 4,
+  "failed_condition": "socket.gethostname() == expected_hostname and os.getuid() == 1000",
+  "actual_identity_recorded": false,
+  "reason": "AssertionError before mountinfo/status/namespace reads; cannot distinguish hostname mismatch from UID mismatch",
+  "mount_table_read": false,
+  "namespace_metadata_read": false,
+  "candidate_result": "NOT_ASSESSED",
+  "platform_source_confirmation": "UNRESOLVED",
+  "server_writes": 0,
+  "CUDA_contexts_created": 0,
+  "forward_calls": 0,
+  "training_retries": 0,
+  "guard_changed": false,
+  "evidence": [
+    {
+      "file": "attempt_started_v1.json",
+      "bytes": 127,
+      "sha256": "d2c33b3cc810ca498430d0a60c7285cb223761cbf65d1b6c0f3b2fa5c9e461f8"
+    },
+    {
+      "file": "frozen_scope_v1.json",
+      "bytes": 787,
+      "sha256": "d395af43237189010ad42dfbea0ca9162c9917656e7d1c6a604d32f06f081a4e"
+    },
+    {
+      "file": "invoke_once_v1.py",
+      "bytes": 2281,
+      "sha256": "deb5d444052972c8bd21bff20d70d51739da94e7c23c1ae5b041c250f05284c1"
+    },
+    {
+      "file": "probe_v1.py",
+      "bytes": 1166,
+      "sha256": "a481d3522ca80ca6ca86ab247412d996e8f056b3f3c1e709f5b61b85e011af99"
+    },
+    {
+      "file": "process_capture_v1.json",
+      "bytes": 392,
+      "sha256": "8feda4821f0726648474f40a5f8a77fd764cb9b31eea540ac6d292674c088f57"
+    }
+  ],
+  "next_step_not_authorized": "Confirm current container identity; if authorized, one minimal hostname/UID-only read. Do not retry original probe automatically.",
+  "precise_questions": [
+    "What is the current container hostname?",
+    "After identity confirmation, does the platform expose an existing procfs view or official PID mapping interface in the same PID namespace as SMI, and what is its exact path/interface and provenance?"
+  ]
+}

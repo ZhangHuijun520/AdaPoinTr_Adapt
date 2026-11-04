@@ -1,0 +1,131 @@
+{
+  "prediction_vs_input": {
+    "8192": {
+      "input_J2": 0.6095535572975592,
+      "prediction_J2": 0.4646188328984492,
+      "GT_J2": 0.9970398440609455,
+      "input_Jp95": 3.4942978195282897,
+      "prediction_Jp95": 11.274402431217858,
+      "cases_prediction_J2_below_input": 158
+    },
+    "16384": {
+      "input_J2": 0.8452693047783032,
+      "prediction_J2": 0.45308854929016334,
+      "GT_J2": 0.9970398440609455,
+      "input_Jp95": 2.5144455094466815,
+      "prediction_Jp95": 11.120970581202462,
+      "cases_prediction_J2_below_input": 205
+    }
+  },
+  "historical_CPU_surrogate": {
+    "8192": {
+      "input": {
+        "J_cover_2mm": 0.5069829514502074,
+        "J_p95_mm": 4.019999299099527,
+        "points": 8192.0
+      },
+      "center512": {
+        "J_cover_2mm": 0.0652989031151713,
+        "J_p95_mm": 8.845042636552249,
+        "points": 512.0
+      },
+      "proxy256": {
+        "J_cover_2mm": 0.04256272351409494,
+        "J_p95_mm": 11.473144727362623,
+        "points": 256.0
+      },
+      "first_layer_direct_neighborhood_union": {
+        "J_cover_2mm": 0.46588795538585276,
+        "J_p95_mm": 4.3163644250995725,
+        "points": 6725.5
+      },
+      "near_interface_input_retained_in_direct_neighborhood_fraction": 0.8838209982788297
+    },
+    "16384": {
+      "input": {
+        "J_cover_2mm": 0.7257774619895662,
+        "J_p95_mm": 2.9792770718743036,
+        "points": 16384.0
+      },
+      "center512": {
+        "J_cover_2mm": 0.05992065649014797,
+        "J_p95_mm": 8.689539899431749,
+        "points": 512.0
+      },
+      "proxy256": {
+        "J_cover_2mm": 0.03906197431087514,
+        "J_p95_mm": 11.380938714202832,
+        "points": 256.0
+      },
+      "first_layer_direct_neighborhood_union": {
+        "J_cover_2mm": 0.5094860838425065,
+        "J_p95_mm": 4.5788800831537975,
+        "points": 8033.833333333333
+      },
+      "near_interface_input_retained_in_direct_neighborhood_fraction": 0.5913978494623656
+    }
+  },
+  "archive_schema": {
+    "members": 423,
+    "prediction_files": 420,
+    "actual_proxy_artifacts": 0
+  },
+  "selected_face_analysis": [
+    {
+      "case_id": "train__001__bilateral",
+      "fold": "C",
+      "arm": "8192",
+      "selection": "first reference-manifest case per fold, not performance-selected",
+      "J_area_fractions": {
+        "input_supported_prediction_covered": 0.47844587406919603,
+        "input_supported_prediction_missed": 0.16751937591813992,
+        "input_unsupported_prediction_covered": 0.24117319284737343,
+        "both_missed": 0.11286155716529049
+      },
+      "GT_J2": 0.9995947520389037
+    },
+    {
+      "case_id": "train__001__bilateral",
+      "fold": "C",
+      "arm": "16384",
+      "selection": "first reference-manifest case per fold, not performance-selected",
+      "J_area_fractions": {
+        "input_supported_prediction_covered": 0.5954105668405856,
+        "input_supported_prediction_missed": 0.26376576667848634,
+        "input_unsupported_prediction_covered": 0.09736082265336102,
+        "both_missed": 0.04346284382756699
+      },
+      "GT_J2": 0.9995947520389037
+    },
+    {
+      "case_id": "train__004__bilateral",
+      "fold": "D",
+      "arm": "8192",
+      "selection": "first reference-manifest case per fold, not performance-selected",
+      "J_area_fractions": {
+        "input_supported_prediction_covered": 0.3942348906986712,
+        "input_supported_prediction_missed": 0.18168666952421775,
+        "input_unsupported_prediction_covered": 0.2821474496356622,
+        "both_missed": 0.14193099014144875
+      },
+      "GT_J2": 1.0
+    },
+    {
+      "case_id": "train__004__bilateral",
+      "fold": "D",
+      "arm": "16384",
+      "selection": "first reference-manifest case per fold, not performance-selected",
+      "J_area_fractions": {
+        "input_supported_prediction_covered": 0.6308401200171453,
+        "input_supported_prediction_missed": 0.21131590227175315,
+        "input_unsupported_prediction_covered": 0.11621303043291895,
+        "both_missed": 0.04163094727818259
+      },
+      "GT_J2": 1.0
+    }
+  ],
+  "no_actual_forward_proxy_trajectory": true,
+  "models_loaded": 0,
+  "forward": 0,
+  "training": 0
+}

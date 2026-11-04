@@ -1,0 +1,37 @@
+{
+  "schema": "bcsp-new-device-migration-uncertainty-acceptance-v1",
+  "date_Asia_Shanghai": "2026-10-25",
+  "status": "MIGRATION_UNCERTAINTY_ACCEPTED_FOR_PENDING_REQUEST_CREATION_ONLY",
+  "user_message": "明确接受该不确定性后，仅创建待授权训练request，保留全部资源阈值、失败即停和禁止自动重试规则",
+  "referenced_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_run_contract_resource_review_v1\\first_run_contract_resource_migration_review_v1.json",
+    "bytes": 15295,
+    "sha256": "9cb6af6512867f13b1b9acc176a73c2682ea17b155969d720f4e0fb7614f0c56"
+  },
+  "new_identity": {
+    "hostname": "shu-common-25721452-notebook-3x9rq5-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-4b19574a-832d-b4fe-e655-a57462954d6a",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity."
+  },
+  "accepted_remaining_uncertainty": [
+    "New GPU UUID and driver570.190 native CUDA execution has not been empirically validated",
+    "No full AdamW/ordinaryBN training memory or3900-step completion validation on this device",
+    "Failure may occur at zero or partial committed updates; retain evidence,stop,no automatic retry/resume/batch reduction/backend substitution"
+  ],
+  "new_gpu_execution_validated": false,
+  "historical_GPU_evidence_only": true,
+  "is_training_execution_authorization": false,
+  "authorizes_only_pending_request_creation": true,
+  "unchanged_static_config_sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647",
+  "unchanged_order_sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+}

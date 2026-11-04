@@ -1,0 +1,3397 @@
+{
+  "status": "FORMAL_POST_PREDICTION_FREEZE_AUDIT_PASS",
+  "UTC": "2026-11-04T06:34:33.717240+00:00",
+  "hostname": "shu-common-25721452-notebook-v2iwsa-0",
+  "uid": 1000,
+  "outer_request_sha256": "4fd0d2736e58530326c37d77fdbd5e76242339c36ea0a7905290a58d0b31ab43",
+  "inner_request_sha256": "276dd6d316ec042d46f30b69e292a40cc9541d2daff416bac2cd15f6e6850f19",
+  "checks": [
+    "identity_correct_session_ended_exit0",
+    "controls_authorization_runtime_claim_unchanged_and_two_checkpoint_SHA_recomputed",
+    "two_models_105_dev_cases_each_21_shared_development_sources",
+    "all219_installed_files_controls_and_bound_source_provider_checkpoint_hashes_verified",
+    "same105_cases_GT_frame_permutation_and_source_exclusion",
+    "consecutive210_records_two105_forwards_model_and_recorded_CPU_RNG_invariance_zero_updates_BNCal",
+    "210_live_prediction_SHA_and_regular_NPZ_finite_float32_8192x3_independently_verified",
+    "423_resource_records_exact_sequence_and_original_thresholds_independently_recomputed",
+    "archive213_members_match_live_files_and_all_four_download_artifacts_independently_hashed",
+    "strict_output_set_no_failure_receipt_no_weight_payload_in_prediction_archive",
+    "complete221_file_output_manifest_and_all_read_fingerprints_stable_atime_excluded"
+  ],
+  "exit_code": 0,
+  "forwards": 210,
+  "unique_cases": 105,
+  "unique_sources": 21,
+  "per_run": {
+    "C_Euclidean_elimination": 105,
+    "C_surface_graph": 105
+  },
+  "state_evidence": [
+    {
+      "run": "C_Euclidean_elimination",
+      "forwards": 105,
+      "state_before": "e892431c528f0eb613feb83cdc69206045b4cc97db26e6da6be916a3648e7880",
+      "state_after": "e892431c528f0eb613feb83cdc69206045b4cc97db26e6da6be916a3648e7880",
+      "CPU_rng_before": "57ca75b907f0dd2361c0d7d376b486934260caad99fb7b959bddc149cb3a84be",
+      "CPU_rng_after": "57ca75b907f0dd2361c0d7d376b486934260caad99fb7b959bddc149cb3a84be",
+      "CUDA_rng_before": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+      "CUDA_rng_after": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+      "Python_numpy_RNG_unchanged": true,
+      "mode": "eval_inference_mode",
+      "BNCal": 0,
+      "optimizer": 0,
+      "backward": 0
+    },
+    {
+      "run": "C_surface_graph",
+      "forwards": 105,
+      "state_before": "665df181115d0afe27d07453085c57fe1e4e5e869d26acf6bce2229f613cffee",
+      "state_after": "665df181115d0afe27d07453085c57fe1e4e5e869d26acf6bce2229f613cffee",
+      "CPU_rng_before": "57ca75b907f0dd2361c0d7d376b486934260caad99fb7b959bddc149cb3a84be",
+      "CPU_rng_after": "57ca75b907f0dd2361c0d7d376b486934260caad99fb7b959bddc149cb3a84be",
+      "CUDA_rng_before": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+      "CUDA_rng_after": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+      "Python_numpy_RNG_unchanged": true,
+      "mode": "eval_inference_mode",
+      "BNCal": 0,
+      "optimizer": 0,
+      "backward": 0
+    }
+  ],
+  "training_updates": 0,
+  "BNCal": 0,
+  "loss": 0,
+  "backward": 0,
+  "resource_records": 423,
+  "resource_maxima": {
+    "RSS_bytes": 1498861568,
+    "device_MiB": 678,
+    "peak_allocated": 205540352,
+    "peak_reserved": 239075328,
+    "output_bytes": 19172016
+  },
+  "recorded_inference_budget_seconds": 41.759767514653504,
+  "checkpoint_hashes": [
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_noise_foldC_Euclidean_elimination_in8192_out8192_seed0_train_v1/ckpt-last.pth",
+      "bytes": 380368111,
+      "sha256": "f2ec18c5f3e6ded420f5c3026e1a0046346589121b354225c9b9b39ac789e624"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_noise_foldC_surface_graph_in8192_out8192_seed0_train_v1/ckpt-last.pth",
+      "bytes": 380368111,
+      "sha256": "19bb53f61ef618ad1eca9b5acc45dae1ec1d6f3f56f6c97bca0098b1c20f216a"
+    }
+  ],
+  "control_hashes": [
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/bcsp_blue_pair_predict_v1.py",
+      "bytes": 15647,
+      "sha256": "5a3e369e8e15cf3cb54dda241fca272742dcdb41f24a9030c79d29cf6fecd572"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/evidence/development_pair_input_index_v1.json",
+      "bytes": 194906,
+      "sha256": "3981817e17f94a31422058dc391ca6b60d41fe4cf3280b3beb16747770c0530a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/evidence/paired_development_data_receipt_v1.json",
+      "bytes": 121352,
+      "sha256": "2155eaf19292763e624ac033851c6714de22c73944fd987523d8319b98113ae0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__001__bilateral_8192.npz",
+      "bytes": 157081,
+      "sha256": "abf9603974c154d67f58dc281d88e6050012a7cf9c6e881b38a794a28ba95ad8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__001__frontoorbital_8192.npz",
+      "bytes": 156770,
+      "sha256": "39543fcbae8b2f7c23ae8f5a319e7c50a7b5b79e5f409f7656d11d62a0281180"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__001__parietotemporal_8192.npz",
+      "bytes": 157313,
+      "sha256": "22ccd00d647b07abe77e9fa79322156de04880a46a36b1532d2f9467550bfc89"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__001__random_1_8192.npz",
+      "bytes": 157864,
+      "sha256": "a6dd37b7072a9a2e6e0ff15caf6dad01165200e21c5f2ad52cf090b9245b940a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__001__random_2_8192.npz",
+      "bytes": 157845,
+      "sha256": "f864be88c288ea92d829fec080fd0d216eff2e87d99c94465f51e50604393001"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__003__bilateral_8192.npz",
+      "bytes": 155915,
+      "sha256": "27d95816ec199d20fc061c007d9e4e4c5c8c882200cc13a880f0fd9592191552"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__003__frontoorbital_8192.npz",
+      "bytes": 153112,
+      "sha256": "bb6489f1dded1d1a5d5b2ab0bcb7498c9a330cc19217aa39065e155a64982be6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__003__parietotemporal_8192.npz",
+      "bytes": 156570,
+      "sha256": "8188ca68e51cb5fd79a0cf06f5ada8dd79d8dda6deb08914a5ed2e1070f8f3c1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__003__random_1_8192.npz",
+      "bytes": 156250,
+      "sha256": "f60ebecdd17c2a1b3aab945da631a742eda7ed8c6c269d8a6587f1708f8d7cc4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__003__random_2_8192.npz",
+      "bytes": 158063,
+      "sha256": "4f3e82d0b210677fb6b531166fdf7352c97e384ef28d0b33fd2ed76f8fc2fe3c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__012__bilateral_8192.npz",
+      "bytes": 156849,
+      "sha256": "a46fe374f102ebf4205fd87ba032a8f1fd1ef81eb62e1421e1cba73b764d2ac7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__012__frontoorbital_8192.npz",
+      "bytes": 155483,
+      "sha256": "9d47bdffc8e9c8ccdb0c2edc956f435fa5cf2f5824900c5a19ab2f1e489ad55e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__012__parietotemporal_8192.npz",
+      "bytes": 156028,
+      "sha256": "38e0a9482016728b10c9ddcbf86c4f5cd45151b249a1e9bd0fb139d07dfb5564"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__012__random_1_8192.npz",
+      "bytes": 156622,
+      "sha256": "5886927e2d2291b91dc9d434855f6de8c4b504d55b0ba229874ceb36fa3b1083"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__012__random_2_8192.npz",
+      "bytes": 155007,
+      "sha256": "2ec6a63e8b9b6b0fd0f746234f7d1bdc882e475104d36ce045c91cf2aa71487d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__013__bilateral_8192.npz",
+      "bytes": 157634,
+      "sha256": "373a8116c00e496aeb413e92a18db16c4e565a6b5121b44a6e61121b43543485"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__013__frontoorbital_8192.npz",
+      "bytes": 155862,
+      "sha256": "8ed62e0d220097bcee656d7cf9ce50de50186e97722730ed52cde3202253c879"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__013__parietotemporal_8192.npz",
+      "bytes": 157245,
+      "sha256": "477efa06f8324fe66b95e6d103d1d65c444ae2d6664561268e00e73bb7a90f59"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__013__random_1_8192.npz",
+      "bytes": 156599,
+      "sha256": "ad2c86d4023770b939e077cefce8a8a504a6385e681dd164714ce58af82f9b0c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__013__random_2_8192.npz",
+      "bytes": 156132,
+      "sha256": "6ec1db6963ac19fbc6084cc1ca0218565d63f190e32c2fd24236fe2c115b7623"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__025__bilateral_8192.npz",
+      "bytes": 157454,
+      "sha256": "43364d7691bf19f5ae6c33a7c7e72f1067c0b265911002948657aacdc78f992b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__025__frontoorbital_8192.npz",
+      "bytes": 155923,
+      "sha256": "0141d3a2599185bf62738f46506df349780e38e9c38e692c8a464ca4990762f5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__025__parietotemporal_8192.npz",
+      "bytes": 155185,
+      "sha256": "2ea401c8c56a206871130c1f035c9f4e96d9c2d9bb7d835916eb7840764bf0e9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__025__random_1_8192.npz",
+      "bytes": 156861,
+      "sha256": "37c70a36f39e24d5b290955bcbb683d19f24a62a40ff738d301eb2137f717b80"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__025__random_2_8192.npz",
+      "bytes": 157175,
+      "sha256": "6f7a69d0474504ac48d8ae64623a47e3288c6d419270655cacb3b1036ffb9c3e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__026__bilateral_8192.npz",
+      "bytes": 157093,
+      "sha256": "7fe87b958a4af90e51a7466123f487da6b39fbd21670b2bcd54c5fdf0acf9ada"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__026__frontoorbital_8192.npz",
+      "bytes": 156725,
+      "sha256": "2642f4466ec63c1749b5312458c2293b7af946bbd2ba4f556ca9ba4ae834affb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__026__parietotemporal_8192.npz",
+      "bytes": 156793,
+      "sha256": "2e78a8bb08b5a2ed88b9de6c3c7bc49216e45f702ea5cdc37580629428557063"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__026__random_1_8192.npz",
+      "bytes": 156919,
+      "sha256": "c8b7428504b56651b2416ea39c8e0b7daa65eaa548f094f26641c75b899336ed"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__026__random_2_8192.npz",
+      "bytes": 156774,
+      "sha256": "97c9fdb8df09b3ab79ae3bde07114fc84d965b2e0f72c58b909f4a1e76db3f32"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__036__bilateral_8192.npz",
+      "bytes": 157888,
+      "sha256": "af66ac5ece41cbb2c4c08cdaa8b5e67f351365a3a59f245eaa721d3f47390e6a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__036__frontoorbital_8192.npz",
+      "bytes": 155705,
+      "sha256": "555562da6db6e9bc5f2121791e976c3bef892c8e8a9238c9a6c6dc378552a448"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__036__parietotemporal_8192.npz",
+      "bytes": 156170,
+      "sha256": "7dd54bd98f28e624d39f0bcbac4e9df84fcd92535a543800d700de69a56dde73"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__036__random_1_8192.npz",
+      "bytes": 157344,
+      "sha256": "7619894eae55f6abaec17555a015c536fca3de319f37d9f1145a946b5ed23cc0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__036__random_2_8192.npz",
+      "bytes": 156630,
+      "sha256": "77beb4a3becee0a3653b8cc6d5352ae9a30d925ab1e10c5f155064c821ab1f74"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__038__bilateral_8192.npz",
+      "bytes": 157930,
+      "sha256": "303aacab0b702079b54c5069f4fb5db667b7e3b922e8c28d697e32c64236c60e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__038__frontoorbital_8192.npz",
+      "bytes": 155475,
+      "sha256": "e41d02cb4860ff423c02e2cc064213f067cb2a580a6b56b7df79ca1f7d0a77a0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__038__parietotemporal_8192.npz",
+      "bytes": 156812,
+      "sha256": "07f481a0407a65352fbba47eeaada0f28aff6d9cf2a1af434257165f6a598a71"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__038__random_1_8192.npz",
+      "bytes": 157907,
+      "sha256": "097219442f6bb72082dff56b0e520f0078ea0b63acb8af4b1c1f56fcc14947b8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__038__random_2_8192.npz",
+      "bytes": 158288,
+      "sha256": "b7e0cb8683fb7bde4979e7231509b28a747242e8b5e66d8c5ebebff0fff90289"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__041__bilateral_8192.npz",
+      "bytes": 157921,
+      "sha256": "73a2dc2d8635139d70ddab51b5e4cde1cfdd25ceecfeb65b63369c8697351bfe"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__041__frontoorbital_8192.npz",
+      "bytes": 156930,
+      "sha256": "76a00b454d9ae8fa448cf071a88eec7a2a35dcdf34d2557ffb28206d440006a0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__041__parietotemporal_8192.npz",
+      "bytes": 157701,
+      "sha256": "08937093473037a015fbf32379500a3c914640574e188d970e04fd02460dcda1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__041__random_1_8192.npz",
+      "bytes": 157756,
+      "sha256": "1b76ffe095d2a42367221f0ab0787f5d4ebdb9196e3d37033eacef4560e9cbad"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__041__random_2_8192.npz",
+      "bytes": 156880,
+      "sha256": "af865045de084838966afa6ebf417fb94ace2ed91e35cd7039e5681c4a017ae0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__042__bilateral_8192.npz",
+      "bytes": 157706,
+      "sha256": "bf5df3ca24dc8c2c79abc6828da90a1db1c8a43ceffec2a4b966db3d4cb67172"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__042__frontoorbital_8192.npz",
+      "bytes": 155584,
+      "sha256": "52b2ef2ccea07787fad039e89ac6aa2c3023214f18611d0733b0693e8a8039ce"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__042__parietotemporal_8192.npz",
+      "bytes": 156203,
+      "sha256": "ffa9d758b73a280952423b3bc7bc7776506fbd671ad3a532209fbfef936a3223"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__042__random_1_8192.npz",
+      "bytes": 156547,
+      "sha256": "e52cb5f4d454bc7ba770e78947395f9bd1537cbe3bd1f0967a669d8d344297f5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__042__random_2_8192.npz",
+      "bytes": 157654,
+      "sha256": "9c42c7b5f330f5bf34d2079787b90896a2fb46bf84b42a10c7da63f567ee3de2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__047__bilateral_8192.npz",
+      "bytes": 156810,
+      "sha256": "a02bc2ab3380a34c77db9414f0b57395027a87ed5484eda01d59a85244641786"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__047__frontoorbital_8192.npz",
+      "bytes": 155388,
+      "sha256": "8cc2271451a426d1ffa5f888e2ee5ca768d081567ae8ee65f065b993b2a4529d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__047__parietotemporal_8192.npz",
+      "bytes": 155899,
+      "sha256": "a8ad9dcefcd8d91cb2e663a9b80b2413dd4ec13cbb009c0513c9297440b5916f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__047__random_1_8192.npz",
+      "bytes": 158088,
+      "sha256": "fd54d21972535e34e57a29813dc2a69c387d05581c550ed747c28ae14fd67709"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__047__random_2_8192.npz",
+      "bytes": 157042,
+      "sha256": "52991651c10f41eab73b298e1389f6b8dfa99590ea8fc97ba1a2d3908aec09fb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__051__bilateral_8192.npz",
+      "bytes": 157919,
+      "sha256": "14e3e0c7ba5917160cec1deedb822f0d20c7e907b1c8a75888173fcc9f949e41"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__051__frontoorbital_8192.npz",
+      "bytes": 156574,
+      "sha256": "e3d4f81fe71dc615bb5f0e997570ba0832fa912f4e1331b18ffcdb921cfa1b7c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__051__parietotemporal_8192.npz",
+      "bytes": 156087,
+      "sha256": "66e9ab9c232ab1b5b05dcf7f8310f901c03de5a4962346fb2f226224997add70"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__051__random_1_8192.npz",
+      "bytes": 157848,
+      "sha256": "9144e4d2c790e12a012ad91d9ce113798e6ce6e05d58b6d9e3a07a1067ee2ed6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__051__random_2_8192.npz",
+      "bytes": 156503,
+      "sha256": "d492bf1eeb1fb4aa360ed7e184a4c4f6272129f6a50c11f2ec25db2275aba5a0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__053__bilateral_8192.npz",
+      "bytes": 156989,
+      "sha256": "4281b893ea2ee06484e7d39129e6d82576ba54bbec11029a98835bcc8bcce56c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__053__frontoorbital_8192.npz",
+      "bytes": 155497,
+      "sha256": "63f5c1265802412aeb1d7ee28949dc0d5deb0616491105bcacf631fa5dd9b14d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__053__parietotemporal_8192.npz",
+      "bytes": 157141,
+      "sha256": "8a842e70295c470fdd1326814f1064177c559c4b1002f2e2c1a0441f5f81572f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__053__random_1_8192.npz",
+      "bytes": 157463,
+      "sha256": "96eb757475f7ca63da7b522d9dd9d2be10b9f43788f6b94aba2e540941db4988"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__053__random_2_8192.npz",
+      "bytes": 157084,
+      "sha256": "c3df6cf3c73092f79446a4ef6a5a1e2e1458ac93b79c3876d51a219edeb7e997"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__061__bilateral_8192.npz",
+      "bytes": 155485,
+      "sha256": "8fa0b03402c8e54f5ed56b17f01382aea5899f63cc6bc9d682696b3aa9c60e4f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__061__frontoorbital_8192.npz",
+      "bytes": 155618,
+      "sha256": "1af81540de35e6461352166cfa499017533234e358dc193afa5255172ac3f71f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__061__parietotemporal_8192.npz",
+      "bytes": 157228,
+      "sha256": "808adeb5f628053b22550927167669d287a60c1f4a1728a7d3138a62b7f7120e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__061__random_1_8192.npz",
+      "bytes": 156996,
+      "sha256": "4ad1183e21c206c81924d3c7265dc40dc0e94001a3bb1540fb5197672008e3a5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__061__random_2_8192.npz",
+      "bytes": 156167,
+      "sha256": "132324a84299b5d8b1ce2420d9e0b3b2f5ed33c93dc2648611ddcd948cab8568"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__066__bilateral_8192.npz",
+      "bytes": 156414,
+      "sha256": "14db49d0826685dda99fb2fa0b8ab9be4e894f216d5df76039088757f3ca13df"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__066__frontoorbital_8192.npz",
+      "bytes": 156444,
+      "sha256": "dd627c50a27f0606f8036ce3bac1d25f7d3d0065ad9555f4cb4128a85b9df7d3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__066__parietotemporal_8192.npz",
+      "bytes": 157448,
+      "sha256": "7e64d11c0de8085954183aa0ff4baf4383ace2fcb3a57c7ccb165cfe7b3ccf35"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__066__random_1_8192.npz",
+      "bytes": 156212,
+      "sha256": "355ca40eb28424d376e72c708c9dcdda07336d1e93d5c2672c30ec8450bcabce"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__066__random_2_8192.npz",
+      "bytes": 157910,
+      "sha256": "1ce7c78257d67d2d876a0171d90bbc421795b7df9289758a280a98a6b999b87a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__072__bilateral_8192.npz",
+      "bytes": 158060,
+      "sha256": "7fd605cc3bdbe79b00fff27f683f3deb612c3cbb270e138c1406ba614aebcdbd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__072__frontoorbital_8192.npz",
+      "bytes": 156389,
+      "sha256": "aa6154432a220d4d9d7749bb6697bb339ff4dce71e5f523baf43f84fa4fe7613"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__072__parietotemporal_8192.npz",
+      "bytes": 157231,
+      "sha256": "084bbbddd5b7d8e70054aa803a9501dcdebf937520b6b211a37b620b8dff7391"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__072__random_1_8192.npz",
+      "bytes": 155347,
+      "sha256": "f17b8e1f8a3b13e8e3f39b9484eb473dcfc6215813da116b8bea064b3278a1df"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__072__random_2_8192.npz",
+      "bytes": 158138,
+      "sha256": "4531d4defecaf302ef257d35f802368054eef856efaedff3f8355bfd68cd7f43"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__076__bilateral_8192.npz",
+      "bytes": 157964,
+      "sha256": "aadcf623274da642bb320734866192d907743f43db5539a2d015f2d508a4a371"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__076__frontoorbital_8192.npz",
+      "bytes": 156685,
+      "sha256": "4a591e1803928427996ea7ca7b3bab83fe53bf32a6556b7d1c40b705f4190769"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__076__parietotemporal_8192.npz",
+      "bytes": 157644,
+      "sha256": "956336f0921735bee0c937119cc41ae79087358038bdfab1f0b4e626250937f9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__076__random_1_8192.npz",
+      "bytes": 157074,
+      "sha256": "8b1ab49a7874ad49b85d1e917e873fbfdbb55bb54f495fa9bf76338b92fe4eaf"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__076__random_2_8192.npz",
+      "bytes": 158200,
+      "sha256": "79e50b166191ccc0c0f3efb9b0458311d6579f36e32d13ce94fb541850618cb3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__081__bilateral_8192.npz",
+      "bytes": 157328,
+      "sha256": "6ac2960c3822e127cbd1d6080a0ccd052e807275d94a9df1c1729b74059c2fbf"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__081__frontoorbital_8192.npz",
+      "bytes": 155907,
+      "sha256": "024ef8edb13ac5a0ea8ad2df3b3936a26b43d7559be621a93fb41ab6705d1817"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__081__parietotemporal_8192.npz",
+      "bytes": 157224,
+      "sha256": "c4bb8c31d000152cb19f51c01c78ead1025427a80a76b7d0e2c32d8b0f0aa553"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__081__random_1_8192.npz",
+      "bytes": 158184,
+      "sha256": "bdaf05ad970fa0a7874554d53d153f6d6accc9078b412db47738ccbd5a929651"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__081__random_2_8192.npz",
+      "bytes": 157010,
+      "sha256": "a438c74c9c51063d30048a33549facb5eb20ab2814d5280806451a333e3d7835"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__094__bilateral_8192.npz",
+      "bytes": 157634,
+      "sha256": "6a4dea63815b2df0da9551f65036b67d5d3a2252498c9e2cd6d55b43dda3ea2c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__094__frontoorbital_8192.npz",
+      "bytes": 155159,
+      "sha256": "f90b5b232b082671196bd4f24edcc57ae64e67e1cb8ca67ad7bbd58580a7624c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__094__parietotemporal_8192.npz",
+      "bytes": 155009,
+      "sha256": "64b3b0dc2e49c4f4d97ae670c1149afb5243e45ea021dac4e54553c37c547b10"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__094__random_1_8192.npz",
+      "bytes": 156545,
+      "sha256": "86eb836b334cae7871f81569989de521e8d58598f7b791f44ae94e40cb599f90"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__094__random_2_8192.npz",
+      "bytes": 154815,
+      "sha256": "6374c63122f32c25adc4653aa1e40c3535f1c5c226288519598e27b707451b4a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__105__bilateral_8192.npz",
+      "bytes": 157454,
+      "sha256": "26d3e3ba0e5538bfdf987d0762fa39a56207556e0d9971211cef78c7a4fa2ceb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__105__frontoorbital_8192.npz",
+      "bytes": 155083,
+      "sha256": "ed7b928fb75926b7e4a8d2c9c0962f30d5ffc35329d3e2ce3097df2f649e5951"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__105__parietotemporal_8192.npz",
+      "bytes": 156411,
+      "sha256": "e722d99e67212d4f26a253985080e499235be9dfe99fed27cfebbbe8a85d8bf5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__105__random_1_8192.npz",
+      "bytes": 156206,
+      "sha256": "4ec05477825cca6e353c2cdf8fd02907212c7c3dd0b95043f0f4addda137e760"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__105__random_2_8192.npz",
+      "bytes": 158469,
+      "sha256": "06ad1ebf5979ec1e340a224c145b448bece6a122b368fd583a2eddb1b530558c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__107__bilateral_8192.npz",
+      "bytes": 157833,
+      "sha256": "2851baa70f952920899a95c502148cb72115d1e6cef853024729fbe23e0bcb38"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__107__frontoorbital_8192.npz",
+      "bytes": 155815,
+      "sha256": "f413687d05ac863269a8ad4e2c44c7493068d8ef9784ec3b66986c49dac342e3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__107__parietotemporal_8192.npz",
+      "bytes": 156467,
+      "sha256": "3414a5afe31a0ac96ba72bd9e8aa1d8b942c0f33368127cca4841693769876ca"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__107__random_1_8192.npz",
+      "bytes": 157155,
+      "sha256": "cf5349fc046cbaefe9b4112a6034bdf09b1d195e9a1ca994f8cac888cb36a023"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/Euclidean_elimination/points/train__107__random_2_8192.npz",
+      "bytes": 157795,
+      "sha256": "ac18c920ab998c8ee38025f0a1c7d6893f4eb8f581ac7c0c8f572d71cd7fad87"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__001__bilateral_8192.npz",
+      "bytes": 157054,
+      "sha256": "c298543be555397e8e8c026f5f3cedc59822eca5ae1f99b638c4b34a10e562ef"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__001__frontoorbital_8192.npz",
+      "bytes": 156803,
+      "sha256": "3fa300574b325f461005d1a0ccce0d12d507f7bebd1eb2cab70d80f213ecd0e6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__001__parietotemporal_8192.npz",
+      "bytes": 157320,
+      "sha256": "33b3795985ce716cf4e49511ebd95536c38017223e5401a4986d763da4b3886c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__001__random_1_8192.npz",
+      "bytes": 157926,
+      "sha256": "e961fde6ba03ab17d4077483b4d754ececeba0e6df1267788a99657a85d969c4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__001__random_2_8192.npz",
+      "bytes": 157862,
+      "sha256": "4223fa39ef186a8c480ab6192cb0a172a02a9256983cfc48e8b697896c32c14d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__003__bilateral_8192.npz",
+      "bytes": 155853,
+      "sha256": "6057743b8edde6faaee9d4eb2b6018571a6b0d23568bc91583274d11bceb15d4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__003__frontoorbital_8192.npz",
+      "bytes": 153179,
+      "sha256": "5fb62b7426bbb3ca746a47894609194c5897b34904582570e5d313d98c99b8bb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__003__parietotemporal_8192.npz",
+      "bytes": 156575,
+      "sha256": "6b99f614c163d87929e30ac0b81c5f9ff87e901e22b86bfbf1d52f75592a0707"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__003__random_1_8192.npz",
+      "bytes": 156267,
+      "sha256": "ef8fdcdcbe941ee9b5cd5a3162d6236d05cfee541e6e3302366d1fd6b4a7d72b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__003__random_2_8192.npz",
+      "bytes": 158088,
+      "sha256": "39e063682ec2a12bffdf7acba97e59b2af866b759fbea8fd6881c5254b5244c1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__012__bilateral_8192.npz",
+      "bytes": 156883,
+      "sha256": "4399453e6c65c2c8f899a64fe9940640a1d5db3846f1940cf8b2ff5f34d68e79"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__012__frontoorbital_8192.npz",
+      "bytes": 155439,
+      "sha256": "bffdd96911070984755708db129583ee050bd9083f975c23a618f4b2941aa73a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__012__parietotemporal_8192.npz",
+      "bytes": 155993,
+      "sha256": "b89a1c328cac66d1cc5e42031b99cb9780782c900a9a63901c1c70a3e1f78432"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__012__random_1_8192.npz",
+      "bytes": 156584,
+      "sha256": "88b6b89d177b1141c772f94808bb9a1bce431a159c6109112e074765ac0398df"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__012__random_2_8192.npz",
+      "bytes": 154945,
+      "sha256": "22bb7788149a897bcc93a8d402a079766fa3bc5fd0c6a2e63b01bb04d082baae"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__013__bilateral_8192.npz",
+      "bytes": 157635,
+      "sha256": "bcb9a3a02a7cc17fc91f294f2ed2147719b52dbb029a7acfc1cecf1ad29e2646"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__013__frontoorbital_8192.npz",
+      "bytes": 155836,
+      "sha256": "38aae24bc3216816a5d4aa4d5e3f3617d8fc91575f2c40b525e685f50f5aa9f8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__013__parietotemporal_8192.npz",
+      "bytes": 157189,
+      "sha256": "2d420f5d1826865378716909aeb27766cce71472dc755ade5a0f4d3e5cdbc1c3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__013__random_1_8192.npz",
+      "bytes": 156637,
+      "sha256": "37bf6b91e652f1e7314e6be8b821e852699a93f2be9adf0a7d017ab9422c24f3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__013__random_2_8192.npz",
+      "bytes": 156081,
+      "sha256": "028fb08a6acd559db9bd3e5e9705a59e21fd31e93c83fe252b1f30e143466ef7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__025__bilateral_8192.npz",
+      "bytes": 157509,
+      "sha256": "bebe9a65f064f1b2ee9a67bb56845888ceb2053e6b3eacad810ef3bfd236edd0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__025__frontoorbital_8192.npz",
+      "bytes": 155818,
+      "sha256": "458c6e58282ef3d8cfdb4d0752fc941c7e1b9e8f804a865bad8fb2b0b599ed66"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__025__parietotemporal_8192.npz",
+      "bytes": 155146,
+      "sha256": "1a30d29363e0e5890fe9aa63659f70ed01ce81f063e55cd402f89adaac7b0382"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__025__random_1_8192.npz",
+      "bytes": 156841,
+      "sha256": "93d6dea42e21364373f2d1f31c7eb632867d1732c761a3c2813b53d40d65c9db"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__025__random_2_8192.npz",
+      "bytes": 157175,
+      "sha256": "e59689a40030fac667fbfdfcdcca77b28dcc545c0af555ec1e86371cc4601d5d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__026__bilateral_8192.npz",
+      "bytes": 157095,
+      "sha256": "6472a0d93d3fd34c7318b4a67cb794f38352f782f02932ad7d15c4fc496bdced"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__026__frontoorbital_8192.npz",
+      "bytes": 156651,
+      "sha256": "b931dbba4e5478eb1227a5b423836320c1fa4dd9309dd8b866832c1ce9dd3ccc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__026__parietotemporal_8192.npz",
+      "bytes": 156726,
+      "sha256": "b4fb8ceb41ff6e6eaa189d1da65f724005f9104db1dc2c81664d5092f1621be7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__026__random_1_8192.npz",
+      "bytes": 156862,
+      "sha256": "7d49797be7756279621b0c964e1a4fb1c311b7f1c2f4fe429bfb9e4a37f4d11a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__026__random_2_8192.npz",
+      "bytes": 156793,
+      "sha256": "3212b5b0fb6e17410f9b1d30d5197683a261b311dbc03f3d4cfa303a2496123f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__036__bilateral_8192.npz",
+      "bytes": 157877,
+      "sha256": "d26295d32250e66afb20cffd9dd1bd70cdd5821b1ec8ed1969633d38028f361b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__036__frontoorbital_8192.npz",
+      "bytes": 155747,
+      "sha256": "72390d5ea473a379d2f234467b7cb78b482fe66be30d06e075015a0a25eee39c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__036__parietotemporal_8192.npz",
+      "bytes": 156205,
+      "sha256": "217068f86a67ebc015a0b5de809411bad3438e6e21656d66f280ed7ce9a16c05"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__036__random_1_8192.npz",
+      "bytes": 157327,
+      "sha256": "b91bf3351128fd9e7a99838352bbcc63085fed6db72740f74a9ebe727654d622"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__036__random_2_8192.npz",
+      "bytes": 156648,
+      "sha256": "5843ac567f6e1a60e0f101ff854afcc4c8762ed116949e202905ece92d1cc335"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__038__bilateral_8192.npz",
+      "bytes": 157894,
+      "sha256": "837cee574172abf40e6905825926ecc3382b97eb9d709d1362cfd73acc2d9f35"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__038__frontoorbital_8192.npz",
+      "bytes": 155524,
+      "sha256": "2ec3b6f788e200cd49dc3807ab21cf8b9ab3046d8df9ed8248dc03686c1db41f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__038__parietotemporal_8192.npz",
+      "bytes": 156863,
+      "sha256": "b73cfac170f4a6b91d25fbed6d2cf0f4abc2c990767361a1fca31f4063348d89"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__038__random_1_8192.npz",
+      "bytes": 157938,
+      "sha256": "d89ebebe265607893193ea6f876afee859f2759c2dbd4b38f8c6116b6ce1143a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__038__random_2_8192.npz",
+      "bytes": 158294,
+      "sha256": "ff6871a1cf8fc8fc258a9fbdb44ac57ec5f0bada028564d94a55100ead81cd6e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__041__bilateral_8192.npz",
+      "bytes": 157952,
+      "sha256": "3dfd79d81726d208feea333ce03bbf294bd23a27fe3d577f28aeefb8d030bc6b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__041__frontoorbital_8192.npz",
+      "bytes": 156946,
+      "sha256": "a0fc94f80b842554133314ec8e7e41af7846dbbc599e1264349982fb65f1277f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__041__parietotemporal_8192.npz",
+      "bytes": 157657,
+      "sha256": "2e74624f6423040ef66f82a2504747a07f48aa63231e2e71a04921b428f2ee8c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__041__random_1_8192.npz",
+      "bytes": 157748,
+      "sha256": "566f2af56c9889a37beaa87c459abda270bc51e1c0f531503715aa25ce2428b0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__041__random_2_8192.npz",
+      "bytes": 156880,
+      "sha256": "c9d0cf66c565ac3590b5d4b6e3af73a0f06885669484af21f142bd172e024c70"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__042__bilateral_8192.npz",
+      "bytes": 157691,
+      "sha256": "40b2170723fbbdbc61823447367c199faeb184c603df710ed8b1d715baf0cc5b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__042__frontoorbital_8192.npz",
+      "bytes": 155517,
+      "sha256": "f0806852446c298bb48eeb3cc3f60fda50ed8aa3f497f3f4a2fe043366da27bb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__042__parietotemporal_8192.npz",
+      "bytes": 156248,
+      "sha256": "4bb7deb7609ad053bdd909afe4e05117604769efb7d7ce9b3479fd64e3ec06db"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__042__random_1_8192.npz",
+      "bytes": 156577,
+      "sha256": "13eba3d7ca152316f5f1bb2e54f8fef195478f7fcc81f947e494ae53a93dee7f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__042__random_2_8192.npz",
+      "bytes": 157660,
+      "sha256": "ecee5a8e648302805bb3c33caff8656f1bcdf81f14f2cf35217c6630be6c9445"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__047__bilateral_8192.npz",
+      "bytes": 156738,
+      "sha256": "9d78c20f56b18ce6cdbb0d4672af598f813c907087d9b59d4a3391b78061e350"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__047__frontoorbital_8192.npz",
+      "bytes": 155398,
+      "sha256": "5da0f28b55f05bb7887aaea25472d2c8632c102227409932759ade808b4746fd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__047__parietotemporal_8192.npz",
+      "bytes": 155905,
+      "sha256": "2e973a2f777e4ab1a55016798d17e2727e7923c6f031f7b693dddc622fc32c9d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__047__random_1_8192.npz",
+      "bytes": 158085,
+      "sha256": "c27f5d967b691a04f918643f8ecc021e019fcab69ef3f9379e2e51e36c64c1dc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__047__random_2_8192.npz",
+      "bytes": 157109,
+      "sha256": "8e6c20c597232a104e931dad8f7a6854e9211e1efe313f05e30d4aaeb6693948"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__051__bilateral_8192.npz",
+      "bytes": 157955,
+      "sha256": "9c518519f00f620dc98b84f1dd181b2ed8f2ab9c4f97606ff277b0efac9f836e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__051__frontoorbital_8192.npz",
+      "bytes": 156461,
+      "sha256": "9e764d93453b72afba9341f362317a9ceaab40f4f325a831b7cfd50935d2dd46"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__051__parietotemporal_8192.npz",
+      "bytes": 156023,
+      "sha256": "cedafa03d74fda6c6bf4de3d9e5867925e2f879dd3590e26bf2d7200f63e22ce"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__051__random_1_8192.npz",
+      "bytes": 157785,
+      "sha256": "4677fefe5d39e0f1802a89386980313912c39143603f346c502abb8b9764a04a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__051__random_2_8192.npz",
+      "bytes": 156520,
+      "sha256": "15fd98ee3897dcf9d0b19102d262de07212c761a4940fdccbaa42af2c158659e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__053__bilateral_8192.npz",
+      "bytes": 156989,
+      "sha256": "dd5ccc062683f1caa991aa1b3e2a05e6ad40078f9eecbe9b0d1988e643262954"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__053__frontoorbital_8192.npz",
+      "bytes": 155428,
+      "sha256": "358367949f060361fca4b5d592ffc2a979e80b4ab604586b03a8b9da2702d447"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__053__parietotemporal_8192.npz",
+      "bytes": 157161,
+      "sha256": "f5bd7303cedb9cfc5c4fa4f53083f78e4c6f743187cf6f40a539b16fed123a00"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__053__random_1_8192.npz",
+      "bytes": 157393,
+      "sha256": "f6936014aaabccf2620d56836d0461e0b3638af2b098e73cf5eb806c5c47ac1c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__053__random_2_8192.npz",
+      "bytes": 157070,
+      "sha256": "1fbb020af1129f4667b2e7913890314f0cfa4aaee6a5b0c79b09ccd35302877f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__061__bilateral_8192.npz",
+      "bytes": 155463,
+      "sha256": "efccdb93b57c87b8a2671fb7ab696d6cb46cdca70068f5f3f709874113be6e6b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__061__frontoorbital_8192.npz",
+      "bytes": 155583,
+      "sha256": "3c39f0d7e0be106d5b1ee27d148af906bc75c153ea2828e9931c1f85ec00e8a7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__061__parietotemporal_8192.npz",
+      "bytes": 157321,
+      "sha256": "86897375230417aced230695ba43fd1dfc7567e8738fa54b94ff0c45f1ca3a65"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__061__random_1_8192.npz",
+      "bytes": 156946,
+      "sha256": "a788581c5d7e6ab9a479b9310e7968221c06103164ed9ba2f28fdfdaa9e6ea06"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__061__random_2_8192.npz",
+      "bytes": 156174,
+      "sha256": "807640ba2cf574afad4357319834e6fb1c6cd076a4e5b0eea56a947234b42aef"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__066__bilateral_8192.npz",
+      "bytes": 156452,
+      "sha256": "bc99507c8b5f2cd7be3a17e000c5215ca30731e4647bbc6ad3157463cd42760b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__066__frontoorbital_8192.npz",
+      "bytes": 156517,
+      "sha256": "f22010587b8fdbf9946204826bec199f932dc00eace68f022afd262a109d9da1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__066__parietotemporal_8192.npz",
+      "bytes": 157405,
+      "sha256": "3ec0dc72ab7505b2b633631d397560d986a96f1ed2d2bfb60491d9e7d0af44b2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__066__random_1_8192.npz",
+      "bytes": 156228,
+      "sha256": "503296f206e7de3cf0585ab2d54b288d3b087167f585d7ccdfdb8b9769d7bf83"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__066__random_2_8192.npz",
+      "bytes": 157995,
+      "sha256": "081aba1870731e2bcb88de69d96cb8774357a7efab1032de2d687d354f231060"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__072__bilateral_8192.npz",
+      "bytes": 158062,
+      "sha256": "f31f177333d8561176d9b6195e56f84eb9ffe0d10559150b09b47bd7ad8b7ab4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__072__frontoorbital_8192.npz",
+      "bytes": 156334,
+      "sha256": "a28709a25ba7893a39c847efd5893d432ea048f2eaf5f0d14ddc25e2f2d3232f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__072__parietotemporal_8192.npz",
+      "bytes": 157288,
+      "sha256": "be1aed04f9c420a4da4e0a52a340ebbb3430476aa524c4149a81f71bbc5075ce"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__072__random_1_8192.npz",
+      "bytes": 155370,
+      "sha256": "3611d0191ffb3e07991863ed31e7321f5d4372ff0c9c54feaae1890a1763b436"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__072__random_2_8192.npz",
+      "bytes": 158104,
+      "sha256": "62afead028ccbb68e6d9088f1748a24bc45e6d7bd8e7dcf873b669cd38798c05"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__076__bilateral_8192.npz",
+      "bytes": 157944,
+      "sha256": "365f3b6d93829efb04fe5c9b95569bff074fe0a77b78cfc26d2f2f2e82741fd4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__076__frontoorbital_8192.npz",
+      "bytes": 156678,
+      "sha256": "373dfaa1d134759020ecc8ec4f1488ebf2c2d8119ea203a3ebedc4210d7ec511"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__076__parietotemporal_8192.npz",
+      "bytes": 157684,
+      "sha256": "35b8474b2d1ed591df96e707b2d6da111f72f19ac44915ba4b23d56d7800c643"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__076__random_1_8192.npz",
+      "bytes": 157116,
+      "sha256": "4dce0d385a1b83fc1a807cb35343deb0d42c528881e230061c676f7eb318b48d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__076__random_2_8192.npz",
+      "bytes": 158200,
+      "sha256": "3c046345414c3ee06b3649519b062af514f81250bb72f51a05ed03afc45576d6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__081__bilateral_8192.npz",
+      "bytes": 157389,
+      "sha256": "76f625b1f6a627f0e33b8726af61e4a8e98018b80335043ac63d87ef4a8c9221"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__081__frontoorbital_8192.npz",
+      "bytes": 155851,
+      "sha256": "5cf6f7dbf1667f86cb6c7fc6098584ef7b5ed65e7fcf21004b6631ce3966829e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__081__parietotemporal_8192.npz",
+      "bytes": 157154,
+      "sha256": "514e500590ab6e2641a122e9874f16bce259a5ab0bb6328cc642445f23dcee54"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__081__random_1_8192.npz",
+      "bytes": 158169,
+      "sha256": "133b8463aa673d7f55c37a965813a014af05c7d1b56b32dd31ad75af7cadae2e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__081__random_2_8192.npz",
+      "bytes": 157025,
+      "sha256": "d4df17a1ae5477c9ac8e7206da40b72d7556cf688d22981a5298f82c6fc4bf87"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__094__bilateral_8192.npz",
+      "bytes": 157761,
+      "sha256": "b78a443409f9dd46b246c66bedf706b121e953e085249c8f0463b59454688af1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__094__frontoorbital_8192.npz",
+      "bytes": 155062,
+      "sha256": "baa248439236ddc208c5ee637c536edd138cf27ba63f2fef750d6cfa4f1f061e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__094__parietotemporal_8192.npz",
+      "bytes": 155025,
+      "sha256": "cb0cacd120c3a80dd34ed51c7d19aa8fed5602f76dbd049a50de7a3fa8d980cd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__094__random_1_8192.npz",
+      "bytes": 156501,
+      "sha256": "4af361ba918944551432186645e6028e4e6a407da70587ca3ae2eaaef92863ab"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__094__random_2_8192.npz",
+      "bytes": 154789,
+      "sha256": "fc2fcce01584cff9bd939e92a2035b21368d40fdddeca4175b6702ee0825295d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__105__bilateral_8192.npz",
+      "bytes": 157479,
+      "sha256": "afb165fe746715d4b5aa97b1c373c3da4b26ed9cd138a622aab155687f6ab006"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__105__frontoorbital_8192.npz",
+      "bytes": 155046,
+      "sha256": "ec3a241f74ef632955b8ba7535aa70b50fa85e1f1099d504ef2b2a7573d93101"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__105__parietotemporal_8192.npz",
+      "bytes": 156443,
+      "sha256": "ab8ac8bd1648c894e5c9513867208a5c7ddd0f91091e5a7ebecc96d2b37e41a4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__105__random_1_8192.npz",
+      "bytes": 156174,
+      "sha256": "9839c46df46584fedb3a03356138de1eec7bce022d480ea90f92fbcd377fecb0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__105__random_2_8192.npz",
+      "bytes": 158473,
+      "sha256": "5ba197d3f413d80528d0407e1b0d321272d5bbff991fbb4958c75788e4f7309b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__107__bilateral_8192.npz",
+      "bytes": 157835,
+      "sha256": "10448cce33b7b270062a491dd8f33c898f6f952edb827e8b2c01db9b7ea1af8e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__107__frontoorbital_8192.npz",
+      "bytes": 155931,
+      "sha256": "42869cf726319840ba2504a4c9c3f50b9c229e7e28719d1b0e41eeef3ceefb63"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__107__parietotemporal_8192.npz",
+      "bytes": 156524,
+      "sha256": "ef39f79bf3ee10aad1ecd180b598547055de4fcbd585df9d23d2015e8084745a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__107__random_1_8192.npz",
+      "bytes": 157144,
+      "sha256": "94c57db9297605e9ab8404893e7f6c9c1c3adc15401b840e82ad80f499da7348"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_blue_pair_dev_v1/surface_graph/points/train__107__random_2_8192.npz",
+      "bytes": 157732,
+      "sha256": "79150188c1d79648d92abd018609a74b980fe2e4a45171878c6d00a6d39058a8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_eval_blue_pair_v1/execution_scope.json",
+      "bytes": 91857,
+      "sha256": "4fd0d2736e58530326c37d77fdbd5e76242339c36ea0a7905290a58d0b31ab43"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_eval_blue_pair_v1/entry_request.json",
+      "bytes": 4921,
+      "sha256": "276dd6d316ec042d46f30b69e292a40cc9541d2daff416bac2cd15f6e6850f19"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_eval_blue_pair_v1/authorization.json",
+      "bytes": 570,
+      "sha256": "fe97d2d0ff22b6c38dee19d640842304d9518b15fa29884865b14d0f1b143c5c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_eval_blue_pair_v1/runtime.json",
+      "bytes": 228,
+      "sha256": "1df974da87791e220eb4dc69729c47b01d2d09b4b4bc3a16115bc675b2a06855"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_eval_blue_pair_v1/evaluate_once.sh",
+      "bytes": 2833,
+      "sha256": "2ffbc593370c7cd6450ecfc86357ced3ebd4e7ed50ffacbcd4772898ad2bdc8d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_blue_noise_ab_foldc_seed0_v1/control_eval_blue_pair_v1/launch_attempt.json",
+      "bytes": 126,
+      "sha256": "78ff113028cd4ca325e378a1792d996cdfa3eeb38ec87e945e85645f0cd85e51"
+    }
+  ],
+  "output_manifest": [
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/completion.json",
+      "bytes": 44145,
+      "sha256": "361c6b361733cdc61eec735abda5c197addc5908b973ba49d77600dc83eb05b9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz",
+      "bytes": 18915240,
+      "sha256": "135102bb6af6d18e45735ed63041c9fecb471a3a75556d7d2b9ea07d5a2ea2a6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz.bytes",
+      "bytes": 9,
+      "sha256": "ab48ea17100dfe5eb057d613e1d5555fdd108b3ba2c5ca1a8c237d67ddc31790"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz.contents.sha256",
+      "bytes": 26849,
+      "sha256": "15b4d9b175a5362e4afbbda0ed197f4dd3a70f735436492d21db0e626d10df45"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz.sha256",
+      "bytes": 100,
+      "sha256": "eb095027001957c2c522103c1d16d2664d32f088eae55a047cdc870d69846a2c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/exit_code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/inference_complete.json",
+      "bytes": 1764,
+      "sha256": "e8906d1058a75cb0a73518bdf9145eb6b305b9404524ff916741a0493d9d538e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/inference_manifest.jsonl",
+      "bytes": 118205,
+      "sha256": "83c001be98a1e31fe382866080841343606e3e444e03bb1f5d534318ddc19457"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/launch.log",
+      "bytes": 2188,
+      "sha256": "bcbcd917ec52dddbcbc716786818728c65fde06f667377016ce78c52f06216c6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__001__bilateral.npz",
+      "bytes": 89042,
+      "sha256": "af86b14dfa716c81bfb562a620a00410766cce67b4f0f85fbc98977fcb999bb7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__001__frontoorbital.npz",
+      "bytes": 90475,
+      "sha256": "34a085339693d442126ba649b80cf6a64ea0b65afdcea933381e5a78dbf716df"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__001__parietotemporal.npz",
+      "bytes": 90251,
+      "sha256": "83aff34e7cc362ab396be619f1cd92c8763f0eed029594c68bdb07138a0ac03e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__001__random_1.npz",
+      "bytes": 90403,
+      "sha256": "414ff23f097775161f24c7f69d983d99c6f83239ce16488975b2beef7fff7317"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__001__random_2.npz",
+      "bytes": 89834,
+      "sha256": "6ff2a70e98c65cef5eeeb6030b66dfc8b4d7ba4d2c5dba778c1e32fbcb5654be"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__003__bilateral.npz",
+      "bytes": 89777,
+      "sha256": "5bee76556670b93f4c10a714d227a37d04beab4ff56007d274472d958f3df991"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__003__frontoorbital.npz",
+      "bytes": 88602,
+      "sha256": "70c4210e8cb1adda271fb8e3f37ed175370f70c4c348386ad853ba451d7be101"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__003__parietotemporal.npz",
+      "bytes": 90365,
+      "sha256": "4a487e19e97a3007b445e38cadcc4b810e63dba8a86655611e635b2f2f634662"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__003__random_1.npz",
+      "bytes": 89387,
+      "sha256": "a4af48c762d02a62c2efc4a13e025bd54b65dbd401833e6f32354e43598708c3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__003__random_2.npz",
+      "bytes": 90164,
+      "sha256": "06fb1c7d85c0e1a05338dd82efe6a4f57a6f4c36e1e48f4321b19d1b830ee5ec"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__012__bilateral.npz",
+      "bytes": 89313,
+      "sha256": "f98cd7ceb020bac8797efae4eab2178b389b30bb0ec573246e5ec84511653a75"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__012__frontoorbital.npz",
+      "bytes": 89949,
+      "sha256": "1187f1758981d02c407cf642a1448af21ccd422800c9e4604c13653f034f80dc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__012__parietotemporal.npz",
+      "bytes": 90270,
+      "sha256": "71f2d708619e17ae3647bdaf2e69b09688be93cd94435fb33e3d8d93bde651e3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__012__random_1.npz",
+      "bytes": 90247,
+      "sha256": "dc6c7b15557dd6542976c1e0ed92d3741e79b5c311879479fa7ab59e302efe52"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__012__random_2.npz",
+      "bytes": 89022,
+      "sha256": "de9d65b17a1b843b8b2f49c4c80bea7418e7fa6fd317449d748961552e9bb12a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__013__bilateral.npz",
+      "bytes": 90041,
+      "sha256": "1cb4f99101b6df69459ee5ebf093947e8dfded38df4eac1b4e3cf245bf8049c6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__013__frontoorbital.npz",
+      "bytes": 89414,
+      "sha256": "3ff47752acac0aa40f49445ca073a9f650737cb5c0ff2ae594a21d1a8a0d9e94"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__013__parietotemporal.npz",
+      "bytes": 88571,
+      "sha256": "15a0f9c02ef6dbdba25935a63812fdbe066fb642d56081c92d99a8ffa1102cfc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__013__random_1.npz",
+      "bytes": 89665,
+      "sha256": "82f86d7d98311d297987a25fc55eb6ce797f78a4524769f2238241ac331ed6ff"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__013__random_2.npz",
+      "bytes": 89531,
+      "sha256": "f2bbe8657006b4bbfae379a4a8b2f978176a5f0dfd60fb60f71b229677efd4ed"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__025__bilateral.npz",
+      "bytes": 89249,
+      "sha256": "7b6849e6d30ecee809e4d156e5b2c9b0b6ae733e398c68fa5a998006586cffc7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__025__frontoorbital.npz",
+      "bytes": 88694,
+      "sha256": "f9bcb09f4184d25d278d58d1fb592c43afd425d926e80ce0929f1cc073823d4c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__025__parietotemporal.npz",
+      "bytes": 91102,
+      "sha256": "2db03093887a1d32fc229ec76881cd5587304e35bb5479ecd120b15271542d1e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__025__random_1.npz",
+      "bytes": 89429,
+      "sha256": "f874f86d29fb9141a1a94c8681838d6cc9809bab703069d0c246ec9bcadb4dae"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__025__random_2.npz",
+      "bytes": 90922,
+      "sha256": "7ce70eb949d5c787516e344b5d3a9e41112e23c4565ddf266d7da86d6b31c486"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__026__bilateral.npz",
+      "bytes": 89228,
+      "sha256": "5fdc05221de768069643daad289e2605031ed4a73196cce6909c8d3dca4f65e7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__026__frontoorbital.npz",
+      "bytes": 90733,
+      "sha256": "c2a140e43af2018137c13f9d6a897e1906ccc91572d3e950a075693ec46040a6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__026__parietotemporal.npz",
+      "bytes": 89055,
+      "sha256": "8d6fbb7b3b2f0d41b771aa834a397a1aca9983cf32d533dad4a8dfce7b3e39c5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__026__random_1.npz",
+      "bytes": 90162,
+      "sha256": "7d641cce7018d4ae435982d3e6b7accc985d12fe039efe0ca50b5f9a0a0c7fbe"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__026__random_2.npz",
+      "bytes": 88729,
+      "sha256": "b30ade1b43f23901c4b3f9398707726299702c31942c0cd02c29f457d59556b2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__036__bilateral.npz",
+      "bytes": 89993,
+      "sha256": "27aee74a717e425c16872ecfa56a03e6037a98b634ae0ff1dc78c1d5c2043bd5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__036__frontoorbital.npz",
+      "bytes": 90684,
+      "sha256": "69b9856073c10a6fa747aa95e441079d796a73fbc85f1593b97c238f93480d61"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__036__parietotemporal.npz",
+      "bytes": 90150,
+      "sha256": "9ff875ef3bd1adc45871998f96161934e82a5d8b86bffb566cdb0aeb207d606a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__036__random_1.npz",
+      "bytes": 88801,
+      "sha256": "9f142a1d0e5bb54ce3b9793fb59e2db1e8d0f3577de6742c2fd8db64bab00561"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__036__random_2.npz",
+      "bytes": 90504,
+      "sha256": "d348bd83b1d37043e9827021ac25ef0ca6d19eb42d5020b52d1481b3893a2331"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__038__bilateral.npz",
+      "bytes": 90266,
+      "sha256": "4e74761f61fb9345f960e2b5e2488ada37eba40b08ba43be91f0354649201266"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__038__frontoorbital.npz",
+      "bytes": 88962,
+      "sha256": "c3599f8a9e5c3960109631da5d21c867a8b210d4f4227d51f34946f65773b6a4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__038__parietotemporal.npz",
+      "bytes": 89976,
+      "sha256": "45a38bfa4caaf6837574be09deed2bc545778ffd80e98f8e2a531c21f8d10966"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__038__random_1.npz",
+      "bytes": 89633,
+      "sha256": "6b7701a31e3da9c325335dd356a6ff493dd0c328f724daec464239e288b0002b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__038__random_2.npz",
+      "bytes": 90073,
+      "sha256": "e20743889d8422f1552d8367fc013a8c3cf476bcd715518eecd90e707437f0c9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__041__bilateral.npz",
+      "bytes": 89859,
+      "sha256": "4c8cd8957f4a781456c0eace5b8cb1fe12cc44a2b0166b6eadf5b13fbf776d91"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__041__frontoorbital.npz",
+      "bytes": 90022,
+      "sha256": "12313ad1fba5f71d8cf9c6c0ee0e2bdf30f1cab6f642387bd8bd5b31cb2b0464"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__041__parietotemporal.npz",
+      "bytes": 90126,
+      "sha256": "6a6133987c976d2cb980482ed8dd8c4551c887cc98bde503b7ccaa3c12890deb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__041__random_1.npz",
+      "bytes": 90101,
+      "sha256": "ba6a032f49d93bcd0abf4cacac58c0f516066f7f71b81882a989cf9a39cfcaf0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__041__random_2.npz",
+      "bytes": 89907,
+      "sha256": "d65b83bac607ca62eb69ea677ee58fb165022dd62d70623cd05c5b916b2c0af2"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__042__bilateral.npz",
+      "bytes": 90228,
+      "sha256": "c74b99f1b6f8a1f170205455f8105922930d35e5aeaced328731f13be3cad957"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__042__frontoorbital.npz",
+      "bytes": 88574,
+      "sha256": "a4db709d608bc02401810273c2111ce6ad823b004f04096ff4ee8237e2b33292"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__042__parietotemporal.npz",
+      "bytes": 89627,
+      "sha256": "257bf5a5abf5f1cc9fb6ce95dae070e2bab6a35448193ad0c75646f4f82cc0c9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__042__random_1.npz",
+      "bytes": 90155,
+      "sha256": "51038a8af7f66ecdf301240dc942848b275d56788183fe656ea2896d708629d1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__042__random_2.npz",
+      "bytes": 90117,
+      "sha256": "999c003b4a4c39f71956677ff576dcae56ccf336a414903a04b4b108ee090ef5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__047__bilateral.npz",
+      "bytes": 89176,
+      "sha256": "f59041cce2509a4c7469dec2974396397a3fdcd8a836b65ad4c288d389d5446a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__047__frontoorbital.npz",
+      "bytes": 88659,
+      "sha256": "272f4bfc0804197e6c383d11910a8ceebb47dd35b22031dfcf89311ed82196f9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__047__parietotemporal.npz",
+      "bytes": 88280,
+      "sha256": "178b893d53855374a3ff049327363f931dc004f7ac3282c381dc5555ebc72186"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__047__random_1.npz",
+      "bytes": 90077,
+      "sha256": "9d9b64aa0a46f40c3680c501e5449b38e4cc4f3f0aa643cedd6c5767afcb75a8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__047__random_2.npz",
+      "bytes": 89702,
+      "sha256": "adc712024e168321af3f1eea4edc376ae38578b0f0a4a693e487fbe7a88a4f1a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__051__bilateral.npz",
+      "bytes": 90599,
+      "sha256": "3371e0ce708de6763831e57fd0323da6770e86d3a1bb8aff7d426de650b5ecbf"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__051__frontoorbital.npz",
+      "bytes": 90487,
+      "sha256": "0dc2d50437c396a82942bb22847f45f504a41edb1955ab5ed9a461c9d256a09b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__051__parietotemporal.npz",
+      "bytes": 87999,
+      "sha256": "b389fa6a4e50525ad7e5119c3fce229b9a36fbaab36047317efa8f68ee14a068"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__051__random_1.npz",
+      "bytes": 89664,
+      "sha256": "b83a1c28ea298ce0812e718c5832dcbc5cf743661f5f45d532e8a83224ce87bc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__051__random_2.npz",
+      "bytes": 89683,
+      "sha256": "5bd54bec05692d8452273356cbe0c42e513736aa3ddbcdd49db6797bf1cd5173"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__053__bilateral.npz",
+      "bytes": 89474,
+      "sha256": "3c1f47ef98e487daa17a86d8d5837848df4a7a84ed6f6580be5ec0642160724a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__053__frontoorbital.npz",
+      "bytes": 90756,
+      "sha256": "c5264edef23c3cbd519446f76df7053de203a67923e6def5e56c9c1d79144332"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__053__parietotemporal.npz",
+      "bytes": 90677,
+      "sha256": "096e56a2448b0fbfd0659f26c21e190c63d604c0f2bb7a2f45474a90e43400c4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__053__random_1.npz",
+      "bytes": 88954,
+      "sha256": "32287c287d7d4af762590c4aa21dadab99103f2ded9494b08adee2186f3821b0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__053__random_2.npz",
+      "bytes": 89940,
+      "sha256": "65e81cdb9da9ab90081fddc61f7e1ee8a6d7357452a5272067042fa9f09aa6bc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__061__bilateral.npz",
+      "bytes": 88789,
+      "sha256": "8f319d78a37b26d246f6e82e81a1c8386452b11e2d8b5ad90d8ac306564a0b30"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__061__frontoorbital.npz",
+      "bytes": 90591,
+      "sha256": "0d6152ff46448e90860d80c1fb9813bdd0f13b1e62c8749d03ac75efe650d8e7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__061__parietotemporal.npz",
+      "bytes": 89141,
+      "sha256": "d4f8c83cc423c63bf30f2a4ecb8de3800bd8db1c90c0f6aa392ba8be880472d8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__061__random_1.npz",
+      "bytes": 90351,
+      "sha256": "2194f92c1313478ff96a11f4507baaf65b7b395980956017fb9d26d181b0ac4f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__061__random_2.npz",
+      "bytes": 90251,
+      "sha256": "6857761eeff586351c454d0a180ca0ab3e4df43bf494e0230915bd7148598994"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__066__bilateral.npz",
+      "bytes": 89564,
+      "sha256": "b5b43b807b8847a460fac70761bf8b8413f362bbf3349d5965e58aa5ad4f1df4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__066__frontoorbital.npz",
+      "bytes": 90713,
+      "sha256": "abe43bf6d187132818e26eb42282449c7b6943a5d9efaeb953f5b48581aa248a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__066__parietotemporal.npz",
+      "bytes": 88563,
+      "sha256": "048535be6a345d19962ac5b3e34be67214609b58738882eb32c067927088cfd9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__066__random_1.npz",
+      "bytes": 89222,
+      "sha256": "af86114d9158172b829f4fe946b2cdee65f17a0bc8c1234a68b57e8ff1645090"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__066__random_2.npz",
+      "bytes": 89992,
+      "sha256": "eb783636d7f272bf0eaea3a6451fc302f7bb6f473a1bdce88dda4e15de8c5105"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__072__bilateral.npz",
+      "bytes": 90841,
+      "sha256": "79d80a42a4faf6cc3009a015d52aae5edfe88a2fc8f27316dc6ac7fc6ce7860e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__072__frontoorbital.npz",
+      "bytes": 90337,
+      "sha256": "663a02effcfc46b7df12d61f4090acbf9f9eb348303d2cab873b6e0d80971685"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__072__parietotemporal.npz",
+      "bytes": 90140,
+      "sha256": "b41bf06c6e4a7c4837a86698bc59643b14cd0e7a9a41887eef3d225dc9db5c4f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__072__random_1.npz",
+      "bytes": 88948,
+      "sha256": "8488893990f5c29aef55793e3c5d21e60ae946ceecfb80b28488a077ca87f1c5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__072__random_2.npz",
+      "bytes": 89922,
+      "sha256": "ce8d9ca3aa5e606ce256d84127d8c323dd510f582486f5a8c49e194570bedb3d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__076__bilateral.npz",
+      "bytes": 89607,
+      "sha256": "bc584e9be7dc1f3a7914f81adf58b179a8884706232dda6e8b7b54ad7daca1a9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__076__frontoorbital.npz",
+      "bytes": 89327,
+      "sha256": "6da92199c81f6c1c3530029b2a6d1253f88b11569d5171046f75bbb7be144d15"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__076__parietotemporal.npz",
+      "bytes": 88656,
+      "sha256": "e5fc56ecaf9f477bc2d6eab06d5e63446d8faad0db72e1970a6df1116d4008fd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__076__random_1.npz",
+      "bytes": 88772,
+      "sha256": "6f2419c03f83155354028d1b72a811701074833438907d81dca547e14e3b0edb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__076__random_2.npz",
+      "bytes": 90208,
+      "sha256": "dc0b8ba86214e40bbc4b9cc359aad69bbd1c45a0e441ecaa6c50d32713b477b5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__081__bilateral.npz",
+      "bytes": 89142,
+      "sha256": "3cbd0e850be59e51db541141bdf12d084d2439cfb8a80e73b5dfe4f39840cc1b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__081__frontoorbital.npz",
+      "bytes": 90268,
+      "sha256": "1aaade7673febaf88dd6ced1a415cf77f0290727a01f388346b04a14679a81b8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__081__parietotemporal.npz",
+      "bytes": 89155,
+      "sha256": "985fbbb6499e1e711a661a8408b7ed1b3058fc8de50a2e74b577833d314ad0b9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__081__random_1.npz",
+      "bytes": 89851,
+      "sha256": "6fb4383b47fb50c505542aa270e6d1d87b4480ac3ea9f105a868314582ba5eb8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__081__random_2.npz",
+      "bytes": 89323,
+      "sha256": "6d3c67249d82199aa81b12351d13abdd4595675a33b6f25c06372c73dd8a9685"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__094__bilateral.npz",
+      "bytes": 88887,
+      "sha256": "843bc17e1f3e1ae87fcbf1de5fd6f8b53226e4097a63a66ac9b828b376879934"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__094__frontoorbital.npz",
+      "bytes": 89124,
+      "sha256": "90ed71963e3a838c86090c959abb79f249e80d7e3150c9fb47454b8770d42c5d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__094__parietotemporal.npz",
+      "bytes": 87785,
+      "sha256": "402a1aeb44d6730eeebcd003726385e74a522e35eb6fcfe1428059b02ce156eb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__094__random_1.npz",
+      "bytes": 91174,
+      "sha256": "587925752c5e20dfe474bf25f285e571dc97492b24f617f72811cd4c3e7a2810"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__094__random_2.npz",
+      "bytes": 88237,
+      "sha256": "c03611292f4512cc280ad8ebdd1f1f322db2c16143af0b3f37dc142c30ec3c71"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__105__bilateral.npz",
+      "bytes": 91102,
+      "sha256": "d6bedcaa8d4b5ba63b5e834e4334e477175434a9b250961246a05b2954deb2a9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__105__frontoorbital.npz",
+      "bytes": 88987,
+      "sha256": "420b07a49cd3dffbd1b0001a008bccd67081fafdb151e6653ce280a1ad4d99c6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__105__parietotemporal.npz",
+      "bytes": 89615,
+      "sha256": "549076bfdafa955318bfba6d43f4f49f022b4bd6d5f622c52a74d4ff34c1516a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__105__random_1.npz",
+      "bytes": 89654,
+      "sha256": "4b6d3e0f27c1e763c9fb526c24dcd997081cb57083588f55646bd9d7ac9c0329"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__105__random_2.npz",
+      "bytes": 90132,
+      "sha256": "b32bca5cd7c615437a99ebe2b78d2f57c3943fc59d2c006f3fb9251ea34f864a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__107__bilateral.npz",
+      "bytes": 90687,
+      "sha256": "59514c869ae155c1eac87ea19a4f8ac2f99bc1083220585ddf7e0478c12b1c9a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__107__frontoorbital.npz",
+      "bytes": 88564,
+      "sha256": "6e2d91ca6aff5aa472a2907925d70a87906d2fd00cf4a3e69491be1f900f994f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__107__parietotemporal.npz",
+      "bytes": 87394,
+      "sha256": "dbc9aad7831aba3672bf96b484a883c255b0c37dc79ffd30b5fb39163c0e8b34"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__107__random_1.npz",
+      "bytes": 90391,
+      "sha256": "d12367c19b398810eba8edf2e1a347e23b5666209891af18d701a18a0495d4f8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_Euclidean_elimination__train__107__random_2.npz",
+      "bytes": 89395,
+      "sha256": "b54e7a8cad5b4934af850a6d822f961e6cc94dd3ec30ab2fc2d12e042acd1e24"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__001__bilateral.npz",
+      "bytes": 88918,
+      "sha256": "9d36446f5ce5d90e8708d79650932cade7b22aaf88df84341be7575dc2136626"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__001__frontoorbital.npz",
+      "bytes": 90340,
+      "sha256": "0a8702be439b0d89c476f1e9c0b6de3ad5b94cbf94744eb91eb985f794689e30"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__001__parietotemporal.npz",
+      "bytes": 89616,
+      "sha256": "e69948be05ca8de9274fcffd57fde26315c92cec6c4eb6cd760268940455e3fc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__001__random_1.npz",
+      "bytes": 90732,
+      "sha256": "762764b3ddfa4822872efeb5a92ec3e256c4a239605b3f76f4be041834565d66"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__001__random_2.npz",
+      "bytes": 89907,
+      "sha256": "334d15e70853ab2f2016e1d3bb1da693eaafdc0e33d75a9143fd87c79232515a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__003__bilateral.npz",
+      "bytes": 89972,
+      "sha256": "c8e33ae6d80d86fe99fe2c4124acab661f34beb24c3b914192f3b14c1e216a30"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__003__frontoorbital.npz",
+      "bytes": 88576,
+      "sha256": "bc1fb32c34902b0a17ea81aa52e0a429f1fe10582bc64701dc7cc257dcad6831"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__003__parietotemporal.npz",
+      "bytes": 90300,
+      "sha256": "f8cef39b8cfc39097e41bac5dcbe19912a39cd2af15f1d16a30a461ef98d05a5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__003__random_1.npz",
+      "bytes": 89168,
+      "sha256": "9413519a02160180d0bb68a1c55f3592666e75d5763b500364484d29975da099"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__003__random_2.npz",
+      "bytes": 90194,
+      "sha256": "49c8903e15b7b209f12b09ea639b71a889a4a4b5b7b4b7fcd550de44685f3269"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__012__bilateral.npz",
+      "bytes": 89555,
+      "sha256": "202fc97b0acd8524cff9f294a23b576b44d77ff3dd1eb7893e4c3b77179ce1de"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__012__frontoorbital.npz",
+      "bytes": 90424,
+      "sha256": "e319888d2f8379ccd6932610f7b770cfd7ffdb40fab1f831b014129ae1ca1cdb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__012__parietotemporal.npz",
+      "bytes": 90140,
+      "sha256": "efe0c37b13837942ccf5a13dac29ef070dd689538c92ce6fd946c71264e5cd69"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__012__random_1.npz",
+      "bytes": 90584,
+      "sha256": "a57fb423af5d1bb154777b1d0491a4a798a2c82730ee620326727b5ed41f64c3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__012__random_2.npz",
+      "bytes": 88611,
+      "sha256": "3d3afe92c751db6d677003d96df7f7a2755ddddf325fd7feee7f81afa93191ed"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__013__bilateral.npz",
+      "bytes": 89398,
+      "sha256": "fca5638af7b9136d1b8ae84dc674f8d68574c945888d0f1a3ede8ad413187344"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__013__frontoorbital.npz",
+      "bytes": 90698,
+      "sha256": "907d16fcfb51bd43a1eb787cc7a1b13cb3295678bc3d5d44a8cb3306ffc635a4"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__013__parietotemporal.npz",
+      "bytes": 90045,
+      "sha256": "9b32b1cfbdcbd253b5872b534da3baabd5f7252dfb9a937a8a48f6ac5b8678f5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__013__random_1.npz",
+      "bytes": 89826,
+      "sha256": "562c14d19c3fb431e51aeff81883ac5dcda86d82a85674215de067692e16e0f1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__013__random_2.npz",
+      "bytes": 89683,
+      "sha256": "930d057668494a3a33637252deb0bc73e129f97c0d9525b534b5b5685cc25da7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__025__bilateral.npz",
+      "bytes": 89173,
+      "sha256": "ddb11ba6276215b7ea5d10b72d08ae94a2624c5807bd6f903f53301cb44c800a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__025__frontoorbital.npz",
+      "bytes": 88868,
+      "sha256": "4f9e64b2ae3fe955134583d266b7e27caae4c370948719a43dc94dc792bfc0e1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__025__parietotemporal.npz",
+      "bytes": 90480,
+      "sha256": "3c58b99c857cd6d4416de1989cab3ca264c548eb238adc3d9394d8903776ec55"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__025__random_1.npz",
+      "bytes": 89374,
+      "sha256": "16f208ac8e8bd943e666037062509cf2e87f3778e2feaba0974b55ff64fbba9a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__025__random_2.npz",
+      "bytes": 90404,
+      "sha256": "b258f888c044e6eb58a7a7842904522ed9f59c61496c0b67f11498096e6675a9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__026__bilateral.npz",
+      "bytes": 89132,
+      "sha256": "1218db750b466fe87f271796b498852569a0a0f4994e6da9aee654b2137e56d0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__026__frontoorbital.npz",
+      "bytes": 90099,
+      "sha256": "3b38a2f0ffe9c84145f2149f8a86452cf18609e5f1ba756d96d0fa908b799c20"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__026__parietotemporal.npz",
+      "bytes": 88595,
+      "sha256": "fb8edef75f9604a41d7f17046f0df63400ddc58fc57a99f4613e29fdd897cd63"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__026__random_1.npz",
+      "bytes": 90211,
+      "sha256": "00e5b0044b910e064095b425261e460ec9274982e7292d7140bbaa86a9aaf867"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__026__random_2.npz",
+      "bytes": 88029,
+      "sha256": "0c6c03aba4c8450ed4c55e76399b88fa20c5b38373304dc80ffb2d8d5333b1bc"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__036__bilateral.npz",
+      "bytes": 89912,
+      "sha256": "663017ead07eef10f6509d98a1c2289a8b956e27a65136c7459bc8a5b0826fe3"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__036__frontoorbital.npz",
+      "bytes": 90778,
+      "sha256": "d1d28334effcf394247ccbe958ae3d9cc23d6c702f2109be173252181a6270e9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__036__parietotemporal.npz",
+      "bytes": 89989,
+      "sha256": "3783453d4200d9d533526f58f67827aa919b8589804c53ac4fca46d94a9538b5"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__036__random_1.npz",
+      "bytes": 88645,
+      "sha256": "6aa33522fba77df1659c0da4ddca2df0edb9eeeff4985c4316cc01abf0302c51"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__036__random_2.npz",
+      "bytes": 90516,
+      "sha256": "d21386664d06d6f122499f5fb0424e08519b62063c176fe6f16a895b3fff948f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__038__bilateral.npz",
+      "bytes": 90222,
+      "sha256": "f2cca4fc7bd5760bacca7d352c1f7451c64fc4d2c0a2d75de0bc2eb115956617"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__038__frontoorbital.npz",
+      "bytes": 88311,
+      "sha256": "f3d1cfb9ff3b738825f805b459b3265ef7a30ffc5d4320c74130857f939bed20"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__038__parietotemporal.npz",
+      "bytes": 89843,
+      "sha256": "510014cf9fd8f9441193bf54ef8ec30a5291aa3f111798927ab335fc7a827d1a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__038__random_1.npz",
+      "bytes": 89827,
+      "sha256": "c1d65dad22ef232368d7ab5e1deca80350def26e4e203443dec0aab619ed5e18"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__038__random_2.npz",
+      "bytes": 89656,
+      "sha256": "ed714b1746ebb51c049847c39246f6b212e887524f1a75c663a25339f0f77984"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__041__bilateral.npz",
+      "bytes": 89905,
+      "sha256": "74d95820d31175126de76d0d816d5143fbd02d06e7f62fbc707df330481a553d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__041__frontoorbital.npz",
+      "bytes": 90652,
+      "sha256": "7fc1e77bdb8df154b063cb9da99c36cc11ac758722fe9d656f1bf5a1aa4884ce"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__041__parietotemporal.npz",
+      "bytes": 89934,
+      "sha256": "8705211c4487d3d870c745bb8d7f6dcc124b721440ee46ad25afb501f880607b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__041__random_1.npz",
+      "bytes": 90353,
+      "sha256": "3e8c1b791e4d903a2102817f5264709e3a486918d8d15c7ac60a0cd2e27d808f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__041__random_2.npz",
+      "bytes": 90078,
+      "sha256": "0a36abe5ca55f759f39812809930c46ad29a07aca0299aabdf4c1abde26722e8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__042__bilateral.npz",
+      "bytes": 91067,
+      "sha256": "c6c22bfd3b7fb7d858479000e628b1097849f896b81b79471dda33a21b3ffecd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__042__frontoorbital.npz",
+      "bytes": 91214,
+      "sha256": "243f499c52f3437b824e69d3d1ea52ffeac5e7b59990eadf07b1498ead8460bb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__042__parietotemporal.npz",
+      "bytes": 89056,
+      "sha256": "179e62455dbf77316739af84f0b3f4c479d3bd97bd2562cfbbe208666d625c0e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__042__random_1.npz",
+      "bytes": 90078,
+      "sha256": "3c88197a77618abd59040478972e3c0803834e17e29608baca66ac9994c0f6b8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__042__random_2.npz",
+      "bytes": 90135,
+      "sha256": "b2f5c211e49ea8e6a3e430d7e6451147fd827b4c867fb8b3586227dc0986133d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__047__bilateral.npz",
+      "bytes": 89764,
+      "sha256": "c8a65d4aec7d9a44e77a8d3284e5f2e5fd218e9748b6827a63c21786eda87eb7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__047__frontoorbital.npz",
+      "bytes": 89066,
+      "sha256": "f090e1dcb4a0cdd1600f1671bf9b8259daebf5545fa87c3ce18045d2582d9408"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__047__parietotemporal.npz",
+      "bytes": 87803,
+      "sha256": "1f40e34f87af193ef2141cc83ace8896db705e14e82f70cea0418d9136435343"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__047__random_1.npz",
+      "bytes": 89814,
+      "sha256": "30cd25447f02fdd4812a9ac49721700c401af2b2328642ca1a6c116e0815f454"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__047__random_2.npz",
+      "bytes": 89195,
+      "sha256": "33e46e188678b19a2e80d76053fa861922147ac241fa94f50d4ec85814d8de37"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__051__bilateral.npz",
+      "bytes": 90473,
+      "sha256": "664c3bd00b049d7878c55dc51c50d5712d710ad9baa7e8d3935cb9d1f3af7294"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__051__frontoorbital.npz",
+      "bytes": 89990,
+      "sha256": "74fbd0e92601bde1819b010deb7ff074ca0a0cf0b23c7cd56e7f438b8a8ab982"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__051__parietotemporal.npz",
+      "bytes": 88728,
+      "sha256": "14156f135bceca873a77cad9205a9087cd1de6704c897c42e87b4945df3d6cb8"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__051__random_1.npz",
+      "bytes": 89084,
+      "sha256": "aa3eb0082c15a264614a945dfb0b7edd27d529a34e0bf2cb7feaa32e01185f6c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__051__random_2.npz",
+      "bytes": 89608,
+      "sha256": "8d3a9a220b254843f7634b822061c7f2096097f6d90873f87b8732324c341d44"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__053__bilateral.npz",
+      "bytes": 89093,
+      "sha256": "3d77d9b1161dab3ff1f3337cdbe76eaf20521a55e17bcd6e556c5ae88b683b74"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__053__frontoorbital.npz",
+      "bytes": 90180,
+      "sha256": "57c8502b1cd0421db7ce35579ccfda307b7c18d18bed412fc6c4e885a689fb3b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__053__parietotemporal.npz",
+      "bytes": 90103,
+      "sha256": "a649a5fe16d5a2e341a4220d7586d2b82c78451ab8545ba69f8c686237a62b8b"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__053__random_1.npz",
+      "bytes": 88848,
+      "sha256": "80fdf01d9c3d5c079d20c3edbea15db98007f95f8da42753829201ef11062595"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__053__random_2.npz",
+      "bytes": 89877,
+      "sha256": "c89adf591e2e3329fbe8b59946a42123455110d6a91b1b986cd418479582af82"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__061__bilateral.npz",
+      "bytes": 89228,
+      "sha256": "b5cf29b1bee2770f78e4fdd44839aad4b22f186ff429a1e981d721d25bf82700"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__061__frontoorbital.npz",
+      "bytes": 90356,
+      "sha256": "0f2bbdd88afc3cb3a776f3294d512889784b1654135200b3d20f173e82e5a944"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__061__parietotemporal.npz",
+      "bytes": 87960,
+      "sha256": "c601b3c51c38719bb2377dc10facaefcb46de58e8f74ccef5f1c908777d1bbb0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__061__random_1.npz",
+      "bytes": 89951,
+      "sha256": "00b733ac21257deb100893dd9a79e4d4d9936531618051656a706d2219808383"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__061__random_2.npz",
+      "bytes": 90291,
+      "sha256": "7fe9b2ca7f8efc2d5275bbe0d99eb51c96fbfd643468e8c1f9eb4203c9af5e2e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__066__bilateral.npz",
+      "bytes": 89671,
+      "sha256": "d84be920609fc35a0674d2f8fe74d99f73c7e5f7da3793562a747058657ec5ac"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__066__frontoorbital.npz",
+      "bytes": 90431,
+      "sha256": "2a7097f23137142c5a2a612364be44ae753f0fc86938c91cdb9b1550544923eb"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__066__parietotemporal.npz",
+      "bytes": 88661,
+      "sha256": "8abff88bb7139734093084b0e365fd690292590c8e756d75eda722d65886bacd"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__066__random_1.npz",
+      "bytes": 89532,
+      "sha256": "399f9b0ca3afb40b67565d521a337049e22feee631cda50bdd787c0237fc3349"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__066__random_2.npz",
+      "bytes": 89916,
+      "sha256": "00def07db712d3192e7454535bca1419398b654fa425eddaba80aaf390636c06"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__072__bilateral.npz",
+      "bytes": 90643,
+      "sha256": "5fcd130124fbf307c2838a93b5c80e3281f3b165af27f5fb4f9f42d92fcbe93d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__072__frontoorbital.npz",
+      "bytes": 90436,
+      "sha256": "48e010567d963a633b6bbbfd5861c71c692fde334515e5ce6f1b5d0198378fee"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__072__parietotemporal.npz",
+      "bytes": 90156,
+      "sha256": "9e4759a0f953b1d9e124ea8d7fd86d2a1a44e884aca24be8ed4a20f525443101"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__072__random_1.npz",
+      "bytes": 88294,
+      "sha256": "ee3d72abcf4b1d87a8a10e7688a1eb590edaccf6eafe03a6b5ea3bf57017d457"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__072__random_2.npz",
+      "bytes": 89737,
+      "sha256": "55be7ced07bf56ef891662e3415b0d95e2b5666b176a1a1b4d37789e35cf3e53"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__076__bilateral.npz",
+      "bytes": 89848,
+      "sha256": "d7557c62b081d40ec0b34e1121ad56f822d36f198f8aae60ab84da2a05134116"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__076__frontoorbital.npz",
+      "bytes": 89321,
+      "sha256": "bc335f9197c94d904b5c63be0418005a571076f8b7a92e1f389b3de33814c583"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__076__parietotemporal.npz",
+      "bytes": 88307,
+      "sha256": "46a8a1c6401cb7f977af80d269879b0b5f7975da6f04d572ae9a204f61944688"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__076__random_1.npz",
+      "bytes": 88124,
+      "sha256": "d8a0789be620ba22bddd474f26c8497f6daaaa927e386e57020aedd00fb78a0a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__076__random_2.npz",
+      "bytes": 90448,
+      "sha256": "49e64f9814dbef3118a4f767066179ab73d3484ff31490620ef0b5a13ff92e4e"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__081__bilateral.npz",
+      "bytes": 89329,
+      "sha256": "cec0b9915511ed82ceda66cb1c127c3dbf5d3ccdea64257f83ee24ded28306ae"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__081__frontoorbital.npz",
+      "bytes": 88991,
+      "sha256": "9fc5e9a6336665fd70d02537b380491491d8095370675eb253168fb27e3efe16"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__081__parietotemporal.npz",
+      "bytes": 88797,
+      "sha256": "3de9b1bcc5fc24946da6badcb04b96415751016f4307789e6c3548ecc85fa72d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__081__random_1.npz",
+      "bytes": 90377,
+      "sha256": "31fad2289e57a48a12b18c2785610c13f0d8cc676587d1686c2dd4ead2fda33c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__081__random_2.npz",
+      "bytes": 88853,
+      "sha256": "97b83a0b9a2e6ce521548f8c7a16577225378ae21cca2db225b1d0abe4fad9ba"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__094__bilateral.npz",
+      "bytes": 88821,
+      "sha256": "e817404acb9fa8f0aecd7e3025226a466e389ab268ea6284661552a548de20e7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__094__frontoorbital.npz",
+      "bytes": 90231,
+      "sha256": "93ca81f4adf5270f54c54a94413bde53ed0b5c48568cf82b8f2c605b13ed8145"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__094__parietotemporal.npz",
+      "bytes": 88464,
+      "sha256": "95cc24f2e0b10db9d287e1976db4f987a7582c0bcc675855789fdf8f4e00e3b1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__094__random_1.npz",
+      "bytes": 91222,
+      "sha256": "1275ed0425f1c7de95c10d9b485d04146ed52c742df0b47286c3c9fc99d2898d"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__094__random_2.npz",
+      "bytes": 88217,
+      "sha256": "8401675dcbc8e17fecb22ecbe605a914f439f0ced1773cd64d01088b90fd039c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__105__bilateral.npz",
+      "bytes": 91020,
+      "sha256": "01c6e1253ac197860f4d86a9895a6635ddcbbac49a10b4635c29a927d96e2806"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__105__frontoorbital.npz",
+      "bytes": 89123,
+      "sha256": "9241f8c4b3746c82d5fa746689a75fd394c6199be042df95b1a9d46cd2206853"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__105__parietotemporal.npz",
+      "bytes": 89630,
+      "sha256": "aaf100e983bf7fe7ca0416c41071d39ccb0ac3261cb3dfac88656ae095d35d02"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__105__random_1.npz",
+      "bytes": 89675,
+      "sha256": "82df59d855e41f6730a660968bb31ce94cedd6f78c212b7f55b3bef3af5090a6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__105__random_2.npz",
+      "bytes": 90072,
+      "sha256": "6d619c8c772ba168bd75cb8770a828208bea3059c1816b114d1ff6d72aef80d9"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__107__bilateral.npz",
+      "bytes": 91067,
+      "sha256": "0d3744a93aec223e4933d3c2fe4d52cca62ab539d39613b2ef254ba758e8aa7a"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__107__frontoorbital.npz",
+      "bytes": 89033,
+      "sha256": "a0cb5fad934ee89c1063cfef518d45fe6ad65349c2bec87578ecc7f27a6715c7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__107__parietotemporal.npz",
+      "bytes": 87848,
+      "sha256": "d5a9500e3f71ebe8efe1ed8cb26be491f72f6c4ef3eb3082720aa8b156df6568"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__107__random_1.npz",
+      "bytes": 89503,
+      "sha256": "7244397f7edacaeefccde6de5be98f197eb16a4eaedae4b0df35cbf847e3ced1"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/predictions/C_surface_graph__train__107__random_2.npz",
+      "bytes": 89397,
+      "sha256": "40ada5aaf152f064f74b447b882c9412977c7f9950f7aff5fce9b10aa5f4b45f"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/resources.jsonl",
+      "bytes": 222044,
+      "sha256": "e86c983b606a7441c05f2af6f765906a895acb3dfb394a5074e7521fd82d3662"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/worker.pid",
+      "bytes": 5,
+      "sha256": "cbf3c34cc3bbbce8b43c15556c21a731f6b6ef818082f4b6d0649446ea32f06f"
+    }
+  ],
+  "prediction_manifest": [
+    {
+      "name": "predictions/C_Euclidean_elimination__train__001__bilateral.npz",
+      "bytes": 89042,
+      "sha256": "af86b14dfa716c81bfb562a620a00410766cce67b4f0f85fbc98977fcb999bb7"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__001__frontoorbital.npz",
+      "bytes": 90475,
+      "sha256": "34a085339693d442126ba649b80cf6a64ea0b65afdcea933381e5a78dbf716df"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__001__parietotemporal.npz",
+      "bytes": 90251,
+      "sha256": "83aff34e7cc362ab396be619f1cd92c8763f0eed029594c68bdb07138a0ac03e"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__001__random_1.npz",
+      "bytes": 90403,
+      "sha256": "414ff23f097775161f24c7f69d983d99c6f83239ce16488975b2beef7fff7317"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__001__random_2.npz",
+      "bytes": 89834,
+      "sha256": "6ff2a70e98c65cef5eeeb6030b66dfc8b4d7ba4d2c5dba778c1e32fbcb5654be"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__003__bilateral.npz",
+      "bytes": 89777,
+      "sha256": "5bee76556670b93f4c10a714d227a37d04beab4ff56007d274472d958f3df991"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__003__frontoorbital.npz",
+      "bytes": 88602,
+      "sha256": "70c4210e8cb1adda271fb8e3f37ed175370f70c4c348386ad853ba451d7be101"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__003__parietotemporal.npz",
+      "bytes": 90365,
+      "sha256": "4a487e19e97a3007b445e38cadcc4b810e63dba8a86655611e635b2f2f634662"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__003__random_1.npz",
+      "bytes": 89387,
+      "sha256": "a4af48c762d02a62c2efc4a13e025bd54b65dbd401833e6f32354e43598708c3"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__003__random_2.npz",
+      "bytes": 90164,
+      "sha256": "06fb1c7d85c0e1a05338dd82efe6a4f57a6f4c36e1e48f4321b19d1b830ee5ec"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__012__bilateral.npz",
+      "bytes": 89313,
+      "sha256": "f98cd7ceb020bac8797efae4eab2178b389b30bb0ec573246e5ec84511653a75"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__012__frontoorbital.npz",
+      "bytes": 89949,
+      "sha256": "1187f1758981d02c407cf642a1448af21ccd422800c9e4604c13653f034f80dc"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__012__parietotemporal.npz",
+      "bytes": 90270,
+      "sha256": "71f2d708619e17ae3647bdaf2e69b09688be93cd94435fb33e3d8d93bde651e3"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__012__random_1.npz",
+      "bytes": 90247,
+      "sha256": "dc6c7b15557dd6542976c1e0ed92d3741e79b5c311879479fa7ab59e302efe52"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__012__random_2.npz",
+      "bytes": 89022,
+      "sha256": "de9d65b17a1b843b8b2f49c4c80bea7418e7fa6fd317449d748961552e9bb12a"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__013__bilateral.npz",
+      "bytes": 90041,
+      "sha256": "1cb4f99101b6df69459ee5ebf093947e8dfded38df4eac1b4e3cf245bf8049c6"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__013__frontoorbital.npz",
+      "bytes": 89414,
+      "sha256": "3ff47752acac0aa40f49445ca073a9f650737cb5c0ff2ae594a21d1a8a0d9e94"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__013__parietotemporal.npz",
+      "bytes": 88571,
+      "sha256": "15a0f9c02ef6dbdba25935a63812fdbe066fb642d56081c92d99a8ffa1102cfc"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__013__random_1.npz",
+      "bytes": 89665,
+      "sha256": "82f86d7d98311d297987a25fc55eb6ce797f78a4524769f2238241ac331ed6ff"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__013__random_2.npz",
+      "bytes": 89531,
+      "sha256": "f2bbe8657006b4bbfae379a4a8b2f978176a5f0dfd60fb60f71b229677efd4ed"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__025__bilateral.npz",
+      "bytes": 89249,
+      "sha256": "7b6849e6d30ecee809e4d156e5b2c9b0b6ae733e398c68fa5a998006586cffc7"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__025__frontoorbital.npz",
+      "bytes": 88694,
+      "sha256": "f9bcb09f4184d25d278d58d1fb592c43afd425d926e80ce0929f1cc073823d4c"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__025__parietotemporal.npz",
+      "bytes": 91102,
+      "sha256": "2db03093887a1d32fc229ec76881cd5587304e35bb5479ecd120b15271542d1e"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__025__random_1.npz",
+      "bytes": 89429,
+      "sha256": "f874f86d29fb9141a1a94c8681838d6cc9809bab703069d0c246ec9bcadb4dae"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__025__random_2.npz",
+      "bytes": 90922,
+      "sha256": "7ce70eb949d5c787516e344b5d3a9e41112e23c4565ddf266d7da86d6b31c486"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__026__bilateral.npz",
+      "bytes": 89228,
+      "sha256": "5fdc05221de768069643daad289e2605031ed4a73196cce6909c8d3dca4f65e7"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__026__frontoorbital.npz",
+      "bytes": 90733,
+      "sha256": "c2a140e43af2018137c13f9d6a897e1906ccc91572d3e950a075693ec46040a6"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__026__parietotemporal.npz",
+      "bytes": 89055,
+      "sha256": "8d6fbb7b3b2f0d41b771aa834a397a1aca9983cf32d533dad4a8dfce7b3e39c5"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__026__random_1.npz",
+      "bytes": 90162,
+      "sha256": "7d641cce7018d4ae435982d3e6b7accc985d12fe039efe0ca50b5f9a0a0c7fbe"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__026__random_2.npz",
+      "bytes": 88729,
+      "sha256": "b30ade1b43f23901c4b3f9398707726299702c31942c0cd02c29f457d59556b2"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__036__bilateral.npz",
+      "bytes": 89993,
+      "sha256": "27aee74a717e425c16872ecfa56a03e6037a98b634ae0ff1dc78c1d5c2043bd5"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__036__frontoorbital.npz",
+      "bytes": 90684,
+      "sha256": "69b9856073c10a6fa747aa95e441079d796a73fbc85f1593b97c238f93480d61"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__036__parietotemporal.npz",
+      "bytes": 90150,
+      "sha256": "9ff875ef3bd1adc45871998f96161934e82a5d8b86bffb566cdb0aeb207d606a"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__036__random_1.npz",
+      "bytes": 88801,
+      "sha256": "9f142a1d0e5bb54ce3b9793fb59e2db1e8d0f3577de6742c2fd8db64bab00561"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__036__random_2.npz",
+      "bytes": 90504,
+      "sha256": "d348bd83b1d37043e9827021ac25ef0ca6d19eb42d5020b52d1481b3893a2331"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__038__bilateral.npz",
+      "bytes": 90266,
+      "sha256": "4e74761f61fb9345f960e2b5e2488ada37eba40b08ba43be91f0354649201266"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__038__frontoorbital.npz",
+      "bytes": 88962,
+      "sha256": "c3599f8a9e5c3960109631da5d21c867a8b210d4f4227d51f34946f65773b6a4"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__038__parietotemporal.npz",
+      "bytes": 89976,
+      "sha256": "45a38bfa4caaf6837574be09deed2bc545778ffd80e98f8e2a531c21f8d10966"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__038__random_1.npz",
+      "bytes": 89633,
+      "sha256": "6b7701a31e3da9c325335dd356a6ff493dd0c328f724daec464239e288b0002b"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__038__random_2.npz",
+      "bytes": 90073,
+      "sha256": "e20743889d8422f1552d8367fc013a8c3cf476bcd715518eecd90e707437f0c9"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__041__bilateral.npz",
+      "bytes": 89859,
+      "sha256": "4c8cd8957f4a781456c0eace5b8cb1fe12cc44a2b0166b6eadf5b13fbf776d91"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__041__frontoorbital.npz",
+      "bytes": 90022,
+      "sha256": "12313ad1fba5f71d8cf9c6c0ee0e2bdf30f1cab6f642387bd8bd5b31cb2b0464"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__041__parietotemporal.npz",
+      "bytes": 90126,
+      "sha256": "6a6133987c976d2cb980482ed8dd8c4551c887cc98bde503b7ccaa3c12890deb"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__041__random_1.npz",
+      "bytes": 90101,
+      "sha256": "ba6a032f49d93bcd0abf4cacac58c0f516066f7f71b81882a989cf9a39cfcaf0"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__041__random_2.npz",
+      "bytes": 89907,
+      "sha256": "d65b83bac607ca62eb69ea677ee58fb165022dd62d70623cd05c5b916b2c0af2"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__042__bilateral.npz",
+      "bytes": 90228,
+      "sha256": "c74b99f1b6f8a1f170205455f8105922930d35e5aeaced328731f13be3cad957"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__042__frontoorbital.npz",
+      "bytes": 88574,
+      "sha256": "a4db709d608bc02401810273c2111ce6ad823b004f04096ff4ee8237e2b33292"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__042__parietotemporal.npz",
+      "bytes": 89627,
+      "sha256": "257bf5a5abf5f1cc9fb6ce95dae070e2bab6a35448193ad0c75646f4f82cc0c9"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__042__random_1.npz",
+      "bytes": 90155,
+      "sha256": "51038a8af7f66ecdf301240dc942848b275d56788183fe656ea2896d708629d1"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__042__random_2.npz",
+      "bytes": 90117,
+      "sha256": "999c003b4a4c39f71956677ff576dcae56ccf336a414903a04b4b108ee090ef5"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__047__bilateral.npz",
+      "bytes": 89176,
+      "sha256": "f59041cce2509a4c7469dec2974396397a3fdcd8a836b65ad4c288d389d5446a"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__047__frontoorbital.npz",
+      "bytes": 88659,
+      "sha256": "272f4bfc0804197e6c383d11910a8ceebb47dd35b22031dfcf89311ed82196f9"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__047__parietotemporal.npz",
+      "bytes": 88280,
+      "sha256": "178b893d53855374a3ff049327363f931dc004f7ac3282c381dc5555ebc72186"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__047__random_1.npz",
+      "bytes": 90077,
+      "sha256": "9d9b64aa0a46f40c3680c501e5449b38e4cc4f3f0aa643cedd6c5767afcb75a8"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__047__random_2.npz",
+      "bytes": 89702,
+      "sha256": "adc712024e168321af3f1eea4edc376ae38578b0f0a4a693e487fbe7a88a4f1a"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__051__bilateral.npz",
+      "bytes": 90599,
+      "sha256": "3371e0ce708de6763831e57fd0323da6770e86d3a1bb8aff7d426de650b5ecbf"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__051__frontoorbital.npz",
+      "bytes": 90487,
+      "sha256": "0dc2d50437c396a82942bb22847f45f504a41edb1955ab5ed9a461c9d256a09b"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__051__parietotemporal.npz",
+      "bytes": 87999,
+      "sha256": "b389fa6a4e50525ad7e5119c3fce229b9a36fbaab36047317efa8f68ee14a068"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__051__random_1.npz",
+      "bytes": 89664,
+      "sha256": "b83a1c28ea298ce0812e718c5832dcbc5cf743661f5f45d532e8a83224ce87bc"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__051__random_2.npz",
+      "bytes": 89683,
+      "sha256": "5bd54bec05692d8452273356cbe0c42e513736aa3ddbcdd49db6797bf1cd5173"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__053__bilateral.npz",
+      "bytes": 89474,
+      "sha256": "3c1f47ef98e487daa17a86d8d5837848df4a7a84ed6f6580be5ec0642160724a"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__053__frontoorbital.npz",
+      "bytes": 90756,
+      "sha256": "c5264edef23c3cbd519446f76df7053de203a67923e6def5e56c9c1d79144332"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__053__parietotemporal.npz",
+      "bytes": 90677,
+      "sha256": "096e56a2448b0fbfd0659f26c21e190c63d604c0f2bb7a2f45474a90e43400c4"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__053__random_1.npz",
+      "bytes": 88954,
+      "sha256": "32287c287d7d4af762590c4aa21dadab99103f2ded9494b08adee2186f3821b0"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__053__random_2.npz",
+      "bytes": 89940,
+      "sha256": "65e81cdb9da9ab90081fddc61f7e1ee8a6d7357452a5272067042fa9f09aa6bc"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__061__bilateral.npz",
+      "bytes": 88789,
+      "sha256": "8f319d78a37b26d246f6e82e81a1c8386452b11e2d8b5ad90d8ac306564a0b30"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__061__frontoorbital.npz",
+      "bytes": 90591,
+      "sha256": "0d6152ff46448e90860d80c1fb9813bdd0f13b1e62c8749d03ac75efe650d8e7"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__061__parietotemporal.npz",
+      "bytes": 89141,
+      "sha256": "d4f8c83cc423c63bf30f2a4ecb8de3800bd8db1c90c0f6aa392ba8be880472d8"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__061__random_1.npz",
+      "bytes": 90351,
+      "sha256": "2194f92c1313478ff96a11f4507baaf65b7b395980956017fb9d26d181b0ac4f"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__061__random_2.npz",
+      "bytes": 90251,
+      "sha256": "6857761eeff586351c454d0a180ca0ab3e4df43bf494e0230915bd7148598994"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__066__bilateral.npz",
+      "bytes": 89564,
+      "sha256": "b5b43b807b8847a460fac70761bf8b8413f362bbf3349d5965e58aa5ad4f1df4"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__066__frontoorbital.npz",
+      "bytes": 90713,
+      "sha256": "abe43bf6d187132818e26eb42282449c7b6943a5d9efaeb953f5b48581aa248a"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__066__parietotemporal.npz",
+      "bytes": 88563,
+      "sha256": "048535be6a345d19962ac5b3e34be67214609b58738882eb32c067927088cfd9"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__066__random_1.npz",
+      "bytes": 89222,
+      "sha256": "af86114d9158172b829f4fe946b2cdee65f17a0bc8c1234a68b57e8ff1645090"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__066__random_2.npz",
+      "bytes": 89992,
+      "sha256": "eb783636d7f272bf0eaea3a6451fc302f7bb6f473a1bdce88dda4e15de8c5105"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__072__bilateral.npz",
+      "bytes": 90841,
+      "sha256": "79d80a42a4faf6cc3009a015d52aae5edfe88a2fc8f27316dc6ac7fc6ce7860e"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__072__frontoorbital.npz",
+      "bytes": 90337,
+      "sha256": "663a02effcfc46b7df12d61f4090acbf9f9eb348303d2cab873b6e0d80971685"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__072__parietotemporal.npz",
+      "bytes": 90140,
+      "sha256": "b41bf06c6e4a7c4837a86698bc59643b14cd0e7a9a41887eef3d225dc9db5c4f"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__072__random_1.npz",
+      "bytes": 88948,
+      "sha256": "8488893990f5c29aef55793e3c5d21e60ae946ceecfb80b28488a077ca87f1c5"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__072__random_2.npz",
+      "bytes": 89922,
+      "sha256": "ce8d9ca3aa5e606ce256d84127d8c323dd510f582486f5a8c49e194570bedb3d"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__076__bilateral.npz",
+      "bytes": 89607,
+      "sha256": "bc584e9be7dc1f3a7914f81adf58b179a8884706232dda6e8b7b54ad7daca1a9"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__076__frontoorbital.npz",
+      "bytes": 89327,
+      "sha256": "6da92199c81f6c1c3530029b2a6d1253f88b11569d5171046f75bbb7be144d15"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__076__parietotemporal.npz",
+      "bytes": 88656,
+      "sha256": "e5fc56ecaf9f477bc2d6eab06d5e63446d8faad0db72e1970a6df1116d4008fd"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__076__random_1.npz",
+      "bytes": 88772,
+      "sha256": "6f2419c03f83155354028d1b72a811701074833438907d81dca547e14e3b0edb"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__076__random_2.npz",
+      "bytes": 90208,
+      "sha256": "dc0b8ba86214e40bbc4b9cc359aad69bbd1c45a0e441ecaa6c50d32713b477b5"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__081__bilateral.npz",
+      "bytes": 89142,
+      "sha256": "3cbd0e850be59e51db541141bdf12d084d2439cfb8a80e73b5dfe4f39840cc1b"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__081__frontoorbital.npz",
+      "bytes": 90268,
+      "sha256": "1aaade7673febaf88dd6ced1a415cf77f0290727a01f388346b04a14679a81b8"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__081__parietotemporal.npz",
+      "bytes": 89155,
+      "sha256": "985fbbb6499e1e711a661a8408b7ed1b3058fc8de50a2e74b577833d314ad0b9"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__081__random_1.npz",
+      "bytes": 89851,
+      "sha256": "6fb4383b47fb50c505542aa270e6d1d87b4480ac3ea9f105a868314582ba5eb8"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__081__random_2.npz",
+      "bytes": 89323,
+      "sha256": "6d3c67249d82199aa81b12351d13abdd4595675a33b6f25c06372c73dd8a9685"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__094__bilateral.npz",
+      "bytes": 88887,
+      "sha256": "843bc17e1f3e1ae87fcbf1de5fd6f8b53226e4097a63a66ac9b828b376879934"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__094__frontoorbital.npz",
+      "bytes": 89124,
+      "sha256": "90ed71963e3a838c86090c959abb79f249e80d7e3150c9fb47454b8770d42c5d"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__094__parietotemporal.npz",
+      "bytes": 87785,
+      "sha256": "402a1aeb44d6730eeebcd003726385e74a522e35eb6fcfe1428059b02ce156eb"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__094__random_1.npz",
+      "bytes": 91174,
+      "sha256": "587925752c5e20dfe474bf25f285e571dc97492b24f617f72811cd4c3e7a2810"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__094__random_2.npz",
+      "bytes": 88237,
+      "sha256": "c03611292f4512cc280ad8ebdd1f1f322db2c16143af0b3f37dc142c30ec3c71"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__105__bilateral.npz",
+      "bytes": 91102,
+      "sha256": "d6bedcaa8d4b5ba63b5e834e4334e477175434a9b250961246a05b2954deb2a9"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__105__frontoorbital.npz",
+      "bytes": 88987,
+      "sha256": "420b07a49cd3dffbd1b0001a008bccd67081fafdb151e6653ce280a1ad4d99c6"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__105__parietotemporal.npz",
+      "bytes": 89615,
+      "sha256": "549076bfdafa955318bfba6d43f4f49f022b4bd6d5f622c52a74d4ff34c1516a"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__105__random_1.npz",
+      "bytes": 89654,
+      "sha256": "4b6d3e0f27c1e763c9fb526c24dcd997081cb57083588f55646bd9d7ac9c0329"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__105__random_2.npz",
+      "bytes": 90132,
+      "sha256": "b32bca5cd7c615437a99ebe2b78d2f57c3943fc59d2c006f3fb9251ea34f864a"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__107__bilateral.npz",
+      "bytes": 90687,
+      "sha256": "59514c869ae155c1eac87ea19a4f8ac2f99bc1083220585ddf7e0478c12b1c9a"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__107__frontoorbital.npz",
+      "bytes": 88564,
+      "sha256": "6e2d91ca6aff5aa472a2907925d70a87906d2fd00cf4a3e69491be1f900f994f"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__107__parietotemporal.npz",
+      "bytes": 87394,
+      "sha256": "dbc9aad7831aba3672bf96b484a883c255b0c37dc79ffd30b5fb39163c0e8b34"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__107__random_1.npz",
+      "bytes": 90391,
+      "sha256": "d12367c19b398810eba8edf2e1a347e23b5666209891af18d701a18a0495d4f8"
+    },
+    {
+      "name": "predictions/C_Euclidean_elimination__train__107__random_2.npz",
+      "bytes": 89395,
+      "sha256": "b54e7a8cad5b4934af850a6d822f961e6cc94dd3ec30ab2fc2d12e042acd1e24"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__001__bilateral.npz",
+      "bytes": 88918,
+      "sha256": "9d36446f5ce5d90e8708d79650932cade7b22aaf88df84341be7575dc2136626"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__001__frontoorbital.npz",
+      "bytes": 90340,
+      "sha256": "0a8702be439b0d89c476f1e9c0b6de3ad5b94cbf94744eb91eb985f794689e30"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__001__parietotemporal.npz",
+      "bytes": 89616,
+      "sha256": "e69948be05ca8de9274fcffd57fde26315c92cec6c4eb6cd760268940455e3fc"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__001__random_1.npz",
+      "bytes": 90732,
+      "sha256": "762764b3ddfa4822872efeb5a92ec3e256c4a239605b3f76f4be041834565d66"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__001__random_2.npz",
+      "bytes": 89907,
+      "sha256": "334d15e70853ab2f2016e1d3bb1da693eaafdc0e33d75a9143fd87c79232515a"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__003__bilateral.npz",
+      "bytes": 89972,
+      "sha256": "c8e33ae6d80d86fe99fe2c4124acab661f34beb24c3b914192f3b14c1e216a30"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__003__frontoorbital.npz",
+      "bytes": 88576,
+      "sha256": "bc1fb32c34902b0a17ea81aa52e0a429f1fe10582bc64701dc7cc257dcad6831"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__003__parietotemporal.npz",
+      "bytes": 90300,
+      "sha256": "f8cef39b8cfc39097e41bac5dcbe19912a39cd2af15f1d16a30a461ef98d05a5"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__003__random_1.npz",
+      "bytes": 89168,
+      "sha256": "9413519a02160180d0bb68a1c55f3592666e75d5763b500364484d29975da099"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__003__random_2.npz",
+      "bytes": 90194,
+      "sha256": "49c8903e15b7b209f12b09ea639b71a889a4a4b5b7b4b7fcd550de44685f3269"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__012__bilateral.npz",
+      "bytes": 89555,
+      "sha256": "202fc97b0acd8524cff9f294a23b576b44d77ff3dd1eb7893e4c3b77179ce1de"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__012__frontoorbital.npz",
+      "bytes": 90424,
+      "sha256": "e319888d2f8379ccd6932610f7b770cfd7ffdb40fab1f831b014129ae1ca1cdb"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__012__parietotemporal.npz",
+      "bytes": 90140,
+      "sha256": "efe0c37b13837942ccf5a13dac29ef070dd689538c92ce6fd946c71264e5cd69"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__012__random_1.npz",
+      "bytes": 90584,
+      "sha256": "a57fb423af5d1bb154777b1d0491a4a798a2c82730ee620326727b5ed41f64c3"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__012__random_2.npz",
+      "bytes": 88611,
+      "sha256": "3d3afe92c751db6d677003d96df7f7a2755ddddf325fd7feee7f81afa93191ed"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__013__bilateral.npz",
+      "bytes": 89398,
+      "sha256": "fca5638af7b9136d1b8ae84dc674f8d68574c945888d0f1a3ede8ad413187344"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__013__frontoorbital.npz",
+      "bytes": 90698,
+      "sha256": "907d16fcfb51bd43a1eb787cc7a1b13cb3295678bc3d5d44a8cb3306ffc635a4"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__013__parietotemporal.npz",
+      "bytes": 90045,
+      "sha256": "9b32b1cfbdcbd253b5872b534da3baabd5f7252dfb9a937a8a48f6ac5b8678f5"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__013__random_1.npz",
+      "bytes": 89826,
+      "sha256": "562c14d19c3fb431e51aeff81883ac5dcda86d82a85674215de067692e16e0f1"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__013__random_2.npz",
+      "bytes": 89683,
+      "sha256": "930d057668494a3a33637252deb0bc73e129f97c0d9525b534b5b5685cc25da7"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__025__bilateral.npz",
+      "bytes": 89173,
+      "sha256": "ddb11ba6276215b7ea5d10b72d08ae94a2624c5807bd6f903f53301cb44c800a"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__025__frontoorbital.npz",
+      "bytes": 88868,
+      "sha256": "4f9e64b2ae3fe955134583d266b7e27caae4c370948719a43dc94dc792bfc0e1"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__025__parietotemporal.npz",
+      "bytes": 90480,
+      "sha256": "3c58b99c857cd6d4416de1989cab3ca264c548eb238adc3d9394d8903776ec55"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__025__random_1.npz",
+      "bytes": 89374,
+      "sha256": "16f208ac8e8bd943e666037062509cf2e87f3778e2feaba0974b55ff64fbba9a"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__025__random_2.npz",
+      "bytes": 90404,
+      "sha256": "b258f888c044e6eb58a7a7842904522ed9f59c61496c0b67f11498096e6675a9"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__026__bilateral.npz",
+      "bytes": 89132,
+      "sha256": "1218db750b466fe87f271796b498852569a0a0f4994e6da9aee654b2137e56d0"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__026__frontoorbital.npz",
+      "bytes": 90099,
+      "sha256": "3b38a2f0ffe9c84145f2149f8a86452cf18609e5f1ba756d96d0fa908b799c20"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__026__parietotemporal.npz",
+      "bytes": 88595,
+      "sha256": "fb8edef75f9604a41d7f17046f0df63400ddc58fc57a99f4613e29fdd897cd63"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__026__random_1.npz",
+      "bytes": 90211,
+      "sha256": "00e5b0044b910e064095b425261e460ec9274982e7292d7140bbaa86a9aaf867"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__026__random_2.npz",
+      "bytes": 88029,
+      "sha256": "0c6c03aba4c8450ed4c55e76399b88fa20c5b38373304dc80ffb2d8d5333b1bc"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__036__bilateral.npz",
+      "bytes": 89912,
+      "sha256": "663017ead07eef10f6509d98a1c2289a8b956e27a65136c7459bc8a5b0826fe3"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__036__frontoorbital.npz",
+      "bytes": 90778,
+      "sha256": "d1d28334effcf394247ccbe958ae3d9cc23d6c702f2109be173252181a6270e9"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__036__parietotemporal.npz",
+      "bytes": 89989,
+      "sha256": "3783453d4200d9d533526f58f67827aa919b8589804c53ac4fca46d94a9538b5"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__036__random_1.npz",
+      "bytes": 88645,
+      "sha256": "6aa33522fba77df1659c0da4ddca2df0edb9eeeff4985c4316cc01abf0302c51"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__036__random_2.npz",
+      "bytes": 90516,
+      "sha256": "d21386664d06d6f122499f5fb0424e08519b62063c176fe6f16a895b3fff948f"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__038__bilateral.npz",
+      "bytes": 90222,
+      "sha256": "f2cca4fc7bd5760bacca7d352c1f7451c64fc4d2c0a2d75de0bc2eb115956617"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__038__frontoorbital.npz",
+      "bytes": 88311,
+      "sha256": "f3d1cfb9ff3b738825f805b459b3265ef7a30ffc5d4320c74130857f939bed20"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__038__parietotemporal.npz",
+      "bytes": 89843,
+      "sha256": "510014cf9fd8f9441193bf54ef8ec30a5291aa3f111798927ab335fc7a827d1a"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__038__random_1.npz",
+      "bytes": 89827,
+      "sha256": "c1d65dad22ef232368d7ab5e1deca80350def26e4e203443dec0aab619ed5e18"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__038__random_2.npz",
+      "bytes": 89656,
+      "sha256": "ed714b1746ebb51c049847c39246f6b212e887524f1a75c663a25339f0f77984"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__041__bilateral.npz",
+      "bytes": 89905,
+      "sha256": "74d95820d31175126de76d0d816d5143fbd02d06e7f62fbc707df330481a553d"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__041__frontoorbital.npz",
+      "bytes": 90652,
+      "sha256": "7fc1e77bdb8df154b063cb9da99c36cc11ac758722fe9d656f1bf5a1aa4884ce"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__041__parietotemporal.npz",
+      "bytes": 89934,
+      "sha256": "8705211c4487d3d870c745bb8d7f6dcc124b721440ee46ad25afb501f880607b"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__041__random_1.npz",
+      "bytes": 90353,
+      "sha256": "3e8c1b791e4d903a2102817f5264709e3a486918d8d15c7ac60a0cd2e27d808f"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__041__random_2.npz",
+      "bytes": 90078,
+      "sha256": "0a36abe5ca55f759f39812809930c46ad29a07aca0299aabdf4c1abde26722e8"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__042__bilateral.npz",
+      "bytes": 91067,
+      "sha256": "c6c22bfd3b7fb7d858479000e628b1097849f896b81b79471dda33a21b3ffecd"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__042__frontoorbital.npz",
+      "bytes": 91214,
+      "sha256": "243f499c52f3437b824e69d3d1ea52ffeac5e7b59990eadf07b1498ead8460bb"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__042__parietotemporal.npz",
+      "bytes": 89056,
+      "sha256": "179e62455dbf77316739af84f0b3f4c479d3bd97bd2562cfbbe208666d625c0e"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__042__random_1.npz",
+      "bytes": 90078,
+      "sha256": "3c88197a77618abd59040478972e3c0803834e17e29608baca66ac9994c0f6b8"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__042__random_2.npz",
+      "bytes": 90135,
+      "sha256": "b2f5c211e49ea8e6a3e430d7e6451147fd827b4c867fb8b3586227dc0986133d"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__047__bilateral.npz",
+      "bytes": 89764,
+      "sha256": "c8a65d4aec7d9a44e77a8d3284e5f2e5fd218e9748b6827a63c21786eda87eb7"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__047__frontoorbital.npz",
+      "bytes": 89066,
+      "sha256": "f090e1dcb4a0cdd1600f1671bf9b8259daebf5545fa87c3ce18045d2582d9408"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__047__parietotemporal.npz",
+      "bytes": 87803,
+      "sha256": "1f40e34f87af193ef2141cc83ace8896db705e14e82f70cea0418d9136435343"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__047__random_1.npz",
+      "bytes": 89814,
+      "sha256": "30cd25447f02fdd4812a9ac49721700c401af2b2328642ca1a6c116e0815f454"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__047__random_2.npz",
+      "bytes": 89195,
+      "sha256": "33e46e188678b19a2e80d76053fa861922147ac241fa94f50d4ec85814d8de37"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__051__bilateral.npz",
+      "bytes": 90473,
+      "sha256": "664c3bd00b049d7878c55dc51c50d5712d710ad9baa7e8d3935cb9d1f3af7294"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__051__frontoorbital.npz",
+      "bytes": 89990,
+      "sha256": "74fbd0e92601bde1819b010deb7ff074ca0a0cf0b23c7cd56e7f438b8a8ab982"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__051__parietotemporal.npz",
+      "bytes": 88728,
+      "sha256": "14156f135bceca873a77cad9205a9087cd1de6704c897c42e87b4945df3d6cb8"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__051__random_1.npz",
+      "bytes": 89084,
+      "sha256": "aa3eb0082c15a264614a945dfb0b7edd27d529a34e0bf2cb7feaa32e01185f6c"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__051__random_2.npz",
+      "bytes": 89608,
+      "sha256": "8d3a9a220b254843f7634b822061c7f2096097f6d90873f87b8732324c341d44"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__053__bilateral.npz",
+      "bytes": 89093,
+      "sha256": "3d77d9b1161dab3ff1f3337cdbe76eaf20521a55e17bcd6e556c5ae88b683b74"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__053__frontoorbital.npz",
+      "bytes": 90180,
+      "sha256": "57c8502b1cd0421db7ce35579ccfda307b7c18d18bed412fc6c4e885a689fb3b"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__053__parietotemporal.npz",
+      "bytes": 90103,
+      "sha256": "a649a5fe16d5a2e341a4220d7586d2b82c78451ab8545ba69f8c686237a62b8b"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__053__random_1.npz",
+      "bytes": 88848,
+      "sha256": "80fdf01d9c3d5c079d20c3edbea15db98007f95f8da42753829201ef11062595"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__053__random_2.npz",
+      "bytes": 89877,
+      "sha256": "c89adf591e2e3329fbe8b59946a42123455110d6a91b1b986cd418479582af82"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__061__bilateral.npz",
+      "bytes": 89228,
+      "sha256": "b5cf29b1bee2770f78e4fdd44839aad4b22f186ff429a1e981d721d25bf82700"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__061__frontoorbital.npz",
+      "bytes": 90356,
+      "sha256": "0f2bbdd88afc3cb3a776f3294d512889784b1654135200b3d20f173e82e5a944"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__061__parietotemporal.npz",
+      "bytes": 87960,
+      "sha256": "c601b3c51c38719bb2377dc10facaefcb46de58e8f74ccef5f1c908777d1bbb0"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__061__random_1.npz",
+      "bytes": 89951,
+      "sha256": "00b733ac21257deb100893dd9a79e4d4d9936531618051656a706d2219808383"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__061__random_2.npz",
+      "bytes": 90291,
+      "sha256": "7fe9b2ca7f8efc2d5275bbe0d99eb51c96fbfd643468e8c1f9eb4203c9af5e2e"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__066__bilateral.npz",
+      "bytes": 89671,
+      "sha256": "d84be920609fc35a0674d2f8fe74d99f73c7e5f7da3793562a747058657ec5ac"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__066__frontoorbital.npz",
+      "bytes": 90431,
+      "sha256": "2a7097f23137142c5a2a612364be44ae753f0fc86938c91cdb9b1550544923eb"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__066__parietotemporal.npz",
+      "bytes": 88661,
+      "sha256": "8abff88bb7139734093084b0e365fd690292590c8e756d75eda722d65886bacd"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__066__random_1.npz",
+      "bytes": 89532,
+      "sha256": "399f9b0ca3afb40b67565d521a337049e22feee631cda50bdd787c0237fc3349"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__066__random_2.npz",
+      "bytes": 89916,
+      "sha256": "00def07db712d3192e7454535bca1419398b654fa425eddaba80aaf390636c06"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__072__bilateral.npz",
+      "bytes": 90643,
+      "sha256": "5fcd130124fbf307c2838a93b5c80e3281f3b165af27f5fb4f9f42d92fcbe93d"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__072__frontoorbital.npz",
+      "bytes": 90436,
+      "sha256": "48e010567d963a633b6bbbfd5861c71c692fde334515e5ce6f1b5d0198378fee"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__072__parietotemporal.npz",
+      "bytes": 90156,
+      "sha256": "9e4759a0f953b1d9e124ea8d7fd86d2a1a44e884aca24be8ed4a20f525443101"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__072__random_1.npz",
+      "bytes": 88294,
+      "sha256": "ee3d72abcf4b1d87a8a10e7688a1eb590edaccf6eafe03a6b5ea3bf57017d457"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__072__random_2.npz",
+      "bytes": 89737,
+      "sha256": "55be7ced07bf56ef891662e3415b0d95e2b5666b176a1a1b4d37789e35cf3e53"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__076__bilateral.npz",
+      "bytes": 89848,
+      "sha256": "d7557c62b081d40ec0b34e1121ad56f822d36f198f8aae60ab84da2a05134116"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__076__frontoorbital.npz",
+      "bytes": 89321,
+      "sha256": "bc335f9197c94d904b5c63be0418005a571076f8b7a92e1f389b3de33814c583"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__076__parietotemporal.npz",
+      "bytes": 88307,
+      "sha256": "46a8a1c6401cb7f977af80d269879b0b5f7975da6f04d572ae9a204f61944688"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__076__random_1.npz",
+      "bytes": 88124,
+      "sha256": "d8a0789be620ba22bddd474f26c8497f6daaaa927e386e57020aedd00fb78a0a"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__076__random_2.npz",
+      "bytes": 90448,
+      "sha256": "49e64f9814dbef3118a4f767066179ab73d3484ff31490620ef0b5a13ff92e4e"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__081__bilateral.npz",
+      "bytes": 89329,
+      "sha256": "cec0b9915511ed82ceda66cb1c127c3dbf5d3ccdea64257f83ee24ded28306ae"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__081__frontoorbital.npz",
+      "bytes": 88991,
+      "sha256": "9fc5e9a6336665fd70d02537b380491491d8095370675eb253168fb27e3efe16"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__081__parietotemporal.npz",
+      "bytes": 88797,
+      "sha256": "3de9b1bcc5fc24946da6badcb04b96415751016f4307789e6c3548ecc85fa72d"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__081__random_1.npz",
+      "bytes": 90377,
+      "sha256": "31fad2289e57a48a12b18c2785610c13f0d8cc676587d1686c2dd4ead2fda33c"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__081__random_2.npz",
+      "bytes": 88853,
+      "sha256": "97b83a0b9a2e6ce521548f8c7a16577225378ae21cca2db225b1d0abe4fad9ba"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__094__bilateral.npz",
+      "bytes": 88821,
+      "sha256": "e817404acb9fa8f0aecd7e3025226a466e389ab268ea6284661552a548de20e7"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__094__frontoorbital.npz",
+      "bytes": 90231,
+      "sha256": "93ca81f4adf5270f54c54a94413bde53ed0b5c48568cf82b8f2c605b13ed8145"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__094__parietotemporal.npz",
+      "bytes": 88464,
+      "sha256": "95cc24f2e0b10db9d287e1976db4f987a7582c0bcc675855789fdf8f4e00e3b1"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__094__random_1.npz",
+      "bytes": 91222,
+      "sha256": "1275ed0425f1c7de95c10d9b485d04146ed52c742df0b47286c3c9fc99d2898d"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__094__random_2.npz",
+      "bytes": 88217,
+      "sha256": "8401675dcbc8e17fecb22ecbe605a914f439f0ced1773cd64d01088b90fd039c"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__105__bilateral.npz",
+      "bytes": 91020,
+      "sha256": "01c6e1253ac197860f4d86a9895a6635ddcbbac49a10b4635c29a927d96e2806"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__105__frontoorbital.npz",
+      "bytes": 89123,
+      "sha256": "9241f8c4b3746c82d5fa746689a75fd394c6199be042df95b1a9d46cd2206853"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__105__parietotemporal.npz",
+      "bytes": 89630,
+      "sha256": "aaf100e983bf7fe7ca0416c41071d39ccb0ac3261cb3dfac88656ae095d35d02"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__105__random_1.npz",
+      "bytes": 89675,
+      "sha256": "82df59d855e41f6730a660968bb31ce94cedd6f78c212b7f55b3bef3af5090a6"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__105__random_2.npz",
+      "bytes": 90072,
+      "sha256": "6d619c8c772ba168bd75cb8770a828208bea3059c1816b114d1ff6d72aef80d9"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__107__bilateral.npz",
+      "bytes": 91067,
+      "sha256": "0d3744a93aec223e4933d3c2fe4d52cca62ab539d39613b2ef254ba758e8aa7a"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__107__frontoorbital.npz",
+      "bytes": 89033,
+      "sha256": "a0cb5fad934ee89c1063cfef518d45fe6ad65349c2bec87578ecc7f27a6715c7"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__107__parietotemporal.npz",
+      "bytes": 87848,
+      "sha256": "d5a9500e3f71ebe8efe1ed8cb26be491f72f6c4ef3eb3082720aa8b156df6568"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__107__random_1.npz",
+      "bytes": 89503,
+      "sha256": "7244397f7edacaeefccde6de5be98f197eb16a4eaedae4b0df35cbf847e3ced1"
+    },
+    {
+      "name": "predictions/C_surface_graph__train__107__random_2.npz",
+      "bytes": 89397,
+      "sha256": "40ada5aaf152f064f74b447b882c9412977c7f9950f7aff5fce9b10aa5f4b45f"
+    },
+    {
+      "name": "inference_manifest.jsonl",
+      "bytes": 118205,
+      "sha256": "83c001be98a1e31fe382866080841343606e3e444e03bb1f5d534318ddc19457"
+    },
+    {
+      "name": "inference_complete.json",
+      "bytes": 1764,
+      "sha256": "e8906d1058a75cb0a73518bdf9145eb6b305b9404524ff916741a0493d9d538e"
+    },
+    {
+      "name": "resources.jsonl",
+      "bytes": 222044,
+      "sha256": "e86c983b606a7441c05f2af6f765906a895acb3dfb394a5074e7521fd82d3662"
+    }
+  ],
+  "archive_members": 213,
+  "download_files": [
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz",
+      "bytes": 18915240,
+      "sha256": "135102bb6af6d18e45735ed63041c9fecb471a3a75556d7d2b9ea07d5a2ea2a6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz.sha256",
+      "bytes": 100,
+      "sha256": "eb095027001957c2c522103c1d16d2664d32f088eae55a047cdc870d69846a2c"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz.bytes",
+      "bytes": 9,
+      "sha256": "ab48ea17100dfe5eb057d613e1d5555fdd108b3ba2c5ca1a8c237d67ddc31790"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_blue_noise_ab_v1/bcsp_blue_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz.contents.sha256",
+      "bytes": 26849,
+      "sha256": "15b4d9b175a5362e4afbbda0ed197f4dd3a70f735436492d21db0e626d10df45"
+    }
+  ],
+  "actual_output_bytes": 38160694,
+  "free_disk_bytes": 9854517248,
+  "read_bytes": 889842781,
+  "seconds": 1.3759020389989018,
+  "temporary_entry_count": 0,
+  "limitations": [
+    "Recorded model state and CPU/CUDA RNG fingerprints plus Python/NumPy invariant assertion verified; no independent reconstruction",
+    "No independent proof of CUDA numerical equality or clinical implant contact",
+    "Sampled resource monitoring is not a hard cgroup limit"
+  ],
+  "server_writes": 0,
+  "checkpoint_deserialization": false,
+  "model_imports": 0,
+  "CUDA_calls": 0,
+  "forward_calls": 0,
+  "scoring_executed": false,
+  "downloaded_to_Windows": false
+}

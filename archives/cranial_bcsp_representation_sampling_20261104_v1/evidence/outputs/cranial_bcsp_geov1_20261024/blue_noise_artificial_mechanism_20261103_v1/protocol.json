@@ -1,0 +1,66 @@
+{
+  "status": "FROZEN_BEFORE_CPU_CHECKS",
+  "hashes": {
+    "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_noise_artificial_mechanism_v1.py": "ab911559768dcb8c669ba39145bc4c8f7b77373f7a22bc462aca9200422e9399",
+    "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_noise_pilot_v1.py": "8e9dfb0d7bac176c96bdf1761a51728e2b5f54ae8522b9e773588e075d8f78dc"
+  },
+  "N": 8192,
+  "pool": 32768,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "geometry": [
+    {
+      "name": "flat_control",
+      "t": 1.0,
+      "flat": true
+    },
+    {
+      "name": "U_t0.5",
+      "t": 0.5,
+      "flat": false
+    },
+    {
+      "name": "U_t1.0",
+      "t": 1.0,
+      "flat": false
+    },
+    {
+      "name": "U_t3.0",
+      "t": 3.0,
+      "flat": false
+    }
+  ],
+  "surface": "open-ended U strip, two 80x80 plates joined by 80xt wall; all one connected developable surface; not a closed bone solid",
+  "exact_distance": "Euclidean in unrolled (s,y); analytic intrinsic shortest path on rectangular domain",
+  "R": "2sqrt(total surface area/8192), identical across methods within each geometry; no tuning",
+  "kernel": "(max(0,1-distance/R))^8; original coordinates never move",
+  "methods": [
+    "Euclidean",
+    "no_opposite_shortcut",
+    "intrinsic_unrolled"
+  ],
+  "ablated_edges": "only opposite-plate pairs with intrinsic distance>R; local wall/plate connections retained in no_opposite_shortcut",
+  "edge_classes": [
+    "same patch",
+    "connected cross patch incl near-wall opposite points with intrinsic distance<=R",
+    "opposite plates with intrinsic distance>R"
+  ],
+  "logging": "every deleted index plus three live kernel components and initial components; survivors saved",
+  "evaluation": "independent .5mm or finer quadrature; same-patch, all Euclidean and all exact intrinsic distances at .5/1/2mm",
+  "decision": "descriptive paired mechanism comparison; do not infer clinical or real data/model superiority",
+  "prohibitions": [
+    "no real payload",
+    "no change to production sampler",
+    "no radius/weight search",
+    "no GPU/server/model"
+  ],
+  "budgets": {
+    "seconds": 1200,
+    "monitored_RSS_GiB": 4,
+    "max_pairs": 5000000,
+    "output_MiB": 192
+  }
+}

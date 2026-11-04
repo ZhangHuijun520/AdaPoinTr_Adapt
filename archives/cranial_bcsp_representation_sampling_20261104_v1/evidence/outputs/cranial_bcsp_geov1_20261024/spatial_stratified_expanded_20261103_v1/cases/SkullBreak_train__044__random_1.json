@@ -1,0 +1,221 @@
+{
+  "id": "SkullBreak_train__044__random_1",
+  "dataset": "SkullBreak",
+  "raw_case_id": "train__044__random_1",
+  "source_id": "train:044",
+  "split": "opened_development",
+  "defect_type": "random_1",
+  "fold_roles": {
+    "C": "train",
+    "D": "dev"
+  },
+  "raw": {
+    "complete": {
+      "path": "E:\\dataset\\SkullBreak\\raw\\train\\complete_skull\\044.nrrd",
+      "sha256": "2e444244eb69be0c006fc659a3afa2fd64335a0dcc70c1dbf5fc42fab7f81440"
+    },
+    "defective": {
+      "path": "E:\\dataset\\SkullBreak\\raw\\train\\defective_skull\\random_1\\044.nrrd",
+      "sha256": "59e7b7898575c619e0f671bf6f452c8371f556366f7647066c12e6eb1791740c"
+    },
+    "implant": {
+      "path": "E:\\dataset\\SkullBreak\\raw\\train\\implant\\random_1\\044.nrrd",
+      "sha256": "147b77ebf9478842d99d0a3f8cc66ad02570e2b70fee49051a409542a855f137"
+    }
+  },
+  "point_file": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__044__random_1_8192.npz",
+  "point_sha256": "4946c29cad3113f7cf6e56b022af4358a221db0b7b0c8af610120c673d91e9c9",
+  "target_array_sha256": "3d5f07b43533b96054ff582f928e54186d1111395bc5f7fe7202be48608d4167",
+  "normalization": {
+    "center": [
+      102.80000000000001,
+      98.60000000000001,
+      53.400000000000006
+    ],
+    "scale": 130.9323489440253
+  },
+  "prior_case_file": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\cases\\train__044__random_1.json",
+  "prior_case_sha256": "33367e1cbdda623b9acc0d38ef0539350c5044a92d50363c2185103077c316e9",
+  "expected_J_faces": 47039,
+  "expected_J_area": 7526.240000000004,
+  "inherited_warnings": [],
+  "metrics": [
+    {
+      "seed": 0,
+      "method": "uniform8k",
+      "J": {
+        "cover_1mm": 0.19641148833946293,
+        "cover_2mm": 0.5947830523608069,
+        "p95_mm": 3.4865080762358254
+      },
+      "E_MC": {
+        "cover_1mm": 0.18894195556640628,
+        "cover_2mm": 0.5799560546875002,
+        "p95_mm": 3.708616896386902
+      },
+      "all_mixed_quadrature": {
+        "cover_1mm": 0.18926536282882708,
+        "cover_2mm": 0.5805980170261272,
+        "p95_mm": 3.698036933881458
+      },
+      "J_face_point_count": 353,
+      "support_2mm_center_reference_count": 504,
+      "NN_median_mm": 1.7954907552814237,
+      "NN_p05_mm": 0.5353348059573703,
+      "NN_fraction_lt_0_5mm": 0.043212890625,
+      "FOV_sample_count": 547,
+      "sampling_seconds": 0.34399999998277053,
+      "sample_path": "samples/SkullBreak_train__044__random_1_seed0_uniform8k.npz",
+      "sample_sha256": "7f0817e3d9dcca377b0918259512f3436e15168baa350e2f83277dfa4badf8bb"
+    },
+    {
+      "seed": 0,
+      "method": "Morton_area_stratified8k",
+      "J": {
+        "cover_1mm": 0.21484300261485142,
+        "cover_2mm": 0.6901082080826547,
+        "p95_mm": 2.9512016399513334
+      },
+      "E_MC": {
+        "cover_1mm": 0.20008850097656256,
+        "cover_2mm": 0.6495742797851562,
+        "p95_mm": 3.114510813066346
+      },
+      "all_mixed_quadrature": {
+        "cover_1mm": 0.2007273244650187,
+        "cover_2mm": 0.651329271319987,
+        "p95_mm": 3.1078084381173987
+      },
+      "J_face_point_count": 364,
+      "support_2mm_center_reference_count": 529,
+      "NN_median_mm": 2.223118123029081,
+      "NN_p05_mm": 0.8687427704852945,
+      "NN_fraction_lt_0_5mm": 0.009521484375,
+      "FOV_sample_count": 539,
+      "sampling_seconds": 2.9690000000118744,
+      "sample_path": "samples/SkullBreak_train__044__random_1_seed0_Morton_area_stratified8k.npz",
+      "sample_sha256": "94760fd707faeebe562ff2d3eded64f034e52e14afe8bb0b8e3f287d5522dc54"
+    },
+    {
+      "seed": 1,
+      "method": "uniform8k",
+      "J": {
+        "cover_1mm": 0.2023427368779097,
+        "cover_2mm": 0.6164459278471053,
+        "p95_mm": 3.425587999674105
+      },
+      "E_MC": {
+        "cover_1mm": 0.1895599365234375,
+        "cover_2mm": 0.5810089111328125,
+        "p95_mm": 3.6788833094316136
+      },
+      "all_mixed_quadrature": {
+        "cover_1mm": 0.19011339155125712,
+        "cover_2mm": 0.5825432224360937,
+        "p95_mm": 3.6700144749735824
+      },
+      "J_face_point_count": 364,
+      "support_2mm_center_reference_count": 524,
+      "NN_median_mm": 1.796723703235462,
+      "NN_p05_mm": 0.5259990898504778,
+      "NN_fraction_lt_0_5mm": 0.0428466796875,
+      "FOV_sample_count": 536,
+      "sampling_seconds": 0.3120000000053551,
+      "sample_path": "samples/SkullBreak_train__044__random_1_seed1_uniform8k.npz",
+      "sample_sha256": "571c5bbdd4567836088adfc12a5e893f02c2553ffa4970048727acaea632469f"
+    },
+    {
+      "seed": 1,
+      "method": "Morton_area_stratified8k",
+      "J": {
+        "cover_1mm": 0.21756414889772308,
+        "cover_2mm": 0.6884925274771997,
+        "p95_mm": 3.011132207642686
+      },
+      "E_MC": {
+        "cover_1mm": 0.20188140869140628,
+        "cover_2mm": 0.6550521850585938,
+        "p95_mm": 3.1023235436710253
+      },
+      "all_mixed_quadrature": {
+        "cover_1mm": 0.20256042198868723,
+        "cover_2mm": 0.6565000466484143,
+        "p95_mm": 3.0981170729370717
+      },
+      "J_face_point_count": 363,
+      "support_2mm_center_reference_count": 534,
+      "NN_median_mm": 2.242273986698234,
+      "NN_p05_mm": 0.9129892068148286,
+      "NN_fraction_lt_0_5mm": 0.006103515625,
+      "FOV_sample_count": 542,
+      "sampling_seconds": 3.0780000000086147,
+      "sample_path": "samples/SkullBreak_train__044__random_1_seed1_Morton_area_stratified8k.npz",
+      "sample_sha256": "36d3d48fb712a9ac9e9bc073aebf26d3df8cd88488387c91b94afc1ddd210813"
+    },
+    {
+      "seed": 2,
+      "method": "uniform8k",
+      "J": {
+        "cover_1mm": 0.19258487637917465,
+        "cover_2mm": 0.588490401581666,
+        "p95_mm": 3.5776980092053217
+      },
+      "E_MC": {
+        "cover_1mm": 0.18952178955078128,
+        "cover_2mm": 0.5778808593749999,
+        "p95_mm": 3.6424217849550162
+      },
+      "all_mixed_quadrature": {
+        "cover_1mm": 0.18965441157090296,
+        "cover_2mm": 0.5783402191642727,
+        "p95_mm": 3.6404927564766396
+      },
+      "J_face_point_count": 340,
+      "support_2mm_center_reference_count": 511,
+      "NN_median_mm": 1.777126015356711,
+      "NN_p05_mm": 0.5101888032770461,
+      "NN_fraction_lt_0_5mm": 0.0477294921875,
+      "FOV_sample_count": 543,
+      "sampling_seconds": 0.3120000000053551,
+      "sample_path": "samples/SkullBreak_train__044__random_1_seed2_uniform8k.npz",
+      "sample_sha256": "471509641900012183ec92321077667c0df13b5492eb5a50e237c2fe4cc0c1fe"
+    },
+    {
+      "seed": 2,
+      "method": "Morton_area_stratified8k",
+      "J": {
+        "cover_1mm": 0.21258955334934831,
+        "cover_2mm": 0.6868981058270796,
+        "p95_mm": 2.918271422216895
+      },
+      "E_MC": {
+        "cover_1mm": 0.20328521728515628,
+        "cover_2mm": 0.65570068359375,
+        "p95_mm": 3.1229618813499314
+      },
+      "all_mixed_quadrature": {
+        "cover_1mm": 0.2036880657559492,
+        "cover_2mm": 0.6570514337980279,
+        "p95_mm": 3.1146697639562033
+      },
+      "J_face_point_count": 354,
+      "support_2mm_center_reference_count": 510,
+      "NN_median_mm": 2.226757678646001,
+      "NN_p05_mm": 0.9166491747139952,
+      "NN_fraction_lt_0_5mm": 0.0084228515625,
+      "FOV_sample_count": 541,
+      "sampling_seconds": 3.0,
+      "sample_path": "samples/SkullBreak_train__044__random_1_seed2_Morton_area_stratified8k.npz",
+      "sample_sha256": "e52340a4340c9e007ee5611c41c0c554727d2bc39a7a18e7868f1231d1c4dbeb"
+    }
+  ],
+  "J_area_fraction": 0.04329685299559106,
+  "FOV_area_fraction": 0.06536454258442789,
+  "D_boundary_faces": 1086430,
+  "J_faces": 47039,
+  "all_inputs_saved_before_G_decode": true,
+  "seed0_existing_input_reproduced": true,
+  "target_array_hash_verified": true,
+  "complete_C_partition_QC_inherited_via_unchanged_hash_not_redecoded": true,
+  "seconds": 41.640999999974156
+}

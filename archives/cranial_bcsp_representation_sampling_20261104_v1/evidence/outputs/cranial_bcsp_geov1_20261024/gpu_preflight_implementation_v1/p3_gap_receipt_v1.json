@@ -1,0 +1,38 @@
+{
+  "schema": "bcsp-preflight-local-P3-gap-receipt-v1",
+  "status": "NOT_PASSED_CPU_SETUP_FAILURE",
+  "scope_sha256": "2a69aed239c309e2579abdad0003878c2c30f7281194a77a6a7b78abb5657980",
+  "entry_sha256": "9eab8e90302500c11d4fb16e6aa0307d565b9e767a5319eb8e4725b513b82c79",
+  "test_sha256": "8003dfb4f7262bc3a2c621dbb123cdaf28872dcf5f8829d416ccc53dbe871524",
+  "static_review_sha256": "67b8e23e3e63a0d33cb7c34efd8a024f7cdd1ff405d2ded32a4192df67671329",
+  "cpu_result_sha256": "a55a76ce80b5a8311447f674677ecfd9c8e726f5c8dcdc504eb0266ec2bcace0",
+  "cpu_log_sha256": "a3ca125423e14b725a6d45719b84568788dbeb5156efa6849cae198cab3f0a0c",
+  "attempt_started_sha256": "fdfe6557b315a0e31f866d944ae47a0cd36ffa2ef71adc5af1d7d0f53d7ac0fd",
+  "test_attempts": 1,
+  "tests_planned": 24,
+  "tests_executed": 0,
+  "setup_errors": 1,
+  "cause": "The new test fixture incorrectly required torch.version.cuda is None, conflating CPU execution with a CPU-only PyTorch distribution. The installed torch 2.5.1 did not meet that extra build-marker condition. The setup assertion failed before any contract test body ran.",
+  "responsibility": "Agent-added test admission condition; not evidence of a model, CUDA operator, provider, or research-method failure.",
+  "not_proven": [
+    "All 24 CPU contracts, including BN/RNG/return/counting/backend contracts",
+    "Actual artificial GPU forward/loss/backward success",
+    "Remote deployment and current resource readiness",
+    "Training readiness or representation superiority"
+  ],
+  "preserved": {
+    "four_candidate_sources": "unchanged; static and SHA checks passed before the test attempt",
+    "frozen_mother_and_base_config": "unchanged; static and SHA checks passed before the test attempt",
+    "provider": "not accessed or modified on server",
+    "entry_and_tests_after_failure": "unchanged",
+    "failed_attempt_artifacts": "retained; no deletion or overwrite"
+  },
+  "server_operations": 0,
+  "GPU_operations": 0,
+  "real_model_forwards": 0,
+  "real_payload_reads": 0,
+  "execution_request_created": false,
+  "authorization_runtime_launcher_materialized": false,
+  "failure_policy_observed": "STOP_NO_REPAIR_NO_RETRY",
+  "proposed_next_scope_requires_separate_authorization": "Only correct the CPU test fixture admission condition and perform a new versioned single CPU attempt. Keep the dedicated entry, four candidates, mother, provider and GPU scope unchanged. Do not reuse cpu_attempt_v1. P3 and pending request remain conditional on passing."
+}

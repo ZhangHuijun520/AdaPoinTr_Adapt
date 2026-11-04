@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -u
+set -o pipefail
+set -o noclobber
+umask 077
+cd /home/jovyan/adapointr_work/PoinTr || exit 65
+export CUDA_VISIBLE_DEVICES=GPU-4b19574a-832d-b4fe-e655-a57462954d6a
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
+export OMP_NUM_THREADS=2
+export MKL_NUM_THREADS=2
+export OPENBLAS_NUM_THREADS=2
+export PYTHONDONTWRITEBYTECODE=1
+export MPLBACKEND=Agg
+export MPLCONFIGDIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v2/mplconfig
+export CUDA_CACHE_DISABLE=1
+export TMPDIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v2/tmp
+[ "$(sha256sum -- /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_v2/training_execution_request_v1.json | cut -d ' ' -f 1)" = 94cba65a92ed4592ac7feeba18a81ecf1c84290b0212dfee3f1c9badba9423cf ] || exit 65
+[ "$(sha256sum -- /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_v2/training_authorization_v1.json | cut -d ' ' -f 1)" = 0b4cd6a0e9f4ba4c4e3c17ba6c5d242f92e65c6c0998819ac32631d685799c25 ] || exit 65
+[ "$(sha256sum -- /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_v2/training_runtime_v1.json | cut -d ' ' -f 1)" = 2d4f41be76033fe98ee12843170fa516aff0caf42f694ce90c94fb4b7a26e4ac ] || exit 65
+mkdir -- /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v2 || exit 73
+[ -d /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v2 ] && [ ! -L /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v2 ] || exit 73
+set +e
+/usr/bin/timeout --signal=TERM --kill-after=5s 86400s /opt/conda/envs/adapointr-mamba/bin/python3.10 -I -S -B /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_entry_v3.py --request /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_v2/training_execution_request_v1.json --request-sha256 94cba65a92ed4592ac7feeba18a81ecf1c84290b0212dfee3f1c9badba9423cf --authorization /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_v2/training_authorization_v1.json --authorization-sha256 0b4cd6a0e9f4ba4c4e3c17ba6c5d242f92e65c6c0998819ac32631d685799c25 --runtime /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_train_v2/training_runtime_v1.json --runtime-sha256 2d4f41be76033fe98ee12843170fa516aff0caf42f694ce90c94fb4b7a26e4ac > /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v2/launch.log 2>&1
+training_rc=$?
+printf '%s\n' "$training_rc" > /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v2/exit_code.txt
+save_rc=$?
+[ "$save_rc" -eq 0 ] || exit 74
+exit "$training_rc"

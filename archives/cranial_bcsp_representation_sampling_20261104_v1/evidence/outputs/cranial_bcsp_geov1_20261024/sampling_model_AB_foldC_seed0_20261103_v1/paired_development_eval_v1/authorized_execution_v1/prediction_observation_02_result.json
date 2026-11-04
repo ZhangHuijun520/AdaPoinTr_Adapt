@@ -1,0 +1,108 @@
+{
+  "status": "READONLY_PAIRED_PREDICTION_STATUS",
+  "time_epoch": 1793707979.8772078,
+  "hostname": "shu-common-25721452-notebook-v2iwsa-0",
+  "session_alive": false,
+  "worker_pid": "33452",
+  "worker_alive": false,
+  "exit_code": "0",
+  "prediction_records": 210,
+  "last_prediction": {
+    "run": "C_Morton_area_stratified8k",
+    "case_id": "train__107__random_2",
+    "source_id": "train:107",
+    "fold": "C",
+    "n_input": 8192,
+    "n_output": 8192,
+    "input_sha256": "2bf5e0f59fa2e2039adbfa42598aabe1521012fa27a7c3088af7c431e921b179",
+    "checkpoint_sha256": "2c27034cda17ee55f6724bf14d53ba305ba2410531cf23a4c694dafdec1cbb84",
+    "prediction": {
+      "name": "predictions/C_Morton_area_stratified8k__train__107__random_2.npz",
+      "bytes": 89365,
+      "sha256": "bfb26af1a0f72e57b4706618e54ff3835e3e3b3c56005cb9d7c614d4c3d5ad6a"
+    },
+    "forward_index": 210,
+    "operational_seconds": 0.04438468301668763
+  },
+  "last_resources": {
+    "phase": "all_complete",
+    "forwards": 210,
+    "values": {
+      "RSS_bytes": 1438539776,
+      "output_bytes": 19157704,
+      "device_MiB": 482,
+      "peak_allocated": 205540352,
+      "peak_reserved": 239075328,
+      "elapsed_seconds": 44.00607324624434,
+      "free_disk_bytes": 10953424896
+    },
+    "checks": {
+      "RSS": true,
+      "output": true,
+      "device": true,
+      "allocated": true,
+      "reserved": true,
+      "wall": true,
+      "disk": true
+    },
+    "failed_checks": [],
+    "SMI_PIDs": [
+      "2702233"
+    ],
+    "container_PID": 33452,
+    "PID_query_error": null,
+    "PID_policy": "DIAGNOSTIC_ONLY_NO_OWNERSHIP_GUARANTEE"
+  },
+  "failure": null,
+  "inference_complete": {
+    "status": "SAMPLING_PAIR_210_FORWARD_COMPLETE",
+    "forwards": 210,
+    "models": [
+      {
+        "run": "C_V1",
+        "forwards": 105,
+        "state_before": "c50c0d1ffe07baa5af57b116a4580edf618ad7fbd4308a466ed7895e3e20afe8",
+        "state_after": "c50c0d1ffe07baa5af57b116a4580edf618ad7fbd4308a466ed7895e3e20afe8",
+        "CPU_rng_before": "57ca75b907f0dd2361c0d7d376b486934260caad99fb7b959bddc149cb3a84be",
+        "CPU_rng_after": "57ca75b907f0dd2361c0d7d376b486934260caad99fb7b959bddc149cb3a84be",
+        "CUDA_rng_before": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "CUDA_rng_after": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "Python_numpy_RNG_unchanged": true,
+        "mode": "eval_inference_mode",
+        "BNCal": 0,
+        "optimizer": 0,
+        "backward": 0
+      },
+      {
+        "run": "C_Morton_area_stratified8k",
+        "forwards": 105,
+        "state_before": "7198b37dfef97b90705016ab1d0a600a2d4467bb33cb732f6fd767deb2e4f137",
+        "state_after": "7198b37dfef97b90705016ab1d0a600a2d4467bb33cb732f6fd767deb2e4f137",
+        "CPU_rng_before": "57ca75b907f0dd2361c0d7d376b486934260caad99fb7b959bddc149cb3a84be",
+        "CPU_rng_after": "57ca75b907f0dd2361c0d7d376b486934260caad99fb7b959bddc149cb3a84be",
+        "CUDA_rng_before": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "CUDA_rng_after": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "Python_numpy_RNG_unchanged": true,
+        "mode": "eval_inference_mode",
+        "BNCal": 0,
+        "optimizer": 0,
+        "backward": 0
+      }
+    ],
+    "training_updates": 0,
+    "BNCal": 0,
+    "loss": 0,
+    "backward": 0,
+    "request_sha256": "2f6865ebc1a0557d8c1a3df589d8cca87df5312447eea1cab04cb6524c1c0414"
+  },
+  "completion_archive": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_sampling_ab_v1/bcsp_sampling_pair_foldC_seed0_dev_v1/development_predictions_v1.tar.gz",
+    "bytes": 18902839,
+    "sha256": "152a904ab7d5df856e1c8ea63320225f3c20c318c8c797127f5a89d869acc1dc"
+  },
+  "completion_status": "PREDICTIONS_ARCHIVED_AWAITING_LOCAL_SCORING",
+  "launch_log_tail": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\n2026-11-03 12:12:04,435 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n2026-11-03 12:12:24,881 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\nusing group version 2\nusing group version 2",
+  "formal_freeze_audit": false,
+  "server_writes": 0,
+  "observer_forwards": 0
+}

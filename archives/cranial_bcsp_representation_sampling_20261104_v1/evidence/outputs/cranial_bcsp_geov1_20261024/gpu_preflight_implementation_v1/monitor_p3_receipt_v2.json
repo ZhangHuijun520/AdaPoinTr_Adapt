@@ -1,0 +1,286 @@
+{
+  "schema": "bcsp-monitor-only-local-P3-v2",
+  "status": "PASS_LOCAL_IMPLEMENTATION_ONLY",
+  "date_Asia_Shanghai": "2026-10-24",
+  "scope": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_scope_v2\\artificial_gpu_zero_update_frozen_scope_v2.json",
+    "bytes": 22499,
+    "sha256": "65d23c2a6b067e0e7f9c08615063996a0c4b8ebbc74d35643db77e1b30d2ab17"
+  },
+  "entry": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\bcsp_artificial_gpu_preflight_v2.py",
+    "bytes": 32728,
+    "sha256": "347cc350454143b17bc4d8033b2c685b5665076a020058d05f8d87f416586da4"
+  },
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\test_bcsp_artificial_gpu_preflight_v3.py",
+    "bytes": 27869,
+    "sha256": "b2529dfeb881a8cc64a0f345b31ee1c64246713250c7ed87d719da8d44191fe3"
+  },
+  "static_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\monitor_static_review_v2.json",
+    "bytes": 2106,
+    "sha256": "aa415aa49e4d3a495e548ca09b31b7b3f6aee57ed19f692185f9fa95a7b58ce8"
+  },
+  "authorized_change": "Monitor-only: diagnostics, finite query/reap budget, earlier RSS/output check, phase logging, bounded shutdown join; new scope and paths. No model/provider/memory threshold changes.",
+  "unchanged_proof": {
+    "parent_entry_sha256": "9eab8e90302500c11d4fb16e6aa0307d565b9e767a5319eb8e4725b513b82c79",
+    "parent_consumed_request_sha256": "68938b967e6c84702e980d6d1ee43435d8cb6408d6b5748b83b33eef83d66738",
+    "source_config_hashes_preserved": 19,
+    "top_level_function_class_AST_preserved": 23,
+    "run_AST_equal_after_only_phase_logging_normalization": true,
+    "scope_fields_unchanged": [
+      "resources",
+      "model",
+      "input",
+      "operations",
+      "loss_backend",
+      "numerical",
+      "state_protection",
+      "knn_oracle",
+      "bindings",
+      "environment"
+    ]
+  },
+  "monitor_budget": {
+    "query_timeout_seconds": 10,
+    "reap_timeout_seconds": 2,
+    "poll_wait_seconds": 2,
+    "diagnostic_stream_limit_bytes": 2048,
+    "event_record_limit": 3000,
+    "no_query_retries": true,
+    "timeout_causes_immediate_worker_stop": true,
+    "phase_and_monotonic_events": true,
+    "budget_basis": "Declared finite engineering allowance replacing the unvalidated 3-second communication deadline. 10 seconds is 1/90 of the unchanged 900-second outer wall budget, not a measured P95/P99 or proof of the original cause. Each sample has two serial queries, each at most a 10-second communicate wait and, on first failure, up to 2 seconds cleanup before fail-stop. No query retry. Process creation/GIL/I/O delays are not hard-bounded by communicate; external 900-second timeout remains mandatory.",
+    "monitoring_latency_limitation": "Two successful serial queries may consume up to about 20 seconds plus polling/local overhead; a failed query adds up to 2 seconds cleanup then stops. Same-process monitoring is cooperative, not a hard memory or scheduling guarantee.",
+    "revision_reason": "Prior query timeout terminated dependency import; read-only audit preserved evidence but could not determine driver latency versus parent/import scheduling. Add evidence, not an assumption that increasing the budget fixes CUDA.",
+    "failure_artifact": "monitor_failure.json",
+    "event_artifact": "monitor_events.jsonl",
+    "shutdown_join_seconds": 23,
+    "engineering_allowance_not_empirical_latency_quantile": true,
+    "original_root_cause_remains_unresolved": true
+  },
+  "CPU_validation": {
+    "attempts": 1,
+    "tests": 36,
+    "passed": 36,
+    "failures": 0,
+    "errors": 0,
+    "original_contracts": 24,
+    "new_monitor_contracts": 12,
+    "torch": "2.5.1",
+    "numpy": "1.26.4",
+    "process_deadline_seconds": 120,
+    "threads": 2,
+    "CUDA_VISIBLE_DEVICES": "",
+    "harmless_real_child_tests": [
+      35,
+      36
+    ],
+    "GPU_driver_calls": 0,
+    "query_event_labels_note": "CPU fixtures use production-shaped nvidia-smi argv but inject fake processes or harmless local stdlib Python children. They are not nvidia-smi or CUDA executions.",
+    "real_CPU_timeout_evidence": {
+      "command": [
+        "/usr/bin/nvidia-smi"
+      ],
+      "timeout_seconds": 0.2,
+      "reap_timeout_seconds": 2,
+      "start_monotonic_ns": 116466890000000,
+      "thread": "MainThread",
+      "phase_at_start": "startup",
+      "child_pid": 19040,
+      "returncode": 1,
+      "status": "TIMEOUT",
+      "query_attempts": 1,
+      "query_id": 1,
+      "exception_type": "TimeoutExpired",
+      "returncode_at_deadline": null,
+      "child_kill_sent": true,
+      "cleanup_completed": true,
+      "end_monotonic_ns": 116467109000000,
+      "elapsed_seconds": 0.219,
+      "phase_at_end": "startup",
+      "stdout": {
+        "text": "",
+        "bytes_total": 0,
+        "truncated": false
+      },
+      "stderr": {
+        "text": "",
+        "bytes_total": 0,
+        "truncated": false
+      },
+      "event": "smi_result"
+    },
+    "artifacts": [
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\attempt_started.json",
+        "bytes": 211,
+        "sha256": "3c6e1024ad2ddf16e4548f8148892f582a3473ecb7b16152da884e5c2443584a"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\cpu_contract_log.txt",
+        "bytes": 2842,
+        "sha256": "8ed9aa1a4c75b4fdd937014823c5e194adf1451de35503ab77242f2c0a675f3f"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\cpu_stdout.txt",
+        "bytes": 129,
+        "sha256": "c55df07354d6f6f30adb4bcd946942b731c0865046fbde4f5900a2b809f7e08a"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\auth7\\auth.json",
+        "bytes": 240,
+        "sha256": "ec75fda0c77e0fb57226150adbd241ecbff0b3fa50096e0e083d4defa05df395"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\auth7\\request.json",
+        "bytes": 134,
+        "sha256": "aefaed60d0bf11517a88d3c6e4e01a9e027f4ef4722ee052314fae69038e43d4"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\auth7\\runtime.json",
+        "bytes": 217,
+        "sha256": "0024ceb06f3db27dbd5719dada6dbf2e00c37e6d4641507421fa98bc65d39413"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\auth8\\auth.json",
+        "bytes": 326,
+        "sha256": "73994faba0671437e8d3290fa53941095e095ab2c5c482e8a1c6777ea119212f"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\auth8\\request.json",
+        "bytes": 134,
+        "sha256": "aefaed60d0bf11517a88d3c6e4e01a9e027f4ef4722ee052314fae69038e43d4"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\auth8\\runtime.json",
+        "bytes": 217,
+        "sha256": "0024ceb06f3db27dbd5719dada6dbf2e00c37e6d4641507421fa98bc65d39413"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\exact.txt",
+        "bytes": 8,
+        "sha256": "689f6a627384c7dcb2dcc1487e540223e77bdf9dcd0d8be8a326eda65b0ce9a4"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\exclusive.json",
+        "bytes": 17,
+        "sha256": "12b34da73b0c67a0319e6eddbd3582af66e3b558b4d44e4a6860e0cec20d726f"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\launcher_only\\launch.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\launcher_only\\worker.pid",
+        "bytes": 7,
+        "sha256": "d7433c119a87349b7ea7c2b1cd0109759ac5ccc2ebdec1383997404bd6f88a2d"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\monitor26\\monitor_events.jsonl",
+        "bytes": 1053,
+        "sha256": "c395aea0f135afcc86e8517cf05985aeae349eb58ced9210caadb0f23a556628"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\monitor27\\monitor_events.jsonl",
+        "bytes": 3000,
+        "sha256": "e8c83d150fb12f1f360e1aab495c8b0d38c23524641ae63bec4901767623947d"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\monitor31\\monitor_events.jsonl",
+        "bytes": 988,
+        "sha256": "b77b69179cd3dab6065d8aed7dba7241a62e2f25d40da92dd66fefa39b011800"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\monitor32\\monitor_events.jsonl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\monitor32\\monitor_failure.json",
+        "bytes": 341,
+        "sha256": "16ee4ae86689c71660833c6a21d9fdf96bb9bb00673e577a628e547bc038aaef"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\monitor33\\monitor_events.jsonl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\monitor35\\monitor_events.jsonl",
+        "bytes": 1066,
+        "sha256": "8a6e02c7f0225bf0237ec4fa91fee7f6b2612e7c0a315452cc36522d668571a8"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\monitor36\\monitor_events.jsonl",
+        "bytes": 936,
+        "sha256": "6128c1316ed2840dfcf745e2cc65848a81e41b3e1894d70c9a5e5563509c05c6"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\monitor_events.jsonl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\namespace\\models\\__init__.py",
+        "bytes": 38,
+        "sha256": "dfc35ec874fb0251e98ac21d3622c67377cb4d952f191cedbf550ef814b8a0e9"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\fixtures\\namespace\\tools\\__init__.py",
+        "bytes": 38,
+        "sha256": "dfc35ec874fb0251e98ac21d3622c67377cb4d952f191cedbf550ef814b8a0e9"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\cpu_attempt_v3\\result.json",
+        "bytes": 636,
+        "sha256": "44b4fe3b59796b1619da6cd5cead4b538ff91b876899c2af5cc3d4095c3c0014"
+      }
+    ],
+    "fixtures_retained": true
+  },
+  "coverage": {
+    "new": [
+      "Monitor contract constants and unchanged scientific scope",
+      "Production query argument shape and monotonic phase/PID/exit telemetry",
+      "Timeout partial output, per-stream raw-byte truncation and single query attempt",
+      "Nonzero exit, spawn failure, cleanup timeout and decode failure classification",
+      "Phase changes across a query",
+      "Failure artifact written before exactly one mocked self-SIGTERM",
+      "RSS over-budget rejection before query wait",
+      "Real harmless CPU child with phase thread",
+      "Real harmless CPU child timeout and successful reap"
+    ],
+    "old": "All 24 earlier CPU contracts retained and passed in this single new batch."
+  },
+  "P3_gaps": {
+    "blocking_local_implementation_gaps": [],
+    "remote_gates_not_executed": [
+      "Current container/provider/environment/resource and all-new-target revalidation before separately authorized deployment",
+      "Actual Linux nvidia-smi under real dependency-import/GIL/driver concurrency; 10 seconds not proven sufficient",
+      "Actual Linux SIGTERM and external timeout process-group behavior; CPU stop syscall was mocked",
+      "Actual PointNet2 binary, NumPy/torch bridge and real model CUDA forward/loss/backward",
+      "CUDA RNG restoration, model invariance and actual peak memory under both arms"
+    ],
+    "unchanged_limitations": [
+      "No OS hard isolation or exclusive cgroup claim",
+      "Cooperative monitor may be delayed by process creation, GIL or I/O; outer 900-second timeout remains mandatory",
+      "Two serial successful 10-second queries extend the sampling gap; thresholds unchanged, detection is not instantaneous",
+      "BN running-stat tracking disabled only for preflight, not a complete training-semantics proof"
+    ]
+  },
+  "parent_failure_evidence": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_implementation_v1\\authorized_execution_v1\\failed_freeze_audit_and_timeout_report_v1.json",
+    "bytes": 25736,
+    "sha256": "f1c2fe8bb483242295da3595c0e618a7b12ea89765fccd0209246f6f6e84905d"
+  },
+  "server_operations": 0,
+  "GPU_operations": 0,
+  "production_changes": 0,
+  "provider_changes": 0,
+  "transport_created": false,
+  "real_authorization_runtime_launcher_created": false,
+  "next": "Create only immutable v2 pending request with final implementation/test/P3 hashes and all-new isolation/control/result/session paths. Do not reuse the consumed v1 request."
+}

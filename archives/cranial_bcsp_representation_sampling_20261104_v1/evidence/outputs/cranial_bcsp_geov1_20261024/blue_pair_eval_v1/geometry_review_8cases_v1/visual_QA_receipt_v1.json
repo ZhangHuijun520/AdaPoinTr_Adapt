@@ -1,0 +1,122 @@
+{
+  "status": "FIXED8_CASE_VISUAL_REVIEW_COMPLETED",
+  "checks": [
+    {
+      "case_id": "train__081__bilateral",
+      "both_predictions_8192": true,
+      "same_camera_range_color": true,
+      "camera_sync_script_present": true,
+      "offline_JS_only": true,
+      "static_figure_viewed": true,
+      "official_E_J_reverse_P95_reproduced": true
+    },
+    {
+      "case_id": "train__081__frontoorbital",
+      "both_predictions_8192": true,
+      "same_camera_range_color": true,
+      "camera_sync_script_present": true,
+      "offline_JS_only": true,
+      "static_figure_viewed": true,
+      "official_E_J_reverse_P95_reproduced": true
+    },
+    {
+      "case_id": "train__042__bilateral",
+      "both_predictions_8192": true,
+      "same_camera_range_color": true,
+      "camera_sync_script_present": true,
+      "offline_JS_only": true,
+      "static_figure_viewed": true,
+      "official_E_J_reverse_P95_reproduced": true
+    },
+    {
+      "case_id": "train__042__frontoorbital",
+      "both_predictions_8192": true,
+      "same_camera_range_color": true,
+      "camera_sync_script_present": true,
+      "offline_JS_only": true,
+      "static_figure_viewed": true,
+      "official_E_J_reverse_P95_reproduced": true
+    },
+    {
+      "case_id": "train__051__bilateral",
+      "both_predictions_8192": true,
+      "same_camera_range_color": true,
+      "camera_sync_script_present": true,
+      "offline_JS_only": true,
+      "static_figure_viewed": true,
+      "official_E_J_reverse_P95_reproduced": true
+    },
+    {
+      "case_id": "train__051__frontoorbital",
+      "both_predictions_8192": true,
+      "same_camera_range_color": true,
+      "camera_sync_script_present": true,
+      "offline_JS_only": true,
+      "static_figure_viewed": true,
+      "official_E_J_reverse_P95_reproduced": true
+    },
+    {
+      "case_id": "train__013__bilateral",
+      "both_predictions_8192": true,
+      "same_camera_range_color": true,
+      "camera_sync_script_present": true,
+      "offline_JS_only": true,
+      "static_figure_viewed": true,
+      "official_E_J_reverse_P95_reproduced": true
+    },
+    {
+      "case_id": "train__013__frontoorbital",
+      "both_predictions_8192": true,
+      "same_camera_range_color": true,
+      "camera_sync_script_present": true,
+      "offline_JS_only": true,
+      "static_figure_viewed": true,
+      "official_E_J_reverse_P95_reproduced": true
+    }
+  ],
+  "all8_static_cases_viewed": true,
+  "HTML_browser_runtime_tested": false,
+  "selected_official_metrics_reproduced": true,
+  "case_notes": {
+    "train__081__bilateral": "两臂主要位于目标颅盖范围，未见整块远离GT。图距离的E/J P95及反向P95均更差，J覆盖61.02%→41.17%，>20mm点均为0；主要是壳面分布与目标／切壁覆盖不足，不能归结为少数极远离群点。",
+    "train__081__frontoorbital": "图距离预测形成远离额眶GT的完整点簇，8192点全部距完整A2参考>20mm，中位数88.36mm、质心差100.40mm；GT所在固定薄层没有该臂预测点。属于整块位置／形态错误。欧氏覆盖GT较好，但仍有反向尾部误差，不能称高精度完整恢复。",
+    "train__042__bilateral": "两臂预测点大多靠近GT，但目标参考到预测的E/J P95仍高达12–19mm。薄层图可见部分GT轮廓未被覆盖；两臂切壁差值在不同位置方向相反。属于不完整形状／空间覆盖与局部边缘分布问题，不是整块远离GT，也不是只有几颗离群点。",
+    "train__042__frontoorbital": "图距离预测有明显大范围形状／位置偏差，53.17%点距参考>20mm、中位数21.57mm，J覆盖88.90%→38.78%。它仍有局部重叠，不能描述为全部点失配，也不能缩小为切壁微调问题；欧氏整体更接近目标。",
+    "train__051__bilateral": "两臂整体位于相近目标颅盖位置。图距离反向P95由7.93降至6.05mm，但J P95由6.44增至8.58mm、J覆盖34.87%→27.63%。预测点更贴近已有目标表面，同时目标切壁覆盖更差，是有向覆盖与反向尾部的权衡。",
+    "train__051__frontoorbital": "欧氏预测整块远离额眶GT，全部点>20mm、中位数89.81mm、质心差99.31mm。图距离相对大幅改善，但仍有49.66%点>20mm、反向P95 38.65mm、J覆盖仅13.01%；相对改善并不等于重建合格。",
+    "train__013__bilateral": "虽然来源013总体改善，本双侧病例图距离反而E/J P95更差，4.47→7.73mm、7.19→11.59mm。反向P95略好且>20mm比例很低，剖面和J差值提示形状分布／覆盖偏差；不能将来源级改善推广到该来源所有缺损。",
+    "train__013__frontoorbital": "欧氏存在明显大范围位置／形态偏差，94.40%点>20mm，中位数36.63mm。图距离大幅改善到0.55%点>20mm，E/J P95为4.46／4.22mm；仍有反向P95 14.42mm及局部形状／边界余差，不认证内外板或临床接口准确。"
+  },
+  "frontoorbital_contribution": [
+    {
+      "source_id": "train:081",
+      "source_E_P95_delta_mm": 17.99525757223068,
+      "frontoorbital_E_P95_delta_mm": 71.56355022448237,
+      "frontoorbital_contribution_to_source_mean_mm": 14.312710044896473
+    },
+    {
+      "source_id": "train:042",
+      "source_E_P95_delta_mm": 5.561405811757685,
+      "frontoorbital_E_P95_delta_mm": 16.957288764308554,
+      "frontoorbital_contribution_to_source_mean_mm": 3.3914577528617107
+    },
+    {
+      "source_id": "train:051",
+      "source_E_P95_delta_mm": -14.2143527515104,
+      "frontoorbital_E_P95_delta_mm": -57.57444796353003,
+      "frontoorbital_contribution_to_source_mean_mm": -11.514889592706005
+    },
+    {
+      "source_id": "train:013",
+      "source_E_P95_delta_mm": -6.893092385451986,
+      "frontoorbital_E_P95_delta_mm": -24.771810838126495,
+      "frontoorbital_contribution_to_source_mean_mm": -4.954362167625299
+    }
+  ],
+  "source_hashes_readback_stable": true,
+  "registration": false,
+  "new_model_calls": 0,
+  "new_predictions": 0,
+  "all105_scoring_rerun": false,
+  "report_sha256": "6a9eeff5eb8350720d606bf70a498b5ba4dd2a909e57bdac01d18a3b86105f1c"
+}

@@ -1,0 +1,184 @@
+{
+  "schema": "bounded-procfs-namespace-result-v2",
+  "date_Asia_Shanghai": "2026-10-26",
+  "status": "READONLY_CHECK_COMPLETE_TRUSTED_SMI_PID_MAPPING_NOT_FOUND_IN_OBSERVED_MOUNTS",
+  "observation": {
+    "hostname": "shu-common-25721452-notebook-01dt08-0",
+    "uid": 1000,
+    "self_pid": 298,
+    "status": {
+      "Tgid": "298",
+      "Pid": "298",
+      "PPid": "297",
+      "Uid": "1000\t1000\t1000\t1000",
+      "NStgid": "298",
+      "NSpid": "298"
+    },
+    "namespaces": {
+      "pid": "pid:[4026535781]",
+      "pid_for_children": "pid:[4026535781]",
+      "mnt": "mnt:[4026535779]",
+      "user": "user:[4026531837]"
+    },
+    "procfs_mounts": [
+      {
+        "id": "3507",
+        "parent": "3506",
+        "device": "0:267",
+        "root": "/",
+        "mountpoint": "/proc",
+        "options": "rw,nosuid,nodev,noexec,relatime",
+        "filesystem": "proc",
+        "source": "proc",
+        "super_options": "rw"
+      },
+      {
+        "id": "3562",
+        "parent": "3533",
+        "device": "0:5",
+        "root": "/driver/nvidia/gpus/0000:31:00.0",
+        "mountpoint": "/proc/driver/nvidia/gpus/0000:31:00.0",
+        "options": "ro,nosuid,nodev,noexec,relatime",
+        "filesystem": "proc",
+        "source": "proc",
+        "super_options": "rw"
+      },
+      {
+        "id": "3287",
+        "parent": "3507",
+        "device": "0:267",
+        "root": "/asound",
+        "mountpoint": "/proc/asound",
+        "options": "ro,nosuid,nodev,noexec,relatime",
+        "filesystem": "proc",
+        "source": "proc",
+        "super_options": "rw"
+      },
+      {
+        "id": "3288",
+        "parent": "3507",
+        "device": "0:267",
+        "root": "/bus",
+        "mountpoint": "/proc/bus",
+        "options": "ro,nosuid,nodev,noexec,relatime",
+        "filesystem": "proc",
+        "source": "proc",
+        "super_options": "rw"
+      },
+      {
+        "id": "3289",
+        "parent": "3507",
+        "device": "0:267",
+        "root": "/fs",
+        "mountpoint": "/proc/fs",
+        "options": "ro,nosuid,nodev,noexec,relatime",
+        "filesystem": "proc",
+        "source": "proc",
+        "super_options": "rw"
+      },
+      {
+        "id": "3290",
+        "parent": "3507",
+        "device": "0:267",
+        "root": "/irq",
+        "mountpoint": "/proc/irq",
+        "options": "ro,nosuid,nodev,noexec,relatime",
+        "filesystem": "proc",
+        "source": "proc",
+        "super_options": "rw"
+      },
+      {
+        "id": "3291",
+        "parent": "3507",
+        "device": "0:267",
+        "root": "/sys",
+        "mountpoint": "/proc/sys",
+        "options": "ro,nosuid,nodev,noexec,relatime",
+        "filesystem": "proc",
+        "source": "proc",
+        "super_options": "rw"
+      },
+      {
+        "id": "3292",
+        "parent": "3507",
+        "device": "0:267",
+        "root": "/sysrq-trigger",
+        "mountpoint": "/proc/sysrq-trigger",
+        "options": "ro,nosuid,nodev,noexec,relatime",
+        "filesystem": "proc",
+        "source": "proc",
+        "super_options": "rw"
+      }
+    ],
+    "elapsed_seconds": 0.0005033239722251892,
+    "server_writes": 0,
+    "CUDA_contexts_created": 0,
+    "candidate_paths_opened": 0
+  },
+  "total_procfs_mounts": 8,
+  "whole_procfs_mounts": [
+    {
+      "id": "3507",
+      "parent": "3506",
+      "device": "0:267",
+      "root": "/",
+      "mountpoint": "/proc",
+      "options": "rw,nosuid,nodev,noexec,relatime",
+      "filesystem": "proc",
+      "source": "proc",
+      "super_options": "rw"
+    }
+  ],
+  "additional_whole_procfs_mounts": [],
+  "trusted_mapping_candidates": [],
+  "classification": {
+    "ordinary_container_proc": "/proc; self NStgid/NSpid each have one value; does not establish host-domain mapping",
+    "nvidia_subtree": "/proc/driver/nvidia/gpus/0000:31:00.0 is a restricted procfs subtree rooted at /driver/nvidia/gpus/0000:31:00.0, not a process-tree view",
+    "other_proc_submounts": "restricted subtrees, not separate whole host process views"
+  },
+  "limits": "Only visible procfs mount metadata and own namespace inspected. Does not exclude undocumented platform interfaces or mechanisms; no platform provenance was established.",
+  "precise_platform_question": "For pod shu-common-25721452-notebook-01dt08-0, is there an existing read-only host procfs view or official interface that maps the calling container worker TGID to the PID domain returned by nvidia-smi compute-apps? If yes, provide the exact container path/interface, its platform-managed provenance, PID namespace semantics, and process-lifetime identity guarantees. No privileged mount or new agent is requested.",
+  "permissions": {
+    "attempts_this_version": 1,
+    "server_writes": 0,
+    "guard_changes": 0,
+    "CUDA_contexts_created": 0,
+    "forward_calls": 0,
+    "training_runs": 0,
+    "candidate_paths_opened": 0,
+    "automatic_retries": 0
+  },
+  "next_status": "STOP_PENDING_PLATFORM_SOURCE_INFORMATION_NO_TOOLCHAIN_EXPANSION",
+  "evidence": [
+    {
+      "file": "attempt_started_v1.json",
+      "bytes": 127,
+      "sha256": "d46f31dfe3aac79e530a0ed65f63d406e28a94c3e265722c62991323db5562fa"
+    },
+    {
+      "file": "frozen_scope_v1.json",
+      "bytes": 787,
+      "sha256": "d3ef5d108a494ec5999335053cc312490fb3fb55fe4881c6950b1838eb692cd3"
+    },
+    {
+      "file": "invoke_once_v1.py",
+      "bytes": 2281,
+      "sha256": "7b2eb6293c96872d384e7309d905497660195974eafd55229b1d6e28144ab86c"
+    },
+    {
+      "file": "observation_v1.json",
+      "bytes": 2891,
+      "sha256": "f7733ea6b3135c89ae87621cba6a6f8d9e7649467822f038137b2532f9b9fdf5"
+    },
+    {
+      "file": "probe_v1.py",
+      "bytes": 1166,
+      "sha256": "90763b3de71d5f8e60ddb5f3a586e29ade9ef28f5615be1711ff49e848e33c87"
+    },
+    {
+      "file": "process_capture_v1.json",
+      "bytes": 3196,
+      "sha256": "f3b5c873cd850b9b4800ee66e207594ab6946c9e7171455a492cf3d0a647eeb4"
+    }
+  ]
+}

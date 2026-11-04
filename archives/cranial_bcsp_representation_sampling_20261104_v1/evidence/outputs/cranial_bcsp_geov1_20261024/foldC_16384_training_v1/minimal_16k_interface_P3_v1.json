@@ -1,0 +1,48 @@
+{
+  "status": "PASS_NO_PRODUCTION_SOURCE_CHANGE",
+  "controller_changes": [
+    {
+      "old": "q['n_input'] == 8192",
+      "new": "q['n_input'] == 16384"
+    },
+    {
+      "old": "qualified['n_input'] == 8192",
+      "new": "qualified['n_input'] == 16384"
+    },
+    {
+      "old": "q['QC']['manifests']['8192']",
+      "new": "q['QC']['manifests']['16384']"
+    },
+    {
+      "old": "r['n_input'] == r['n_target'] == 8192",
+      "new": "r['n_input'] == 16384 and r['n_target'] == 8192"
+    },
+    {
+      "old": "payload_bytes == 49440750",
+      "new": "payload_bytes == 74194537"
+    }
+  ],
+  "existing_metadata_reader_accepts_16k": true,
+  "positive_actual_predicate_checks": 4,
+  "negative_predicate_checks": 3,
+  "model_entry_runtime_contract_provider_unchanged": true,
+  "new_CPU_model_tests": 0,
+  "new_GPU_tests": 0,
+  "template": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldC_16384_training_v1\\controller_template_foldC_16384_v1.py",
+    "bytes": 17608,
+    "sha256": "1411ca4722928b95fae33ed6541e504d0f8cd63e1b7e7b92336abdcf6cc5c749"
+  },
+  "paired_data": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldC_16384_training_v1\\paired315_data_verification_v1.json",
+    "bytes": 134116,
+    "sha256": "259c4594d6da18eb4b66901ceb9e34f8a32f16968fe36c64605417e282aa1ebd"
+  },
+  "existing_8k_initialization": {
+    "parameter_sha256": "c864e2f77fc7c5999cf1df615ed720f4fc10ae0a6d19888e28e5058879f70a99",
+    "persistent_state_sha256": "9649b96c1f1287fa7d5670815b3e48798ab1a3883bb200f5a9db027980852f37",
+    "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+    "seed": 0
+  },
+  "limitation": "16k full training memory remains unmeasured; keep existing ceilings and stop on failure"
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "bcsp-training-static-v1",
+  "stage": "BCSP_INPUT_DENSITY_V1",
+  "counts": {
+    "cases": 315,
+    "sources": 63,
+    "batch": 8,
+    "epochs": 100,
+    "batches_per_epoch": 39,
+    "updates": 3900,
+    "exposures": 31200
+  },
+  "model": {
+    "num_query": 256,
+    "num_points": 8192,
+    "center_num": [
+      512,
+      256
+    ],
+    "encoder_type": "graph",
+    "decoder_type": "fc",
+    "query_selection": "learned_only",
+    "denoise_weight": 0
+  },
+  "training": {
+    "seed": 0,
+    "precision": "FP32",
+    "optimizer": "AdamW",
+    "lr": 0.0001,
+    "weight_decay": 0.0005,
+    "clip": 10,
+    "step_per_update": 1,
+    "drop_last": true,
+    "checkpoint": "scratch_final_only",
+    "BNCal": false,
+    "evaluation": false,
+    "resume": false
+  },
+  "resources": {
+    "wall_seconds": 3600,
+    "RSS_bytes": 8589934592,
+    "device_MiB": 22528,
+    "torch_peak_bytes": 21474836480,
+    "output_bytes": 33554432,
+    "minimum_free_disk_bytes": 2147483648
+  }
+}

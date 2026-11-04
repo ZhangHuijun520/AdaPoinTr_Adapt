@@ -1,0 +1,115 @@
+{
+  "report_version": 1,
+  "date": "2026-10-24",
+  "status": "FAILED_ARTIFACT_INTEGRITY_PASS_NOT_PREFLIGHT_PASS",
+  "authorization_scope": "失败产物只读冻结审计及可视化导入链必要性的有界核查；不修改、不重跑、不执行 fc-list。",
+  "request_sha256": "18432038d32c4857452c96f0795dd4b072a57fa9d38916cf87e10e8215700bc7",
+  "request_disposition": "CONSUMED_FAILED_DO_NOT_REUSE",
+  "hostname": "shu-common-25721452-notebook-o9mz8z-0",
+  "evidence_captures": [
+    {
+      "file": "failed_artifact_audit_capture_v2.json",
+      "bytes": 22375,
+      "sha256": "172a90b6883f17e7f9a9e5afefd9391cfb7ca63c9152beef710b8aaa9e4a25c3",
+      "encoding": "JSON containing stdout_base64; decoded stdout is the complete 42-file manifest, hashes, stable metadata checks and failure text"
+    },
+    {
+      "file": "visual_import_source_capture_v1.json",
+      "bytes": 9143,
+      "sha256": "c2098a86b2f4cc42162cd14d1d8cfbf8b877eaabf826dc275ac3aa5b294af7e9",
+      "encoding": "JSON containing stdout_base64; decoded stdout contains five source identities, exact import/font-discovery excerpts and monitor summary"
+    }
+  ],
+  "freeze_audit": {
+    "limits": {"files": 64, "hash_bytes": 33554432, "seconds": 45},
+    "observed_files": 42,
+    "observed_hashed_bytes": 18369984,
+    "probe_seconds": 0.0792201142758131,
+    "groups": {"upload_manifest": 1, "installed_files": 26, "provider_environment_files": 9, "attempt_marker": 1, "output_files": 5},
+    "installed_hashes_match_transport": true,
+    "provider_environment_hashes_match_frozen_bindings": true,
+    "files_regular_non_symlink_and_stable": true,
+    "stability_fields": ["size", "mtime_ns", "inode"],
+    "atime_excluded_from_content_identity": true,
+    "exit_code": 1,
+    "original_worker_pid": 1025,
+    "original_pid_absent": true,
+    "tmux_session_absent": true,
+    "summary_json_absent": true,
+    "monitor_failure_json_absent": true,
+    "startup_failure": "RuntimeError('only fixed read-only nvidia-smi permitted')",
+    "output_root": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/artificial_gpu_zero_update_v2",
+    "outputs": [
+      {"file": "worker.pid", "bytes": 5, "sha256": "6407f57599ea19aaefd71b13c2771ad25998686a6a2d1b142cfc3060ef008129"},
+      {"file": "monitor_events.jsonl", "bytes": 61114, "sha256": "033980d93d20788cea5d8586ab61794a7f4033d1183c09f939e16c8e0a3343bc"},
+      {"file": "launch.log", "bytes": 4705, "sha256": "5fee8a58d9b4bb81ee4c6ecc2978e40a3e453095f22fc5df2a55e6aa701ec732"},
+      {"file": "startup_failure.json", "bytes": 109, "sha256": "df4f888874cd2e97a2f9c38a4cc2378213ba6e891972ed4f027657bb111e7f02"},
+      {"file": "exit_code.txt", "bytes": 2, "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"}
+    ]
+  },
+  "existing_monitor_log_analysis": {
+    "paired_queries": 56,
+    "all_success": true,
+    "attempts_per_query": 1,
+    "min_seconds": 0.023166078,
+    "max_seconds": 0.099952744,
+    "queries_over_3_seconds": 0,
+    "interpretation": "本次失败不是监测查询超时。所有查询也低于旧 3 秒预算，因此不能据此将成功归因于扩大到 10 秒，更不能证明此前超时根因已消失。未为本次审计执行新的查询。"
+  },
+  "bounded_source_review": {
+    "method": "仅文本与 stdlib AST；不导入模型或第三方模块。",
+    "installed_matplotlib_files": 5,
+    "installed_source_bytes": 479942,
+    "installed_source_byte_limit": 2097152,
+    "frozen_project_sources": [
+      {"file": "utils/misc.py", "bytes": 12544, "sha256": "65338858a2f2f87cc6040a7525a57beff26f0acc665caaedfb18bae5ab3d1a87"},
+      {"file": "models/AdaPoinTr.py", "bytes": 103347, "sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4"}
+    ],
+    "failure_chain": [
+      "models/AdaPoinTr.py:15 imports utils.misc",
+      "utils/misc.py:2 imports matplotlib.pyplot at module scope",
+      "pyplot.py:57 -> image.py:25 -> backend_bases.py:49 -> text.py:16",
+      "font_manager.py:1643 calls _load_fontmanager at import time",
+      "FontManager -> findSystemFonts -> _get_fontconfig_fonts",
+      "font_manager.py:254 attempts subprocess.check_output(['fc-list', '--help'])",
+      "preflight audit hook rejects subprocess.Popen before process creation, raising RuntimeError"
+    ],
+    "why_exception_propagates": "该字体发现函数只捕获 OSError 和 subprocess.CalledProcessError，不捕获守卫的 RuntimeError。",
+    "plotting_references": [
+      {"function": "get_ptcloud_img", "definition_line": 207, "plt_or_Axes3D_lines": [208, 212, 214, 230]},
+      {"function": "visualize_KITTI", "definition_line": 235, "plt_lines": [237, 252, 261]}
+    ],
+    "necessity_conclusion": "既定人工 forward/loss/backward 路径不调用这两个绘图函数；绘图/字体发现不是该计算验证的必要环节。但 utils.misc 不能整体移除。",
+    "required_compute_path": "AdaPoinTr.py:1738 在 query_selection 分支前无条件调用 misc.fps；当前 learned_only、256 query 配置仍计算 128 个 FPS 点。另有 :1352 FPS 和 :1789/:1790 denoise FPS/jitter 分支。不得为了避开导入而删除或改写这些计算。",
+    "non_solutions": [
+      "仅设 Agg 或独立 MPLCONFIGDIR 不能保证跳过 font_manager 的导入期字体发现；当前失败已经发生在这种无显示配置下。",
+      "只放行 fc-list --help 不足：源码随后还会查询 --format 并扫描字体路径。",
+      "不扩大外部命令/字体目录允许清单，不伪造字体缓存，不移除整个 utils.misc，不绕过守卫。"
+    ]
+  },
+  "scientific_status": {
+    "failure_stage": "import:isolated_model before model construction and forward",
+    "completed_model_forwards": 0,
+    "completed_loss_backward_pairs": 0,
+    "training_updates": 0,
+    "gpu_preflight_pass": false,
+    "not_established": ["8k/16k 模型数值正确性", "真实 loss/backward 可行性", "峰值显存准入", "状态与 RNG 恢复", "模型训练准入"],
+    "interpretation": "这是非科研绘图依赖的导入副作用与执行守卫之间的合同冲突；不是模型效果、CUDA forward 或真实数据验证的失败证据。"
+  },
+  "next_step_recommendation_not_authorized_or_implemented": {
+    "scope": "一次最小 implementation-only：为隔离副本创建显式版本化 utils.misc 派生文件，将 pyplot/Axes3D 导入移入实际绘图函数内部；原母版及全部计算函数/调用保持不变。",
+    "verification": "针对性人工 CPU 导入副作用回归及计算函数 AST/绑定不变核对，完成 P3 后创建绑定最终哈希的新待授权 request。CPU 通过不代表 CUDA 通过。",
+    "unchanged": ["模型科研源码", "PointNet2 provider/wheel", "cdist loss 后端", "监测器与预算", "2 模型及 8k/16k 范围", "数据/路径/外部命令守卫"],
+    "deployment_or_execution": "必须单独授权；本次不创建 execution request，不部署、不重跑；已消耗 v2 不复用。"
+  },
+  "this_audit_actions": {
+    "remote_writes": 0,
+    "fc_list_executions": 0,
+    "new_gpu_queries": 0,
+    "model_imports_or_forwards": 0,
+    "tests_or_retries": 0,
+    "production_source_edits": 0,
+    "payload_or_checkpoint_reads": 0,
+    "local_new_files": "只读探针源码、原始捕获及本报告；不属于部署或科研实现变更。"
+  }
+}

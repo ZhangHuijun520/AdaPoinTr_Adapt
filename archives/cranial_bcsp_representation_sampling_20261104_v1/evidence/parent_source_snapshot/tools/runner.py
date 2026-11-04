@@ -1,0 +1,796 @@
+import torch
+import torch.nn as nn
+import os
+import json
+import math
+import hashlib
+from tools import builder
+from tools.cranial_scqr_l4_audit import ScqrL4Audit
+from utils import misc, dist_utils
+import time
+from tqdm import tqdm
+from utils.logger import *
+from utils.AverageMeter import AverageMeter
+from utils.metrics import Metrics
+from extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL2
+
+PC_LIKE_DATASETS = {
+    'PCN',
+    'Completion3D',
+    'Projected_ShapeNet',
+    'ToyPCN',
+    'SkullFix',
+    'SkullBreak',
+}
+NO_EMD_DATASETS = {'SkullFix', 'SkullBreak'}
+
+def _is_main_process(args):
+    return (not getattr(args, 'distributed', False)) or getattr(args, 'local_rank', 0) == 0
+
+def _compute_mamba_adapter_scale(config, epoch):
+    adapter_config = getattr(config.model, 'mamba_adapter', None)
+    if adapter_config is None or not bool(getattr(adapter_config, 'enabled', False)):
+        return None
+
+    warmup_epochs = int(getattr(adapter_config, 'alpha_warmup_epochs', 0))
+    if warmup_epochs <= 0:
+        return None
+
+    start = float(getattr(adapter_config, 'alpha_warmup_start', 0.0))
+    end = float(getattr(adapter_config, 'alpha_warmup_end', 1.0))
+    progress = min(max(float(epoch) / float(warmup_epochs), 0.0), 1.0)
+    return start + (end - start) * progress
+
+def _set_mamba_adapter_scale(base_model, scale):
+    if scale is None:
+        return
+    model = base_model.module if hasattr(base_model, 'module') else base_model
+    if hasattr(model, 'set_mamba_adapter_scale'):
+        model.set_mamba_adapter_scale(scale)
+
+
+def _local_rim_config(config):
+    guard = getattr(config.model, 'local_rim_guard', None)
+    if guard is None or not bool(getattr(guard, 'enabled', False)):
+        return None
+    return guard
+
+
+def _requires_gt_rim_supervision(config):
+    model = config.model
+    for name in (
+        'local_rim_guard',
+        'dense_contact_objective',
+        'rim_query_allocation',
+    ):
+        candidate = getattr(model, name, None)
+        if candidate is not None and bool(getattr(candidate, 'enabled', False)):
+            return True
+    return False
+
+
+def _scqr_config(config):
+    model = getattr(config, 'model', None)
+    return getattr(model, 'cranial_scqr', None) if model is not None else None
+
+
+def _scqr_enabled(config):
+    scqr = _scqr_config(config)
+    return scqr is not None and bool(getattr(scqr, 'enabled', False))
+
+
+def _enforce_scqr_execution_guard(config):
+    scqr = _scqr_config(config)
+    if scqr is None:
+        return
+    execution = getattr(config, 'cranial_scqr_execution', None)
+    authorized = execution is not None and bool(
+        getattr(execution, 'training_authorized', False)
+    )
+    if not authorized:
+        variant = str(getattr(scqr, 'variant', 'unknown'))
+        raise RuntimeError(
+            'Cranial-SCQR training is locked for this L1 config template: '
+            f'variant={variant}. A separately authorized runtime config is required.'
+        )
+    if bool(getattr(scqr, 'contact_supervision_enabled', False)) and (
+        getattr(scqr, 'auxiliary_loss_weight', None) is None
+    ):
+        raise RuntimeError(
+            'Cranial-SCQR auxiliary loss weight has not been calibrated'
+        )
+
+
+def _enforce_d3_execution_guard(config):
+    execution = getattr(config, 'd3_execution', None)
+    if execution is None:
+        return
+    if not bool(getattr(execution, 'training_authorized', False)):
+        candidate = str(getattr(execution, 'candidate', 'unknown'))
+        fold = str(getattr(execution, 'fold', 'unknown'))
+        status = str(getattr(execution, 'status', 'unspecified'))
+        raise RuntimeError(
+            'D3 training is locked for this config template: '
+            f'candidate={candidate} fold={fold} status={status}. '
+            'Only a receipt-bound authorized runtime config may enter run_net.'
+        )
+
+
+def _sha256_file(path):
+    digest = hashlib.sha256()
+    with open(path, 'rb') as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b''):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _load_d22_teacher_cache(config, train_dataset):
+    guard = _local_rim_config(config)
+    if guard is None or not bool(getattr(guard, 'trust_enabled', False)):
+        return None
+
+    cache_path = os.path.abspath(
+        os.path.expanduser(str(getattr(guard, 'teacher_cache', '')))
+    )
+    if not os.path.isfile(cache_path):
+        raise FileNotFoundError(
+            f'D2.2 R0 teacher cache not found: {cache_path}'
+        )
+    sidecar_path = cache_path + '.sha256'
+    if not os.path.isfile(sidecar_path):
+        raise FileNotFoundError(
+            f'D2.2 R0 teacher cache sidecar not found: {sidecar_path}'
+        )
+    with open(sidecar_path, 'r', encoding='ascii') as handle:
+        expected_cache_hash = handle.read().split()[0]
+    if _sha256_file(cache_path) != expected_cache_hash:
+        raise ValueError('D2.2 R0 teacher cache SHA256 mismatch')
+    with open(cache_path, 'r', encoding='utf-8') as handle:
+        cache = json.load(handle)
+    if cache.get('protocol_version') != 'mamba-v12-d22-teacher-cache-v1':
+        raise ValueError('Unsupported D2.2 teacher cache protocol')
+    if cache.get('candidate') != 'R0':
+        raise ValueError('D2.2 teacher cache must come from R0')
+    development = getattr(config, 'development_protocol', None)
+    if development is None:
+        raise ValueError('D2.2 config has no development protocol identity')
+    if (
+        str(cache.get('fold')) != str(getattr(development, 'fold', ''))
+        or int(cache.get('seed', -1)) != int(getattr(development, 'seed', -2))
+    ):
+        raise ValueError('D2.2 teacher cache fold/seed mismatch')
+    for path_key, hash_key in (
+        ('checkpoint_path', 'checkpoint_sha256'),
+        ('config_path', 'config_sha256'),
+    ):
+        source_path = os.path.abspath(
+            os.path.expanduser(str(cache.get(path_key, '')))
+        )
+        if not os.path.isfile(source_path):
+            raise FileNotFoundError(
+                f'D2.2 teacher source is missing: {source_path}'
+            )
+        if _sha256_file(source_path) != str(cache.get(hash_key, '')):
+            raise ValueError(f'D2.2 teacher source hash mismatch: {source_path}')
+
+    entries = cache.get('entries')
+    if not isinstance(entries, dict):
+        raise ValueError('D2.2 teacher cache entries are missing')
+    canonical_entries = (
+        json.dumps(
+            entries,
+            indent=2,
+            sort_keys=True,
+            allow_nan=False,
+        ) + '\n'
+    ).encode('utf-8')
+    if hashlib.sha256(canonical_entries).hexdigest() != cache.get('cache_sha256'):
+        raise ValueError('D2.2 teacher cache entries SHA256 mismatch')
+    selected_ids = {str(record['case_id']) for record in train_dataset.records}
+    if set(entries) != selected_ids:
+        missing = sorted(selected_ids.difference(entries))
+        extra = sorted(set(entries).difference(selected_ids))
+        raise ValueError(
+            'D2.2 teacher cache case set mismatch: '
+            f'missing={missing[:5]} extra={extra[:5]}'
+        )
+    for case_id, entry in entries.items():
+        manifest_scale = train_dataset.get_case_normalization(case_id)['scale']
+        cached_scale = float(entry['normalization_scale'])
+        if not math.isclose(
+            manifest_scale, cached_scale, rel_tol=0.0, abs_tol=1.0e-12
+        ):
+            raise ValueError(f'{case_id}: teacher cache scale mismatch')
+    return entries
+
+
+def _d22_loss_kwargs(
+        config,
+        train_dataset,
+        model_ids,
+        partial,
+        teacher_cache):
+    guard = _local_rim_config(config)
+    requires_legacy_rim = _requires_gt_rim_supervision(config)
+    requires_scqr = _scqr_enabled(config)
+    if not requires_legacy_rim and not requires_scqr:
+        return {}
+    if not hasattr(train_dataset, 'get_normalization_scales'):
+        raise TypeError('Rim supervision requires normalization metadata')
+
+    case_ids = [str(case_id) for case_id in model_ids]
+    kwargs = {
+        'partial': partial,
+        'normalization_scale': train_dataset.get_normalization_scales(
+            case_ids,
+            device=partial.device,
+            dtype=partial.dtype,
+        ),
+    }
+    if requires_legacy_rim:
+        kwargs['gt_rim_mask'] = train_dataset.get_gt_rim_masks(
+            case_ids,
+            device=partial.device,
+        )
+    if guard is not None and bool(getattr(guard, 'trust_enabled', False)):
+        if teacher_cache is None:
+            raise RuntimeError('D2.2 R2 teacher cache was not loaded')
+        kwargs['teacher_coarse_centroid'] = torch.tensor(
+            [teacher_cache[case_id]['coarse_centroid_normalized']
+             for case_id in case_ids],
+            device=partial.device,
+            dtype=partial.dtype,
+        )
+        kwargs['teacher_coarse_radius'] = torch.tensor(
+            [teacher_cache[case_id]['coarse_radial_rms_normalized']
+             for case_id in case_ids],
+            device=partial.device,
+            dtype=partial.dtype,
+        )
+    return kwargs
+
+def run_net(args, config, train_writer=None, val_writer=None):
+    logger = get_logger(args.log_name)
+    _enforce_d3_execution_guard(config)
+    _enforce_scqr_execution_guard(config)
+    # build dataset
+    train_sampler, train_dataloader = builder.dataset_builder(
+        args, config.dataset.train
+    )
+    execution = getattr(config, 'cranial_scqr_execution', None)
+    suppress_development = (
+        execution is not None
+        and str(getattr(execution, 'stage', '')) == 'L4_roundA_training'
+        and not bool(getattr(execution, 'development_payload_access_authorized', False))
+    )
+    test_dataloader = None if suppress_development else builder.dataset_builder(
+        args, config.dataset.val
+    )[1]
+    l4_audit = ScqrL4Audit(args, config, train_dataloader)
+    teacher_cache = _load_d22_teacher_cache(
+        config,
+        train_dataloader.dataset,
+    )
+    # build model
+    base_model = builder.model_builder(config.model)
+    if args.use_gpu:
+        base_model.to(args.local_rank)
+
+    # from IPython import embed; embed()
+    
+    # parameter setting
+    start_epoch = 0
+    best_metrics = None
+    metrics = None
+
+    # resume ckpts
+    if args.resume:
+        start_epoch, best_metrics = builder.resume_model(base_model, args, logger = logger)
+        best_metrics = Metrics(config.consider_metric, best_metrics)
+    elif args.start_ckpts is not None:
+        builder.load_model(base_model, args.start_ckpts, logger = logger)
+
+    # print model info
+    print_log('Trainable_parameters:', logger = logger)
+    print_log('=' * 25, logger = logger)
+    for name, param in base_model.named_parameters():
+        if param.requires_grad:
+            print_log(name, logger=logger)
+    print_log('=' * 25, logger = logger)
+    
+    print_log('Untrainable_parameters:', logger = logger)
+    print_log('=' * 25, logger = logger)
+    for name, param in base_model.named_parameters():
+        if not param.requires_grad:
+            print_log(name, logger=logger)
+    print_log('=' * 25, logger = logger)
+
+    # DDP
+    if args.distributed:
+        # Sync BN
+        if args.sync_bn:
+            base_model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(base_model)
+            print_log('Using Synchronized BatchNorm ...', logger = logger)
+        base_model = nn.parallel.DistributedDataParallel(base_model, device_ids=[args.local_rank % torch.cuda.device_count()], find_unused_parameters=True)
+        print_log('Using Distributed Data parallel ...' , logger = logger)
+    else:
+        print_log('Using Data parallel ...' , logger = logger)
+        base_model = nn.DataParallel(base_model).cuda()
+    if l4_audit.enabled:
+        torch.cuda.reset_peak_memory_stats()
+    # optimizer & scheduler
+    optimizer = builder.build_optimizer(base_model, config)
+    
+    # Criterion
+    ChamferDisL1 = ChamferDistanceL1()
+    ChamferDisL2 = ChamferDistanceL2()
+
+
+    if args.resume:
+        builder.resume_optimizer(optimizer, args, logger = logger)
+    scheduler = builder.build_scheduler(base_model, optimizer, config, last_epoch=start_epoch-1)
+
+    # trainval
+    # training
+    base_model.zero_grad()
+    for epoch in range(start_epoch, config.max_epoch + 1):
+        l4_audit.begin_epoch(epoch)
+        if args.distributed:
+            train_sampler.set_epoch(epoch)
+        base_model.train()
+        mamba_adapter_scale = _compute_mamba_adapter_scale(config, epoch)
+        _set_mamba_adapter_scale(base_model, mamba_adapter_scale)
+        if mamba_adapter_scale is not None and _is_main_process(args):
+            print_log(f'[MambaAdapter] alpha_scale = {mamba_adapter_scale:.4f}', logger=logger)
+            if train_writer is not None:
+                train_writer.add_scalar('MambaAdapter/AlphaScale', mamba_adapter_scale, epoch)
+
+        epoch_start_time = time.time()
+        batch_start_time = time.time()
+        batch_time = AverageMeter()
+        data_time = AverageMeter()
+        losses = AverageMeter(['SparseLoss', 'DenseLoss'])
+
+        num_iter = 0
+
+        base_model.train()  # set model to training mode
+        n_batches = len(train_dataloader)
+        train_iter = tqdm(
+            train_dataloader,
+            total=n_batches,
+            desc=f'Train Epoch {epoch}/{config.max_epoch}',
+            dynamic_ncols=True,
+            disable=not _is_main_process(args)
+        )
+        for idx, (taxonomy_ids, model_ids, data) in enumerate(train_iter):
+            data_time.update(time.time() - batch_start_time)
+            npoints = config.dataset.train._base_.N_POINTS
+            dataset_name = config.dataset.train._base_.NAME
+            if dataset_name in PC_LIKE_DATASETS:
+                partial = data[0].cuda()
+                gt = data[1].cuda()
+                if config.dataset.train._base_.CARS:
+                    if idx == 0:
+                        print_log('padding while KITTI training', logger=logger)
+                    partial = misc.random_dropping(partial, epoch) # specially for KITTI finetune
+
+            elif dataset_name == 'ShapeNet':
+                gt = data.cuda()
+                partial, _ = misc.seprate_point_cloud(gt, npoints, [int(npoints * 1/4) , int(npoints * 3/4)], fixed_points = None)
+                partial = partial.cuda()
+            else:
+                raise NotImplementedError(f'Train phase do not support {dataset_name}')
+
+            num_iter += 1
+           
+            if _scqr_enabled(config):
+                ret = base_model(partial, epoch=epoch)
+            else:
+                ret = base_model(partial)
+            
+            loss_kwargs = _d22_loss_kwargs(
+                config,
+                train_dataloader.dataset,
+                model_ids,
+                partial,
+                teacher_cache,
+            )
+            sparse_loss, dense_loss = base_model.module.get_loss(
+                ret,
+                gt,
+                epoch,
+                **loss_kwargs,
+            )
+         
+            _loss = sparse_loss + dense_loss 
+            _loss.backward()
+
+            # forward
+            if num_iter == config.step_per_update:
+                torch.nn.utils.clip_grad_norm_(base_model.parameters(), getattr(config, 'grad_norm_clip', 10), norm_type=2)
+                num_iter = 0
+                l4_audit.authorize_next_step()
+                optimizer.step()
+                l4_audit.record_completed_step()
+                base_model.zero_grad()
+
+            if args.distributed:
+                sparse_loss = dist_utils.reduce_tensor(sparse_loss, args)
+                dense_loss = dist_utils.reduce_tensor(dense_loss, args)
+                losses.update([sparse_loss.item() * 1000, dense_loss.item() * 1000])
+            else:
+                losses.update([sparse_loss.item() * 1000, dense_loss.item() * 1000])
+
+
+            if args.distributed:
+                torch.cuda.synchronize()
+
+            n_itr = epoch * n_batches + idx
+            if train_writer is not None:
+                train_writer.add_scalar('Loss/Batch/Sparse', sparse_loss.item() * 1000, n_itr)
+                train_writer.add_scalar('Loss/Batch/Dense', dense_loss.item() * 1000, n_itr)
+
+            batch_time.update(time.time() - batch_start_time)
+            batch_start_time = time.time()
+
+            if idx % 100 == 0:
+                print_log('[Epoch %d/%d][Batch %d/%d] BatchTime = %.3f (s) DataTime = %.3f (s) Losses = %s lr = %.6f' %
+                            (epoch, config.max_epoch, idx + 1, n_batches, batch_time.val(), data_time.val(),
+                            ['%.4f' % l for l in losses.val()], optimizer.param_groups[0]['lr']), logger = logger)
+            if _is_main_process(args):
+                train_iter.set_postfix({
+                    'sparse': '%.4f' % losses.val(0),
+                    'dense': '%.4f' % losses.val(1),
+                    'lr': '%.6f' % optimizer.param_groups[0]['lr']
+                })
+
+            if config.scheduler.type == 'GradualWarmup':
+                if n_itr < config.scheduler.kwargs_2.total_epoch:
+                    scheduler.step()
+
+        if isinstance(scheduler, list):
+            for item in scheduler:
+                item.step()
+        else:
+            scheduler.step()
+        epoch_end_time = time.time()
+        l4_audit.end_epoch()
+
+        if train_writer is not None:
+            train_writer.add_scalar('Loss/Epoch/Sparse', losses.avg(0), epoch)
+            train_writer.add_scalar('Loss/Epoch/Dense', losses.avg(1), epoch)
+        print_log('[Training] EPOCH: %d EpochTime = %.3f (s) Losses = %s' %
+            (epoch,  epoch_end_time - epoch_start_time, ['%.4f' % l for l in losses.avg()]), logger = logger)
+
+        if test_dataloader is not None and epoch % args.val_freq == 0:
+            # Validate the current model
+            metrics = validate(base_model, test_dataloader, epoch, ChamferDisL1, ChamferDisL2, val_writer, args, config, logger=logger)
+
+            # Save ckeckpoints
+            save_best_checkpoint = bool(
+                getattr(config, 'save_best_checkpoint', True)
+            )
+            if metrics.better_than(best_metrics):
+                best_metrics = metrics
+                if save_best_checkpoint:
+                    builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, 'ckpt-best', args, logger = logger)
+        save_freq = max(int(getattr(config, 'save_freq', 1)), 1)
+        save_final_only = l4_audit.enabled
+        should_save_last = (
+            epoch == config.max_epoch
+            if save_final_only
+            else epoch % save_freq == 0 or epoch == config.max_epoch
+        )
+        if should_save_last:
+            builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, 'ckpt-last', args, logger = logger)
+        save_final_epoch_checkpoints = bool(
+            getattr(config, 'save_final_epoch_checkpoints', True)
+        )
+        if save_final_epoch_checkpoints and (config.max_epoch - epoch) < 2:
+            builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, f'ckpt-epoch-{epoch:03d}', args, logger = logger)     
+    l4_audit.finish(os.path.join(args.experiment_path, 'ckpt-last.pth'))
+    if train_writer is not None and val_writer is not None:
+        train_writer.close()
+        val_writer.close()
+
+def validate(base_model, test_dataloader, epoch, ChamferDisL1, ChamferDisL2, val_writer, args, config, logger = None):
+    print_log(f"[VALIDATION] Start validating epoch {epoch}", logger = logger)
+    base_model.eval()  # set model to eval mode
+    _set_mamba_adapter_scale(base_model, _compute_mamba_adapter_scale(config, epoch))
+
+    test_losses = AverageMeter(['SparseLossL1', 'SparseLossL2', 'DenseLossL1', 'DenseLossL2'])
+    test_metrics = AverageMeter(Metrics.names())
+    category_metrics = dict()
+    n_samples = len(test_dataloader) # bs is 1
+
+    interval = max(n_samples // 10, 1)
+
+    with torch.no_grad():
+        val_iter = tqdm(
+            test_dataloader,
+            total=n_samples,
+            desc=f'Val Epoch {epoch}',
+            dynamic_ncols=True,
+            disable=not _is_main_process(args)
+        )
+        for idx, (taxonomy_ids, model_ids, data) in enumerate(val_iter):
+            taxonomy_id = taxonomy_ids[0] if isinstance(taxonomy_ids[0], str) else taxonomy_ids[0].item()
+            model_id = model_ids[0]
+
+            npoints = config.dataset.val._base_.N_POINTS
+            dataset_name = config.dataset.val._base_.NAME
+            if dataset_name in PC_LIKE_DATASETS:
+                partial = data[0].cuda()
+                gt = data[1].cuda()
+            elif dataset_name == 'ShapeNet':
+                gt = data.cuda()
+                partial, _ = misc.seprate_point_cloud(gt, npoints, [int(npoints * 1/4) , int(npoints * 3/4)], fixed_points = None)
+                partial = partial.cuda()
+            else:
+                raise NotImplementedError(f'Train phase do not support {dataset_name}')
+
+            ret = base_model(partial)
+            coarse_points = ret[0]
+            dense_points = ret[-1]
+
+            sparse_loss_l1 =  ChamferDisL1(coarse_points, gt)
+            sparse_loss_l2 =  ChamferDisL2(coarse_points, gt)
+            dense_loss_l1 =  ChamferDisL1(dense_points, gt)
+            dense_loss_l2 =  ChamferDisL2(dense_points, gt)
+
+            if args.distributed:
+                sparse_loss_l1 = dist_utils.reduce_tensor(sparse_loss_l1, args)
+                sparse_loss_l2 = dist_utils.reduce_tensor(sparse_loss_l2, args)
+                dense_loss_l1 = dist_utils.reduce_tensor(dense_loss_l1, args)
+                dense_loss_l2 = dist_utils.reduce_tensor(dense_loss_l2, args)
+
+            test_losses.update([sparse_loss_l1.item() * 1000, sparse_loss_l2.item() * 1000, dense_loss_l1.item() * 1000, dense_loss_l2.item() * 1000])
+
+
+            # dense_points_all = dist_utils.gather_tensor(dense_points, args)
+            # gt_all = dist_utils.gather_tensor(gt, args)
+
+            # _metrics = Metrics.get(dense_points_all, gt_all)
+            _metrics = Metrics.get(dense_points, gt)
+            if args.distributed:
+                _metrics = [dist_utils.reduce_tensor(_metric, args).item() for _metric in _metrics]
+            else:
+                _metrics = [_metric.item() for _metric in _metrics]
+
+            for _taxonomy_id in taxonomy_ids:
+                if _taxonomy_id not in category_metrics:
+                    category_metrics[_taxonomy_id] = AverageMeter(Metrics.names())
+                category_metrics[_taxonomy_id].update(_metrics)
+
+
+            # if val_writer is not None and idx % 200 == 0:
+            #     input_pc = partial.squeeze().detach().cpu().numpy()
+            #     input_pc = misc.get_ptcloud_img(input_pc)
+            #     val_writer.add_image('Model%02d/Input'% idx , input_pc, epoch, dataformats='HWC')
+
+            #     sparse = coarse_points.squeeze().cpu().numpy()
+            #     sparse_img = misc.get_ptcloud_img(sparse)
+            #     val_writer.add_image('Model%02d/Sparse' % idx, sparse_img, epoch, dataformats='HWC')
+
+            #     dense = dense_points.squeeze().cpu().numpy()
+            #     dense_img = misc.get_ptcloud_img(dense)
+            #     val_writer.add_image('Model%02d/Dense' % idx, dense_img, epoch, dataformats='HWC')
+                
+            #     gt_ptcloud = gt.squeeze().cpu().numpy()
+            #     gt_ptcloud_img = misc.get_ptcloud_img(gt_ptcloud)
+            #     val_writer.add_image('Model%02d/DenseGT' % idx, gt_ptcloud_img, epoch, dataformats='HWC')
+        
+            if (idx+1) % interval == 0:
+                print_log('Test[%d/%d] Taxonomy = %s Sample = %s Losses = %s Metrics = %s' %
+                            (idx + 1, n_samples, taxonomy_id, model_id, ['%.4f' % l for l in test_losses.val()], 
+                            ['%.4f' % m for m in _metrics]), logger=logger)
+            if _is_main_process(args):
+                val_iter.set_postfix({
+                    'F': '%.4f' % _metrics[0],
+                    'CDL1': '%.4f' % _metrics[1],
+                    'CDL2': '%.4f' % _metrics[2]
+                })
+        for _,v in category_metrics.items():
+            test_metrics.update(v.avg())
+        print_log('[Validation] EPOCH: %d  Metrics = %s' % (epoch, ['%.4f' % m for m in test_metrics.avg()]), logger=logger)
+
+        if args.distributed:
+            torch.cuda.synchronize()
+     
+    # Print testing results
+    shapenet_dict = json.load(open('./data/shapenet_synset_dict.json', 'r'))
+    print_log('============================ TEST RESULTS ============================',logger=logger)
+    msg = ''
+    msg += 'Taxonomy\t'
+    msg += '#Sample\t'
+    for metric in test_metrics.items:
+        msg += metric + '\t'
+    msg += '#ModelName\t'
+    print_log(msg, logger=logger)
+
+    for taxonomy_id in category_metrics:
+        msg = ''
+        msg += (taxonomy_id + '\t')
+        msg += (str(category_metrics[taxonomy_id].count(0)) + '\t')
+        for value in category_metrics[taxonomy_id].avg():
+            msg += '%.3f \t' % value
+        msg += shapenet_dict.get(taxonomy_id, taxonomy_id) + '\t'
+        print_log(msg, logger=logger)
+
+    msg = ''
+    msg += 'Overall\t\t'
+    for value in test_metrics.avg():
+        msg += '%.3f \t' % value
+    print_log(msg, logger=logger)
+
+    # Add testing results to TensorBoard
+    if val_writer is not None:
+        val_writer.add_scalar('Loss/Epoch/Sparse', test_losses.avg(0), epoch)
+        val_writer.add_scalar('Loss/Epoch/Dense', test_losses.avg(2), epoch)
+        for i, metric in enumerate(test_metrics.items):
+            val_writer.add_scalar('Metric/%s' % metric, test_metrics.avg(i), epoch)
+
+    return Metrics(config.consider_metric, test_metrics.avg())
+
+
+crop_ratio = {
+    'easy': 1/4,
+    'median' :1/2,
+    'hard':3/4
+}
+
+def test_net(args, config):
+    logger = get_logger(args.log_name)
+    print_log('Tester start ... ', logger = logger)
+    _, test_dataloader = builder.dataset_builder(args, config.dataset.test)
+ 
+    base_model = builder.model_builder(config.model)
+    # load checkpoints
+    builder.load_model(base_model, args.ckpts, logger = logger)
+    if args.use_gpu:
+        base_model.to(args.local_rank)
+
+    #  DDP    
+    if args.distributed:
+        raise NotImplementedError()
+
+    # Criterion
+    ChamferDisL1 = ChamferDistanceL1()
+    ChamferDisL2 = ChamferDistanceL2()
+
+    test(base_model, test_dataloader, ChamferDisL1, ChamferDisL2, args, config, logger=logger)
+
+def test(base_model, test_dataloader, ChamferDisL1, ChamferDisL2, args, config, logger = None):
+
+    base_model.eval()  # set model to eval mode
+
+    test_losses = AverageMeter(['SparseLossL1', 'SparseLossL2', 'DenseLossL1', 'DenseLossL2'])
+    test_metrics = AverageMeter(Metrics.names())
+    category_metrics = dict()
+    n_samples = len(test_dataloader) # bs is 1
+
+    with torch.no_grad():
+        test_iter = tqdm(
+            test_dataloader,
+            total=n_samples,
+            desc='Test',
+            dynamic_ncols=True
+        )
+        for idx, (taxonomy_ids, model_ids, data) in enumerate(test_iter):
+            taxonomy_id = taxonomy_ids[0] if isinstance(taxonomy_ids[0], str) else taxonomy_ids[0].item()
+            model_id = model_ids[0]
+
+            npoints = config.dataset.test._base_.N_POINTS
+            dataset_name = config.dataset.test._base_.NAME
+            if dataset_name in PC_LIKE_DATASETS:
+                partial = data[0].cuda()
+                gt = data[1].cuda()
+
+                ret = base_model(partial)
+                coarse_points = ret[0]
+                dense_points = ret[-1]
+
+                sparse_loss_l1 =  ChamferDisL1(coarse_points, gt)
+                sparse_loss_l2 =  ChamferDisL2(coarse_points, gt)
+                dense_loss_l1 =  ChamferDisL1(dense_points, gt)
+                dense_loss_l2 =  ChamferDisL2(dense_points, gt)
+
+                test_losses.update([sparse_loss_l1.item() * 1000, sparse_loss_l2.item() * 1000, dense_loss_l1.item() * 1000, dense_loss_l2.item() * 1000])
+
+                _metrics = Metrics.get(
+                    dense_points,
+                    gt,
+                    require_emd=dataset_name not in NO_EMD_DATASETS,
+                )
+                # test_metrics.update(_metrics)
+
+                if taxonomy_id not in category_metrics:
+                    category_metrics[taxonomy_id] = AverageMeter(Metrics.names())
+                category_metrics[taxonomy_id].update(_metrics)
+
+            elif dataset_name == 'ShapeNet':
+                gt = data.cuda()
+                choice = [torch.Tensor([1,1,1]),torch.Tensor([1,1,-1]),torch.Tensor([1,-1,1]),torch.Tensor([-1,1,1]),
+                            torch.Tensor([-1,-1,1]),torch.Tensor([-1,1,-1]), torch.Tensor([1,-1,-1]),torch.Tensor([-1,-1,-1])]
+                num_crop = int(npoints * crop_ratio[args.mode])
+                for item in choice:           
+                    partial, _ = misc.seprate_point_cloud(gt, npoints, num_crop, fixed_points = item)
+                    # NOTE: subsample the input
+                    partial = misc.fps(partial, 2048)
+                    ret = base_model(partial)
+                    coarse_points = ret[0]
+                    dense_points = ret[-1]
+
+                    sparse_loss_l1 =  ChamferDisL1(coarse_points, gt)
+                    sparse_loss_l2 =  ChamferDisL2(coarse_points, gt)
+                    dense_loss_l1 =  ChamferDisL1(dense_points, gt)
+                    dense_loss_l2 =  ChamferDisL2(dense_points, gt)
+
+                    test_losses.update([sparse_loss_l1.item() * 1000, sparse_loss_l2.item() * 1000, dense_loss_l1.item() * 1000, dense_loss_l2.item() * 1000])
+
+                    _metrics = Metrics.get(dense_points ,gt)
+
+
+
+                    if taxonomy_id not in category_metrics:
+                        category_metrics[taxonomy_id] = AverageMeter(Metrics.names())
+                    category_metrics[taxonomy_id].update(_metrics)
+            elif dataset_name == 'KITTI':
+                partial = data.cuda()
+                ret = base_model(partial)
+                dense_points = ret[-1]
+                target_path = os.path.join(args.experiment_path, 'vis_result')
+                if not os.path.exists(target_path):
+                    os.mkdir(target_path)
+                misc.visualize_KITTI(
+                    os.path.join(target_path, f'{model_id}_{idx:03d}'),
+                    [partial[0].cpu(), dense_points[0].cpu()]
+                )
+                continue
+            else:
+                raise NotImplementedError(f'Train phase do not support {dataset_name}')
+
+            if (idx+1) % 200 == 0:
+                print_log('Test[%d/%d] Taxonomy = %s Sample = %s Losses = %s Metrics = %s' %
+                            (idx + 1, n_samples, taxonomy_id, model_id, ['%.4f' % l for l in test_losses.val()], 
+                            ['%.4f' % m for m in _metrics]), logger=logger)
+            test_iter.set_postfix({
+                'F': '%.4f' % _metrics[0],
+                'CDL1': '%.4f' % _metrics[1],
+                'CDL2': '%.4f' % _metrics[2]
+            })
+        if dataset_name == 'KITTI':
+            return
+        for _,v in category_metrics.items():
+            test_metrics.update(v.avg())
+        print_log('[TEST] Metrics = %s' % (['%.4f' % m for m in test_metrics.avg()]), logger=logger)
+
+     
+
+    # Print testing results
+    shapenet_dict = json.load(open('./data/shapenet_synset_dict.json', 'r'))
+    print_log('============================ TEST RESULTS ============================',logger=logger)
+    msg = ''
+    msg += 'Taxonomy\t'
+    msg += '#Sample\t'
+    for metric in test_metrics.items:
+        msg += metric + '\t'
+    msg += '#ModelName\t'
+    print_log(msg, logger=logger)
+
+
+    for taxonomy_id in category_metrics:
+        msg = ''
+        msg += (taxonomy_id + '\t')
+        msg += (str(category_metrics[taxonomy_id].count(0)) + '\t')
+        for value in category_metrics[taxonomy_id].avg():
+            msg += '%.3f \t' % value
+        msg += shapenet_dict.get(taxonomy_id, taxonomy_id) + '\t'
+        print_log(msg, logger=logger)
+
+    msg = ''
+    msg += 'Overall \t\t'
+    for value in test_metrics.avg():
+        msg += '%.3f \t' % value
+    print_log(msg, logger=logger)
+    return 

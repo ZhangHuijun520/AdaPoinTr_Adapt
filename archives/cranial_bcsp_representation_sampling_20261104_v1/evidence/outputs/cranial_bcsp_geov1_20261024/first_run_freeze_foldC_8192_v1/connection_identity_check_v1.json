@@ -1,0 +1,47 @@
+{
+  "schema": "hpc5000-bounded-connection-check-v1",
+  "date_Asia_Shanghai": "2026-10-25",
+  "status": "CONNECTION_AND_LOGIN_CONFIRMED_FROZEN_TARGET_IDENTITY_CHANGED",
+  "checks": [
+    {
+      "check": "WSL_user",
+      "returncode": 0,
+      "stdout_base64": "emhqCg==",
+      "stderr_base64": "dwBzAGwAOgAgAMBoS20wUiAAbABvAGMAYQBsAGgAbwBzAHQAIADjTgZ0TZFufwz/Rk8qZ1yVz1AwUiAAVwBTAEwAAjBOAEEAVAAgACFqD18LToR2IABXAFMATAAgAA1OL2UBYyAAbABvAGMAYQBsAGgAbwBzAHQAIADjTgZ0AjANAAoA",
+      "stdout_utf8": "zhj\n"
+    },
+    {
+      "check": "hpc5000_status",
+      "returncode": 0,
+      "stdout_base64": "YWdlbnQ6IHJ1bm5pbmcgKGlkbGUgVFRMIHJlbWFpbmluZzogNzE4IG1pbikKdGFyZ2V0OiBzaHUtYWkvc2h1LWNvbW1vbi0yNTcyMTQ1Mi1ub3RlYm9vay0zeDlycTUtMCBbc2h1LWNvbW1vbi0yNTcyMTQ1Mi1ub3RlYm9vay0zeDlycTVdCm9yaWdpbjogaHR0cHM6Ly9ocGM1MDAwLnNodS5lZHUuY24K",
+      "stderr_base64": "dwBzAGwAOgAgAMBoS20wUiAAbABvAGMAYQBsAGgAbwBzAHQAIADjTgZ0TZFufwz/Rk8qZ1yVz1AwUiAAVwBTAEwAAjBOAEEAVAAgACFqD18LToR2IABXAFMATAAgAA1OL2UBYyAAbABvAGMAYQBsAGgAbwBzAHQAIADjTgZ0AjANAAoA",
+      "stdout_utf8": "agent: running (idle TTL remaining: 718 min)\ntarget: shu-ai/shu-common-25721452-notebook-3x9rq5-0 [shu-common-25721452-notebook-3x9rq5]\norigin: https://hpc5000.shu.edu.cn\n"
+    },
+    {
+      "check": "minimal_remote_hostname",
+      "returncode": 0,
+      "stdout_base64": "c2h1LWNvbW1vbi0yNTcyMTQ1Mi1ub3RlYm9vay0zeDlycTUtMAo=",
+      "stderr_base64": "dwBzAGwAOgAgAMBoS20wUiAAbABvAGMAYQBsAGgAbwBzAHQAIADjTgZ0TZFufwz/Rk8qZ1yVz1AwUiAAVwBTAEwAAjBOAEEAVAAgACFqD18LToR2IABXAFMATAAgAA1OL2UBYyAAbABvAGMAYQBsAGgAbwBzAHQAIADjTgZ0AjANAAoA",
+      "stdout_utf8": "shu-common-25721452-notebook-3x9rq5-0\n"
+    }
+  ],
+  "actual_WSL_user": "zhj",
+  "agent_status": "running",
+  "minimal_hostname_exec_returncode": 0,
+  "actual_hostname": "shu-common-25721452-notebook-3x9rq5-0",
+  "previously_frozen_hostname": "shu-common-25721452-notebook-o9mz8z-0",
+  "identity_matches_frozen_training_scope": false,
+  "interpretation": "The user's current online/login statement is confirmed by public status and a successful minimal hostname exec. The active saved target is a different container from the frozen request/scope. Do not label this as an expired login or general transport outage. The exact cause of earlier complex probe connection closures remains unresolved; current Python path/GPU/persistent-asset availability has not been inspected.",
+  "actions": {
+    "public_local_status_checks": 2,
+    "remote_readonly_hostname_commands": 1,
+    "remote_payload_or_upload_reads": 0,
+    "server_writes": 0,
+    "configuration_changes": 0,
+    "login_or_logout": 0,
+    "GPU_queries": 0,
+    "tests_or_models": 0,
+    "upload_verification_retried": false
+  },
+  "next": "Ask user to confirm actual new hostname 3x9rq5-0, then obtain separate authority for a minimal read-only new-container identity/resource and frozen-asset check. Do not silently change the pinned hostname/GPU/provider scope or install/train."
+}

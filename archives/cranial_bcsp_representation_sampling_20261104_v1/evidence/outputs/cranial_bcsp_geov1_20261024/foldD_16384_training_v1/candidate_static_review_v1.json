@@ -1,0 +1,69 @@
+{
+  "status": "PASS_FOLD_D16_MINIMAL_ADAPTATION",
+  "contract_change": "Only D8192 toD16384 gate and error text",
+  "entry_change": "Sibling contract filename/SHA only",
+  "FoldD_order_reused": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldD_8192_training_v1\\shared_order_foldD_seed0_v1.json",
+    "bytes": 1248506,
+    "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+  },
+  "FoldD8_formal_audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldD_8192_training_v1\\freeze_audit_v1\\audit_report_v1.json",
+    "bytes": 17724,
+    "sha256": "74dff3d3134d490e73db6bf5ed24ab9a7c8e4724f81c867a4906fd2431ca3800"
+  },
+  "target8192_static_model_runtime_backend_numeric_resources_unchanged": true,
+  "controller_changes": [
+    [
+      "q['n_input'] == 8192",
+      "q['n_input'] == 16384"
+    ],
+    [
+      "qualified['n_input'] == 8192",
+      "qualified['n_input'] == 16384"
+    ],
+    [
+      "q['QC']['manifests']['8192']",
+      "q['QC']['manifests']['16384']"
+    ],
+    [
+      "r['n_input'] == r['n_target'] == 8192",
+      "r['n_input'] == 16384 and r['n_target'] == 8192"
+    ],
+    [
+      "payload_bytes == 49417378",
+      "payload_bytes == 74162591"
+    ]
+  ],
+  "controller_positive_predicates": 4,
+  "controller_negative_predicates": 3,
+  "paired_data": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldD_16384_training_v1\\paired315_data_verification_v1.json",
+    "bytes": 134126,
+    "sha256": "b729ca54b2acbc1aac909e57de67ca3bb0bb83458bab349157c90eb9db5e45ab"
+  },
+  "candidate_request": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldD_16384_training_v1\\training_entry_request_candidate_v1.json",
+    "bytes": 5456,
+    "sha256": "054fb1f9cd33712058ff888c3bf097a59c7a86d7210b39f421acb361422a7741"
+  },
+  "files": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldD_16384_training_v1\\implementation_v1\\bcsp_training_entry_foldD_16384_v8.py",
+      "bytes": 16064,
+      "sha256": "46ac775262c916e2cb4eb883f4a57fdb7ebaa8e6f792f0c8738ef462ad5477ef"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldD_16384_training_v1\\implementation_v1\\bcsp_training_contract_foldD_16384_v6.py",
+      "bytes": 16700,
+      "sha256": "bd78e7d10f430c323e40cbd66a3c819f5799180a3a1d877557d29e7b4c1d50a5"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\foldD_16384_training_v1\\controller_template_foldD_16384_v1.py",
+      "bytes": 17608,
+      "sha256": "2c7b53953bf0649bfb597ed70737e4e1340349a6f59ead9be6e66b97af421e3b"
+    }
+  ],
+  "server_writes": 0,
+  "model_calls": 0
+}

@@ -1,0 +1,482 @@
+{
+  "schema": "bcsp-failed-training-readonly-freeze-audit-v1",
+  "status": "FAILED_RUN_EVIDENCE_FREEZE_PASS_RESOURCE_SUBCONDITION_UNDETERMINED",
+  "date_Asia_Shanghai": "2026-10-25",
+  "execution_scope": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\training_execution_request_v2.json",
+    "bytes": 21541,
+    "sha256": "64197a335140475e71dddd9033acc067c4bb84231ac21c2c60e0b58de289b105"
+  },
+  "authorized_scope": "Failure artifact freeze and resource guard cause investigation only; no threshold/code changes or rerun.",
+  "\u7ed3\u8bba": [
+    "\u9000\u51fa\u78011\uff0c\u8bad\u7ec3\u5931\u8d25\uff0cPID922\u548ctmux\u5747\u5df2\u9000\u51fa\uff1b\u5df2\u5b8c\u6210\u5e76\u63d0\u4ea41\u6b21forward/backward/clip/optimizer\u66f4\u65b0\uff0c\u672a\u5b8c\u62103900\u6b65\u3002",
+    "\u9996\u6279\u75c5\u4f8b\u987a\u5e8f\u4e0e\u51bb\u7ed3\u5171\u540corder_plan\u4e00\u81f4\uff0closs\u7ea60.84196\uff1b\u8fd9\u53ea\u662f\u5355\u6279\u8bb0\u5f55\uff0c\u4e0d\u6784\u6210\u6027\u80fd\u6216\u6536\u655b\u7ed3\u8bba\u3002",
+    "\u5931\u8d25\u4f4d\u4e8eafter_step(1)\u5408\u5e76GPU\u9884\u7b97/\u8fdb\u7a0b\u65ad\u8a00\uff0c\u4e0d\u662fCUDA OOM\u5f02\u5e38\u6216\u4f20\u8f93/\u6388\u6743\u5931\u8d25\u3002",
+    "allocated/reserved/device_MiB/PID\u5728\u65ad\u8a00\u524d\u5df2\u8bfb\u53d6\uff0c\u4f46\u65ad\u8a00\u5148\u4e8eJSONL\u5199\u5165\uff1b\u5931\u8d25\u91c7\u6837\u6ca1\u6709\u7559\u4e0b\u6570\u503c\uff0c\u56e0\u6b64\u4e0d\u80fd\u533a\u5206\u56db\u4e2a\u5b50\u6761\u4ef6\u4e2d\u54ea\u9879\u6216\u54ea\u51e0\u9879\u5931\u8d25\u3002",
+    "\u5f53\u524d\u8bbe\u5907\u5360\u75281MiB\u3001\u5229\u7528\u73870\u3001\u65e0\u8ba1\u7b97\u8fdb\u7a0b\uff0c\u53ea\u8868\u793a\u5ba1\u8ba1\u65f6\u7a7a\u95f2\uff0c\u4e0d\u80fd\u4f5c\u4e3a\u5931\u8d25\u77ac\u95f4\u5cf0\u503c\u6216\u8fdb\u7a0b\u5f52\u5c5e\u8bc1\u636e\u3002",
+    "\u7ed3\u679c\u76ee\u5f55\u7cbe\u786e\u5305\u542b9\u4e2a\u666e\u901a\u6587\u4ef6\u30011\u4e2atmp\u76ee\u5f55\uff0c\u51711252411bytes\uff1b\u4e0d\u5b58\u5728\u6700\u7ec8checkpoint\u3001completion\u6216\u6700\u7ec8exposure\u3002"
+  ],
+  "exit_code": 1,
+  "committed_steps": 1,
+  "intended_steps": 3900,
+  "counts": {
+    "forward": 1,
+    "backward": 1,
+    "clip": 1,
+    "step": 1,
+    "lr_scheduler": 0,
+    "bn_scheduler": 1
+  },
+  "first_batch": {
+    "step": 1,
+    "epoch": 0,
+    "batch": 0,
+    "case_ids": [
+      "train__112__random_1",
+      "train__034__bilateral",
+      "train__110__random_2",
+      "train__056__bilateral",
+      "train__006__random_2",
+      "train__087__random_1",
+      "train__082__parietotemporal",
+      "train__008__frontoorbital"
+    ],
+    "source_ids": [
+      "train:112",
+      "train:034",
+      "train:110",
+      "train:056",
+      "train:006",
+      "train:087",
+      "train:082",
+      "train:008"
+    ],
+    "loss_sparse": 0.0,
+    "loss_dense": 0.8419615626335144,
+    "loss": 0.8419615626335144,
+    "LR": [
+      0.0001,
+      0.0001
+    ],
+    "BN_momentum": 0.9,
+    "grad_norm_before_clip": 2.9780161380767822,
+    "clip_max_norm": 10,
+    "optimizer_step_committed": true
+  },
+  "initialization": {
+    "parameter_sha256": "c864e2f77fc7c5999cf1df615ed720f4fc10ae0a6d19888e28e5058879f70a99",
+    "persistent_state_sha256": "9649b96c1f1287fa7d5670815b3e48798ab1a3883bb200f5a9db027980852f37",
+    "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+    "seed": 0
+  },
+  "optimizer_actual_defaults": {
+    "lr": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.01,
+    "amsgrad": false,
+    "foreach": null,
+    "maximize": false,
+    "capturable": false,
+    "differentiable": false,
+    "fused": null
+  },
+  "guard_analysis": {
+    "entry_source": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\bcsp_training_entry_v2.py",
+      "bytes": 14714,
+      "sha256": "eb2f2f0f53aa9e36636e576dc3e25b4fee86df276eb476e79f5f1e1bee804852"
+    },
+    "function": "TrainingBudget.sample",
+    "guard_lineno": 106,
+    "log_write_lineno": 111,
+    "conditions": [
+      "max_memory_allocated <=21474836480 bytes",
+      "max_memory_reserved <=21474836480 bytes",
+      "nvidia-smi memory.used <=22528 MiB",
+      "all compute PIDs equal worker PID922"
+    ],
+    "preceding_checks": "Local RSS/time/output/free-disk checks and CUDA sync/resource queries returned without exception before combined require.",
+    "failed_resource_sample_persisted": false,
+    "failure_time_values": null,
+    "known": "At least one conjunct failed; all reported resource values were local variables lost at process exit.",
+    "exact_subcondition": "UNDETERMINED",
+    "foreign_process_at_failure": null,
+    "memory_over_threshold_at_failure": null,
+    "CUDA_OOM_exception_recorded": false,
+    "logging_diagnostic_gap": "Values are serialized only after require succeeds; failure receipt stores only generic message and lifecycle counts.",
+    "causal_limit": "No historical NVML/allocator telemetry was found in the authorized output evidence; do not infer OOM or relax limits from the present snapshot."
+  },
+  "current_snapshot": {
+    "hostname": "shu-common-25721452-notebook-3x9rq5-0",
+    "UTC": "2026-10-25T15:47:10.457883+00:00",
+    "gpu": {
+      "returncode": 0,
+      "stdout": "GPU-4b19574a-832d-b4fe-e655-a57462954d6a, NVIDIA GeForce RTX 4090 D, 570.190, 24564, 1, 0\n",
+      "stderr": ""
+    },
+    "compute_processes": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "tmux": {
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "no server running on /tmp/tmux-1000/default\n"
+    },
+    "PID922_present": false,
+    "PID922_status": null,
+    "meaning": "Current snapshot only; not historical peak or process attribution at failure",
+    "server_writes": 0
+  },
+  "artifact_freeze": {
+    "files": [
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/exit_code.txt",
+        "bytes": 2,
+        "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+        "mode": 384,
+        "uid": 1000,
+        "mtime_ns": 1792937389000000000,
+        "content_base64": "MQo="
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/failure.json",
+        "bytes": 256,
+        "sha256": "9f9c95bf394a84e0ed513eb5d7c009a277f81f596d9efb0db06e4e4a588a153e",
+        "mode": 384,
+        "uid": 1000,
+        "mtime_ns": 1792937388000000000,
+        "content_base64": "ewogICJzdGF0dXMiOiAiRkFJTEVEX1NUT1BfTk9fUkVUUlkiLAogICJlcnJvciI6ICJWYWx1ZUVycm9yKCd0cmFpbmluZyBHUFUvb3RoZXItcHJvY2VzcyBidWRnZXQnKSIsCiAgImNvdW50cyI6IHsKICAgICJmb3J3YXJkIjogMSwKICAgICJiYWNrd2FyZCI6IDEsCiAgICAiY2xpcCI6IDEsCiAgICAic3RlcCI6IDEsCiAgICAibHJfc2NoZWR1bGVyIjogMCwKICAgICJibl9zY2hlZHVsZXIiOiAxCiAgfSwKICAiY29tbWl0dGVkX3N0ZXBzIjogMQp9Cg=="
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/initialization.json",
+        "bytes": 289,
+        "sha256": "e8315461977374d067343282e03757c1bc7c6fcf6edc60256af8376c46fd6b07",
+        "mode": 384,
+        "uid": 1000,
+        "mtime_ns": 1792937382000000000,
+        "content_base64": "ewogICJwYXJhbWV0ZXJfc2hhMjU2IjogImM4NjRlMmY3N2ZjN2M1OTk5Y2YxZGY2MTVlZDcyMGY0ZmMxMGFlMGE2ZDE5ODg4ZTI4ZTUwNTg4NzlmNzBhOTkiLAogICJwZXJzaXN0ZW50X3N0YXRlX3NoYTI1NiI6ICI5NjQ5Yjk2YzFmMTI4N2ZhN2Q1NjcwODE1YjNlNDg3OThhYjFhMzg4M2JiMjAwZjVhOWRiMDI3OTgwODUyZjM3IiwKICAib3JkZXJfc2hhMjU2IjogIjM0OTE4OWRjYWRhNGM0MWI5ZTZiMDE1MmZhMjQ2OTViMmM3MWNlNWZjZTQxNDQ4NjUyNDdkMDNjNDQ1Zjc5NWYiLAogICJzZWVkIjogMAp9Cg=="
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/launch.log",
+        "bytes": 2529,
+        "sha256": "55ec932eb5f57b76da87c0cf42b4bac3752b571fe3339aa93db0f34133cf33c6",
+        "mode": 384,
+        "uid": 1000,
+        "mtime_ns": 1792937389000000000,
+        "content_base64": "L29wdC9jb25kYS9lbnZzL2FkYXBvaW50ci1tYW1iYS9saWIvcHl0aG9uMy4xMC9zaXRlLXBhY2thZ2VzL3RpbW0vbW9kZWxzL2xheWVycy9fX2luaXRfXy5weTo0OTogRnV0dXJlV2FybmluZzogSW1wb3J0aW5nIGZyb20gdGltbS5tb2RlbHMubGF5ZXJzIGlzIGRlcHJlY2F0ZWQsIHBsZWFzZSBpbXBvcnQgdmlhIHRpbW0ubGF5ZXJzCiAgd2FybmluZ3Mud2FybihmIkltcG9ydGluZyBmcm9tIHtfX25hbWVfX30gaXMgZGVwcmVjYXRlZCwgcGxlYXNlIGltcG9ydCB2aWEgdGltbS5sYXllcnMiLCBGdXR1cmVXYXJuaW5nKQoyMDI2LTEwLTI1IDE0OjQyOjQ0LDA0MiAtIE1PREVMIC0gSU5GTyAtIFRyYW5zZm9ybWVyIHdpdGggY29uZmlnIHsnTkFNRSc6ICdBZGFQb2luVHInLCAnbnVtX3F1ZXJ5JzogMjU2LCAnbnVtX3BvaW50cyc6IDgxOTIsICdjZW50ZXJfbnVtJzogWzUxMiwgMjU2XSwgJ2dsb2JhbF9mZWF0dXJlX2RpbSc6IDEwMjQsICdlbmNvZGVyX3R5cGUnOiAnZ3JhcGgnLCAnZGVjb2Rlcl90eXBlJzogJ2ZjJywgJ3F1ZXJ5X3NlbGVjdGlvbic6ICdsZWFybmVkX29ubHknLCAnZGVub2lzZV93ZWlnaHQnOiAwLCAnZmluZV9jb3ZlcmFnZV93ZWlnaHQnOiAxLCAnZmluZV9sb2NhbF93ZWlnaHQnOiAwLCAnZW5jb2Rlcl9jb25maWcnOiB7J2VtYmVkX2RpbSc6IDM4NCwgJ2RlcHRoJzogNiwgJ251bV9oZWFkcyc6IDYsICdrJzogOCwgJ25fZ3JvdXAnOiAyLCAnbWxwX3JhdGlvJzogMiwgJ2Jsb2NrX3N0eWxlX2xpc3QnOiBbJ2F0dG4tZ3JhcGgnLCAnYXR0bicsICdhdHRuJywgJ2F0dG4nLCAnYXR0bicsICdhdHRuJ10sICdjb21iaW5lX3N0eWxlJzogJ2NvbmNhdCd9LCAnZGVjb2Rlcl9jb25maWcnOiB7J2VtYmVkX2RpbSc6IDM4NCwgJ2RlcHRoJzogOCwgJ251bV9oZWFkcyc6IDYsICdrJzogOCwgJ25fZ3JvdXAnOiAyLCAnbWxwX3JhdGlvJzogMiwgJ3NlbGZfYXR0bl9ibG9ja19zdHlsZV9saXN0JzogWydhdHRuLWdyYXBoJywgJ2F0dG4nLCAnYXR0bicsICdhdHRuJywgJ2F0dG4nLCAnYXR0bicsICdhdHRuJywgJ2F0dG4nXSwgJ3NlbGZfYXR0bl9jb21iaW5lX3N0eWxlJzogJ2NvbmNhdCcsICdjcm9zc19hdHRuX2Jsb2NrX3N0eWxlX2xpc3QnOiBbJ2F0dG4tZ3JhcGgnLCAnYXR0bicsICdhdHRuJywgJ2F0dG4nLCAnYXR0bicsICdhdHRuJywgJ2F0dG4nLCAnYXR0biddLCAnY3Jvc3NfYXR0bl9jb21iaW5lX3N0eWxlJzogJ2NvbmNhdCd9fQp1c2luZyBncm91cCB2ZXJzaW9uIDIKVHJhY2ViYWNrIChtb3N0IHJlY2VudCBjYWxsIGxhc3QpOgogIEZpbGUgIi9ob21lL2pvdnlhbi9hZGFwb2ludHJfd29yay9Qb2luVHIvdGhpcmRfcGFydHkvYmNzcF9nZW92MV90cmFpbmluZ19mb2xkY184MTkyX3NlZWQwX3YxL2Jjc3BfdHJhaW5pbmdfZW50cnlfdjIucHkiLCBsaW5lIDI2NCwgaW4gPG1vZHVsZT4KICAgIG1haW4oKQogIEZpbGUgIi9ob21lL2pvdnlhbi9hZGFwb2ludHJfd29yay9Qb2luVHIvdGhpcmRfcGFydHkvYmNzcF9nZW92MV90cmFpbmluZ19mb2xkY184MTkyX3NlZWQwX3YxL2Jjc3BfdHJhaW5pbmdfZW50cnlfdjIucHkiLCBsaW5lIDI1MSwgaW4gbWFpbgogICAgcmV0dXJuIHJ1bnRpbWUudHJhaW5fbGlmZWN5Y2xlKG1vZGVsLCBsYW1iZGEgZTogcnVudGltZS5tYWtlX2xvYWRlcihkYXRhc2V0LCBwbGFuLCBlKSwgc2VsZWN0ZWQsIHBsYW4sCiAgRmlsZSAiL2hvbWUvam92eWFuL2FkYXBvaW50cl93b3JrL1BvaW5Uci90aGlyZF9wYXJ0eS9iY3NwX2dlb3YxX3RyYWluaW5nX2ZvbGRjXzgxOTJfc2VlZDBfdjEvYmNzcF90cmFpbmluZ19ydW50aW1lX3Y1LnB5IiwgbGluZSAxNjEsIGluIHRyYWluX2xpZmVjeWNsZQogICAgcmVzb3VyY2VzLmFmdGVyX3N0ZXAoY291bnRzWydzdGVwJ10pCiAgRmlsZSAiL2hvbWUvam92eWFuL2FkYXBvaW50cl93b3JrL1BvaW5Uci90aGlyZF9wYXJ0eS9iY3NwX2dlb3YxX3RyYWluaW5nX2ZvbGRjXzgxOTJfc2VlZDBfdjEvYmNzcF90cmFpbmluZ19lbnRyeV92Mi5weSIsIGxpbmUgMTIxLCBpbiBhZnRlcl9zdGVwCiAgICBzZWxmLnNhbXBsZSgnYWZ0ZXJfc3RlcCcsIHN0ZXApCiAgRmlsZSAiL2hvbWUvam92eWFuL2FkYXBvaW50cl93b3JrL1BvaW5Uci90aGlyZF9wYXJ0eS9iY3NwX2dlb3YxX3RyYWluaW5nX2ZvbGRjXzgxOTJfc2VlZDBfdjEvYmNzcF90cmFpbmluZ19lbnRyeV92Mi5weSIsIGxpbmUgMTA2LCBpbiBzYW1wbGUKICAgIHJlcXVpcmUoYWxsb2NhdGVkIDw9IHNlbGYubGltaXRzWyd0b3JjaF9wZWFrX2J5dGVzJ10gYW5kIHJlc2VydmVkIDw9IHNlbGYubGltaXRzWyd0b3JjaF9wZWFrX2J5dGVzJ10KICBGaWxlICIvaG9tZS9qb3Z5YW4vYWRhcG9pbnRyX3dvcmsvUG9pblRyL3RoaXJkX3BhcnR5L2Jjc3BfZ2VvdjFfdHJhaW5pbmdfZm9sZGNfODE5Ml9zZWVkMF92MS9iY3NwX3RyYWluaW5nX2NvbnRyYWN0X3YyLnB5IiwgbGluZSAxOCwgaW4gcmVxdWlyZQogICAgcmFpc2UgVmFsdWVFcnJvcihtZXNzYWdlKQpWYWx1ZUVycm9yOiB0cmFpbmluZyBHUFUvb3RoZXItcHJvY2VzcyBidWRnZXQK"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/metrics.jsonl",
+        "bytes": 602,
+        "sha256": "5c771d0e2dbe0d1ac91391b2edba17569d12db35bbe521642720698f0d862a34",
+        "mode": 384,
+        "uid": 1000,
+        "mtime_ns": 1792937388000000000,
+        "content_base64": "eyJzdGVwIjogMSwgImVwb2NoIjogMCwgImJhdGNoIjogMCwgImNhc2VfaWRzIjogWyJ0cmFpbl9fMTEyX19yYW5kb21fMSIsICJ0cmFpbl9fMDM0X19iaWxhdGVyYWwiLCAidHJhaW5fXzExMF9fcmFuZG9tXzIiLCAidHJhaW5fXzA1Nl9fYmlsYXRlcmFsIiwgInRyYWluX18wMDZfX3JhbmRvbV8yIiwgInRyYWluX18wODdfX3JhbmRvbV8xIiwgInRyYWluX18wODJfX3BhcmlldG90ZW1wb3JhbCIsICJ0cmFpbl9fMDA4X19mcm9udG9vcmJpdGFsIl0sICJzb3VyY2VfaWRzIjogWyJ0cmFpbjoxMTIiLCAidHJhaW46MDM0IiwgInRyYWluOjExMCIsICJ0cmFpbjowNTYiLCAidHJhaW46MDA2IiwgInRyYWluOjA4NyIsICJ0cmFpbjowODIiLCAidHJhaW46MDA4Il0sICJsb3NzX3NwYXJzZSI6IDAuMCwgImxvc3NfZGVuc2UiOiAwLjg0MTk2MTU2MjYzMzUxNDQsICJsb3NzIjogMC44NDE5NjE1NjI2MzM1MTQ0LCAiTFIiOiBbMC4wMDAxLCAwLjAwMDFdLCAiQk5fbW9tZW50dW0iOiAwLjksICJncmFkX25vcm1fYmVmb3JlX2NsaXAiOiAyLjk3ODAxNjEzODA3Njc4MjIsICJjbGlwX21heF9ub3JtIjogMTAsICJvcHRpbWl6ZXJfc3RlcF9jb21taXR0ZWQiOiB0cnVlfQo="
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/optimizer_actual_defaults.json",
+        "bytes": 223,
+        "sha256": "9d63cc1e4fb32d46c348688146a9e8b10356a7bc3e8c1eabb9c483bac7c6e592",
+        "mode": 384,
+        "uid": 1000,
+        "mtime_ns": 1792937382000000000,
+        "content_base64": "ewogICJsciI6IDAuMDAwMSwKICAiYmV0YXMiOiBbCiAgICAwLjksCiAgICAwLjk5OQogIF0sCiAgImVwcyI6IDFlLTA4LAogICJ3ZWlnaHRfZGVjYXkiOiAwLjAxLAogICJhbXNncmFkIjogZmFsc2UsCiAgImZvcmVhY2giOiBudWxsLAogICJtYXhpbWl6ZSI6IGZhbHNlLAogICJjYXB0dXJhYmxlIjogZmFsc2UsCiAgImRpZmZlcmVudGlhYmxlIjogZmFsc2UsCiAgImZ1c2VkIjogbnVsbAp9Cg=="
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/order_plan.json",
+        "bytes": 1248506,
+        "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d",
+        "mode": 384,
+        "uid": 1000,
+        "mtime_ns": 1792937381000000000
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/resources.jsonl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 384,
+        "uid": 1000,
+        "mtime_ns": 1792937381000000000,
+        "content_base64": ""
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/worker.pid",
+        "bytes": 4,
+        "sha256": "fae7910d73a23ccc61cc89fe08e6c36844844ac7f90683747bcf2153186819cb",
+        "mode": 384,
+        "uid": 1000,
+        "mtime_ns": 1792937319000000000,
+        "content_base64": "OTIyCg=="
+      }
+    ],
+    "directories": [
+      "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/tmp"
+    ],
+    "file_count": 9,
+    "total_bytes": 1252411,
+    "local_copies": [
+      {
+        "remote_path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/exit_code.txt",
+        "local": {
+          "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\frozen_artifact_copies_v1\\exit_code.txt",
+          "bytes": 2,
+          "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+        },
+        "provenance": "Remote original bytes from current read-only capture"
+      },
+      {
+        "remote_path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/failure.json",
+        "local": {
+          "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\frozen_artifact_copies_v1\\failure.json",
+          "bytes": 256,
+          "sha256": "9f9c95bf394a84e0ed513eb5d7c009a277f81f596d9efb0db06e4e4a588a153e"
+        },
+        "provenance": "Remote original bytes from current read-only capture"
+      },
+      {
+        "remote_path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/initialization.json",
+        "local": {
+          "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\frozen_artifact_copies_v1\\initialization.json",
+          "bytes": 289,
+          "sha256": "e8315461977374d067343282e03757c1bc7c6fcf6edc60256af8376c46fd6b07"
+        },
+        "provenance": "Remote original bytes from current read-only capture"
+      },
+      {
+        "remote_path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/launch.log",
+        "local": {
+          "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\frozen_artifact_copies_v1\\launch.log",
+          "bytes": 2529,
+          "sha256": "55ec932eb5f57b76da87c0cf42b4bac3752b571fe3339aa93db0f34133cf33c6"
+        },
+        "provenance": "Remote original bytes from current read-only capture"
+      },
+      {
+        "remote_path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/metrics.jsonl",
+        "local": {
+          "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\frozen_artifact_copies_v1\\metrics.jsonl",
+          "bytes": 602,
+          "sha256": "5c771d0e2dbe0d1ac91391b2edba17569d12db35bbe521642720698f0d862a34"
+        },
+        "provenance": "Remote original bytes from current read-only capture"
+      },
+      {
+        "remote_path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/optimizer_actual_defaults.json",
+        "local": {
+          "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\frozen_artifact_copies_v1\\optimizer_actual_defaults.json",
+          "bytes": 223,
+          "sha256": "9d63cc1e4fb32d46c348688146a9e8b10356a7bc3e8c1eabb9c483bac7c6e592"
+        },
+        "provenance": "Remote original bytes from current read-only capture"
+      },
+      {
+        "remote_path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/order_plan.json",
+        "local": {
+          "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\frozen_artifact_copies_v1\\order_plan.json",
+          "bytes": 1248506,
+          "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+        },
+        "provenance": "Local immutable order-plan bytes; independent remote size/SHA equal. Not a download."
+      },
+      {
+        "remote_path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/resources.jsonl",
+        "local": {
+          "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\frozen_artifact_copies_v1\\resources.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "provenance": "Remote original bytes from current read-only capture"
+      },
+      {
+        "remote_path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/b0_foldC_in8192_out8192_seed0_train_v1/worker.pid",
+        "local": {
+          "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\frozen_artifact_copies_v1\\worker.pid",
+          "bytes": 4,
+          "sha256": "fae7910d73a23ccc61cc89fe08e6c36844844ac7f90683747bcf2153186819cb"
+        },
+        "provenance": "Remote original bytes from current read-only capture"
+      }
+    ],
+    "manifest": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\frozen_artifacts_v1.sha256",
+      "bytes": 740,
+      "sha256": "f0454a6b933a8c5af1d58aa1cd0ac3ba145289f8c81437f93b471d1c5963be0f"
+    },
+    "resources_log_empty": true,
+    "final_checkpoint_present": false,
+    "completion_present": false,
+    "final_exposure_present": false,
+    "order_hash_matches_frozen": true,
+    "content_stable_before_after_read": true,
+    "atime_excluded_from_identity": true
+  },
+  "control_integrity": {
+    "observations": [
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_contract_v2.py",
+        "bytes": 16538,
+        "sha256": "88b0098ec199fcba7e37c9ca2be7a8d6b69ff246ab0f1b9494445e4a72b41db3",
+        "mode": 420,
+        "uid": 1000,
+        "content_base64": null
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_entry_v2.py",
+        "bytes": 14714,
+        "sha256": "eb2f2f0f53aa9e36636e576dc3e25b4fee86df276eb476e79f5f1e1bee804852",
+        "mode": 420,
+        "uid": 1000,
+        "content_base64": null
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_runtime_v5.py",
+        "bytes": 10171,
+        "sha256": "55ad69b0e87f3fc4ecac68a5ebcc4cdd560c4825ff01363ba9868de5875f0847",
+        "mode": 420,
+        "uid": 1000,
+        "content_base64": null
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/launch_attempt_v1.json",
+        "bytes": 295,
+        "sha256": "31f04781d9373a72c2738cddefdf7913465cab5161cb0e36f1be82edb3262712",
+        "mode": 384,
+        "uid": 1000,
+        "content_base64": "ewogICJzdGF0dXMiOiAiQ0xBSU1FRF9CRUZPUkVfVE1VWCIsCiAgInJlcXVlc3Rfc2hhMjU2IjogImFhYTkyNDQ0MzM0ZWM2MWQ1N2Y1OTNkNTFmOTgzZTc5ZGIxYWE0ZDk1NGQxNWE0ODdiNzE1ZTkxMWUzNGRiYzkiLAogICJleGVjdXRpb25fc2NvcGVfc2hhMjU2IjogIjY0MTk3YTMzNTE0MDQ3NWU3MWRkZGQ5MDMzYWNjMDY3YzRiYjg0MjMxYWMyMWMyYzYwZTBiNThkZTI4OWIxMDUiLAogICJVVEMiOiAiMjAyNi0xMC0yNVQxNDo0MTo0MC4zNjU3OTYrMDA6MDAiLAogICJhdXRvbWF0aWNfcmV0cnkiOiBmYWxzZQp9Cg=="
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/migration_uncertainty_acceptance_v1.json",
+        "bytes": 2259,
+        "sha256": "28588c5ea4d5ad14cdb60f1e8fc52f9474629230ef1150c11f61888322a20527",
+        "mode": 384,
+        "uid": 1000,
+        "content_base64": null
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/train_once_v1.sh",
+        "bytes": 2939,
+        "sha256": "e64aace86dfd65b85ac5c67a8fb6d1bf5a0ac32b505b3c51ffb7c2344de4e26e",
+        "mode": 448,
+        "uid": 1000,
+        "content_base64": null
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/training_authorization_v1.json",
+        "bytes": 455,
+        "sha256": "e32e5cb3764b2abec81bc536303528c85ade41fc4abffe71db0b5b9bcdcddfa4",
+        "mode": 384,
+        "uid": 1000,
+        "content_base64": null
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/training_execution_request_v1.json",
+        "bytes": 5370,
+        "sha256": "aaa92444334ec61d57f593d51f983e79db1aa4d954d15a487b715e911e34dbc9",
+        "mode": 384,
+        "uid": 1000,
+        "content_base64": null
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/training_execution_scope_v2.json",
+        "bytes": 21541,
+        "sha256": "64197a335140475e71dddd9033acc067c4bb84231ac21c2c60e0b58de289b105",
+        "mode": 384,
+        "uid": 1000,
+        "content_base64": null
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control/training_runtime_v1.json",
+        "bytes": 225,
+        "sha256": "d9b129f30e96f80e03fc41af5707ef9c66d1a79848a69b14343adcdbef85f403",
+        "mode": 384,
+        "uid": 1000,
+        "content_base64": null
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/static_training_config_v1.json",
+        "bytes": 2024,
+        "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647",
+        "mode": 420,
+        "uid": 1000,
+        "content_base64": null
+      }
+    ],
+    "all7_match_materialization_receipt": true,
+    "four_sources_config_unchanged": true,
+    "launch_attempt_preserved_and_consumed": true,
+    "grant_reusable": false
+  },
+  "hypotheses_only": [
+    "allocated or reserved peak may exceed20GiB after genuine training/AdamW workload",
+    "device usage may exceed22528MiB",
+    "another reported compute PID may differ from worker922",
+    "multiple conjuncts may fail simultaneously"
+  ],
+  "next_recommendation_not_authorized": "Minimal implementation-only diagnostic correction: keep all numeric thresholds/model/data/batch8/cdist/3900-step logic unchanged; durably record raw allocated,reserved,device usage,own PID,all compute PIDs and per-condition booleans before the stopping assertion. Add targeted artificial CPU regression/P3. No live rerun,threshold relaxation,batch reduction or new execution until separately authorized.",
+  "raw_evidence": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\artifact_readonly_capture_v1.json",
+      "bytes": 11378,
+      "sha256": "15199e5679278f044f6f1f774c71cfce7b43a3c00ed9e46b2ab41c8fc7403308"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\artifact_readonly_probe_v1.py",
+      "bytes": 1289,
+      "sha256": "e0bf29837b9d64cf0f32657fd46c9d7a7b11cb2f4c889b0511165b8c20bb4ffc"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\control_sources_readonly_capture_v1.json",
+      "bytes": 5155,
+      "sha256": "84cfb8395ed4254c167dd195f47430c8467b6503a51ac222151c49de68bb8e0e"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\control_sources_readonly_probe_v1.py",
+      "bytes": 1093,
+      "sha256": "c7c2f6c3b983094ae5b18891e8b7eea5069a0cca6c1b9b40006d4fbda8466427"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\frozen_artifacts_v1.sha256",
+      "bytes": 740,
+      "sha256": "f0454a6b933a8c5af1d58aa1cd0ac3ba145289f8c81437f93b471d1c5963be0f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\gpu_process_readonly_capture_v1.json",
+      "bytes": 1248,
+      "sha256": "679db29817c51c4e5f8023ee4296071479a6c67edbfcf17ebf9b55782a94b568"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\resource_rebind_implementation_v1\\first_training_request_foldC_8192_v1\\authorized_execution_v2\\failure_freeze_audit_v1\\gpu_process_readonly_probe_v1.py",
+      "bytes": 1219,
+      "sha256": "b6cba96095fc5d2ea23e59c718ad60d5ebb0caef66b20d92cc35853685ddb4a5"
+    }
+  ],
+  "permissions": {
+    "server_writes": 0,
+    "signals_sent": 0,
+    "threshold_changes": 0,
+    "source_changes": 0,
+    "model_imports": 0,
+    "checkpoint_loads": 0,
+    "real_NPZ_reads": 0,
+    "new_forwards": 0,
+    "new_optimizer_steps": 0,
+    "tests": 0,
+    "retry_resume": false,
+    "BNCal": false,
+    "development_evaluation": false
+  },
+  "local_copy_note": "Initial Windows copy of optimizer_actual_defaults.json hit261-character path. Five already saved copies were retained and revalidated; remaining copies used Windows extended-length path syntax strictly inside workspace. No server/audit/experiment was rerun or existing content overwritten.",
+  "limits": [
+    "This is successful preservation of a failed run,not successful training or proof the device cannot support the scientific configuration.",
+    "BNCal/development false is supported by frozen config and abort at first training batch; no global access trace is claimed.",
+    "Exact resource trigger cannot be reconstructed from existing evidence without a newly authorized run; none was performed."
+  ],
+  "stop_status": "FAILED_ATTEMPT_FROZEN_NO_RETRY_NO_CLEANUP"
+}

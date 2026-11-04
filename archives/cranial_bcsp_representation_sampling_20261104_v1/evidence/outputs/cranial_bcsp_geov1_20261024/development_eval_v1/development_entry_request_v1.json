@@ -1,0 +1,95 @@
+{
+  "schema": "bcsp-four-model-development-prediction-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "run_id": "bcsp_four_model_development_seed0_v1",
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-01dt08-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-e763d389-b4c2-4dc8-9571-d7343ec328b1",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity."
+  },
+  "model_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3",
+  "entry": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_development_predict_v1.py",
+    "bytes": 14497,
+    "sha256": "1728c72eebb9548ceb9a3ce272dc01a5f8358e40d9e07020f724d65b20fefc6e"
+  },
+  "input_index": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/development_input_index_v1.json",
+    "bytes": 208927,
+    "sha256": "7fbae8f119757dad3d4c3195a53b75a7f023eb1af6242a752e5d30da3a8f5b8e"
+  },
+  "fold_binding": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/fold_binding.json",
+    "bytes": 35012,
+    "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+  },
+  "static_config": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/static_training_config_v1.json",
+    "bytes": 2024,
+    "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+  },
+  "preflight_scope": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+    "bytes": 23220,
+    "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+  },
+  "helper": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+    "bytes": 32728,
+    "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+  },
+  "control": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_eval_four_models_v1",
+  "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_geov1/development_four_models_seed0_v1",
+  "launch_attempt": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/control_eval_four_models_v1/launch_attempt.json",
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "GPU-e763d389-b4c2-4dc8-9571-d7343ec328b1",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "MPLBACKEND": "Agg",
+    "MPLCONFIGDIR": "<owned_output>/mplconfig",
+    "CUDA_CACHE_DISABLE": "1",
+    "TMPDIR": "<owned_output>/tmp"
+  },
+  "limits": {
+    "wall_seconds": 7200,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "science": {
+    "models": 4,
+    "forwards_per_model": 105,
+    "total_forwards": 420,
+    "unique_cases": 210,
+    "unique_sources": 42,
+    "seed": 0,
+    "n_output": 8192,
+    "training_updates": 0,
+    "BNCal": false,
+    "loss": false,
+    "backward": false,
+    "precision": "FP32",
+    "deterministic": true,
+    "TF32": false,
+    "mode": "eval/inference_mode",
+    "checkpoint": "scratch_final_epoch99_updates3900",
+    "state_invariance_required": true,
+    "loss_backend_during_parent_training": "existing_torch_cdist;no loss called during inference",
+    "PID_policy": "DIAGNOSTIC_ONLY_NO_OWNERSHIP_GUARANTEE"
+  }
+}

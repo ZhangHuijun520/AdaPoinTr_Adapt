@@ -1,0 +1,34 @@
+{
+  "schema": "bcsp-short-invocation-installation-authorization-v2",
+  "scope_sha256": "42d0b302e40ec0d127c147063b0df9ddd662aa1ef37d964387dd3c8081cd6e62",
+  "date_Asia_Shanghai": "2026-10-25",
+  "explicit_user_authorization": true,
+  "user_authorization_text": "下一步单独授权：仅调整本机安装调用为有界短入口，保持337文件及不覆盖规则不变，重验后执行一次新版本安装；不复用旧尝试、不扩展框架。",
+  "authorized_installation_attempt": "v2_unique_attempt",
+  "reuse_previous_attempt": false,
+  "driver_sha256": "79fbc9aaa19f9dc9f5036c961a761f13e8ada5dd13b39a44f1d7ac1153a575a8",
+  "unchanged_installer_payload_sha256": "82595225501a8f20c4124c13b92b3b60297dbb8861b0ffe6dac0c932f56d1925",
+  "fixed_client_source_sha256": "994e2dac717b32f388e007150866ca6b08ecf9b73010007d2470f32e886b7e40",
+  "change_only": "Per-process build_remote_command and send_stdin adapt terminal transport into at-most2048-byte lines, with full decoded wrapper hash checked before executing it. Installed client and server source untouched.",
+  "static_inspection": {
+    "status": "PASS",
+    "server_connections": 0,
+    "wire_lines": 27,
+    "maximum_line_bytes": 1066,
+    "original_outer_bytes": 24983
+  },
+  "prewrite_checks": "Same frozen installer: identity,12 uploaded inputs,both archive sets,337 exact mappings and absences,all parents,5 directory range,write permission and4GiB+payload disk reserve.",
+  "limits": {
+    "remote_seconds": 120,
+    "client_seconds": 135,
+    "local_seconds": 150,
+    "retries": 0
+  },
+  "authorized_new_server_files": 337,
+  "authorized_new_server_directories": 5,
+  "server_staging_files": 0,
+  "packaged_code_execution": false,
+  "tests": false,
+  "GPU_compute": false,
+  "training": false
+}

@@ -1,0 +1,55 @@
+{
+  "run": "C_16384",
+  "case_id": "train__001__bilateral",
+  "source_id": "train:001",
+  "metrics": {
+    "input": {
+      "points": 16384,
+      "J_cover2": 0.8591763335190719,
+      "J_cover1": 0.3596575654728736,
+      "J_p95_mm": 2.446784893105883
+    },
+    "center512_coordinates": {
+      "points": 512,
+      "J_cover2": 0.08120156020465018,
+      "J_cover1": 0.018033534268780706,
+      "J_p95_mm": 7.772283534151295
+    },
+    "proxy256_coordinates": {
+      "points": 256,
+      "J_cover2": 0.05116255508839469,
+      "J_cover1": 0.010688414973912158,
+      "J_p95_mm": 10.963771224993575
+    },
+    "graph2_direct_input_union": {
+      "points": 8060,
+      "J_cover2": 0.6206879084139607,
+      "J_cover1": 0.2246086824375664,
+      "J_p95_mm": 4.026438914997274
+    },
+    "final_proxy_possible_raw_dependency_union": {
+      "points": 15771,
+      "J_cover2": 0.8537561420394103,
+      "J_cover1": 0.35671951775492616,
+      "J_p95_mm": 2.4829538317571016
+    },
+    "prediction": {
+      "points": 8192,
+      "J_cover2": 0.6927713894939465,
+      "J_cover1": 0.16088344055518963,
+      "J_p95_mm": 3.374399828170436
+    },
+    "GT8192": {
+      "points": 8192,
+      "J_cover2": 0.9995947520389037,
+      "J_cover1": 0.8417506711919355,
+      "J_p95_mm": 1.2409634275969255
+    }
+  },
+  "input_points_within1mm_of_J_centers": 400,
+  "interface_point_fraction_retained_in_graph2_direct_union": 0.605,
+  "interface_point_fraction_in_final_possible_dependency_union": 0.9875,
+  "center512_features_with_possible_near_J_dependency": 41,
+  "proxy256_features_with_possible_near_J_dependency": 91,
+  "dependency_interpretation": "possible computational connectivity only; not measured feature preservation, max-pool selection or causal importance"
+}

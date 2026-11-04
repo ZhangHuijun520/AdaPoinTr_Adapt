@@ -1,0 +1,37 @@
+{
+  "schema": "bcsp-monitor-only-static-review-v2",
+  "status": "PASS_STATIC_ONLY",
+  "scope_sha256": "65d23c2a6b067e0e7f9c08615063996a0c4b8ebbc74d35643db77e1b30d2ab17",
+  "entry_sha256": "347cc350454143b17bc4d8033b2c685b5665076a020058d05f8d87f416586da4",
+  "test_sha256": "b2529dfeb881a8cc64a0f345b31ee1c64246713250c7ed87d719da8d44191fe3",
+  "old_entry_unchanged": true,
+  "unchanged_source_config_hashes": 19,
+  "unchanged_top_level_functions_and_classes": 23,
+  "run_body_AST_equal_after_removing_only_phase_logging": true,
+  "unchanged_scope_fields": ["resources", "model", "input", "operations", "loss_backend", "numerical", "state_protection", "knn_oracle", "bindings", "environment"],
+  "monitor_changes": [
+    "10-second communicate deadline, 2-second child kill/reap wait, no query retry",
+    "Phase-at-start/end and monotonic nanosecond timestamps, elapsed seconds, child PID and return codes",
+    "Timeout, nonzero exit, spawn/other query error and decode error classification",
+    "At most 2048 raw bytes per diagnostic stream; 3000 event-record cap",
+    "Exclusive owned monitor_events.jsonl; detailed monitor_failure.json before SIGTERM",
+    "RSS/output/wall budget precheck before waiting for GPU query",
+    "Shutdown join budget 23 seconds derived from two queries plus one cleanup and scheduling allowance; outer 900-second timeout unchanged"
+  ],
+  "budget_basis": "Explicit conservative engineering allowance, not a measured latency quantile. It does not establish the original cause or guarantee the next GPU run will pass. Monitoring remains cooperative; fork/GIL/I/O are not hard-bounded by communicate.",
+  "one_CPU_batch": {
+    "tests": 36,
+    "old_contracts": 24,
+    "monitor_regressions": 12,
+    "process_timeout_seconds": 120,
+    "interpreter": "C:/Users/zhj/.conda/envs/adapointr/python.exe",
+    "CUDA_VISIBLE_DEVICES": "",
+    "threads": 2,
+    "artifact_directory": "cpu_attempt_v3",
+    "retained_fixtures": true,
+    "failure_policy": "STOP_NO_REPAIR_NO_RETRY"
+  },
+  "server_operations": 0,
+  "GPU_operations": 0,
+  "tests_executed_at_this_static_review": 0
+}

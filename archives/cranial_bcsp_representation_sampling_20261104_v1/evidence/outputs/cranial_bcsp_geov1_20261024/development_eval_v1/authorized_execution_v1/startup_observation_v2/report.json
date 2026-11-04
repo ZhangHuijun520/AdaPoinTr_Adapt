@@ -1,0 +1,60 @@
+{
+  "status": "READONLY_STARTUP_OBSERVATION",
+  "hostname": "shu-common-25721452-notebook-01dt08-0",
+  "session_alive": true,
+  "exit_code": null,
+  "prediction_records": 388,
+  "last_prediction": {
+    "run": "D_16384",
+    "case_id": "train__068__parietotemporal",
+    "source_id": "train:068",
+    "fold": "D",
+    "n_input": 16384,
+    "n_output": 8192,
+    "input_sha256": "0b24cc4b472bc71ee4d307f42cf9a4734cb6d44a2d84eb9abecf8dbf07e5e5ae",
+    "checkpoint_sha256": "4b7d81336545e7c63c55ff86e7644eed45ba9057450925b7f99f46c322ac867d",
+    "prediction": {
+      "name": "predictions/D_16384__train__068__parietotemporal.npz",
+      "bytes": 89974,
+      "sha256": "3f29c0f5a54f30a74375ad53f290026f4f1cf74bf2ed2eb1f0f6cc0a9206d4c2"
+    },
+    "forward_index": 388,
+    "operational_seconds": 0.0517817628569901
+  },
+  "last_resources": {
+    "phase": "before_forward",
+    "forwards": 387,
+    "values": {
+      "RSS_bytes": 1438826496,
+      "output_bytes": 35306876,
+      "device_MiB": 734,
+      "peak_allocated": 247680000,
+      "peak_reserved": 297795584,
+      "elapsed_seconds": 84.59192545618862,
+      "free_disk_bytes": 12063866880
+    },
+    "checks": {
+      "RSS": true,
+      "output": true,
+      "device": true,
+      "allocated": true,
+      "reserved": true,
+      "wall": true,
+      "disk": true
+    },
+    "failed_checks": [],
+    "SMI_PIDs": [
+      "3602637"
+    ],
+    "container_PID": 64445,
+    "PID_query_error": null,
+    "PID_policy": "DIAGNOSTIC_ONLY_NO_OWNERSHIP_GUARANTEE"
+  },
+  "failure": null,
+  "inference_complete": null,
+  "completion": null,
+  "launch_log_tail": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\n2026-10-26 10:44:46,648 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n2026-10-26 10:45:07,400 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n2026-10-26 10:45:30,206 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n2026-10-26 10:45:53,734 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}",
+  "server_writes": 0,
+  "forward_calls_from_observer": 0,
+  "formal_freeze_audit": false
+}
