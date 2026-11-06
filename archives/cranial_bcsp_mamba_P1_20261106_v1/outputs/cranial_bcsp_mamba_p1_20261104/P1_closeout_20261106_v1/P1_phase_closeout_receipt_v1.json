@@ -1,0 +1,67 @@
+{
+  "schema": "cranial-bcsp-mamba-P1-formal-closeout-v1",
+  "status": "P1_FORMALLY_CLOSED",
+  "date": "2026-11-06",
+  "user_instruction": "好的，现在先将P1正式收束",
+  "scope": "Fixed encoder-only T0/M0 comparison, Fold C/D seed0 plus existing-prediction retrospective diagnostics",
+  "completion_checks": {
+    "four_training_runs_formally_frozen": true,
+    "two_training_pairs_verified": true,
+    "two_prediction_batches_formally_frozen": true,
+    "both_local_prediction_backups_rehashed": true,
+    "two_scoring_batches_formally_frozen": true,
+    "all24_score_result_files_rehashed": true,
+    "CD_review14cases28predictions_frozen": true,
+    "all_existing_research_artifacts_preserved": true,
+    "H1_excluded_from_P1_results": true
+  },
+  "counts": {
+    "training_runs": 4,
+    "updates_per_run": 3900,
+    "total_optimizer_updates": 15600,
+    "total_case_exposures": 124800,
+    "prediction_forwards": 420,
+    "unique_development_cases": 210,
+    "total_case_score_rows_including_controls": 840,
+    "total_source_score_rows_including_controls": 168,
+    "retrospective_diagnostic_cases": 14
+  },
+  "scientific_conclusion": "M0 shows fold- and defect-dependent effects; stable overall superiority over T0 not established. Preserve T0 baseline and M0 experimental candidate; no uniform winner selected.",
+  "positive_findings": [
+    "Fold C E_P95 and CD improve",
+    "J Cover@2mm improves descriptively in both folds"
+  ],
+  "negative_findings": [
+    "Fold D E_P95/CD/reverse20 worsen",
+    "frontoorbital E/CD worsen in both folds",
+    "severe geometry count decreases C but increases D"
+  ],
+  "limits": [
+    "Single seed, related cross-validation folds with overlapping training data",
+    "Both development folds examined: exploratory model development, no held-out clinical confirmation",
+    "Finite Mamba backward non-bitwise nondeterminism accepted and disclosed; original failed admission evidence unchanged",
+    "Full source-only integrity audits and saved state/RNG logs do not prove clinical accuracy",
+    "No formal combined gate, p-value, bootstrap or Mamba-specific causal explanation"
+  ],
+  "next_phase": {
+    "status": "NOT_STARTED",
+    "candidate": "P2_H1_PROPOSAL_ONLY",
+    "draft": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\coarse_anchor_minimal_hypothesis_20261106_v1\\minimal_hypothesis_draft_v1.json",
+    "implementation_authorized_by_closeout": false,
+    "CPU_tests_authorized_by_closeout": false,
+    "training_authorized_by_closeout": false
+  },
+  "operations": {
+    "server_contacted": false,
+    "production_code_changed": false,
+    "existing_results_changed": false,
+    "new_training": false,
+    "new_model_forward": false,
+    "new_scoring": false,
+    "Git_commit": false,
+    "GitHub_push": false,
+    "server_deletion": false,
+    "weight_backup_verified": false
+  },
+  "closed_scope_has_no_required_experiment_remaining": true
+}

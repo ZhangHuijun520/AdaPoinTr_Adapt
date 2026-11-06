@@ -1,0 +1,25 @@
+{
+  "status": "PRE_EXECUTION_STATIC_BLOCK_NO_GPU_ATTEMPT",
+  "request_sha256": "ee92d8244ddf6da6af8fd253a246812e7c9ee84513c72a27c4bb8011890c854a",
+  "bound_request_unchanged": true,
+  "known_incorrect_template_parent": [
+    {
+      "line": 6,
+      "text": "mkdir -p -- '\\home\\jovyan\\adapointr_work\\PoinTr\\logs\\cranial_bcsp_mamba_p1' || exit 122"
+    }
+  ],
+  "expected_parent": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1",
+  "cause": "Local freeze generator used Windows pathlib.Path to serialize a Linux parent path",
+  "server_files_installed": 0,
+  "controls_materialized": 0,
+  "launch_claims": 0,
+  "forward_attempts": 0,
+  "backward_attempts": 0,
+  "optimizer_steps": 0,
+  "next_scope": "Only replace Linux parent derivation with PurePosixPath, assert all rendered Linux paths, freeze v2 request/package; original request must not execute",
+  "evidence": [
+    "upload_readonly_prelaunch_block_v1.json",
+    "no_launch_state_readonly_v1.json"
+  ],
+  "tmux_note": "First capture tmux_check=True is a local PowerShell interpolation artifact, not a remote exit code; use independent list-sessions capture"
+}

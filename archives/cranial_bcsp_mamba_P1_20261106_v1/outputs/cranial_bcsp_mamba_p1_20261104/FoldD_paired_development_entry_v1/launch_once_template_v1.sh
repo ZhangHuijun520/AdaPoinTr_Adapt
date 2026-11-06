@@ -1,0 +1,12 @@
+#!/bin/bash
+set -u
+umask 077
+cd /home/jovyan/adapointr_work/PoinTr || exit 120
+for p in /home/jovyan /home/jovyan/adapointr_work /home/jovyan/adapointr_work/PoinTr /home/jovyan/adapointr_work/PoinTr/logs /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1; do [ ! -L "$p" ] || exit 121; done
+mkdir -p -- /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1 || exit 122
+mkdir -- /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/FoldD_T0_M0_development_20261106_v1 || exit 123
+exec >>/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/FoldD_T0_M0_development_20261106_v1/launch.log 2>&1
+env CUDA_VISIBLE_DEVICES=GPU-34a1b996-2bd7-88e6-9dca-164b718caea6 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 PYTHONDONTWRITEBYTECODE=1 MPLBACKEND=Agg MPLCONFIGDIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/FoldD_T0_M0_development_20261106_v1/mplconfig CUDA_CACHE_DISABLE=1 TMPDIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/FoldD_T0_M0_development_20261106_v1/tmp PYTHONHASHSEED=0 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 HF_HOME=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/FoldD_T0_M0_development_20261106_v1/hf_cache XDG_CACHE_HOME=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/FoldD_T0_M0_development_20261106_v1/cache TRITON_CACHE_DIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/FoldD_T0_M0_development_20261106_v1/triton_cache /usr/bin/timeout --signal=TERM --kill-after=5s 7200s /opt/conda/envs/adapointr-mamba/bin/python3.10 -I -S -B /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_foldD_paired_development_20261106_v1/bcsp_p1_foldD_paired_predict_v1.py --request /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_foldD_paired_development_20261106_v1/FoldD_T0_M0_development_execution_request_v1.json --request-sha256 REQUEST_SHA256 --authorization /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_foldD_paired_development_20261106_v1/control/paired_authorization_v1.json --authorization-sha256 AUTHORIZATION_SHA256 --runtime /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_foldD_paired_development_20261106_v1/control/paired_runtime_v1.json --runtime-sha256 RUNTIME_SHA256
+result=$?
+printf "%s\n" "$result" > /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/FoldD_T0_M0_development_20261106_v1/exit_code.txt
+exit "$result"

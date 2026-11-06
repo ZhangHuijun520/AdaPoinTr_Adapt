@@ -1,0 +1,248 @@
+{
+  "schema": "bcsp-p1-foldD-pair-preparation-v1",
+  "status": "FROZEN_PREPARATION_NOT_EXECUTABLE",
+  "fold": "D",
+  "seed": 0,
+  "arm_order": [
+    "T0",
+    "M0"
+  ],
+  "counts": {
+    "cases": 315,
+    "sources": 63,
+    "batch": 8,
+    "epochs": 100,
+    "batches_per_epoch": 39,
+    "updates": 3900,
+    "exposures": 31200,
+    "drop_events": 300
+  },
+  "n_input": 8192,
+  "n_output": 8192,
+  "coarse": 256,
+  "model": {
+    "NAME": "AdaPoinTr",
+    "num_query": 256,
+    "num_points": 8192,
+    "center_num": [
+      512,
+      256
+    ],
+    "global_feature_dim": 1024,
+    "encoder_type": "graph",
+    "decoder_type": "fc",
+    "query_selection": "learned_only",
+    "denoise_weight": 0,
+    "fine_coverage_weight": 1,
+    "fine_local_weight": 0,
+    "encoder_config": {
+      "embed_dim": 384,
+      "depth": 6,
+      "num_heads": 6,
+      "k": 8,
+      "n_group": 2,
+      "mlp_ratio": 2,
+      "block_style_list": [
+        "attn-graph",
+        "attn",
+        "attn",
+        "attn",
+        "attn",
+        "attn"
+      ],
+      "combine_style": "concat"
+    },
+    "decoder_config": {
+      "embed_dim": 384,
+      "depth": 8,
+      "num_heads": 6,
+      "k": 8,
+      "n_group": 2,
+      "mlp_ratio": 2,
+      "self_attn_block_style_list": [
+        "attn-graph",
+        "attn",
+        "attn",
+        "attn",
+        "attn",
+        "attn",
+        "attn",
+        "attn"
+      ],
+      "self_attn_combine_style": "concat",
+      "cross_attn_block_style_list": [
+        "attn-graph",
+        "attn",
+        "attn",
+        "attn",
+        "attn",
+        "attn",
+        "attn",
+        "attn"
+      ],
+      "cross_attn_combine_style": "concat"
+    }
+  },
+  "training": {
+    "seed": 0,
+    "precision": "FP32",
+    "optimizer": "AdamW",
+    "lr": 0.0001,
+    "weight_decay": 0.0005,
+    "clip": 10,
+    "step_per_update": 1,
+    "drop_last": true,
+    "checkpoint": "scratch_final_only",
+    "BNCal": false,
+    "evaluation": false,
+    "resume": false
+  },
+  "optimizer_explicit": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "amsgrad": false,
+    "foreach": null,
+    "fused": null,
+    "M0_no_weight_decay_flags_retained": true
+  },
+  "LR": "max(0.9**(epoch/21),0.02); scheduler step at each epoch end",
+  "BN_momentum": "max(0.9*0.5**(epoch/21),0.01)",
+  "resources": {
+    "wall_seconds": 86400,
+    "RSS_bytes": 8589934592,
+    "device_MiB": 22528,
+    "torch_peak_bytes": 21474836480,
+    "output_bytes": 2147483648,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "data_root": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1",
+  "bindings": {
+    "static_config": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/static_training_config_v1.json",
+      "bytes": 2024,
+      "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+    },
+    "fold_binding": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/fold_binding.json",
+      "bytes": 35012,
+      "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+    },
+    "order_plan": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/shared_order_foldD_seed0_v1.json",
+      "bytes": 1248506,
+      "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+    },
+    "train_manifest": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/manifest_8192.jsonl",
+      "bytes": 427975,
+      "sha256": "f94dbe21cb9e406db49a51f6578496db3228d783f15c07b28e3d8ae234a33758"
+    },
+    "factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/bcsp_p1_model_factory_v1.py",
+      "bytes": 4396,
+      "sha256": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4"
+    },
+    "encoder": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/bcsp_mamba_encoder_v1.py",
+      "bytes": 3546,
+      "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+    },
+    "training_runtime": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/bcsp_p1_training_runtime_v1.py",
+      "bytes": 11268,
+      "sha256": "939e317dd447d04c62897849c0230f1918dc65c46ec556acdb60c9d69dfebeee"
+    },
+    "timezone_implementation": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/exact_utc_resource_v1.py",
+      "bytes": 3563,
+      "sha256": "038267da9f78be5ea9d03164e674d388228768bf0c42959097fcadfd807f830e"
+    },
+    "preflight_scope": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+      "bytes": 23220,
+      "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+    },
+    "helper": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+      "bytes": 32728,
+      "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+    },
+    "qualified_QC_receipt": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/evidence/qualified_data_qc_foldD_8192_v1.json",
+      "bytes": 1659,
+      "sha256": "77aa496c0c90982e968dcaab7b440ebd13371aefcc880ced114857809103f0e9"
+    },
+    "contract_helper": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_contract_01dt08_v3.py",
+      "bytes": 16531,
+      "sha256": "08a9af361ef0279cfccf27f9d094020501bfcc9859692ca64322d8dd4c7fd499"
+    }
+  },
+  "common_initialization": "Exact shared state from frozen factory, T0 and M0 both scratch",
+  "numeric_policy_sha256": "132d019ea9d7a1a6994ee19bf98ea6686b343b3325762f1080d64b6adb6c7cc8",
+  "readiness_report_sha256": "e7e3b2fe84a4f2a46d457f5745f4c82f7a5049e07b9e7c2907a12dc69f8a7500",
+  "initialization_evidence": {
+    "events": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/gpu_admission_20261104_v3/events.jsonl",
+      "bytes": 244278,
+      "sha256": "f30e8ce732d06372e5b714dcf33435bc3d23ea0d8fca35a5b50c2112821bb049"
+    },
+    "T0": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/gpu_admission_20261104_v3/T0_construction.json",
+      "bytes": 136429,
+      "sha256": "5b0ad3082324603295805272064a332aed5a7a500f26b05bdc1cc436c6b591a9"
+    },
+    "M0": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/gpu_admission_20261104_v3/M0_construction.json",
+      "bytes": 148703,
+      "sha256": "c513b850779472384c2d1f52974b9c5f44aafc235d2c0b471549ac6eab949077"
+    }
+  },
+  "planned_install_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_foldD_training_20261106_v1",
+  "planned_output_roots": [
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/T0_foldD_seed0_train_20261106_v1",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/M0_foldD_seed0_train_20261106_v1"
+  ],
+  "remaining_gap": "Existing P1 entry freezes Fold C metadata. Need dedicated D entry and CPU tests/P3; no change to model/factory/runtime/contract helpers.",
+  "remaining_authorized_implementation": false,
+  "execution_request_created": false,
+  "training_started": false,
+  "training_input_index": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_pair_preparation_20261106_v1\\frozen_FoldD_training_input_index_v1.json",
+    "bytes": 224365,
+    "sha256": "460db2cde2e2022970b5a47262ceeb3ae41ae12552d103a35e919880f5a73665"
+  },
+  "order_verification": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_pair_preparation_20261106_v1\\order_and_exposure_verification_v1.json",
+    "bytes": 31109,
+    "sha256": "0f5bffdf65cc64c8bcd1280168b65ebd4961e925d304d4eedb5f840fc47310e0"
+  },
+  "foldC_stop_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\post_scoring_freeze_audit_v1\\scientific_interpretation_summary_v1.json",
+    "bytes": 9585,
+    "sha256": "31968069d93e685302a9c4fa18944b8b146c8b212e86dfe801e05213a443a611"
+  },
+  "scientific_invariance": {
+    "model": true,
+    "factory": true,
+    "encoder": true,
+    "runtime": true,
+    "static_training_config": true,
+    "numeric_policy": true,
+    "resources": true,
+    "exact3900_step_contract": true
+  },
+  "initialization_policy": "Both arms scratch with original seed0 factory and private Mamba seed20261104; no C trained checkpoint or D_T0 trained checkpoint initializes M0_D.",
+  "execution_sequence": [
+    "Separate T0_D execution grant -> unique scratch training",
+    "Formal T0_D training freeze audit",
+    "Bind real T0_D construction/order/exposures into M0_D request",
+    "Separate M0_D execution grant -> unique scratch training",
+    "Formal M0_D training and pair audit",
+    "Separate D development prediction/scoring authorization"
+  ],
+  "historical_GPU_evidence": "Reuse unchanged model/provider identity and accepted numerical policy. C GPU evidence is not relabeled D. No additional preflight here."
+}

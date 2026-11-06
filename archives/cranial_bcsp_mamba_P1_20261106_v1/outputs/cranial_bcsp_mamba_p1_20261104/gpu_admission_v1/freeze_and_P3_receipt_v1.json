@@ -1,0 +1,31 @@
+{
+  "status": "LOCAL_GPU_ENTRY_P3_PASS_CUDA_NOT_EXECUTED",
+  "checks": {
+    "original_four_files_unchanged": true,
+    "entry_syntax": true,
+    "exact_train_fold_batch_bound": true,
+    "two_native_binary_hashes_bound": true,
+    "artificial_26_contracts_pass": true,
+    "one_way_authorization": true,
+    "no_optimizer_construction_or_step": true,
+    "no_checkpoint_load_save": true,
+    "failure_restoration_and_caps": true,
+    "package_members_independently_verified": true,
+    "source_manifest_provenance_gate_static_reviewed": true
+  },
+  "limitations": [
+    "No actual SSM/AdaPoinTr/CUDA calls",
+    "CPU tests use synthetic model, torch2.5.1; server2.4.1 remains untested",
+    "Entry main/environment/import integration statically reviewed only; runtime gate can still fail",
+    "RSS/device/output checks sampled at phase boundaries; no dedicated cgroup hard RSS isolation"
+  ],
+  "request_sha256": "ee92d8244ddf6da6af8fd253a246812e7c9ee84513c72a27c4bb8011890c854a",
+  "request_status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "archive_sha256": "86c3e609ee414ac84261d1b76c9f93e2ad2836027d17eb5ddcdfca0812c41263",
+  "archive_bytes": 18216,
+  "installed_target_count": 6,
+  "archive_members": 7,
+  "training_requests_created": 0,
+  "GPU_calls": 0,
+  "server_writes": 0
+}

@@ -1,0 +1,1376 @@
+{
+  "status": "FORMAL_POST_SCORING_FREEZE_AUDIT_PASS",
+  "checks": [
+    "exact_authorized_request_SHA",
+    "exact_output_set",
+    "new_owned_output_path",
+    "P3_and42_CPU_tests",
+    "final_code_still_matches_CPU_tests",
+    "metric_definition_unchanged",
+    "fixed105_cases_21_sources",
+    "all105_reference_and105_V1_point_files_hash_match",
+    "authorization_exact_request_and_no_reverse_binding",
+    "materialized_authorization_SHA_and_timeout",
+    "worker_process_ended",
+    "successful_unique_attempt_no_retry",
+    "completion_exact420_rows_84_sources_and_no_GPU",
+    "stdout_exact105_cases_stderr_empty",
+    "frozen_CPU_environment",
+    "complete_ordered525_case_scores",
+    "selected_metrics_pose_risk_thresholds_coarse_dense_algebra_and_GT_control",
+    "risk_counts_new_rescued_all105_cases_and_defect_tables",
+    "all84_source_rows_independent_five_defect_mean",
+    "paired_summary_identity_and_descriptive_only",
+    "all_metric_source_equal_means_deltas_medians_and_win_loss_independently_recomputed",
+    "five_defect_summaries_independently_recomputed",
+    "all_case_deltas_and_all_source_regression_orderings_match",
+    "all_three_CSV_files_match_JSON_values_and_order",
+    "no_failure_marker_or_unexpected_payload",
+    "all_result_and_input_fingerprints_stable_atime_excluded"
+  ],
+  "request_sha256": "749de9cffe7aaba667108347f93ad86bf7cea447c4e97f58e60897122048f897",
+  "exit_code": 0,
+  "counts": {
+    "cases": 105,
+    "sources": 21,
+    "model_scores": 210,
+    "controls": 210,
+    "case_rows": 420,
+    "source_rows": 84,
+    "model_source_rows": 42
+  },
+  "output_manifest": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\case_metrics.csv",
+      "bytes": 219514,
+      "sha256": "92ca79b8cc1e8d4709bca4c3b2d102705eb9875c96bd86dbce6ee41f66a9595d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\case_metrics.jsonl",
+      "bytes": 2372343,
+      "sha256": "ed42fcc58a82e464061d679dd41479ed46a0fbebb8e17ef4c9d0bc0434d4a581"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\completion.json",
+      "bytes": 474,
+      "sha256": "72cec66513a23243da4562bb8e02ad5f99396af532dda6b28300901808201df2"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\defect_comparison.json",
+      "bytes": 7816,
+      "sha256": "ea4a4cb493f4d19b804792a58889b22929e37e3ed954845cf493a3208e2658f1"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\execution_environment.json",
+      "bytes": 426,
+      "sha256": "ced2e294d9ab435144e81c68fa2fe8c7258f038ccae9fe117bc957669d47e57d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\paired_case_deltas.csv",
+      "bytes": 61588,
+      "sha256": "c2a6502ef0ba8887e59acc5011295b0557c1cc1ec9750852542c6f92297125f7"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\paired_comparison.json",
+      "bytes": 87319,
+      "sha256": "2fcff7cb8d2eddda7ee708434a6918cbb6d13dfc01dd974901dc1add2e0f27ac"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\regression_rankings.json",
+      "bytes": 228821,
+      "sha256": "ee0643d3c3bd3df8475f8ea4471df03770a71a9efb0a5f1e34c562acfbbe2406"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\risk_transitions.json",
+      "bytes": 78908,
+      "sha256": "60f6a5250cc854a2e40279596b11d370f2534deeebfc966c5ab7c2c9cbcebff4"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\single_attempt_claim.json",
+      "bytes": 152,
+      "sha256": "9aa274a80c64617604fd22c13129349d5ece4cfc9a00b57d9be225457d751c89"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\source_metrics.csv",
+      "bytes": 42983,
+      "sha256": "540e4d4242ae12c7eb22bb52eb4b16be9d7706636ce09724fc1da5893effd4ef"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\source_metrics.json",
+      "bytes": 125747,
+      "sha256": "e4050f9d0830fceea71fce4559a7898a89d1166e5c379480ceb730979fdf6864"
+    }
+  ],
+  "all_read_file_manifest": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\local_scoring_execution_request_v1.json",
+      "bytes": 13484,
+      "sha256": "749de9cffe7aaba667108347f93ad86bf7cea447c4e97f58e60897122048f897"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\case_metrics.csv",
+      "bytes": 219514,
+      "sha256": "92ca79b8cc1e8d4709bca4c3b2d102705eb9875c96bd86dbce6ee41f66a9595d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\case_metrics.jsonl",
+      "bytes": 2372343,
+      "sha256": "ed42fcc58a82e464061d679dd41479ed46a0fbebb8e17ef4c9d0bc0434d4a581"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\completion.json",
+      "bytes": 474,
+      "sha256": "72cec66513a23243da4562bb8e02ad5f99396af532dda6b28300901808201df2"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\defect_comparison.json",
+      "bytes": 7816,
+      "sha256": "ea4a4cb493f4d19b804792a58889b22929e37e3ed954845cf493a3208e2658f1"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\execution_environment.json",
+      "bytes": 426,
+      "sha256": "ced2e294d9ab435144e81c68fa2fe8c7258f038ccae9fe117bc957669d47e57d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\paired_case_deltas.csv",
+      "bytes": 61588,
+      "sha256": "c2a6502ef0ba8887e59acc5011295b0557c1cc1ec9750852542c6f92297125f7"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\paired_comparison.json",
+      "bytes": 87319,
+      "sha256": "2fcff7cb8d2eddda7ee708434a6918cbb6d13dfc01dd974901dc1add2e0f27ac"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\regression_rankings.json",
+      "bytes": 228821,
+      "sha256": "ee0643d3c3bd3df8475f8ea4471df03770a71a9efb0a5f1e34c562acfbbe2406"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\risk_transitions.json",
+      "bytes": 78908,
+      "sha256": "60f6a5250cc854a2e40279596b11d370f2534deeebfc966c5ab7c2c9cbcebff4"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\single_attempt_claim.json",
+      "bytes": 152,
+      "sha256": "9aa274a80c64617604fd22c13129349d5ece4cfc9a00b57d9be225457d751c89"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\source_metrics.csv",
+      "bytes": 42983,
+      "sha256": "540e4d4242ae12c7eb22bb52eb4b16be9d7706636ce09724fc1da5893effd4ef"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\paired_scores_v1\\source_metrics.json",
+      "bytes": 125747,
+      "sha256": "e4050f9d0830fceea71fce4559a7898a89d1166e5c379480ceb730979fdf6864"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\bcsp_p1_pair_score_v1.py",
+      "bytes": 24038,
+      "sha256": "c47273e733f06d38fd7d1228b49c3bbf201322d579621eaed2713033c3e1bdea"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+      "bytes": 6784,
+      "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+    },
+    {
+      "path": "E:\\RelocatedData\\zhj\\.conda\\envs\\adapointr\\python.exe",
+      "bytes": 107792,
+      "sha256": "7b43ac317d5f79012ad097559345e0e4597cfcf2016e209d6643aaf2c3be8223"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\post_prediction_freeze_audit_v1\\audit_report_v1.json",
+      "bytes": 1317081,
+      "sha256": "637adf79d39846b87e807bed21267678734d35663b889d699abd9969b8cde26f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\local_download_verification_v1\\verification_result_v1.json",
+      "bytes": 1929,
+      "sha256": "8791a7f5896ee05bbd761693547a3c80978f8a27a9e1a05c4fde7cd85f8261f0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\transport_payload\\FoldC_T0_M0_development_execution_request_v2.json",
+      "bytes": 12453,
+      "sha256": "187a19712d92cb5cdf92eebc2a46ffe5caf6e99614224bc8fbac0a2498e76b82"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\CPU_contract_result_v1.json",
+      "bytes": 758,
+      "sha256": "97ffbba9f166ca96b1d84bda04edecad866a1d12633ff6b25e0f3ced75e60d6a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\local_P3_v1.json",
+      "bytes": 2237,
+      "sha256": "f6369f9543ed2a523561c9ba91dfe31a469e7d82eed9ece82277f1b9054b5cf3"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\frozen_scoring_protocol_v1.json",
+      "bytes": 3840,
+      "sha256": "89dd101e12663d52b4283ebe464e221e3b7db5dba497bda4a042d90d8e680384"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\reference_manifest_foldC_v1.json",
+      "bytes": 202452,
+      "sha256": "1872040d68c331cf9fa3ae2c9d64977b1c2b3a9fc7b8a4c26d098325a5764a81"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\transport_payload\\paired_development_input_index_v1.json",
+      "bytes": 170709,
+      "sha256": "576feea085172538c2a0dc52f8e8e7a8eb8087bba1a5542ea7fc1eeb6a72f3bc"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\CPU_scoring_preparation_v1\\P1_score_case_index_v1.json",
+      "bytes": 110919,
+      "sha256": "08457cb6ddb59e267e1861ba3129177eeb934fd4fedecf7d5c3fdf30cdb4469c"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\transport_payload\\paired_development_protocol_v1.json",
+      "bytes": 3161,
+      "sha256": "237ac077bef166b6d2246bd0b6fc6ebfe36b4904b3789b99bc11b335e047f77a"
+    },
+    {
+      "path": "E:\\ResearchBackups\\AdaPoinTr\\BCSP_MAMBA_P1\\2026-11-06_FoldC_paired_development_eval\\development_predictions_v1.tar.gz",
+      "bytes": 19045938,
+      "sha256": "068dd9812c410c2b84451740a3ed2eb2f12326d8a66fe3bc3ee4623ab3f9b733"
+    },
+    {
+      "path": "E:\\ResearchBackups\\AdaPoinTr\\BCSP_MAMBA_P1\\2026-11-06_FoldC_paired_development_eval\\development_predictions_v1.tar.gz.sha256",
+      "bytes": 100,
+      "sha256": "a7d512d1687a7c74a118b736c223d3b6ef218b4d531c698e67799ba9ead28420"
+    },
+    {
+      "path": "E:\\ResearchBackups\\AdaPoinTr\\BCSP_MAMBA_P1\\2026-11-06_FoldC_paired_development_eval\\development_predictions_v1.tar.gz.bytes",
+      "bytes": 9,
+      "sha256": "3015c5c61ab48dd2a4eedde5664ea033342ed6c00d938f0a35ed00fda373e88d"
+    },
+    {
+      "path": "E:\\ResearchBackups\\AdaPoinTr\\BCSP_MAMBA_P1\\2026-11-06_FoldC_paired_development_eval\\development_predictions_v1.tar.gz.contents.sha256",
+      "bytes": 23877,
+      "sha256": "871570eb4fca63fc9367d979d061e39cc63e77368eeaf22ce43a8c1d90ee95d2"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\test_p1_score_contract_v1.py",
+      "bytes": 19335,
+      "sha256": "1f4a9e903c6ad4005fcccdfc4ca94a5d8ca49c8ef6064192f4dd552cca5eb020"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\cpu_contract_v1\\stdout.txt",
+      "bytes": 2879,
+      "sha256": "2bc72a3bdda4ddcfd884114a390c3e4a62f599a72e8fee80b4b4f21f87799873"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__001__bilateral.npz",
+      "bytes": 1918305,
+      "sha256": "0b6664cf383518aec5d0928e0f68dedb4a366022e8a3a6e1ed4d489cef8beb4f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__001__bilateral_8192.npz",
+      "bytes": 157079,
+      "sha256": "a8afe1793a9338478662b1d9b18df2bedb337dd60c3bf133c1c4284b7a22654e"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__001__frontoorbital.npz",
+      "bytes": 1152907,
+      "sha256": "78e6b784836b9385145b855aad0be7a1d79fc35af9159138eab91907a699fa1c"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__001__frontoorbital_8192.npz",
+      "bytes": 156660,
+      "sha256": "179a54d3cc941ed03b5de7b1f12b5e59e05e42f89619253e413315a1665141c4"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__001__parietotemporal.npz",
+      "bytes": 1261165,
+      "sha256": "3dac7a90a6bb0eee952001390dd3659d3603244d15581d195521846a5a8d1907"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__001__parietotemporal_8192.npz",
+      "bytes": 157321,
+      "sha256": "0d6350abea8de7c40f3841708d81d584549c28b8152dc052ceb6cf8b8814cf15"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__001__random_1.npz",
+      "bytes": 2166460,
+      "sha256": "723a67af5f2b858459833b99ce047a53a807be8bf63feb3f060c2caca67d9566"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__001__random_1_8192.npz",
+      "bytes": 157859,
+      "sha256": "dee139ed533590073481ddc132e02e9ae96b6d950549ae1af45f8d4c9c9fe83a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__001__random_2.npz",
+      "bytes": 2343181,
+      "sha256": "5823d0ab6b2a4ca5814182b2e47d990162993292660bdb6837e1ee82ee8dd44f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__001__random_2_8192.npz",
+      "bytes": 157822,
+      "sha256": "69cea99523b3cfb5d62413674eaa6c5c8b8ad0ab601931a6a537726b66ff4e31"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__003__bilateral.npz",
+      "bytes": 1830008,
+      "sha256": "7a73b4d04ef45b8f66750bee4609d1872debe4fe7ca2d9418ec7ce5aa78b848a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__003__bilateral_8192.npz",
+      "bytes": 155825,
+      "sha256": "b2c025c661d3ee44d99898b8a1100749a95a5ad973a72e6850c3ad4234e0c04a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__003__frontoorbital.npz",
+      "bytes": 1523106,
+      "sha256": "9a188517222f992433ecc73ce1b25d261fd37277c4c859898c67d4aecb604b56"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__003__frontoorbital_8192.npz",
+      "bytes": 153120,
+      "sha256": "898596343e103cce19b82ba01ee9779ed1f3fde7e71737abe77300c33f8def26"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__003__parietotemporal.npz",
+      "bytes": 2152734,
+      "sha256": "520be0308f3ead0fa587ada6c35fa06c8966bdb914f114ec818e0488c67ae9d1"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__003__parietotemporal_8192.npz",
+      "bytes": 156543,
+      "sha256": "bfe7cbae6808613582e16a24d7e53be5f04dbf3c78ce000a8ea08b05759fe2fc"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__003__random_1.npz",
+      "bytes": 2694455,
+      "sha256": "1e40dea9de2f27c029078c8611cf12da12990eec6e5247d32ec4e29e47bc56ea"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__003__random_1_8192.npz",
+      "bytes": 156273,
+      "sha256": "74a2b1939496995f1ea265f63de2f1fd3d0fd80984f897dcf9e62902617eed92"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__003__random_2.npz",
+      "bytes": 2376092,
+      "sha256": "ab4972fbacfa9f702c310688a1505d4d7c4f304bbf76ce350801db12f97ff45f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__003__random_2_8192.npz",
+      "bytes": 157944,
+      "sha256": "235a2d4da033a0e50cd8597fff5554b1a8a37e5307b9cdf8379b22c9dc225459"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__012__bilateral.npz",
+      "bytes": 2215130,
+      "sha256": "3d54702eb1d681e9ef029ad62bfedca9e2a41ef1f85d1c3e1ed1a6c719c0a052"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__012__bilateral_8192.npz",
+      "bytes": 156796,
+      "sha256": "3d1cd6d7cc4378580ed24f4a0907c05eacfd118cd608ea9a3ca0d9cb2384b5f3"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__012__frontoorbital.npz",
+      "bytes": 965384,
+      "sha256": "7d94094fdf560a6e260889f5b8b2db73c7e92429f64598a6571109255efabe84"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__012__frontoorbital_8192.npz",
+      "bytes": 155362,
+      "sha256": "fbe0d03e7865cffe383f5ff0b52c9a7afa401da8c9de350dee41487be95e503d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__012__parietotemporal.npz",
+      "bytes": 1542462,
+      "sha256": "86d2c951fb193e15e6c1feac70714907650fe452801321d85277b0d50bf61274"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__012__parietotemporal_8192.npz",
+      "bytes": 156038,
+      "sha256": "0db510a5776ff89c3f9b16e9d6a8783ac17dffe1878093027b255dcb69384cd5"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__012__random_1.npz",
+      "bytes": 2622466,
+      "sha256": "1266abcb8bccbeff9c9ca59408e39e0f58a8ac0eb273c9c354ccdba50dc05426"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__012__random_1_8192.npz",
+      "bytes": 156462,
+      "sha256": "3fe82c95f022b8a09cacd12228ad97c3d2001f564ae49318019d20df62b2ca1a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__012__random_2.npz",
+      "bytes": 1545662,
+      "sha256": "6efa5fad0f93519b11e6576302d4994e84fb140d1950585181619b59ca85b8fb"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__012__random_2_8192.npz",
+      "bytes": 154945,
+      "sha256": "fb8a756e2039e7970f928266d5c349ced4a8fc6f7211225308b3d79ac61169d1"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__013__bilateral.npz",
+      "bytes": 3123595,
+      "sha256": "9d7268caa4fc3fed4b13c0f40131f48c52aa6ed7385044d48d01941ed4b4ce23"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__013__bilateral_8192.npz",
+      "bytes": 157485,
+      "sha256": "39f39ea40e5d89adffd9e04d7c0c3a763f803f1f6a937fe1b01a8916eface4d7"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__013__frontoorbital.npz",
+      "bytes": 578432,
+      "sha256": "d718cbb1b3842350b0244e9047f00e766954da02eb87171d21239dc9d00c7297"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__013__frontoorbital_8192.npz",
+      "bytes": 155848,
+      "sha256": "2479293b4004cf8306e2037e2d95e778dde727e92609275cbce71d2f46a67857"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__013__parietotemporal.npz",
+      "bytes": 1008044,
+      "sha256": "3d05586a2e259673f79e3112a22db781b4c9ca05c4902f2b8e892fad7131a091"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__013__parietotemporal_8192.npz",
+      "bytes": 157205,
+      "sha256": "ce5b56127150dfd47bf27b5307c8609c3f4fe6b79360892f9415b3058a0da2ff"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__013__random_1.npz",
+      "bytes": 4045527,
+      "sha256": "96cdeac156dabc157fdcb453eb518bb6835da9c78ed90c8fa914095c4547a773"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__013__random_1_8192.npz",
+      "bytes": 156482,
+      "sha256": "2fb80c19b6cec328edd753b7258f581fba946fa7df2821849c38427287491f46"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__013__random_2.npz",
+      "bytes": 1877036,
+      "sha256": "3895c47bc067b9e99dc79f65f47670dd70693aed8c772d3779e26d4c1c424832"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__013__random_2_8192.npz",
+      "bytes": 156083,
+      "sha256": "d3dbdfafdf1c272b55efe2b98e43bcc2cc3ea75f1133e0fcf6408af5c0c07d0c"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__025__bilateral.npz",
+      "bytes": 3232238,
+      "sha256": "3342a9c3520caba45f95f73c18fc4e323e93c993088fcc84e3008d3708744a2a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__025__bilateral_8192.npz",
+      "bytes": 157452,
+      "sha256": "83abc16cc1fe4a3e3b62ad2e8df98926aad304e39ced75f4494f183204e8e081"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__025__frontoorbital.npz",
+      "bytes": 1191437,
+      "sha256": "ce024ca1ce474cc820d947655c3f72b34a36478b3dfb7ec582f4c954ffb27209"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__025__frontoorbital_8192.npz",
+      "bytes": 155819,
+      "sha256": "60d9f24dbd83644072535cf494fb9a0e351eef6e750c1a28cb06bb2a2f24a8c3"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__025__parietotemporal.npz",
+      "bytes": 975675,
+      "sha256": "c41fa7e9d99ad0b5327636adc0bbbce7713349fd88e4daea778b44cbdfd79c99"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__025__parietotemporal_8192.npz",
+      "bytes": 155159,
+      "sha256": "eafa5221fff3ae751cbbff0708cab31e366878052832d8da43996190b68d84e0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__025__random_1.npz",
+      "bytes": 2025125,
+      "sha256": "b1acd3701e32c0737e8ba85c2e52d27770c0cf43008a1aa8e88b10bbccc441a5"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__025__random_1_8192.npz",
+      "bytes": 156758,
+      "sha256": "44666b879789de12c671ff83e00229a2e9c31df9ff44876edb135eea5139ec86"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__025__random_2.npz",
+      "bytes": 1724198,
+      "sha256": "f0cbb8e1fe0fc363f79175a51c290da4ad59cffb61e5a06ac20ab18da786eec5"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__025__random_2_8192.npz",
+      "bytes": 157159,
+      "sha256": "981276918a0cd52260392aac120cb798aac63a7a29c7bc5b1758f61de84f9a29"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__026__bilateral.npz",
+      "bytes": 2098243,
+      "sha256": "62bb07d74a2b8df6f911a8882408ec41266adc8311193362e33a438e92172893"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__026__bilateral_8192.npz",
+      "bytes": 156986,
+      "sha256": "c208956624cdc1f8f76e3d756861c6f7c2b24a444b3578c8117a5009df2056ac"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__026__frontoorbital.npz",
+      "bytes": 1263366,
+      "sha256": "cd33d6d93225e0550fa9d1d430f9d116e73fa4d982efb4196f5013b5a5e9c1a0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__026__frontoorbital_8192.npz",
+      "bytes": 156602,
+      "sha256": "eddf72c9ec37c242de11edb97bb55c3b38ba894fbe57d685b406c96a34619686"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__026__parietotemporal.npz",
+      "bytes": 1458735,
+      "sha256": "6552600fe4b9caee4e0776b2053f2e9ac110df5ea48ffd8953d606ec84ca31cd"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__026__parietotemporal_8192.npz",
+      "bytes": 156711,
+      "sha256": "a4015bd697144f206c741517237f81b25aabc4d7c864a2c28ac6689bab898d5f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__026__random_1.npz",
+      "bytes": 4183023,
+      "sha256": "08db8f65ee7b757ef41c166e658e3a523c5c4a8ef945b8f92834be2ba0bdce10"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__026__random_1_8192.npz",
+      "bytes": 156826,
+      "sha256": "a5d02d6dded321b14bf762dbf375c5f12d0a661fbf8233e7c21e3878e205d94f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__026__random_2.npz",
+      "bytes": 1707585,
+      "sha256": "0d184fc8bd617f17345cc413baa10b23ef9753033fbad9cafc70a174bd136eaa"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__026__random_2_8192.npz",
+      "bytes": 156671,
+      "sha256": "3add298f19025bf64791585ac1060bb9ec92ac7bee3c4c51c5e6b0102fb50c6b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__036__bilateral.npz",
+      "bytes": 3185096,
+      "sha256": "b36c3165444bf16b0b4b922f390be13032b1ec2a4c535adb10a2f58bef8e879f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__036__bilateral_8192.npz",
+      "bytes": 157736,
+      "sha256": "9dd61c9bf1d6b8ab4019dd35d944dbc094cf56217fe9379532709fe49f19076b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__036__frontoorbital.npz",
+      "bytes": 1104846,
+      "sha256": "d048e992269b1183d6993c9304c1fe93c2b87630cdacbe6e57b8010ab5530eb4"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__036__frontoorbital_8192.npz",
+      "bytes": 155719,
+      "sha256": "80d5290405aa937f2754c4a7983f6cfc5351bbc8b65afe1525a519a444317d82"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__036__parietotemporal.npz",
+      "bytes": 1981857,
+      "sha256": "3da66d9e4d33ba874f456e8b3f0ecac1195432765b6d7a43c1bdd9aa6cf4c497"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__036__parietotemporal_8192.npz",
+      "bytes": 156163,
+      "sha256": "3c9a61def6968be9276dd00618921045e5e508d78be8cbd538e916739123c8dd"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__036__random_1.npz",
+      "bytes": 2806996,
+      "sha256": "e61b90e64b673a0e3ca8ccc517c55926c314513ab92cc6c0f956ea44a765f905"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__036__random_1_8192.npz",
+      "bytes": 157311,
+      "sha256": "0bf8708221b385d9a3dd63ce7df051b6b204623db92f3171210e4809986c716c"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__036__random_2.npz",
+      "bytes": 4058504,
+      "sha256": "807e9362e1b1a1fd9e27220e14592b5c380801ca48f1fcc3aff777a78b465717"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__036__random_2_8192.npz",
+      "bytes": 156561,
+      "sha256": "64c33ece4ee1fc59fe7d84e2841851201ab791c9948e6524ef01c7929ce66d95"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__038__bilateral.npz",
+      "bytes": 1996368,
+      "sha256": "da24179a9c6fe1e217c2119708f704c611b814cdde9215937f72a3b1c1137eec"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__038__bilateral_8192.npz",
+      "bytes": 157838,
+      "sha256": "22e1e04d3f4abdc667d07391fda7729eed20d9ddf38235251da60549c6266cc2"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__038__frontoorbital.npz",
+      "bytes": 759933,
+      "sha256": "532d8e9333e44dc8d54671204830f1f516445e135858c8d9356cde343c624ee7"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__038__frontoorbital_8192.npz",
+      "bytes": 155479,
+      "sha256": "15d83c7f71e2318b8597fff2f557fb521916469aa6b7c80fe95fa65fbfbaee21"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__038__parietotemporal.npz",
+      "bytes": 972803,
+      "sha256": "d2b361ba0fa63ee258f0a0c0a0ac1209f7b516097d077ff46761652fd13a626e"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__038__parietotemporal_8192.npz",
+      "bytes": 156809,
+      "sha256": "333d10c41fccea7cc111cc78bc858c49efa4dabe22c1cba4f303680537bb180b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__038__random_1.npz",
+      "bytes": 2371064,
+      "sha256": "380a6c451f8d450c2f1443b93588051b6188e46e33e6077fc02290d8674e3d6b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__038__random_1_8192.npz",
+      "bytes": 157867,
+      "sha256": "ef47e3d8d4d7b1e1815e3c145727468480b3e414231e281662422a8503509407"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__038__random_2.npz",
+      "bytes": 2268131,
+      "sha256": "7b80fad8c8ed1e87a85fe9b9ad18015801b696cd2da6043ba5ed211ce53b621b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__038__random_2_8192.npz",
+      "bytes": 158272,
+      "sha256": "470c8856176697d7d2c62a73a0d167aaeff9571e2facabe60f689752b9f1dbdd"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__041__bilateral.npz",
+      "bytes": 2784052,
+      "sha256": "54215875ae19d4fec9361df6a409ad97c6eaa2035bba6a2a948c21333ef93cae"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__041__bilateral_8192.npz",
+      "bytes": 157853,
+      "sha256": "4eaffa67f409222cb1b4492d20de71e081b8fc469e8b575474bad2e796797123"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__041__frontoorbital.npz",
+      "bytes": 1157903,
+      "sha256": "c90bb3f179c71a922378487fb6716786e8e70e9829ee85c82302cf53604af059"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__041__frontoorbital_8192.npz",
+      "bytes": 156857,
+      "sha256": "62fc94e78a0e23442979019071416be70f27a22cfde8ee94bde72ff80af5230c"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__041__parietotemporal.npz",
+      "bytes": 1801072,
+      "sha256": "adee0bd9dfcc902fc30fbf86001c8c9f7c9e95aef5dd4a8f72b2d700491df683"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__041__parietotemporal_8192.npz",
+      "bytes": 157631,
+      "sha256": "6e075945150a0636eb155766452a33ac28e60122242de19d742ef74a250473f2"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__041__random_1.npz",
+      "bytes": 2427995,
+      "sha256": "0dca49cd3513f562bf6c59c74ef25956715295cf3840f3aef4cf0e02c7fe990c"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__041__random_1_8192.npz",
+      "bytes": 157670,
+      "sha256": "e791d6ddbaa6aaec2b86f00cdddc89d4e8e7407d9ebe1a064a54ef87d023a175"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__041__random_2.npz",
+      "bytes": 2936438,
+      "sha256": "ecc654edece258206600f7e7b148b783bcf60121f2c4ef784e7ef1957333e9d7"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__041__random_2_8192.npz",
+      "bytes": 156823,
+      "sha256": "c143c3bdf392a75d48c5c01c4c867d7617e8b007e8dc2f745658a4afebf3682a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__042__bilateral.npz",
+      "bytes": 3306491,
+      "sha256": "8fa27ed8b30ab0fa38e8ad3d72b4c06f1fc3687d7877d8bb7e6ddd9d9434110f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__042__bilateral_8192.npz",
+      "bytes": 157674,
+      "sha256": "d3a304077c5822f5eb6d3257560f0e646748dd49ea4f80d52a0d1eedf8f3dfe9"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__042__frontoorbital.npz",
+      "bytes": 738144,
+      "sha256": "16ebfef8173dcf9a802e46ad1626d79cd4f148e9fc6bc95989514d0149351ebe"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__042__frontoorbital_8192.npz",
+      "bytes": 155461,
+      "sha256": "5622b6507ad0cb030b1167a10e75b19770e56d62f5460c0c023cddc99302ef01"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__042__parietotemporal.npz",
+      "bytes": 1218891,
+      "sha256": "9925d30ceb816c090b353835653e869aff9a3eeca743e3e16f14b19329b1130e"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__042__parietotemporal_8192.npz",
+      "bytes": 156177,
+      "sha256": "c90722fb42d2362bd6efa8eb92ed56d7a42a95121230f3a84060eca1a0e13768"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__042__random_1.npz",
+      "bytes": 3743385,
+      "sha256": "ec5b6d33411e4935cd2ee2d9d2a4f4255f248292eac8ed8014f90a9ebde90cfd"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__042__random_1_8192.npz",
+      "bytes": 156501,
+      "sha256": "1e80d57a538ac05215fecf20098700de74d424e9f03bfe56d6238350cc82a76a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__042__random_2.npz",
+      "bytes": 1799317,
+      "sha256": "5a1ac16f4274ae88fe9e99012e3e6bc98e35d957fe7a512ba3e7204de2a0aeb9"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__042__random_2_8192.npz",
+      "bytes": 157531,
+      "sha256": "6ed411d8d7dab59ad85065c5793ec92f170614f1fcd84bede38601beca2d7e58"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__047__bilateral.npz",
+      "bytes": 1616976,
+      "sha256": "3d3c51dcbda547a085a5c9e59ad5d066107c5e58dabbc5eef4137308fa897d74"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__047__bilateral_8192.npz",
+      "bytes": 156689,
+      "sha256": "d12cb632e0c571a5e3cbea1618e0c7bdc3f0cd155faf2dfcf0dc562334343e52"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__047__frontoorbital.npz",
+      "bytes": 922500,
+      "sha256": "3a43bd06f70bf0068805b9453ea09c56dd76a349a59d097872394bf04865c04d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__047__frontoorbital_8192.npz",
+      "bytes": 155388,
+      "sha256": "69b07ebb26b93b8b86fbc39dc32811e111cb54f80d54cb77c98f042448d0b3dc"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__047__parietotemporal.npz",
+      "bytes": 1182883,
+      "sha256": "9a3965c56f0c37798434dc11539a40c38f4601d20b18d1b73f67b738a60d6f60"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__047__parietotemporal_8192.npz",
+      "bytes": 155876,
+      "sha256": "89bd6ede1f1acec0fae180ff4a6e85709902e86d72bf912722e235d2aee9f97f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__047__random_1.npz",
+      "bytes": 2325836,
+      "sha256": "36fe7d08f98c3915a1c741e8d68aefdd51df1b9525816160ffe6bd9d4201ce82"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__047__random_1_8192.npz",
+      "bytes": 157995,
+      "sha256": "d6887b6b1b04547790777cc2ece471d96148b7987275d60fcb2083d9490dedae"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__047__random_2.npz",
+      "bytes": 2470199,
+      "sha256": "26a3a14b9ba2f9801c56edd43ce697430ff2bc9dd33751c60d88fd0dd35e9dbf"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__047__random_2_8192.npz",
+      "bytes": 156997,
+      "sha256": "7fe33dea711344cb862e2bbf7a8c14459742806c3257c289be23754f70836818"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__051__bilateral.npz",
+      "bytes": 3778790,
+      "sha256": "e0ebab731e3ef282119cb91c96074c54ecac281cee1ac1ee39ee1bd36a568be5"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__051__bilateral_8192.npz",
+      "bytes": 157909,
+      "sha256": "24e12b37066d727e64d6b925197852a8bd0f1af783aa7eebb31f85b1906ba381"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__051__frontoorbital.npz",
+      "bytes": 645218,
+      "sha256": "7673f2a7ce5c67f86bcb865e0b6d833749dee147d226be8c1289551b09a4a639"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__051__frontoorbital_8192.npz",
+      "bytes": 156448,
+      "sha256": "d8244b5b722fae6e29bb5d2c4f4b122032ce1e8aad11690e1689b26a23118949"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__051__parietotemporal.npz",
+      "bytes": 1145582,
+      "sha256": "d1afa2381b98b28ad4550e4e893920b3c7a42f20b361cb5da300d7d5cf7db7a9"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__051__parietotemporal_8192.npz",
+      "bytes": 156017,
+      "sha256": "a4ec9a10f0e0de4a171e1520972f56351926a2db9e82c134cf9351d0835f0a5d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__051__random_1.npz",
+      "bytes": 2346151,
+      "sha256": "262f8ab198b68888e661900bc4882740708b00b75027c099da2cb6a908ed23c2"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__051__random_1_8192.npz",
+      "bytes": 157819,
+      "sha256": "f8c9b01eff67a6c39119c29ffeff3fde55faec07fc6b1c09a64aa9adaa238c54"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__051__random_2.npz",
+      "bytes": 2347423,
+      "sha256": "f4cd3bcce4bc0444061bd23010b8ca60f69e3156a103cf9133463c7f3b29d52a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__051__random_2_8192.npz",
+      "bytes": 156476,
+      "sha256": "3d67d686e4aab8622bd9df091c1778a0c2748ef047d3001771eab2e02b58e758"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__053__bilateral.npz",
+      "bytes": 1736632,
+      "sha256": "40030b59ee6fdaff0356170615ba389db746f29aee1c894c7caf13d57831518f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__053__bilateral_8192.npz",
+      "bytes": 156902,
+      "sha256": "e6f088b3d89c2d3cce868d2ab3167ba4fd627d408f5e0a8023fb3faf93567af8"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__053__frontoorbital.npz",
+      "bytes": 652080,
+      "sha256": "fb6d5390a565ba2c3368695e49e7544a7db392f5f1d0664fd574c054a3eeb631"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__053__frontoorbital_8192.npz",
+      "bytes": 155516,
+      "sha256": "de193b5874efe774502ecda1b761efffa6f33877dc53c9357d4f66e109a91afe"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__053__parietotemporal.npz",
+      "bytes": 1446214,
+      "sha256": "a4872ba1474b8d7f123ad98228aaaffa23b39681b3e469fbd3557c0aaf10fd57"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__053__parietotemporal_8192.npz",
+      "bytes": 157112,
+      "sha256": "aebb0788b415afa99ce62aff30da7d1726712dc76d1018df6ad638a22d1f6e2e"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__053__random_1.npz",
+      "bytes": 3340607,
+      "sha256": "396d3173c6c92b8bd010c90d13fca8a70f69af5af9b9df198dcd6b6fcd19b4b1"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__053__random_1_8192.npz",
+      "bytes": 157316,
+      "sha256": "4d0ca178324ae4b245bb0235b8df29d8734dfb743546d6dce644ac216e4a74f0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__053__random_2.npz",
+      "bytes": 1616405,
+      "sha256": "210fe2e1e0c7c905098461550953ec7e788454d2a87af416d404941f5e93a5a7"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__053__random_2_8192.npz",
+      "bytes": 156982,
+      "sha256": "825c27f1406a725321897da8d817e0218172fe580c86a201fbef26868b3fadab"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__061__bilateral.npz",
+      "bytes": 1809388,
+      "sha256": "ce492317e9067b15616c5f541fc5c4c1768641ddc826634683cf03e2136ba4ba"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__061__bilateral_8192.npz",
+      "bytes": 155452,
+      "sha256": "996303b16bde9b325b45fa8c8fd5a1b24585f5ec0bfcbd48f68db38b18ce9751"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__061__frontoorbital.npz",
+      "bytes": 1328016,
+      "sha256": "95194924b4472d4e98cfc22459d0be43231dc72d576cd64cafb66adc29b99fef"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__061__frontoorbital_8192.npz",
+      "bytes": 155543,
+      "sha256": "0a24358f54c3fb028a6f672bf843916f040f320eba9292efe29e2eabaa15caa9"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__061__parietotemporal.npz",
+      "bytes": 2132596,
+      "sha256": "983ab5cf16175e79fd55b532c6cfebcc5dff5a690173a1965043ee0d000598cd"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__061__parietotemporal_8192.npz",
+      "bytes": 157139,
+      "sha256": "278b77bdcebf3fe73aeb75d2447c4259f7b09a21e1b30934b9af9ef91620e2c3"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__061__random_1.npz",
+      "bytes": 3128349,
+      "sha256": "f274dc3bd1fd7bb684ee0aecd030ad0dd1f1fb58c7270199eaf20d08370602b8"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__061__random_1_8192.npz",
+      "bytes": 157018,
+      "sha256": "3f2617cf3fc1a82674d103cafa2af659d58e693f9316fdbe0d37680d0450bc03"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__061__random_2.npz",
+      "bytes": 2035405,
+      "sha256": "bf88939e55d4607d94ca8a9b33860d3bebb99e8f42fa1c336b88e9aa8a5f0a67"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__061__random_2_8192.npz",
+      "bytes": 156136,
+      "sha256": "f2e2786c928bd6233f4a33206e3fc91091e8f82446755cfc29bfa4eb3b343449"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__066__bilateral.npz",
+      "bytes": 1661685,
+      "sha256": "deee627044428a39515eebb03a4072c2a815ac41e6536da82588a225d9cbe77e"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__066__bilateral_8192.npz",
+      "bytes": 156419,
+      "sha256": "bbfb048039a4a60f2e1a7b3c5f8de2a350e4b145b9e166334900768b6b947026"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__066__frontoorbital.npz",
+      "bytes": 857590,
+      "sha256": "82f9a697c309d9585ce724bab7aab2835cfbd4bbe02c9e864c4efddc5c5c941d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__066__frontoorbital_8192.npz",
+      "bytes": 156379,
+      "sha256": "296e392373c6098b8801a5184e0c88f69eeb5845fe9e5af3f225bce3e9b9f32b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__066__parietotemporal.npz",
+      "bytes": 2871708,
+      "sha256": "9a453ce7265264b59130bde7ae0194d11b750e433def17f7d1e0a88eee143c2d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__066__parietotemporal_8192.npz",
+      "bytes": 157399,
+      "sha256": "97ca73bb315b803df6adb7ba213e509eb6a439c0216de60a6720af895b18416e"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__066__random_1.npz",
+      "bytes": 1509688,
+      "sha256": "d62ec3ab1fd030c3546a69b54e8019c7cb7c5820d1448c12dbdecd53396b082b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__066__random_1_8192.npz",
+      "bytes": 156106,
+      "sha256": "d6024725da4f86133308f0af62c823da2eefce7a5a454503dcaccb77109a1281"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__066__random_2.npz",
+      "bytes": 2043333,
+      "sha256": "11295b7c43be8a847d110526b12b1eb2b82355fa4a61bebc9bce8aa041007152"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__066__random_2_8192.npz",
+      "bytes": 157888,
+      "sha256": "10b6e4a718d0ad7b200b2aaa6eb7b710d1dbf999a5f2c17d67f2031a9c02d4e5"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__072__bilateral.npz",
+      "bytes": 3772662,
+      "sha256": "0848f9559a04d9fd85bd6b120ff64bfb71282f4404697e32412ec03fa0d4f69b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__072__bilateral_8192.npz",
+      "bytes": 158006,
+      "sha256": "99a9abc763da8514e8e3092d853838898e2f70ddd6c9004f51b6ef6cc6564cf7"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__072__frontoorbital.npz",
+      "bytes": 1201592,
+      "sha256": "1c7d5c302e3de32f9e452018668bbea5e5374dd15c7ce0d90b4a6e79bf09c1b0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__072__frontoorbital_8192.npz",
+      "bytes": 156347,
+      "sha256": "7b62dc4e80c5c63fd19b410c5f454e4f29c86587e3b960adb243e47eb90753d0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__072__parietotemporal.npz",
+      "bytes": 1820974,
+      "sha256": "2e18e2f648ccc3616c33e22b96a0c7f5a3f0ee6cc11b5168ae600aacdd693c49"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__072__parietotemporal_8192.npz",
+      "bytes": 157250,
+      "sha256": "b7f22d6c69b72cf2766e16c952dc63343cab00ce1f76e5cda8e4d0fdd28a7e29"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__072__random_1.npz",
+      "bytes": 853137,
+      "sha256": "1adcb2508d317878a56d9d764012a72df15ad75fe054d4e0d31b97cf79c6ee11"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__072__random_1_8192.npz",
+      "bytes": 155250,
+      "sha256": "29ad62281868318fe6986f0044a3ee76707d7d96571aad92ba0e67ea196cdcc3"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__072__random_2.npz",
+      "bytes": 2755380,
+      "sha256": "78cf80df508881644366c28ef3262c0140de42119299f66507740808572356f5"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__072__random_2_8192.npz",
+      "bytes": 158068,
+      "sha256": "e02966d055a9523065a1bf04baa5106d1950985982c4843e9261727524c02e2f"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__076__bilateral.npz",
+      "bytes": 2427570,
+      "sha256": "8463a25fca079a43160b59e066cb54e03af9da46841f447100298412a8ab448e"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__076__bilateral_8192.npz",
+      "bytes": 157911,
+      "sha256": "6e6f6ab64aa94ea4708f40a1fb6eda68d236238970c90936177cd2e5f0e5c5f4"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__076__frontoorbital.npz",
+      "bytes": 1058943,
+      "sha256": "1878e21a10f6bee2bef32f1236a2cc2eca41d02cffbcb62ef2abeb9179accabe"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__076__frontoorbital_8192.npz",
+      "bytes": 156596,
+      "sha256": "ce7338e032e4c9c029c368caff5ff169cff3a6ed8db5f79ca92fd70d90a9090b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__076__parietotemporal.npz",
+      "bytes": 2684717,
+      "sha256": "21bb159edfa98741f9fc3876d51c679d4f5b97107c6d613794a2b7f86e0ed91a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__076__parietotemporal_8192.npz",
+      "bytes": 157581,
+      "sha256": "ec31c6181a99fdc4cf6734161809a67e2ad6a4d49adb1942339248058b9dd375"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__076__random_1.npz",
+      "bytes": 1925132,
+      "sha256": "6b12de2ea26d1d57722ebedebd9f940a37f964b43483fda044d998f715078966"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__076__random_1_8192.npz",
+      "bytes": 157095,
+      "sha256": "fbc33d2b85d10f0597c41b4548badbbf4c95493671a125c63662c4edf0192aba"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__076__random_2.npz",
+      "bytes": 3908581,
+      "sha256": "6bdba09d11d56b0b37f5d02b64678872ef4f78fc0fcd1487fb6d6d24e3c18458"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__076__random_2_8192.npz",
+      "bytes": 158112,
+      "sha256": "586bc00f2fec1dd085dbb3cdfc3d9a94eab2fb08dfc839e6d37b60bee1e28c05"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__081__bilateral.npz",
+      "bytes": 3184796,
+      "sha256": "84a4f682cc8bb81acebf66a07dfa12a836857545af7878dd078268dc6a8ded82"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__081__bilateral_8192.npz",
+      "bytes": 157376,
+      "sha256": "1c9754cb43898ab0bd002bf2a1fd41bc8bea5ecaa51664c2d66b6a49ef708e51"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__081__frontoorbital.npz",
+      "bytes": 636379,
+      "sha256": "2a5d98bd2e7be389037240a20e658ec5b0c7b17b2715736be7683c46be4810b2"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__081__frontoorbital_8192.npz",
+      "bytes": 155801,
+      "sha256": "075b5dcfa1ec00f6009f7e7b7298ecbb7e373e3f02321c2a2a60edce1f0bdf78"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__081__parietotemporal.npz",
+      "bytes": 2233673,
+      "sha256": "14303d4f94358f0162a1bd9896b1954b97d06afa4fe5d3c5cb4cc5710580962a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__081__parietotemporal_8192.npz",
+      "bytes": 157159,
+      "sha256": "30cd5c4f225ee2d1bb1668d2058dabde8bb0f5c12680163df3aa69eae8f8abec"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__081__random_1.npz",
+      "bytes": 2504779,
+      "sha256": "662b3fa5913015140202183db4fa1f5118b8eae219f89ccf2cc99ee2ce307418"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__081__random_1_8192.npz",
+      "bytes": 158042,
+      "sha256": "cf0099d10f27672ba596bcece81b8d7bba3febe165646410ee93fe443063cb5a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__081__random_2.npz",
+      "bytes": 1871747,
+      "sha256": "f6e8d56de03e3758bcc0bbe6c4b6996a6e734aa4c15250682304fdef0ad3ee30"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__081__random_2_8192.npz",
+      "bytes": 156932,
+      "sha256": "81d3e51b8e653ab00916265bb048084fb76885609643a76e1caefaed33cb33df"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__094__bilateral.npz",
+      "bytes": 2959359,
+      "sha256": "b9ab9b89cf01035f405da5a144a076ab52d571c67efba5facb27c1bc73caeea0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__094__bilateral_8192.npz",
+      "bytes": 157568,
+      "sha256": "54fb49d9b5ded5c81e427bd937ce9533a74c5a561af34c5c3440618dc85f17bb"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__094__frontoorbital.npz",
+      "bytes": 1268988,
+      "sha256": "781f017ba7df73d0987b56df873e1f99f23a048232789b3d824547f0192677ad"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__094__frontoorbital_8192.npz",
+      "bytes": 155036,
+      "sha256": "f8b000fd86507cb23a5310ab7defa775d8fd57b18646e0d625cdf7a0f4e323fd"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__094__parietotemporal.npz",
+      "bytes": 1528240,
+      "sha256": "f4a33ebcc4d805f00be6cd6d971f4b5d121eee94fadddec82fea7d9c891dae5d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__094__parietotemporal_8192.npz",
+      "bytes": 154930,
+      "sha256": "e35830454406b284866527a63af2d081df1b6e6dfe33df75e797ec99ae3c8bcf"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__094__random_1.npz",
+      "bytes": 1121525,
+      "sha256": "0d0e0e21446df11ae63eda29d54f3fc49084cf9165d38b8422247ac709f699ce"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__094__random_1_8192.npz",
+      "bytes": 156498,
+      "sha256": "557a0208264c393b9d5762361f350890ec6bb30351efaac123f9c8c10e46e0f4"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__094__random_2.npz",
+      "bytes": 1120022,
+      "sha256": "7e307a914ddf8c7153706a49a84c03e888dc461c051f2e9ce12463db55e8a827"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__094__random_2_8192.npz",
+      "bytes": 154732,
+      "sha256": "05e4a09c853a3f2d3f0e955107baffb56737707fb8f8480d072d38a0328d90f4"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__105__bilateral.npz",
+      "bytes": 1922595,
+      "sha256": "c817f7326565a1f1d7fc7b508daa09bf2c8ee7e3a6bbb969a021e0064f67ebc4"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__105__bilateral_8192.npz",
+      "bytes": 157420,
+      "sha256": "179ae975d4a663e5bc8c1f751ccdb2ba6f8da6ba23f0ce92c689257f9fec2a13"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__105__frontoorbital.npz",
+      "bytes": 1307588,
+      "sha256": "ca2f8286342324a8c963d71c8c17b2ba3b13a84c8b9eaf5981782af0ea354354"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__105__frontoorbital_8192.npz",
+      "bytes": 155050,
+      "sha256": "e3ce8ccb699e6f054830d8c99a06807532c6ba4cba198c228ca4a95c9171cdc7"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__105__parietotemporal.npz",
+      "bytes": 1232800,
+      "sha256": "387d222268651ded06138fb95cdf8adbb41e852aaf46dd619ce1f509812e23d9"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__105__parietotemporal_8192.npz",
+      "bytes": 156400,
+      "sha256": "fc4dc750e11c9d156cfac4d54399200655cba6485833faedb3796134570ca7c5"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__105__random_1.npz",
+      "bytes": 2829508,
+      "sha256": "2b43ed10ef9be2e710b81f26495cc82c4528f8d8a84cf10896d85494069fdfea"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__105__random_1_8192.npz",
+      "bytes": 156095,
+      "sha256": "d107cdaee2ed06f7f9dece3260f5295319af2226e324d91792a1c151463df653"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__105__random_2.npz",
+      "bytes": 3522891,
+      "sha256": "408b41751b0f3674fa0915893e4b394931222180ff4e511b3b42ae815597f32e"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__105__random_2_8192.npz",
+      "bytes": 158437,
+      "sha256": "009b6d7c229b1ec0c3824d95efb9ef5371e40ebac8873711027466640deff793"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__107__bilateral.npz",
+      "bytes": 3243364,
+      "sha256": "e9b0d61b180a2e5c08ef6d301326cceb32e246074c83d2e182a27286d1c9b9f0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__107__bilateral_8192.npz",
+      "bytes": 157723,
+      "sha256": "5112ea051c374b94f0b733b8a6ccb24f2dc5fe1fc2148d9f4bf5cbafe541f8f4"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__107__frontoorbital.npz",
+      "bytes": 1183593,
+      "sha256": "0e9b01d617cc911d4e92b1e449d5120933a318d9db72d87881f8b114010516a7"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__107__frontoorbital_8192.npz",
+      "bytes": 155820,
+      "sha256": "2d0574b44bc4d624f0597e099486838e6e1f4fb0e708bb7e953dcd7657b9ed6c"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__107__parietotemporal.npz",
+      "bytes": 1890079,
+      "sha256": "398950b845a45daae4cdf2f35e2f2698e263ccc8ff858e19d6294712e2afaeb1"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__107__parietotemporal_8192.npz",
+      "bytes": 156497,
+      "sha256": "ef0fa2477905695811d77fcfcd9b3837b56981dea4e8bb8bc1ce7c7be3790185"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__107__random_1.npz",
+      "bytes": 2477195,
+      "sha256": "1171967b69efa4ae169251599bbe97598957c1aed36d97d1bf20350c35798b86"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__107__random_1_8192.npz",
+      "bytes": 157091,
+      "sha256": "ec81a2725b6c44ed1bab678b0432943e8888258ea569c5a8eff20b39fa3f8446"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__107__random_2.npz",
+      "bytes": 2874285,
+      "sha256": "c37b26ae837f836ea5123cc17b9f7eb3f6e880ebc44aece2cc707e134b02ae77"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__107__random_2_8192.npz",
+      "bytes": 157695,
+      "sha256": "d8471e47d073360c06977b39d52f21e09fd18d41da1fb15b7a2997de843faf9a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\authorized_execution_v1\\attempt_started_v1.json",
+      "bytes": 207,
+      "sha256": "9d3ac83d2f9c878e71ab70a966cdb230cf24f6e35f2f38e724aca63456abaf9b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\authorized_execution_v1\\execution_result_v1.json",
+      "bytes": 1120,
+      "sha256": "942aaf48a85fe258e55b0da4ddc800cc685d463c9d2872d0f709d7a8e47ecce4"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\authorized_execution_v1\\invocation_materialization_v1.json",
+      "bytes": 1566,
+      "sha256": "68c17fa6d8bb8e46740b8f2561ee7aa5bc322e714b9181f46cb4506088e5e696"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\authorized_execution_v1\\score_authorization_v1.json",
+      "bytes": 708,
+      "sha256": "fb69997d7c18f9e51bde3d5568483b887df33765642b3ef754f52e360d5a42a4"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\authorized_execution_v1\\startup_status_observation_v1.json",
+      "bytes": 271,
+      "sha256": "9760f866118f28fc330ef42ada0ef86c24f07cf87a3bebcd710477691ecbfdfd"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\authorized_execution_v1\\stderr_v1.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\authorized_execution_v1\\stdout_v1.txt",
+      "bytes": 3318,
+      "sha256": "1052eeb62e6cf1dd60a230b2a69b67899bd3b87f4701474d777f671ffe25c1a9"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\authorized_execution_v1\\worker_started_v1.json",
+      "bytes": 155,
+      "sha256": "b8f19d2860c927a7b0c58a7635d15bc1122267a4b18dedd1d6ebb32594d4463d"
+    }
+  ],
+  "independent_aggregation_recomputed": true,
+  "geometry_distance_recomputed": false,
+  "real_prediction_arrays_decoded": false,
+  "scoring_rerun": false,
+  "server_operations": 0,
+  "GPU_calls": 0,
+  "model_imports": 0,
+  "elapsed_seconds": 0.9379999999655411,
+  "read_bytes": 253254288,
+  "limits": {
+    "read_bytes": 1073741824,
+    "wall_seconds": 120
+  },
+  "limitations": [
+    "Metric values checked against frozen saved full metric fields, not independently recomputed geometric distances",
+    "Source means/deltas/rankings/CSV consistency independently recomputed using stdlib",
+    "Resource success based on frozen sampled guards and completion, not independent peak RSS telemetry",
+    "One fold/one training seed; no bootstrap,p-value,formal gate or clinical validation"
+  ],
+  "scientific_interpretation_authorized_after_pass": true
+}

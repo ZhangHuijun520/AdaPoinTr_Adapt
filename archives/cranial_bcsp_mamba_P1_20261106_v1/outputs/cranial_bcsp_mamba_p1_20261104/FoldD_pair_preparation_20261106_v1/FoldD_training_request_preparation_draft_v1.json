@@ -1,0 +1,104 @@
+{
+  "schema": "bcsp-p1-foldD-training-request-preparation-draft-v1",
+  "status": "DRAFT_NOT_EXECUTABLE_REQUIRES_FOLD_D_ENTRY_ADAPTATION",
+  "execution_request_created": false,
+  "pair_contract": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_pair_preparation_20261106_v1\\paired_FoldD_training_contract_preparation_v1.json",
+    "bytes": 9518,
+    "sha256": "55dd8fa220af09cf1e3fabf1ee8b40c00af3483a2d7dff8da1649a6bf965fb59"
+  },
+  "server_readiness": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_pair_preparation_20261106_v1\\server_readiness_report_v1.json",
+    "bytes": 87544,
+    "sha256": "e7e3b2fe84a4f2a46d457f5745f4c82f7a5049e07b9e7c2907a12dc69f8a7500"
+  },
+  "next_first_run": "T0_foldD_seed0",
+  "second_run": "M0_foldD_seed0_after_T0_D_formal_freeze",
+  "preserved_counts": {
+    "cases": 315,
+    "sources": 63,
+    "batch": 8,
+    "epochs": 100,
+    "batches_per_epoch": 39,
+    "updates": 3900,
+    "exposures": 31200,
+    "drop_events": 300
+  },
+  "preserved_training": {
+    "seed": 0,
+    "precision": "FP32",
+    "optimizer": "AdamW",
+    "lr": 0.0001,
+    "weight_decay": 0.0005,
+    "clip": 10,
+    "step_per_update": 1,
+    "drop_last": true,
+    "checkpoint": "scratch_final_only",
+    "BNCal": false,
+    "evaluation": false,
+    "resume": false
+  },
+  "preserved_resources": {
+    "wall_seconds": 86400,
+    "RSS_bytes": 8589934592,
+    "device_MiB": 22528,
+    "torch_peak_bytes": 21474836480,
+    "output_bytes": 2147483648,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "reuse_implementation": {
+    "contract": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/bcsp_training_contract_01dt08_v3.py",
+      "bytes": 16531,
+      "sha256": "08a9af361ef0279cfccf27f9d094020501bfcc9859692ca64322d8dd4c7fd499"
+    },
+    "runtime": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/bcsp_p1_training_runtime_v1.py",
+      "bytes": 11268,
+      "sha256": "939e317dd447d04c62897849c0230f1918dc65c46ec556acdb60c9d69dfebeee"
+    },
+    "factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/bcsp_p1_model_factory_v1.py",
+      "bytes": 4396,
+      "sha256": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4"
+    },
+    "encoder": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/bcsp_mamba_encoder_v1.py",
+      "bytes": 3546,
+      "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+    },
+    "preflight_helper": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+      "bytes": 32728,
+      "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+    },
+    "timezone": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/exact_utc_resource_v1.py",
+      "bytes": 3563,
+      "sha256": "038267da9f78be5ea9d03164e674d388228768bf0c42959097fcadfd807f830e"
+    }
+  },
+  "entry_gaps": [
+    "C-only authorize variant/fold checks",
+    "C pair-contract hash and diagnostic parent data_root/order coupling",
+    "M0-C T0 request/audit pins must become later D_T0 real frozen evidence",
+    "Keep numerical proof historical context intact; separate D-specific allowlist/order metadata"
+  ],
+  "minimal_implementation_scope": [
+    "One isolated dedicated Fold D P1 entry supporting separately authorized T0 then audited-paired M0",
+    "One targeted artificial CPU test file covering complete authorize/data/order path and3900-step dispatch, negative source/order/authorization cases",
+    "Local P3; then final T0_D pending request and small transport package"
+  ],
+  "not_authorized": [
+    "implementation in this preparation turn",
+    "deployment/server writes",
+    "GPU/model/checkpoint loading",
+    "training/BNCal/evaluation",
+    "C result-based tuning or filtering",
+    "automatic retry/resume"
+  ],
+  "server_writes": 0,
+  "model_calls": 0,
+  "GPU_calls": 0,
+  "arrays_decoded": false
+}

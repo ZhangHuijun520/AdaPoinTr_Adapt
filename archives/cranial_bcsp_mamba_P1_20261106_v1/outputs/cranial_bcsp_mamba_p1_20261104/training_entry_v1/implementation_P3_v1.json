@@ -1,0 +1,47 @@
+{
+  "status": "LOCAL_P1_TRAINING_ENTRY_IMPLEMENTATION_P3_PASS",
+  "two_implementation_files": [
+    {
+      "name": "bcsp_p1_training_entry_v1.py",
+      "bytes": 20395,
+      "sha256": "095cabb0ab9b098172840432d40699dd18279671cf650894fab9eb9b54575ebe"
+    },
+    {
+      "name": "test_p1_training_entry_v1.py",
+      "bytes": 20090,
+      "sha256": "e755dc1abe362e6df7fdf2c2c5a473f9b660cc19067ed2cc4dd87f6c2467739a"
+    }
+  ],
+  "static_review_sha256": "3caaccd4c298b3cdfa1ceb56980cc53ed12c2883d22e0af6032e50c89a468221",
+  "CPU_contracts": 47,
+  "CPU_result_sha256": "eb2f1edf5ecbdb3697128b1762a3dee941f7f48c2e73d3f490209bee138ca1ba",
+  "CPU_tiny_optimizer_updates": 3900,
+  "failed_CPU_v1_preserved": true,
+  "failed_v1_reason": "payload_paths accepted lexical ..; full metadata QC already rejected it; direct guard now canonical",
+  "protected_implementation_sha256": {
+    "bcsp_mamba_encoder_v1.py": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8",
+    "bcsp_p1_model_factory_v1.py": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4",
+    "bcsp_p1_training_runtime_v1.py": "939e317dd447d04c62897849c0230f1918dc65c46ec556acdb60c9d69dfebeee"
+  },
+  "resource_TrainingBudget_AST_unchanged": true,
+  "numeric_policy_sha256": "132d019ea9d7a1a6994ee19bf98ea6686b343b3325762f1080d64b6adb6c7cc8",
+  "quantification_formal_audit_sha256": "87ddd30d6b5d58b5ba54c2e7878d6c75ccdecd9117f30d8972ea5c5a06d9193c",
+  "server_operations": 0,
+  "GPU_calls": 0,
+  "real_training_runs": 0,
+  "scope": [
+    "Two new implementation files only",
+    "Original factory encoder runtime untouched",
+    "Legacy metadata validators reused without legacy authorize",
+    "UTC exact exception retained",
+    "Runtime claims output before model construction evidence at first-step boundary",
+    "First T0 authorization only; M0 dispatch artificially exercised, no M0 execution request"
+  ],
+  "limitations": [
+    "Artificial metadata evidence hashes replaced in test memory and restored; production source hashes unchanged",
+    "Tiny CPU lifecycle and fake resource telemetry do not prove native CUDA optimizer memory",
+    "No server deployment/readiness recheck this turn; last readonly evidence inherited",
+    "Formal post-test freeze audit not performed; this is local implementation P3",
+    "Checkpoint legacy stage string retained; new run_identity.json records P1/variant and numeric policy"
+  ]
+}

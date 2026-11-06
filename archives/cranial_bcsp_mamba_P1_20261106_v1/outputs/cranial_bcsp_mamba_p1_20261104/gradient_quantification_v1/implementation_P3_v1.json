@@ -1,0 +1,59 @@
+{
+  "status": "LOCAL_IMPLEMENTATION_P3_PASS_NO_GPU_EXECUTION",
+  "confirmed_plan_sha256": "e444d306ecd6ee3f3d1a7bfdc16b32ccc4aaca0bcd54aec46c30a5625973f0a0",
+  "formal_failure_audit_sha256": "85e1e5403c04c924d0c7e1e8bd781d853f6fa64d670f13707d3faa01e87e171c",
+  "CPU_contract_result_sha256": "91f84f45f774f512b9f55da30cf691e17e6f280f451256609cd14b1180b46f6e",
+  "CPU_contracts": 41,
+  "static_review_sha256": "93720ea650a6c898085594c4fffac07bd1bf3db1143984742d4715f9338be354",
+  "files": [
+    {
+      "name": "bcsp_p1_gradient_quantification_v1.py",
+      "bytes": 25279,
+      "sha256": "98844261644d205b2d2e8b27b416d7608096f2046f12ad99fc34ea73c9b2d6f1"
+    },
+    {
+      "name": "bcsp_gradient_statistics_v1.py",
+      "bytes": 5781,
+      "sha256": "07b7c994a766f82d1a8e190cad84ce0554997bc58ea569eecddba2a501c90889"
+    },
+    {
+      "name": "test_gradient_quantification_v1.py",
+      "bytes": 11454,
+      "sha256": "7b9e31ab92da6aa36e863258bbe4a88e10e1a5f6603afe1ba21c9aa602d46f01"
+    }
+  ],
+  "protected_files": [
+    {
+      "name": "bcsp_mamba_encoder_v1.py",
+      "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+    },
+    {
+      "name": "bcsp_p1_model_factory_v1.py",
+      "sha256": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4"
+    },
+    {
+      "name": "bcsp_p1_training_runtime_v1.py",
+      "sha256": "939e317dd447d04c62897849c0230f1918dc65c46ec556acdb60c9d69dfebeee"
+    },
+    {
+      "name": "exact_utc_resource_v1.py",
+      "sha256": "038267da9f78be5ea9d03164e674d388228768bf0c42959097fcadfd807f830e"
+    }
+  ],
+  "scope_review": [
+    "Only diagnostic entry and statistics added; original model/factory/runtime/timezone guard byte-identical",
+    "Same forward/backward/state restoration sequence; gradient mismatch recorded rather than admission accepted",
+    "New bounded CPU references; FP64 chunk statistics; after-backward resources before analysis",
+    "Historical construction factory identity and gradient presence bound to frozen v3 files",
+    "No optimizer/checkpoint/development access; no automatic retry",
+    "CPU tests use artificial model, not native Mamba/CUDA"
+  ],
+  "server_operations": 0,
+  "GPU_calls": 0,
+  "limitations": [
+    "Future identity/readiness must be rechecked; no server contact this turn",
+    "No actual GPU numerical/resource validation",
+    "RSS monitoring and allocation estimate are not hard cgroup isolation",
+    "Formal post-test freeze audit remains separate from implementation P3"
+  ]
+}

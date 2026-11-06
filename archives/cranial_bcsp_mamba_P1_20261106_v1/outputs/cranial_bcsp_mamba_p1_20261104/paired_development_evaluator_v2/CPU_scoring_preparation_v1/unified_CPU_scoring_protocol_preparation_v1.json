@@ -1,0 +1,81 @@
+{
+  "schema": "bcsp-p1-foldC-local-score-preparation-protocol-v1",
+  "status": "PREPARED_NOT_EXECUTABLE_REQUIRES_P1_ADAPTER",
+  "models": [
+    "T0",
+    "M0"
+  ],
+  "fold": "C",
+  "seed": 0,
+  "unique_cases": 105,
+  "sources": 21,
+  "defects_per_source": 5,
+  "model_predictions": 210,
+  "unique_input_point_files": 105,
+  "controls": [
+    "Nop_D",
+    "GT_8192"
+  ],
+  "planned_control_rows": 210,
+  "planned_case_rows": 420,
+  "planned_source_rows": 84,
+  "primary": "A1 area-weighted E_G to prediction P95 mm, mean5defects/source then21sources equally",
+  "paired_delta": "M0 minus T0; negative distance/positive coverage is improvement",
+  "mandatory_metrics": [
+    "E_P95_mm",
+    "J_P95_mm",
+    "J_Cover_2mm",
+    "E_Cover_0.5_1_2mm",
+    "shared_GT8192_CD_L1_half_sum_Euclidean_mean",
+    "pred_to_fixed_A2_P95_mm",
+    "pred_to_fixed_A2_outlier_gt2mm_gt20mm"
+  ],
+  "geometry_labels": {
+    "reference": "same frozen GT8192 surface sample; do not substitute area-weighted center",
+    "placement_tail": "norm(mean(pred_world)-mean(GT8192_world)) >20mm",
+    "compact_distribution": "sqrt(trace(cov_population(pred_world))/trace(cov_population(GT8192_world))) <0.9",
+    "severe_geometry": "native E_P95 >20mm OR J_Cover_2mm==0",
+    "semantics": "research descriptions; overlapping labels, not clinical failure definitions"
+  },
+  "coarse_dense": "Use existing210 summaries in D-only coordinates and14saved coarse tensors. No extra forward or posthoc case selection. Distinguish256/8192point budgets. Derive cross term from existing offset energy and radius decomposition if reported; not a causal attribution.",
+  "statistics": {
+    "source_equal": true,
+    "complete_case_and_defect_and_source_tables": true,
+    "bootstrap": 0,
+    "p_values": false,
+    "formal_combined_gate": false,
+    "exclude_regressions": false
+  },
+  "continuation_rule_after_scoring_audit": "Existing C stop rule: source-equal E_P95 worsening >=25% AND >=2mm, or nonfinite/incomplete/resource failure; interpret after formal score freeze, do not automatically launch Fold D",
+  "limits": {
+    "wall_seconds": 7200,
+    "RSS_bytes": 8589934592,
+    "output_bytes": 2147483648,
+    "threads": 2
+  },
+  "failure_policy": "Fail whole batch and retain evidence; no retry/resume or dropped cases",
+  "CPU_environment": {
+    "python_path": "E:\\RelocatedData\\zhj\\.conda\\envs\\adapointr\\python.exe",
+    "python_version": "3.9.21",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.13.1",
+      "psutil": "5.9.0",
+      "scikit-image": "0.24.0"
+    },
+    "flags": [
+      "-I",
+      "-B"
+    ],
+    "CUDA_VISIBLE_DEVICES": ""
+  },
+  "prohibited": [
+    "no server/WSL/network in scorer",
+    "no Torch/GPU/checkpoint loading",
+    "no training/BNCal/new forward",
+    "no ICP/oracle/GT alignment of prediction",
+    "no change to references/GT/normalization/sampling/thresholds",
+    "no backup-directory extraction/overwrites/deletion",
+    "no scoring before final implementation/P3 and separate execution authorization"
+  ]
+}

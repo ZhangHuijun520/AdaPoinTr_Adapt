@@ -1,0 +1,85 @@
+{
+  "schema": "bcsp-p1-foldD-paired-development-protocol-v1",
+  "status": "FROZEN_PENDING_SEPARATE_EXECUTION_AUTHORIZATION",
+  "models": [
+    "T0",
+    "M0"
+  ],
+  "fold": "D",
+  "seed": 0,
+  "unique_cases": 105,
+  "dev_sources": 21,
+  "defects_per_source": 5,
+  "unique_input_files": 105,
+  "total_predictions": 210,
+  "forwards_per_model": 105,
+  "batch_size": 1,
+  "warmup": 0,
+  "TTA": 0,
+  "BNCal": false,
+  "optimizer_steps": 0,
+  "backward": 0,
+  "loss_calls": 0,
+  "input_key": "partial",
+  "checkpoint_selection": "Frozen epoch99/update3900 final only",
+  "normalization": "D-only frozen center/scale; predict normalized, score native world mm; no ICP/GT alignment",
+  "primary": "A1 area-weighted E_G to prediction P95 per case; average5defects/source then21sources equally",
+  "mandatory_risk": [
+    "J_P95",
+    "J_Cover_at_2mm",
+    "E_Cover",
+    "GT8192_CD_L1_half_sum_bidirectional_Euclidean",
+    "pred_to_fixed_A2_P95",
+    "pred_outlier_gt2mm_gt20mm",
+    "placement_tail_compact_distribution_severe_geometry",
+    "all cases and defect strata"
+  ],
+  "coarse_dense_summary": "Same-forward summaries for all210 predictions; full extra coarse arrays for the five fixed D representatives per arm; no extra forward.",
+  "severe_regression_rule": {
+    "distance_metric": "source-equal E_P95",
+    "stop_if_both": {
+      "relative_worsening_at_least": 0.25,
+      "absolute_worsening_mm_at_least": 2
+    },
+    "stop_on_nonfinite_incomplete_or_resource_failure": true,
+    "if_not_triggered": "Complete D_T0 and D_M0; do not tune on Fold C results"
+  },
+  "limits": {
+    "wall_seconds": 7200,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "state_RNG_contract": "Sequential models; eval/inference_mode; preserve parameters/BN and Python/NumPy/CPU/CUDA RNG over105cases each",
+  "numeric_policy": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_foldC_training_20261105_v1/confirmed_numeric_policy_v1.json",
+    "bytes": 864,
+    "sha256": "132d019ea9d7a1a6994ee19bf98ea6686b343b3325762f1080d64b6adb6c7cc8"
+  },
+  "prohibited": [
+    "new training",
+    "checkpoint epoch selection",
+    "BNCal",
+    "protected data",
+    "scoring before frozen prediction audit",
+    "bootstrap/p-value/formal combined gate in this prediction execution",
+    "repeat GPU preflight",
+    "automatic retry/resume",
+    "any case filtering or parameter tuning based on Fold C or Fold D results",
+    "Fold C re-evaluation"
+  ],
+  "forward_budget": 210,
+  "coarse_tensor_cases": [
+    "train__004__bilateral",
+    "train__004__frontoorbital",
+    "train__004__parietotemporal",
+    "train__004__random_1",
+    "train__004__random_2"
+  ],
+  "representative_selection": "Same fixed rule: first case of each defect type in frozen D order, plus previously fixed025/072 only if in D. Neither025 nor072 is in D; no replacement by observed performance.",
+  "full_extra_coarse_arrays": 10,
+  "score_execution": false,
+  "PID_policy": "Diagnostic only; one visible GPU and fixed UUID; idle memory <=256MiB; resource thresholds unchanged"
+}

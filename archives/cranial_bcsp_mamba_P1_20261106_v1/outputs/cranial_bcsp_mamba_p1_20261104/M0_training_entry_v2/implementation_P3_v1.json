@@ -1,0 +1,39 @@
+{
+  "status": "LOCAL_M0_ENTRY_IMPLEMENTATION_P3_PASS",
+  "files": [
+    {
+      "name": "bcsp_p1_M0_training_entry_v2.py",
+      "bytes": 24307,
+      "sha256": "77bee0c2d9a5019746e254b5c6b224d0b0e7959b9c15f5a576016000dd489aaa"
+    },
+    {
+      "name": "test_p1_M0_training_entry_v2.py",
+      "bytes": 24701,
+      "sha256": "4dacc1a8646e103af6b09a79062db68e1e6bd54385303e1e5c31c7890a56d660"
+    }
+  ],
+  "CPU_contracts": 59,
+  "CPU_result_sha256": "581387da738e532ccfbc708bfb03bf4b7eec6ccbefa10cd10c6554a819199eee",
+  "static_review_sha256": "e81073eadcef5408a1f586335ee91c13d58e5b54ee1d1397fd1015cd236640c8",
+  "T0_entry_sha256": "095cabb0ab9b098172840432d40699dd18279671cf650894fab9eb9b54575ebe",
+  "protected_implementation_sha256": {
+    "bcsp_mamba_encoder_v1.py": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8",
+    "bcsp_p1_model_factory_v1.py": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4",
+    "bcsp_p1_training_runtime_v1.py": "939e317dd447d04c62897849c0230f1918dc65c46ec556acdb60c9d69dfebeee"
+  },
+  "changed_existing_function": "authorize",
+  "added_function": "validate_T0_pairing",
+  "main_dispatch_resource_and_policy_AST_unchanged": true,
+  "T0_formal_freeze_audit_sha256": "428702c74772018d12a6f25131834e0c370c9b712c51a31f45497e3694ed5e42",
+  "artificial_CPU_optimizer_updates": 3900,
+  "server_operations": 0,
+  "GPU_calls": 0,
+  "real_training_runs": 0,
+  "limitations": [
+    "Artificial metadata with test-only in-memory evidence pins; production source pins unchanged",
+    "Tiny CPU lifecycle and fake telemetry do not prove actual Mamba optimizer resource use",
+    "No repeat GPU preflight; frozen native M0 evidence reused under confirmed numeric policy",
+    "No server readiness check this turn; installation/execution must reverify current identity and frozen assets",
+    "No formal post-test freeze audit; this is implementation P3"
+  ]
+}

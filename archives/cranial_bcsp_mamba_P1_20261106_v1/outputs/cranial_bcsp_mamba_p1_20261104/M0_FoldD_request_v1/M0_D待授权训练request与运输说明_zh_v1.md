@@ -1,0 +1,33 @@
+# P1 M0 Fold D：待授权训练request准备
+
+日期：2026-11-06。状态：AWAITING_EXPLICIT_USER_AUTHORIZATION。只准备请求、精确配对绑定及必要运输文件，没有服务器操作、代码修改、测试重跑或模型执行。
+
+## 配对证据
+
+复用T0_D成功运行的bcsp_p1_foldD_training_entry_v1.py，SHA256 f8713310a34ef98b884cb1bc0782c5c06370f5169fb47045ca631748acba2603。既有62项CPU合同覆盖M0_D完整authorize路径与配对语义，本轮不新增入口或重复GPU preflight。原P3标题中的“待T0_D request”是其当时交付阶段；M0路径已被原测试覆盖，本轮新增的是实际T0_D证据静态绑定审查。
+
+T0_D正式审计SHA256为02bd553e42f10098e16fd863c6716d664019735e705c20b3941b2b81d5672877。核对其全部4260项细项通过、3900步/100traversals/31200exposures/300drops、共有初始化及全实际批次顺序、禁止阶段均未执行。request中的t0_pairing包含audit、request、construction、initialization、order、completion、run_identity、exposure共8项精确绑定。
+
+T0_D最终权重SHA256 ed901f18be2efb84f9b7b159cec2b71a3602e2e960087ac53d510881be9eba7c仅作完成来源证据；M0不加载该权重，也不从C权重warm-start。M0使用原native Mamba初始化参考c513b850779472384c2d1f52974b9c5f44aafc235d2c0b471549ac6eab949077，与T0共有初始参数保持相同。
+
+T0_D审计报告目前在本机。运输包内已冻结其原字节副本及新服务器目标路径；该副本须在未来独立授权的安装阶段落地并重验，才能执行M0。这里创建的是待授权request，并未声称副本已安装或服务器当前就绪。
+
+## 不变项与运行边界
+
+与T0_D逐字段核对相同static_config、QC、order_plan、identity、data_root、model_root、preflight_scope、dependencies、environment、numeric_policy/protocol、pair_contract、quantification audit/request及implementation。仅variant、M0初始化参考、真实T0配对证据、全新request/control/tmux/结果路径及来源说明相应变化。
+
+固定D315例/63训练来源、105例/21开发来源，8k输入/8k输出、coarse256、batch8、seed0、100轮、3900updates、31200exposures、300drops。保持原FP32、TF32false、确定性设置、有限梯度非确定性披露、SSM no-decay、损失、LR/BN调度和全部资源阈值；不根据C结果调参、筛病例或重新划分。BNCal/evaluation/resume均false。
+
+## 最终request与运输
+
+request：transport_payload/M0_foldD_seed0_training_execution_request_v1.json
+
+完整SHA256：`55793bca2fa9472d45b3cca0b9598154cdb12a84a3eb89633daa52b85a039d5f`
+
+新tmux：bcsp_p1_M0_D_seed0_20261106_v1。新输出：/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p1/M0_foldD_seed0_train_20261106_v1。
+
+运输包：bcsp_p1_M0_foldD_seed0_request_20261106_v1.tar.gz，23464bytes，SHA256 `c4a5c0bbf9bb0616e4529ef268ee286186cd8580a86b839ecac6f78e52a73522`。另有.sha256、.bytes、.contents.sha256三个校验文件。包内仅3个普通成员，已逐一核验：request、T0_D_post_training_freeze_audit_v1.json、launch_once_template_v1.sh。不包含源码重装、点集或checkpoint。映射见transport_manifest_v1.json。
+
+尚未创建生产授权回执、runtime、实际launcher或claim。模板保留三个占位哈希；执行前仍按授权回执→哈希→runtime→哈希→launcher的单向顺序材料化。模板调用既有D入口，未误指向新运输目录中不存在的源码文件。
+
+下一步手动上传运输包及三个校验文件至/home/jovyan，再单独明确授权本request完整SHA256，方可核验当前身份、资源、3个新目标不存在及所有复用/T0_D证据，独占不覆盖安装并启动唯一一次M0_D。任何异常立即停止，不自动重试、resume或进入BNCal/development evaluation。

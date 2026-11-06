@@ -1,0 +1,70 @@
+{
+  "status": "EXACT_SYSTEM_TIMEZONE_RESOURCE_VERIFIED_NOT_ALLOWLIST_AUTHORIZATION",
+  "resource": {
+    "link": "/usr/share/zoneinfo/UTC",
+    "link_text": "Etc/UTC",
+    "link_lstat_size": 7,
+    "link_text_sha256": "81ccd71aca3037cfd3bb39e29bc324d92e45fe6f97b74a4b789d12a0ea443b63",
+    "target": {
+      "path": "/usr/share/zoneinfo/Etc/UTC",
+      "sha256": "ab1ddb33c7187e56408033a8165ea3b1432e024710e7ab2aafec036a8bd7f09a",
+      "bytes": 118,
+      "mtime_ns": 1684539139000000000,
+      "ctime_ns": 1725847588004950861,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "header": "TZif2",
+    "package_ownership": [
+      {
+        "argv": [
+          "/usr/bin/dpkg-query",
+          "-S",
+          "/usr/share/zoneinfo/UTC"
+        ],
+        "returncode": 0,
+        "stdout": "tzdata: /usr/share/zoneinfo/UTC",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/usr/bin/dpkg-query",
+          "-S",
+          "/usr/share/zoneinfo/Etc/UTC"
+        ],
+        "returncode": 0,
+        "stdout": "tzdata: /usr/share/zoneinfo/Etc/UTC",
+        "stderr": ""
+      }
+    ],
+    "package": {
+      "argv": [
+        "/usr/bin/dpkg-query",
+        "-W",
+        "-f",
+        "${Package}\t${Version}\t${Architecture}\t${Status}\n",
+        "tzdata"
+      ],
+      "returncode": 0,
+      "stdout": "tzdata\t2023c-0ubuntu0.20.04.2\tall\tinstall ok installed",
+      "stderr": ""
+    },
+    "package_md5_manifest": {
+      "path": "/var/lib/dpkg/info/tzdata.md5sums",
+      "sha256": "6578e2cf75a34aff0265214b61485bf80bc07169d0e89a135d45229dea8f7a28",
+      "bytes": 98833,
+      "mtime_ns": 1684539139000000000,
+      "ctime_ns": 1725847588400950239,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "target_expected_md5": "c79354b8dbee09e62bbc3fb544853283",
+    "source_strength": "Matches locally installed tzdata package database/manifest; not an independently authenticated upstream package"
+  },
+  "future_scope": "Exact readonly UTC symlink and resolved Etc/UTC target only; no blanket symlink allowance",
+  "implementation_performed": false,
+  "forward_calls": 0,
+  "backward_calls": 0
+}

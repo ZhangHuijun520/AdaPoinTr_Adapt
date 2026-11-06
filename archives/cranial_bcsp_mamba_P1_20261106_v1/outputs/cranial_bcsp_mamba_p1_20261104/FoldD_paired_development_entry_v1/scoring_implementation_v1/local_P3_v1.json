@@ -1,0 +1,81 @@
+{
+  "schema": "bcsp-p1-foldD-paired-local-score-P3-v1",
+  "status": "PASS_FOR_PENDING_REQUEST_ONLY",
+  "implementation": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_paired_development_entry_v1\\scoring_implementation_v1\\bcsp_p1_foldD_pair_score_v1.py",
+    "bytes": 24066,
+    "sha256": "475a1409ed099cc697640cb9c6d561aa86b37f60b84dba417123b7984428e3ee"
+  },
+  "tests": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_paired_development_entry_v1\\scoring_implementation_v1\\test_p1_foldD_score_contract_v1.py",
+    "bytes": 20990,
+    "sha256": "a749f1bca0adc74c090f34574f2fd42e90b7ec4f446094d0c0ed8ae6751729ec"
+  },
+  "CPU_result": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_paired_development_entry_v1\\scoring_implementation_v1\\CPU_contract_result_v1.json",
+    "bytes": 758,
+    "sha256": "0c1b4376782499ff7f7f330146bcb09493ec36322300f9bc850d6ce3ea23e672"
+  },
+  "CPU_tests": 49,
+  "stdout": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_paired_development_entry_v1\\scoring_implementation_v1\\cpu_contract_v1\\stdout.txt",
+    "bytes": 3298,
+    "sha256": "cf4d9247963ba87df1568ce15f69afae545dca2515f1f3ae23ac9fd2c95c41db"
+  },
+  "static_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_paired_development_entry_v1\\scoring_implementation_v1\\static_review_v1.json",
+    "bytes": 1060,
+    "sha256": "f879181a4451690ef562a1dffe9836c5548f6c16e5d8d0ba8f0d667ded840dd9"
+  },
+  "metric_engine": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+    "bytes": 6784,
+    "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+  },
+  "prior_C_scorer_unchanged": true,
+  "changed_AST_components": [
+    "authorize",
+    "validate_index",
+    "validate_archive",
+    "score_case",
+    "aggregate_source",
+    "case_differences"
+  ],
+  "unchanged_AST_components": [
+    "require",
+    "digest",
+    "check",
+    "emit",
+    "load_prediction_arrays",
+    "load_prediction",
+    "select_metrics",
+    "position_shape",
+    "risk_labels",
+    "stage_geometry",
+    "describe_pairs",
+    "paired_summary",
+    "defect_summary",
+    "csv_rows",
+    "risk_transitions",
+    "run_scoring",
+    "main"
+  ],
+  "metric_definitions_and_thresholds_unchanged": true,
+  "source_equal_aggregation_unchanged": true,
+  "full_artificial105_cases420_rows84_sources_pass": true,
+  "artificial_archive215_members_and10_coarse_arrays_pass": true,
+  "D_specific_negative_tests": 7,
+  "all105cases_retained": true,
+  "real_prediction_payload_reads": 0,
+  "real_reference_payload_reads": 0,
+  "model_calls": 0,
+  "GPU_calls": 0,
+  "server_operations": 0,
+  "WSL_calls": 0,
+  "remaining_implementation_gaps": [],
+  "limitations": [
+    "Artificial CPU validation only; no real Fold D scores computed",
+    "No statistical significance, bootstrap or combined gate authorized",
+    "Scoring needs a separate full request hash grant; formal post-score freeze audit precedes interpretation"
+  ]
+}

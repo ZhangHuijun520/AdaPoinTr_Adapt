@@ -1,0 +1,75 @@
+{
+  "schema": "bcsp-p1-paired-predict-local-P3-v2",
+  "status": "PASS_FOR_PENDING_REQUEST_ONLY",
+  "implementation": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\bcsp_p1_paired_predict_v2.py",
+    "bytes": 22296,
+    "sha256": "7f31ecddfed05bd49f3e42093b99477643ddce733dadbebb80f58d08f17f5d1c"
+  },
+  "tests": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\test_p1_paired_predict_v2.py",
+    "bytes": 16758,
+    "sha256": "240fc4d0c55bd31d7db5ab4c1eed68b060da15e5d60d585f0aca1ad7e87756aa"
+  },
+  "CPU_result": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\CPU_contract_result_v1.json",
+    "bytes": 511,
+    "sha256": "a4bc006671b596b08d2e1f09e11348269d1323ddda3c1ecb6ef1b31c6555f636"
+  },
+  "CPU_tests": 42,
+  "static_parse": true,
+  "actual_source_load_under_real_FilePolicy_audit_hook": true,
+  "source_files_match_production_pins": true,
+  "existing_untrusted_pyc_not_consulted": true,
+  "neighbor_write_hash_drift_and_simulated_link_rejected": true,
+  "unchanged_AST_components": [
+    "require",
+    "clean",
+    "sha",
+    "exact",
+    "bound",
+    "emit",
+    "validate_index",
+    "validate_source",
+    "validate_evidence",
+    "load_partial",
+    "load_checkpoint",
+    "predict_once",
+    "Budget",
+    "module",
+    "pack",
+    "append_event",
+    "geometry_summary",
+    "rng_state",
+    "execute_pair"
+  ],
+  "changed_existing_components": [
+    "authorize schema v2",
+    "make_policy adds exact source reader",
+    "main wires source-only loader and closes read descriptors"
+  ],
+  "new_components": [
+    "ExactSourceReads",
+    "source_module",
+    "load_p1_factory"
+  ],
+  "original_read_roots_not_expanded": true,
+  "model_encoder_factory_provider_data_unchanged": true,
+  "artificial210_loop_and213_archive_members_verified": true,
+  "previous_failure_audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v1\\post_failure_freeze_audit_v1\\local_freeze_verification_v1.json",
+    "bytes": 9376,
+    "sha256": "63fc0ae3cda5be7cad09c2554cdf15cc6efac63afb14677424564c2f8e4d9378"
+  },
+  "previous_request_consumed": true,
+  "server_operations": 0,
+  "real_checkpoint_loads": 0,
+  "real_NPZ_reads": 0,
+  "GPU_calls": 0,
+  "limitations": [
+    "CPU tests use exact original factory/encoder source only; native Mamba/CUDA kernels not invoked",
+    "Link rejection uses simulated metadata because Windows symlink privileges are not assumed",
+    "Server identity/assets/resources not checked this turn; must reverify before execution"
+  ],
+  "remaining_implementation_gaps": []
+}
