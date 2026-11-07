@@ -1,0 +1,47 @@
+{
+  "status": "LOCAL_H1_TWOFOLD_PREDICTION_P3_PASS",
+  "entry_sha256": "f6e1f196670c7aad550a722e5b6e457163745ed5ad9b439f097816cda9afd253",
+  "test_sha256": "2c9fcaf29b9b9028018cc81365c28bdb9631435969d0575c333bf20589fe8f53",
+  "CPU_result_sha256": "aa833e083331966fd202864d4eb5a974e7e3dbc84976eb7c3c30f379af44b27b",
+  "CPU_contracts": 38,
+  "parent_entry_sha256": "7f31ecddfed05bd49f3e42093b99477643ddce733dadbebb80f58d08f17f5d1c",
+  "inherited_AST_unchanged": [
+    "load_partial",
+    "load_checkpoint",
+    "predict_once",
+    "ExactSourceReads",
+    "source_module",
+    "load_p1_factory",
+    "make_policy",
+    "Budget",
+    "pack",
+    "rng_state",
+    "geometry_summary"
+  ],
+  "review_checks": {
+    "full_twofold_index_and_provenance": true,
+    "real_formal_training_audit_metadata_validated": true,
+    "H1_exact_config_only": true,
+    "native_model_parameters_and_checkpoint_schema_unchanged": true,
+    "partial_only_no_GT_input": true,
+    "exact_210_synthetic_predictions": true,
+    "per_fold105_and_manifest_fold": true,
+    "per_fold_coarse_representatives7and5": true,
+    "state_BN_RNG_preserved": true,
+    "failure_RNG_state_nonfinite_stop_no_second_model": true,
+    "exact_source_read_write_drift_checks": true,
+    "actual_checkpoint_loader_on_artificial_weights": true,
+    "inherited_source_reader_and_file_policy_AST_unchanged": true,
+    "no_extra_forward_loss_backward_optimizer_BNCal": true
+  },
+  "real_models_loaded": 0,
+  "real_checkpoints_loaded": 0,
+  "real_point_payloads_read": 0,
+  "server_operations": 0,
+  "CUDA_tests_run": 0,
+  "limitations": [
+    "CPU uses tiny synthetic models, artificial checkpoint and NPZ; no native Mamba/PointNet2/CUDA runtime verification",
+    "Source read policy behavior inherited from exact audited P1 implementation; safety functions checked for AST equality",
+    "Server readiness/identity/asset hashes must be checked before authorized installation and execution"
+  ]
+}

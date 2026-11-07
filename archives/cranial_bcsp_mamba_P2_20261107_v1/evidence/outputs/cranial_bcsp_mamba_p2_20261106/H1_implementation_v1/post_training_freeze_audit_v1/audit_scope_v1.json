@@ -1,0 +1,51 @@
+{
+  "status": "FROZEN_BEFORE_READONLY_AUDIT",
+  "request_sha256": "e5fa766a408762a9a3bf3e2bd1dc993886b3422f7afaf69f9a994dc0ca20413d",
+  "payloads": [
+    {
+      "name": "inventory_v1.py",
+      "bytes": 2483,
+      "sha256": "58ae583e939535825f1d5d39d6ca00d17f32d3b1b6d242125ac1f3c09ab62b21",
+      "command_upper_bound_bytes": 1910
+    },
+    {
+      "name": "controls_v1.py",
+      "bytes": 2359,
+      "sha256": "5d3a53ced083a59ea4dda1e425c0bb40d127ea621dc7e08851f51642827f9790",
+      "command_upper_bound_bytes": 1702
+    },
+    {
+      "name": "counts_H1_v1.py",
+      "bytes": 1998,
+      "sha256": "0c567a3048ec30cca7546c7a5bbc9d2d1e4e56d465a4d3a1a2aee3b37b826847",
+      "command_upper_bound_bytes": 1394
+    },
+    {
+      "name": "order_exposure_v1.py",
+      "bytes": 3037,
+      "sha256": "db423dae628713e749d311b5b7d9b720136f2cb039e2a923130f30534a04a743",
+      "command_upper_bound_bytes": 1766
+    },
+    {
+      "name": "pairing_v1.py",
+      "bytes": 3072,
+      "sha256": "44b1379779ecb5115d11a2511adf8d0161ec9aec53b9521b784dbe4cbcd7c3fa",
+      "command_upper_bound_bytes": 1962
+    },
+    {
+      "name": "resources_v1.py",
+      "bytes": 1865,
+      "sha256": "9f9643acff7ef18f40dace771c3f4b4dbe5a06605c694539a9d5f77b9a68e33f",
+      "command_upper_bound_bytes": 1314
+    }
+  ],
+  "phases": "inventory, controls, H1 logs, order/exposure, baseline pairing, resources, final identical inventory",
+  "transport": "unchanged proven compressed byte runner; each command <=2048 bytes",
+  "server_writes_allowed": false,
+  "model_imports_allowed": false,
+  "checkpoint_deserialization_allowed": false,
+  "real_NPZ_payload_reads_allowed": false,
+  "new_forward_backward_optimizer_allowed": false,
+  "per_call_timeout_seconds": 45,
+  "stop_on_any_failed_phase": true
+}

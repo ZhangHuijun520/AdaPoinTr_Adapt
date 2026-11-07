@@ -1,0 +1,66 @@
+{
+  "status": "LOCAL_H2_CUDA_ENTRY_CPU_P3_PASS",
+  "entry_sha256": "f77d0bd75d85569d85c8daf91a458c387f045662586ef4e1689b39dedbde2982",
+  "CPU_checks": 8,
+  "CPU_result": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_cuda_admission_v1\\cpu_entry_result_v1.json",
+    "bytes": 3025,
+    "sha256": "4318186b2735729fe3ffcfededc0cb2f996c0c6de8c7372eb9fa3118f5aa0994"
+  },
+  "H2_implementation_P3": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_implementation_v1\\implementation_P3_v1.json",
+    "bytes": 5100,
+    "sha256": "896ca7a86f9ae2722069d83fbb58053982c48bb345487c280002dc1f3c8e9a15"
+  },
+  "fixture": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_cuda_admission_v1\\artificial_h2_input_v1.npz",
+    "bytes": 152710,
+    "sha256": "48d63827a1724e8b3f758af8463bae54840df102a0c39e11e6158e0227c1a566"
+  },
+  "sources": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_cuda_admission_v1\\bcsp_h2_cuda_admission_v1.py",
+      "bytes": 14335,
+      "sha256": "f77d0bd75d85569d85c8daf91a458c387f045662586ef4e1689b39dedbde2982"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_implementation_v1\\bcsp_h2_range_v1.py",
+      "bytes": 2315,
+      "sha256": "ffdd06efa1c4c45339eea3d3d75bcc4b39aadb3561943cec0cc1727baa00d825"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_implementation_v1\\bcsp_h2_model_adapter_v1.py",
+      "bytes": 6727,
+      "sha256": "130939f3bfee8e11b2fefbb26f96b644056134e4bc1b776bebf99cf56edd4330"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_implementation_v1\\bcsp_h2_training_runtime_v1.py",
+      "bytes": 11508,
+      "sha256": "d39bef924e459f6509a3f9d7829317a3ddddbfd822aa838d28c30480ebcb190c"
+    }
+  ],
+  "checks": {
+    "actual_two_eval_autograd_forwards_and_backwards_on_CPU": true,
+    "real_parent_forward_loss_AST_with_artificial_operators": true,
+    "nonzero_fixture_scale_exercises_coupling": true,
+    "BN_and_full_state_and_RNG_fingerprints_preserved": true,
+    "head_and_coarse_and_encoder_finite_nonzero_gradients": true,
+    "no_optimizer_constructed_or_step": true,
+    "single_attempt_failure_counts_persist": true,
+    "fixture_schema_and_hash_guard": true,
+    "one_way_authorization_runtime": true,
+    "static_no_checkpoint_or_training_loop": true,
+    "previous33_H2_tests_and_sources_bound": true
+  },
+  "limits": [
+    "CPU artificial operators/losses are not actual Mamba/PointNet2/Chamfer/CUDA validation",
+    "GPU protocol uses eval plus autograd; does not validate training-mode BN, batch8 training resources, 3900-step stability or scientific benefit",
+    "Fixed nonzero synthetic head configuration is before snapshots and separate from zero-initialized training contract",
+    "Only finite gradients are required; previously disclosed finite Mamba gradient nondeterminism is not hidden by cross-arm/bitwise equality assertions"
+  ],
+  "server_operations": 0,
+  "real_data_reads": 0,
+  "real_checkpoint_loads": 0,
+  "GPU_calls": 0,
+  "optimizer_steps": 0
+}

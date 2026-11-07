@@ -1,0 +1,100 @@
+{
+  "schema": "bcsp-p2-H2-fourmodel-native-protocol-v1",
+  "status": "FROZEN_PENDING_IMPLEMENTATION_ONLY",
+  "model_order": [
+    "C_AUX",
+    "C_COUPLE",
+    "D_AUX",
+    "D_COUPLE"
+  ],
+  "forwards_per_model": 105,
+  "forward_budget": 420,
+  "unique_development_cases": 210,
+  "unique_sources": 42,
+  "batch_size": 1,
+  "warmup": 0,
+  "TTA": 0,
+  "backward": 0,
+  "optimizer_steps": 0,
+  "BNCal": 0,
+  "loss_calls": 0,
+  "checkpoint_loads": 4,
+  "checkpoint_policy": "Final frozen epoch99/update3900 weights_only CPU load; build original M0 then attach same-mode H2 before strict state load; validate checkpoint H2 metadata/constants/mode before use",
+  "input_policy": "Read only partial array; no GT/complete/target arrays in prediction. Exact inherited defective_bbox frame; no GT alignment/ICP",
+  "H1": false,
+  "H2_common": {
+    "version": "H2-range-soft-coupling-v1",
+    "feature_dim": 1024,
+    "coarse_points": 256,
+    "head_parameters": 1025,
+    "beta": 0.1,
+    "aux_weight": 0.1,
+    "maximum_scale": 1.25,
+    "minimum_radius": 1e-06,
+    "epsilon_added_to_radius": false,
+    "detach_Q_in_aux_target": true,
+    "detach_delta_in_coupling": true
+  },
+  "execution": "Sequential4 models; native eval/inference_mode; no condition override; assert override None; no extra forward for logs",
+  "state_RNG_contract": "Model parameters/persistent BN plus Python/NumPy/CPU/CUDA RNG fingerprints before/after each105cases equal",
+  "artifacts": "420 dense8192 normalized FP32 prediction files; inference manifest, exact attempt journal, same-forward coarse/dense native geometry and H2 D-only delta/scale/raw-used moments; fixed coarse representatives; archive and3 sidecars",
+  "coarse_tensor_cases_by_fold": {
+    "C": [
+      "train__001__bilateral",
+      "train__001__frontoorbital",
+      "train__001__parietotemporal",
+      "train__001__random_1",
+      "train__001__random_2"
+    ],
+    "D": [
+      "train__004__bilateral",
+      "train__004__frontoorbital",
+      "train__004__parietotemporal",
+      "train__004__random_1",
+      "train__004__random_2"
+    ]
+  },
+  "limits": {
+    "wall_seconds": 7200,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "failure_policy": "Stop first failure, no automatic retry/resume/next model after failure",
+  "scoring": "Subsequent separate CPU scoring unchanged source-equal E P95/CD/E-J Cover@2mm/J P95/outlier and severe-risk definitions; no scoring in prediction",
+  "scientific_claim": "No H2 effect known before Native prediction and formal scoring; training loss/moment learning not shape/interface benefit",
+  "extra_intervention": {
+    "authorized": false,
+    "forward_budget_this_request": 0,
+    "fixed_cases_by_fold": {
+      "C": [
+        "train__001__bilateral",
+        "train__001__frontoorbital",
+        "train__001__parietotemporal",
+        "train__001__random_1",
+        "train__001__random_2"
+      ],
+      "D": [
+        "train__004__bilateral",
+        "train__004__frontoorbital",
+        "train__004__parietotemporal",
+        "train__004__random_1",
+        "train__004__random_2"
+      ]
+    },
+    "rule": "First existing dev_case_ids entry per defect type, frozen before H2 prediction",
+    "future_plan": "Per-fold COUPLE5 cases, delta0 and cyclic donor replacement;20 extra forwards separately authorized, never Native performance"
+  },
+  "prohibited": [
+    "New training/BNCal/backward/loss",
+    "GT-derived inference",
+    "New cases/screening/radius or parameter scans",
+    "Extra diagnostic forward or warmup",
+    "Repeated GPU preflight",
+    "Baseline re-inference",
+    "Scoring/bootstrap/gate",
+    "Threshold changes"
+  ]
+}

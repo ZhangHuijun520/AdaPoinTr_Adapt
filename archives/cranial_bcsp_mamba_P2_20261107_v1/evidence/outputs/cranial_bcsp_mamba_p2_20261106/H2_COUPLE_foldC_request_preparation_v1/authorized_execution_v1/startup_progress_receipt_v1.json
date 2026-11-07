@@ -1,0 +1,32 @@
+{
+  "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2/H2_COUPLE_foldC_seed0_20261107_v1",
+  "files": [
+    {
+      "name": "startup_failure.json",
+      "bytes": 202
+    },
+    {
+      "name": "exit_code.txt",
+      "bytes": 2
+    },
+    {
+      "name": "launch.log",
+      "bytes": 4126
+    },
+    {
+      "name": "worker.pid",
+      "bytes": 6
+    },
+    {
+      "name": "resources.jsonl",
+      "bytes": 0
+    }
+  ],
+  "exit_code": "1\n",
+  "worker_PID": "32600",
+  "worker_present": false,
+  "metric_records": 0,
+  "last_metric": null,
+  "log_tail": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\n2026-11-07 06:26:30,742 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/utils/determinism.py:73: UserWarning: Deterministic mode: upgrade to Triton >= 3.4.0 for cached autotuning.\n  warnings.warn(msg)\nusing group version 2\nTraceback (most recent call last):\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H2_COUPLE_foldC_20261107_v1/bcsp_h2_couple_foldC_training_entry_v1.py\", line 320, in <module>\n    if __name__=='__main__':main()\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H2_COUPLE_foldC_20261107_v1/bcsp_h2_couple_foldC_training_entry_v1.py\", line 309, in main\n    result=dispatch_training(q,static,selected,fold,plan,factory=factory,h2_adapter=h2_adapter,model_builder=lambda:model_class(EasyDict(static['model'])),runtime=runtime,helper=helper,budget=budget,torch=torch,knn_enable=transformer.enable_bcsp_knn,expected_factory=expected_factory)\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H2_COUPLE_foldC_20261107_v1/bcsp_h2_couple_foldC_training_entry_v1.py\", line 244, in dispatch_training\n    aux_initial=json_bound(q['aux_pairing']['initialization'])\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H2_COUPLE_foldC_20261107_v1/bcsp_h2_couple_foldC_training_entry_v1.py\", line 26, in json_bound\n    def json_bound(r):return json.loads(exact(r).read_bytes())\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H2_COUPLE_foldC_20261107_v1/bcsp_h2_couple_foldC_training_entry_v1.py\", line 24, in exact\n    p=no_links(r['path']);require(p.is_file() and p.stat().st_size==r['bytes'] and sha(p)==r['sha256'],'binding '+str(p));return p\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H2_COUPLE_foldC_20261107_v1/bcsp_h2_couple_foldC_training_entry_v1.py\", line 18, in sha\n    with no_links(path).open('rb') as f:\n  File \"/opt/conda/envs/adapointr-mamba/lib/python3.10/pathlib.py\", line 1119, in open\n    return self._accessor.open(self, mode, buffering, encoding, errors,\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py\", line 164, in audit\n    self.check(args[0], write)\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H2_COUPLE_foldC_20261107_v1/bcsp_h2_couple_foldC_training_entry_v1.py\", line 149, in check\n    return super().check(filename,write)\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py\", line 156, in check\n    require(owned if write else owned or any(p == r or r in p.parents for r in self.roots),\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py\", line 43, in require\n    raise RuntimeError(message)\nRuntimeError: write/read boundary: /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2/H2_AUX_foldC_seed0_20261107_v1/initialization.json\n",
+  "request_sha256": "477522d9f7c5e7fc4e282a231f44ad5641588d5b34e303d7e433c3ba57ed6ce3"
+}

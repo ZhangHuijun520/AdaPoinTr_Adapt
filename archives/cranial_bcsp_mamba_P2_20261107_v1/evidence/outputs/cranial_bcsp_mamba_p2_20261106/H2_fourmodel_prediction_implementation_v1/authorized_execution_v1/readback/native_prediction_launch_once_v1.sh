@@ -1,0 +1,55 @@
+#!/bin/bash
+set -u
+umask 077
+cd /home/jovyan/adapointr_work/PoinTr || exit 120
+[ ! -L /home ] || exit 121
+[ ! -L /home/jovyan ] || exit 121
+[ ! -L /home/jovyan/adapointr_work ] || exit 121
+[ ! -L /home/jovyan/adapointr_work/PoinTr ] || exit 121
+[ ! -L /home/jovyan/adapointr_work/PoinTr/logs ] || exit 121
+[ ! -L /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2 ] || exit 121
+[ ! -L /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2/H2_C_D_AUX_COUPLE_native_development_20261107_v1 ] || exit 121
+mkdir -p -- /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2 || exit 122
+mkdir -- /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2/H2_C_D_AUX_COUPLE_native_development_20261107_v1 || exit 123
+exec >>/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2/H2_C_D_AUX_COUPLE_native_development_20261107_v1/launch.log 2>&1
+env \
+CUDA_VISIBLE_DEVICES=GPU-4009474d-3c21-c7a6-b03d-7b46cebafa52 \
+CUBLAS_WORKSPACE_CONFIG=:4096:8 \
+OMP_NUM_THREADS=2 \
+MKL_NUM_THREADS=2 \
+OPENBLAS_NUM_THREADS=2 \
+PYTHONDONTWRITEBYTECODE=1 \
+MPLBACKEND=Agg \
+MPLCONFIGDIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2/H2_C_D_AUX_COUPLE_native_development_20261107_v1/mplconfig \
+CUDA_CACHE_DISABLE=1 \
+TMPDIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2/H2_C_D_AUX_COUPLE_native_development_20261107_v1/tmp \
+PYTHONHASHSEED=0 \
+HF_HUB_OFFLINE=1 \
+TRANSFORMERS_OFFLINE=1 \
+HF_HOME=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2/H2_C_D_AUX_COUPLE_native_development_20261107_v1/hf_cache \
+XDG_CACHE_HOME=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2/H2_C_D_AUX_COUPLE_native_development_20261107_v1/cache \
+TRITON_CACHE_DIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2/H2_C_D_AUX_COUPLE_native_development_20261107_v1/triton_cache \
+ /usr/bin/timeout \
+ --signal=TERM \
+ --kill-after=5s \
+ 7200s \
+ /opt/conda/envs/adapointr-mamba/bin/python3.10 \
+ -I \
+ -S \
+ -B \
+ /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H2_fourmodel_native_prediction_20261107_v1/bcsp_h2_fourmodel_native_predict_v1.py \
+ --request \
+ /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H2_fourmodel_native_prediction_20261107_v1/H2_C_D_fourmodel_native_prediction_execution_request_v1.json \
+ --request-sha256 \
+ b95b866a6b3a0eaeb1e840e003ecd426847ed47b07675b6c1f7644b5aee97170 \
+ --authorization \
+ /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H2_fourmodel_native_prediction_20261107_v1/control/native_prediction_authorization_v1.json \
+ --authorization-sha256 \
+ 7aab51ee282563830d7bfaa2cc8759b26768815760fbf155692a52784e9ad253 \
+ --runtime \
+ /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H2_fourmodel_native_prediction_20261107_v1/control/native_prediction_runtime_v1.json \
+ --runtime-sha256 \
+ 12703f5ff0e53fee13420e92a756103af4f4eaf4ef172083121b05c422f4aaad
+result=$?
+printf "%s\n" "$result" > /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2/H2_C_D_AUX_COUPLE_native_development_20261107_v1/exit_code.txt
+exit "$result"

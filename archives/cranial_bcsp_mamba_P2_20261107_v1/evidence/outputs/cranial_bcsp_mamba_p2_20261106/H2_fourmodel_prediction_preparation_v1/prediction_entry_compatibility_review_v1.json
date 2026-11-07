@@ -1,0 +1,19 @@
+{
+  "status": "EXISTING_PREDICTION_ENTRY_INCOMPATIBLE_WITH_H2",
+  "entry": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H1_prediction_implementation_v1\\bcsp_p2_h1_twofold_predict_v1.py",
+    "bytes": 25584,
+    "sha256": "f6e1f196670c7aad550a722e5b6e457163745ed5ad9b439f097816cda9afd253"
+  },
+  "problems": [
+    "H1-enabled static and actual model validation; H2 requires H1 disabled",
+    "Builder creates original M0 only, no h2_range_head; H2 checkpoint has extra keys and mode contract",
+    "load_checkpoint validates only legacy stage/epoch/update, not H2 version/constants/mode",
+    "Input validation and attempts/completion fixed2 runs210; needs4 runs420 and210 unique case paths",
+    "Runtime source policy permits pinned factory/encoder only; exact H2 range/adapter imports and real bound load paths need targeted coverage",
+    "Native H2 condition must remain unset; same-forward D-only condition logs cannot call get_loss or read G"
+  ],
+  "shared_H2_implementation_unchanged": true,
+  "execution_request_created": false,
+  "scientific_configuration_changed": false
+}

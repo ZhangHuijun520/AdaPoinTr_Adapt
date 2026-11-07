@@ -1,0 +1,66 @@
+"""Local final scientific bindings/P3/transport; no network or execution materialization."""
+import ast,copy,hashlib,io,json,shlex,shutil,tarfile
+from pathlib import Path,PurePosixPath
+S=Path(__file__).resolve().parent;R=S.parents[2];PRE=S.parent/'H2_fourmodel_prediction_preparation_v1';H1=S.parent/'H1_prediction_implementation_v1';D=S.parent/'FoldD_entry_implementation_v1';H=S.parent/'H2_implementation_v1'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def bind(p):return dict(path=str(p.absolute()),bytes=p.stat().st_size,sha256=sha(p))
+def read(p):return json.loads(p.read_bytes())
+def emit(p,v):
+ with p.open('x',encoding='utf-8',newline='\n') as f:json.dump(v,f,ensure_ascii=False,indent=2,allow_nan=False);f.write('\n')
+entry=S/'bcsp_h2_fourmodel_native_predict_v1.py';cpu=S/'artificial_cpu_batch_v2/result_v1.json';result=read(cpu)
+assert result['status']=='H2_FOURMODEL_PREDICTION_CPU_CONTRACT_PASS' and result['checks_passed']==len(result['checks'])==34 and result['synthetic_forwards']==420 and not (cpu.parent/'failure_v1.json').exists()
+assert all(sha(Path(x['path']))==x['sha256'] for x in result['source_bindings'])
+static=read(S/'static_review_v2.json');assert static['status']=='STATIC_S0_S1_PASS' and all(sha(S/x['name'])==x['sha256'] for x in static['files'])
+assert sha(entry)==read(S/'static_review_v1.json')['files'][0]['sha256']
+def nodes(p):return {n.name:ast.dump(n,include_attributes=False) for n in ast.parse(p.read_text(encoding='utf-8')).body if isinstance(n,(ast.FunctionDef,ast.ClassDef))}
+parent=H1/'bcsp_p2_h1_twofold_predict_v1.py';old,new=nodes(parent),nodes(entry);inherited=['load_partial','predict_once','source_module','make_policy','Budget','pack','rng_state','geometry_summary'];assert all(old[n]==new[n] for n in inherited)
+index=read(PRE/'H2_C_D_fourmodel_input_index_v1.json');proto=read(PRE/'H2_fourmodel_native_prediction_protocol_v1.json');assert len(index['runs'])==4 and len(index['inputs'])==420 and proto['forward_budget']==420
+for run in index['runs']:
+ rec=index['training_audit_evidence'][run['label']]['formal_audit'];assert sha(Path(rec['path']))==rec['sha256']==run['training_freeze_audit_sha256'];a=read(Path(rec['path']));assert all(a['checks'].values()) and a['request_sha256']==run['training_request_sha256'] and a['checkpoint']['sha256']==run['checkpoint']['sha256']
+train=read(D/'COUPLE_D_pending_request_v1/transport_payload/H2_COUPLE_foldD_seed0_training_execution_request_v1.json')
+for key,name in [('h2_range','bcsp_h2_range_v1.py'),('h2_adapter','bcsp_h2_model_adapter_v1.py')]:assert sha(H/name)==train['implementation'][key]['sha256']
+policy=read(cpu.parent/'source_policy_child_stdout.bin');assert all(policy.values())
+p3=dict(status='LOCAL_H2_FOURMODEL_PREDICTION_P3_PASS',entry_sha256=sha(entry),test_sha256=sha(S/'test_h2_fourmodel_cpu_v1.py'),CPU_result=bind(cpu),CPU_contracts=34,synthetic_forwards=420,parent_entry=bind(parent),inherited_AST_unchanged=inherited,H2_sources={k:train['implementation'][k] for k in ['h2_range','h2_adapter']},frozen_input_index=bind(PRE/'H2_C_D_fourmodel_input_index_v1.json'),frozen_protocol=bind(PRE/'H2_fourmodel_native_prediction_protocol_v1.json'),actual_source_policy=policy,
+ checks=dict(four_training_audits_and_final_checkpoint_pins=True,same_fold_shared_inputs_and_original_manifest=True,mode_and_metadata_strict_checkpoint_loading=True,actual_synthetic_head_state_load=True,wrong_mode_constants_state_keys_rejected=True,exact420_synthetic_attempts_files_and_four105_counts=True,partial_only_no_GT_key=True,H2_native_D_only_summary_no_loss_or_override=True,state_BN_and_CPU_Python_numpy_RNG_unchanged=True,source_four_files_under_actual_audit_hook=True,exact_source_writes_and_neighbor_rejected=True,first_failure_stops_before_second_model=True,scientific_constants_and_resource_guards_unchanged=True),
+ prior_failure=dict(batch='artificial_cpu_batch_v1',reason='Windows synthetic source fixture CRLF translated by inherited os.read text fd',fix='Only artificial source fixture changed to raw LF bytes; production entry and guards unchanged',failure=bind(S/'artificial_cpu_batch_v1/failure_v1.json'),test_snapshot=bind(S/'artificial_cpu_batch_v1/failed_test_source_snapshot.py')),
+ limitations=['Actual parent model forward AST with artificial local ops and native factory facade; no real Mamba/PointNet2/GPU checkpoint','CPU exercises no CUDA RNG; CUDA unchanged-state/RNG checks retained for actual execution','No server or current assets/resources recheck in this implementation-only task','Existing finite Mamba nondeterminism/partial surface semantic limits inherited','Synthetic420 forward success is not completion, performance or scientific benefit proof'],real_checkpoint_loads=0,real_point_payloads_read=0,server_operations=0,CUDA_tests=0,backward=0,optimizer_steps=0,loss_calls=0)
+emit(S/'implementation_P3_v1.json',p3)
+O=S/'pending_request_v1';O.mkdir();T=O/'transport_payload';T.mkdir();remote='/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H2_fourmodel_native_prediction_20261107_v1';output='/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2/H2_C_D_AUX_COUPLE_native_development_20261107_v1';mapping=[]
+def stage(p,name=None):
+ n=name or p.name;t=T/n;shutil.copyfile(p,t);r=dict(path=str(PurePosixPath(remote)/n),bytes=t.stat().st_size,sha256=sha(t));mapping.append(dict(local=str(t.absolute()),target=r['path'],bytes=r['bytes'],sha256=r['sha256'],write_policy='EXCLUSIVE_CREATE_NO_OVERWRITE'));return r
+q=read(H1/'pending_request_v1/transport_payload/H1_C_D_development_execution_request_v1.json')
+q.update(schema='bcsp-p2-H2-fourmodel-native-prediction-v1',status='AWAITING_EXPLICIT_USER_AUTHORIZATION',stage='CRANIAL_BCSP_MAMBA_P2_H2',run_id='H2_C_D_AUX_COUPLE_native_development_20261107_v1',identity=train['identity'],environment=train['environment'],dependencies=train['dependencies'],fold='C_D',seed=0,batch_size=1,unique_cases=210,forward_budget=420,backward=0,optimizer_steps=0,BNCal=0,loss_calls=0,output=output,launch_attempt=remote+'/control/native_prediction_single_attempt_claim_v1.json')
+q['entry']=stage(entry);q['input_index']=stage(PRE/'H2_C_D_fourmodel_input_index_v1.json');q['protocol']=stage(PRE/'H2_fourmodel_native_prediction_protocol_v1.json');q['P3']=stage(S/'implementation_P3_v1.json');stage(cpu,'CPU_contract_result_v1.json')
+q['training_audits']={}
+for run in index['runs']:q['training_audits'][run['label']]=stage(Path(index['training_audit_evidence'][run['label']]['formal_audit']['path']),'frozen_'+run['label']+'_training_audit_v1.json')
+q['static_config']=train['static_config'];q['static_config']=read(D/'AUX_D_pending_request_v1/transport_payload/H2_AUX_foldD_seed0_training_execution_request_v1.json')['static_config']
+for k in ['h2_range','h2_adapter']:q['implementation'][k]=train['implementation'][k]
+q['limits']=proto['limits'];control=remote+'/control'
+lc=dict(tmux_session='bcsp_p2_H2_CD_native_eval_20261107_v1',authorization=control+'/native_prediction_authorization_v1.json',runtime=control+'/native_prediction_runtime_v1.json',launcher=control+'/native_prediction_launch_once_v1.sh',request_path=remote+'/H2_C_D_fourmodel_native_prediction_execution_request_v1.json',log=output+'/launch.log',pid=output+'/worker.pid',exit_code=output+'/exit_code.txt',single_attempt=True,timeout_seconds=q['limits']['wall_seconds'],materialization_order='authorization -> hash -> runtime -> hash -> launcher; exclusive claim before unique tmux',parent_directory_before_redirection=True,PowerShell_explicit_exit_LASTEXITCODE=True,transport='Raw bytes capture; exact-hash short execution envelope <=2048 bytes; no multiline terminal upload')
+q['installation_prerequisites']=['Current exact hostname/UID/Python/GPU fixed UUID and idle device; original resource thresholds and free disk','Uploaded package and all3 sidecars match; all new install/control/run targets absent with safe real parents','Four measured checkpoint SHA256/bytes and bound formal audits match; all reused source/provider/numeric/config/metadata bindings match','All210 distinct allowlisted development input file bytes match frozen same-fold two-arm rows; no payload decode during readiness','Exact same-mode H2 model built before strict final checkpoint load; no intervention override','Materialize and launch only after separate complete request hash authorization; failure stop without retry/resume']
+q['not_authorized']=['Execution before separate full request hash authorization','Training/BNCal/loss/backward/optimizer steps','Extra20 conditional diagnostics or any override','Baseline re-inference/warmup/TTA/ICP/GT alignment','Case selection or new/protected data','Scoring/bootstrap/gate or threshold changes','Automatic retry/resume/continuing next model after first failure','GPU preflight repeat','Dependency download/build/install/upgrade']
+q['provenance']=dict(purpose='Native4 models x105; source-equal shape/interface/risk comparison later, no performance claim now',mode_order=proto['model_order'],unique_cases=210,unique_sources=42,total_predictions=420,common_initialization_and_fold_training_formally_frozen=True,existing_M0_predictions_reused=True,implementation_scope='One dedicated prediction entry; old model/factory/encoder/provider unchanged; exact H2 range/adapter source load and checkpoint-mode metadata',current_server_rechecked=False,identity_source='Last frozen1lvq9b-0 identity only, recheck before authorized install/launch',CPU_success_not_CUDA_or_scientific_success=True,conditional_intervention_cases_pre_frozen=proto['extra_intervention']['fixed_cases_by_fold'],extra_intervention_authorized=False,training_or_prediction_started=False,resource_policy='Original per-call sampled monitoring and thresholds, PID diagnostic only',baseline_archive_payload_verification_before_scoring_required=True)
+args=['/usr/bin/timeout','--signal=TERM','--kill-after=5s',str(q['limits']['wall_seconds'])+'s',q['identity']['python_realpath'],'-I','-S','-B',q['entry']['path'],'--request',lc['request_path'],'--request-sha256','REQUEST_SHA256','--authorization',lc['authorization'],'--authorization-sha256','AUTHORIZATION_SHA256','--runtime',lc['runtime'],'--runtime-sha256','RUNTIME_SHA256']
+out=PurePosixPath(output);lines=['#!/bin/bash','set -u','umask 077','cd '+shlex.quote(q['identity']['project'])+' || exit 120']
+for p in reversed((out,*out.parents)):
+ if str(p)!='/':lines.append('[ ! -L '+shlex.quote(str(p))+' ] || exit 121')
+lines+=['mkdir -p -- '+shlex.quote(str(out.parent))+' || exit 122','mkdir -- '+shlex.quote(output)+' || exit 123','exec >>'+shlex.quote(lc['log'])+' 2>&1','env '+chr(92)]
+for k,v in q['environment'].items():lines.append(shlex.quote(k+'='+v.replace('<owned_output>',output))+' '+chr(92))
+lines+=[' '+(' '+chr(92)+'\n ').join(map(shlex.quote,args)),'result=$?','printf "%s\\n" "$result" > '+shlex.quote(lc['exit_code']),'exit "$result"']
+tpl=O/'native_prediction_launch_once_template_v1.sh'
+with tpl.open('x',encoding='utf-8',newline='\n') as f:f.write('\n'.join(lines)+'\n')
+assert max(map(len,tpl.read_text().splitlines()))<=2048;lc['launcher_template']=stage(tpl);q['launch_contract']=lc
+request=T/'H2_C_D_fourmodel_native_prediction_execution_request_v1.json';emit(request,q);mapping.append(dict(local=str(request.absolute()),target=lc['request_path'],bytes=request.stat().st_size,sha256=sha(request),write_policy='EXCLUSIVE_CREATE_NO_OVERWRITE'))
+emit(O/'installation_mapping_v1.json',dict(status='FROZEN_NOT_INSTALLED_READINESS_RECHECK_REQUIRED',remote_root=remote,files=mapping,reused_exact_bindings={k:q[k] for k in ['identity','model_root','preflight_scope','static_config','numeric_policy','fold_binding','source_index','source_manifest','helper','implementation','dependencies']},fixed_checkpoints=[r['checkpoint'] for r in index['runs']],unique_input_files=210,materials_not_created=[lc['authorization'],lc['runtime'],lc['launcher'],q['launch_attempt'],output]))
+archive=O/'bcsp_p2_H2_fourmodel_native_prediction_pending_20261107_v1.tar.gz';members=[(p,'payload/'+p.name) for p in sorted(T.iterdir())]+[(O/'installation_mapping_v1.json','installation_mapping_v1.json')]
+with tarfile.open(archive,'w:gz') as tar:
+ for p,n in members:
+  b=p.read_bytes();info=tarfile.TarInfo(n);info.size=len(b);info.mode=0o600;info.mtime=0;tar.addfile(info,io.BytesIO(b))
+with tarfile.open(archive,'r:gz') as tar:
+ assert len(tar.getmembers())==len(members)
+ for p,n in members:assert tar.extractfile(n).read()==p.read_bytes()
+for suffix,text in [('.sha256',sha(archive)+'  '+archive.name+'\n'),('.bytes',str(archive.stat().st_size)+'\n'),('.contents.sha256',''.join(sha(p)+'  '+n+'\n' for p,n in members))]:
+ with Path(str(archive)+suffix).open('x',encoding='ascii',newline='\n') as f:f.write(text)
+tokens=shlex.split(next(x for x in tpl.read_text().replace(chr(92)+'\n',' ').splitlines() if x.startswith('env ')));assert tokens[tokens.index('--request')+1]==lc['request_path']
+receipt=dict(status='AWAITING_EXPLICIT_USER_AUTHORIZATION',request=bind(request),archive=bind(archive),installation_files=len(mapping),CPU_contracts=34,synthetic_forwards=420,real_forwards=0,P3_status=p3['status'],forward_budget=420,unique_cases=210,server_operations=0,authorized_controls_materialized=False)
+emit(O/'pending_request_receipt_v1.json',receipt);print(json.dumps(receipt,ensure_ascii=False,indent=2))

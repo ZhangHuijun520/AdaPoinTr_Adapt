@@ -1,0 +1,51 @@
+{
+  "status": "REQUIRES_LIMITED_SCORER_ADAPTATION",
+  "is_execution_request": false,
+  "final_execution_request_created": false,
+  "existing_scorer": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\scoring_implementation_v1\\bcsp_p1_pair_score_v1.py",
+    "bytes": 24038,
+    "sha256": "c47273e733f06d38fd7d1228b49c3bbf201322d579621eaed2713033c3e1bdea"
+  },
+  "source_anchors": {
+    "authorize": {
+      "start": 31,
+      "end": 35
+    },
+    "validate_index": {
+      "start": 37,
+      "end": 55
+    },
+    "validate_archive": {
+      "start": 57,
+      "end": 77
+    },
+    "score_case": {
+      "start": 120,
+      "end": 138
+    },
+    "case_differences": {
+      "start": 170,
+      "end": 179
+    },
+    "main": {
+      "start": 225,
+      "end": 250
+    }
+  },
+  "metric_engine": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+    "bytes": 6784,
+    "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+  },
+  "compatibility_blockers": [
+    "Hardcoded T0/M0 arms and delta names",
+    "One fold105cases/21sources and one210prediction archive; new task uses H1 twofold archive plus two baseline archives",
+    "H1 eval completion status/labels and per-fold7/5coarse differ",
+    "Per-fold geometry/reference/index/source summary routing must be exact;840 score rows168source rows"
+  ],
+  "minimum_implementation": "One isolated H1/M0 twofold scoring entry, targeted artificial CPU contracts, P3 then final pending request; metric core unchanged",
+  "scoring_executed": false,
+  "implementation_modified": false,
+  "server_operations": 0
+}

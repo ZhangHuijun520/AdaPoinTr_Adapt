@@ -1,0 +1,54 @@
+{
+  "status": "FROZEN_PENDING_IMPLEMENTATION_AND_SEPARATE_EXECUTION_AUTHORIZATION",
+  "arms": [
+    "M0",
+    "H2_AUX",
+    "H2_COUPLE"
+  ],
+  "folds": [
+    "C",
+    "D"
+  ],
+  "unique_cases": 210,
+  "sources": 42,
+  "defects_per_source": 5,
+  "model_rows": 630,
+  "shared_control_rows": 420,
+  "total_case_rows": 1050,
+  "total_source_rows": 210,
+  "controls": [
+    "Nop_D",
+    "GT_8192"
+  ],
+  "delta": "Primary H2_COUPLE minus H2_AUX; secondary H2_COUPLE minus M0, H2_AUX minus M0",
+  "primary": "A1 area-weighted E_P95 mm; five defects/source then21sources equally within each fold",
+  "geometry_labels": {
+    "placement_tail": "centroid>20mm",
+    "compact_distribution": "radius_ratio<0.9",
+    "severe_geometry": "E_P95>20mm OR J_Cover2mm==0"
+  },
+  "metrics": "Exact inherited E/J/CD/reverse A2/coarse-dense metrics; frozen units/references/thresholds",
+  "reporting": "Per fold, source, case, defect and new/rescued/shared severe transitions; no case filtering",
+  "bootstrap": 0,
+  "p_values": false,
+  "formal_gate_execution": false,
+  "limits": {
+    "wall_seconds": 18000,
+    "RSS_bytes": 8589934592,
+    "output_bytes": 2147483648,
+    "threads": 2
+  },
+  "budget_reason": "1050 rows vs inherited840: proposed wall18000s=14400*1.25; same RSS8GiB/output2GiB/threads2. No metric or risk threshold change.",
+  "prohibited": [
+    "server/WSL/network",
+    "Torch/GPU/checkpoint",
+    "training/new forward/BNCal",
+    "ICP/GT alignment",
+    "threshold/reference/GT/point changes",
+    "backup extraction/writes/deletion",
+    "scoring before final implementation/P3 and separate hash authorization"
+  ],
+  "schema": "bcsp-p2-H2-M0-twofold-local-scoring-protocol-candidate-v1",
+  "H2_mechanism": "Use saved D-only Native H2 delta/scale/raw-used moments; GT radius/centroid comparison only offline. No new forward or intervention, no fitting or probe scan.",
+  "risk_reporting": "Per fold/case/source/defect; new/rescued/shared severe changes for COUPLE-AUX and COUPLE-M0, frontoorbital retained. No formal gate calculation or bootstrap/pvalue."
+}

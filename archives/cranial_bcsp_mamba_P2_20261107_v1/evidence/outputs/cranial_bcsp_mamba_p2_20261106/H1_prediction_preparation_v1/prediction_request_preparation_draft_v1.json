@@ -1,0 +1,27 @@
+{
+  "status": "BLOCKED_ON_MINIMAL_PREDICTION_ENTRY_IMPLEMENTATION",
+  "is_execution_request": false,
+  "execution_ready": false,
+  "target": "Two fixed H1 checkpoints, C105+D105=210 predictions",
+  "existing_entry_directly_compatible": false,
+  "blockers": [
+    "Same-fold T0/M0 validation incompatible with one H1 model per fold",
+    "helper.validate_model rejects H1 enabled",
+    "base YAML equality rejects H1-only config delta",
+    "training-audit validators expect P1 T0/M0 receipt rather than P2 H1 freeze evidence",
+    "hard-coded fold/data/output/representative mappings require exact twofold dispatch"
+  ],
+  "required_limited_implementation": [
+    "One isolated H1 twofold prediction entry derived from audited P1 code; keep old entries unchanged",
+    "Exact H1 attribute/config and two checkpoint freeze binding",
+    "C/D105 index/source validation and exact data paths",
+    "Preserve existing checkpoint loader, file guards, source reader, numeric/backend, eval/RNG/state/resource/claim semantics",
+    "Targeted artificial CPU tests plus local P3; final request only after final source hash"
+  ],
+  "implementation_authorized_by_this_task": false,
+  "final_entry_sha256": null,
+  "final_execution_request_created": false,
+  "server_operations": 0,
+  "checkpoints_loaded": 0,
+  "predictions_executed": 0
+}

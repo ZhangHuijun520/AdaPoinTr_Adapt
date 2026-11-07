@@ -1,0 +1,44 @@
+"""Local P3 and pending CPU scoring request, no real scoring/authorization materialization."""
+import ast,hashlib,json
+from pathlib import Path
+S=Path(__file__).resolve().parent;R=S.parents[2];PRE=S.parent/'H2_local_score_preparation_v1';PI=S.parent/'H2_fourmodel_prediction_implementation_v1';H1=S.parent/'H1_scoring_implementation_20261107_v1'
+def sha(p):
+ h=hashlib.sha256()
+ with p.open('rb') as f:
+  for b in iter(lambda:f.read(1048576),b''):h.update(b)
+ return h.hexdigest()
+def rec(p):return dict(path=str(p.absolute()),bytes=p.stat().st_size,sha256=sha(p))
+def read(p):return json.loads(p.read_bytes())
+def emit(n,v):
+ with (S/n).open('x',encoding='utf-8',newline='\n') as f:json.dump(v,f,ensure_ascii=False,indent=2,allow_nan=False);f.write('\n')
+cpu=S/'artificial_cpu_batch_v1/result_v1.json';result=read(cpu);assert result['status']=='H2_THREE_ARM_SCORING_CPU_CONTRACT_PASS' and result['checks_passed']==len(result['checks'])==35 and not (cpu.parent/'failure_v1.json').exists()
+static=read(S/'static_review_v1.json');assert static['status']=='STATIC_S0_S1_PASS' and all(sha(S/r['name'])==r['sha256'] for r in static['files'])
+scorer=S/'bcsp_p2_h2_M0_three_arm_score_v1.py';parent=H1/'bcsp_p2_h1_M0_twofold_score_v1.py';metric=R/'outputs/cranial_bcsp_geov1_20261024/blue_pair_eval_v1/bcsp_eval_metrics_v1.py';assert sha(metric)=='af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766'
+def funcs(p):return {n.name:ast.dump(n,include_attributes=False) for n in ast.parse(p.read_text(encoding='utf-8')).body if isinstance(n,ast.FunctionDef)}
+old,new=funcs(parent),funcs(scorer);keep=['load_prediction_arrays','load_prediction','select_metrics','position_shape','risk_labels','stage_geometry','aggregate_source','csv_rows'];assert all(old[n]==new[n] for n in keep)
+source=ast.parse(scorer.read_text(encoding='utf-8'));imports=[n.module if isinstance(n,ast.ImportFrom) else x.name for n in ast.walk(source) if isinstance(n,(ast.Import,ast.ImportFrom)) for x in (n.names if isinstance(n,ast.Import) else [None])];assert not any(x and (x.startswith('torch') or x.startswith('subprocess') or x.startswith('socket')) for x in imports)
+casepath=PRE/'H2_M0_twofold_score_case_index_candidate_v1.json';caseindex=read(casepath);verification=PRE/'local_download_verification_v1.json';v=read(verification);assert v['status']=='LOCAL_H2_NATIVE_ARCHIVE_FOUR_FILES_AND425_MEMBERS_PASS';assert len(caseindex['cases'])==210
+protocol=read(PRE/'H2_M0_frozen_scoring_protocol_candidate_v1.json');assert protocol['limits']['wall_seconds']==18000 and protocol['limits']['RSS_bytes']==8589934592 and protocol['total_case_rows']==1050
+protocol.update(status='FROZEN_PENDING_SEPARATE_SCORING_EXECUTION_AUTHORIZATION',schema='bcsp-p2-H2-M0-three-arm-local-scoring-protocol-v1');emit('frozen_scoring_protocol_v1.json',protocol)
+refs=[]
+for c in caseindex['cases']:refs.append(dict(case_id=c['case_id'],source_id=c['source_id'],fold=c['fold'],normalization=c['normalization'],target_array_sha256=c['target_array_sha256'],**c['reference']))
+emit('reference_manifest_C_D_v1.json',dict(status='FROZEN_EXISTING_CD_210_REFERENCES_UNCHANGED',cases=refs,provenance=rec(casepath)))
+p3=dict(status='LOCAL_H2_M0_THREE_ARM_SCORING_P3_PASS',scorer=rec(scorer),test=rec(S/'test_h2_three_arm_score_cpu_v1.py'),CPU_result=rec(cpu),CPU_tests=35,static_review=rec(S/'static_review_v1.json'),parent=rec(parent),metric=rec(metric),unchanged_AST_functions=keep,
+ checks=dict(real_H2_index_reference_metadata_contract=True,H2_C_and_D_baseline_archive_readers=True,exact630_model_and420_shared_control_rows=True,exact1050_case_and210_source_rows=True,primary_COUPLE_minus_AUX_secondary_baseline_pairs=True,all_five_defects_and21sources_per_fold_preserved=True,separate_new_rescued_risk_transitions=True,H2_native_offline_moment_summary_only_no_forward=True,original_numeric_thresholds_and_metric_core_unchanged=True,no_missing_case_drop_or_retry=True,no_Torch_GPU_checkpoint_network_process_import=True,backup_readonly_no_extraction=True),
+ real_score_rows=0,synthetic_actual_metric_rows=10,synthetic_orchestrated_rows=1050,server_operations=0,GPU_calls=0,
+ limitations=['1050-row integration uses2 analytic-case metric templates; actual metric arithmetic tested on10 artificial model/control rows','No real prediction/reference/point arrays read during implementation/tests','Exploratory single-seed source-paired comparisons, no bootstrap/pvalue/gate','H2 offline moment diagnostics do not certify shape/interface accuracy'])
+emit('implementation_P3_v1.json',p3)
+oldplan=read(H1/'local_scoring_execution_request_v1.json');specs={}
+specs['H2']=dict(archive=v['files'][0],sidecars=v['files'][1:],prediction_index=rec(S.parent/'H2_fourmodel_prediction_preparation_v1/H2_C_D_fourmodel_input_index_v1.json'),prediction_protocol=rec(S.parent/'H2_fourmodel_prediction_preparation_v1/H2_fourmodel_native_prediction_protocol_v1.json'),prediction_request_sha256='b95b866a6b3a0eaeb1e840e003ecd426847ed47b07675b6c1f7644b5aee97170',fold='C_D')
+for f in ['C','D']:specs[f]=caseindex['M0_archive_inputs'][f]
+env=oldplan['environment'];python=Path(env['python']['path']);assert python.is_file() and sha(python)==env['python']['sha256'] and result['packages']==env['packages']
+out=S/'unified_scores_v1';auth=S/'authorized_execution_v1/score_authorization_v1.json';assert not out.exists() and not auth.parent.exists()
+counts=dict(unique_cases=210,sources=42,model_rows=630,shared_control_rows=420,case_score_rows=1050,source_score_rows=210)
+evidence=dict(formal_H2_prediction_audit=rec(PI/'post_prediction_freeze_audit_v1/audit_report_v1.json'),local_H2_archive_verification=rec(verification),scoring_preparation_receipt=rec(PRE/'preparation_receipt_v1.json'),CPU_contracts=rec(cpu),P3=rec(S/'implementation_P3_v1.json'),frozen_scoring_protocol=rec(S/'frozen_scoring_protocol_v1.json'))
+for k in ['formal_P1_C_prediction_audit','formal_P1_D_prediction_audit']:evidence[k]=oldplan['evidence'][k]
+q=dict(schema='bcsp-p2-H2-M0-three-arm-local-scoring-request-v1',status='AWAITING_EXPLICIT_USER_AUTHORIZATION',execution_authorized=False,date_Asia_Shanghai='2026-11-07',purpose='Frozen Native H2_COUPLE vs H2_AUX primary, M0 secondary; C105+D105, no new inference or conditional intervention',authorized_attempts_after_separate_full_hash_grant=1,implementation=dict(scorer=rec(scorer),metrics=rec(metric)),environment=env,archive_inputs=specs,reference_manifest=rec(S/'reference_manifest_C_D_v1.json'),prediction_index=specs['H2']['prediction_index'],score_case_index=rec(casepath),evidence=evidence,P3=rec(S/'implementation_P3_v1.json'),output=str(out.absolute()),counts=counts,
+ scientific_contract=dict(arms=['M0','H2_AUX','H2_COUPLE'],controls=['Nop_D','GT_8192'],primary_pair=['H2_AUX','H2_COUPLE'],secondary_pairs=[['M0','H2_COUPLE'],['M0','H2_AUX']],delta='candidate minus baseline per fixed pair',perfold105=True,source_equal=True,primary='A1 area-weighted E_P95; mean5defects/source then21sources equally/fold',geometry='Exact inherited E/J/CD/Cover/reverseA2/coarse-dense metrics and risk thresholds',risk='Per-fold per-case/defect new/rescued/shared risks for fixed comparisons; frontoorbital retained, no filtering',H2_moments='Saved Native delta/scale/raw-used moments with GT radius only offline; descriptive not causal',alignment='Native world-mm, no ICP/GT Oracle',M0_T0_archive_handling='Select only M0 predictions; T0 archive entries not scored; no baseline re-inference'),statistics=dict(bootstrap=0,p_values=False,formal_gate=False,perfold_report=True,seed0_only=True),limits=protocol['limits'],future_authorization=dict(path=str(auth.absolute()),schema='bcsp-p2-H2-M0-score-authorization-v1'),
+ invocation_contract=dict(external_wall_timeout_seconds=18030,readiness='Rehash implementation/evidence/3archives/sidecars/fixed Python/210references/210pointfiles; owned output/control targets absent',environment=dict(CUDA_VISIBLE_DEVICES='',OMP_NUM_THREADS='2',OPENBLAS_NUM_THREADS='2',MKL_NUM_THREADS='2',PYTHONDONTWRITEBYTECODE='1'),claim='Exclusive authorization and process-attempt receipt before unique subprocess; no automatic retry/resume'),expected_result_files=oldplan['expected_result_files'],failed_attempt_policy='Fail whole batch, retain partial logs; no dropped cases, retry or resume',completion_boundary='Formal read-only post-score freeze audit before effect interpretation',forbidden=protocol['prohibited'],execution_materialized_now=False,real_scoring_executed_now=False)
+emit('local_scoring_execution_request_v1.json',q)
+receipt=dict(status=q['status'],request=rec(S/'local_scoring_execution_request_v1.json'),P3=rec(S/'implementation_P3_v1.json'),counts=counts,CPU_tests=35,execution_materialized=False,real_scoring_executed=False)
+emit('request_preparation_receipt_v1.json',receipt);print(json.dumps(receipt,ensure_ascii=False,indent=2))

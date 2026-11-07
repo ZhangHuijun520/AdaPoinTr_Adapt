@@ -1,0 +1,32 @@
+{
+  "status": "READONLY_FORMULA_CONFIRMED_NOT_RUNTIME_CONFIG_NOT_EXECUTION_REQUEST",
+  "date": "2026-11-06",
+  "function": "coarse_geometry_guard_components",
+  "model_source_sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4",
+  "coordinate_frame": "fixed defective_bbox normalized coordinates",
+  "input": "training ret[0] pred_coarse [B,256,3] and target [B,8192,3]",
+  "radius": "sqrt(mean(sum((X-mean(X))**2,xyz),points)+eps)",
+  "centroid_argument": "vector_norm(mu_Q-mu_G,xyz)/r_G",
+  "radius_argument": "log((r_Q+eps)/(r_G+eps))",
+  "H1": "0.5*(mean_batch(SmoothL1_beta(centroid_argument))+mean_batch(SmoothL1_beta(radius_argument)))",
+  "total_loss": "original_coarse_CD + original_fine_CD + 0.1*H1",
+  "parameters": {
+    "enabled": true,
+    "mode": "centroid_radius",
+    "weight": 0.1,
+    "smooth_l1_beta": 0.1,
+    "cvar_fraction": 0.1,
+    "eps": 1e-06
+  },
+  "cvar_branch_executed": false,
+  "direct_gradient_excludes": [
+    "mlp_query",
+    "decoder",
+    "dense_decode_head"
+  ],
+  "authorization_to_train": false,
+  "implementation_complete": false,
+  "new_forward_calls": 0,
+  "new_backward_calls": 0,
+  "optimizer_steps": 0
+}

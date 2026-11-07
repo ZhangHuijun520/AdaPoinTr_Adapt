@@ -1,0 +1,69 @@
+{
+  "status": "LOCAL_H2_M0_THREE_ARM_SCORING_P3_PASS",
+  "scorer": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_scoring_implementation_v1\\bcsp_p2_h2_M0_three_arm_score_v1.py",
+    "bytes": 28932,
+    "sha256": "7c60d46e99a29d159dce9b66e435cfc1a616b1ef37a7fa78908d59f45a5a7ef2"
+  },
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_scoring_implementation_v1\\test_h2_three_arm_score_cpu_v1.py",
+    "bytes": 15362,
+    "sha256": "4deb1ebc7668a2475d1274275ca64c7255979d25cae17ae9d5341ba0463a4e36"
+  },
+  "CPU_result": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_scoring_implementation_v1\\artificial_cpu_batch_v1\\result_v1.json",
+    "bytes": 2300,
+    "sha256": "5766521b0c4f89ce973676bb58df985c784afe9a3e37f422896e594d6bc0723a"
+  },
+  "CPU_tests": 35,
+  "static_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_scoring_implementation_v1\\static_review_v1.json",
+    "bytes": 406,
+    "sha256": "d12d552ce9ebf9398bb069790eb5045b7d20e4bdc36373c21bd941537a13f520"
+  },
+  "parent": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H1_scoring_implementation_20261107_v1\\bcsp_p2_h1_M0_twofold_score_v1.py",
+    "bytes": 24988,
+    "sha256": "a4bbd0b708340eed5c0a7ff5af47c9075895f7ff6e5a4d7b43469bc6abf74c5d"
+  },
+  "metric": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+    "bytes": 6784,
+    "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+  },
+  "unchanged_AST_functions": [
+    "load_prediction_arrays",
+    "load_prediction",
+    "select_metrics",
+    "position_shape",
+    "risk_labels",
+    "stage_geometry",
+    "aggregate_source",
+    "csv_rows"
+  ],
+  "checks": {
+    "real_H2_index_reference_metadata_contract": true,
+    "H2_C_and_D_baseline_archive_readers": true,
+    "exact630_model_and420_shared_control_rows": true,
+    "exact1050_case_and210_source_rows": true,
+    "primary_COUPLE_minus_AUX_secondary_baseline_pairs": true,
+    "all_five_defects_and21sources_per_fold_preserved": true,
+    "separate_new_rescued_risk_transitions": true,
+    "H2_native_offline_moment_summary_only_no_forward": true,
+    "original_numeric_thresholds_and_metric_core_unchanged": true,
+    "no_missing_case_drop_or_retry": true,
+    "no_Torch_GPU_checkpoint_network_process_import": true,
+    "backup_readonly_no_extraction": true
+  },
+  "real_score_rows": 0,
+  "synthetic_actual_metric_rows": 10,
+  "synthetic_orchestrated_rows": 1050,
+  "server_operations": 0,
+  "GPU_calls": 0,
+  "limitations": [
+    "1050-row integration uses2 analytic-case metric templates; actual metric arithmetic tested on10 artificial model/control rows",
+    "No real prediction/reference/point arrays read during implementation/tests",
+    "Exploratory single-seed source-paired comparisons, no bootstrap/pvalue/gate",
+    "H2 offline moment diagnostics do not certify shape/interface accuracy"
+  ]
+}

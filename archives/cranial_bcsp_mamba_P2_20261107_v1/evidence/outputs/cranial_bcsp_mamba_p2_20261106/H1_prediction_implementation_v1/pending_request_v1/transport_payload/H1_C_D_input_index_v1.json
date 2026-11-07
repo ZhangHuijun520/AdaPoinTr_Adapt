@@ -1,0 +1,5355 @@
+{
+  "schema": "bcsp-p2-H1-twofold-development-index-v1",
+  "status": "FROZEN_FOR_SEPARATE_EXECUTION_AUTHORIZATION",
+  "runs": [
+    {
+      "label": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "seed": 0,
+      "n_input": 8192,
+      "n_output": 8192,
+      "checkpoint": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2_h1/M_H1_foldC_seed0_20261106_v1/ckpt-last.pth",
+        "bytes": 407224375,
+        "sha256": "6839d694cdd8068085dceea1426aa9d55e71faeaff39a9032bf21af6b1e8b5b4"
+      },
+      "training_request_sha256": "e5fa766a408762a9a3bf3e2bd1dc993886b3422f7afaf69f9a994dc0ca20413d",
+      "training_freeze_audit_sha256": "a082187c00978e85b678889ec4d25b9dc33733fa6812d0c6c5ee5f14b9ed5542",
+      "train_sources": [
+        "train:000",
+        "train:002",
+        "train:004",
+        "train:005",
+        "train:006",
+        "train:008",
+        "train:009",
+        "train:010",
+        "train:017",
+        "train:018",
+        "train:019",
+        "train:021",
+        "train:022",
+        "train:023",
+        "train:024",
+        "train:028",
+        "train:029",
+        "train:031",
+        "train:033",
+        "train:034",
+        "train:035",
+        "train:037",
+        "train:039",
+        "train:044",
+        "train:045",
+        "train:046",
+        "train:049",
+        "train:052",
+        "train:054",
+        "train:055",
+        "train:056",
+        "train:057",
+        "train:058",
+        "train:060",
+        "train:062",
+        "train:063",
+        "train:067",
+        "train:068",
+        "train:069",
+        "train:071",
+        "train:073",
+        "train:074",
+        "train:075",
+        "train:078",
+        "train:079",
+        "train:080",
+        "train:082",
+        "train:084",
+        "train:085",
+        "train:087",
+        "train:089",
+        "train:091",
+        "train:092",
+        "train:093",
+        "train:095",
+        "train:099",
+        "train:101",
+        "train:102",
+        "train:109",
+        "train:110",
+        "train:111",
+        "train:112",
+        "train:113"
+      ],
+      "dev_sources": [
+        "train:001",
+        "train:003",
+        "train:012",
+        "train:013",
+        "train:025",
+        "train:026",
+        "train:036",
+        "train:038",
+        "train:041",
+        "train:042",
+        "train:047",
+        "train:051",
+        "train:053",
+        "train:061",
+        "train:066",
+        "train:072",
+        "train:076",
+        "train:081",
+        "train:094",
+        "train:105",
+        "train:107"
+      ],
+      "dev_case_ids": [
+        "train__001__bilateral",
+        "train__001__frontoorbital",
+        "train__001__parietotemporal",
+        "train__001__random_1",
+        "train__001__random_2",
+        "train__003__bilateral",
+        "train__003__frontoorbital",
+        "train__003__parietotemporal",
+        "train__003__random_1",
+        "train__003__random_2",
+        "train__012__bilateral",
+        "train__012__frontoorbital",
+        "train__012__parietotemporal",
+        "train__012__random_1",
+        "train__012__random_2",
+        "train__013__bilateral",
+        "train__013__frontoorbital",
+        "train__013__parietotemporal",
+        "train__013__random_1",
+        "train__013__random_2",
+        "train__025__bilateral",
+        "train__025__frontoorbital",
+        "train__025__parietotemporal",
+        "train__025__random_1",
+        "train__025__random_2",
+        "train__026__bilateral",
+        "train__026__frontoorbital",
+        "train__026__parietotemporal",
+        "train__026__random_1",
+        "train__026__random_2",
+        "train__036__bilateral",
+        "train__036__frontoorbital",
+        "train__036__parietotemporal",
+        "train__036__random_1",
+        "train__036__random_2",
+        "train__038__bilateral",
+        "train__038__frontoorbital",
+        "train__038__parietotemporal",
+        "train__038__random_1",
+        "train__038__random_2",
+        "train__041__bilateral",
+        "train__041__frontoorbital",
+        "train__041__parietotemporal",
+        "train__041__random_1",
+        "train__041__random_2",
+        "train__042__bilateral",
+        "train__042__frontoorbital",
+        "train__042__parietotemporal",
+        "train__042__random_1",
+        "train__042__random_2",
+        "train__047__bilateral",
+        "train__047__frontoorbital",
+        "train__047__parietotemporal",
+        "train__047__random_1",
+        "train__047__random_2",
+        "train__051__bilateral",
+        "train__051__frontoorbital",
+        "train__051__parietotemporal",
+        "train__051__random_1",
+        "train__051__random_2",
+        "train__053__bilateral",
+        "train__053__frontoorbital",
+        "train__053__parietotemporal",
+        "train__053__random_1",
+        "train__053__random_2",
+        "train__061__bilateral",
+        "train__061__frontoorbital",
+        "train__061__parietotemporal",
+        "train__061__random_1",
+        "train__061__random_2",
+        "train__066__bilateral",
+        "train__066__frontoorbital",
+        "train__066__parietotemporal",
+        "train__066__random_1",
+        "train__066__random_2",
+        "train__072__bilateral",
+        "train__072__frontoorbital",
+        "train__072__parietotemporal",
+        "train__072__random_1",
+        "train__072__random_2",
+        "train__076__bilateral",
+        "train__076__frontoorbital",
+        "train__076__parietotemporal",
+        "train__076__random_1",
+        "train__076__random_2",
+        "train__081__bilateral",
+        "train__081__frontoorbital",
+        "train__081__parietotemporal",
+        "train__081__random_1",
+        "train__081__random_2",
+        "train__094__bilateral",
+        "train__094__frontoorbital",
+        "train__094__parietotemporal",
+        "train__094__random_1",
+        "train__094__random_2",
+        "train__105__bilateral",
+        "train__105__frontoorbital",
+        "train__105__parietotemporal",
+        "train__105__random_1",
+        "train__105__random_2",
+        "train__107__bilateral",
+        "train__107__frontoorbital",
+        "train__107__parietotemporal",
+        "train__107__random_1",
+        "train__107__random_2"
+      ],
+      "H1": {
+        "enabled": true,
+        "mode": "centroid_radius",
+        "weight": 0.1,
+        "smooth_l1_beta": 0.1,
+        "cvar_fraction": 0.1,
+        "eps": 1e-06
+      }
+    },
+    {
+      "label": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "seed": 0,
+      "n_input": 8192,
+      "n_output": 8192,
+      "checkpoint": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_mamba_p2_h1/M_H1_foldD_seed0_20261106_v1/ckpt-last.pth",
+        "bytes": 407224375,
+        "sha256": "6a76aa7dc156c0e2eeef29d4e03b253f624373ced8a48abebe1af4c99d7e789d"
+      },
+      "training_request_sha256": "305ce3380ae7b951c7180907f63842abc51eae5d9dec817e2a5ad89718fdd390",
+      "training_freeze_audit_sha256": "f875bb667e86e7e933b083cdad25acc3aac9596f13d161da73de304e0dff7861",
+      "train_sources": [
+        "train:000",
+        "train:001",
+        "train:002",
+        "train:003",
+        "train:006",
+        "train:009",
+        "train:012",
+        "train:013",
+        "train:017",
+        "train:018",
+        "train:019",
+        "train:021",
+        "train:023",
+        "train:024",
+        "train:025",
+        "train:026",
+        "train:028",
+        "train:031",
+        "train:034",
+        "train:035",
+        "train:036",
+        "train:038",
+        "train:039",
+        "train:041",
+        "train:042",
+        "train:045",
+        "train:047",
+        "train:049",
+        "train:051",
+        "train:053",
+        "train:055",
+        "train:056",
+        "train:057",
+        "train:058",
+        "train:061",
+        "train:063",
+        "train:066",
+        "train:067",
+        "train:071",
+        "train:072",
+        "train:073",
+        "train:074",
+        "train:075",
+        "train:076",
+        "train:078",
+        "train:080",
+        "train:081",
+        "train:082",
+        "train:084",
+        "train:085",
+        "train:089",
+        "train:091",
+        "train:092",
+        "train:094",
+        "train:099",
+        "train:102",
+        "train:105",
+        "train:107",
+        "train:109",
+        "train:110",
+        "train:111",
+        "train:112",
+        "train:113"
+      ],
+      "dev_sources": [
+        "train:004",
+        "train:005",
+        "train:008",
+        "train:010",
+        "train:022",
+        "train:029",
+        "train:033",
+        "train:037",
+        "train:044",
+        "train:046",
+        "train:052",
+        "train:054",
+        "train:060",
+        "train:062",
+        "train:068",
+        "train:069",
+        "train:079",
+        "train:087",
+        "train:093",
+        "train:095",
+        "train:101"
+      ],
+      "dev_case_ids": [
+        "train__004__bilateral",
+        "train__004__frontoorbital",
+        "train__004__parietotemporal",
+        "train__004__random_1",
+        "train__004__random_2",
+        "train__005__bilateral",
+        "train__005__frontoorbital",
+        "train__005__parietotemporal",
+        "train__005__random_1",
+        "train__005__random_2",
+        "train__008__bilateral",
+        "train__008__frontoorbital",
+        "train__008__parietotemporal",
+        "train__008__random_1",
+        "train__008__random_2",
+        "train__010__bilateral",
+        "train__010__frontoorbital",
+        "train__010__parietotemporal",
+        "train__010__random_1",
+        "train__010__random_2",
+        "train__022__bilateral",
+        "train__022__frontoorbital",
+        "train__022__parietotemporal",
+        "train__022__random_1",
+        "train__022__random_2",
+        "train__029__bilateral",
+        "train__029__frontoorbital",
+        "train__029__parietotemporal",
+        "train__029__random_1",
+        "train__029__random_2",
+        "train__033__bilateral",
+        "train__033__frontoorbital",
+        "train__033__parietotemporal",
+        "train__033__random_1",
+        "train__033__random_2",
+        "train__037__bilateral",
+        "train__037__frontoorbital",
+        "train__037__parietotemporal",
+        "train__037__random_1",
+        "train__037__random_2",
+        "train__044__bilateral",
+        "train__044__frontoorbital",
+        "train__044__parietotemporal",
+        "train__044__random_1",
+        "train__044__random_2",
+        "train__046__bilateral",
+        "train__046__frontoorbital",
+        "train__046__parietotemporal",
+        "train__046__random_1",
+        "train__046__random_2",
+        "train__052__bilateral",
+        "train__052__frontoorbital",
+        "train__052__parietotemporal",
+        "train__052__random_1",
+        "train__052__random_2",
+        "train__054__bilateral",
+        "train__054__frontoorbital",
+        "train__054__parietotemporal",
+        "train__054__random_1",
+        "train__054__random_2",
+        "train__060__bilateral",
+        "train__060__frontoorbital",
+        "train__060__parietotemporal",
+        "train__060__random_1",
+        "train__060__random_2",
+        "train__062__bilateral",
+        "train__062__frontoorbital",
+        "train__062__parietotemporal",
+        "train__062__random_1",
+        "train__062__random_2",
+        "train__068__bilateral",
+        "train__068__frontoorbital",
+        "train__068__parietotemporal",
+        "train__068__random_1",
+        "train__068__random_2",
+        "train__069__bilateral",
+        "train__069__frontoorbital",
+        "train__069__parietotemporal",
+        "train__069__random_1",
+        "train__069__random_2",
+        "train__079__bilateral",
+        "train__079__frontoorbital",
+        "train__079__parietotemporal",
+        "train__079__random_1",
+        "train__079__random_2",
+        "train__087__bilateral",
+        "train__087__frontoorbital",
+        "train__087__parietotemporal",
+        "train__087__random_1",
+        "train__087__random_2",
+        "train__093__bilateral",
+        "train__093__frontoorbital",
+        "train__093__parietotemporal",
+        "train__093__random_1",
+        "train__093__random_2",
+        "train__095__bilateral",
+        "train__095__frontoorbital",
+        "train__095__parietotemporal",
+        "train__095__random_1",
+        "train__095__random_2",
+        "train__101__bilateral",
+        "train__101__frontoorbital",
+        "train__101__parietotemporal",
+        "train__101__random_1",
+        "train__101__random_2"
+      ],
+      "H1": {
+        "enabled": true,
+        "mode": "centroid_radius",
+        "weight": 0.1,
+        "smooth_l1_beta": 0.1,
+        "cvar_fraction": 0.1,
+        "eps": 1e-06
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__001__bilateral",
+      "source_id": "train:001",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__001__bilateral_8192.npz",
+        "bytes": 157079,
+        "sha256": "a8afe1793a9338478662b1d9b18df2bedb337dd60c3bf133c1c4284b7a22654e"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          99.0,
+          54.6
+        ],
+        "scale": 125.20031948841024
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "2ca14612cdfac2ff54aaef87dc8ecc73adef1d1c31076bd5f14c894960e13a9c"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__001__frontoorbital",
+      "source_id": "train:001",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__001__frontoorbital_8192.npz",
+        "bytes": 156660,
+        "sha256": "179a54d3cc941ed03b5de7b1f12b5e59e05e42f89619253e413315a1665141c4"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          99.0,
+          54.6
+        ],
+        "scale": 125.20031948841024
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "2947a92abc592bc36b8b5fe18f33dbe4a5aac094b83e99a47318958467ea982b"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__001__parietotemporal",
+      "source_id": "train:001",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__001__parietotemporal_8192.npz",
+        "bytes": 157321,
+        "sha256": "0d6350abea8de7c40f3841708d81d584549c28b8152dc052ceb6cf8b8814cf15"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          99.0,
+          54.6
+        ],
+        "scale": 125.20031948841024
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "27e5ee95fdee89d196ab7ab3095a406f1776e98a342f14be35a462163720d019"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__001__random_1",
+      "source_id": "train:001",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__001__random_1_8192.npz",
+        "bytes": 157859,
+        "sha256": "dee139ed533590073481ddc132e02e9ae96b6d950549ae1af45f8d4c9c9fe83a"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          99.0,
+          54.6
+        ],
+        "scale": 125.20031948841024
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "d2578fc87256465278e164f0a8d3ddfc3afd5c3d00a1ed462c340d3fe58b58e3"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__001__random_2",
+      "source_id": "train:001",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__001__random_2_8192.npz",
+        "bytes": 157822,
+        "sha256": "69cea99523b3cfb5d62413674eaa6c5c8b8ad0ab601931a6a537726b66ff4e31"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          99.0,
+          54.6
+        ],
+        "scale": 125.20031948841024
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "f205bc24fcd0f9090812daa5be1eb39fe1d58eb06c080f3f416c1ad174028370"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__003__bilateral",
+      "source_id": "train:003",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__003__bilateral_8192.npz",
+        "bytes": 155825,
+        "sha256": "b2c025c661d3ee44d99898b8a1100749a95a5ad973a72e6850c3ad4234e0c04a"
+      },
+      "normalization": {
+        "center": [
+          101.4,
+          89.4,
+          59.400000000000006
+        ],
+        "scale": 129.9838451500801
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "f4d5d1edffb515c57baa661fd832d73b6c78d288bf77481172f62d4420a2d8c1"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__003__frontoorbital",
+      "source_id": "train:003",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__003__frontoorbital_8192.npz",
+        "bytes": 153120,
+        "sha256": "898596343e103cce19b82ba01ee9779ed1f3fde7e71737abe77300c33f8def26"
+      },
+      "normalization": {
+        "center": [
+          101.4,
+          89.4,
+          59.400000000000006
+        ],
+        "scale": 129.9838451500801
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "c4357273ec1a9a07de8ce2f0f9f9ff7f0a874c2c7573d2cf5942aa736c48b4fb"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__003__parietotemporal",
+      "source_id": "train:003",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__003__parietotemporal_8192.npz",
+        "bytes": 156543,
+        "sha256": "bfe7cbae6808613582e16a24d7e53be5f04dbf3c78ce000a8ea08b05759fe2fc"
+      },
+      "normalization": {
+        "center": [
+          101.4,
+          89.4,
+          59.400000000000006
+        ],
+        "scale": 129.9838451500801
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "4c5259b6df5a53f706864357c196454b776c206672201a4101d0b675273c1f41"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__003__random_1",
+      "source_id": "train:003",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__003__random_1_8192.npz",
+        "bytes": 156273,
+        "sha256": "74a2b1939496995f1ea265f63de2f1fd3d0fd80984f897dcf9e62902617eed92"
+      },
+      "normalization": {
+        "center": [
+          101.4,
+          89.4,
+          59.400000000000006
+        ],
+        "scale": 129.9838451500801
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "97b26d60579355d817c40b9133d21b12e44dc712361b645d4f68dfce0c64399d"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__003__random_2",
+      "source_id": "train:003",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__003__random_2_8192.npz",
+        "bytes": 157944,
+        "sha256": "235a2d4da033a0e50cd8597fff5554b1a8a37e5307b9cdf8379b22c9dc225459"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          89.4,
+          59.400000000000006
+        ],
+        "scale": 129.87039693479036
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "2b3c22ed8e510f7039b4ba03582bcd83c58bb414d56b4ff52e4c50d6acb41728"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__012__bilateral",
+      "source_id": "train:012",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__012__bilateral_8192.npz",
+        "bytes": 156796,
+        "sha256": "3d1cd6d7cc4378580ed24f4a0907c05eacfd118cd608ea9a3ca0d9cb2384b5f3"
+      },
+      "normalization": {
+        "center": [
+          101.8,
+          97.8,
+          56.800000000000004
+        ],
+        "scale": 129.42611792061138
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "72b90c6829b0bf9d579b73ac2eb950e42b7ac8ca764d004a7b79a2651953fae7"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__012__frontoorbital",
+      "source_id": "train:012",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__012__frontoorbital_8192.npz",
+        "bytes": 155362,
+        "sha256": "fbe0d03e7865cffe383f5ff0b52c9a7afa401da8c9de350dee41487be95e503d"
+      },
+      "normalization": {
+        "center": [
+          101.8,
+          97.8,
+          61.400000000000006
+        ],
+        "scale": 131.50984754002263
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "e29b4e5c00ed229139f9f15dfe066a43e688fc0da5eb4dc48f327fdbafcffc8a"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__012__parietotemporal",
+      "source_id": "train:012",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__012__parietotemporal_8192.npz",
+        "bytes": 156038,
+        "sha256": "0db510a5776ff89c3f9b16e9d6a8783ac17dffe1878093027b255dcb69384cd5"
+      },
+      "normalization": {
+        "center": [
+          101.8,
+          97.8,
+          61.400000000000006
+        ],
+        "scale": 131.50984754002263
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "57a94bb1a5152a48f749122f193af8125c05e67325b9709bdcc83982c6091a52"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__012__random_1",
+      "source_id": "train:012",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__012__random_1_8192.npz",
+        "bytes": 156462,
+        "sha256": "3fe82c95f022b8a09cacd12228ad97c3d2001f564ae49318019d20df62b2ca1a"
+      },
+      "normalization": {
+        "center": [
+          101.8,
+          97.8,
+          61.400000000000006
+        ],
+        "scale": 131.50984754002263
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "c0ebba8a40d4c4e78ffffad02672d3baffb25eea9cfcb7859a08e277c9392bf0"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__012__random_2",
+      "source_id": "train:012",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__012__random_2_8192.npz",
+        "bytes": 154945,
+        "sha256": "fb8a756e2039e7970f928266d5c349ced4a8fc6f7211225308b3d79ac61169d1"
+      },
+      "normalization": {
+        "center": [
+          101.0,
+          97.8,
+          61.400000000000006
+        ],
+        "scale": 131.09675815976533
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "8e2b1330dfd85ad09e67c5bbedd866cc0d18e0d994b57a55bc85a251cdfdc4dc"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__013__bilateral",
+      "source_id": "train:013",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__013__bilateral_8192.npz",
+        "bytes": 157485,
+        "sha256": "39f39ea40e5d89adffd9e04d7c0c3a763f803f1f6a937fe1b01a8916eface4d7"
+      },
+      "normalization": {
+        "center": [
+          101.20000000000002,
+          99.60000000000001,
+          58.2
+        ],
+        "scale": 128.17753313276083
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "9c6a96f67ad0dfef0cafe12d3611c3ea29cfb3655b774c8c82a48493b5e76c4a"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__013__frontoorbital",
+      "source_id": "train:013",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__013__frontoorbital_8192.npz",
+        "bytes": 155848,
+        "sha256": "2479293b4004cf8306e2037e2d95e778dde727e92609275cbce71d2f46a67857"
+      },
+      "normalization": {
+        "center": [
+          101.20000000000002,
+          99.60000000000001,
+          58.2
+        ],
+        "scale": 128.17753313276083
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "62b758ae80a2366c49353524f99a29bfe76371c9d0bc8ae45d6ee6e7d59039b5"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__013__parietotemporal",
+      "source_id": "train:013",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__013__parietotemporal_8192.npz",
+        "bytes": 157205,
+        "sha256": "ce5b56127150dfd47bf27b5307c8609c3f4fe6b79360892f9415b3058a0da2ff"
+      },
+      "normalization": {
+        "center": [
+          101.20000000000002,
+          99.60000000000001,
+          58.2
+        ],
+        "scale": 128.17753313276083
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "f702951dfffb2f20f00c04272efa7a42837d7b0d21d533de7008dac435aefaf4"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__013__random_1",
+      "source_id": "train:013",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__013__random_1_8192.npz",
+        "bytes": 156482,
+        "sha256": "2fb80c19b6cec328edd753b7258f581fba946fa7df2821849c38427287491f46"
+      },
+      "normalization": {
+        "center": [
+          101.20000000000002,
+          99.60000000000001,
+          57.2
+        ],
+        "scale": 127.72658298099108
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "3d285b0ff39d0e11ff47a271e196be28b6540e082699331e284baf3f35217e07"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__013__random_2",
+      "source_id": "train:013",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__013__random_2_8192.npz",
+        "bytes": 156083,
+        "sha256": "d3dbdfafdf1c272b55efe2b98e43bcc2cc3ea75f1133e0fcf6408af5c0c07d0c"
+      },
+      "normalization": {
+        "center": [
+          101.20000000000002,
+          99.60000000000001,
+          55.6
+        ],
+        "scale": 127.01810894514215
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "02b90805f31f2cc037c7c92ccfc22e38062dcab5c25d27646f1ff1170b389af3"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__025__bilateral",
+      "source_id": "train:025",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__025__bilateral_8192.npz",
+        "bytes": 157452,
+        "sha256": "83abc16cc1fe4a3e3b62ad2e8df98926aad304e39ced75f4494f183204e8e081"
+      },
+      "normalization": {
+        "center": [
+          103.60000000000001,
+          92.60000000000001,
+          55.0
+        ],
+        "scale": 118.75116841530445
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "a09fda1cb10cabdd5d1e57ac2e9d6a5f5cc5c5a3cdcbfe9ae448493ca8ecae78"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__025__frontoorbital",
+      "source_id": "train:025",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__025__frontoorbital_8192.npz",
+        "bytes": 155819,
+        "sha256": "60d9f24dbd83644072535cf494fb9a0e351eef6e750c1a28cb06bb2a2f24a8c3"
+      },
+      "normalization": {
+        "center": [
+          103.60000000000001,
+          92.60000000000001,
+          59.0
+        ],
+        "scale": 120.65587428716432
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "4beb943a1890a362fa03d4f7756beb3da917b35bf58d742bf4da9d6e3030b767"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__025__parietotemporal",
+      "source_id": "train:025",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__025__parietotemporal_8192.npz",
+        "bytes": 155159,
+        "sha256": "eafa5221fff3ae751cbbff0708cab31e366878052832d8da43996190b68d84e0"
+      },
+      "normalization": {
+        "center": [
+          103.80000000000001,
+          92.60000000000001,
+          59.0
+        ],
+        "scale": 120.54459755625717
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "99acf3ce331f2679a8846a31bef08c0c70bdde668b9b0f32ccc0b8c6520339ab"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__025__random_1",
+      "source_id": "train:025",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__025__random_1_8192.npz",
+        "bytes": 156758,
+        "sha256": "44666b879789de12c671ff83e00229a2e9c31df9ff44876edb135eea5139ec86"
+      },
+      "normalization": {
+        "center": [
+          103.60000000000001,
+          92.60000000000001,
+          56.6
+        ],
+        "scale": 119.50062761341465
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "30c3984bc54164bc66f50b9e5685f0ee10803126bd1e763be9aea8a821486861"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__025__random_2",
+      "source_id": "train:025",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__025__random_2_8192.npz",
+        "bytes": 157159,
+        "sha256": "981276918a0cd52260392aac120cb798aac63a7a29c7bc5b1758f61de84f9a29"
+      },
+      "normalization": {
+        "center": [
+          103.60000000000001,
+          93.4,
+          59.0
+        ],
+        "scale": 120.12027305996271
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "59cf103ce868da3b616fe5b06825a9e343acc34722e6330a5e5a6d1269f77ec4"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__026__bilateral",
+      "source_id": "train:026",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__026__bilateral_8192.npz",
+        "bytes": 156986,
+        "sha256": "c208956624cdc1f8f76e3d756861c6f7c2b24a444b3578c8117a5009df2056ac"
+      },
+      "normalization": {
+        "center": [
+          102.2,
+          92.20000000000002,
+          57.2
+        ],
+        "scale": 125.62897754897156
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "3fe6813c7beda7d026edb8305760f23ad17f6f35a5f669bdd3d1a4647224f331"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__026__frontoorbital",
+      "source_id": "train:026",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__026__frontoorbital_8192.npz",
+        "bytes": 156602,
+        "sha256": "eddf72c9ec37c242de11edb97bb55c3b38ba894fbe57d685b406c96a34619686"
+      },
+      "normalization": {
+        "center": [
+          102.2,
+          92.20000000000002,
+          57.6
+        ],
+        "scale": 125.81160518807476
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "19da3e143de7fa3816446213cb4dd3e61a150b087410396dc5e1cfb2bdf91c9b"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__026__parietotemporal",
+      "source_id": "train:026",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__026__parietotemporal_8192.npz",
+        "bytes": 156711,
+        "sha256": "a4015bd697144f206c741517237f81b25aabc4d7c864a2c28ac6689bab898d5f"
+      },
+      "normalization": {
+        "center": [
+          102.2,
+          92.20000000000002,
+          57.6
+        ],
+        "scale": 125.81160518807476
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "56e15caa404eef4e5e65d984ea9c5cf3509f10c75449b682fae85720600febab"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__026__random_1",
+      "source_id": "train:026",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__026__random_1_8192.npz",
+        "bytes": 156826,
+        "sha256": "a5d02d6dded321b14bf762dbf375c5f12d0a661fbf8233e7c21e3878e205d94f"
+      },
+      "normalization": {
+        "center": [
+          102.2,
+          92.20000000000002,
+          57.400000000000006
+        ],
+        "scale": 125.72016544691628
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "a8a12f01239ae2273c869f18ae9b7bce0456e7e856a16dab3c187cbb9fab0ef2"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__026__random_2",
+      "source_id": "train:026",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__026__random_2_8192.npz",
+        "bytes": 156671,
+        "sha256": "3add298f19025bf64791585ac1060bb9ec92ac7bee3c4c51c5e6b0102fb50c6b"
+      },
+      "normalization": {
+        "center": [
+          101.2,
+          92.20000000000002,
+          57.6
+        ],
+        "scale": 125.25957049263741
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "67a66d04b2e32aaf505cf46fa7f8d9629ca518aa078c69ba05b71ce2524a3142"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__036__bilateral",
+      "source_id": "train:036",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__036__bilateral_8192.npz",
+        "bytes": 157736,
+        "sha256": "9dd61c9bf1d6b8ab4019dd35d944dbc094cf56217fe9379532709fe49f19076b"
+      },
+      "normalization": {
+        "center": [
+          99.4,
+          96.60000000000001,
+          55.6
+        ],
+        "scale": 125.04047344760016
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "44c5b47fbcb3c1e0a074cfe2ebf11c539e6d5ac018ce82eea6bb01481215d748"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__036__frontoorbital",
+      "source_id": "train:036",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__036__frontoorbital_8192.npz",
+        "bytes": 155719,
+        "sha256": "80d5290405aa937f2754c4a7983f6cfc5351bbc8b65afe1525a519a444317d82"
+      },
+      "normalization": {
+        "center": [
+          99.4,
+          96.60000000000001,
+          59.0
+        ],
+        "scale": 126.58894106516573
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "5d1ad7817d5f579bbbee7657d69b3a26a86057584ef88f9b711a1dcf8e14743e"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__036__parietotemporal",
+      "source_id": "train:036",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__036__parietotemporal_8192.npz",
+        "bytes": 156163,
+        "sha256": "3c9a61def6968be9276dd00618921045e5e508d78be8cbd538e916739123c8dd"
+      },
+      "normalization": {
+        "center": [
+          99.4,
+          96.60000000000001,
+          59.0
+        ],
+        "scale": 126.58894106516573
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "5077a34956bbf2fd790fb42110a88df16677385d2b626a11def5e66ee9f337dc"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__036__random_1",
+      "source_id": "train:036",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__036__random_1_8192.npz",
+        "bytes": 157311,
+        "sha256": "0bf8708221b385d9a3dd63ce7df051b6b204623db92f3171210e4809986c716c"
+      },
+      "normalization": {
+        "center": [
+          99.4,
+          96.60000000000001,
+          56.800000000000004
+        ],
+        "scale": 125.57866060760483
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "f51c7939a7ce649b4e1e4e282e98cdc78105bccc8e41f65c9409881d42635e52"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__036__random_2",
+      "source_id": "train:036",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__036__random_2_8192.npz",
+        "bytes": 156561,
+        "sha256": "64c33ece4ee1fc59fe7d84e2841851201ab791c9948e6524ef01c7929ce66d95"
+      },
+      "normalization": {
+        "center": [
+          99.4,
+          96.60000000000001,
+          59.0
+        ],
+        "scale": 126.58894106516573
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "eb2b5f3b1891003fcaaa80b99dc82d014de63c01d907f0b2c719a3059546d96b"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__038__bilateral",
+      "source_id": "train:038",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__038__bilateral_8192.npz",
+        "bytes": 157838,
+        "sha256": "22e1e04d3f4abdc667d07391fda7729eed20d9ddf38235251da60549c6266cc2"
+      },
+      "normalization": {
+        "center": [
+          100.2,
+          98.8,
+          57.400000000000006
+        ],
+        "scale": 130.32175566650415
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "2f34f5f15eab839ab105aff38003b70fb9365c53f98bb3fa9905851192982a94"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__038__frontoorbital",
+      "source_id": "train:038",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__038__frontoorbital_8192.npz",
+        "bytes": 155479,
+        "sha256": "15d83c7f71e2318b8597fff2f557fb521916469aa6b7c80fe95fa65fbfbaee21"
+      },
+      "normalization": {
+        "center": [
+          100.2,
+          98.8,
+          57.400000000000006
+        ],
+        "scale": 130.32175566650415
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "3e5634cd7e7635b2ac7c668180ca2cd5f7c89aec58cd4e598230430ab4747fc4"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__038__parietotemporal",
+      "source_id": "train:038",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__038__parietotemporal_8192.npz",
+        "bytes": 156809,
+        "sha256": "333d10c41fccea7cc111cc78bc858c49efa4dabe22c1cba4f303680537bb180b"
+      },
+      "normalization": {
+        "center": [
+          100.2,
+          98.8,
+          57.400000000000006
+        ],
+        "scale": 130.32175566650415
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "13cb5bd2c535976aca6190c4a04422ae56876ba6d07fb303d3f9909e271bf659"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__038__random_1",
+      "source_id": "train:038",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__038__random_1_8192.npz",
+        "bytes": 157867,
+        "sha256": "ef47e3d8d4d7b1e1815e3c145727468480b3e414231e281662422a8503509407"
+      },
+      "normalization": {
+        "center": [
+          100.2,
+          98.8,
+          57.400000000000006
+        ],
+        "scale": 130.32175566650415
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "48003a1282cadb16160d4d383424a010ff8ce5e034cbe9f9c206906f8ce47557"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__038__random_2",
+      "source_id": "train:038",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__038__random_2_8192.npz",
+        "bytes": 158272,
+        "sha256": "470c8856176697d7d2c62a73a0d167aaeff9571e2facabe60f689752b9f1dbdd"
+      },
+      "normalization": {
+        "center": [
+          100.60000000000001,
+          98.8,
+          57.400000000000006
+        ],
+        "scale": 130.10672542186282
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "4e17c8af69a42e08b02f45b7c3c73f892d536687771cb87cda7bee490257d7ad"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__041__bilateral",
+      "source_id": "train:041",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__041__bilateral_8192.npz",
+        "bytes": 157853,
+        "sha256": "4eaffa67f409222cb1b4492d20de71e081b8fc469e8b575474bad2e796797123"
+      },
+      "normalization": {
+        "center": [
+          100.4,
+          96.0,
+          60.6
+        ],
+        "scale": 133.79461872586654
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "3913339a92ea2cd9a2782688f0612947c1d9433bd0321033265e7c893533e71d"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__041__frontoorbital",
+      "source_id": "train:041",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__041__frontoorbital_8192.npz",
+        "bytes": 156857,
+        "sha256": "62fc94e78a0e23442979019071416be70f27a22cfde8ee94bde72ff80af5230c"
+      },
+      "normalization": {
+        "center": [
+          100.4,
+          96.0,
+          60.6
+        ],
+        "scale": 133.79461872586654
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "a9ca0f5d66d890bc8553437dfbd8d123c560fb96eb2412093a1529671cd2d717"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__041__parietotemporal",
+      "source_id": "train:041",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__041__parietotemporal_8192.npz",
+        "bytes": 157631,
+        "sha256": "6e075945150a0636eb155766452a33ac28e60122242de19d742ef74a250473f2"
+      },
+      "normalization": {
+        "center": [
+          100.4,
+          96.0,
+          60.6
+        ],
+        "scale": 133.79461872586654
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "033b245aed582de48f801866f96a252eaae01f0374d7529f09559d44479b2bcb"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__041__random_1",
+      "source_id": "train:041",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__041__random_1_8192.npz",
+        "bytes": 157670,
+        "sha256": "e791d6ddbaa6aaec2b86f00cdddc89d4e8e7407d9ebe1a064a54ef87d023a175"
+      },
+      "normalization": {
+        "center": [
+          100.4,
+          96.0,
+          60.6
+        ],
+        "scale": 133.79461872586654
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "c833aa1fef790b9bff037d968250e5697f57391f37be06db56bde0af6a8b407a"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__041__random_2",
+      "source_id": "train:041",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__041__random_2_8192.npz",
+        "bytes": 156823,
+        "sha256": "c143c3bdf392a75d48c5c01c4c867d7617e8b007e8dc2f745658a4afebf3682a"
+      },
+      "normalization": {
+        "center": [
+          100.4,
+          96.0,
+          60.400000000000006
+        ],
+        "scale": 133.70415102007865
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "62c7964cb03fa7dff1cf0d226bd382df89606204e17f0b57d6b106c1500e42d8"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__042__bilateral",
+      "source_id": "train:042",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__042__bilateral_8192.npz",
+        "bytes": 157674,
+        "sha256": "d3a304077c5822f5eb6d3257560f0e646748dd49ea4f80d52a0d1eedf8f3dfe9"
+      },
+      "normalization": {
+        "center": [
+          101.4,
+          95.00000000000001,
+          57.2
+        ],
+        "scale": 125.32038940252302
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "4b60a06e46d92efa0f7cc6b881f881fc201c1ede0b82f9b9db37883abad12d11"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__042__frontoorbital",
+      "source_id": "train:042",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__042__frontoorbital_8192.npz",
+        "bytes": 155461,
+        "sha256": "5622b6507ad0cb030b1167a10e75b19770e56d62f5460c0c023cddc99302ef01"
+      },
+      "normalization": {
+        "center": [
+          101.4,
+          95.00000000000001,
+          57.2
+        ],
+        "scale": 125.32038940252302
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "f6d2a44cd139924468b5746923f726677cac112bd56ec11d52c4da663fb9b602"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__042__parietotemporal",
+      "source_id": "train:042",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__042__parietotemporal_8192.npz",
+        "bytes": 156177,
+        "sha256": "c90722fb42d2362bd6efa8eb92ed56d7a42a95121230f3a84060eca1a0e13768"
+      },
+      "normalization": {
+        "center": [
+          101.4,
+          95.00000000000001,
+          57.2
+        ],
+        "scale": 125.32038940252302
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "a41385b5ffc00c81a51a520c8c5b247fc7b403f493170f710b8757ae96bb5c85"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__042__random_1",
+      "source_id": "train:042",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__042__random_1_8192.npz",
+        "bytes": 156501,
+        "sha256": "1e80d57a538ac05215fecf20098700de74d424e9f03bfe56d6238350cc82a76a"
+      },
+      "normalization": {
+        "center": [
+          101.80000000000001,
+          95.00000000000001,
+          57.0
+        ],
+        "scale": 125.02207805023879
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "d00f392aacd18dd590edc1e14b23d3818f149e3469a896d395b58fbd5d6c25a5"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__042__random_2",
+      "source_id": "train:042",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__042__random_2_8192.npz",
+        "bytes": 157531,
+        "sha256": "6ed411d8d7dab59ad85065c5793ec92f170614f1fcd84bede38601beca2d7e58"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          95.00000000000001,
+          57.2
+        ],
+        "scale": 125.21677203953152
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "18b3ccde9c5deae62bb2a6ed614915c6c7c9ccb22af814605874e3076638ac4f"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__047__bilateral",
+      "source_id": "train:047",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__047__bilateral_8192.npz",
+        "bytes": 156689,
+        "sha256": "d12cb632e0c571a5e3cbea1618e0c7bdc3f0cd155faf2dfcf0dc562334343e52"
+      },
+      "normalization": {
+        "center": [
+          103.2,
+          97.8,
+          56.400000000000006
+        ],
+        "scale": 123.54578098826363
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "2c66c4542130704ce4c234921eee70b3d28f28390be4a747ad8619d64b637505"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__047__frontoorbital",
+      "source_id": "train:047",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__047__frontoorbital_8192.npz",
+        "bytes": 155388,
+        "sha256": "69b07ebb26b93b8b86fbc39dc32811e111cb54f80d54cb77c98f042448d0b3dc"
+      },
+      "normalization": {
+        "center": [
+          103.2,
+          97.8,
+          56.400000000000006
+        ],
+        "scale": 123.54578098826363
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "072b5fbb25ea05d6216a732bf7a5b3bc6d1be0d49f9ebe00350c24a9c8ccc5b7"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__047__parietotemporal",
+      "source_id": "train:047",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__047__parietotemporal_8192.npz",
+        "bytes": 155876,
+        "sha256": "89bd6ede1f1acec0fae180ff4a6e85709902e86d72bf912722e235d2aee9f97f"
+      },
+      "normalization": {
+        "center": [
+          103.0,
+          97.8,
+          56.400000000000006
+        ],
+        "scale": 123.43970187909562
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "3cf755f03528cdbbc295de8a347661f101131e704ab2ed9bfd08a2d5fd5ef6f5"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__047__random_1",
+      "source_id": "train:047",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__047__random_1_8192.npz",
+        "bytes": 157995,
+        "sha256": "d6887b6b1b04547790777cc2ece471d96148b7987275d60fcb2083d9490dedae"
+      },
+      "normalization": {
+        "center": [
+          103.2,
+          97.8,
+          56.400000000000006
+        ],
+        "scale": 123.54578098826363
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "2bb65a3c5baa0d02669598ed2549d07969ef4c7336746fbf273e43507694fc0c"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__047__random_2",
+      "source_id": "train:047",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__047__random_2_8192.npz",
+        "bytes": 156997,
+        "sha256": "7fe33dea711344cb862e2bbf7a8c14459742806c3257c289be23754f70836818"
+      },
+      "normalization": {
+        "center": [
+          103.2,
+          97.8,
+          56.2
+        ],
+        "scale": 123.45460704242674
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "84498ef5c48762fdebced8e16da91c6f74ee39ff0b259284e3d13fd26cb6fe54"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__051__bilateral",
+      "source_id": "train:051",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__051__bilateral_8192.npz",
+        "bytes": 157909,
+        "sha256": "24e12b37066d727e64d6b925197852a8bd0f1af783aa7eebb31f85b1906ba381"
+      },
+      "normalization": {
+        "center": [
+          99.00000000000001,
+          95.80000000000001,
+          60.400000000000006
+        ],
+        "scale": 133.45471141926762
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "b066636633111a3fcb4911a1e2c7ac1342be662c8888f5cc5e73e2831a618fa4"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__051__frontoorbital",
+      "source_id": "train:051",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__051__frontoorbital_8192.npz",
+        "bytes": 156448,
+        "sha256": "d8244b5b722fae6e29bb5d2c4f4b122032ce1e8aad11690e1689b26a23118949"
+      },
+      "normalization": {
+        "center": [
+          99.00000000000001,
+          96.0,
+          60.400000000000006
+        ],
+        "scale": 133.5983532832647
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "28f1105d573ecd695f66a269dea6a226849c24fa3a79674cf31ba01d3e1f2df7"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__051__parietotemporal",
+      "source_id": "train:051",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__051__parietotemporal_8192.npz",
+        "bytes": 156017,
+        "sha256": "a4ec9a10f0e0de4a171e1520972f56351926a2db9e82c134cf9351d0835f0a5d"
+      },
+      "normalization": {
+        "center": [
+          98.80000000000001,
+          96.0,
+          60.400000000000006
+        ],
+        "scale": 133.49277133987442
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "11753efb5b8eaf3969b453d11cea3dfccff6cf3f9ed6e10cd8553dd0b4e4c117"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__051__random_1",
+      "source_id": "train:051",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__051__random_1_8192.npz",
+        "bytes": 157819,
+        "sha256": "f8c9b01eff67a6c39119c29ffeff3fde55faec07fc6b1c09a64aa9adaa238c54"
+      },
+      "normalization": {
+        "center": [
+          99.00000000000001,
+          96.0,
+          60.2
+        ],
+        "scale": 133.50805219161876
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "aa8f278f61db6dd57966025c2785d0970035f2bb684dfc8c3325fe452b14068e"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__051__random_2",
+      "source_id": "train:051",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__051__random_2_8192.npz",
+        "bytes": 156476,
+        "sha256": "3d67d686e4aab8622bd9df091c1778a0c2748ef047d3001771eab2e02b58e758"
+      },
+      "normalization": {
+        "center": [
+          98.80000000000001,
+          96.0,
+          60.400000000000006
+        ],
+        "scale": 133.49277133987442
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "436e4d1e002fc5d444e588bae060e17ad0cda2ef34b606056a0b0c508a868a9f"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__053__bilateral",
+      "source_id": "train:053",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__053__bilateral_8192.npz",
+        "bytes": 156902,
+        "sha256": "e6f088b3d89c2d3cce868d2ab3167ba4fd627d408f5e0a8023fb3faf93567af8"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          99.2,
+          57.0
+        ],
+        "scale": 128.47178678604885
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "cd6f303e2751e586cd18ba49e2f94fae3033fe439a69e19b9a00cba87c37ed41"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__053__frontoorbital",
+      "source_id": "train:053",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__053__frontoorbital_8192.npz",
+        "bytes": 155516,
+        "sha256": "de193b5874efe774502ecda1b761efffa6f33877dc53c9357d4f66e109a91afe"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          99.2,
+          59.400000000000006
+        ],
+        "scale": 129.55446731008547
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "e0bf7b37af81d164a8970349712c9ec67867721e2e8d33fec4298791dc5e78f9"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__053__parietotemporal",
+      "source_id": "train:053",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__053__parietotemporal_8192.npz",
+        "bytes": 157112,
+        "sha256": "aebb0788b415afa99ce62aff30da7d1726712dc76d1018df6ad638a22d1f6e2e"
+      },
+      "normalization": {
+        "center": [
+          103.00000000000001,
+          99.2,
+          59.400000000000006
+        ],
+        "scale": 128.8294997273528
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "02609826936856b19fa60658d826b6fc469ed8b0eb618bf38a138e09b5ad0c37"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__053__random_1",
+      "source_id": "train:053",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__053__random_1_8192.npz",
+        "bytes": 157316,
+        "sha256": "4d0ca178324ae4b245bb0235b8df29d8734dfb743546d6dce644ac216e4a74f0"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          99.2,
+          55.400000000000006
+        ],
+        "scale": 127.76994951865639
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "978489735d63f7caccf8285b084066eedd191ad3f3b44c3c8e9e9089fb4de4d1"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__053__random_2",
+      "source_id": "train:053",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__053__random_2_8192.npz",
+        "bytes": 156982,
+        "sha256": "825c27f1406a725321897da8d817e0218172fe580c86a201fbef26868b3fadab"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          99.2,
+          59.400000000000006
+        ],
+        "scale": 129.55446731008547
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "1cc6586a3eca14c634cded5906736d460f0d8a7e6565e8d9c9b9108a14a4a9b7"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__061__bilateral",
+      "source_id": "train:061",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__061__bilateral_8192.npz",
+        "bytes": 155452,
+        "sha256": "996303b16bde9b325b45fa8c8fd5a1b24585f5ec0bfcbd48f68db38b18ce9751"
+      },
+      "normalization": {
+        "center": [
+          99.80000000000001,
+          97.00000000000001,
+          59.0
+        ],
+        "scale": 129.1267594265418
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "a407b9147ee32bc2f260628a12ee847a8a729a3420d5c41fdf282e0ce7ab11a0"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__061__frontoorbital",
+      "source_id": "train:061",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__061__frontoorbital_8192.npz",
+        "bytes": 155543,
+        "sha256": "0a24358f54c3fb028a6f672bf843916f040f320eba9292efe29e2eabaa15caa9"
+      },
+      "normalization": {
+        "center": [
+          99.80000000000001,
+          97.00000000000001,
+          59.0
+        ],
+        "scale": 129.1267594265418
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "dcfb65d20397e03ccb0b401f0e23d50ee5062f9780f94291d2ad81c73638166d"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__061__parietotemporal",
+      "source_id": "train:061",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__061__parietotemporal_8192.npz",
+        "bytes": 157139,
+        "sha256": "278b77bdcebf3fe73aeb75d2447c4259f7b09a21e1b30934b9af9ef91620e2c3"
+      },
+      "normalization": {
+        "center": [
+          98.80000000000001,
+          97.00000000000001,
+          59.0
+        ],
+        "scale": 128.58273601071025
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "8ab2fcc7e9b4343d71bbdf87fda67c6476eec436e95a5a2bc4ed43b769ee8217"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__061__random_1",
+      "source_id": "train:061",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__061__random_1_8192.npz",
+        "bytes": 157018,
+        "sha256": "3f2617cf3fc1a82674d103cafa2af659d58e693f9316fdbe0d37680d0450bc03"
+      },
+      "normalization": {
+        "center": [
+          100.60000000000001,
+          97.00000000000001,
+          59.0
+        ],
+        "scale": 128.69110303358192
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "a6f52912ee13c4e533cab3033d818a13edc582f6992b7eed55d091d811ad83db"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__061__random_2",
+      "source_id": "train:061",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__061__random_2_8192.npz",
+        "bytes": 156136,
+        "sha256": "f2e2786c928bd6233f4a33206e3fc91091e8f82446755cfc29bfa4eb3b343449"
+      },
+      "normalization": {
+        "center": [
+          99.80000000000001,
+          97.00000000000001,
+          59.0
+        ],
+        "scale": 129.1267594265418
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "551280547f7c1999d65057d36206be7a45699ecc5ae14413005af968c41cc11b"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__066__bilateral",
+      "source_id": "train:066",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__066__bilateral_8192.npz",
+        "bytes": 156419,
+        "sha256": "bbfb048039a4a60f2e1a7b3c5f8de2a350e4b145b9e166334900768b6b947026"
+      },
+      "normalization": {
+        "center": [
+          105.4,
+          90.60000000000001,
+          56.800000000000004
+        ],
+        "scale": 123.78723682189535
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "1a1adaa449b29b1e9105891a79f7c45f5646943b58f3859353e34b56b51c9e84"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__066__frontoorbital",
+      "source_id": "train:066",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__066__frontoorbital_8192.npz",
+        "bytes": 156379,
+        "sha256": "296e392373c6098b8801a5184e0c88f69eeb5845fe9e5af3f225bce3e9b9f32b"
+      },
+      "normalization": {
+        "center": [
+          105.4,
+          90.60000000000001,
+          59.2
+        ],
+        "scale": 124.90668516936957
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "c3ba56c1ad5afbda239ff60660424d50186a9055e7a8cf15e98a9c43e8658f85"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__066__parietotemporal",
+      "source_id": "train:066",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__066__parietotemporal_8192.npz",
+        "bytes": 157399,
+        "sha256": "97ca73bb315b803df6adb7ba213e509eb6a439c0216de60a6720af895b18416e"
+      },
+      "normalization": {
+        "center": [
+          104.8,
+          90.60000000000001,
+          59.2
+        ],
+        "scale": 124.57238859394165
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "5e5c5ed4d344b1030e2cce2c028e28230691e63540616032ccd3118414af942f"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__066__random_1",
+      "source_id": "train:066",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__066__random_1_8192.npz",
+        "bytes": 156106,
+        "sha256": "d6024725da4f86133308f0af62c823da2eefce7a5a454503dcaccb77109a1281"
+      },
+      "normalization": {
+        "center": [
+          105.4,
+          90.60000000000001,
+          56.800000000000004
+        ],
+        "scale": 123.78723682189535
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "a7b135532837a85cd4aaecbbf99fd783b7f338b78e7481305acdb656f61c6291"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__066__random_2",
+      "source_id": "train:066",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__066__random_2_8192.npz",
+        "bytes": 157888,
+        "sha256": "10b6e4a718d0ad7b200b2aaa6eb7b710d1dbf999a5f2c17d67f2031a9c02d4e5"
+      },
+      "normalization": {
+        "center": [
+          105.4,
+          90.60000000000001,
+          59.2
+        ],
+        "scale": 124.90668516936957
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "ab5b2dc763c41a0f6a5615256a667b2dd2518c656fbc849bb0103620cd9d4243"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__072__bilateral",
+      "source_id": "train:072",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__072__bilateral_8192.npz",
+        "bytes": 158006,
+        "sha256": "99a9abc763da8514e8e3092d853838898e2f70ddd6c9004f51b6ef6cc6564cf7"
+      },
+      "normalization": {
+        "center": [
+          101.20000000000002,
+          96.6,
+          55.400000000000006
+        ],
+        "scale": 125.04687121235781
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "62db635c15e4f21bc5a4525df3b8dc62c2076c4831abe2a91116d0a63236df9f"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__072__frontoorbital",
+      "source_id": "train:072",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__072__frontoorbital_8192.npz",
+        "bytes": 156347,
+        "sha256": "7b62dc4e80c5c63fd19b410c5f454e4f29c86587e3b960adb243e47eb90753d0"
+      },
+      "normalization": {
+        "center": [
+          101.20000000000002,
+          96.6,
+          55.400000000000006
+        ],
+        "scale": 125.04687121235781
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "14e19481aa847472a300d321de09fd9977e165dea1eacc8946b33b12dc520463"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__072__parietotemporal",
+      "source_id": "train:072",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__072__parietotemporal_8192.npz",
+        "bytes": 157250,
+        "sha256": "b7f22d6c69b72cf2766e16c952dc63343cab00ce1f76e5cda8e4d0fdd28a7e29"
+      },
+      "normalization": {
+        "center": [
+          101.20000000000002,
+          96.6,
+          55.400000000000006
+        ],
+        "scale": 125.04687121235781
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "7a9cfc697f3dcb6ad6c172c32652c47fcd414d8a767e3504a51adea752d870f0"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__072__random_1",
+      "source_id": "train:072",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__072__random_1_8192.npz",
+        "bytes": 155250,
+        "sha256": "29ad62281868318fe6986f0044a3ee76707d7d96571aad92ba0e67ea196cdcc3"
+      },
+      "normalization": {
+        "center": [
+          101.20000000000002,
+          96.6,
+          55.400000000000006
+        ],
+        "scale": 125.04687121235781
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "68c6355a6817888d269a9b9713ac64383b3bd325ca4f0023793636d8a0272a41"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__072__random_2",
+      "source_id": "train:072",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__072__random_2_8192.npz",
+        "bytes": 158068,
+        "sha256": "e02966d055a9523065a1bf04baa5106d1950985982c4843e9261727524c02e2f"
+      },
+      "normalization": {
+        "center": [
+          101.20000000000002,
+          96.6,
+          55.0
+        ],
+        "scale": 124.87017257936341
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "64709345bc7f4c7d9b3187baa1ba6337d693d8ebdcc56085051cb2c35c9f18d1"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__076__bilateral",
+      "source_id": "train:076",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__076__bilateral_8192.npz",
+        "bytes": 157911,
+        "sha256": "6e6f6ab64aa94ea4708f40a1fb6eda68d236238970c90936177cd2e5f0e5c5f4"
+      },
+      "normalization": {
+        "center": [
+          97.4,
+          98.80000000000001,
+          55.2
+        ],
+        "scale": 124.194202763253
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "607c6c55b5741c86f2c66e44277deb073e27f46fbb4f784d2291e8d7c9ebbd23"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__076__frontoorbital",
+      "source_id": "train:076",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__076__frontoorbital_8192.npz",
+        "bytes": 156596,
+        "sha256": "ce7338e032e4c9c029c368caff5ff169cff3a6ed8db5f79ca92fd70d90a9090b"
+      },
+      "normalization": {
+        "center": [
+          97.4,
+          98.80000000000001,
+          55.2
+        ],
+        "scale": 124.194202763253
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "320c7a7442bfcb37b70708db526fda47b1cf043ef5ac2f40711cafdf4e85f7d7"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__076__parietotemporal",
+      "source_id": "train:076",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__076__parietotemporal_8192.npz",
+        "bytes": 157581,
+        "sha256": "ec31c6181a99fdc4cf6734161809a67e2ad6a4d49adb1942339248058b9dd375"
+      },
+      "normalization": {
+        "center": [
+          96.2,
+          98.80000000000001,
+          55.2
+        ],
+        "scale": 123.56650031460792
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "62808121c9fcf93b4be53278dc80ed9e7865562183cef0da65cdcd0f31d81c6a"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__076__random_1",
+      "source_id": "train:076",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__076__random_1_8192.npz",
+        "bytes": 157095,
+        "sha256": "fbc33d2b85d10f0597c41b4548badbbf4c95493671a125c63662c4edf0192aba"
+      },
+      "normalization": {
+        "center": [
+          97.0,
+          98.80000000000001,
+          55.2
+        ],
+        "scale": 123.98403122983218
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "8d546bfcf9924884d8f8ea8afaf4e041732d5b513acc2fd2576b94c05fdb3e2f"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__076__random_2",
+      "source_id": "train:076",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__076__random_2_8192.npz",
+        "bytes": 158112,
+        "sha256": "586bc00f2fec1dd085dbb3cdfc3d9a94eab2fb08dfc839e6d37b60bee1e28c05"
+      },
+      "normalization": {
+        "center": [
+          97.4,
+          98.80000000000001,
+          54.6
+        ],
+        "scale": 123.92868917244303
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "2fd31f41a8a2117a95f88f8452697a247e49963288a83cd47c1f1b8ad170ce0c"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__081__bilateral",
+      "source_id": "train:081",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__081__bilateral_8192.npz",
+        "bytes": 157376,
+        "sha256": "1c9754cb43898ab0bd002bf2a1fd41bc8bea5ecaa51664c2d66b6a49ef708e51"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          97.4,
+          55.2
+        ],
+        "scale": 127.91137556918072
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "e7c08bd3d3d90470d5ab3d54e42dbabb528806f6302d9c91b6917462fdbb6149"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__081__frontoorbital",
+      "source_id": "train:081",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__081__frontoorbital_8192.npz",
+        "bytes": 155801,
+        "sha256": "075b5dcfa1ec00f6009f7e7b7298ecbb7e373e3f02321c2a2a60edce1f0bdf78"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          97.4,
+          56.400000000000006
+        ],
+        "scale": 128.43379617530582
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "da79219150ab0eda431b8c95dc88bf11d6087b96a3f0d2113ff64a8aa1cc91b1"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__081__parietotemporal",
+      "source_id": "train:081",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__081__parietotemporal_8192.npz",
+        "bytes": 157159,
+        "sha256": "30cd5c4f225ee2d1bb1668d2058dabde8bb0f5c12680163df3aa69eae8f8abec"
+      },
+      "normalization": {
+        "center": [
+          101.00000000000001,
+          97.4,
+          56.400000000000006
+        ],
+        "scale": 128.12088042157689
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "a815db0409f0359997ccf5de2d780023b61ba88f7f92947d41d4d6b85fb58095"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__081__random_1",
+      "source_id": "train:081",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__081__random_1_8192.npz",
+        "bytes": 158042,
+        "sha256": "cf0099d10f27672ba596bcece81b8d7bba3febe165646410ee93fe443063cb5a"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          97.4,
+          56.400000000000006
+        ],
+        "scale": 128.43379617530582
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "299b2660ef7dc92365f931e640ef42b5dc7b4401b39c5352586ae595d2ca40d9"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__081__random_2",
+      "source_id": "train:081",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__081__random_2_8192.npz",
+        "bytes": 156932,
+        "sha256": "81d3e51b8e653ab00916265bb048084fb76885609643a76e1caefaed33cb33df"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          97.4,
+          56.400000000000006
+        ],
+        "scale": 128.43379617530582
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "16300eceb901023ea8eea639ab939169e39e093d7a303061dfd0ca7d342d6b98"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__094__bilateral",
+      "source_id": "train:094",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__094__bilateral_8192.npz",
+        "bytes": 157568,
+        "sha256": "54fb49d9b5ded5c81e427bd937ce9533a74c5a561af34c5c3440618dc85f17bb"
+      },
+      "normalization": {
+        "center": [
+          99.20000000000002,
+          96.80000000000001,
+          59.400000000000006
+        ],
+        "scale": 133.41139381627045
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "390732614f124c078a329fb61a30490ebebc1c620d02279848c81f9a1639bece"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__094__frontoorbital",
+      "source_id": "train:094",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__094__frontoorbital_8192.npz",
+        "bytes": 155036,
+        "sha256": "f8b000fd86507cb23a5310ab7defa775d8fd57b18646e0d625cdf7a0f4e323fd"
+      },
+      "normalization": {
+        "center": [
+          99.20000000000002,
+          96.80000000000001,
+          59.6
+        ],
+        "scale": 133.50056179657074
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "13a0bc728a59c2a3573c6f62c5d8df485118f35301fa33cac1f83f1b06f3b83e"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__094__parietotemporal",
+      "source_id": "train:094",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__094__parietotemporal_8192.npz",
+        "bytes": 154930,
+        "sha256": "e35830454406b284866527a63af2d081df1b6e6dfe33df75e797ec99ae3c8bcf"
+      },
+      "normalization": {
+        "center": [
+          99.20000000000002,
+          96.80000000000001,
+          59.6
+        ],
+        "scale": 133.50056179657074
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "1029889a7048bd95110ac4231ad2729d38c9f9dd46bcde33d6a915bbc7eae213"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__094__random_1",
+      "source_id": "train:094",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__094__random_1_8192.npz",
+        "bytes": 156498,
+        "sha256": "557a0208264c393b9d5762361f350890ec6bb30351efaac123f9c8c10e46e0f4"
+      },
+      "normalization": {
+        "center": [
+          99.20000000000002,
+          96.80000000000001,
+          59.6
+        ],
+        "scale": 133.50056179657074
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "87ecb9f6d7ba785b2809ea6dcfd65fdd66250475b512edd7a62b1cf249f26b2d"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__094__random_2",
+      "source_id": "train:094",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__094__random_2_8192.npz",
+        "bytes": 154732,
+        "sha256": "05e4a09c853a3f2d3f0e955107baffb56737707fb8f8480d072d38a0328d90f4"
+      },
+      "normalization": {
+        "center": [
+          99.20000000000002,
+          96.80000000000001,
+          59.6
+        ],
+        "scale": 133.50056179657074
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "a459a2b3700a8d2fb0d25527d097cd58ad4ff6091010998ef37793b72672925e"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__105__bilateral",
+      "source_id": "train:105",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__105__bilateral_8192.npz",
+        "bytes": 157420,
+        "sha256": "179ae975d4a663e5bc8c1f751ccdb2ba6f8da6ba23f0ce92c689257f9fec2a13"
+      },
+      "normalization": {
+        "center": [
+          101.00000000000001,
+          100.0,
+          60.2
+        ],
+        "scale": 135.3883303686104
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "d4e54480bfe2021eaebd6c34fc173a96832a462860c8d0cce00a776008f9ecea"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__105__frontoorbital",
+      "source_id": "train:105",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__105__frontoorbital_8192.npz",
+        "bytes": 155050,
+        "sha256": "e3ce8ccb699e6f054830d8c99a06807532c6ba4cba198c228ca4a95c9171cdc7"
+      },
+      "normalization": {
+        "center": [
+          101.00000000000001,
+          100.2,
+          60.2
+        ],
+        "scale": 135.5361206468593
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "88481c6ce532e66ed96ff781d2d75a7f59df7f7305a843d0f1015e51e4a635ca"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__105__parietotemporal",
+      "source_id": "train:105",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__105__parietotemporal_8192.npz",
+        "bytes": 156400,
+        "sha256": "fc4dc750e11c9d156cfac4d54399200655cba6485833faedb3796134570ca7c5"
+      },
+      "normalization": {
+        "center": [
+          101.00000000000001,
+          100.2,
+          60.2
+        ],
+        "scale": 135.5361206468593
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "ec8b459bed23aa1d72af072fcba89f45f437dfa8815bb32a94e601264887c952"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__105__random_1",
+      "source_id": "train:105",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__105__random_1_8192.npz",
+        "bytes": 156095,
+        "sha256": "d107cdaee2ed06f7f9dece3260f5295319af2226e324d91792a1c151463df653"
+      },
+      "normalization": {
+        "center": [
+          101.00000000000001,
+          100.2,
+          58.6
+        ],
+        "scale": 134.83308199399733
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "6033a7d1e05bb30d7bc2fa7f8dc8b8531053d15a8665ed982aeaa7517f0365f1"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__105__random_2",
+      "source_id": "train:105",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__105__random_2_8192.npz",
+        "bytes": 158437,
+        "sha256": "009b6d7c229b1ec0c3824d95efb9ef5371e40ebac8873711027466640deff793"
+      },
+      "normalization": {
+        "center": [
+          102.80000000000001,
+          100.2,
+          60.2
+        ],
+        "scale": 134.63402244603702
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "7e32369eff88c58b4a1f89953d2ff9ffc9518c4b7df1562e6063c3d8ab2a59c8"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__107__bilateral",
+      "source_id": "train:107",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__107__bilateral_8192.npz",
+        "bytes": 157723,
+        "sha256": "5112ea051c374b94f0b733b8a6ccb24f2dc5fe1fc2148d9f4bf5cbafe541f8f4"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          98.2,
+          56.800000000000004
+        ],
+        "scale": 128.1656740317001
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "b4b448ac96626449d179938c2b7bbc676e717f1f842b37e88ae20dd0a85b6369"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__107__frontoorbital",
+      "source_id": "train:107",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__107__frontoorbital_8192.npz",
+        "bytes": 155820,
+        "sha256": "2d0574b44bc4d624f0597e099486838e6e1f4fb0e708bb7e953dcd7657b9ed6c"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          98.2,
+          56.800000000000004
+        ],
+        "scale": 128.1656740317001
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "9bf3baca83c4a50b5a82892904efcb98c1a038fb081aeb2f132c06f319d29aa3"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__107__parietotemporal",
+      "source_id": "train:107",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__107__parietotemporal_8192.npz",
+        "bytes": 156497,
+        "sha256": "ef0fa2477905695811d77fcfcd9b3837b56981dea4e8bb8bc1ce7c7be3790185"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          98.2,
+          56.800000000000004
+        ],
+        "scale": 128.1656740317001
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "090d882a08305e84a80fac60ce9ded324fbc039465bd3b85b395d0ab960233e6"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__107__random_1",
+      "source_id": "train:107",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__107__random_1_8192.npz",
+        "bytes": 157091,
+        "sha256": "ec81a2725b6c44ed1bab678b0432943e8888258ea569c5a8eff20b39fa3f8446"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          98.2,
+          56.800000000000004
+        ],
+        "scale": 128.1656740317001
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "7dea6e205177b43976b4f62b47091c068b3356f5b07a5c071892e90589fc10a5"
+    },
+    {
+      "run": "C_M_H1",
+      "variant": "M0",
+      "fold": "C",
+      "n_input": 8192,
+      "case_id": "train__107__random_2",
+      "source_id": "train:107",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__107__random_2_8192.npz",
+        "bytes": 157695,
+        "sha256": "d8471e47d073360c06977b39d52f21e09fd18d41da1fb15b7a2997de843faf9a"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          98.2,
+          55.400000000000006
+        ],
+        "scale": 127.55140140351261
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "9529e3e22ca2cff1f678c1a253a0861df6975ef7b81a194da32a7ad491d390a2"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__004__bilateral",
+      "source_id": "train:004",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__004__bilateral_8192.npz",
+        "bytes": 157128,
+        "sha256": "6f3cf42d880e10cd43d53a56fe409090d0104926c78948fcb7e3b0346a9c9b73"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          97.60000000000001,
+          57.400000000000006
+        ],
+        "scale": 124.28885710312089
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "cb175538e57f3a10a1ccc19ed867ff93d354b2d744603854843a7817a6033e60"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__004__frontoorbital",
+      "source_id": "train:004",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__004__frontoorbital_8192.npz",
+        "bytes": 156500,
+        "sha256": "fa2386b55cb32dd96643f791b5ba95c72bd5afbee58a05a7276911b1270cb769"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          97.60000000000001,
+          57.400000000000006
+        ],
+        "scale": 124.28885710312089
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "4a959c21db2a37092560b40bbc688bf09e020552d8ec95a35d4d03c69ce3c73e"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__004__parietotemporal",
+      "source_id": "train:004",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__004__parietotemporal_8192.npz",
+        "bytes": 156420,
+        "sha256": "f77a6cd59e9aa34a93ed8f2bb75bca441c76ea6fb36f57940b9274bf210fdb90"
+      },
+      "normalization": {
+        "center": [
+          100.4,
+          97.60000000000001,
+          57.400000000000006
+        ],
+        "scale": 124.07562210200682
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "b39797110cf8bd09f906aa82350568a726c75c3aab1214e32912322a3beb9029"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__004__random_1",
+      "source_id": "train:004",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__004__random_1_8192.npz",
+        "bytes": 157593,
+        "sha256": "28c68edacee8aa400a8db415c06ffaffcf064686fce482d36e0348efc591faa3"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          97.60000000000001,
+          57.400000000000006
+        ],
+        "scale": 124.28885710312089
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "4909b1141017db7f3c3b36dd36cdc69e60ab2aaa375b2b0623eb47966aca87b8"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__004__random_2",
+      "source_id": "train:004",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__004__random_2_8192.npz",
+        "bytes": 157903,
+        "sha256": "dfdf3f6c14a2f776129461157de2e3b9cd37fef318e98adc7da29c5e00c5fa0c"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          97.60000000000001,
+          57.400000000000006
+        ],
+        "scale": 124.28885710312089
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "65cdf11c4ff7be28eba946cd2fef1d7f06fc12c02ca6bd8f17b45c41ffa562d2"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__005__bilateral",
+      "source_id": "train:005",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__005__bilateral_8192.npz",
+        "bytes": 158039,
+        "sha256": "8894b05fa248c33c15153811270cdf1d85bf08ab5bb8411e92d84b4909a46611"
+      },
+      "normalization": {
+        "center": [
+          105.4,
+          99.2,
+          57.2
+        ],
+        "scale": 128.74610673725246
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "927204e8a9046d6756ccb0e20202e968e0e5cf906d9c3515a93edeb42c27a418"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__005__frontoorbital",
+      "source_id": "train:005",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__005__frontoorbital_8192.npz",
+        "bytes": 156801,
+        "sha256": "d3283d3e33c28fa5a6829d4f1cf4a039617e684640920e98db4415d263cb77f7"
+      },
+      "normalization": {
+        "center": [
+          105.4,
+          99.2,
+          57.2
+        ],
+        "scale": 128.74610673725246
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "09dc2f32fdd099f7d9aa711e2e9c6da54e70e0f8ed1513cbb968857f3a714fce"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__005__parietotemporal",
+      "source_id": "train:005",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__005__parietotemporal_8192.npz",
+        "bytes": 156442,
+        "sha256": "004c2a5f707d44c3533de4753ebc7c20a5549d700c034ca9118a314490883425"
+      },
+      "normalization": {
+        "center": [
+          105.60000000000001,
+          99.2,
+          57.2
+        ],
+        "scale": 128.6415174039859
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "66d89eec6a89109429a62bf3f3d2bf4e1d0c5a75e4f99b1ebf33e89de175f69b"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__005__random_1",
+      "source_id": "train:005",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__005__random_1_8192.npz",
+        "bytes": 157581,
+        "sha256": "838f1cab017862da95e923eceb9680487aafb84249960308124f97a841c26a07"
+      },
+      "normalization": {
+        "center": [
+          105.4,
+          99.2,
+          52.2
+        ],
+        "scale": 126.60394938547535
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "987d9180aa04daf769f392e7f3003697e3c43c9e6b19af562a486a4cdd87cb6e"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__005__random_2",
+      "source_id": "train:005",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__005__random_2_8192.npz",
+        "bytes": 157351,
+        "sha256": "d983855205ae4cf74f15c9a236ea0403d065bdd0e230da331a16e81c4d238913"
+      },
+      "normalization": {
+        "center": [
+          106.2,
+          99.2,
+          57.2
+        ],
+        "scale": 128.3291081555545
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "88102d6449eef98cd33279a0b64bd69243c86178e0b9a4ab9e0a35a14459e04f"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__008__bilateral",
+      "source_id": "train:008",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__008__bilateral_8192.npz",
+        "bytes": 156720,
+        "sha256": "e62b9dd5f53f7c422c5b6a09b3af0d8b12911b2b478476e3e095aa3e05e12258"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          99.20000000000002,
+          61.6
+        ],
+        "scale": 130.0079997538613
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "4e3c83e68daec16788dd7d74a5772587a45a25bc45e4a644b744e8629acc7904"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__008__frontoorbital",
+      "source_id": "train:008",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__008__frontoorbital_8192.npz",
+        "bytes": 155928,
+        "sha256": "4c08634f71b9e8e2155a3d5b95241488b62a4d8df8863f475ca732d47cb48ac8"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          99.20000000000002,
+          61.6
+        ],
+        "scale": 130.0079997538613
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "ada37a5c98dff48d7145dd79b6a3184af26ca4323bf31b4170cbd680b82d67b1"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__008__parietotemporal",
+      "source_id": "train:008",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__008__parietotemporal_8192.npz",
+        "bytes": 156376,
+        "sha256": "cb8bd0536beb9985004d2a61241230c1faa7246038de9e6a87973185f51c371c"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          99.20000000000002,
+          61.6
+        ],
+        "scale": 130.0079997538613
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "40b2021ac72f4878e4142514b5c32870fa434452b328c1dd8ba3826b6daee90d"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__008__random_1",
+      "source_id": "train:008",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__008__random_1_8192.npz",
+        "bytes": 154927,
+        "sha256": "150838e89624ff7830805d36a9d5f2549fdb23af9f8d78d52c3dce4a810d024f"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          99.20000000000002,
+          61.6
+        ],
+        "scale": 130.0079997538613
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "9b7e80ebcc917c13ca52b1eaa9b3edfd5e06085867226854dc07777db84224df"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__008__random_2",
+      "source_id": "train:008",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__008__random_2_8192.npz",
+        "bytes": 156795,
+        "sha256": "4f513a13121d6343b78a0acb5b3c394855e96c2144e39279dc9a44cae0dc9536"
+      },
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          99.20000000000002,
+          61.6
+        ],
+        "scale": 130.0079997538613
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "cbfb9152eb7392b9b85d50d19da927d59b5d382efd16fce370e77fea9487f9a1"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__010__bilateral",
+      "source_id": "train:010",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__010__bilateral_8192.npz",
+        "bytes": 157456,
+        "sha256": "5569bcccbb1897f4f05b7ef89b3565ebfa207f47d2bbf7a443cae4a10cf624a3"
+      },
+      "normalization": {
+        "center": [
+          99.80000000000001,
+          94.8,
+          56.800000000000004
+        ],
+        "scale": 127.04534623511402
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "7324059eb10e12353ad4977c2eb3928c0404f88123d3577fce4756f25e021044"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__010__frontoorbital",
+      "source_id": "train:010",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__010__frontoorbital_8192.npz",
+        "bytes": 155921,
+        "sha256": "8d2136fd7068f58c7c1682198d02d99410436d0414f9fd1b697d2e8762e1d9bc"
+      },
+      "normalization": {
+        "center": [
+          99.80000000000001,
+          94.8,
+          57.2
+        ],
+        "scale": 127.22468313971154
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "f57cf946da72af71d4208115ce6f9f016e3340823c1daea0f18a1018f8ac9644"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__010__parietotemporal",
+      "source_id": "train:010",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__010__parietotemporal_8192.npz",
+        "bytes": 157678,
+        "sha256": "afc2310cdbb550266cfa529dfac5415830f18e3cef9d18dea2d0d6b8291b43c1"
+      },
+      "normalization": {
+        "center": [
+          99.80000000000001,
+          94.8,
+          57.2
+        ],
+        "scale": 127.22468313971154
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "dddffe11da27ed8b5f722458b51b22fda882ba392c0b326e75022412c71a61ac"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__010__random_1",
+      "source_id": "train:010",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__010__random_1_8192.npz",
+        "bytes": 158258,
+        "sha256": "fac6a73047a7d70893ddb1f235254ef4c5b309b227616b3af1638173e45360ff"
+      },
+      "normalization": {
+        "center": [
+          99.80000000000001,
+          94.8,
+          57.2
+        ],
+        "scale": 127.22468313971154
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "552c41296eb55292e746a527d9f75c4daf26ccc7d237fb5e3d385d9ceaa24760"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__010__random_2",
+      "source_id": "train:010",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__010__random_2_8192.npz",
+        "bytes": 157669,
+        "sha256": "2cdb3b93cc4030ba80c5fa7b97870bcfa4081a0d0cc036fcc3db20e89ed6fb14"
+      },
+      "normalization": {
+        "center": [
+          99.80000000000001,
+          94.8,
+          57.2
+        ],
+        "scale": 127.22468313971154
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "88eb54c7e48640dbb2f5836857d4a900c6cec1fe51ad207bc12c8496cdee7a3f"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__022__bilateral",
+      "source_id": "train:022",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__022__bilateral_8192.npz",
+        "bytes": 158055,
+        "sha256": "6dad72661cf839eef4372efe4fd12c8a0b57d08d94de0dcdc99de651fefae686"
+      },
+      "normalization": {
+        "center": [
+          100.6,
+          93.60000000000001,
+          57.0
+        ],
+        "scale": 124.89835867616516
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "a3ebad892fb1456a7980a0e261d31fd4fd2b553513253e0170c18d2f5324d46a"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__022__frontoorbital",
+      "source_id": "train:022",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__022__frontoorbital_8192.npz",
+        "bytes": 156632,
+        "sha256": "519fbfba7fce80400c7587a91dd78b212aac591d8f0d3a8c4d3333b30c5044ca"
+      },
+      "normalization": {
+        "center": [
+          100.6,
+          93.60000000000001,
+          57.0
+        ],
+        "scale": 124.89835867616516
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "faa310e31c7928c2b5d2fe71e2ebe9c95237ed2bb5756e7e1ac06089e30c0bf1"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__022__parietotemporal",
+      "source_id": "train:022",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__022__parietotemporal_8192.npz",
+        "bytes": 157729,
+        "sha256": "fc8fd033be8a7e481a77ff325999514db7f5b530a3c4e2b3631b57a0f988404b"
+      },
+      "normalization": {
+        "center": [
+          100.6,
+          93.60000000000001,
+          57.0
+        ],
+        "scale": 124.89835867616516
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "51984c743bc20fdd355c5964bbe903505724c9784c3eb97bc920b276763b7071"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__022__random_1",
+      "source_id": "train:022",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__022__random_1_8192.npz",
+        "bytes": 157697,
+        "sha256": "3170e432434691abf1fafe3c9744e34a06cb5464bc0485d1b8675058e7a49f05"
+      },
+      "normalization": {
+        "center": [
+          101.6,
+          93.60000000000001,
+          57.0
+        ],
+        "scale": 124.3454864480412
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "98e37c680e16ef23d7292fa75deaa8101dbb807c8ada294e8b98450e36b6a777"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__022__random_2",
+      "source_id": "train:022",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__022__random_2_8192.npz",
+        "bytes": 157596,
+        "sha256": "89de994ea3b7c1f1230298fd4f92e5539b2a6c9fcef87fdaa29d5053463a0949"
+      },
+      "normalization": {
+        "center": [
+          100.6,
+          93.60000000000001,
+          57.0
+        ],
+        "scale": 124.89835867616516
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "a62a31870556be79094ad3edb7019ed45260857b5bf3ba102133b191802e8899"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__029__bilateral",
+      "source_id": "train:029",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__029__bilateral_8192.npz",
+        "bytes": 157714,
+        "sha256": "0305443709d6f49b9348cdd91bb52026c8f90d18ec150e5487571e24cf6438b9"
+      },
+      "normalization": {
+        "center": [
+          102.60000000000001,
+          98.4,
+          58.6
+        ],
+        "scale": 131.68720514917158
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "da53ca756bdbfe96c11372b39e77d17d2a84da17af5ee2a64463661c11ab331b"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__029__frontoorbital",
+      "source_id": "train:029",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__029__frontoorbital_8192.npz",
+        "bytes": 156126,
+        "sha256": "6c94b37882ba71a3d1689d5090792d9972e1e4a1e321d4e0b3a57ed68e6468cd"
+      },
+      "normalization": {
+        "center": [
+          102.60000000000001,
+          98.4,
+          58.6
+        ],
+        "scale": 131.68720514917158
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "6039b1b1523e4da4c6d41ff71a090b8225745c7004ec03f2272127c43c6b252d"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__029__parietotemporal",
+      "source_id": "train:029",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__029__parietotemporal_8192.npz",
+        "bytes": 157523,
+        "sha256": "cfb275a5c7cae08625d3a6f618c8c67656a0b4b76bf1f408edf2fe612a615287"
+      },
+      "normalization": {
+        "center": [
+          103.60000000000001,
+          98.4,
+          58.6
+        ],
+        "scale": 131.19649385559052
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "59b68eaf94b3aa063650463b51303ffa7b2538abc2bfb7d64c4f2c15c88d22f5"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__029__random_1",
+      "source_id": "train:029",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__029__random_1_8192.npz",
+        "bytes": 156999,
+        "sha256": "4bfcb8e102b85e9501cbaaf47bb812321fb4fb4a667907f77aa92d8551b75489"
+      },
+      "normalization": {
+        "center": [
+          102.60000000000001,
+          98.4,
+          58.6
+        ],
+        "scale": 131.68720514917158
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "e46a2d1cfcb2417e41e88da284d58aaa5ff67bf8440ab7a0d44bf5de70b6dfe7"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__029__random_2",
+      "source_id": "train:029",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__029__random_2_8192.npz",
+        "bytes": 157362,
+        "sha256": "04b23d820bce833751bf921a7414d8c3ecd1ca613c04bfe70fea860d5bb939ae"
+      },
+      "normalization": {
+        "center": [
+          102.60000000000001,
+          98.4,
+          58.6
+        ],
+        "scale": 131.68720514917158
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "756f9d2beb48b84ccab1ea445ca5e36743f0e96bee5846f78488b09998c1897a"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__033__bilateral",
+      "source_id": "train:033",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__033__bilateral_8192.npz",
+        "bytes": 157172,
+        "sha256": "b00d55872e209a1e02cd9a795e1b3bc10dc5dbad0d312ea3f7d412924f5cf32e"
+      },
+      "normalization": {
+        "center": [
+          105.0,
+          94.80000000000001,
+          59.0
+        ],
+        "scale": 128.40404978037103
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "1a0cba73e8168e76768dc42b385f1942dd26957fef0949b44bbb165729ed7f25"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__033__frontoorbital",
+      "source_id": "train:033",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__033__frontoorbital_8192.npz",
+        "bytes": 155119,
+        "sha256": "5d8c67624439c7e290f35b02abf8b209ceb51d1a515a23e68d3f4dacf9e0c808"
+      },
+      "normalization": {
+        "center": [
+          105.0,
+          94.80000000000001,
+          59.0
+        ],
+        "scale": 128.40404978037103
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "b8e7dd5cd4dcba31b699b72f59226c78c79ee3969d783f31dd07243a28bad382"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__033__parietotemporal",
+      "source_id": "train:033",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__033__parietotemporal_8192.npz",
+        "bytes": 156828,
+        "sha256": "78c3d11f6da0b13a9b6f3197568dc91de07a818247be1abb5c72b9f6ef8b59d9"
+      },
+      "normalization": {
+        "center": [
+          104.2,
+          94.80000000000001,
+          59.0
+        ],
+        "scale": 128.01093703273952
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "40e1f68921154bf4fb9c668d705143845909703f6cb87a355fefcef5eb358d0d"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__033__random_1",
+      "source_id": "train:033",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__033__random_1_8192.npz",
+        "bytes": 156919,
+        "sha256": "bdf9de52b42528267cca086d0736ae85aec8da01103e577fb296509a877240e1"
+      },
+      "normalization": {
+        "center": [
+          105.0,
+          94.80000000000001,
+          59.0
+        ],
+        "scale": 128.40404978037103
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "0f61515a20550473ee723c9a072621e088e04fad3325267d63ac46b72b7d9ddb"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__033__random_2",
+      "source_id": "train:033",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__033__random_2_8192.npz",
+        "bytes": 157809,
+        "sha256": "967106f15f210d90a5b93031b2accf7b7efbef57149748daf4c3b38dee239fa7"
+      },
+      "normalization": {
+        "center": [
+          105.0,
+          94.80000000000001,
+          59.0
+        ],
+        "scale": 128.40404978037103
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "6c62479bae9418c7923eb530a30947d30add06d00064861da231f0b25586e41b"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__037__bilateral",
+      "source_id": "train:037",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__037__bilateral_8192.npz",
+        "bytes": 157649,
+        "sha256": "7074823f702bdbd97e83b7ee8f7be0339347f0dc5bc9a729d9bed5881391f200"
+      },
+      "normalization": {
+        "center": [
+          102.2,
+          96.80000000000001,
+          55.6
+        ],
+        "scale": 125.08381190226017
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "0938a9eda123acc8d82528bb9eae214bb741e31dbf81bb7b0c23e750fc089640"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__037__frontoorbital",
+      "source_id": "train:037",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__037__frontoorbital_8192.npz",
+        "bytes": 156809,
+        "sha256": "d27ad271e0d1da5df439687f64b244dbab82ed13dc415a4aa6173f89ace7a073"
+      },
+      "normalization": {
+        "center": [
+          102.2,
+          96.80000000000001,
+          59.2
+        ],
+        "scale": 126.72505671728857
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "aa4c65047c085fca04b596733a7f8e82ca73b66f2a413d464eac7d76825b6cac"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__037__parietotemporal",
+      "source_id": "train:037",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__037__parietotemporal_8192.npz",
+        "bytes": 157347,
+        "sha256": "bd27b8da33b856d438e5f2e097f67ee7b76df40cdb62ecd0c9ff4d401dc55f22"
+      },
+      "normalization": {
+        "center": [
+          102.2,
+          96.80000000000001,
+          59.2
+        ],
+        "scale": 126.72505671728857
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "3e12e23cb5fbc202a6632a7441708b5c0f9579c0aead8a779e7862692ea51197"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__037__random_1",
+      "source_id": "train:037",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__037__random_1_8192.npz",
+        "bytes": 157899,
+        "sha256": "0354a3885fe80f4cc16941ed7a7e630ff70f1ab1eea40b910e6123a1294c00d9"
+      },
+      "normalization": {
+        "center": [
+          102.2,
+          96.80000000000001,
+          59.2
+        ],
+        "scale": 126.72505671728857
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "abcc0a8039d81ef8922f37d368ea8714a3ed8c973cf98919abf036a742c13a1b"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__037__random_2",
+      "source_id": "train:037",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__037__random_2_8192.npz",
+        "bytes": 157081,
+        "sha256": "3d47eecc0f38c043194ad52b397bf6b551bc53ad25add364a405173cea104fc9"
+      },
+      "normalization": {
+        "center": [
+          102.2,
+          96.80000000000001,
+          59.2
+        ],
+        "scale": 126.72505671728857
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "5a1eea1db572b3fb3a3ac20015f77a9a25dbd8a4eda4f48a93959c4dd58984b9"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__044__bilateral",
+      "source_id": "train:044",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__044__bilateral_8192.npz",
+        "bytes": 157179,
+        "sha256": "23407276771eb5cc6a259731c4470979e04216241ebbf80fd0f5ec7e4b10556f"
+      },
+      "normalization": {
+        "center": [
+          102.80000000000001,
+          98.4,
+          59.2
+        ],
+        "scale": 133.25524379925918
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "f8d58c12f10bdb63417621b175ceb2e8e9165a5d0b13f1040599429ccc5f7f3e"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__044__frontoorbital",
+      "source_id": "train:044",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__044__frontoorbital_8192.npz",
+        "bytes": 155951,
+        "sha256": "91dbe3abae37649e457e71cfb572b3be494a3b0a27415fad7880ebc69c937312"
+      },
+      "normalization": {
+        "center": [
+          102.80000000000001,
+          98.60000000000001,
+          59.2
+        ],
+        "scale": 133.40299846705096
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "f6cc23b69677bf4f0fefaf5b8bc91a3d6fd5ea8a06f50cb4ff1b0e0a28ff4511"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__044__parietotemporal",
+      "source_id": "train:044",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__044__parietotemporal_8192.npz",
+        "bytes": 157439,
+        "sha256": "8b37e826755d066d337e3cac7e087c1103698fb75978d0e5c37dabb126911d34"
+      },
+      "normalization": {
+        "center": [
+          102.80000000000001,
+          98.60000000000001,
+          59.2
+        ],
+        "scale": 133.40299846705096
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "af100c6d28cb9077f4a9d4a79db479a9567b579b401299fae9dd09bf15691db3"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__044__random_1",
+      "source_id": "train:044",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__044__random_1_8192.npz",
+        "bytes": 158129,
+        "sha256": "4946c29cad3113f7cf6e56b022af4358a221db0b7b0c8af610120c673d91e9c9"
+      },
+      "normalization": {
+        "center": [
+          102.80000000000001,
+          98.60000000000001,
+          53.400000000000006
+        ],
+        "scale": 130.9323489440253
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "3d5f07b43533b96054ff582f928e54186d1111395bc5f7fe7202be48608d4167"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__044__random_2",
+      "source_id": "train:044",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__044__random_2_8192.npz",
+        "bytes": 157134,
+        "sha256": "07257e851f6240b4c2e20310b19d3c41b0ab5db65364c34a9dd285eb258f781a"
+      },
+      "normalization": {
+        "center": [
+          102.0,
+          98.60000000000001,
+          59.2
+        ],
+        "scale": 132.99939849488044
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "e8852dcfcd115c55f0092850e5a68d5b238aeea837f0163151e898903e7bd806"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__046__bilateral",
+      "source_id": "train:046",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__046__bilateral_8192.npz",
+        "bytes": 156808,
+        "sha256": "886aaeda4e9dbf60081ca5903376630106efc568f5c190ccc207b494f5b718a0"
+      },
+      "normalization": {
+        "center": [
+          101.0,
+          96.4,
+          57.6
+        ],
+        "scale": 130.14222988715076
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "89ec467005bfc62ceab48f335c7063d25b7636900c1ac70a2f61a6b11ede7375"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__046__frontoorbital",
+      "source_id": "train:046",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__046__frontoorbital_8192.npz",
+        "bytes": 156833,
+        "sha256": "3f3607350d34cbf11ea7d2072d04bad3015f900bc43fd1d17626da50713a205d"
+      },
+      "normalization": {
+        "center": [
+          101.0,
+          96.4,
+          58.800000000000004
+        ],
+        "scale": 130.6777716369544
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "04f4ff705bc72bdccd8d8fc33d5b3308eee7ec5cd12db2fe620626e43d18bf04"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__046__parietotemporal",
+      "source_id": "train:046",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__046__parietotemporal_8192.npz",
+        "bytes": 155767,
+        "sha256": "ebfc38323377a002c138edb580aba653b850545dea1c17067c9d452864dcdd77"
+      },
+      "normalization": {
+        "center": [
+          101.0,
+          96.4,
+          58.800000000000004
+        ],
+        "scale": 130.6777716369544
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "b963f431a8aeb4bdf3d2fbb9aabfffe34b8ee9fc5d6a20eab3d6e3f378a95228"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__046__random_1",
+      "source_id": "train:046",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__046__random_1_8192.npz",
+        "bytes": 157372,
+        "sha256": "ea8a93c8ea08302cba8f0b3ebc0f73f4aafe33249c3d7106be7feba11be96cd7"
+      },
+      "normalization": {
+        "center": [
+          101.0,
+          96.4,
+          58.800000000000004
+        ],
+        "scale": 130.6777716369544
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "3996e1818cb9e87692ed4c5c804b8742d5684caf4c38189e97e8cb38be2330d5"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__046__random_2",
+      "source_id": "train:046",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__046__random_2_8192.npz",
+        "bytes": 158233,
+        "sha256": "8b409abdaefbd3f0e1c47c2c5baec61a1ff26827e8de5bcfca442265a2b6bba1"
+      },
+      "normalization": {
+        "center": [
+          101.0,
+          96.4,
+          58.800000000000004
+        ],
+        "scale": 130.6777716369544
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "4d37dd917872d0127e7151f2e57ce6dd258cbaebee3d76259d770b7683a5c6ff"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__052__bilateral",
+      "source_id": "train:052",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__052__bilateral_8192.npz",
+        "bytes": 155367,
+        "sha256": "896d5680c90ba92b83ff9a17be2423ce94a9d6446f547682b05bf26f0b2756c9"
+      },
+      "normalization": {
+        "center": [
+          101.4,
+          99.4,
+          58.2
+        ],
+        "scale": 129.8877977332744
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "140547a8fe611690d8fcbde7eef1620c15ae666bd685c3e3fc981902381e3e49"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__052__frontoorbital",
+      "source_id": "train:052",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__052__frontoorbital_8192.npz",
+        "bytes": 155196,
+        "sha256": "b42ccfaf6b89cb67afd0c90b74055a41faebc555c6029986a79d4be4a00d1968"
+      },
+      "normalization": {
+        "center": [
+          101.4,
+          99.4,
+          58.2
+        ],
+        "scale": 129.8877977332744
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "675c0840fc64a1158554a483220fd520130da963f3da3e3a965cbfe3c6ef1f2e"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__052__parietotemporal",
+      "source_id": "train:052",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__052__parietotemporal_8192.npz",
+        "bytes": 157375,
+        "sha256": "03b262e10b1c600a7bfde3ca740713ecdebc370f8f3d8d5972a293fce17f18f9"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          99.4,
+          58.2
+        ],
+        "scale": 129.78597767093333
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "6bc1315ad724ba8dc79114c0fcf0240335e5ab6d999418bd1a119d2ec65c784f"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__052__random_1",
+      "source_id": "train:052",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__052__random_1_8192.npz",
+        "bytes": 157130,
+        "sha256": "5f4ead14bf9db5b88200838857dba813727c4e94f94718dedeab32b6b895f426"
+      },
+      "normalization": {
+        "center": [
+          101.4,
+          99.4,
+          58.2
+        ],
+        "scale": 129.8877977332744
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "05b04c5a368ac1b8169dc333d37c23d57a5aa94eea31a31c2260d7768cf67973"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__052__random_2",
+      "source_id": "train:052",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__052__random_2_8192.npz",
+        "bytes": 156842,
+        "sha256": "ef8d277b45961e1d830650972ac75acf38b26da13f22774ac321adc1192929bc"
+      },
+      "normalization": {
+        "center": [
+          101.4,
+          99.4,
+          58.2
+        ],
+        "scale": 129.8877977332744
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "96d9c199bff6eb7ee747b76d14263aba363bbb7c88a68fae901cd4d8b6e5bcf3"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__054__bilateral",
+      "source_id": "train:054",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__054__bilateral_8192.npz",
+        "bytes": 157363,
+        "sha256": "0f69ec2d5bb0790dc8707fbedad29943b4b88519d7110728adfd12c66da1d3dc"
+      },
+      "normalization": {
+        "center": [
+          99.00000000000001,
+          98.0,
+          56.2
+        ],
+        "scale": 128.64866886213787
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "5b865c59c2dc2e7cb78bd3ff6e9d349a9347db953aed6f7ae3d5b33088d77795"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__054__frontoorbital",
+      "source_id": "train:054",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__054__frontoorbital_8192.npz",
+        "bytes": 155907,
+        "sha256": "47c7cc01c3b4de51d92b9d11a6f12eeebc3f1685dbe0c43391e6fecd3d574ef3"
+      },
+      "normalization": {
+        "center": [
+          99.00000000000001,
+          98.0,
+          57.800000000000004
+        ],
+        "scale": 129.35563381623547
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "ccc475fa97a103e7a7f5eb21971af5d34f10dfee9e57d2980823569a4f8abc96"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__054__parietotemporal",
+      "source_id": "train:054",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__054__parietotemporal_8192.npz",
+        "bytes": 157683,
+        "sha256": "3cf422a00e42bfb604c92313fbde53e48fd6801761b66618c8863a63e0cde845"
+      },
+      "normalization": {
+        "center": [
+          97.60000000000001,
+          98.0,
+          57.800000000000004
+        ],
+        "scale": 128.60124416194424
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "b1ae1f463133cc5d597982373e3fa0811084948fe4131e6db8a72d3c5931f3e4"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__054__random_1",
+      "source_id": "train:054",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__054__random_1_8192.npz",
+        "bytes": 157247,
+        "sha256": "1534f6b58e069ba8e07cb46103aa733104fd425b986b580931180054a7649dbb"
+      },
+      "normalization": {
+        "center": [
+          99.00000000000001,
+          98.0,
+          57.800000000000004
+        ],
+        "scale": 129.35563381623547
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "48622d7e2e81e2f47f54131463fc4600128677d2393fe8ef7a367a10668b9742"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__054__random_2",
+      "source_id": "train:054",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__054__random_2_8192.npz",
+        "bytes": 157546,
+        "sha256": "8e3a3c7a24f96dbd3954c832978888ad3dfaaf5848124527c472e03e83c11ef0"
+      },
+      "normalization": {
+        "center": [
+          99.00000000000001,
+          98.0,
+          57.800000000000004
+        ],
+        "scale": 129.35563381623547
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "f9359cf54e93442f9b866375aaa67d952a2634a6adf1d61d9b80efc7c65f2d9a"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__060__bilateral",
+      "source_id": "train:060",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__060__bilateral_8192.npz",
+        "bytes": 156683,
+        "sha256": "e9ea7f8afc3f4749633c4e4d416e91430379742de66dce820e6c1b6dfc890177"
+      },
+      "normalization": {
+        "center": [
+          99.2,
+          99.6,
+          58.0
+        ],
+        "scale": 128.7583783681668
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "6116b585b36a872ace8abab44e3e5a30edb34b1072bedb014350a88836f3136f"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__060__frontoorbital",
+      "source_id": "train:060",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__060__frontoorbital_8192.npz",
+        "bytes": 155336,
+        "sha256": "24c3d78f874ba425a169263e06bca757e9ca66e08582b7d3068a8717027ce18e"
+      },
+      "normalization": {
+        "center": [
+          99.2,
+          99.6,
+          58.0
+        ],
+        "scale": 128.7583783681668
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "2fde2b4d0d6caabe1271d01fc9b41d6d794d11a409ee55df465edffe930db81d"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__060__parietotemporal",
+      "source_id": "train:060",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__060__parietotemporal_8192.npz",
+        "bytes": 155949,
+        "sha256": "fffd76ea9cd1143687914e3b655c5e190cdaea76556d91efb2dcfbbb6615d5fe"
+      },
+      "normalization": {
+        "center": [
+          99.2,
+          99.6,
+          58.0
+        ],
+        "scale": 128.7583783681668
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "2f10939ee8157d2695a33d826d61e4295d095dcdaacb9bcce0725bc8671aa857"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__060__random_1",
+      "source_id": "train:060",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__060__random_1_8192.npz",
+        "bytes": 155684,
+        "sha256": "b4eb51a9774b9ea0688e2d449e9cd8c7838f8b4de117e7b6dc39bc3ab2f0ebd9"
+      },
+      "normalization": {
+        "center": [
+          99.2,
+          99.6,
+          55.6
+        ],
+        "scale": 127.69526224570747
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "fcac0ef4169b151032729f6d2c4a888caec2e01072604701ca40a96f562bc6c7"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__060__random_2",
+      "source_id": "train:060",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__060__random_2_8192.npz",
+        "bytes": 156726,
+        "sha256": "19dd93314737efd0f0d1de926ca0071da52d24897851b9d06c77e35db34405be"
+      },
+      "normalization": {
+        "center": [
+          99.2,
+          99.6,
+          58.0
+        ],
+        "scale": 128.7583783681668
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "9a546a61649923be41d2b3510e886fed0aff2d097cffd41170a7f22bb2fabf5f"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__062__bilateral",
+      "source_id": "train:062",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__062__bilateral_8192.npz",
+        "bytes": 157857,
+        "sha256": "5475162a7a52c4b3d5411152a49412596d61c5607ec5883a9c04b814da101a26"
+      },
+      "normalization": {
+        "center": [
+          100.8,
+          97.0,
+          59.6
+        ],
+        "scale": 131.19527430513648
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "57b361c53eb26c39f16f92cc86b282987828074fad00050843398b5543874638"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__062__frontoorbital",
+      "source_id": "train:062",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__062__frontoorbital_8192.npz",
+        "bytes": 156798,
+        "sha256": "c795104bc863bcc77b9f65a6a6791af6678ee5b1473ddd705fcdde8ea6e4baa6"
+      },
+      "normalization": {
+        "center": [
+          100.8,
+          97.0,
+          61.0
+        ],
+        "scale": 131.83717229977287
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "46fc6c42d3a9a4c5f208b40f1814afe1a66afd7ad016700745db92245d6043bf"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__062__parietotemporal",
+      "source_id": "train:062",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__062__parietotemporal_8192.npz",
+        "bytes": 157329,
+        "sha256": "cfabf304317df6e2f3e27c40851599058fbc3447e379d9bb5201c759e365a4af"
+      },
+      "normalization": {
+        "center": [
+          100.8,
+          97.0,
+          61.0
+        ],
+        "scale": 131.83717229977287
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "527efa122ee28313797d842129328cf560b1b53caf4690e8249f2f54d965b5c9"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__062__random_1",
+      "source_id": "train:062",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__062__random_1_8192.npz",
+        "bytes": 158377,
+        "sha256": "3ad3e3d2a1f4d8ba8c78b7f42a8d5b14a45732fbf5ef8f26c757c1beb110130f"
+      },
+      "normalization": {
+        "center": [
+          100.8,
+          97.0,
+          60.2
+        ],
+        "scale": 131.46893169110336
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "55cb08c1767dc033b858ef288d40efa131ec49937f6bf6fd8591c0777917192b"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__062__random_2",
+      "source_id": "train:062",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__062__random_2_8192.npz",
+        "bytes": 158290,
+        "sha256": "b0c207e6a647c65b3692b22ff5299b5047ad16ce29c5ae3a38997cfc3bbd3a59"
+      },
+      "normalization": {
+        "center": [
+          100.8,
+          96.80000000000001,
+          61.0
+        ],
+        "scale": 131.69009074338132
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "8b78ac28a5df3c4e6a696374a88ea8315dc10d8d35df292f25e11964ff073ff4"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__068__bilateral",
+      "source_id": "train:068",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__068__bilateral_8192.npz",
+        "bytes": 156008,
+        "sha256": "28a4ade66c94e80b39e4967a63361ef06c3eb7bd16a6ac93b45defe7d97fbf24"
+      },
+      "normalization": {
+        "center": [
+          100.0,
+          95.60000000000001,
+          62.400000000000006
+        ],
+        "scale": 133.9145996521664
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "3428b9a36cbc2e00bcef9fc01340aae4d188f1971c1a15a0eecd4e7d17eb856d"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__068__frontoorbital",
+      "source_id": "train:068",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__068__frontoorbital_8192.npz",
+        "bytes": 155626,
+        "sha256": "ddff4f651ef75fb9806abf7b67597bb4416cd4383a5d8fedec12696a7f0b9f0f"
+      },
+      "normalization": {
+        "center": [
+          100.0,
+          95.60000000000001,
+          62.400000000000006
+        ],
+        "scale": 133.9145996521664
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "4d52c2bf5ca1e430ed5ce6c43dd1237aa541780d1c22bc407b3ac164197edc92"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__068__parietotemporal",
+      "source_id": "train:068",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__068__parietotemporal_8192.npz",
+        "bytes": 156509,
+        "sha256": "aa815380f006081266eb18a3d3341fd252ebc3196c98541d4eb656736b6ece3e"
+      },
+      "normalization": {
+        "center": [
+          100.0,
+          95.60000000000001,
+          62.400000000000006
+        ],
+        "scale": 133.9145996521664
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "be18743378090a505ea8edd000cb91479048b6b4f5ff1ebdc9696d2481993b75"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__068__random_1",
+      "source_id": "train:068",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__068__random_1_8192.npz",
+        "bytes": 155775,
+        "sha256": "586758ede1a0d2b548c9f2f4dafb9f6edd22b58494dadd11e1d8911b813cc370"
+      },
+      "normalization": {
+        "center": [
+          100.0,
+          95.60000000000001,
+          62.400000000000006
+        ],
+        "scale": 133.9145996521664
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "0bec69338baff858443b5529366ebef2a08b78f9d6a34d53780a818032bd6c2a"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__068__random_2",
+      "source_id": "train:068",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__068__random_2_8192.npz",
+        "bytes": 157112,
+        "sha256": "9a07b50a7c23c024d522d7a61a5578e52391548cbc747b43ca23150f6f0ce960"
+      },
+      "normalization": {
+        "center": [
+          100.0,
+          95.60000000000001,
+          62.400000000000006
+        ],
+        "scale": 133.9145996521664
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "4e5066fafe8b237aaaf362464a9a969e3a2242758006253b2346230ac321ec19"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__069__bilateral",
+      "source_id": "train:069",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__069__bilateral_8192.npz",
+        "bytes": 157384,
+        "sha256": "2b4e1b114481f07e4babbbf9c7647ff421dd0dd2123523eea71b17711d8ad00b"
+      },
+      "normalization": {
+        "center": [
+          100.60000000000001,
+          96.4,
+          57.2
+        ],
+        "scale": 128.8771508064948
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "c9c4de7097d503463ebad230e1d7658d035419e4212d6d947ce7ec38548dcf44"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__069__frontoorbital",
+      "source_id": "train:069",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__069__frontoorbital_8192.npz",
+        "bytes": 156320,
+        "sha256": "1da050258de3a4b7a767250985fc471a3b9364a88576fcf8ef84e5f9fb1a6b8f"
+      },
+      "normalization": {
+        "center": [
+          100.60000000000001,
+          96.4,
+          59.800000000000004
+        ],
+        "scale": 130.05198960415794
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "fe4b4e67a693bdc91563e83409b15c3f25f2289ab2a2580ddedd31f7ff882139"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__069__parietotemporal",
+      "source_id": "train:069",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__069__parietotemporal_8192.npz",
+        "bytes": 156853,
+        "sha256": "5c25d321bd5478d75a6b68fc2f7e7fa463f67291d5a4c5add3298f24f2dcbcde"
+      },
+      "normalization": {
+        "center": [
+          100.60000000000001,
+          96.4,
+          59.800000000000004
+        ],
+        "scale": 130.05198960415794
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "b5458fd97d01443bb733416beed6cc407a96f5ece43b406bed9a1d2bc2a0e469"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__069__random_1",
+      "source_id": "train:069",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__069__random_1_8192.npz",
+        "bytes": 157919,
+        "sha256": "551573b3efc88f402e5f268f032fb98b86f49255dfd0d314abc0d4014119b04e"
+      },
+      "normalization": {
+        "center": [
+          100.60000000000001,
+          96.4,
+          59.800000000000004
+        ],
+        "scale": 130.05198960415794
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "0406bf6ea4ece1b226b47f6997de902f7efbfce71d9ae2e5e730105ca3575fc6"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__069__random_2",
+      "source_id": "train:069",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__069__random_2_8192.npz",
+        "bytes": 158890,
+        "sha256": "665c70cd7509f1bb558b5c660c30118721dc7da93bfd6be4ba743a0f0d0e9b19"
+      },
+      "normalization": {
+        "center": [
+          100.60000000000001,
+          96.4,
+          59.6
+        ],
+        "scale": 129.9601477376815
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "a285171461977d9974a45725b967c4ef8498fdd8d2c2c6baa81dd4fbbf77d29c"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__079__bilateral",
+      "source_id": "train:079",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__079__bilateral_8192.npz",
+        "bytes": 157940,
+        "sha256": "6f5d490fab13ceb095d294ac59ea7f9352d0520cfeb7aa493d9884b93de3219d"
+      },
+      "normalization": {
+        "center": [
+          103.2,
+          101.20000000000002,
+          59.0
+        ],
+        "scale": 134.81913810731768
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "1933626397990a7a4de0d0d7138856d92a06d3c24152e4c01823434fc1f194ee"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__079__frontoorbital",
+      "source_id": "train:079",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__079__frontoorbital_8192.npz",
+        "bytes": 156059,
+        "sha256": "1031d5ac318db0a168aacd2559fd9b3c3113122b8f12d0d2e849307e6a2ddeb6"
+      },
+      "normalization": {
+        "center": [
+          103.2,
+          101.20000000000002,
+          59.0
+        ],
+        "scale": 134.81913810731768
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "49cf2d0af2c4f86cfb970acb4b28758572165ddac3ca0e102294c78ceef4157d"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__079__parietotemporal",
+      "source_id": "train:079",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__079__parietotemporal_8192.npz",
+        "bytes": 156740,
+        "sha256": "291bb4fe766f913e6834433d3dba2b947c62b9c45ef38fba6caf87e695f44ea8"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          101.20000000000002,
+          59.0
+        ],
+        "scale": 133.9858201452676
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "941253093290209c8486867e4d6aa46320429208fd8d27811424b2801fc4ceb9"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__079__random_1",
+      "source_id": "train:079",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__079__random_1_8192.npz",
+        "bytes": 156221,
+        "sha256": "6f252d84798dcfb9c21d195994a33047c17e84d81a3800c66a410ff3ca75795c"
+      },
+      "normalization": {
+        "center": [
+          103.2,
+          101.20000000000002,
+          57.6
+        ],
+        "scale": 134.21236902759745
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "8edb704bff61a11c60205b64d39ab35097d34f46692621042b009e119719b49e"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__079__random_2",
+      "source_id": "train:079",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__079__random_2_8192.npz",
+        "bytes": 158023,
+        "sha256": "f758e199586c44ca0575b8878b3fbc0a4d4c6408be7b0f65e4643c25a2f9bdf0"
+      },
+      "normalization": {
+        "center": [
+          103.2,
+          101.20000000000002,
+          59.0
+        ],
+        "scale": 134.81913810731768
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "ad1fbbe8b67e2f7817d2474b24d981b7a9372898435b5d3f1e795bad3f8b691b"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__087__bilateral",
+      "source_id": "train:087",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__087__bilateral_8192.npz",
+        "bytes": 157212,
+        "sha256": "76a1c609e2803845929f8b9f5616f773cd8feddcd9a731dc3cbecc63759c56f5"
+      },
+      "normalization": {
+        "center": [
+          98.80000000000001,
+          102.2,
+          61.0
+        ],
+        "scale": 138.48638922291246
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "6c3108332a089c47203e7134598b3ada47d4016b30c488575373a9351681f1b0"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__087__frontoorbital",
+      "source_id": "train:087",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__087__frontoorbital_8192.npz",
+        "bytes": 155944,
+        "sha256": "a95ae006c5a4ca838880fcadf961ec2be8e1806fa03da71a34c1bbd04a4a12c9"
+      },
+      "normalization": {
+        "center": [
+          98.80000000000001,
+          102.2,
+          61.0
+        ],
+        "scale": 138.48638922291246
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "14879789d5eefbc9b69efa8b229d99a4f0f670bf2c45714b5b4ee581162d3867"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__087__parietotemporal",
+      "source_id": "train:087",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__087__parietotemporal_8192.npz",
+        "bytes": 157094,
+        "sha256": "46f24dec136df5f976f8f54a21406919efdd8162dbb7ede514f72664dc9fbadc"
+      },
+      "normalization": {
+        "center": [
+          99.4,
+          102.2,
+          61.0
+        ],
+        "scale": 138.1806064540173
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "d6ddae33da35074cf88e18dd7c0f77bb6ef7692988e9586cf167d75d26089e48"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__087__random_1",
+      "source_id": "train:087",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__087__random_1_8192.npz",
+        "bytes": 156108,
+        "sha256": "4ea9a0d41606e256751132592a4fe16301db1d27076e7431fde48de5bb7d90a1"
+      },
+      "normalization": {
+        "center": [
+          98.80000000000001,
+          102.2,
+          61.0
+        ],
+        "scale": 138.48638922291246
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "4dd347edb957ab568d6230d5bcde80cd592aa4a7dcdc1a901ce396166764d60e"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__087__random_2",
+      "source_id": "train:087",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__087__random_2_8192.npz",
+        "bytes": 158550,
+        "sha256": "048e92d7bed154d9efc96c2612641c4b723e29fae2725deffd0310c48097a9a4"
+      },
+      "normalization": {
+        "center": [
+          98.80000000000001,
+          102.2,
+          61.0
+        ],
+        "scale": 138.48638922291246
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "3fe8c4d697ebf061f44248f1b2135ca9495640ff0aa544d2607637e20b429651"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__093__bilateral",
+      "source_id": "train:093",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__093__bilateral_8192.npz",
+        "bytes": 156151,
+        "sha256": "120c62715ad47272eb640292154183a934462b43c220da9638aeb0a4249dbc3e"
+      },
+      "normalization": {
+        "center": [
+          100.4,
+          93.2,
+          55.2
+        ],
+        "scale": 120.93899288484256
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "869c44a0558718f004cbba16b691789915eeb05cbc08c1be9d78154765ad95d7"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__093__frontoorbital",
+      "source_id": "train:093",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__093__frontoorbital_8192.npz",
+        "bytes": 155648,
+        "sha256": "abaa2b25a2827eec2c2824381d28f96788ebe5a6926701c5c9a38a608d9141a6"
+      },
+      "normalization": {
+        "center": [
+          100.4,
+          93.2,
+          56.6
+        ],
+        "scale": 121.58437399600328
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "7588e7b26412f5a36e671e5c04ef95e02ffebb3b9458d524beb8f6c5d6107d91"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__093__parietotemporal",
+      "source_id": "train:093",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__093__parietotemporal_8192.npz",
+        "bytes": 156710,
+        "sha256": "c6bfc94204f7e9a3eb2b4db026234f75201779cfe33e391ab30f18319fb98023"
+      },
+      "normalization": {
+        "center": [
+          100.4,
+          93.2,
+          56.6
+        ],
+        "scale": 121.58437399600328
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "0f24a11f113336590464b16b2cdc0223fb9587d42f51a5f66b72e03c433f6466"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__093__random_1",
+      "source_id": "train:093",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__093__random_1_8192.npz",
+        "bytes": 157304,
+        "sha256": "7665b2d11c3e7701dec2d4c697bd4675fc399980b9e350dd609c64dd50202439"
+      },
+      "normalization": {
+        "center": [
+          100.4,
+          93.2,
+          56.6
+        ],
+        "scale": 121.58437399600328
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "ad00b8cbcc50e31a74738377a58f3e870ef6e6ec639c8326895e9d803a7480b5"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__093__random_2",
+      "source_id": "train:093",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__093__random_2_8192.npz",
+        "bytes": 157688,
+        "sha256": "16b73f57716ed96ae65eff4993293b8ec87e230443d9f5cdff27dbcd1b48bdce"
+      },
+      "normalization": {
+        "center": [
+          101.0,
+          93.2,
+          56.6
+        ],
+        "scale": 121.27159601489542
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "894386b184994bd4e93b60545b5515c80b78dc8265182bcf0d6beb8b2562e98e"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__095__bilateral",
+      "source_id": "train:095",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__095__bilateral_8192.npz",
+        "bytes": 157690,
+        "sha256": "ff818f376c1561862bf6cd47c99554e5942288a84c06aabd61d8312002003d7f"
+      },
+      "normalization": {
+        "center": [
+          99.60000000000001,
+          92.6,
+          55.6
+        ],
+        "scale": 122.94860714949154
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "e760ce2d0cc2bacc231710892da4dbafa115603b5485541f0ede435b9d96d3b6"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__095__frontoorbital",
+      "source_id": "train:095",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__095__frontoorbital_8192.npz",
+        "bytes": 155631,
+        "sha256": "81be13e2ba65e575d7532108ee8b4cf1a14c24a9851107c4aae3c971a9f0e214"
+      },
+      "normalization": {
+        "center": [
+          99.60000000000001,
+          92.6,
+          57.0
+        ],
+        "scale": 123.58802530989806
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "62054a51d43d134f0b552db9e175ae6c6b117eb3f22f1bd5819712d8d64f2b1a"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__095__parietotemporal",
+      "source_id": "train:095",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__095__parietotemporal_8192.npz",
+        "bytes": 157349,
+        "sha256": "acbb16d433ea9b3a565f94687322d82c5bf4304f580eb43d0177690993dc510f"
+      },
+      "normalization": {
+        "center": [
+          99.60000000000001,
+          92.6,
+          57.0
+        ],
+        "scale": 123.58802530989806
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "878cf485b2e3d9949df13af9221c471b5f2f59cb66ee76ee5027bdcec54168b8"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__095__random_1",
+      "source_id": "train:095",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__095__random_1_8192.npz",
+        "bytes": 155859,
+        "sha256": "403fe3f61d3595385ec39fb07ff164a4fa75cb81a88938b9b32be1f75112f6e7"
+      },
+      "normalization": {
+        "center": [
+          99.60000000000001,
+          92.6,
+          57.0
+        ],
+        "scale": 123.58802530989806
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "0167081fe47eb4f1c8c7c2c968c597bfce2f206a76c7457dfcf0dc7f9b7e42de"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__095__random_2",
+      "source_id": "train:095",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__095__random_2_8192.npz",
+        "bytes": 156918,
+        "sha256": "5306c43de38c4e28e592e7ad74a500fe3fa1b6f177441df9488f9e359d7d54a4"
+      },
+      "normalization": {
+        "center": [
+          99.60000000000001,
+          92.6,
+          57.0
+        ],
+        "scale": 123.58802530989806
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "07261603d7c55cbb608726702babe1f8c4a1a468eb3f04abe9282bb3d879d642"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__101__bilateral",
+      "source_id": "train:101",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__101__bilateral_8192.npz",
+        "bytes": 156894,
+        "sha256": "2178dae2888a3d7ce05e6b5d50e169f5093fd57f2443e29943ff84a2d2008081"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          94.0,
+          53.400000000000006
+        ],
+        "scale": 125.18610146497895
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "71d7a3fe384d73835e3776e0946ef8cfe5ed0b5ac3ac67ef9c8343117bb61ef3"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__101__frontoorbital",
+      "source_id": "train:101",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__101__frontoorbital_8192.npz",
+        "bytes": 155545,
+        "sha256": "47529f9f7f1b047d5dbb6ea9780fca4e77525f16c408249585f4bf0237700bfb"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          94.0,
+          55.6
+        ],
+        "scale": 126.14023941629412
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "9cd81b85e273509fc98350cd8961b166f78448ae0a79b2868a80cd117e4caeb3"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__101__parietotemporal",
+      "source_id": "train:101",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__101__parietotemporal_8192.npz",
+        "bytes": 156821,
+        "sha256": "84abea4264ce12b6842821bf84692517a3d250761aa6ad5615c0892e7f5153bf"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          94.0,
+          55.6
+        ],
+        "scale": 126.14023941629412
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "b9bc558077dd9cc39786cd93c67e0331fa62c0e895da34e5734d6407997e3dd5"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__101__random_1",
+      "source_id": "train:101",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__101__random_1_8192.npz",
+        "bytes": 156740,
+        "sha256": "51cc3a9dd4324b3a9923743f32c8a83d225a75be8f75cf11b3775a5b3e6d6c77"
+      },
+      "normalization": {
+        "center": [
+          101.60000000000001,
+          94.0,
+          55.6
+        ],
+        "scale": 126.14023941629412
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "422fbd28d8660e7765d4740a67a3f49bf1d8ede1cef16e4b1e193cc67b590dd6"
+    },
+    {
+      "run": "D_M_H1",
+      "variant": "M0",
+      "fold": "D",
+      "n_input": 8192,
+      "case_id": "train__101__random_2",
+      "source_id": "train:101",
+      "input": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__101__random_2_8192.npz",
+        "bytes": 157723,
+        "sha256": "764d20bc7c690e70839ea5a840c653317f6aef76066a272a1574de385c4dc9e1"
+      },
+      "normalization": {
+        "center": [
+          101.4,
+          94.0,
+          55.6
+        ],
+        "scale": 126.03570922560003
+      },
+      "normalization_source": "defective_bbox",
+      "target_array_sha256": "b48bf69ca42e0a9cc918e8b35986ab73b97de665a7f61df430ea14abbc2226a4"
+    }
+  ],
+  "forward_budget": 210,
+  "unique_cases": 210,
+  "input_file_count": 210,
+  "point_payloads_read": 0,
+  "server_paths_revalidated": false,
+  "source_bindings": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\transport_payload\\paired_development_input_index_v1.json",
+      "bytes": 170709,
+      "sha256": "576feea085172538c2a0dc52f8e8e7a8eb8087bba1a5542ea7fc1eeb6a72f3bc"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\transport_payload\\paired_development_protocol_v1.json",
+      "bytes": 3161,
+      "sha256": "237ac077bef166b6d2246bd0b6fc6ebfe36b4904b3789b99bc11b335e047f77a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H1_implementation_v1\\first_FoldC_request_v1\\transport_payload\\M_H1_foldC_seed0_training_execution_request_v1.json",
+      "bytes": 16124,
+      "sha256": "e5fa766a408762a9a3bf3e2bd1dc993886b3422f7afaf69f9a994dc0ca20413d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H1_implementation_v1\\post_training_freeze_audit_v1\\audit_report_v1.json",
+      "bytes": 10384,
+      "sha256": "a082187c00978e85b678889ec4d25b9dc33733fa6812d0c6c5ee5f14b9ed5542"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\bcsp_p1_paired_predict_v2.py",
+      "bytes": 22296,
+      "sha256": "7f31ecddfed05bd49f3e42093b99477643ddce733dadbebb80f58d08f17f5d1c"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_paired_development_entry_v1\\transport_payload\\paired_development_input_index_v1.json",
+      "bytes": 169241,
+      "sha256": "c89bae1bce82f1e6927306acb9c494de232aeb4a784737882bcc92c47cc82104"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_paired_development_entry_v1\\transport_payload\\paired_development_protocol_v1.json",
+      "bytes": 3176,
+      "sha256": "3e4b47cf5d14df30e73ac6c85a33cc26de4ee1b61e09c18c891cb32ee09fecf0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H1_implementation_v1\\FoldD_request_v1\\transport_payload\\M_H1_foldD_seed0_training_execution_request_v1.json",
+      "bytes": 18391,
+      "sha256": "305ce3380ae7b951c7180907f63842abc51eae5d9dec817e2a5ad89718fdd390"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H1_implementation_v1\\FoldD_request_v1\\post_training_freeze_audit_v1\\audit_report_v1.json",
+      "bytes": 10621,
+      "sha256": "f875bb667e86e7e933b083cdad25acc3aac9596f13d161da73de304e0dff7861"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_paired_development_entry_v1\\bcsp_p1_foldD_paired_predict_v1.py",
+      "bytes": 22321,
+      "sha256": "a4ce1f45c5cba3a52ee93aceefa222f6b2b89a61d32015f003cc8ace2fe9afcd"
+    }
+  ],
+  "baseline_prediction_comparison": {
+    "C": {
+      "label": "C_M0",
+      "previous_prediction_audit": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\paired_development_evaluator_v2\\post_prediction_freeze_audit_v1\\audit_report_v1.json",
+        "bytes": 1317081,
+        "sha256": "637adf79d39846b87e807bed21267678734d35663b889d699abd9969b8cde26f"
+      },
+      "old_checkpoint_SHA256": "bc6a489bcd4df5123a3bb6616105d7ec4628fc365e71313398ee516bcf72ef9a",
+      "new_forward_calls_budgeted": 0,
+      "availability": "Archived locally; payload archive not reopened or rehashed in this metadata-only task"
+    },
+    "D": {
+      "label": "D_M0",
+      "previous_prediction_audit": {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\FoldD_paired_development_entry_v1\\post_prediction_freeze_audit_v1\\audit_report_v1.json",
+        "bytes": 1315685,
+        "sha256": "b95682ee53e5e17cc72f6746d0162e36523daa2653dfef62987225fc924ee7b7"
+      },
+      "old_checkpoint_SHA256": "9e6f5c3034b051474e0ca78de725ba1579c2ddd25b2acf9848a1f8bf21c79263",
+      "new_forward_calls_budgeted": 0,
+      "availability": "Archived locally; payload archive not reopened or rehashed in this metadata-only task"
+    }
+  }
+}

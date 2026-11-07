@@ -1,0 +1,98 @@
+{
+  "status": "FOLDD_M_H1_TRAINING_RUNNING_CONFIRMED",
+  "observed_at_local": "2026-11-06T22:32:19.929542+08:00",
+  "request_sha256": "305ce3380ae7b951c7180907f63842abc51eae5d9dec817e2a5ad89718fdd390",
+  "identity_upload": {
+    "status": "READONLY_IDENTITY_UPLOAD_TARGETS_PASS",
+    "hostname": "shu-common-25721452-notebook-v2iwsa-0",
+    "uid": 1000,
+    "gpu": [
+      "GPU-34a1b996-2bd7-88e6-9dca-164b718caea6",
+      "NVIDIA GeForce RTX 4090 D",
+      "570.190",
+      "24564",
+      "1"
+    ],
+    "free_bytes": 13369344000,
+    "upload_files": 4,
+    "install_targets": 4,
+    "server_writes": 0
+  },
+  "assets": {
+    "status": "READONLY_FROZEN_ASSETS_PASS",
+    "metadata_and_code_files": 59,
+    "train_NPZ_hashes": 315,
+    "payload_deserialized": 0,
+    "server_writes": 0
+  },
+  "installation": {
+    "status": "EXCLUSIVE_INSTALL_AND_HASH_READBACK_PASS",
+    "installed_files": 4,
+    "control_created": false,
+    "training_started": false
+  },
+  "materialization": {
+    "status": "H1_CONTROLS_MATERIALIZED_NOT_STARTED",
+    "files": [
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_h1_foldD_20261106_v1/control/H1_authorization_v1.json",
+        "bytes": 332,
+        "sha256": "b16e457cb2d73f8b68f57e3656034f24a062a5169d1df576a86f95ed7d9af838"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_h1_foldD_20261106_v1/control/H1_runtime_v1.json",
+        "bytes": 230,
+        "sha256": "ab87bdb3713c812526d44e2e9e085bf8c36f0b28e00580b688d635e2b4d86a4c"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_h1_foldD_20261106_v1/control/H1_launch_once_v1.sh",
+        "bytes": 2589,
+        "sha256": "6bc53101310b423ab5c050b7530a344c16a115755f0531d887540a7152662aff"
+      }
+    ]
+  },
+  "launch": {
+    "status": "UNIQUE_TMUX_SUBMITTED",
+    "returncode": 0,
+    "session": "bcsp_p2_H1_D_seed0_20261106_v1",
+    "claim_consumed": true,
+    "stderr": ""
+  },
+  "observation": {
+    "status": "READONLY_START_OBSERVATION",
+    "output_exists": true,
+    "session": "bcsp_p2_H1_D_seed0_20261106_v1",
+    "tmux_present": true,
+    "files": [
+      "initialization.json",
+      "launch.log",
+      "metrics.jsonl",
+      "model_construction.json",
+      "optimizer_actual_defaults.json",
+      "optimizer_parameter_groups.json",
+      "order_plan.json",
+      "resources.jsonl",
+      "run_identity.json",
+      "tmp",
+      "worker.pid"
+    ],
+    "pid": 157079,
+    "pid_exists": true,
+    "last_metric": {
+      "step": 16,
+      "epoch": 0,
+      "loss": 0.592443585395813,
+      "H1_enabled": true,
+      "H1_raw": 1.2594094276428223,
+      "H1_weighted": 0.1259409487247467
+    }
+  },
+  "training_submissions": 1,
+  "automatic_retries": 0,
+  "resume": false,
+  "evaluation": false,
+  "BNCal": false,
+  "frozen_scientific_config_unchanged": true,
+  "request_bytes_unchanged": true,
+  "formal_post_training_audit_performed": false
+}

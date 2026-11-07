@@ -1,0 +1,50 @@
+{
+  "status": "PENDING_SCORER_ADAPTATION_NOT_EXECUTABLE",
+  "arms": [
+    "M0",
+    "M_H1"
+  ],
+  "folds": [
+    "C",
+    "D"
+  ],
+  "unique_cases": 210,
+  "sources": 42,
+  "defects_per_source": 5,
+  "model_rows": 420,
+  "shared_control_rows": 420,
+  "total_case_rows": 840,
+  "total_source_rows": 168,
+  "controls": [
+    "Nop_D",
+    "GT_8192"
+  ],
+  "delta": "M_H1 minus M0",
+  "primary": "A1 area-weighted E_P95 mm; five defects/source then21sources equally within each fold",
+  "geometry_labels": {
+    "placement_tail": "centroid>20mm",
+    "compact_distribution": "radius_ratio<0.9",
+    "severe_geometry": "E_P95>20mm OR J_Cover2mm==0"
+  },
+  "metrics": "Exact inherited E/J/CD/reverse A2/coarse-dense metrics; frozen units/references/thresholds",
+  "reporting": "Per fold, source, case, defect and new/rescued/shared severe transitions; no case filtering",
+  "bootstrap": 0,
+  "p_values": false,
+  "formal_gate_execution": false,
+  "limits": {
+    "wall_seconds": 14400,
+    "RSS_bytes": 8589934592,
+    "output_bytes": 2147483648,
+    "threads": 2
+  },
+  "budget_reason": "Two folds/840 rows rather than prior singlefold420 rows; wall budget twice7200, same RAM/output/thread limits; no accuracy threshold change",
+  "prohibited": [
+    "server/WSL/network",
+    "Torch/GPU/checkpoint",
+    "training/new forward/BNCal",
+    "ICP/GT alignment",
+    "threshold/reference/GT/point changes",
+    "backup extraction/writes/deletion",
+    "scoring before final implementation/P3 and separate hash authorization"
+  ]
+}

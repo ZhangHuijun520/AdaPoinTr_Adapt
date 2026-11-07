@@ -1,0 +1,31 @@
+{
+  "schema": "H2-analytic-fixture-v1",
+  "label": "ARTIFICIAL_ONLY_NO_PATIENT",
+  "partial": "ellipsoid spiral with i=0..8191; u=i/8192; theta=2pi*u; z=2u-1; rho=sqrt(1-z^2); (.8rho cos(theta),.7rho sin(theta),.6z)",
+  "target": "(.15+.20cos(theta), .05+.18sin(theta), .25+.04sin(2theta))",
+  "payload": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_cuda_admission_v1\\artificial_h2_input_v1.npz",
+    "bytes": 152710,
+    "sha256": "48d63827a1724e8b3f758af8463bae54840df102a0c39e11e6158e0227c1a566"
+  },
+  "arrays": {
+    "partial": {
+      "shape": [
+        8192,
+        3
+      ],
+      "dtype": "float32",
+      "sha256": "09e2ca24a647159bb6de061eb3bae5f4b3e48a7435af373e1e528dd7cf8c6d57"
+    },
+    "target": {
+      "shape": [
+        8192,
+        3
+      ],
+      "dtype": "float32",
+      "sha256": "8209752fc79fa049e86d6f47a8ef3e93e791f71a56e234cd19523b9f774f6dd5"
+    }
+  },
+  "generation": "float64 NumPy analytic coordinates cast once to FP32; package bytes frozen, no server regeneration",
+  "patient_data_used": false
+}

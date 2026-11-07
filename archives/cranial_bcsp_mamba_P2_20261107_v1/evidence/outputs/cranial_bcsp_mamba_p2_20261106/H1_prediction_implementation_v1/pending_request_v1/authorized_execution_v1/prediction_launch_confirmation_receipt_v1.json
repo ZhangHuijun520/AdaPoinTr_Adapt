@@ -1,0 +1,94 @@
+{
+  "status": "H1_TWOFOLD_PREDICTION_RUNNING_CONFIRMED",
+  "observed_at_local": "2026-11-06T23:22:34.321324+08:00",
+  "request_sha256": "90df035abba6cb6651f323ce65f5477f2a9bd0b3a7a505a5ebcc376b7436c147",
+  "identity_upload": {
+    "status": "READONLY_IDENTITY_UPLOAD_TARGETS_PASS",
+    "hostname": "shu-common-25721452-notebook-v2iwsa-0",
+    "uid": 1000,
+    "gpu": [
+      "GPU-34a1b996-2bd7-88e6-9dca-164b718caea6",
+      "NVIDIA GeForce RTX 4090 D",
+      "570.190",
+      "24564",
+      "1"
+    ],
+    "free_bytes": 12953059328,
+    "upload_files": 4,
+    "install_targets": 8,
+    "server_writes": 0
+  },
+  "assets": {
+    "status": "READONLY_TWO_H1_WEIGHTS_210_INPUTS_ASSETS_PASS",
+    "exact_files": 258,
+    "checkpoint_files": 2,
+    "dev_input_files": 210,
+    "payload_deserialized": 0,
+    "server_writes": 0
+  },
+  "installation": {
+    "status": "EXCLUSIVE_INSTALL_AND_HASH_READBACK_PASS",
+    "installed_files": 8,
+    "control_created": false,
+    "training_started": false
+  },
+  "materialization": {
+    "status": "H1_CONTROLS_MATERIALIZED_NOT_STARTED",
+    "files": [
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H1_twofold_prediction_20261106_v1/control/prediction_authorization_v1.json",
+        "bytes": 343,
+        "sha256": "bf03677582ce6a26f93cc1fd4622cc414bc0b596398aa0b501a7c3c12147b9f7"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H1_twofold_prediction_20261106_v1/control/prediction_runtime_v1.json",
+        "bytes": 227,
+        "sha256": "09f68e75a6b4b34e49f825886fb559050b189d5d7e108d0abf494e423898e04a"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p2_H1_twofold_prediction_20261106_v1/control/prediction_launch_once_v1.sh",
+        "bytes": 2682,
+        "sha256": "0b1331205a53ad382c1459768ddbd69f6b4b27fd3e3b7da508cd5bfa37cc88d1"
+      }
+    ]
+  },
+  "launch": {
+    "status": "UNIQUE_TMUX_SUBMITTED",
+    "returncode": 0,
+    "session": "bcsp_p2_H1_CD_eval_20261106_v1",
+    "claim_consumed": true,
+    "stderr": ""
+  },
+  "observation": {
+    "status": "READONLY_PREDICTION_OBSERVATION",
+    "output_exists": true,
+    "session": "bcsp_p2_H1_CD_eval_20261106_v1",
+    "tmux_present": true,
+    "files": [
+      "forward_attempts.jsonl",
+      "geometry_summary.jsonl",
+      "inference_manifest.jsonl",
+      "launch.log",
+      "predictions",
+      "resources.jsonl",
+      "tmp",
+      "worker.pid"
+    ],
+    "pid": 173150,
+    "worker_live": true,
+    "prediction_files": 117,
+    "manifest_rows": 117,
+    "last": {
+      "run": "D_M_H1",
+      "fold": "D",
+      "case_id": "train__008__frontoorbital",
+      "forward_index": 117
+    }
+  },
+  "submissions": 1,
+  "automatic_retries": 0,
+  "training_updates": 0,
+  "BNCal": 0,
+  "scoring_executed": false,
+  "formal_post_prediction_freeze_audit_performed": false
+}

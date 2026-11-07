@@ -1,0 +1,52 @@
+{
+  "status": "FROZEN_BEFORE_READONLY_AUDIT",
+  "fold": "D",
+  "request_sha256": "305ce3380ae7b951c7180907f63842abc51eae5d9dec817e2a5ad89718fdd390",
+  "method": "Unchanged Fold C audit predicates; only exact Fold D paths/hashes/baseline/control bindings adapted",
+  "payloads": [
+    {
+      "name": "inventory_v1.py",
+      "sha256": "387ea0a6f4e901ebda4f1f93cf6901021fb4dc4da9b75e52de653fcdb9ec9b99",
+      "bytes": 2483,
+      "command_upper_bound_bytes": 1910
+    },
+    {
+      "name": "controls_v1.py",
+      "sha256": "da5a0946b8ec22125c99a6248cf9a070717d3b6a848e17deecce4c1a566dba96",
+      "bytes": 2359,
+      "command_upper_bound_bytes": 1702
+    },
+    {
+      "name": "counts_H1_v1.py",
+      "sha256": "8375dde95f017d50b120d478551c06df7d1262e5a958cb59ca5b33982361e42c",
+      "bytes": 1998,
+      "command_upper_bound_bytes": 1394
+    },
+    {
+      "name": "order_exposure_v1.py",
+      "sha256": "b732fa6c6ff98435e01ba91b70a8dc373c33956aa7051ecfe76298cf9599881a",
+      "bytes": 3037,
+      "command_upper_bound_bytes": 1770
+    },
+    {
+      "name": "pairing_v1.py",
+      "sha256": "1a191240958912abcb763bf2726e56844ae49d301de4f34a79386f3c9886995a",
+      "bytes": 3072,
+      "command_upper_bound_bytes": 1962
+    },
+    {
+      "name": "resources_v1.py",
+      "sha256": "b7cbe255bc1e67ebdf6a768448c99f488ac95c36f06f086c34451b4fc2bde4d1",
+      "bytes": 1865,
+      "command_upper_bound_bytes": 1314
+    }
+  ],
+  "phases": "inventory, controls, H1 logs, full order/exposure, M0 D pairing, resources, final identical inventory",
+  "server_writes_allowed": false,
+  "model_imports_allowed": false,
+  "checkpoint_deserialization_allowed": false,
+  "real_NPZ_payload_reads_allowed": false,
+  "new_forward_backward_optimizer_allowed": false,
+  "per_call_timeout_seconds": 45,
+  "stop_on_any_failed_phase": true
+}

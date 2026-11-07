@@ -1,0 +1,88 @@
+def main():
+ F.mkdir()
+ try:
+  q=js(S/'local_scoring_execution_request_v1.json');good('exact_authorized_request_SHA256',checked(S/'local_scoring_execution_request_v1.json')[0]['sha256']==SHA)
+  before=tree(O);good('exact12_regular_output_files',set(p.name for p in O.iterdir())==set(q['expected_result_files']) and all(p.is_file() for p in O.iterdir()) and str(O)==q['output'])
+  for p in O.iterdir():checked(p)
+  bindings(q);good('all_request_bound_code_CPU_archives_sidecars_and_evidence_hashes')
+  p3=js(q['P3']['path']);bindings(p3);tests=js(p3['CPU_result']['path']);good('final_P3_and35_CPU_contracts',p3['status']=='LOCAL_H2_M0_THREE_ARM_SCORING_P3_PASS' and p3['CPU_tests']==35 and all(p3['checks'].values()) and tests['status']=='H2_THREE_ARM_SCORING_CPU_CONTRACT_PASS')
+  index=js(q['score_case_index']['path']);cases=index['cases'];bindings(cases);keys=[(c['fold'],c['case_id']) for c in cases];source_for={(c['fold'],c['case_id']):c['source_id'] for c in cases};case_for={(c['fold'],c['case_id']):c for c in cases}
+  ids={f:[c['case_id'] for c in cases if c['fold']==f] for f in ['C','D']};sources={f:sorted({source_for[f,c] for c in ids[f]}) for f in ids}
+  good('210_fixed_cases42_disjoint_sources_all_reference_and_point_hashes',len(keys)==len(set(keys))==210 and all(len(ids[f])==105 and len(sources[f])==21 for f in ids) and not set(sources['C'])&set(sources['D']))
+  for p in A.iterdir():checked(p)
+  auth=js(A/'score_authorization_v1.json');good('explicit_separate_authorization',auth['schema']=='bcsp-p2-H2-M0-score-authorization-v1' and auth['request_sha256']==SHA and auth['explicit_user_authorization'] is True and SHA in auth['user_authorization_text'])
+  inv=js(A/'invocation_materialization_v1.json');good('invocation_auth_hash_and_external_timeout',inv['request_sha256']==SHA and inv['authorization_sha256']==checked(A/'score_authorization_v1.json')[0]['sha256'] and inv['timeout_seconds']==18030)
+  worker=js(A/'worker_started_v1.json');kernel=ctypes.WinDLL('kernel32',use_last_error=True);kernel.OpenProcess.argtypes=[ctypes.c_uint32,ctypes.c_int,ctypes.c_uint32];kernel.OpenProcess.restype=ctypes.c_void_p;handle=kernel.OpenProcess(0x1000,0,worker['pid'])
+  if handle:
+   code=ctypes.c_uint32();kernel.GetExitCodeProcess.argtypes=[ctypes.c_void_p,ctypes.POINTER(ctypes.c_uint32)];need(kernel.GetExitCodeProcess(handle,ctypes.byref(code)) and code.value!=259,'worker active/unknown');kernel.CloseHandle.argtypes=[ctypes.c_void_p];kernel.CloseHandle(handle)
+  else:need(ctypes.get_last_error()==87,'worker state unknown')
+  good('worker_ended')
+  result=js(A/'execution_result_v1.json');complete=js(O/'completion.json');good('exit0_no_timeout_no_retry_single_claim',result['returncode']==0 and result['timeout'] is False and result['error'] is None and result['failure'] is None and result['retries']==0 and js(O/'single_attempt_claim.json')==dict(status='CLAIMED_BEFORE_SCORING',request_sha256=SHA,no_retry=True) and js(A/'attempt_started_v1.json')['status']=='CLAIMED_BEFORE_LOCAL_SUBPROCESS')
+  equal(result['completion'],complete);good('completion1050case210source_no_model_forward_bootstrap_gate',complete['status']=='LOCAL_H2_M0_THREE_ARM_TWOFOLD_CPU_SCORING_COMPLETE' and [complete[k] for k in ['model_predictions','controls','score_rows','source_rows']]==[630,420,1050,210] and complete['request_sha256']==SHA and complete['archive_sha256']=={k:v['archive']['sha256'] for k,v in q['archive_inputs'].items()} and all(complete[k]==0 for k in ['server_operations','model_imports','forward_calls','bootstrap']) and complete['formal_gate'] is False)
+  stdout=checked(A/'stdout_v1.txt');stderr=checked(A/'stderr_v1.txt');good('210_stdout_cases_empty_stderr_match_exit_record',stdout[1].decode().splitlines()==['SCORED '+f+' '+cid for f,cid in keys] and stderr[1]==b'' and stdout[0]['sha256']==result['stdout_sha256'] and stderr[0]['sha256']==result['stderr_sha256'])
+  env=js(O/'execution_environment.json');good('fixed_CPU_environment_identity',env['packages']==q['environment']['packages'] and env['python']==q['environment']['python_version'] and env['executable']==q['environment']['python']['path'] and env['CUDA_VISIBLE_DEVICES']=='' and env['threads']==2 and env['request_sha256']==SHA)
+  rows=[json.loads(x) for x in checked(O/'case_metrics.jsonl')[1].decode().splitlines()];lookup={(r['fold'],r['case_id'],r['arm']):r for r in rows};columns=set(rows[0]['metrics'])
+  good('ordered1050_unique_case_arm_rows',len(rows)==len(lookup)==1050 and [(r['fold'],r['case_id'],r['arm']) for r in rows]==[(f,c,a) for f,c in keys for a in ALL])
+  # Bound Native moment records are JSON evidence, not prediction/GT array decoding.
+  root=S.parents[2];predroot=S.parent/'H2_fourmodel_prediction_implementation_v1/post_prediction_freeze_audit_v1';pr=js(predroot/'remote_readonly_receipt_v1.json');nativepath=predroot/'downloads/geometry_summary.jsonl';need(checked(nativepath)[0]['sha256']==pr['output_SHA256']['./geometry_summary.jsonl'],'Native geometry binding');native={(r['run'],r['case_id']):r['H2'] for r in map(json.loads,checked(nativepath)[1].decode().splitlines())};need(len(native)==420,'420 Native summaries')
+  for r in rows:
+   need(r['source_id']==source_for[r['fold'],r['case_id']] and r['status']=='OK','case source/status');full=r['full_metrics'];need(full['status']=='OK' and full['point_count']==8192,'full metric point budget');verify_P1_row(r,select(full));need(set(r['metrics'])==columns,'fixed metric columns')
+   for k,v in r['metrics'].items():need(v is None or (isinstance(v,(int,float)) and math.isfinite(v) and v>=0 and (v<=1 if 'coverage' in k or 'outlier' in k else True)),'metric domain')
+   if r['arm']=='GT_8192':equal(r['metrics']['CD_L1_mm'],0.)
+   if r['arm'].startswith('H2_'):
+    mode=r['arm'].removeprefix('H2_');h=native[r['fold']+'_'+mode,r['case_id']];got=r['stage_geometry']['H2'];pose=r['position_shape'];norm=case_for[r['fold'],r['case_id']]['normalization'];scale=norm['scale'];center=norm['center'];raw_r=h['raw']['radius']*scale;used_r=h['used']['radius']*scale;rg=pose['GT8192_radius_gyration_mm'];target=math.log(rg)-math.log(raw_r)
+    need(got['mode']==mode and got['GT_used_only_offline'] is True and got['not_a_shape_or_interface_benefit_claim'] is True,'H2 offline semantics')
+    for k,v in dict(delta=h['delta'][0],scale=h['scale'][0],GT_radius_mm=rg,raw_radius_mm=raw_r,used_radius_mm=used_r,raw_abs_log_radius_error=abs(target),used_abs_log_radius_error=abs(math.log(rg)-math.log(used_r)),residual_target=target,abs_delta_target_error=abs(h['delta'][0]-target)).items():equal(got[k],v,'H2 '+k)
+    for name in ['raw','used']:
+     distance=math.sqrt(math.fsum((a*scale+b-c)**2 for a,b,c in zip(h[name]['centroid'],center,pose['GT8192_centroid_mm'])));equal(got[name+'_centroid_offset_mm'],distance,'H2 center')
+    if mode=='AUX':need(h['scale']==[1.] and h['raw']==h['used'],'AUX identity')
+    else:need(math.isclose(h['scale'][0],math.exp(math.log(1.25)*math.tanh(h['delta'][0]/math.log(1.25))),rel_tol=2e-6,abs_tol=1e-6) and math.isclose(used_r,raw_r*h['scale'][0],rel_tol=2e-6,abs_tol=1e-6),'COUPLE unchanged formula')
+  good('all_selected_metrics_pose_stage_algebra_risk_thresholds_GT_and_H2_summaries')
+  risks=js(O/'risk_transitions.json')
+  for f in ids:
+   for pair in PAIRS:equal(risks[f][pair[1]+'_minus_'+pair[0]],risk_table([r for r in rows if r['fold']==f],ids[f],pair),'risk '+f+str(pair))
+  good('six_risk_tables_all_cases_defects_new_rescued_independently_recomputed')
+  groups={}
+  for r in rows:groups.setdefault((r['fold'],r['source_id'],r['arm']),[]).append(r)
+  expected=[]
+  for (f,sid,arm),part in sorted(groups.items()):
+   need(len(part)==5 and {r['case_id'].split('__',2)[-1] for r in part}==DEFECTS,'five fixed defects/source');expected.append(dict(fold=f,source_id=sid,arm=arm,case_count=5,invalid_predictions=0,metrics={k:mean([r['metrics'][k] for r in part]) if all(r['metrics'][k] is not None for r in part) else None for k in columns}))
+  equal(js(O/'source_metrics.json'),expected);good('210_independently_recomputed_source_means',len(expected)==210)
+  bs={(r['fold'],r['source_id'],r['arm']):r['metrics'] for r in expected};comparison=js(O/'paired_comparison.json');rankings=js(O/'regression_rankings.json');defects={};all_deltas=[]
+  good('primary_and_secondary_descriptive_comparison_identity',comparison['status']=='H2_THREE_ARM_TWOFOLD_SINGLE_SEED_DESCRIPTIVE_COMPARISONS' and comparison['primary_comparison']=='H2_COUPLE_minus_H2_AUX' and comparison['secondary_comparisons']==['H2_COUPLE_minus_M0','H2_AUX_minus_M0'] and comparison['case_count']==210 and comparison['model_predictions']==630 and comparison['controls']==420 and comparison['request_sha256']==SHA)
+  for f in ids:
+   defects[f]={}
+   for pair in PAIRS:
+    label=pair[1]+'_minus_'+pair[0];summ=comparison['comparison'][f][label];need(summ['baseline_arm']==pair[0] and summ['candidate_arm']==pair[1] and summ['source_count']==21 and summ['defects_per_source']==5 and all(summ[k] for k in ['no_bootstrap','no_p_values','no_formal_gate','training_randomness_not_estimated']),'pair identity/source unit')
+    for key in columns:
+     a=[bs[f,s,pair[0]][key] for s in sources[f]];b=[bs[f,s,pair[1]][key] for s in sources[f]];d=[y-x if x is not None and y is not None else None for x,y in zip(a,b)];z=summ['metrics'][key];need(z['pair_count']==21 and z['undefined_pairs']==d.count(None),'retained pairs');equal(z['source_deltas'],[dict(source_id=s,delta=v) for s,v in zip(sources[f],d)])
+     if None not in d:
+      need(z['status']=='OK','summary status')
+      for k,v in dict(mean_a=mean(a),mean_b=mean(b),mean_delta_b_minus_a=mean(d),median_delta=statistics.median(d),min_delta=min(d),max_delta=max(d)).items():equal(z[k],v,'summary '+f+label+key+k)
+      direction='descriptive_not_ordered' if key=='radius_gyration_ratio' else 'positive' if 'coverage' in key else 'negative';need(z['improvement_direction']==direction,'improvement direction')
+      if direction!='descriptive_not_ordered':
+       need(z['improved_sources']==sum(x>0 if direction=='positive' else x<0 for x in d) and z['worse_sources']==sum(x<0 if direction=='positive' else x>0 for x in d) and z['tied_sources']==d.count(0),'winloss counts');ranked=sorted(z['source_deltas'],key=lambda r:(r['delta'] is None,(-r['delta'] if direction=='negative' else r['delta']) if r['delta'] is not None else 0,r['source_id']));equal(rankings[f][label]['source_rankings'][key],ranked)
+     else:need(z['status']=='UNDEFINED_NONFINITE_PAIRS_RETAINED' and z['mean_delta_b_minus_a'] is None,'undefined retained')
+    cd=[]
+    for cid in sorted(ids[f]):
+     a,b=[lookup[f,cid,arm] for arm in pair];cd.append(dict(fold=f,case_id=cid,source_id=a['source_id'],defect=cid.split('__',2)[-1],metrics={k:b['metrics'][k]-a['metrics'][k] if a['metrics'][k] is not None and b['metrics'][k] is not None else None for k in columns},comparison=label))
+    equal(rankings[f][label]['case_deltas'],cd);all_deltas+=cd;defects[f][label]={}
+    for defect in sorted(DEFECTS):
+     part=[r for r in cd if r['defect']==defect];need(len(part)==21,'21 sources/defect');defects[f][label][defect]=dict(paired_cases=21,mean_deltas={k:mean([r['metrics'][k] for r in part]) if all(r['metrics'][k] is not None for r in part) else None for k in columns})
+  equal(js(O/'defect_comparison.json'),defects);good('all_six_source_pair_statistics_rankings630_case_deltas_and30_defect_summaries')
+  csv_check(O/'case_metrics.csv',rows);csv_check(O/'source_metrics.csv',expected);csv_check(O/'paired_case_deltas.csv',all_deltas);good('three_CSV_JSON_values_and_exact_order')
+  p1=root/'outputs/cranial_bcsp_mamba_p1_20261104'
+  for f,sub in [('C','paired_development_evaluator_v2'),('D','FoldD_paired_development_entry_v1')]:
+   prior=js(p1/sub/'post_scoring_freeze_audit_v1/audit_report_v1.json');need(prior['status']=='FORMAL_POST_SCORING_FREEZE_AUDIT_PASS','prior formal P1 audit');binding=next(r for r in prior['output_manifest'] if Path(r['path']).name=='case_metrics.jsonl');raw=checked(binding['path'],binding)[1];old={(r['case_id'],r['arm']):r for r in map(json.loads,raw.decode().splitlines())}
+   for cid in ids[f]:
+    for arm in ['M0','Nop_D','GT_8192']:
+     for k in ['metrics','full_metrics','position_shape','risk_labels','stage_geometry']:equal(lookup[f,cid,arm][k],old[cid,arm][k],'frozen M0/control crosscheck '+f+cid+arm+k)
+  good('all630_M0_and_shared_control_rows_equal_frozen_P1_scores')
+  good('stable_output_and_all_read_content_fingerprints_atime_excluded',tree(O)==before and all(stamp(Path(p))==v for p,v in STAMPS.items()))
+  report=dict(status='FORMAL_H2_THREE_ARM_POST_SCORING_FREEZE_AUDIT_PASS',checks=CHECKS,checks_passed=len(CHECKS),request_sha256=SHA,counts=dict(cases=210,sources=42,model_scores=630,controls=420,case_rows=1050,source_rows=210,source_pair_summaries=6,case_pair_deltas=630),exit_code=0,output_manifest=[r for r in MANIFEST if Path(r['path']).parent==O],all_read_file_manifest=MANIFEST,read_bytes=READ,seconds=time.monotonic()-START,independent_aggregation_recomputed=True,geometry_distance_recomputed=False,arrays_decoded=False,scoring_rerun=False,model_imports=0,GPU_calls=0,server_operations=0,formal_gate=False,limitations=['Independent saved-metric/pose/aggregation checks; nearest-neighbour geometry distances not recomputed','Single seed/fold, repeated development data; no significance/bootstrap/clinical or formal gate claim','Package identity from frozen binary/version records, no environment import/rerun'])
+ except BaseException as exc:
+  report=dict(status='FORMAL_POST_SCORING_FREEZE_AUDIT_FAILED_STOP_NO_RETRY',passed_checks=CHECKS,error=repr(exc),read_bytes=READ,seconds=time.monotonic()-START,scoring_rerun=False)
+ with (F/'audit_report_v1.json').open('x',encoding='utf-8') as out:json.dump(report,out,indent=2,allow_nan=False)
+ print(json.dumps({k:v for k,v in report.items() if k not in {'all_read_file_manifest','output_manifest'}}))
+ if report['status']!='FORMAL_H2_THREE_ARM_POST_SCORING_FREEZE_AUDIT_PASS':raise SystemExit(1)
+if __name__=='__main__':main()

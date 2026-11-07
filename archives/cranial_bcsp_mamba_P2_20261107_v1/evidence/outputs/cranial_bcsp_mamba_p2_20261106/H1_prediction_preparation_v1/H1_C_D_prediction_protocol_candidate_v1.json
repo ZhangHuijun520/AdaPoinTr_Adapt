@@ -1,0 +1,78 @@
+{
+  "schema": "bcsp-p2-H1-twofold-development-protocol-candidate-v1",
+  "status": "PENDING_ENTRY_IMPLEMENTATION_NOT_EXECUTION_AUTHORIZATION",
+  "models": [
+    "C_M_H1",
+    "D_M_H1"
+  ],
+  "fold_order": [
+    "C",
+    "D"
+  ],
+  "forwards_per_model": 105,
+  "forward_budget": 210,
+  "batch_size": 1,
+  "warmup": 0,
+  "TTA": 0,
+  "loss_calls": 0,
+  "backward": 0,
+  "optimizer_steps": 0,
+  "BNCal": 0,
+  "input_key": "partial",
+  "n_input": 8192,
+  "n_output": 8192,
+  "coarse": 256,
+  "H1": {
+    "enabled": true,
+    "mode": "centroid_radius",
+    "weight": 0.1,
+    "smooth_l1_beta": 0.1,
+    "cvar_fraction": 0.1,
+    "eps": 1e-06
+  },
+  "checkpoint_selection": "Formally frozen final epoch99/update3900 checkpoints only",
+  "state_RNG_contract": "Sequential models, eval/inference_mode; parameters/BN and Python/NumPy/CPU/CUDA RNG before/after each105cases equal",
+  "normalization": "Fixed D-only normalization; normalized predictions; native world-mm offline scoring; no GT alignment/ICP",
+  "coarse_tensor_cases_by_fold": {
+    "C": [
+      "train__001__bilateral",
+      "train__001__frontoorbital",
+      "train__001__parietotemporal",
+      "train__001__random_1",
+      "train__001__random_2",
+      "train__025__parietotemporal",
+      "train__072__random_2"
+    ],
+    "D": [
+      "train__004__bilateral",
+      "train__004__frontoorbital",
+      "train__004__parietotemporal",
+      "train__004__random_1",
+      "train__004__random_2"
+    ]
+  },
+  "geometry_summary": "Same-forward coarse/dense centroid, radius, bbox, covariance and mean displacement; no extra forward or GT read",
+  "limits": {
+    "wall_seconds": 7200,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "failure_policy": "Stop immediately; no automatic retry/resume or continuing the second model after failure",
+  "baseline": "Reuse frozen P1 M0 predictions, zero baseline re-inference in this210forward budget; verify local archive before scoring",
+  "scoring": "Subsequent separate CPU scoring under unchanged E/J/CD/risk definitions; no scoring or gate in prediction",
+  "prohibited": [
+    "training",
+    "BNCal",
+    "backward",
+    "loss",
+    "protected partitions",
+    "new cases",
+    "parameter scan",
+    "repeated GPU preflight",
+    "baseline forwards",
+    "checkpoint instrumentation beyond existing summaries"
+  ]
+}
