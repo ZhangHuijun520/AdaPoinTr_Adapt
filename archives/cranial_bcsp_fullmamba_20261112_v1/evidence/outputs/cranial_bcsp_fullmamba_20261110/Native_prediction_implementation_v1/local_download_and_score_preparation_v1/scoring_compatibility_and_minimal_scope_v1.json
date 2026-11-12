@@ -1,0 +1,34 @@
+{
+  "status": "EXISTING_H2_SCORER_REQUIRES_F0_T0_M0_MINIMAL_ADAPTATION",
+  "existing_scorer": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_scoring_implementation_v1\\bcsp_p2_h2_M0_three_arm_score_v1.py",
+    "bytes": 28932,
+    "sha256": "7c60d46e99a29d159dce9b66e435cfc1a616b1ef37a7fa78908d59f45a5a7ef2"
+  },
+  "metric_source_unchanged": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+    "bytes": 6784,
+    "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+  },
+  "issues": [
+    "Hardcoded H2 schemas, arms and mode-specific summaries",
+    "F0 exact246-member archive includes context and traces, unlike425-member H2 archive",
+    "Reuse both T0 and M0, existing selector keeps only M0",
+    "F0 all-case Q vs optional baseline Q: preserve missing values and common subset",
+    "Adapt fixed pair labels and Native summary mapping, no metric changes"
+  ],
+  "next_scope": {
+    "new_production_files": 1,
+    "new_test_files": 1,
+    "CPU_contracts": [
+      "Actual authorize/archive load path",
+      "Synthetic1050 rows with420 shared controls and source counts",
+      "F0 and baseline optional-Q handling; diagnostic cache members not scored",
+      "Pair directions/risk transitions; unchanged metric functions",
+      "Wrong hash/frame/case/arm rejection and first failure stop"
+    ],
+    "P3_required": true
+  },
+  "execution_request_created": false,
+  "real_scores_computed": 0
+}

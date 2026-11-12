@@ -1,0 +1,11 @@
+--- 
++++ 
+@@ -302,7 +302,7 @@
+         (out/'tmp').mkdir()
+         read_roots = [root,entryroot,envroot,provider,Path(q['implementation']['contract']['path']).parent,
+                       Path(q['implementation']['factory']['path']).parent,Path(q['implementation']['lqi_factory']['path']).parent,Path(q['implementation']['budget_parent']['path']),
+-                      Path(q['implementation']['timezone']['path']),'/usr/lib','/proc/'+str(os.getpid()),'/dev/null','/dev/urandom']
++                      Path(q['implementation']['timezone']['path']),Path(q['implementation']['bridge']['path']),'/usr/lib','/proc/'+str(os.getpid()),'/dev/null','/dev/urandom']
+         sys.addaudithook(parent.make_training_policy(helper,read_roots,out,allowed,utc).audit)
+         import numpy as np
+         import torch

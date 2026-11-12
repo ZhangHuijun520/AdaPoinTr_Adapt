@@ -1,0 +1,190 @@
+{
+  "status": "F0_LQI_ARTIFICIAL_CPU_CONTRACT_PASS",
+  "count": 55,
+  "checks": [
+    "01 frozen formula document identity",
+    "02 exact all-state same initialization no new keys or parameters",
+    "03 distinct candidate metadata and historical trace semantics",
+    "04 eight isolated LQI blocks",
+    "05 no attention introduced",
+    "06 production build_model legacy_builder seed0 path",
+    "07 exact24 SSM calls and512 conditional tokens",
+    "08 existing KNN twice only and direction shared all8 layers",
+    "09 layer0 exact LN-before-mean PE then interleaving B2",
+    "10 layer0 odd-position readout and inverse Q sort",
+    "11 layer0 distinguish LN(mean F) rejected by reference",
+    "09 layer1 exact LN-before-mean PE then interleaving B2",
+    "10 layer1 odd-position readout and inverse Q sort",
+    "11 layer1 distinguish LN(mean F) rejected by reference",
+    "09 layer2 exact LN-before-mean PE then interleaving B2",
+    "10 layer2 odd-position readout and inverse Q sort",
+    "11 layer2 distinguish LN(mean F) rejected by reference",
+    "09 layer3 exact LN-before-mean PE then interleaving B2",
+    "10 layer3 odd-position readout and inverse Q sort",
+    "11 layer3 distinguish LN(mean F) rejected by reference",
+    "09 layer4 exact LN-before-mean PE then interleaving B2",
+    "10 layer4 odd-position readout and inverse Q sort",
+    "11 layer4 distinguish LN(mean F) rejected by reference",
+    "09 layer5 exact LN-before-mean PE then interleaving B2",
+    "10 layer5 odd-position readout and inverse Q sort",
+    "11 layer5 distinguish LN(mean F) rejected by reference",
+    "09 layer6 exact LN-before-mean PE then interleaving B2",
+    "10 layer6 odd-position readout and inverse Q sort",
+    "11 layer6 distinguish LN(mean F) rejected by reference",
+    "09 layer7 exact LN-before-mean PE then interleaving B2",
+    "10 layer7 odd-position readout and inverse Q sort",
+    "11 layer7 distinguish LN(mean F) rejected by reference",
+    "12 first self branch preserved before intervention",
+    "13 local branch unchanged recipient F S Q index",
+    "14 all tensors original FP32 shape finite",
+    "15 all8 trace stage chaining",
+    "16 eval state and CPU RNG unchanged",
+    "17 input memory coordinates X Q unchanged",
+    "18 batch isolation with distinct second sample",
+    "19 trace on off identical",
+    "20 actual causal artificial mixer changes result versus F0",
+    "21 training full trace denied",
+    "22 denoise forbidden",
+    "23 FP16 forbidden",
+    "24 wrong256 shape forbidden",
+    "25 nonfinite input forbidden",
+    "26 stable exactQ ties and inverse mapping",
+    "27 artificial original head8192 points finite",
+    "28 X F S Q gradients finite nonzero no detach",
+    "29 all8 norm_v and conditional mixers receive gradients",
+    "30 PE gradients finite nonzero",
+    "31 zero optimizer steps decoder state unchanged after backward",
+    "32 strict state compatibility both directions",
+    "33 signatures preserved",
+    "34 original F0 source remains frozen"
+  ],
+  "seconds": 4.7810000000172295,
+  "torch": "2.5.1",
+  "batch_size": 2,
+  "source_records": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_implementation_v1\\bcsp_lqi_decoder_v1.py",
+      "bytes": 6053,
+      "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_implementation_v1\\bcsp_lqi_factory_v1.py",
+      "bytes": 3864,
+      "sha256": "56d4cbe89660106f255a0d58e28c7cbaf38374c7788219d5a21779bd97aaf106"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_implementation_v1\\test_lqi_cpu_v1.py",
+      "bytes": 13668,
+      "sha256": "dd8583d131679cc8339d61d2fe45ba12326b77a58ce15dbdd01e6407700a9cc6"
+    }
+  ],
+  "gradient_summaries": {
+    "X": {
+      "L1": 13.410523414611816,
+      "finite": true
+    },
+    "F": {
+      "L1": 1.2200958728790283,
+      "finite": true
+    },
+    "Q": {
+      "L1": 10.961557388305664,
+      "finite": true
+    },
+    "S": {
+      "L1": 0.10438259690999985,
+      "finite": true
+    }
+  },
+  "layer_evidence": [
+    {
+      "layer": 0,
+      "input_shape": [
+        2,
+        512,
+        384
+      ],
+      "readout_exact": true,
+      "formula_reference": true
+    },
+    {
+      "layer": 1,
+      "input_shape": [
+        2,
+        512,
+        384
+      ],
+      "readout_exact": true,
+      "formula_reference": true
+    },
+    {
+      "layer": 2,
+      "input_shape": [
+        2,
+        512,
+        384
+      ],
+      "readout_exact": true,
+      "formula_reference": true
+    },
+    {
+      "layer": 3,
+      "input_shape": [
+        2,
+        512,
+        384
+      ],
+      "readout_exact": true,
+      "formula_reference": true
+    },
+    {
+      "layer": 4,
+      "input_shape": [
+        2,
+        512,
+        384
+      ],
+      "readout_exact": true,
+      "formula_reference": true
+    },
+    {
+      "layer": 5,
+      "input_shape": [
+        2,
+        512,
+        384
+      ],
+      "readout_exact": true,
+      "formula_reference": true
+    },
+    {
+      "layer": 6,
+      "input_shape": [
+        2,
+        512,
+        384
+      ],
+      "readout_exact": true,
+      "formula_reference": true
+    },
+    {
+      "layer": 7,
+      "input_shape": [
+        2,
+        512,
+        384
+      ],
+      "readout_exact": true,
+      "formula_reference": true
+    }
+  ],
+  "real_data": false,
+  "real_checkpoint": false,
+  "CUDA": false,
+  "optimizer_steps": 0,
+  "limitations": [
+    "Native Mamba replaced by an artificial causal mixer, not actual CUDA certification.",
+    "Backprop objective is an artificial dense squared norm, not production Chamfer loss or3900-step training.",
+    "Original decoder and head computational classes extracted from frozen source; no full actual-data model run."
+  ]
+}

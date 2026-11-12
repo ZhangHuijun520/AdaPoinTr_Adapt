@@ -1,0 +1,24 @@
+/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+Traceback (most recent call last):
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_foldD_training_20261111_v1/bcsp_lqi_foldD_training_entry_v1.py", line 347, in <module>
+    main()
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_foldD_training_20261111_v1/bcsp_lqi_foldD_training_entry_v1.py", line 328, in main
+    bridge = source_module('bcsp_lqi_runtime_adapter_v1',q['implementation']['bridge'])
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_foldD_training_20261111_v1/bcsp_lqi_foldD_training_entry_v1.py", line 72, in source_module
+    p = exact(r); spec = importlib.util.spec_from_file_location(name,p)
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_foldD_training_20261111_v1/bcsp_lqi_foldD_training_entry_v1.py", line 57, in exact
+    require(p.is_file() and p.stat().st_size == r['bytes'] and sha(p) == r['sha256'], 'binding: '+str(p))
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_foldD_training_20261111_v1/bcsp_lqi_foldD_training_entry_v1.py", line 48, in sha
+    with no_links(path).open('rb') as f:
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 164, in audit
+    self.check(args[0], write)
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_foldC_training_20261105_v1/bcsp_p1_training_entry_v1.py", line 83, in check
+    return super().check(filename,write)
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 156, in check
+    require(owned if write else owned or any(p == r or r in p.parents for r in self.roots),
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 43, in require
+    raise RuntimeError(message)
+RuntimeError: write/read boundary: /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_foldC_training_20261111_v1/bcsp_lqi_runtime_adapter_v1.py

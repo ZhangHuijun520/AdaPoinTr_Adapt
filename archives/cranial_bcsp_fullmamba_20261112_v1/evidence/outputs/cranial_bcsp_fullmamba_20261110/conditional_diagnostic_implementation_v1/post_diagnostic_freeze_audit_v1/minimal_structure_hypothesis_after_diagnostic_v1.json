@@ -1,0 +1,41 @@
+{
+  "status": "PROPOSED_MINIMAL_HYPOTHESIS_NOT_IMPLEMENTED_NOT_AUTHORIZED_FOR_TRAINING",
+  "name": "QUERY_ALIGNED_LOCAL_MEMORY_INTERLEAVING",
+  "reason": "Frozen F0 prefix-donor sensitivity is small and first-layer prefix response is concentrated early; current local graph is responsive. Test a short direct conditional route, not gain tuning or deleting a supposedly useless prefix.",
+  "single_changed_boundary": "conditional SSM input sequence construction only; replace full sorted-memory prefix followed by all queries with query-aligned memory/query pairs",
+  "formula": {
+    "N_i": "existing KNN(8,S,Q_i), in current recipient frame; never GT",
+    "A_i": "mean over j in N_i of [norm_v(F_j)+coordinate_PE(S_j)]",
+    "B_i": "norm_q(x1_i)+coordinate_PE(Q_i)",
+    "tokens": "[A_pi(1),B_pi(1),...,A_pi(256),B_pi(256)]",
+    "readout": "take B positions (odd indices in zero-based512-token sequence), restore original query order",
+    "pi": "unchanged lexicographic order of recipient Q"
+  },
+  "unchanged": [
+    "F0 weights initialization policy and native SSM architecture",
+    "length512 and8 conditional SSM calls per decoder suffix",
+    "same384 channels, no new learned parameters, gains or gates",
+    "self SSM path",
+    "existing block0 local-cross graph, merge and KNN k8",
+    "coarse/Q/query initializer and reconstruction head",
+    "8k input8k output, source/fold and original loss/3900-update contract",
+    "numeric policy and resource thresholds"
+  ],
+  "expected": "More distributed dependence of conditional suffix on observed local F/S. Native accuracy and reliability may improve or regress; sensitivity improvement alone is not success.",
+  "falsification": [
+    "If condition remains weak, current prefix distance is not a sufficient explanation.",
+    "If sensitivity increases without Native shape/interface benefit, reject scientific efficacy.",
+    "Do not accept a mean improvement obtained with unacceptable newly severe failures under the existing reliability protocol."
+  ],
+  "scientific_limits": [
+    "This is a joint change of token serialization and local memory aggregation at one code boundary; cannot separately attribute its effect to shorter path versus locality.",
+    "FixedQ limits repair of upstream coarse location errors.",
+    "No necessity or superiority claim from30 OOD calls."
+  ],
+  "next_scope": "Review this single formula and exact replacement interface first; only then separately authorize minimal implementation/CPU verification, any necessary CUDA zero-update admission, and matched training. No automatic code change or experiment launch.",
+  "evidence": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\post_diagnostic_freeze_audit_v1\\frozen_diagnostic_descriptive_values_v1.json",
+    "bytes": 20340,
+    "sha256": "bdec1c4556dc9681df3e5c7b87d27c86d1d80268573cc827cf23a11541ed53eb"
+  }
+}

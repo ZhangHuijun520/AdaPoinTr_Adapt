@@ -1,0 +1,50 @@
+{
+  "status": "FAILED_BEFORE_INSTALL_NO_CUDA_NO_RETRY",
+  "request_sha256": "d1324b1b754e2eea91e00ea5ede802c6bd506815b82db82f3c41a070811e9812",
+  "failure_phase": "identity_and_uploaded_frozen_package",
+  "cause": "Installation-call scope predicate incorrectly retained7200s; frozen LQI request requires1800s.",
+  "frozen_request_wall_seconds": 1800,
+  "installation_predicate": "q['status'] == 'AWAITING_EXPLICIT_USER_AUTHORIZATION' and q['science']['full_forward'] == q['science']['full_loss'] == q['science']['full_backward'] == 2 and (q['science']['optimizer_steps'] == 0) and (q['limits']['wall_seconds'] == 7200)",
+  "local_static_review_gap": "Checked key names and standalone entry authorize but did not evaluate every installer readiness predicate against actual q.",
+  "additional_local_review_issue": "Installer reused-source precheck includes all implementation values, including two LQI candidate sources that are not installed yet. Those two must be verified against package bytes before writing, while only encoder/factory are read as reused server assets.",
+  "server_reported_installation_root_exists": false,
+  "installed_payload_files": 0,
+  "authorization_materialized": false,
+  "runtime_materialized": false,
+  "launcher_materialized": false,
+  "tmux_started": false,
+  "CUDA_calls": 0,
+  "full_forward": 0,
+  "full_backward": 0,
+  "automatic_retry": false,
+  "operation_control_uploaded": true,
+  "frozen_request_transport_model_unchanged": true,
+  "next_limited_scope": "Revise only the local install operation: pin1800s from unchanged request and separate package candidate identities from existing encoder/factory assets; statically evaluate the complete preinstall contract using actual package metadata, then read-only reconfirm fresh targets; new attempt requires separate authorization.",
+  "evidence": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_gpu_admission_v1\\authorized_execution_v1\\execute_LQI_authorized_once_v1.py",
+      "bytes": 11174,
+      "sha256": "2dccb037492eb1cc69f1f2a7ee68516e1d345f4f0a0281dfcdd0cc2a3ce0aa6a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_gpu_admission_v1\\authorized_execution_v1\\static_authorized_operation_review_v1.json",
+      "bytes": 668,
+      "sha256": "0d4fa14263bc287bfe25801d3b8424ff6d6b469133a9440c9f65c434565f3948"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_gpu_admission_v1\\authorized_execution_v1\\local_authorized_operation_result_v2.json",
+      "bytes": 1580,
+      "sha256": "2bd92a86d3a41b764aba3b1a31d6703393f7f2a39b0cbe8eef5a59ed8c1ae145"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_gpu_admission_v1\\authorized_execution_v1\\verify_install_materialize_single_launch_stdout.bin",
+      "bytes": 1097,
+      "sha256": "95af1822e924996c9846a74b0f5bacf534738c6172c744f2357a5d7a0582fcd9"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_gpu_admission_v1\\pending_transport_v1\\payload\\LQI_artificial_cuda_execution_request_v1.json",
+      "bytes": 13482,
+      "sha256": "d1324b1b754e2eea91e00ea5ede802c6bd506815b82db82f3c41a070811e9812"
+    }
+  ]
+}

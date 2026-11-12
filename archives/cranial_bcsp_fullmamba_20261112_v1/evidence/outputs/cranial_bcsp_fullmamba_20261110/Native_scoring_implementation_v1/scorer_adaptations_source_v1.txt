@@ -1,0 +1,103 @@
+def authorize(request_record,authorization_record):
+ plan=json.loads(check(request_record).read_bytes());auth=json.loads(check(authorization_record).read_bytes())
+ require(plan['schema']=='bcsp-f0-T0-M0-three-arm-local-scoring-request-v1' and plan['status']=='AWAITING_EXPLICIT_USER_AUTHORIZATION' and plan['execution_authorized'] is False,'pending F0 score request')
+ require(plan['counts']==dict(unique_cases=210,sources=42,model_rows=630,shared_control_rows=420,case_score_rows=1050,source_score_rows=210),'exact1050 scope')
+ require(plan['scientific_contract']['arms']==ARMS and plan['scientific_contract']['pairs']==[list(p) for p in PAIRS] and plan['scientific_contract']['controls']==CONTROLS,'fixed three-arm pairs')
+ require(plan['limits']==dict(wall_seconds=18000,RSS_bytes=8589934592,output_bytes=2147483648,threads=2),'same CPU budget')
+ require(set(auth)=={'schema','request_sha256','explicit_user_authorization','user_authorization_text'} and auth['schema']=='bcsp-f0-T0-M0-score-authorization-v1' and auth['request_sha256']==request_record['sha256'] and auth['explicit_user_authorization'] is True and bool(auth['user_authorization_text'].strip()),'separate score authorization')
+ return plan
+
+def validate_index(index,references,score_index):
+ cases=score_index['cases']
+ require(index['schema']=='bcsp-f0-native-development-index-candidate-v1' and [r['label'] for r in index['runs']]==['C_F0','D_F0'],'F0 twofold index')
+ require(score_index['schema']=='bcsp-f0-T0-M0-twofold-score-index-candidate-v1' and len(cases)==len(index['inputs'])==210,'210 cases')
+ refmap={r['case_id']:r for r in references['cases']};lookup={r['case_id']:r for r in index['inputs']}
+ require(len(refmap)==len(references['cases'])==len(lookup)==210 and len({c['case_id'] for c in cases})==210,'unique IDs')
+ for run in index['runs']:
+  f=run['fold'];part=[c for c in cases if c['fold']==f];rows=[r for r in index['inputs'] if r['run']==run['label']]
+  require(run['label']==f+'_F0' and run['variant']=='F0-P-v2' and run['seed']==0 and run['n_input']==run['n_output']==8192,'F0 metadata')
+  require(len(rows)==len(part)==105 and [r['case_id'] for r in rows]==[c['case_id'] for c in part]==run['dev_case_ids'],'fixed ordered105')
+  require(len(run['dev_sources'])==len(set(run['dev_sources']))==21 and len(run['train_sources'])==len(set(run['train_sources']))==63 and not set(run['train_sources'])&set(run['dev_sources']) and {c['source_id'] for c in part}==set(run['dev_sources']),'source partition')
+  require(all(r['fold']==f and r['variant']=='F0-P-v2' and r['save_coarse'] is True for r in rows),'all F0 coarse/fold')
+  for source in run['dev_sources']:require({c['case_id'].split('__',2)[-1] for c in part if c['source_id']==source}==DEFECTS,'five defect types/source')
+ for c in cases:
+  a=lookup[c['case_id']];ref=refmap[c['case_id']]
+  require(all(c[k]==a[k]==ref[k] for k in ['case_id','source_id','fold','normalization','target_array_sha256']),'same target/frame')
+  require(c['normalization_source']==a['normalization_source']=='defective_bbox' and len(c['normalization']['center'])==3 and np.isfinite(c['normalization']['center']).all() and np.isfinite(c['normalization']['scale']) and c['normalization']['scale']>0,'D-only frame')
+  require(c['reference']=={k:ref[k] for k in ['path','bytes','sha256']} and all(c['point_file'][k]==a['input'][k] for k in ['bytes','sha256']),'reference/point binding')
+ require(len({c['source_id'] for c in cases})==42 and not {c['source_id'] for c in cases if c['fold']=='C'}&{c['source_id'] for c in cases if c['fold']=='D'},'42 disjoint dev sources')
+ records=score_index['prediction_records']
+ require(score_index['model_arms']==ARMS and score_index['controls']==CONTROLS and len(records)==len({(r['fold'],r['arm'],r['case_id']) for r in records})==630,'fixed630 prediction bindings')
+ require({(r['fold'],r['arm'],r['case_id']) for r in records}=={(c['fold'],arm,c['case_id']) for c in cases for arm in ARMS},'all model/case combinations')
+ return index['runs'],index['inputs'],cases
+
+def validate_archive(tar,index,inner_sha256,coarse_cases,kind):
+ require(kind in ('F0','C','D'),'only frozen archive roles')
+ f0=kind=='F0';members=tar.getmembers();names=[m.name for m in members];expected=[]
+ for r in index['inputs']:
+  if f0 and r['cache_context']:
+   expected.append('context/'+r['run']+'__'+r['case_id']+'.npz')
+   if r['save_full_decoder_trace']:expected.append('traces/'+r['run']+'__'+r['case_id']+'.npz')
+  expected.append('predictions/'+r['run']+'__'+r['case_id']+'.npz')
+ expected+=['inference_manifest.jsonl','forward_attempts.jsonl','geometry_summary.jsonl']+(['cache_manifest.jsonl'] if f0 else [])+['inference_complete.json','resources.jsonl']
+ require(len(members)==len(set(names))==(246 if f0 else 215) and names==expected,'exact archive names/order')
+ for m in members:
+  limit=20971520 if m.name.startswith('traces/') else 2097152 if m.name.startswith('context/') else 4194304
+  require(m.isfile() and 0<m.size<=limit and not Path(m.name).is_absolute() and '..' not in Path(m.name).parts,'bounded exact archive member')
+ require(sum(m.size for m in members)<=(536870912 if f0 else 67108864),'archive byte budget')
+ records=[json.loads(x) for x in tar.extractfile('inference_manifest.jsonl').read().splitlines()];claims=[json.loads(x) for x in tar.extractfile('forward_attempts.jsonl').read().splitlines()];geometry=[json.loads(x) for x in tar.extractfile('geometry_summary.jsonl').read().splitlines()]
+ done=json.loads(tar.extractfile('inference_complete.json').read());runs={r['label']:r for r in index['runs']}
+ labels=['C_F0','D_F0'] if f0 else [kind+'_T0',kind+'_M0'];require(list(runs)==labels,'exact trained model labels')
+ require(done['status']==('F0_CD_210_NATIVE_FORWARD_COMPLETE' if f0 else 'P1_PAIR_210_FORWARD_COMPLETE') and done['forwards']==210 and done['request_sha256']==inner_sha256 and all(done[k]==0 for k in ['training_updates','BNCal','loss','backward']),'completed Native execution')
+ require([r['run'] for r in done['models']]==labels,'fixed model execution order')
+ for r in done['models']:
+  require(r['forwards']==105 and len(r['state_before'])==64 and r['state_before']==r['state_after'] and set(r['RNG_before'])=={'CPU','CUDA','Python','numpy'} and r['RNG_before']==r['RNG_after'] and all(r['RNG_before'].values()),'state/RNG invariants')
+  require(r['mode']=='eval_inference_mode' and r['BNCal']==r['optimizer']==r['backward']==0,'eval only')
+ require(len(records)==len(claims)==len(geometry)==len(index['inputs'])==210 and [r['forward_index'] for r in records]==list(range(1,211)),'210 ordered records')
+ lookup={}
+ for k,(r,i,c,g) in enumerate(zip(records,index['inputs'],claims,geometry),1):
+  require(all(r[key]==i[key] for key in ['run','case_id','source_id','fold','n_input','normalization']) and r['n_output']==8192 and r['input_sha256']==i['input']['sha256'] and r['checkpoint_sha256']==runs[i['run']]['checkpoint']['sha256'],'prediction provenance')
+  require(c==dict(forward_index=k,run=r['run'],case_id=r['case_id'],status='CLAIMED_BEFORE_FORWARD'),'claim order')
+  require(g['run']==r['run'] and g['case_id']==r['case_id'] and g['frame']=='native_D_only_normalized_no_GT','Native summary')
+  require(r['prediction']['name']=='predictions/'+r['run']+'__'+r['case_id']+'.npz','member identity')
+  if f0:
+   require(i['variant']=='F0-P-v2' and i['save_coarse'] is True,'F0 all-Q')
+   arm='F0';hascoarse=True
+  else:
+   require(r['fold']==kind and r['fold'] in coarse_cases and len(coarse_cases[kind])==(7 if kind=='C' else 5),'baseline coarse subset')
+   arm=runs[r['run']]['variant'];require(arm in ('T0','M0') and r['run']==kind+'_'+arm,'original baseline arm')
+   hascoarse=r['case_id'] in coarse_cases[kind]
+  key=(r['fold'],arm,r['case_id']);require(key not in lookup,'duplicate prediction')
+  lookup[key]=dict(r,geometry=g,coarse_expected=hascoarse,archive_key=kind)
+ require(len(lookup)==210,'all210 selected predictions')
+ return lookup
+
+def main():
+ parser=argparse.ArgumentParser()
+ for name in ['request','request-sha256','authorization','authorization-sha256']:parser.add_argument('--'+name,required=True)
+ args=parser.parse_args()
+ def rec(path,sha):return dict(path=path,bytes=Path(path).stat().st_size,sha256=sha)
+ request_record=rec(args.request,args.request_sha256);plan=authorize(request_record,rec(args.authorization,args.authorization_sha256))
+ require(sys.flags.isolated and sys.dont_write_bytecode and os.environ['CUDA_VISIBLE_DEVICES']=='','isolated CPU -I -B')
+ require(check(plan['implementation']['scorer']).resolve()==Path(__file__).resolve() and check(plan['implementation']['metrics']).resolve()==Path(metric.__file__).resolve(),'scorer/metric bindings')
+ require(str(Path(sys.executable).resolve())==plan['environment']['python']['path'] and check(plan['environment']['python'])==Path(sys.executable).resolve(),'fixed CPU Python')
+ require({name:md.version(name) for name in plan['environment']['packages']}==plan['environment']['packages'],'CPU dependency versions')
+ for r in plan['evidence'].values():check(r)
+ p3=json.loads(check(plan['P3']).read_bytes());require(p3['status']=='LOCAL_F0_T0_M0_SCORING_P3_PASS' and p3['scorer']['sha256']==plan['implementation']['scorer']['sha256'] and all(p3['checks'].values()),'P3')
+ require(set(plan['archive_inputs'])=={'F0','C','D'},'exact three source archives')
+ archives={k:check(v['archive']) for k,v in plan['archive_inputs'].items()}
+ for v in plan['archive_inputs'].values():
+  for r in v['sidecars']:check(r)
+ refs=json.loads(check(plan['reference_manifest']).read_bytes());index=json.loads(check(plan['prediction_index']).read_bytes());score_index=json.loads(check(plan['score_case_index']).read_bytes())
+ _,_,cases=validate_index(index,refs,score_index)
+ out=Path(plan['output']);require(out==Path(__file__).resolve().parent/'unified_scores_v1' and not any(p.is_symlink() for p in [out,*out.parents]),'owned fresh output');out.mkdir(exist_ok=False)
+ start=time.monotonic();limits=plan['limits']
+ emit(out/'single_attempt_claim.json',dict(status='CLAIMED_BEFORE_SCORING',request_sha256=args.request_sha256,no_retry=True))
+ def guard():
+  require(time.monotonic()-start<=limits['wall_seconds'] and psutil.Process().memory_info().rss<=limits['RSS_bytes'],'CPU time/RSS')
+  require(sum(p.stat().st_size for p in out.rglob('*') if p.is_file())<=limits['output_bytes'],'output byte budget')
+ try:
+  emit(out/'execution_environment.json',dict(python=sys.version,executable=sys.executable,packages=plan['environment']['packages'],CUDA_VISIBLE_DEVICES=os.environ['CUDA_VISIBLE_DEVICES'],threads=2,request_sha256=args.request_sha256))
+  run_scoring(plan,index,cases,out,archives,args.request_sha256,guard,start,prediction_bindings=score_index['prediction_records'])
+ except BaseException as exc:
+  emit(out/'failure.json',dict(status='FAILED_STOP_NO_RETRY',completed_score_rows=sum(1 for _ in (out/'case_metrics.jsonl').open('r',encoding='utf8')) if (out/'case_metrics.jsonl').exists() else 0,error=repr(exc)));raise

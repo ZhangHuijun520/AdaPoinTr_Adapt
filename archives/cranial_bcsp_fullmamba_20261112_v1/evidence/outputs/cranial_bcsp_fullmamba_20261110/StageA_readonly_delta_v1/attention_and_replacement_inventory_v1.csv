@@ -1,0 +1,25 @@
+﻿module,layer,role,current_type,operation,decision,replacement,first_layer_graph_retained,evidence
+base_model.decoder.blocks.blocks.0.self_attn,0,self,Attention,learned QK softmax V,REPLACE,bidirectional sorted Query Mamba,True,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.0.cross_attn,0,cross,CrossAttention,learned QK softmax V,REPLACE,causal Memory-prefix Mamba,True,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.1.self_attn,1,self,Attention,learned QK softmax V,REPLACE,bidirectional sorted Query Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.1.cross_attn,1,cross,CrossAttention,learned QK softmax V,REPLACE,causal Memory-prefix Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.2.self_attn,2,self,Attention,learned QK softmax V,REPLACE,bidirectional sorted Query Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.2.cross_attn,2,cross,CrossAttention,learned QK softmax V,REPLACE,causal Memory-prefix Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.3.self_attn,3,self,Attention,learned QK softmax V,REPLACE,bidirectional sorted Query Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.3.cross_attn,3,cross,CrossAttention,learned QK softmax V,REPLACE,causal Memory-prefix Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.4.self_attn,4,self,Attention,learned QK softmax V,REPLACE,bidirectional sorted Query Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.4.cross_attn,4,cross,CrossAttention,learned QK softmax V,REPLACE,causal Memory-prefix Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.5.self_attn,5,self,Attention,learned QK softmax V,REPLACE,bidirectional sorted Query Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.5.cross_attn,5,cross,CrossAttention,learned QK softmax V,REPLACE,causal Memory-prefix Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.6.self_attn,6,self,Attention,learned QK softmax V,REPLACE,bidirectional sorted Query Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.6.cross_attn,6,cross,CrossAttention,learned QK softmax V,REPLACE,causal Memory-prefix Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.7.self_attn,7,self,Attention,learned QK softmax V,REPLACE,bidirectional sorted Query Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.decoder.blocks.blocks.7.cross_attn,7,cross,CrossAttention,learned QK softmax V,REPLACE,causal Memory-prefix Mamba,False,mother source + frozen configuration; not dynamic trace
+base_model.encoder.blocks.blocks.0.attn,0,encoder_global,BidirectionalSpatialMamba,shared forward/reverse native Mamba,KEEP,unchanged M0,True,P1 factory/encoder source
+base_model.encoder.blocks.blocks.1.attn,1,encoder_global,BidirectionalSpatialMamba,shared forward/reverse native Mamba,KEEP,unchanged M0,False,P1 factory/encoder source
+base_model.encoder.blocks.blocks.2.attn,2,encoder_global,BidirectionalSpatialMamba,shared forward/reverse native Mamba,KEEP,unchanged M0,False,P1 factory/encoder source
+base_model.encoder.blocks.blocks.3.attn,3,encoder_global,BidirectionalSpatialMamba,shared forward/reverse native Mamba,KEEP,unchanged M0,False,P1 factory/encoder source
+base_model.encoder.blocks.blocks.4.attn,4,encoder_global,BidirectionalSpatialMamba,shared forward/reverse native Mamba,KEEP,unchanged M0,False,P1 factory/encoder source
+base_model.encoder.blocks.blocks.5.attn,5,encoder_global,BidirectionalSpatialMamba,shared forward/reverse native Mamba,KEEP,unchanged M0,False,P1 factory/encoder source
+base_model.decoder.blocks.blocks.0.local_self_attn,0,local_geometry,DynamicGraphAttention,KNN feature concat Linear LeakyReLU max,KEEP_NOT_QK_ATTENTION,unchanged,True,Transformer_utils.py DynamicGraphAttention.forward
+base_model.decoder.blocks.blocks.0.local_cross_attn,0,local_geometry,DynamicGraphAttention,KNN feature concat Linear LeakyReLU max,KEEP_NOT_QK_ATTENTION,unchanged,True,Transformer_utils.py DynamicGraphAttention.forward

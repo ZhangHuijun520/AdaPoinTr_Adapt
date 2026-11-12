@@ -1,0 +1,36 @@
+{
+  "status": "SCORING_ENTRY_COMPATIBILITY_GAPS_FROZEN_NOT_IMPLEMENTED",
+  "existing_entry": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_scoring_implementation_v1\\bcsp_f0_T0_M0_three_arm_score_v1.py",
+    "bytes": 29011,
+    "sha256": "53632c7cc0b77010ad35f1e0ffa1836185634970001d49dcb4308c01ce7f0086"
+  },
+  "frozen_F0_score_audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_scoring_implementation_v1\\post_scoring_freeze_audit_20261111_v2\\audit_report_v1.json",
+    "bytes": 149570,
+    "sha256": "92fb8fabb326aca17cd180c7e8f4be1f3008e2d2957f738322e904e34ced12ee"
+  },
+  "frozen_F0_and_shared_control_rows": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_scoring_implementation_v1\\unified_scores_v1\\case_metrics.jsonl",
+      "bytes": 6148401,
+      "sha256": "e9ec5436b4efb103f5803b0443b6aaba465d23bef695f3fb2b7c4c8b02a18d19"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_scoring_implementation_v1\\unified_scores_v1\\source_metrics.json",
+      "bytes": 315390,
+      "sha256": "2d58f11aa01f2d30ca68dbc5bd9a03842c41b0436ae7aa2d52b4d06ac9b9d8c7"
+    }
+  ],
+  "post_scoring_consistency_requirement": "Recomputed F0 210 rows and shared controls420 rows must match their frozen prior score records under unchanged definitions; if mismatch, stop for diagnosis, no silent replacement.",
+  "gaps": [
+    "Replace locked T0/M0/F0 three arms and1050case/210source counts with F0/LQI two arms and840case/168source counts",
+    "Add exact LQI archive/index/model-label/construction/status/hash checks; preserve F0 full246-member archive validation",
+    "LQI archive216 members includes exact zero-byte cache_manifest.jsonl; allow zero only for this frozen Native log, retain all nonempty prediction/source/authorization guards",
+    "Both arms contain all210 actual coarse arrays, use full shared coarse diagnostics without inventing missing tensors",
+    "CPU artificial fixtures cover full authorize, actual archive formats and zero-log rule, wrong hash/labels/cases/coordinate binding, two-arm aggregation/risk direction, count and first-failure behavior",
+    "Do not modify metric definitions, references, thresholds, source/fold selection or original production scorer"
+  ],
+  "implementation_authorized_this_round": false,
+  "scoring_execution_authorized": false
+}

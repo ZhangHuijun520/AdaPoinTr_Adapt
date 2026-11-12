@@ -1,0 +1,56 @@
+--- frozen_F0
++++ isolated_F0_LQI
+@@ -1,4 +1,4 @@
+-"""F0-P-v2 isolated decoder. Native mixers are supplied by the frozen factory."""
++"""F0-LQI-v1 isolated decoder. Only conditional sequence construction/readout differs from F0."""
+ import torch
+ from torch import nn
+ from bcsp_mamba_encoder_v1 import lexicographic_order, gather_tokens
+@@ -14,7 +14,7 @@
+     require(x.dtype == torch.float32 and bool(torch.isfinite(x).all()), 'finite FP32')
+ 
+ 
+-class F0Block(nn.Module):
++class LQIBlock(nn.Module):
+     def __init__(self, old, index, mixer_builder):
+         super().__init__()
+         require(index in range(8), 'eight blocks')
+@@ -52,11 +52,17 @@
+             bq = self.self_attn_merge_map(torch.cat([bq, self.local_self_attn(ns, q_pos, idx=self_idx)], -1))
+         x1 = x + self.drop_path1(self.ls1(bq))
+         nq, nv = self.norm_q(x1), self.norm_v(memory)
+-        prefix = gather_tokens(nv + m_pe, order_m)
+-        suffix = gather_tokens(nq + q_pe, order_q)
+-        c = self.cond_ssm(torch.cat([prefix, suffix], 1).contiguous())
++        # Frozen LQI formula: normalize memory BEFORE neighbor averaging.
++        memory_tokens = nv + m_pe
++        batch = torch.arange(memory_tokens.shape[0], device=memory_tokens.device)[:, None, None]
++        neighbors = memory_tokens[batch, cross_idx]  # B,256,8,384; original memory indices
++        local_condition = neighbors.mean(dim=2)
++        a = gather_tokens(local_condition, order_q)
++        b = gather_tokens(nq + q_pe, order_q)
++        tokens = torch.stack([a, b], dim=2).reshape(memory_tokens.shape[0], 512, 384)
++        c = self.cond_ssm(tokens.contiguous())
+         require(c.shape == (x.shape[0], 512, 384), 'conditional output shape')
+-        cq = gather_tokens(c[:, 256:], inverse_q)
++        cq = gather_tokens(c[:, 1::2, :], inverse_q)
+         f = cq
+         if self.local_cross_attn is not None:
+             local = self.local_cross_attn(q=nq, v=nv, q_pos=q_pos, v_pos=m_pos, idx=cross_idx)
+@@ -69,14 +75,14 @@
+         return result, dict(input=original.detach(), after_self=x1.detach(), prefix_suffix=cq.detach(), after_cross=x2.detach(), output=result.detach())
+ 
+ 
+-class F0Decoder(nn.Module):
++class LQIDecoder(nn.Module):
+     """Compatible mother decoder entry; no cache, token roles or GT argument."""
+     def __init__(self, old, mixer_builder):
+         super().__init__()
+         require(len(old.blocks.blocks) == 8 and old.blocks.k == 8, 'eight layers/k8')
+         self.knn = type(old.blocks).forward.__globals__['knn_point']
+         self.coordinate_pe = nn.Linear(3, 384, bias=False)
+-        self.blocks = nn.ModuleList([F0Block(block, i, mixer_builder) for i, block in enumerate(old.blocks.blocks)])
++        self.blocks = nn.ModuleList([LQIBlock(block, i, mixer_builder) for i, block in enumerate(old.blocks.blocks)])
+ 
+     def forward(self, q, v, q_pos, v_pos, denoise_length=None, return_instrumentation=False):
+         require(denoise_length is None, 'denoise disabled')

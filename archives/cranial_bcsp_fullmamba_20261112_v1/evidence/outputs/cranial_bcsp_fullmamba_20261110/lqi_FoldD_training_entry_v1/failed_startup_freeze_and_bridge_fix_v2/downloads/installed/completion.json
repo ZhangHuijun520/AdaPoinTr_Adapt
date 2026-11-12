@@ -1,0 +1,48 @@
+{
+  "status": "LQI_NATIVE_CUDA_COMPLETE_PENDING_FORMAL_FREEZE_AUDIT",
+  "request_sha256": "d1324b1b754e2eea91e00ea5ede802c6bd506815b82db82f3c41a070811e9812",
+  "counts": {
+    "full_forward": 2,
+    "full_backward": 2,
+    "full_loss": 2,
+    "decoder_forward": 0,
+    "decoder_backward": 0,
+    "optimizer_steps": 0
+  },
+  "native_SSM_calls": {
+    "base_model.encoder.blocks.blocks.0.attn.mixer": 4,
+    "base_model.encoder.blocks.blocks.1.attn.mixer": 4,
+    "base_model.encoder.blocks.blocks.2.attn.mixer": 4,
+    "base_model.encoder.blocks.blocks.3.attn.mixer": 4,
+    "base_model.encoder.blocks.blocks.4.attn.mixer": 4,
+    "base_model.encoder.blocks.blocks.5.attn.mixer": 4,
+    "base_model.decoder.blocks.0.self_ssm": 4,
+    "base_model.decoder.blocks.0.cond_ssm": 2,
+    "base_model.decoder.blocks.1.self_ssm": 4,
+    "base_model.decoder.blocks.1.cond_ssm": 2,
+    "base_model.decoder.blocks.2.self_ssm": 4,
+    "base_model.decoder.blocks.2.cond_ssm": 2,
+    "base_model.decoder.blocks.3.self_ssm": 4,
+    "base_model.decoder.blocks.3.cond_ssm": 2,
+    "base_model.decoder.blocks.4.self_ssm": 4,
+    "base_model.decoder.blocks.4.cond_ssm": 2,
+    "base_model.decoder.blocks.5.self_ssm": 4,
+    "base_model.decoder.blocks.5.cond_ssm": 2,
+    "base_model.decoder.blocks.6.self_ssm": 4,
+    "base_model.decoder.blocks.6.cond_ssm": 2,
+    "base_model.decoder.blocks.7.self_ssm": 4,
+    "base_model.decoder.blocks.7.cond_ssm": 2
+  },
+  "dispatch_observations": {},
+  "attention_registered": {
+    "forbidden_registered_modules": [],
+    "dynamic_kernel_audit_pending": true
+  },
+  "dynamic_audit_limit": "Known dispatched attention ops + bound module source; opaque extension internals not semantically inspected",
+  "finite_gradient_nondeterminism_disclosed": true,
+  "real_data_reads": 0,
+  "checkpoint_loads": 0,
+  "optimizer_constructed": false,
+  "training_admission": false,
+  "BNCal": false
+}

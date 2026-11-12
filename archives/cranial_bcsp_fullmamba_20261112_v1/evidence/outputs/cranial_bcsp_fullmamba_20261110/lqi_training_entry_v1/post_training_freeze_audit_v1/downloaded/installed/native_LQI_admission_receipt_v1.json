@@ -1,0 +1,46 @@
+{
+  "status": "LQI_NATIVE_CUDA_ADMISSION_PASS",
+  "request_sha256": "d1324b1b754e2eea91e00ea5ede802c6bd506815b82db82f3c41a070811e9812",
+  "audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_gpu_admission_v1\\post_CUDA_freeze_audit_v1\\formal_post_CUDA_freeze_audit_result_v1.json",
+    "bytes": 4624,
+    "sha256": "bd7aa09346f26897ca375fca8c6ccc3b6b9d119421d60f8943a767440d1e1ca9"
+  },
+  "scope": {
+    "full_forward": 2,
+    "full_backward": 2,
+    "full_loss": 2,
+    "decoder_forward": 0,
+    "decoder_backward": 0,
+    "optimizer_steps": 0
+  },
+  "implementation": {
+    "encoder": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_mamba_encoder_v1.py",
+      "bytes": 3546,
+      "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+    },
+    "factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py",
+      "bytes": 4396,
+      "sha256": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4"
+    },
+    "lqi_decoder": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_decoder_v1.py",
+      "bytes": 6053,
+      "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8"
+    },
+    "lqi_factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_factory_v1.py",
+      "bytes": 3864,
+      "sha256": "56d4cbe89660106f255a0d58e28c7cbaf38374c7788219d5a21779bd97aaf106"
+    }
+  },
+  "limitations": [
+    "Synthetic tensors and existing cdist backend only; no Native accuracy or clinical geometry evidence.",
+    "Final restoration is verified from assertions of hash-bound runtime source; raw before/after restoration fingerprints were not both emitted independently.",
+    "No bitwise gradient repeat test; accepted finite nondeterminism is preserved.",
+    "Known dispatched attention-op audit cannot prove opaque extension internals have no attention semantics."
+  ],
+  "training_authorized": false
+}

@@ -1,0 +1,11 @@
+{"phase": "identity_and_uploaded_frozen_package", "seconds": 5.383044481277466e-06, "hashed_bytes": 0}
+{"phase": "reused_sources_provider_and_extensions", "seconds": 0.07926950976252556, "hashed_bytes": 21832}
+{"phase": "two_checkpoints_and40_exact_frozen_caches", "seconds": 0.6065275818109512, "hashed_bytes": 711226348}
+{"status": "AUTHORIZED_OPERATION_FAILED_STOP_NO_RETRY", "phase": "two_checkpoints_and40_exact_frozen_caches", "error": "KeyError('input_index')", "hashed_bytes": 711226348, "seconds": 0.6065631285309792, "installation_root_exists": false}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/f0_condition_authorized_operation_20261111_v1.py", line 115, in <module>
+    try:main()
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/f0_condition_authorized_operation_20261111_v1.py", line 74, in main
+    index=json.loads(payload['payload/'+Path(q['input_index']['path']).name]);need(len(index['runs'])==2 and len(index['pairs'])==10,'twofold210')
+KeyError: 'input_index'

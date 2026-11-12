@@ -1,0 +1,88 @@
+{
+  "status": "READONLY_STARTUP_LIFETIME_INVESTIGATION_COMPLETE_NO_RELAUNCH",
+  "recorded_UTC": "2026-11-11T14:56:36.638318+00:00",
+  "evidence_provenance": "OS-query JSON values below transcribed from the tool outputs of this task; no recreation of historical process or scoring attempt.",
+  "request_sha256": "b394b3b8814ac729d07a79fe607cbf0636b1ee596546304f8f416bc66e88304a",
+  "checks": {
+    "scorer_unchanged": true,
+    "request_unchanged": true,
+    "invocation_helper_unchanged": true,
+    "no_authorization_directory": true,
+    "no_scoring_output_directory": true,
+    "no_scoring_relaunch": true
+  },
+  "default_execution_context": {
+    "diagnostic_PID": 484,
+    "parent_PID": 16420,
+    "IsProcessInJob": true,
+    "QueryInformationJobObject_success": true,
+    "LimitFlags": 8192,
+    "LimitFlags_hex": "0x2000",
+    "KILL_ON_JOB_CLOSE": true,
+    "BREAKAWAY_OK": false,
+    "SILENT_BREAKAWAY_OK": false
+  },
+  "approved_nonadministrator_context": {
+    "diagnostic_PID": 27916,
+    "parent_PID": 25352,
+    "IsProcessInJob": true,
+    "QueryInformationJobObject_success": true,
+    "LimitFlags": 10240,
+    "LimitFlags_hex": "0x2800",
+    "KILL_ON_JOB_CLOSE": true,
+    "BREAKAWAY_OK": true,
+    "SILENT_BREAKAWAY_OK": false
+  },
+  "historical_launch": {
+    "PID": 30668,
+    "launch_record_UTC": "2026-11-11T14:48:27.2950339Z",
+    "process_currently_absent": true,
+    "stdout_bytes": 0,
+    "stderr_bytes": 0,
+    "worker_record_exists": false,
+    "authorization_directory_exists": false,
+    "output_directory_exists": false,
+    "application_events": {
+      "log": "Application",
+      "IDs": [
+        1000,
+        1001,
+        1002
+      ],
+      "window_UTC": [
+        "2026-11-11T14:46:27.2950339Z",
+        "2026-11-11T14:50:27.2950339Z"
+      ],
+      "default_context": "Access denied",
+      "approved_nonadministrator_context": "No matching events found"
+    }
+  },
+  "conclusion": {
+    "classification": "HIGH_CONFIDENCE_EXECUTION_CONTEXT_LIFETIME_INFERENCE_NOT_HISTORICAL_EXIT_PROOF",
+    "mechanism": "Default-context process job has KILL_ON_JOB_CLOSE and denies breakaway. Start-Process returned PID and outer command immediately exited; inherited process job cleanup is consistent with absent supervisor and no Python artifacts.",
+    "directly_proven": "Current-context job flags, historical launch record, absent process/artifacts, bounded absence of matching Application crash/hang events, unchanged source hashes.",
+    "not_proven": "Historical PID30668 job handle membership and exact termination time/exit status were not captured; job-close cause is not directly proved.",
+    "scientific_scoring": "Not entered under the bound invocation sequence: authorization directory is created before worker Popen, and remains absent."
+  },
+  "recommended_minimal_next_scope": "Separately authorize invocation-only change to a retained/managed foreground execution session and ONE new launch attempt, preserve old launch claim and logs, reverify frozen assets and absent true execution targets; do not modify scorer/request, disable guards, change system job policy, or use an untested breakaway bypass.",
+  "operations": {
+    "scoring": 0,
+    "real_prediction_or_GT_arrays_decoded": 0,
+    "model_imports": 0,
+    "GPU_calls": 0,
+    "server_operations": 0,
+    "production_source_or_request_changes": 0,
+    "configuration_changes": 0,
+    "new_scoring_processes": 0
+  },
+  "references": [
+    {
+      "title": "Microsoft Job Objects",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects"
+    },
+    {
+      "title": "JOBOBJECT_BASIC_LIMIT_INFORMATION",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-jobobject_basic_limit_information"
+    }
+  ]
+}

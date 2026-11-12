@@ -1,0 +1,91 @@
+--- 
++++ 
+@@ -13,6 +13,9 @@
+ PROJECT = '/home/jovyan/adapointr_work/PoinTr'
+ ADMISSION_SHA = '5bcb2cff36e02e14acd4609e601fbc6d63aa776489ea2dda1b887f6b180de770'
+ CUDA_REQUEST_SHA = 'd1324b1b754e2eea91e00ea5ede802c6bd506815b82db82f3c41a070811e9812'
++FOLDC_AUDIT_SHA = '17a45cb85282051a4448e31d8e9fe38b8d291c836c52cd7cf3e87320d7864291'
++FOLDC_REQUEST_SHA = 'b616a762783fd4f43af4467c6c47e41e73aa40a24fac223317e710ee7372825e'
++FOLDD_REFERENCE_SHA = '55793bca2fa9472d45b3cca0b9598154cdb12a84a3eb89633daa52b85a039d5f'
+ COUNTS = dict(cases=315,sources=63,batch=8,epochs=100,batches_per_epoch=39,updates=3900,exposures=31200)
+ RESOURCES = dict(wall_seconds=86400,RSS_bytes=8589934592,device_MiB=22528,torch_peak_bytes=21474836480,
+                  output_bytes=2147483648,minimum_free_disk_bytes=4294967296)
+@@ -100,14 +103,41 @@
+     return receipt, construction
+ 
+ 
++def validate_FoldC_and_reference(q, expected_factory):
++    p = q['FoldC_pairing']
++    require(set(p) == {'audit','request','construction','initialization','order','completion'}, 'FoldC evidence fields')
++    require(p['audit']['sha256'] == FOLDC_AUDIT_SHA and p['request']['sha256'] == FOLDC_REQUEST_SHA, 'frozen FoldC anchors')
++    audit = bound(p['audit']); prior = bound(p['request'])
++    require(audit['status'] == 'FORMAL_LQI_FOLDC_POST_TRAINING_FREEZE_AUDIT_PASS' and audit['request_sha256'] == FOLDC_REQUEST_SHA
++            and audit['checks_passed'] == len(audit['checks']) > 0 and all(audit['checks'].values()), 'formal FoldC audit')
++    require(audit['counts'] == dict(updates=3900,traversals=100,case_exposures=31200,drop_events=300,metric_records=3900,geometry_records=3900,resource_records=3902), 'completed FoldC counts')
++    records = {r['name']:r for r in audit['artifacts'] if r['role'] == 0}
++    for key,name in [('construction','model_construction.json'),('initialization','initialization.json'),('order','order_plan.json'),('completion','completion.json')]:
++        require((p[key]['bytes'],p[key]['sha256']) == (records[name]['bytes'],records[name]['sha256']), 'audited FoldC '+key)
++        exact(p[key])
++    require(bound(p['construction'])['factory'] == expected_factory, 'same actual F0 initialization factory')
++    initial = bound(p['initialization']); completed = bound(p['completion'])
++    require(initial == audit['initialization'] and initial['seed'] == 0 and audit['initialization_matches_GPU_admission'] is True, 'complete initial replay identity')
++    order = bound(p['order']); canonical = hashlib.sha256(json.dumps(order,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
++    require(canonical == initial['order_sha256'] == completed['order_sha256'] == audit['actual_order_canonical_sha256']
++            and completed['checkpoint_sha256'] == audit['checkpoint']['sha256'], 'FoldC frozen order/checkpoint evidence without weight load')
++    require(prior['fold'] == 'C' and prior['variant'] == q['variant'] and prior['static_config'] == q['static_config']
++            and completed['bncal_executed'] is False and completed['evaluation_executed'] is False and completed['resume'] is False, 'FoldC protocol unchanged')
++    require(q['FoldD_reference']['sha256'] == FOLDD_REFERENCE_SHA, 'frozen historical M0 D reference')
++    reference = bound(q['FoldD_reference'])
++    require(reference['variant'] == 'M0' and reference['fold'] == 'D' and reference['n_input'] == reference['n_output'] == 8192, 'historical FoldD identity')
++    for key in ('static_config','QC','order_plan','data_root','model_root','preflight_scope'):
++        require(q[key] == reference[key], 'exact same FoldD reference '+key)
++
++
+ def authorize(qr, ar, rr):
+     q = bound(qr); a = bound(ar); r = bound(rr)
+     fields = {'schema','status','stage','run_id','variant','fold','seed','n_input','n_output','static_config','QC',
+               'order_plan','identity','data_root','model_root','implementation','preflight_scope','dependencies',
+-              'environment','output','launch_attempt','launch_contract','admission','readiness','pair_contract','P3','not_authorized'}
++              'environment','output','launch_attempt','launch_contract','admission','readiness','pair_contract','P3','not_authorized','FoldC_pairing','FoldD_reference'}
+     require(set(q) == fields and q['schema'] == 'bcsp-lqi-training-request-v1'
+             and q['status'] == 'AWAITING_EXPLICIT_USER_AUTHORIZATION' and q['stage'] == 'CRANIAL_BCSP_FULLMAMBA', 'pending F0 request')
+-    require(q['variant'] == 'F0-LQI-v1' and q['fold'] == 'C' and q['seed'] == 0 and q['n_input'] == q['n_output'] == 8192,
++    require(q['variant'] == 'F0-LQI-v1' and q['fold'] == 'D' and q['seed'] == 0 and q['n_input'] == q['n_output'] == 8192,
+             'first F0 Fold C seed0 only')
+     require(set(a) == {'schema','request_sha256','explicit_user_authorization','user_authorization_text'}
+             and a['schema'] == 'bcsp-lqi-training-authorization-v1' and a['request_sha256'] == qr['sha256']
+@@ -121,20 +151,21 @@
+     require(p3['status'] == 'LQI_TRAINING_ENTRY_CPU_P3_PASS'
+             and p3['entry_sha256'] == q['implementation']['entry']['sha256']
+             and p3['native_admission_sha256'] == ADMISSION_SHA, 'entry P3 content binding')
+-    require(ready['status'] == 'LQI_FOLDC_METADATA_RESOURCE_READINESS_PASS' and ready['identity'] == q['identity']
++    require(ready['status'] == 'LQI_FOLDD_METADATA_RESOURCE_READINESS_PASS' and ready['identity'] == q['identity']
+             and ready['payload_arrays_read'] == 0, 'bounded readiness proof')
+     receipt, expected_factory = validate_admission(q)
++    validate_FoldC_and_reference(q,expected_factory)
+     metadata = source_module('bcsp_training_contract_v1',q['implementation']['contract'])
+     static = metadata.validate_static(bound(q['static_config']))
+     require(static['counts'] == COUNTS and static['resources'] == RESOURCES, '3900/resource contract unchanged')
+     selected, fold = metadata.verify_qualified_receipt(bound(q['QC']['qualified_receipt']), q['QC']['verification'],
+-            q['QC']['manifests'], q['QC']['fold_binding'], 'C',8192)
++            q['QC']['manifests'], q['QC']['fold_binding'], 'D',8192)
+     plan = metadata.validate_order(bound(q['order_plan']),fold['train_case_ids'])
+     pair = bound(q['pair_contract'])
+     require(pair['status'] == 'FROZEN_LQI_CD_TRAINING_CONTRACT_NOT_AUTHORIZATION' and pair['counts'] == COUNTS
+             and pair['resources'] == RESOURCES and pair['seed'] == 0 and pair['arm_order'] == ['C','D']
+-            and pair['static_config'] == q['static_config'] and pair['FoldC_QC'] == q['QC']
+-            and pair['FoldC_order_plan'] == q['order_plan'] and pair['native_admission_sha256'] == ADMISSION_SHA, 'fixed pair contract')
++            and pair['static_config'] == q['static_config'] and pair['FoldD_QC'] == q['QC']
++            and pair['FoldD_order_plan'] == q['order_plan'] and pair['native_admission_sha256'] == ADMISSION_SHA, 'fixed pair contract')
+     return q, static, metadata, selected, fold, plan, receipt, expected_factory
+ 
+ 
+@@ -193,7 +224,7 @@
+             super().before_step(step)
+             if step == 0:
+                 emit(self.output/'model_construction.json',self.first_step_evidence)
+-                emit(self.output/'run_identity.json',dict(stage=q['stage'],variant=q['variant'],fold='C',seed=0,conditional_sequence='query_aligned_local_memory_interleaving',trace_prefix_suffix_semantics='interleaved conditional query-position output',
++                emit(self.output/'run_identity.json',dict(stage=q['stage'],variant=q['variant'],fold='D',seed=0,conditional_sequence='query_aligned_local_memory_interleaving',trace_prefix_suffix_semantics='interleaved conditional query-position output',
+                     native_admission_sha256=ADMISSION_SHA,SSM_gradient_non_bitwise_reproducibility_disclosed=True,
+                     checkpoint_legacy_stage='BCSP_INPUT_DENSITY_V1',legacy_stage_is_provenance_only=True))
+         def after_step(self, step):

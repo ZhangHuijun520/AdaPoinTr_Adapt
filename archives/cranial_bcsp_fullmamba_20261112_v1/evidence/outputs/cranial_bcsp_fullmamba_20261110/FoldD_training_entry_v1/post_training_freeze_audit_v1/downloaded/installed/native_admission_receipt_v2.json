@@ -1,0 +1,54 @@
+{
+  "status": "F0_NATIVE_CUDA_ADMISSION_PASS",
+  "request_sha256": "a9fbc819da73415008ac5643f5b6cea9ab1b3818029129e6f93e2e67bcc23efc",
+  "audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\gpu_admission_v1\\post_CUDA_freeze_audit_v1\\post_CUDA_freeze_audit_result_v2.json",
+    "bytes": 14441,
+    "sha256": "7ef059444d071ee7f59d6403504e89735a4949329fe8ea5fcba1102c7d41ffab"
+  },
+  "implementation": {
+    "encoder": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_mamba_encoder_v1.py",
+      "bytes": 3546,
+      "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+    },
+    "factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py",
+      "bytes": 4396,
+      "sha256": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4"
+    },
+    "f0_decoder": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_f0_decoder_v1.py",
+      "bytes": 5628,
+      "sha256": "1f06524683e952e72c28c13f8cc7c3feb2102cd7092ade17b0509346e0407f5c"
+    },
+    "f0_factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_f0_factory_v1.py",
+      "bytes": 3653,
+      "sha256": "25336d7745386c56a23347b5c40a78f3c046ca297fbfd66574d2807bca76992f"
+    }
+  },
+  "entry": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_f0_cuda_admission_v1.py",
+    "bytes": 26753,
+    "sha256": "128c36faf3b47c0ccaa117c5816a700faa47486b5d446dba8ad02bb85ba1ddaf"
+  },
+  "backend": "native Mamba2.3.1/PointNet2 + cdist Chamfer",
+  "scope": {
+    "full_forward": 4,
+    "full_backward": 4,
+    "full_loss": 4,
+    "decoder_forward": 6,
+    "decoder_backward": 1,
+    "optimizer_steps": 0
+  },
+  "training_authorized": false,
+  "must_bind_receipt_hash_in_future_training_request": true,
+  "caveats": [
+    "Synthetic native CUDA execution only; no anatomy/performance conclusion",
+    "Known dispatched attention guards and bound module source; opaque extension internals not inspected",
+    "dynamic_kernel_audit_pending is preserved in original generic inventory; no comprehensive kernel audit claimed",
+    "RNG/state/gradient audit compares logged fingerprints/norms and pinned asserting source; no tensor replay",
+    "Resource peaks are sampled or Torch allocator counters, not dedicated hard cgroup guarantees"
+  ]
+}

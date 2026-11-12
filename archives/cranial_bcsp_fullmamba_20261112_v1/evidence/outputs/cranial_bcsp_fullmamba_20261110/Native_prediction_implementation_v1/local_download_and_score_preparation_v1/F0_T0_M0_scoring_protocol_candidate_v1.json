@@ -1,0 +1,63 @@
+{
+  "schema": "bcsp-f0-T0-M0-three-arm-local-scoring-protocol-candidate-v1",
+  "status": "PENDING_IMPLEMENTATION_AND_SEPARATE_EXECUTION_AUTHORIZATION",
+  "arms": [
+    "T0",
+    "M0",
+    "F0"
+  ],
+  "folds": [
+    "C",
+    "D"
+  ],
+  "counts": {
+    "unique_cases": 210,
+    "sources": 42,
+    "model_rows": 630,
+    "shared_control_rows": 420,
+    "case_score_rows": 1050,
+    "source_score_rows": 210
+  },
+  "primary_metric": "A1 area-weighted E_P95 mm",
+  "paired_directions": [
+    "F0 minus M0",
+    "F0 minus T0",
+    "M0 minus T0"
+  ],
+  "secondary_metrics": [
+    "J_P95",
+    "E/J Cover@0.5/1/2mm",
+    "CD-L1: half sum of bidirectional unsquared Euclidean means",
+    "Pred-to-A2 P95 and >20mm outlier fraction",
+    "centroid offset, radius ratio, coarse/dense summaries"
+  ],
+  "aggregation": "Five defects/source equally, then21sources/fold equally; folds separately and pooled descriptive summaries; rows not independent patients",
+  "geometry_labels": {
+    "placement_tail": "centroid>20mm",
+    "compact_distribution": "radius_ratio<0.9",
+    "severe_geometry": "E_P95>20mm OR J_Cover2mm==0"
+  },
+  "reporting": "Keep all cases and defect types including frontoorbital; new/rescued/shared severe cases; no outcome-driven exclusion",
+  "references": "Frozen A1/A2/B bank and GT8192, D-only inverse normalization to world mm",
+  "coarse_availability": "F0 all210 actual Q; T0/M0 each12 actual Q across C/D. No complete paired tensor claim.",
+  "bootstrap": 0,
+  "p_values": false,
+  "formal_gate_execution": false,
+  "ICP": false,
+  "GT_alignment": false,
+  "postfilter": false,
+  "limits": {
+    "wall_seconds": 18000,
+    "RSS_bytes": 8589934592,
+    "output_bytes": 2147483648,
+    "threads": 2
+  },
+  "budget_reason": "Same1050-row scope as inherited three-arm scorer; unchanged limits",
+  "prohibited": [
+    "Scoring before implementation/CPU/P3 and separate hash authorization",
+    "New inference/checkpoint/GPU/training/BNCal",
+    "Changes to metrics/reference/threshold/cases/sampling/frame",
+    "Oracle alignment/parameter search/bootstrap/formal gate",
+    "Backup extraction/deletion/writes"
+  ]
+}

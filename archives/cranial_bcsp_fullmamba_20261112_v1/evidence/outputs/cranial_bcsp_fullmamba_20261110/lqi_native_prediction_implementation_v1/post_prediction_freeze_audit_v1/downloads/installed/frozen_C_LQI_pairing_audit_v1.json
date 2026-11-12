@@ -1,0 +1,46 @@
+{
+  "status": "FORMAL_LQI_FOLDC_F0_PAIRING_AUDIT_PASS",
+  "checks": {
+    "baseline audit and all42 LQI checks pass": true,
+    "entire persistent initialized model state exact F0 match": true,
+    "identical original bytes order_plan.json": true,
+    "identical original bytes optimizer_actual_defaults.json": true,
+    "identical original bytes optimizer_parameter_groups.json": true,
+    "identical original bytes exposure.json": true,
+    "sameQC data point counts seed loss static plan": true,
+    "all3900 actual batch source LR BN clipping and committed step fields equal": true,
+    "same actual parameter grouping and total39903169": true,
+    "same full counts no evaluation BNCal resume": true,
+    "LQI sequence and trace semantics explicit": true,
+    "exact3900 LQI geometry rows verified": true
+  },
+  "checks_passed": 12,
+  "LQI_audit_SHA256": "17a45cb85282051a4448e31d8e9fe38b8d291c836c52cd7cf3e87320d7864291",
+  "F0_audit_SHA256": "d2e98602b245596268eb288ee5adcfb85d4f95975e7463a3e7c280563299c958",
+  "checkpoint": {
+    "role": 0,
+    "name": "ckpt-last.pth",
+    "bytes": 478810419,
+    "sha256": "d8d819ffb9ed1f931c60f0ee96e9ae9c4093d61c73c2152a52f13b8cd95a0ddf",
+    "fingerprint": [
+      2097383,
+      27822046480,
+      478810419,
+      1794385364000000000,
+      1794385364000000000,
+      33152
+    ]
+  },
+  "same_initialization": true,
+  "same_all3900_actual_batches": true,
+  "same_exposure_counts": true,
+  "scientific_performance": "NOT_EVALUATED",
+  "server_writes": 0,
+  "new_forward": 0,
+  "checkpoint_deserialized": false,
+  "limitations": [
+    "Full persistent state hash equality at initialization does not imply bitwise-identical stochastic training gradients.",
+    "Geometry moments were checked for finiteness, shape, steps, cases and coordinate frame; dense tensors were not reconstructed or recomputed.",
+    "Same initialization/order/source is a matched comparison, not proof of training determinism."
+  ]
+}

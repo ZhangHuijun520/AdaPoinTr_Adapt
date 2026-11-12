@@ -1,0 +1,82 @@
+{
+  "schema": "bcsp-lqi-F0-two-arm-local-scoring-protocol-v1",
+  "status": "FROZEN_SCOPE_AWAITING_IMPLEMENTATION_NOT_EXECUTION_REQUEST",
+  "arms": [
+    "F0",
+    "LQI"
+  ],
+  "folds": [
+    "C",
+    "D"
+  ],
+  "counts": {
+    "unique_cases": 210,
+    "sources": 42,
+    "model_rows": 420,
+    "shared_control_rows": 420,
+    "case_score_rows": 840,
+    "source_score_rows": 168
+  },
+  "primary_metric": "A1 area-weighted E_P95 mm",
+  "paired_directions": [
+    "LQI minus F0"
+  ],
+  "secondary_metrics": [
+    "J_P95",
+    "E/J Cover@0.5/1/2mm",
+    "CD-L1: half sum of bidirectional unsquared Euclidean means",
+    "Pred-to-A2 P95 and >20mm outlier fraction",
+    "centroid offset, radius ratio, coarse/dense summaries"
+  ],
+  "aggregation": "Five defects/source equally, then21sources/fold equally; folds separately and pooled descriptive summaries; rows not independent patients",
+  "geometry_labels": {
+    "placement_tail": "centroid>20mm",
+    "compact_distribution": "radius_ratio<0.9",
+    "severe_geometry": "E_P95>20mm OR J_Cover2mm==0"
+  },
+  "reporting": "Keep all cases and defect types including frontoorbital; new/rescued/shared severe cases; no outcome-driven exclusion",
+  "references": "Frozen A1/A2/B bank and GT8192, D-only inverse normalization to world mm",
+  "coarse_availability": "All420 model/case predictions contain actual coarse[256,3] and dense[8192,3]",
+  "bootstrap": 0,
+  "p_values": false,
+  "formal_gate_execution": false,
+  "ICP": false,
+  "GT_alignment": false,
+  "postfilter": false,
+  "limits": {
+    "wall_seconds": 18000,
+    "RSS_bytes": 8589934592,
+    "output_bytes": 2147483648,
+    "threads": 2
+  },
+  "budget_reason": "Inherited two-thread CPU upper budget retained, no GPU;840case rows instead of1050; no additional cases/metrics.",
+  "prohibited": [
+    "Scoring before implementation/CPU/P3 and separate hash authorization",
+    "New inference/checkpoint/GPU/training/BNCal",
+    "Changes to metrics/reference/threshold/cases/sampling/frame",
+    "Oracle alignment/parameter search/bootstrap/formal gate",
+    "Backup extraction/deletion/writes"
+  ],
+  "inherited_protocol": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_scoring_implementation_v1\\frozen_scoring_protocol_v1.json",
+    "bytes": 2115,
+    "sha256": "37babc5b4faaa24a6609c248cc1856ef84c1a102c437b76d6af7c5a479b4b965"
+  },
+  "metric": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+    "bytes": 6784,
+    "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+  },
+  "score_index": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_F0_scoring_preparation_v1\\LQI_F0_score_case_index_candidate_v1.json",
+    "bytes": 357718,
+    "sha256": "cb8a182bad9d47d49c308ff36ff8251876a8bc577625e1f15c282f6ff78f87af"
+  },
+  "scientific_constraints": [
+    "No scoring until dedicated entry/artificial CPU contracts/P3 and separate complete request SHA256 execution authorization",
+    "Same210 opened cases, same frame/reference/metrics/thresholds, no case exclusion or refitting",
+    "Compare native frozen predictions only; no ICP/Oracle/TTA/postfilter",
+    "Source-equal paired summaries, five defects per source; C/D separately then descriptive pooled results",
+    "Keep all severe/regression cases; no bootstrap/p-values/formal gate in this scope"
+  ]
+}

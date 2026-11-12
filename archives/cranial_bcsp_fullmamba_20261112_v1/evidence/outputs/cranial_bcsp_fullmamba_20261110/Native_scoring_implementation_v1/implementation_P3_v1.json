@@ -1,0 +1,83 @@
+{
+  "status": "LOCAL_F0_T0_M0_SCORING_P3_PASS",
+  "date": "2026-11-11",
+  "scorer": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_scoring_implementation_v1\\bcsp_f0_T0_M0_three_arm_score_v1.py",
+    "bytes": 29011,
+    "sha256": "53632c7cc0b77010ad35f1e0ffa1836185634970001d49dcb4308c01ce7f0086"
+  },
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_scoring_implementation_v1\\test_f0_three_arm_score_cpu_v1.py",
+    "bytes": 17783,
+    "sha256": "a2fd57c948cfe932ea5be57f709f8e43cc8b4f04dc0843041505f50810935c9f"
+  },
+  "CPU_result": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_scoring_implementation_v1\\artificial_cpu_batch_v1\\result_v1.json",
+    "bytes": 3667,
+    "sha256": "ea4bec96cd3bc59815689975d06d1f50509bf972d97052db319c1b4409f8e1a4"
+  },
+  "CPU_tests": 42,
+  "static_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_scoring_implementation_v1\\static_review_v1.json",
+    "bytes": 641,
+    "sha256": "d63b537b0c30c294c0fb5530c769d2aff0d1165365a19ac4a2f79cca0357849c"
+  },
+  "parent": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p2_20261106\\H2_scoring_implementation_v1\\bcsp_p2_h2_M0_three_arm_score_v1.py",
+    "bytes": 28932,
+    "sha256": "7c60d46e99a29d159dce9b66e435cfc1a616b1ef37a7fa78908d59f45a5a7ef2"
+  },
+  "metric": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+    "bytes": 6784,
+    "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+  },
+  "unchanged_AST_functions": [
+    "load_prediction_arrays",
+    "load_prediction",
+    "select_metrics",
+    "position_shape",
+    "risk_labels",
+    "stage_geometry",
+    "aggregate_source",
+    "describe_pairs",
+    "paired_summary",
+    "case_differences",
+    "defect_summary",
+    "csv_rows",
+    "risk_transitions"
+  ],
+  "checks": {
+    "final_scorer_test_bytes_match_CPU_static": true,
+    "actual_frozen_index_reference_metadata_validated": true,
+    "three_archive_loaders_include_T0_M0_F0": true,
+    "F0_exact246_cache_trace_members_not_scored": true,
+    "all630_prediction_member_bindings_before_scoring": true,
+    "strict_F0_all_Q_and_baseline_optional_Q": true,
+    "metric_risk_source_and_pair_AST_unchanged": true,
+    "score_case_only_H2_specific_branch_removed": true,
+    "exact1050_rows420_shared_controls210_source_groups": true,
+    "correct_F0_M0_T0_pair_directions": true,
+    "new_and_rescued_risks_not_netted_away": true,
+    "undefined_pairs_retained_no_case_drop": true,
+    "source_equal_and_all_five_defects_kept": true,
+    "actual_authorize_and_negative_contracts_tested": true,
+    "fail_firstcase_no_false_completion": true,
+    "backup_no_extraction_or_write_in_entry": true,
+    "no_Torch_GPU_network_process_or_training_imports": true,
+    "CPU_metric_source_unchanged": true
+  },
+  "real_score_rows": 0,
+  "synthetic_actual_metric_rows": 15,
+  "synthetic_orchestrated_rows": 1050,
+  "server_operations": 0,
+  "GPU_calls": 0,
+  "limitations": [
+    "1050-row orchestration uses two artificial-case templates; actual metric evaluated on15 artificial model/control rows",
+    "Fake diagnostic cache payloads intentionally never decoded/scored; real caches already formally frozen",
+    "Metadata contracts used real source indices only; no real prediction/GT arrays read",
+    "Actual full process readiness and real1050-case scores await separate exact-hash execution authorization",
+    "Actual baseline Q only12 cases/arm, preserve missing values and restrict tensor-paired claims",
+    "Source-equal exploratory single-seed comparisons, no bootstrap/pvalue/gate"
+  ]
+}

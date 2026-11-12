@@ -1,0 +1,92 @@
+{
+  "status": "LOCAL_LQI_F0_SCORING_P3_PASS",
+  "date": "2026-11-11",
+  "scorer": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_F0_scoring_implementation_v1\\bcsp_lqi_F0_two_arm_score_v1.py",
+    "bytes": 30380,
+    "sha256": "e7b1ac9b151ef79d12cadb1a1f5e6a928ffc41ef2889094a0fffa3b184df4b43"
+  },
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_F0_scoring_implementation_v1\\test_lqi_F0_score_cpu_v2.py",
+    "bytes": 20863,
+    "sha256": "53a69f5ca0bfbf2db5bab1618a6a544821c701bcc3ea8badd23cb6aa376bdda9"
+  },
+  "CPU_result": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_F0_scoring_implementation_v1\\artificial_cpu_batch_v2\\result_v1.json",
+    "bytes": 3908,
+    "sha256": "90874de226b9155ee0a87c9cac7d3299991ddef516a650c63bf4acfb1ad9fca2"
+  },
+  "CPU_tests": 50,
+  "static_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_F0_scoring_implementation_v1\\static_review_v2.json",
+    "bytes": 1199,
+    "sha256": "7159ddaf07888ae6466599ce25aa7d147c6ddc4b5871799ba36c5eb04f86d27b"
+  },
+  "parent": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_scoring_implementation_v1\\bcsp_f0_T0_M0_three_arm_score_v1.py",
+    "bytes": 29011,
+    "sha256": "53632c7cc0b77010ad35f1e0ffa1836185634970001d49dcb4308c01ce7f0086"
+  },
+  "metric": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+    "bytes": 6784,
+    "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+  },
+  "unchanged_AST_functions": [
+    "load_prediction_arrays",
+    "load_prediction",
+    "select_metrics",
+    "position_shape",
+    "risk_labels",
+    "stage_geometry",
+    "score_case",
+    "aggregate_source",
+    "describe_pairs",
+    "paired_summary",
+    "case_differences",
+    "defect_summary",
+    "csv_rows",
+    "risk_transitions"
+  ],
+  "changed_functions": [
+    "authorize",
+    "validate_index",
+    "validate_archive",
+    "run_scoring",
+    "main"
+  ],
+  "checks": {
+    "final_scorer_and_test_match_CPU_static": true,
+    "actual210_case_metadata420_prediction_bindings": true,
+    "full_authorize_and_wrong_pair_counts_denied": true,
+    "both246_F0_and216_LQI_archive_readers": true,
+    "zero_byte_exception_only_exact_LQI_cache_manifest": true,
+    "wrong_model_hash_checkpoint_and_RNG_denied": true,
+    "all420_dense_and_coarse_tensors_available": true,
+    "all_metric_risk_position_source_pair_functions_AST_unchanged": true,
+    "source_equal_840_case168_source_orchestration": true,
+    "LQI_minus_F0_direction_and_new_rescued_cases": true,
+    "undefined_pairs_kept_no_case_drop": true,
+    "strict_frozen630_F0_and_control_value_match_before_completion": true,
+    "baseline_drift_stops_without_false_completion": true,
+    "first_case_failure_stops_no_retry": true,
+    "backup_not_extracted_or_modified": true,
+    "no_Torch_GPU_network_model_training_imports": true,
+    "CPU_environment_and_metric_exact": true,
+    "failed_v1_fixture_retained_production_unchanged": true
+  },
+  "real_score_rows": 0,
+  "synthetic_actual_metric_rows": 12,
+  "synthetic_orchestrated_rows": 840,
+  "server_operations": 0,
+  "GPU_calls": 0,
+  "limitations": [
+    "840-row orchestration uses artificial-case templates; actual frozen metric evaluated on12 artificial model/control rows",
+    "Fake diagnostic cache payloads intentionally never decoded/scored; real caches already formally frozen",
+    "Metadata contracts used real source indices only; no real prediction/GT arrays read",
+    "First CPU batch stopped on obsolete fixture dictionary lookup; only test parameter corrected in v2; production scorer unchanged",
+    "Artificial full-row orchestration is not840 real metric computations; actual metric used only12 artificial rows",
+    "Native scientific accuracy awaits separately authorized real CPU scoring and post-scoring freeze audit",
+    "Only two folds and one seed; source equal descriptive analysis, no bootstrap/pvalue/formal gate"
+  ]
+}

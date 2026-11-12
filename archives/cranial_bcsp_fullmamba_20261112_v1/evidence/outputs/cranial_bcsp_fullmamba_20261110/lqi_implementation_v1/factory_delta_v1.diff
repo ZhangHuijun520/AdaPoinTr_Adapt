@@ -1,0 +1,20 @@
+--- frozen_F0_factory
++++ isolated_LQI_factory
+@@ -2,7 +2,7 @@
+ import torch
+ from torch import nn
+ import bcsp_p1_model_factory_v1 as parent
+-from bcsp_f0_decoder_v1 import F0Decoder, require
++from bcsp_lqi_decoder_v1 import LQIDecoder as F0Decoder, require
+ 
+ DECODER_SEED = 20261110
+ 
+@@ -48,7 +48,7 @@
+     base.decoder = decoder
+     require(outer_before == {n: parent.tensor_sha(t) for n,t in model.state_dict().items() if not n.startswith('base_model.decoder.')}, 'outside decoder changed')
+     inventory = no_attention_inventory(model)
+-    model.f0_evidence = dict(version='F0-P-v2-implementation-v1', artificial_fixture=artificial_fixture,
++    model.f0_evidence = dict(version='F0-LQI-implementation-v1', variant='F0-LQI-v1', conditional_sequence='query_aligned_local_memory_interleaving', trace_prefix_suffix_semantics='interleaved conditional query-position output', additional_learned_parameters=0, artificial_fixture=artificial_fixture,
+         parent=evidence, shared_decoder_tensors=len(old_common), decoder_seed=DECODER_SEED,
+         new_mamba_mixers=16, shared_coordinate_pe_parameters=1152, expected_decoder_native_calls=24,
+         expected_total_native_calls=36, inventory=inventory, common_initialization_preserved=True)

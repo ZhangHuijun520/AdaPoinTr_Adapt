@@ -1,0 +1,85 @@
+{
+  "status": "STATIC_LOCAL_INTERFACE_CONFIRMED_NOT_IMPLEMENTED",
+  "decoder_container": "base_model.decoder.blocks",
+  "decoder_blocks": "base_model.decoder.blocks.blocks",
+  "layers": 8,
+  "width": 384,
+  "FFN_hidden": 768,
+  "memory_length": 256,
+  "query_length": 256,
+  "memory_link": "Identity because encoder and decoder dimensions equal",
+  "query_input": "mlp_query(cat(global_feature[1024],Q[3]))",
+  "norm_mapping": {
+    "Ns": "norm1",
+    "Nq": "norm_q",
+    "Nv": "norm_v",
+    "Nf": "norm2"
+  },
+  "residual_mapping": {
+    "self": [
+      "drop_path1",
+      "ls1"
+    ],
+    "cross": [
+      "drop_path4",
+      "ls4"
+    ],
+    "FFN": [
+      "drop_path2",
+      "ls2"
+    ]
+  },
+  "norm_eps": 1e-06,
+  "LayerScale": "Identity from absent init_values/default None",
+  "DropPath": "Identity from absent drop_path_rate/default0",
+  "dropout": 0,
+  "first_layer_merge": {
+    "self": "self_attn_merge_map Linear768to384",
+    "cross": "cross_attn_merge_map Linear768to384"
+  },
+  "no_local_graph_in_layers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "SSM_policy": {
+    "d_model": 384,
+    "d_state": 16,
+    "d_conv": 4,
+    "expand": 2,
+    "use_fast_path": true,
+    "new_decoder_mixers": 16,
+    "new_decoder_native_calls": 24,
+    "total_with_encoder_calls": 36
+  },
+  "new_shared_decoder_PE": {
+    "type": "Linear(3,384,bias=False)",
+    "parameters": 1152,
+    "encoder_PE_untouched": true
+  },
+  "output_head": {
+    "reduce_map": "Linear(1411,384)",
+    "relative_shape": "B,256,32,3",
+    "dense": "Q.unsqueeze(-2)+relative then reshape B,8192,3"
+  },
+  "Q_consumers": [
+    "mlp_query coordinate concat",
+    "decoder q_pos, sort and newPE",
+    "local self/cross KNN",
+    "rebuild_feature concat",
+    "dense anchor addition",
+    "returned coarse CD and reporting"
+  ],
+  "instrumentation": "existing full instrumentation inference-only; training needs detached lightweight summaries",
+  "M0_factory_flag": "native_attention_retained only describes replacement evidence; M0 still has decoder attention",
+  "H2_config_used": "shared model subsection only; H2 enabled fields must not be inherited into F0",
+  "runtime_interface_not_yet_validated": true,
+  "forward_calls": 0,
+  "CPU_tests": 0,
+  "GPU": 0,
+  "server_calls": 0
+}

@@ -1,0 +1,73 @@
+{
+  "status": "FORMULA_INTERFACE_FROZEN_NOT_IMPLEMENTED",
+  "candidate": "F0-LQI-v1",
+  "document": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\docs\\cranial_bcsp_fullmamba_20261110\\F0_LQI_唯一公式与替换接口规格_zh_v1.md",
+    "bytes": 9657,
+    "sha256": "70ba5de31b296fc370749d7fb07c4461774ff1cba89801cb3374fd774730883b"
+  },
+  "parent_decoder": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\implementation_v1\\bcsp_f0_decoder_v1.py",
+    "bytes": 5628,
+    "sha256": "1f06524683e952e72c28c13f8cc7c3feb2102cd7092ade17b0509346e0407f5c"
+  },
+  "parent_block_forward_arguments": [
+    "self",
+    "x",
+    "memory",
+    "q_pos",
+    "m_pos",
+    "q_pe",
+    "m_pe",
+    "order_q",
+    "inverse_q",
+    "order_m",
+    "self_idx",
+    "cross_idx",
+    "trace"
+  ],
+  "formula": {
+    "k": 8,
+    "neighborhood": "cross_idx=knn(8,S,Q)",
+    "A": "mean_neighbors(norm_v(F_j)+PE(S_j))",
+    "B": "norm_q(x1_i)+PE(Q_i)",
+    "order": "existing stable recipient Q lexicographic order",
+    "sequence": "stack([gather(A,order_q),gather(B,order_q)],dim=2).reshape(B,512,384)",
+    "readout": "gather(c[:,1::2,:],inverse_q)",
+    "layer_scope": "all8 conditional branches",
+    "state_reset_between_pairs": false,
+    "conditional_direction": "causal_forward_only",
+    "new_parameters": 0,
+    "trace_compatibility_field": "prefix_suffix",
+    "trace_semantics": "interleaved conditional query-position output"
+  },
+  "proofs": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\post_diagnostic_freeze_audit_v1\\formal_post_diagnostic_freeze_audit_result_v1.json",
+      "bytes": 17160,
+      "sha256": "d5f7391a846101dbe86fba6b16a930d7348ce1a469d33a3e444af05145b21e28"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\post_diagnostic_freeze_audit_v1\\frozen_diagnostic_descriptive_values_v1.json",
+      "bytes": 20340,
+      "sha256": "bdec1c4556dc9681df3e5c7b87d27c86d1d80268573cc827cf23a11541ed53eb"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\minimal_implementation_v1\\bcsp_mamba_encoder_v1.py",
+      "bytes": 3546,
+      "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\deliverables\\cranial_bcsp_mamba_P1_20261106_v2\\payload\\parent_source_snapshot\\models\\Transformer_utils.py",
+      "bytes": 52026,
+      "sha256": "cd562e02755ffd46382cc539cdb361225b844b12e89df9d98741d37238a6bf5f"
+    }
+  ],
+  "implementation_authorized": false,
+  "tests_executed": 0,
+  "server_operations": 0,
+  "GPU_calls": 0,
+  "training_request_created": false,
+  "scientific_efficacy": "NOT_TESTED",
+  "single_interface_boundary": "F0Block.forward conditional sequence construction + output extraction; signatures and all surrounding paths unchanged"
+}

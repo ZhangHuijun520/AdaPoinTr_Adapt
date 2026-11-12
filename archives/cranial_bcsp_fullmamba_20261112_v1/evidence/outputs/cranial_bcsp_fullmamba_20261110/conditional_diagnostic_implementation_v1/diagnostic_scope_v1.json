@@ -1,0 +1,72 @@
+{
+  "status": "FROZEN_FOR_LOCAL_VALIDATION_NOT_EXECUTION",
+  "formal_plan": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\docs\\cranial_bcsp_fullmamba_20261110\\Cranial_BCSP_FullMamba_\u6b63\u5f0f\u5b9e\u9a8c\u8ba1\u5212\u4e66_zh_2026-11-10_v2.md",
+    "bytes": 27651,
+    "sha256": "7d69590ff52a3aa333299f85b9383d746048567849998aff3b6b27aabb7c8e75"
+  },
+  "selection": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_prediction_preparation_v1\\recipient_donor_registration_addendum_v1.json",
+    "bytes": 3378,
+    "sha256": "2c09e5bf53ae44ab66f14afc4a235d49c1d17a7d2ffa2899ad1ed53e7c6925cd"
+  },
+  "registration_timing": "RULE_PRETRAINING_LITERAL_IDS_PRE_NATIVE_NOT_PRETRAINING",
+  "conditions": [
+    "prefix_feature_null",
+    "prefix_donor",
+    "local_graph_donor"
+  ],
+  "null_site": "RAW_F_BEFORE_NORM_V_KEEP_PE_AND_LN_BETA",
+  "fixed_recipient": [
+    "z",
+    "Q",
+    "X"
+  ],
+  "prefix_donor": "paired F/S plus coordinate PE/order only; recipient local F/S unchanged",
+  "local_graph_donor": "recipient prefix; donor norm_v(F), S, recomputed KNN(8,Sdon,Qrec)",
+  "decoder_calls": 30,
+  "head_calls": 30,
+  "native_ssm_calls": 720,
+  "encoder_calls": 0,
+  "coarse_calls": 0,
+  "Native_replay": 0,
+  "GT_access": 0,
+  "backward": 0,
+  "optimizer_steps": 0,
+  "query_groups": [
+    [
+      0,
+      86
+    ],
+    [
+      86,
+      171
+    ],
+    [
+      171,
+      256
+    ]
+  ],
+  "query_order": "frozen recipient Q lexicographic ordering",
+  "head": "exact original increase_dim/global max -> reduce_map -> SimpleRebuildFC (includes own max) -> fixed Q addition; cached z is NOT head global feature",
+  "comparison": {
+    "atol": 1e-06,
+    "rtol": 1e-05,
+    "relative_denominator_floor": 1e-12,
+    "response_is_not_performance": true,
+    "current_noise_floor_measured": false
+  },
+  "interpretation": "OOD offline condition sensitivity only. No response is not a uselessness proof; response is not correct conditioning. No donor/recipient reselection, parameter scan, training or structural change.",
+  "output": "30 dense+fixed Q NPZ;30 full40-array traces;1920 layer/group response rows;30 dense responses;30 isolation proofs;2 state/RNG proofs;exact manifest/archive",
+  "native_accuracy_context": "use already frozen Native scoring summaries only, no OOD performance recomputation",
+  "limits": {
+    "wall_seconds": 7200,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "fail_stop": "one claim; first exception/resource/isolation failure stops; no retry/resume",
+  "formal_freeze_audit_required_after_execution": true
+}

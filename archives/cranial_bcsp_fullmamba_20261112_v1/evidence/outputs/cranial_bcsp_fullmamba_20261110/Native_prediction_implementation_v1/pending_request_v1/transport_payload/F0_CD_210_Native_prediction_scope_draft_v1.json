@@ -1,0 +1,133 @@
+{
+  "schema": "bcsp-f0-CD-native-prediction-scope-draft-v1",
+  "status": "PENDING_SCOPE_REVIEW_ENTRY_ADAPTATION_REQUIRED",
+  "prepared_date": "2026-11-11",
+  "models": [
+    "C_F0",
+    "D_F0"
+  ],
+  "case_count_per_fold": 105,
+  "dev_sources_per_fold": 21,
+  "defect_types": [
+    "bilateral",
+    "frontoorbital",
+    "parietotemporal",
+    "random_1",
+    "random_2"
+  ],
+  "forwards": 210,
+  "warmup": 0,
+  "BNCal": 0,
+  "optimizer_steps": 0,
+  "backward": 0,
+  "loss_calls": 0,
+  "TTA": 0,
+  "mode": "eval/inference_mode",
+  "FP32": true,
+  "TF32": false,
+  "inputs": {
+    "key": "partial",
+    "n_points": 8192,
+    "GT_tensor_read": false,
+    "target_hash_metadata_only": true
+  },
+  "outputs": {
+    "prediction_shape": [
+      8192,
+      3
+    ],
+    "coarse_shape": [
+      256,
+      3
+    ],
+    "dtype": "float32",
+    "save_coarse_for_all210": true,
+    "frame": "D-only normalized, unchanged Native; world=normalized*scale+center",
+    "GT_alignment": false,
+    "post_filter": false,
+    "point_count_change": false
+  },
+  "same_forward_summaries": [
+    "centroid",
+    "radius_gyration",
+    "bbox_min",
+    "bbox_max",
+    "finite_count for both coarse/dense"
+  ],
+  "context": {
+    "unique_fold_case_keys": 20,
+    "fields": {
+      "F": "backbone.encoder_memory [1,256,384]",
+      "S": "backbone.encoder_coordinates [1,256,3]",
+      "z": "backbone.global_feature [1,1024], PRE-query backbone z",
+      "Q": "backbone.coarse / outer.coarse_point_cloud [1,256,3]",
+      "X": "backbone.query_pre_decoder [1,256,384]"
+    },
+    "only_in_existing_210_forwards": true,
+    "include_normalization_metadata": true,
+    "do_not_confuse_z_with": "outer.rebuild_global_feature, recomputed from decoder output for suffix replay"
+  },
+  "traces": {
+    "recipient_cases": 10,
+    "layers": 8,
+    "per_layer_fields": [
+      "input",
+      "after_self",
+      "prefix_suffix",
+      "after_cross",
+      "output"
+    ],
+    "prefix_suffix": "restored query slot order, before local cross-graph merge",
+    "donor_full_trace_not_saved": true,
+    "capture": "enable existing eval instrumentation on cache cases; pop then select fields; reset flags; no extra forward"
+  },
+  "state_RNG": {
+    "model_parameters_and_BN": "fingerprints before/after each105case run equal",
+    "RNG": "CPU/CUDA hashes; Python repr and NumPy MT19937 serialization or explicit equivalent fingerprints, before/after equal",
+    "flags_and_cache": "instrumentation reset/empty after every selected case, no cross-case inference cache"
+  },
+  "separate_mechanism": {
+    "executed_in_this_scope": false,
+    "additional_decoder_only_calls_this_scope": 0,
+    "future_budget": 30,
+    "new_encoder_or_coarse_calls_future": 0,
+    "requires_separate_authorization": true,
+    "never_mix_OOD_scores_into_Native": true
+  },
+  "limits": {
+    "wall_seconds": 7200,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "input_index": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_prediction_preparation_v1\\F0_CD_Native_input_index_candidate_v1.json",
+    "bytes": 223645,
+    "sha256": "874f0c7b8e0a4dfc6d1c98682ba5302080b9e6853d69703c1035c708f1395e84"
+  },
+  "selection_addendum": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_prediction_preparation_v1\\recipient_donor_registration_addendum_v1.json",
+    "bytes": 3378,
+    "sha256": "2c09e5bf53ae44ab66f14afc4a235d49c1d17a7d2ffa2899ad1ed53e7c6925cd"
+  },
+  "no_repeat_GPU_preflight": true,
+  "no_new_training": true,
+  "no_threshold_or_sampling_scan": true,
+  "after_run": "formal read-only prediction freeze audit -> archive/download/local verification -> separate CPU scoring preparation",
+  "not_created": [
+    "production evaluator implementation",
+    "CPU test/P3 for evaluator",
+    "execution request",
+    "authorization",
+    "runtime",
+    "launcher",
+    "tmux"
+  ],
+  "blocks": [
+    "P1/H2 evaluators are model-label/factory/evidence incompatible with F0",
+    "requires all-case coarse saving and same-forward bounded trace/context capture",
+    "literal ID registration timing deviation must be confirmed honestly"
+  ]
+}

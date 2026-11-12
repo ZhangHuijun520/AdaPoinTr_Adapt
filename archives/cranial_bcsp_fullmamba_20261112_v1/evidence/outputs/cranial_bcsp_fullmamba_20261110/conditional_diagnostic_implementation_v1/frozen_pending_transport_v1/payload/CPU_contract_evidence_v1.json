@@ -1,0 +1,98 @@
+{
+  "tensor_batch": {
+    "status": "ARTIFICIAL_CPU_CONTRACT_PASS",
+    "count": 34,
+    "checks": [
+      "01 exact mother head including nested pooling",
+      "02 identical donor is Native on artificial full decoder/head",
+      "03 prefix_feature_null exact1 decoder1 head24SSM",
+      "04 prefix_feature_null 64 layer/group responses",
+      "03 prefix_donor exact1 decoder1 head24SSM",
+      "04 prefix_donor 64 layer/group responses",
+      "03 local_graph_donor exact1 decoder1 head24SSM",
+      "04 local_graph_donor 64 layer/group responses",
+      "05 local donor first prefix unchanged",
+      "06 prefix donor affects conditional path",
+      "07 null retains PE/LN site and recipient graph",
+      "08 hooks removed after success",
+      "09 cached z never substituted into rebuild pooling",
+      "10 recipient tensors unchanged",
+      "11 unknown condition denied",
+      "12 malformed cached Q denied",
+      "13 donor KNN recomputed with donor S recipient Q",
+      "14 injected failure propagates no retry",
+      "15 hooks removed on failure",
+      "16 zero response is valid diagnostic",
+      "17 saved Native isolation mismatch stops",
+      "18 all parameters and BN buffers unchanged",
+      "19 CPU RNG unchanged by suffix interventions",
+      "20 training mode denied",
+      "21 actual frozen ten-pair metadata",
+      "22 donor reselection denied",
+      "23 wrong weights denied",
+      "24 full authorize actual frozen index path",
+      "25 explicit authorization required",
+      "26 runtime one way binding enforced",
+      "27 extra suffix denied",
+      "28 encoder replay denied",
+      "29 changed null site denied",
+      "30 real GT access denied"
+    ],
+    "torch": "2.5.1",
+    "CUDA_used": false,
+    "real_arrays_read": false,
+    "production_sources": [
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\bcsp_f0_condition_adapter_v1.py",
+        "bytes": 8196,
+        "sha256": "6137b686b1d2b3499d319b1cbabe39eeb9819e49c37fb9bedc9c9dcc0210e280"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\bcsp_f0_condition_diagnostic_v1.py",
+        "bytes": 14750,
+        "sha256": "9962495984174daf5dfaa9219216dbc2f5d716bf4c983d9a00746b9067ebb416"
+      }
+    ],
+    "limitation": "Actual frozen F0 decoder and mother FC head, artificial causal mixer/contexts; not CUDA certification or scientific results."
+  },
+  "entry_batch": {
+    "status": "ARTIFICIAL_ENTRY_INTEGRATION_PASS",
+    "count": 7,
+    "checks": [
+      "01 actual entry loop exact30 suffix calls",
+      "02 exact30 predictions30 traces",
+      "03 exactly30 responses1920 stage/group rows",
+      "04 two eval state/RNG invariants",
+      "05 exact30 claimed/complete records",
+      "06 injected first call failure stops without retry",
+      "07 actual fifth-source load and exact policy"
+    ],
+    "real_data": false,
+    "CUDA": false,
+    "production_sources": [
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\bcsp_f0_condition_adapter_v1.py",
+        "bytes": 8196,
+        "sha256": "6137b686b1d2b3499d319b1cbabe39eeb9819e49c37fb9bedc9c9dcc0210e280"
+      },
+      {
+        "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\bcsp_f0_condition_diagnostic_v1.py",
+        "bytes": 14750,
+        "sha256": "9962495984174daf5dfaa9219216dbc2f5d716bf4c983d9a00746b9067ebb416"
+      }
+    ],
+    "limitation": "Entry loop uses lightweight artificial suffix surrogate. Actual F0 tensor semantics are separately covered by the frozen34-check batch."
+  },
+  "original_result_records": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\artificial_cpu_batch_v1\\result.json",
+      "bytes": 2514,
+      "sha256": "2c0872bcf31a23801ca296a4ff56dcbdfa6f3a0ca69cdc670d9a2115055e254b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\artificial_entry_integration_v1\\result.json",
+      "bytes": 1278,
+      "sha256": "51fa64d8a8af030ef196bec1e9cc929f59e4099faaf98b0a964dac299948ffca"
+    }
+  ]
+}

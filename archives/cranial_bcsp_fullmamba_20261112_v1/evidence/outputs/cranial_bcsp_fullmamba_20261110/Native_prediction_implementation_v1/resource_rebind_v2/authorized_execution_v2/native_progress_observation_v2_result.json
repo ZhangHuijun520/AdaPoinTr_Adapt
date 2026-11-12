@@ -1,0 +1,87 @@
+{
+  "hostname": "shu-common-25721452-notebook-zv9bqd-0",
+  "tmux_present": true,
+  "files": [
+    "context",
+    "traces",
+    "forward_attempts.jsonl",
+    "launch.log",
+    "predictions",
+    "tmp",
+    "worker.pid",
+    "resources.jsonl",
+    "inference_manifest.jsonl",
+    "geometry_summary.jsonl",
+    "cache_manifest.jsonl"
+  ],
+  "predictions": 48,
+  "contexts": 10,
+  "traces": 5,
+  "worker.pid": "592",
+  "launch.log": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\n2026-11-11 03:56:35,536 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/utils/determinism.py:73: UserWarning: Deterministic mode: upgrade to Triton >= 3.4.0 for cached autotuning.\n  warnings.warn(msg)\n",
+  "forward_attempts.jsonl_count": 48,
+  "forward_attempts.jsonl_last": {
+    "forward_index": 48,
+    "run": "C_F0",
+    "case_id": "train__042__parietotemporal",
+    "status": "CLAIMED_BEFORE_FORWARD"
+  },
+  "inference_manifest.jsonl_count": 48,
+  "inference_manifest.jsonl_last": {
+    "run": "C_F0",
+    "variant": "F0-P-v2",
+    "case_id": "train__042__parietotemporal",
+    "source_id": "train:042",
+    "fold": "C",
+    "n_input": 8192,
+    "n_output": 8192,
+    "input_sha256": "c90722fb42d2362bd6efa8eb92ed56d7a42a95121230f3a84060eca1a0e13768",
+    "checkpoint_sha256": "4fd73dd8c265781225ba63a712a5589b175c94f0ea0878a69ebf466265ebebe9",
+    "normalization": {
+      "center": [
+        101.4,
+        95.00000000000001,
+        57.2
+      ],
+      "scale": 125.32038940252302
+    },
+    "prediction": {
+      "name": "predictions/C_F0__train__042__parietotemporal.npz",
+      "bytes": 91420,
+      "sha256": "1807479473d3e7fc95b6b7ccad3632923844beb718f6dc8c123f40b56089547e"
+    },
+    "forward_index": 48,
+    "operational_seconds": 0.13345728069543839
+  },
+  "resources.jsonl_count": 96,
+  "resources.jsonl_last": {
+    "phase": "before_forward",
+    "forwards": 47,
+    "values": {
+      "RSS_bytes": 1309532160,
+      "output_bytes": 85010747,
+      "device_MiB": 725,
+      "peak_allocated": 241075712,
+      "peak_reserved": 289406976,
+      "elapsed_seconds": 69.52584967762232,
+      "free_disk_bytes": 12673089536
+    },
+    "checks": {
+      "RSS": true,
+      "output": true,
+      "device": true,
+      "allocated": true,
+      "reserved": true,
+      "wall": true,
+      "disk": true
+    },
+    "failed_checks": [],
+    "SMI_PIDs": [
+      "592"
+    ],
+    "container_PID": 592,
+    "PID_query_error": null,
+    "PID_policy": "DIAGNOSTIC_ONLY_NO_OWNERSHIP_GUARANTEE"
+  },
+  "worker_live": true
+}

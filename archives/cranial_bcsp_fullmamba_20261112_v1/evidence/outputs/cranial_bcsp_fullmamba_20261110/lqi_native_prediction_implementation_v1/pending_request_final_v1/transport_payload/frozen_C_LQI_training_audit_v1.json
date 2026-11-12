@@ -1,0 +1,595 @@
+{
+  "status": "FORMAL_LQI_FOLDC_POST_TRAINING_FREEZE_AUDIT_PASS",
+  "date": "2026-11-11",
+  "request_sha256": "b616a762783fd4f43af4467c6c47e41e73aa40a24fac223317e710ee7372825e",
+  "checks": {
+    "current_hostname_UID": true,
+    "worker_and_tmux_not_live": true,
+    "33files_stable_hash_content_fingerprints_no_atime": true,
+    "exact_tmp_control_directories_only": true,
+    "bounded2GiB_inventory_no_checkpoint_deserialize": true,
+    "32noncheckpoint_files_download_hash_match": true,
+    "checkpoint_not_downloaded": true,
+    "exact16output_files_no_failure": true,
+    "exit_code0": true,
+    "exact_authorized_request": true,
+    "11installed_files_frozen_mapping": true,
+    "exact6controls": true,
+    "explicit_authorization_no_reverse_binding": true,
+    "one_way_runtime": true,
+    "single_attempt_claim": true,
+    "exact_launcher_rendered_bytes": true,
+    "70fixed_nonpayload_assets_rehashed": true,
+    "completion_3900updates100traversals31200exposures": true,
+    "checkpoint_fresh_SHA_matches_completion": true,
+    "BNCal_evaluation_resume_false": true,
+    "12payload_manifest_records_exact": true,
+    "same_raw_frozen_FoldC_order": true,
+    "canonical_order_initialization_completion": true,
+    "frozen_manifest_fold_metadata": true,
+    "315cases63sources21dev_disjoint": true,
+    "3900metrics_and3900geometry": true,
+    "all_actual_batches_sources_LR_BN_clip_loss_verified": true,
+    "all_geometry_rows_finite_shapes_step_case_aligned": true,
+    "exposure_recomputed_not_completion_only": true,
+    "31200exposures300drops100percase": true,
+    "315preexecution_train_hashes_bound_no_dev_payload": true,
+    "exact_factory_initialization_matches_native_admission": true,
+    "GPU_reference_events_hash_authentic": true,
+    "complete_initial_state_fingerprint_matches_GPU_admission": true,
+    "F0_stage_C_seed0_numeric_disclosure": true,
+    "411_unique_parameter_records": true,
+    "actual_parameter_counts_and_effective_weight_decay": true,
+    "22Alog_22D_no_decay": true,
+    "AdamW_defaults_without_confusing_default_decay": true,
+    "3902resource_record_count": true,
+    "all3902_resource_values_phases_recomputed": true,
+    "final_output_bytes_within_budget": true
+  },
+  "checks_passed": 42,
+  "checkpoint": {
+    "role": 0,
+    "name": "ckpt-last.pth",
+    "bytes": 478810419,
+    "sha256": "d8d819ffb9ed1f931c60f0ee96e9ae9c4093d61c73c2152a52f13b8cd95a0ddf",
+    "fingerprint": [
+      2097383,
+      27822046480,
+      478810419,
+      1794385364000000000,
+      1794385364000000000,
+      33152
+    ]
+  },
+  "initialization": {
+    "parameter_sha256": "2c7d4e3094a98834ed7e2627c610b8015d183146e10270db1a2dccc56c751d8e",
+    "persistent_state_sha256": "beabbeb8c06c387d6ac54c3ec1825fbe7cd6bd529428c4f79299a5525cef301b",
+    "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+    "seed": 0
+  },
+  "initialization_matches_GPU_admission": true,
+  "actual_order_canonical_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+  "counts": {
+    "updates": 3900,
+    "traversals": 100,
+    "case_exposures": 31200,
+    "drop_events": 300,
+    "metric_records": 3900,
+    "geometry_records": 3900,
+    "resource_records": 3902
+  },
+  "parameters": {
+    "total": 39903169,
+    "encoder": 9929472,
+    "decoder": 21356160,
+    "other": 8617537
+  },
+  "peaks": {
+    "RSS": 1670103040,
+    "peak_allocated": 13886325248,
+    "peak_reserved": 14772338688,
+    "device_MiB": 14575,
+    "elapsed_seconds": 1666.8381420001388
+  },
+  "completion": {
+    "stage": "BCSP_INPUT_DENSITY_V1",
+    "optimizer_updates": 3900,
+    "traversals": 100,
+    "case_exposures": 31200,
+    "counts": {
+      "forward": 3900,
+      "backward": 3900,
+      "clip": 3900,
+      "step": 3900,
+      "lr_scheduler": 100,
+      "bn_scheduler": 100
+    },
+    "checkpoint_sha256": "d8d819ffb9ed1f931c60f0ee96e9ae9c4093d61c73c2152a52f13b8cd95a0ddf",
+    "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+    "elapsed_seconds": 1662.3240160681307,
+    "bncal_executed": false,
+    "evaluation_executed": false,
+    "resume": false
+  },
+  "artifacts": [
+    {
+      "role": 0,
+      "name": "LQI_geometry.jsonl",
+      "bytes": 15239391,
+      "sha256": "8a0e4c3aa9f153db1985b879bb0d7a83dd2aa89257ba43f95987e1b9fa17dbca",
+      "fingerprint": [
+        2097383,
+        17384422663,
+        15239391,
+        1794385363000000000,
+        1794385363000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "ckpt-last.pth",
+      "bytes": 478810419,
+      "sha256": "d8d819ffb9ed1f931c60f0ee96e9ae9c4093d61c73c2152a52f13b8cd95a0ddf",
+      "fingerprint": [
+        2097383,
+        27822046480,
+        478810419,
+        1794385364000000000,
+        1794385364000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "completion.json",
+      "bytes": 559,
+      "sha256": "f8bfd5ba10ab8c3332189a04d963886dd5c32d3ccecd609e98dbcf5711678fe5",
+      "fingerprint": [
+        2097383,
+        27822046736,
+        559,
+        1794385364000000000,
+        1794385364000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "exit_code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "fingerprint": [
+        2097383,
+        17384432903,
+        2,
+        1794385365000000000,
+        1794385365000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "exposure.json",
+      "bytes": 19465,
+      "sha256": "1203296e9aed5f177fe51b2278703828f3c14ed7d10a7f379ea39208e52dfb42",
+      "fingerprint": [
+        2097383,
+        17384432647,
+        19465,
+        1794385363000000000,
+        1794385363000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "initialization.json",
+      "bytes": 289,
+      "sha256": "d699537dfe3d8cabfcbfacdfd1bb4a07d5c555cb1a5c0f6b731acb5139684aa6",
+      "fingerprint": [
+        2097383,
+        17384421895,
+        289,
+        1794383702000000000,
+        1794383702000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "launch.log",
+      "bytes": 1442,
+      "sha256": "5726cb9d8d0a5d26cc0b1808d43fb70afd9ebe3bbfd6c57e5741e3fefbc86da8",
+      "fingerprint": [
+        2097383,
+        27822027280,
+        1442,
+        1794385365000000000,
+        1794385365000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "metrics.jsonl",
+      "bytes": 2821661,
+      "sha256": "9fe3469abdd2abb703dcd8841d0796f719e0d8041fd42da8302695dc198ba291",
+      "fingerprint": [
+        2097383,
+        27822028560,
+        2821661,
+        1794385363000000000,
+        1794385363000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "model_construction.json",
+      "bytes": 85551,
+      "sha256": "f3e778046f94a059f97846c0ab1426df5be90c68cb267f841b0c6fc447ec19af",
+      "fingerprint": [
+        2097383,
+        27822028816,
+        85551,
+        1794383703000000000,
+        1794383703000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "optimizer_actual_defaults.json",
+      "bytes": 223,
+      "sha256": "9d63cc1e4fb32d46c348688146a9e8b10356a7bc3e8c1eabb9c483bac7c6e592",
+      "fingerprint": [
+        2097383,
+        17384422151,
+        223,
+        1794383703000000000,
+        1794383703000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "optimizer_parameter_groups.json",
+      "bytes": 69879,
+      "sha256": "4bcd581a9f9d4d08512aaf15f53d164db3073ffbfea7f025a29a1ad971d3e439",
+      "fingerprint": [
+        2097383,
+        27822028304,
+        69879,
+        1794383703000000000,
+        1794383703000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "order_plan.json",
+      "bytes": 1248506,
+      "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d",
+      "fingerprint": [
+        2097383,
+        17384421639,
+        1248506,
+        1794383702000000000,
+        1794383702000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "payload_manifest.json",
+      "bytes": 1879,
+      "sha256": "b6d0d15792cacf24e4bf6a63ecb7ac097f67426b769e802db30fac99a18c13c9",
+      "fingerprint": [
+        2097383,
+        27822046992,
+        1879,
+        1794385365000000000,
+        1794385365000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "resources.jsonl",
+      "bytes": 2855089,
+      "sha256": "98b21483b0e143d396002e93f7ec568f1aba8edd62e261363b4882a3655d4714",
+      "fingerprint": [
+        2097383,
+        27822028048,
+        2855089,
+        1794385364000000000,
+        1794385364000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "run_identity.json",
+      "bytes": 503,
+      "sha256": "a711708b8e043cb25c89197a1589bd7953591a940cc8bd3e709045cc0e9e766c",
+      "fingerprint": [
+        2097383,
+        17384422407,
+        503,
+        1794383703000000000,
+        1794383703000000000,
+        33152
+      ]
+    },
+    {
+      "role": 0,
+      "name": "worker.pid",
+      "bytes": 5,
+      "sha256": "ba6422cf0f6bfc74b71e439e8e5b008dedb4b2ca9528dabda35650070790b9bc",
+      "fingerprint": [
+        2097383,
+        27822027536,
+        5,
+        1794383693000000000,
+        1794383693000000000,
+        33152
+      ]
+    },
+    {
+      "role": 1,
+      "name": "FoldC_readiness_receipt_v1.json",
+      "bytes": 70346,
+      "sha256": "de9f5ed1880ab48b78e1038cdc955738da021c284c025cfc46249ee602289362",
+      "fingerprint": [
+        2097383,
+        16264688130,
+        70346,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "LQI_CD_training_contract_v1.json",
+      "bytes": 3029,
+      "sha256": "9b338de67f3ae62fa384efe3d4163bea5551b4155cf6137bb1b1348b13eac172",
+      "fingerprint": [
+        2097383,
+        16264688386,
+        3029,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "LQI_FoldC_training_execution_request_v1.json",
+      "bytes": 13515,
+      "sha256": "b616a762783fd4f43af4467c6c47e41e73aa40a24fac223317e710ee7372825e",
+      "fingerprint": [
+        2097383,
+        27822027024,
+        13515,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "LQI_artificial_cuda_execution_request_v1.json",
+      "bytes": 13482,
+      "sha256": "d1324b1b754e2eea91e00ea5ede802c6bd506815b82db82f3c41a070811e9812",
+      "fingerprint": [
+        2097383,
+        16264687874,
+        13482,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "bcsp_lqi_runtime_adapter_v1.py",
+      "bytes": 2185,
+      "sha256": "37946f9f04e20718adee4fe2559ffe9bc3446977d3341197bca19600e6064a8c",
+      "fingerprint": [
+        2097383,
+        27822026000,
+        2185,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "bcsp_lqi_training_entry_v1.py",
+      "bytes": 21204,
+      "sha256": "d623a2c5d206faccbf348c2130a73cb00ff44e41f5ad6b543a5fb8cf9b86ab06",
+      "fingerprint": [
+        2097383,
+        27822025744,
+        21204,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "completion.json",
+      "bytes": 1903,
+      "sha256": "d2797e3e6cb5b37104f5d21e2f57d32ee7a7b2eb8c9f8dc65e5610375b47d644",
+      "fingerprint": [
+        2097383,
+        27822026512,
+        1903,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "construction.json",
+      "bytes": 86245,
+      "sha256": "a8d4c769f34304f6906dd26d080f53f1976bfea05f76649142c6e7fedf5fe3fd",
+      "fingerprint": [
+        2097383,
+        16264687618,
+        86245,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "control/authorization_v1.json",
+      "bytes": 627,
+      "sha256": "d23a93c763d7a865f5e5b4a3c23b6def42c85a9e37b88562c2872343dc48e5f6",
+      "fingerprint": [
+        2097383,
+        16264689154,
+        627,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "control/launch_attempt_v1.json",
+      "bytes": 126,
+      "sha256": "34e20172ffa9767a0ea0ca34cbd1a05af643aa15e26a633c08aacbb8494ffa5e",
+      "fingerprint": [
+        2097383,
+        31480445189,
+        126,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "control/launch_once_v1.sh",
+      "bytes": 2350,
+      "sha256": "795ca24d7e08a44d019fe9b301747939fd7bf713f03a29f632a7a8ebfa3bfcf1",
+      "fingerprint": [
+        2097383,
+        31480444933,
+        2350,
+        1794383692000000000,
+        1794383692000000000,
+        33216
+      ]
+    },
+    {
+      "role": 1,
+      "name": "control/readiness_and_installation_receipt_v1.json",
+      "bytes": 98269,
+      "sha256": "572f38c7ce0eb29ad784063d844f933c07bf393c912277ccfb3cb11c0b166bd9",
+      "fingerprint": [
+        2097383,
+        16264688898,
+        98269,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "control/runtime_v1.json",
+      "bytes": 229,
+      "sha256": "da25502013a6f6e5b3f7a74508ce45d4e9a1c2ee303431009fc191ddc6d6bb39",
+      "fingerprint": [
+        2097383,
+        31480444677,
+        229,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "control/startup_receipt_v1.json",
+      "bytes": 678,
+      "sha256": "c0fd12c19d62b4dc699a4a9df6dff5708128094762b855c3c41ae59da13c2151",
+      "fingerprint": [
+        2097383,
+        16264689410,
+        678,
+        1794383694000000000,
+        1794383694000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "formal_post_CUDA_freeze_audit_result_v1.json",
+      "bytes": 4624,
+      "sha256": "bd7aa09346f26897ca375fca8c6ccc3b6b9d119421d60f8943a767440d1e1ca9",
+      "fingerprint": [
+        2097383,
+        16264687362,
+        4624,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "native_LQI_admission_receipt_v1.json",
+      "bytes": 2192,
+      "sha256": "5bcb2cff36e02e14acd4609e601fbc6d63aa776489ea2dda1b887f6b180de770",
+      "fingerprint": [
+        2097383,
+        27822026256,
+        2192,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    },
+    {
+      "role": 1,
+      "name": "training_entry_P3_v1.json",
+      "bytes": 3291,
+      "sha256": "e94a5633ea1e5d97ee34e75911d717ccf29bf10207a38702b585d6e9dca9210e",
+      "fingerprint": [
+        2097383,
+        27822026768,
+        3291,
+        1794383692000000000,
+        1794383692000000000,
+        33188
+      ]
+    }
+  ],
+  "operations": {
+    "server_writes": 0,
+    "new_forward": 0,
+    "new_backward": 0,
+    "checkpoint_deserialized": false,
+    "checkpoint_downloaded": false,
+    "training_restarted": false,
+    "BNCal": false,
+    "evaluation": false
+  },
+  "limitations": [
+    "Raw checkpoint bytes hashed twice; no internal tensor/optimizer deserialization",
+    "RNG/state equality refers to initial replay, not trained-gradient bitwise repeatability",
+    "Known attention-free module/source admission inherited; no new full-training opaque-kernel inspection",
+    "RSS/SMI are sampled; PID ownership is not asserted; minimum disk enforced by pinned local guard without per-row free-disk telemetry",
+    "No development accuracy or scientific benefit conclusion from training loss"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "status": "RUN_EXIT0_OBSERVED_FORMAL_FREEZE_AUDIT_PENDING",
+  "request_sha256": "a9fbc819da73415008ac5643f5b6cea9ab1b3818029129e6f93e2e67bcc23efc",
+  "exit_code": 0,
+  "tmux_present": false,
+  "completion_observed": {
+    "status": "F0_NATIVE_CUDA_COMPLETE_PENDING_FORMAL_FREEZE_AUDIT",
+    "request_sha256": "a9fbc819da73415008ac5643f5b6cea9ab1b3818029129e6f93e2e67bcc23efc",
+    "counts": {
+      "full_forward": 4,
+      "full_backward": 4,
+      "full_loss": 4,
+      "decoder_forward": 6,
+      "decoder_backward": 1,
+      "optimizer_steps": 0
+    },
+    "native_SSM_calls": {
+      "base_model.encoder.blocks.blocks.0.attn.mixer": 8,
+      "base_model.encoder.blocks.blocks.1.attn.mixer": 8,
+      "base_model.encoder.blocks.blocks.2.attn.mixer": 8,
+      "base_model.encoder.blocks.blocks.3.attn.mixer": 8,
+      "base_model.encoder.blocks.blocks.4.attn.mixer": 8,
+      "base_model.encoder.blocks.blocks.5.attn.mixer": 8,
+      "base_model.decoder.blocks.0.self_ssm": 20,
+      "base_model.decoder.blocks.0.cond_ssm": 10,
+      "base_model.decoder.blocks.1.self_ssm": 20,
+      "base_model.decoder.blocks.1.cond_ssm": 10,
+      "base_model.decoder.blocks.2.self_ssm": 20,
+      "base_model.decoder.blocks.2.cond_ssm": 10,
+      "base_model.decoder.blocks.3.self_ssm": 20,
+      "base_model.decoder.blocks.3.cond_ssm": 10,
+      "base_model.decoder.blocks.4.self_ssm": 20,
+      "base_model.decoder.blocks.4.cond_ssm": 10,
+      "base_model.decoder.blocks.5.self_ssm": 20,
+      "base_model.decoder.blocks.5.cond_ssm": 10,
+      "base_model.decoder.blocks.6.self_ssm": 20,
+      "base_model.decoder.blocks.6.cond_ssm": 10,
+      "base_model.decoder.blocks.7.self_ssm": 20,
+      "base_model.decoder.blocks.7.cond_ssm": 10
+    },
+    "dispatch_observations": {},
+    "attention_registered": {
+      "forbidden_registered_modules": [],
+      "dynamic_kernel_audit_pending": true
+    },
+    "dynamic_audit_limit": "Known dispatched attention ops + bound module source; opaque extension internals not semantically inspected",
+    "finite_gradient_nondeterminism_disclosed": true,
+    "real_data_reads": 0,
+    "checkpoint_loads": 0,
+    "optimizer_constructed": false,
+    "training_admission": false,
+    "BNCal": false
+  },
+  "last_resource_observed": {
+    "phase": "complete",
+    "forwards": 4,
+    "values": {
+      "RSS_bytes": 1772187648,
+      "output_bytes": 411950,
+      "device_MiB": 14632,
+      "peak_allocated": 13542720512,
+      "peak_reserved": 14831058944,
+      "elapsed_seconds": 66.98823603615165,
+      "free_disk_bytes": 13762560000
+    },
+    "checks": {
+      "RSS": true,
+      "output": true,
+      "device": true,
+      "allocated": true,
+      "reserved": true,
+      "wall": true,
+      "disk": true
+    },
+    "failed_checks": [],
+    "SMI_PIDs": [
+      "1530483"
+    ],
+    "container_PID": 533,
+    "PID_query_error": null,
+    "PID_policy": "DIAGNOSTIC_ONLY_NO_OWNERSHIP_GUARANTEE"
+  },
+  "observation_source": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\gpu_admission_v1\\authorized_execution_v1\\observation_v3_stdout.bin",
+    "bytes": 23146,
+    "sha256": "e08952da12657fa05ca966faf06b82c884589c8b8a5bc14ee825e05eae448536"
+  },
+  "formal_freeze_audit_performed": false,
+  "training_started": false
+}

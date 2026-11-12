@@ -1,0 +1,23 @@
+--- 
++++ 
+@@ -47,7 +47,7 @@
+  need(Path(str(ARCHIVE)+'.contents.sha256').read_text()==''.join(hashlib.sha256(payload[m.name]).hexdigest()+'  '+m.name+'\n' for m in members),'member listing')
+  qb=payload['payload/LQI_artificial_cuda_execution_request_v1.json'];need(hashlib.sha256(qb).hexdigest()==QH,'authorized request')
+  q=json.loads(qb);I=q['identity'];L=q['launch_contract'];out=clean(q['output']);mapping=json.loads(payload['installation_mapping_v1.json'])
+- need(q['status']=='AWAITING_EXPLICIT_USER_AUTHORIZATION' and q['science']['full_forward']==q['science']['full_loss']==q['science']['full_backward']==2 and q['science']['optimizer_steps']==0 and q['limits']['wall_seconds']==7200,'scope')
++ need(q['status']=='AWAITING_EXPLICIT_USER_AUTHORIZATION' and q['science']['full_forward']==q['science']['full_loss']==q['science']['full_backward']==2 and q['science']['optimizer_steps']==0 and q['limits']['wall_seconds']==1800,'scope')
+  need(I['hostname']==socket.gethostname() and I['uid']==os.getuid() and I['project']==str(PROJECT) and str(Path(sys.executable).resolve())==I['python_realpath'] and sys.version.split()[0]==I['python_version'],'Python/project identity')
+  need(mapping['remote_root']==str(INSTALL) and len(mapping['files'])==8,'installation mapping')
+  expected={}
+@@ -60,7 +60,10 @@
+  for r in expected.values():need(not clean(r['path']).exists(),'target already exists')
+  absent_session(L['tmux_session']);gpu=smi(I);need(shutil.disk_usage(PROJECT).free>=q['limits']['minimum_free_disk_bytes'],'disk')
+  phase('reused_sources_provider_and_extensions')
+- rs=[q[k] for k in ['preflight_scope','static_config','helper','parent_helper','timezone_implementation']]+list(q['implementation'].values())+q['dependencies'];seen=set()
++ for key in ('lqi_decoder','lqi_factory'):
++  r=q['implementation'][key];name=Path(r['path']).name
++  need(name in expected and expected[name]==r,'candidate source must match frozen package')
++ rs=[q[k] for k in ['preflight_scope','static_config','helper','parent_helper','timezone_implementation']]+[q['implementation'][k] for k in ('encoder','factory')]+q['dependencies'];seen=set()
+  for r in rs:
+   if r['path'] not in seen:exact(r);seen.add(r['path'])
+  scope=json.loads(Path(q['preflight_scope']['path']).read_bytes());b=scope['bindings'];root=clean(q['model_root'])

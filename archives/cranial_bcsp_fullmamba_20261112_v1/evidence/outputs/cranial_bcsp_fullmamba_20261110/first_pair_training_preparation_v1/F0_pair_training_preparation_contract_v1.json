@@ -1,0 +1,107 @@
+{
+  "status": "TRAINING_CONTRACT_PREPARATION_ONLY_NOT_EXECUTABLE",
+  "date": "2026-11-10",
+  "formal_plan": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\docs\\cranial_bcsp_fullmamba_20261110\\Cranial_BCSP_FullMamba_\u6b63\u5f0f\u5b9e\u9a8c\u8ba1\u5212\u4e66_zh_2026-11-10_v2.md",
+    "bytes": 27651,
+    "sha256": "7d69590ff52a3aa333299f85b9383d746048567849998aff3b6b27aabb7c8e75"
+  },
+  "CUDA_admission": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\gpu_admission_v1\\post_CUDA_freeze_audit_v1\\native_admission_receipt_v2.json",
+    "bytes": 2587,
+    "sha256": "ff47195c2456c2746ec9ae58cf266bc004375d5f79d87b8e536fa6ab549cf1c0"
+  },
+  "scope": {
+    "runs": [
+      "F0-P-v2_C_seed0",
+      "F0-P-v2_D_seed0"
+    ],
+    "order": [
+      "C",
+      "D"
+    ],
+    "architecture": "F0-P-v2-implementation-v1",
+    "package": "Mamba-1 via mamba_ssm2.3.1",
+    "full_attention_replacement": true,
+    "keep_local_nonattention_graph": true,
+    "input_points": 8192,
+    "target_points": 8192,
+    "coarse_queries": 256,
+    "FC_points_per_query": 32,
+    "representation": "BCSP V1 fixed area sampling, complete bone tissue boundary",
+    "target": "complete boundary of missing bone solid",
+    "dataset": "opened SkullBreak84sources/420defects only",
+    "per_fold": {
+      "training_sources": 63,
+      "training_cases": 315,
+      "development_sources": 21,
+      "development_cases": 105
+    },
+    "counts_per_run": {
+      "batch": 8,
+      "traversals": 100,
+      "updates": 3900,
+      "exposures": 31200,
+      "dropped_exposures": 300
+    },
+    "all_updates": 7800,
+    "loss": "unchanged coarse CD + dense CD, torch.cdist",
+    "initialization": {
+      "scratch": true,
+      "common_seed": 0,
+      "encoder_private_seed": 20261104,
+      "decoder_private_seed": 20261110,
+      "same_common_modules_as_M0": true,
+      "checkpoint_warmstart": false
+    },
+    "optimizer": {
+      "name": "AdamW",
+      "lr": 0.0001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "clip_norm": 10,
+      "decay": [
+        0,
+        0.0005
+      ],
+      "retain_SSM_no_decay": true
+    },
+    "learning_rate": "1e-4 * max(.9**(epoch/21),.02), unchanged call timing",
+    "native_gradient_nondeterminism_disclosed": true,
+    "FP32": true,
+    "TF32": false,
+    "BNCal": false,
+    "AMP": false,
+    "resume": false,
+    "retry": false,
+    "development_evaluation_during_training": false
+  },
+  "limits": {
+    "RSS_bytes": 8589934592,
+    "torch_allocated_reserved_bytes": 21474836480,
+    "SMI_MiB": 22528,
+    "wall_seconds_per_run": 86400
+  },
+  "remaining_minimum_scope": [
+    "new F0-specific training short entry binding native admission receipt hash and exact model files",
+    "one targeted artificial CPU batch covering full authorize() and actual F0 factory/runtime dispatch, then P3",
+    "bounded current315train/QC/order/source asset bindings and current resource readiness before pending request"
+  ],
+  "no_repeat_GPU_preflight": true,
+  "no_generic_framework_expansion": true,
+  "not_created": [
+    "training execution request",
+    "training authorization",
+    "runtime config",
+    "launcher",
+    "tmux training"
+  ],
+  "protected": [
+    "confirmation20",
+    "unopened SkullFix/MUG or new cases"
+  ],
+  "reference_policy": "Reuse frozen T0/M0 predictions and matching fold order/initialization evidence; do not silently restore historical weights"
+}

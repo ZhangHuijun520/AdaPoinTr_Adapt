@@ -1,0 +1,16 @@
+{
+  "status": "AUXILIARY_SCHEMA_CORRECTION_ONLY",
+  "prior_failure": "eval_1_weights_and_RNG",
+  "reason": "CPU/CUDA are SHA256; Python repr state and NumPy MT19937 state serialization are not SHA256",
+  "guards_retained": [
+    "exact before/after equality",
+    "exact four RNG fields",
+    "finite gradients",
+    "unchanged model/BN boundaries",
+    "all original count/hash/resource checks"
+  ],
+  "server_calls": 0,
+  "CUDA_calls": 0,
+  "old_checker_sha256": "0d63d0ef9b0520d704ed0508f514014d5ab9481451df007a3935cfd2e5140bb5",
+  "new_checker_sha256": "af928f409b2016b237dd00f1a43955e33ae185bd9feea8fac1d5ca5629267a3c"
+}

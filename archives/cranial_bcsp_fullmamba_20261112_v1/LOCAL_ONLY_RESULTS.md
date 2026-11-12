@@ -1,0 +1,3 @@
+# Local-only data and external evidence
+
+Interactive seven-case HTML, complete Native prediction arrays and decoder diagnostic traces are preserved inside local_attachments/ of the full local archive, not in this GitHub payload. In the root report, links to unselected local-only/external artifacts lead here. Exact original paths, hashes and evidence references remain unchanged in the original report under evidence/reports/ and in the manifests. Raw datasets, compiled environment/provider binaries and checkpoints are not included in this code/results archive. See README.md for separate checkpoint and parent-evidence boundaries.

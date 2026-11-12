@@ -1,0 +1,11 @@
+{"phase": "identity_and_uploaded_frozen_package", "seconds": 4.693865776062012e-06, "hashed_bytes": 0}
+{"status": "AUTHORIZED_OPERATION_FAILED_STOP_NO_RETRY", "phase": "identity_and_uploaded_frozen_package", "error": "RuntimeError('scope')", "hashed_bytes": 22073, "seconds": 0.005659047514200211, "installation_root_exists": false}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/lqi_cuda_authorized_operation_20261111_v1.py", line 108, in <module>
+    try:main()
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/lqi_cuda_authorized_operation_20261111_v1.py", line 50, in main
+    need(q['status']=='AWAITING_EXPLICIT_USER_AUTHORIZATION' and q['science']['full_forward']==q['science']['full_loss']==q['science']['full_backward']==2 and q['science']['optimizer_steps']==0 and q['limits']['wall_seconds']==7200,'scope')
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/lqi_cuda_authorized_operation_20261111_v1.py", line 12, in need
+    if not ok:raise RuntimeError(message)
+RuntimeError: scope

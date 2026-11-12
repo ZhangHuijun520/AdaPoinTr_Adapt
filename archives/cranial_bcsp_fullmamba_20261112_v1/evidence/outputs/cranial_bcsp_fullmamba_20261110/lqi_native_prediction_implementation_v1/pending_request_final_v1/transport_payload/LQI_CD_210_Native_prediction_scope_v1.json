@@ -1,0 +1,149 @@
+{
+  "schema": "bcsp-lqi-twofold-native-prediction-scope-v1",
+  "status": "FROZEN_SCOPE_AWAITING_IMPLEMENTATION_NOT_EXECUTION_REQUEST",
+  "prepared_date": "2026-11-11",
+  "authorization_boundary": "No prediction/scoring/deployment or runtime/launcher/authorization materialization authorized by this scope.",
+  "current_resource_reference": {
+    "hostname": "shu-common-25721452-notebook-zv9bqd-0",
+    "live_rechecked_this_round": false,
+    "require_bounded_identity_assets_resource_check_before_final_request": true
+  },
+  "input_index": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_native_prediction_preparation_v1\\LQI_CD_Native_input_index_candidate_v1.json",
+    "bytes": 219283,
+    "sha256": "1d1061d858776962600f42dce77669dafd6953a28a7e7a3d3d6490f63f20d09e"
+  },
+  "training_audits": {
+    "C": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_training_entry_v1\\post_training_freeze_audit_v1\\post_training_freeze_audit_result_v1.json",
+      "bytes": 16536,
+      "sha256": "17a45cb85282051a4448e31d8e9fe38b8d291c836c52cd7cf3e87320d7864291"
+    },
+    "D": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_FoldD_training_entry_v1\\post_training_freeze_audit_v2\\post_training_freeze_audit_result_v1.json",
+      "bytes": 14065,
+      "sha256": "e5dbd65191b71c866bfb2e1241fe881aadf62ff7061d1447ad8ffe1399b4063d"
+    }
+  },
+  "model_sources": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_implementation_v1\\bcsp_lqi_decoder_v1.py",
+      "bytes": 6053,
+      "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_implementation_v1\\bcsp_lqi_factory_v1.py",
+      "bytes": 3864,
+      "sha256": "56d4cbe89660106f255a0d58e28c7cbaf38374c7788219d5a21779bd97aaf106"
+    }
+  ],
+  "original_entry": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_prediction_implementation_v1\\bcsp_f0_twofold_native_predict_v1.py",
+    "bytes": 31713,
+    "sha256": "b1318c0ab8441e56dfd7133c83b2ae07435932359f1843fd7c3616c835e6f72b"
+  },
+  "inference": {
+    "folds": [
+      "C",
+      "D"
+    ],
+    "cases_per_fold": 105,
+    "sources_per_fold": 21,
+    "defect_types": [
+      "bilateral",
+      "frontoorbital",
+      "parietotemporal",
+      "random_1",
+      "random_2"
+    ],
+    "batch_size": 1,
+    "input_points": 8192,
+    "output_points": 8192,
+    "coarse_points": 256,
+    "forward_attempt_budget": 210,
+    "successful_forwards_required": 210,
+    "loss_calls": 0,
+    "backward": 0,
+    "optimizer_steps": 0,
+    "BNCal": 0,
+    "warmup": 0,
+    "TTA": 0,
+    "retries": 0,
+    "model_mode": "eval + inference_mode",
+    "real_GT_payload_access": false,
+    "input_arrays": "partial only; target payload must not be read",
+    "normalization": "unchanged defective_bbox; preserve center/scale from parent index",
+    "coordinate_frame": "same normalized prediction frame as F0; world scoring uses frozen center/scale"
+  },
+  "numeric": {
+    "dtype": "FP32",
+    "TF32": false,
+    "deterministic_algorithms": true,
+    "pointnet2": "existing native Python3.10 provider; fallback forbidden",
+    "chamfer": "existing PyTorch cdist policy retained; no loss or Chamfer evaluation in this prediction scope",
+    "native_mamba": true,
+    "repeat_GPU_preflight": false
+  },
+  "outputs": {
+    "prediction_files": 210,
+    "per_prediction_arrays": {
+      "prediction": [
+        8192,
+        3
+      ],
+      "coarse": [
+        256,
+        3
+      ]
+    },
+    "context_caches": 0,
+    "full_decoder_traces": 0,
+    "required": [
+      "inference_manifest.jsonl",
+      "forward_attempts.jsonl",
+      "geometry_summary.jsonl",
+      "per-model state/RNG before-after fingerprints",
+      "resource log",
+      "construction evidence",
+      "completion/exit code",
+      "archive plus SHA256/bytes/content manifest"
+    ],
+    "trace_semantics": "No traces requested; any later LQI prefix_suffix trace means interleaved conditional query-position output, never F0 prefix/suffix conditioning."
+  },
+  "limits": {
+    "wall_seconds": 7200,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "failure_policy": "Persist first error and counts; stop immediately; no automatic retry/resume, forward substitution, case filtering, fallback, training or scoring.",
+  "later_scoring": {
+    "baseline": "Reuse frozen F0 Native predictions, do not regenerate F0",
+    "pair_keys": [
+      "fold",
+      "case_id",
+      "source_id",
+      "input SHA256",
+      "normalization"
+    ],
+    "metrics_thresholds": "unchanged frozen production definitions",
+    "metric_protocol_sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766",
+    "source_equal_paired_summary": true,
+    "prerequisite": "Separate formal post-prediction freeze audit, download and local verification, then dedicated scoring entry compatibility/P3 and separately authorized CPU scoring request",
+    "no_efficacy_conclusion_yet": true
+  },
+  "minimal_adapter_gaps": [
+    "LQI-specific request/index/model identity and exact trained-checkpoint/audit pins",
+    "Load exact LQI decoder/factory and bind their actual file reads, preserving parent encoder/factory",
+    "Validate LQI interleaving evidence, parameter count and common model contract; reject accidental F0 construction",
+    "Native-only all210 coarse+dense outputs; remove mandatory old20-context/10-trace count and donor-selection dependency without weakening case/input identity checks",
+    "CPU full authorize/load-route/read-policy/index/210-output/state-RNG/failure-path contract verification plus P3 before executable request"
+  ],
+  "frozen_F0_prediction_audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_prediction_implementation_v1\\resource_rebind_v2\\post_prediction_freeze_audit_v1\\post_prediction_freeze_audit_result_v1.json",
+    "bytes": 7370,
+    "sha256": "69a2438f42a40daeaf068ab77775a5679a30013167ba303a5da5dfa7287ae09e"
+  }
+}

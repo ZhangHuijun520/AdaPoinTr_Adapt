@@ -1,0 +1,23 @@
+"""Continue ONLY unexecuted metadata preparation after local root calculation error.
+The successful archive restoration is not repeated; the failed script stays immutable.
+No scoring functions are imported/called, no server operations.
+"""
+import ast,hashlib,importlib.util,json
+from pathlib import Path
+S=Path(__file__).resolve().parent
+source=S/'verify_local_and_prepare_score_scope_v1.py'
+spec=importlib.util.spec_from_file_location('f0_remaining_preparation_helpers',source);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+# This helper is one directory deeper than older stage scripts.
+m.R=S.parents[3]
+assert (m.R/'outputs/cranial_bcsp_mamba_p2_20261106/H1_scoring_implementation_20261107_v1/local_scoring_execution_request_v1.json').is_file()
+failure=m.read(S/'verification_preparation_failure_v1.json');receipt=m.read(S/'local_archive_restore_verification_v1.json')
+assert 'outputs\\\\outputs' in failure['error'] or 'outputs\\outputs' in failure['error']
+assert receipt['status']=='LOCAL_F0_FOUR_FILES_246_MEMBER_RESTORE_VERIFICATION_PASS' and receipt['counts']==dict(context=20,trace=10,predictions=210,coarse=210)
+audit=m.read(m.F/'post_prediction_freeze_audit_result_v1.json');plan=m.read(m.F/'download_four_files_manifest_v1.json');back=Path(plan['suggested_local_directory']);index=m.read(m.T/'F0_CD_Native_input_index_candidate_v1.json')
+m.__dict__.update(audit=audit,plan=plan,back=back,index=index,arc=back/'development_predictions_v1.tar.gz',file_records=receipt['files'])
+m.emit('remaining_preparation_scope_v1.json',dict(status='RESUME_UNEXECUTED_METADATA_ONLY_NOT_RERUN_ARCHIVE',original_source=dict(path=str(source),sha256=hashlib.sha256(source.read_bytes()).hexdigest()),original_failure=dict(path=str(S/'verification_preparation_failure_v1.json'),sha256=hashlib.sha256((S/'verification_preparation_failure_v1.json').read_bytes()).hexdigest()),successful_archive_verification=dict(path=str(S/'local_archive_restore_verification_v1.json'),sha256=hashlib.sha256((S/'local_archive_restore_verification_v1.json').read_bytes()).hexdigest()),correct_repository_root=str(m.R),production_changes=0,server_operations=0,scoring=0))
+tree=ast.parse(source.read_text(encoding='utf-8'));main=next(x for x in tree.body if isinstance(x,ast.FunctionDef) and x.name=='main')
+start=next(i for i,n in enumerate(main.body) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='oldreq' for t in n.targets))
+remaining=ast.Module(body=main.body[start:],type_ignores=[])
+try:exec(compile(remaining,str(source)+'::metadata_continuation','exec'),m.__dict__)
+except BaseException as exc:m.emit('remaining_preparation_failure_v1.json',dict(status='FAILED_STOP_NO_RETRY',error=repr(exc)));raise

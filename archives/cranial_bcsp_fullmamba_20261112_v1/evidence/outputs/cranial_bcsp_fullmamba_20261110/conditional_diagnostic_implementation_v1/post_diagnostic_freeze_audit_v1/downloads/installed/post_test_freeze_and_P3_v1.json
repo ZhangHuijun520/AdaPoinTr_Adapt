@@ -1,0 +1,81 @@
+{
+  "status": "F0_CONDITION_LOCAL_P3_PASS",
+  "entry_sha256": "9962495984174daf5dfaa9219216dbc2f5d716bf4c983d9a00746b9067ebb416",
+  "adapter_sha256": "6137b686b1d2b3499d319b1cbabe39eeb9819e49c37fb9bedc9c9dcc0210e280",
+  "checks": {
+    "final_sources_equal_both_CPU_batches": true,
+    "AST_compile_four_sources": true,
+    "actual_F0_tensor_CPU34": true,
+    "actual_entry_integration_CPU7": true,
+    "exact40_cache_two_weight_identity": true,
+    "new_targets_absent": true,
+    "frozen10_pairs_no_reselection": true,
+    "Native_replay_zero": true,
+    "no_GT_payload": true,
+    "exact30_suffix30_head720_native_SSM": true,
+    "encoder_coarse_optimizer_zero": true,
+    "original_F0_source_unchanged": true,
+    "prefix_and_local_hooks_isolated": true,
+    "exception_removes_hooks": true,
+    "original_head_two_max_pool_operations_preserved": true,
+    "state_BN_RNG_unchanged_CPU": true,
+    "raw_F_null_keeps_LN_beta_and_PE": true,
+    "per_layer_group_effects_not_accuracy": true,
+    "no_current_noise_floor_claim": true,
+    "no_extra_GPU_preflight": true,
+    "separate_full_hash_execution_required": true
+  },
+  "evidence": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\artificial_cpu_batch_v1\\result.json",
+      "bytes": 2514,
+      "sha256": "2c0872bcf31a23801ca296a4ff56dcbdfa6f3a0ca69cdc670d9a2115055e254b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\artificial_entry_integration_v1\\result.json",
+      "bytes": 1278,
+      "sha256": "51fa64d8a8af030ef196bec1e9cc929f59e4099faaf98b0a964dac299948ffca"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\server_readiness_v1\\identity_result.json",
+      "bytes": 442,
+      "sha256": "a0f70578001a3717e0434ed8f07ac12d0ea3fc61cbe09e7ad111d8d83e71d0eb"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\server_readiness_v1\\assets_result.json",
+      "bytes": 377,
+      "sha256": "3f9e37ef11c175e0e29104d3efa3986d4f14385251feb6ed9bbec32bf8d233c6"
+    }
+  ],
+  "static_sources": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\bcsp_f0_condition_diagnostic_v1.py",
+      "bytes": 14750,
+      "sha256": "9962495984174daf5dfaa9219216dbc2f5d716bf4c983d9a00746b9067ebb416"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\bcsp_f0_condition_adapter_v1.py",
+      "bytes": 8196,
+      "sha256": "6137b686b1d2b3499d319b1cbabe39eeb9819e49c37fb9bedc9c9dcc0210e280"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\test_f0_condition_cpu_v1.py",
+      "bytes": 11116,
+      "sha256": "c5040742ff5e92d78ddd1654e96206d94a7d24937d561a0eaaff1075d4ac9742"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\conditional_diagnostic_implementation_v1\\test_condition_entry_integration_cpu_v1.py",
+      "bytes": 8361,
+      "sha256": "2afe7638014ce0568667e6f72be1b462ea22abfb0140227a8fb53eadcd3c553f"
+    }
+  ],
+  "limitations": [
+    "CPU mixer is artificial; actual Mamba/CUDA intervention response not yet tested.",
+    "Entry-loop fixture is a lightweight suffix surrogate; tensor semantics tested separately.",
+    "Literal pair table was enumerated pre-Native, not proven pretraining.",
+    "Post-execution formal freeze audit required before scientific interpretation."
+  ],
+  "scientific_gate": "NOT_RUN_NO_STRUCTURAL_DECISION_NO_TRAINING",
+  "server_installation": 0,
+  "GPU_diagnostic_calls": 0
+}

@@ -1,0 +1,39 @@
+{
+  "status": "STATIC_S0_S1_PASS",
+  "files": [
+    {
+      "name": "bcsp_lqi_F0_two_arm_score_v1.py",
+      "sha256": "e7b1ac9b151ef79d12cadb1a1f5e6a928ffc41ef2889094a0fffa3b184df4b43"
+    },
+    {
+      "name": "test_lqi_F0_score_cpu_v2.py",
+      "sha256": "53a69f5ca0bfbf2db5bab1618a6a544821c701bcc3ea8badd23cb6aa376bdda9"
+    }
+  ],
+  "checks": {
+    "AST_parse": true,
+    "inert_main_guard": true,
+    "all_metric_source_pair_and_risk_AST_unchanged": true,
+    "exact_zero_byte_exception_only_LQI_cache_log": true,
+    "no_Torch_GPU_network_or_training_imports": true,
+    "two_arms_840case_168source": true,
+    "real_scoring_not_executed": true
+  },
+  "unchanged_functions": [
+    "load_prediction_arrays",
+    "load_prediction",
+    "select_metrics",
+    "position_shape",
+    "risk_labels",
+    "stage_geometry",
+    "score_case",
+    "aggregate_source",
+    "describe_pairs",
+    "paired_summary",
+    "case_differences",
+    "defect_summary",
+    "csv_rows",
+    "risk_transitions"
+  ],
+  "fixture_correction": "Only remove obsolete coarse-subset dictionary lookup for LQI; production entry unchanged; retain failed batch v1; use fresh batch v2."
+}
