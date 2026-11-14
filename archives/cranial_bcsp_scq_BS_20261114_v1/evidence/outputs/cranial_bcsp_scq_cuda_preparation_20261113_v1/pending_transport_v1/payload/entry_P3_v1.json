@@ -1,0 +1,58 @@
+{
+  "status": "SCQ_CUDA_ENTRY_LOCAL_P3_PASS",
+  "entry_sha256": "fe7fc491cdeed22ba939b1a0c45b08905f8ebdb67d5f09b41b6f1975d2630ad6",
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_cuda_preparation_20261113_v1\\test_scq_cuda_entry_cpu_v3.py",
+    "bytes": 12629,
+    "sha256": "08cd725a48e3a1286c2097e8c5f3bd04196eee379f2a6f3dc59db28989ba1a42"
+  },
+  "CPU": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_cuda_preparation_20261113_v1\\cpu_entry_batch_v3\\result_v1.json",
+    "bytes": 157360,
+    "sha256": "4a0c23510d0b156f755322c573305ca1b9b2b689ca1a790f48f2c823800d33b6"
+  },
+  "implementation_P3": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_implementation_20261113_v1\\P3_implementation_v1.json",
+    "bytes": 4560,
+    "sha256": "90d0c4c76a5267514ee9e50582c2b8e026aefbb5117232379e7697db6cb72c57"
+  },
+  "CPU_entry_checks": 31,
+  "CPU_implementation_checks": 49,
+  "checks": {
+    "actual_authorize_and_count_contract": true,
+    "one_way_runtime": true,
+    "actual_phase_engine_4F4loss4B0step_CPU": true,
+    "all35_shared_gradient_groups_CPU": true,
+    "SCQ_W2_active_W1_initial_zero": true,
+    "state_RNG_modes_BN_restore_success_failure": true,
+    "actual_SCQ_source_import_and_binary_read_policy": true,
+    "new_files_exact_readonly_bound": true,
+    "launcher_POSIX_and_parent_before_redirect": true,
+    "original49_implementation_sources_unchanged": true
+  },
+  "CPU_attempts": 3,
+  "previous_failures_preserved": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_cuda_preparation_20261113_v1\\cpu_entry_batch_v1\\failure_v1.json",
+      "bytes": 2035,
+      "sha256": "f812df67954f78e27692bc3cbc43b3abd9ac2217e3db47aa387a63581316b880"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_cuda_preparation_20261113_v1\\cpu_entry_batch_v2\\failure_v1.json",
+      "bytes": 2035,
+      "sha256": "6cc7ee7be76eb3d1661a4fad9e6b0315156a2b205679c5885cc67265b4893880"
+    }
+  ],
+  "local_compatibility_cause": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_cuda_preparation_20261113_v1\\local_binary_read_cause_v1.json",
+    "bytes": 671,
+    "sha256": "c3520c87f505b51bfb830e8b10ff04666d4dd9e804d819acf525e3acad4b49a0"
+  },
+  "server_operations": 0,
+  "CUDA_calls": 0,
+  "limitations": [
+    "Phase engine uses cheap artificial CPU model/loss and CPU-only CUDA API facade.",
+    "Actual frozen SCQ source imports and initializer read policy exercised; no native provider/Mamba or production GPU execution."
+  ],
+  "readiness": "Historical N0-B evidence only; current identity, all exact reused bindings, resources, upload and absent targets must be reverified after separate authorization."
+}

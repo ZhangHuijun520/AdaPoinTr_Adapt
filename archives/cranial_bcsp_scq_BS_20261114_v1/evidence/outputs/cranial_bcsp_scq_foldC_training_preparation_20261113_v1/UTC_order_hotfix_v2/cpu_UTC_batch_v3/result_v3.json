@@ -1,0 +1,49 @@
+{
+  "status": "UTC_ORDER_CPU_REGRESSION_PASS",
+  "count": 22,
+  "checks": [
+    "whole production AST unchanged after removing one UTC check",
+    "old policy reproduces UTC order conflict",
+    "new UTC link bypasses generic guard only after exact verify",
+    "exact target spelling verified too",
+    "bytes spelling follows same exact resource validator",
+    "UTC link writes still denied",
+    "UTC target writes still denied",
+    "bad UTC target hash still fails closed",
+    "UTC link metadata drift still denied",
+    "UTC replaced target fd identity still denied",
+    "integer fd bypass unchanged",
+    "exact source guard still handles nonUTC reads",
+    "exact source writes still refused",
+    "nonUTC symlink not generally allowed",
+    "fixed training NPZ read still allowed",
+    "development NPZ still denied",
+    "training NPZ write still denied",
+    "original final checkpoint write allowance unchanged",
+    "other checkpoint still denied",
+    "original runtime bytes unchanged",
+    "original contract bytes unchanged",
+    "original budget_parent bytes unchanged"
+  ],
+  "entry": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\UTC_order_hotfix_v2\\bcsp_scq_training_entry_v2.py",
+    "bytes": 22337,
+    "sha256": "44dc22ff01642c2347bf8a077a09381504f71dff858c92f193239ab2b8c99328"
+  },
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\UTC_order_hotfix_v2\\test_UTC_order_cpu_v3.py",
+    "bytes": 7159,
+    "sha256": "7bc77408e141657cde96779a646a304be86ac2245f322f52a9b6aca4fa458359"
+  },
+  "exact_UTC_reader_source": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\gpu_admission_v3\\exact_utc_resource_v1.py",
+    "bytes": 3563,
+    "sha256": "038267da9f78be5ea9d03164e674d388228768bf0c42959097fcadfd807f830e"
+  },
+  "production_change": "One UTC allow-before-general-guard condition",
+  "fixtures": "Actual UTC verify/allow and actual nested old/new policies; simulated fd bytes/metadata only; no real UTC symlink created or modified",
+  "CUDA_calls": 0,
+  "model_forward": 0,
+  "optimizer_steps": 0,
+  "server_writes": 0
+}

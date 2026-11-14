@@ -1,0 +1,4 @@
+from pathlib import Path;import hashlib
+for r in [{'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/SCQ_B_C_model_construction_v2.json', 'bytes': 90806, 'sha256': '29b4fe095e8082f19aaa4a7f7d2c4a229c46a40178e69aec12d7db9555b85bfb'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/SCQ_B_C_training_freeze_v2.json', 'bytes': 12245, 'sha256': '553cfaaecd437442692b35ec9d257c9e4defab7bd79432f4a7170e5696e98cf0'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/SCQ_S_FoldC_training_execution_request_v1.json', 'bytes': 16743, 'sha256': '1aed46b99b11f83b6707b1a3fe81b7e90a971ec7419019327d3c224b2d2adc86'}]:
+ p=Path(r['path']);assert not p.is_symlink() and p.stat().st_size==r['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest()==r['sha256']
+print('INSTALLED_HASHES_PASS')

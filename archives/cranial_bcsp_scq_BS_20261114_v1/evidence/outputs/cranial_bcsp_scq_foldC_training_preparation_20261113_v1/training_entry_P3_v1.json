@@ -1,0 +1,86 @@
+{
+  "status": "SCQ_TRAINING_ENTRY_LOCAL_P3_PASS",
+  "entry_sha256": "d073deab9a21c4dd3ffb3f8fdf05332c73196f260ce2bbb0f7b577a09efde53d",
+  "bridge_sha256": "de9bda5c0e44fe943d54e58325fb7c07c5414fad614a59b591a05950c316ae0d",
+  "native_admission_sha256": "f7fad610b67d96da91c02c6ff879f861d4b101851db5548b05b3117345512895",
+  "CPU_checks": 34,
+  "CPU": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\cpu_batch_v3\\result_v1.json",
+    "bytes": 3090,
+    "sha256": "daadda3927ffab6a6b9f7704af219fccbd7821f22fdec812ab6ae4336a9b2f34"
+  },
+  "sources": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\bcsp_scq_training_entry_v1.py",
+      "bytes": 22284,
+      "sha256": "d073deab9a21c4dd3ffb3f8fdf05332c73196f260ce2bbb0f7b577a09efde53d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\bcsp_scq_training_bridge_v1.py",
+      "bytes": 689,
+      "sha256": "de9bda5c0e44fe943d54e58325fb7c07c5414fad614a59b591a05950c316ae0d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\test_scq_training_entry_cpu_v3.py",
+      "bytes": 18057,
+      "sha256": "5202d13f604296fcf19cf110350fbe68e45adc6936cc610f56b6631fbb729e54"
+    }
+  ],
+  "static_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\static_review_v1.json",
+    "bytes": 1113,
+    "sha256": "eaf8b35e3a965451f829225ac206187e7b5fc5621d2bc177fe7bd8314aa7339f"
+  },
+  "checks": {
+    "full_authorize_real_admission_and_QC": true,
+    "original_metadata_and_order_counts": true,
+    "B_S_dispatch_and_baseline_gate": true,
+    "same_device_driver_and_common_initialization_binding": true,
+    "original_optimizer_grouping_SCQ_weights_bias_and_SSM_flags": true,
+    "geometry_and_original_loss_logging_without_extra_calls": true,
+    "exact3900_log_finalization_guard": true,
+    "actual_policy_exactsources_binary_train_allowlist_fd": true,
+    "bridge_delegates_unchanged_runtime": true,
+    "no_optimizer_constructed_or_steps": true,
+    "no_real_payload_or_checkpoint": true,
+    "no_repeat_GPU_preflight": true
+  },
+  "test_attempts": 3,
+  "prior_fixture_failures": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\cpu_batch_v1\\failure_v1.json",
+      "bytes": 2742,
+      "sha256": "a7878520cdc9024b32922fdfbc7e1d023492c4836650030e86c555dcd843a1cf"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\cpu_batch_v2\\failure_v1.json",
+      "bytes": 2691,
+      "sha256": "e56f795fc2f3bed366a0566b54f7b029e3148f0f068c668cdcb385acb1f40e1e"
+    }
+  ],
+  "fixture_corrections": [
+    "v2: local mirror also passed into nested metadata reader; production unchanged",
+    "v3: CPU generator variable separated from CUDA-evidence path; production unchanged"
+  ],
+  "runtime": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_p1_training_runtime_v1.py",
+    "bytes": 11268,
+    "sha256": "939e317dd447d04c62897849c0230f1918dc65c46ec556acdb60c9d69dfebeee"
+  },
+  "runtime_bytes_unchanged": true,
+  "native_admission": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_cuda_preparation_20261113_v1\\post_CUDA_freeze_audit_v1\\freeze_verification_v1.json",
+    "bytes": 5949,
+    "sha256": "f7fad610b67d96da91c02c6ff879f861d4b101851db5548b05b3117345512895"
+  },
+  "server_operations": 0,
+  "CUDA_calls": 0,
+  "training_executed": false,
+  "limitations": [
+    "Real frozen metadata/QC/order and native admission evidence read; no real point payload or checkpoint.",
+    "B/S dispatch uses tiny artificial model, real SCQ residual and runtime/bridge spies; one artificial F/B per arm, no optimizer or3900-step run.",
+    "Original optimizer grouping function exercised without optimizer construction; main native training remains unexecuted.",
+    "Current GPU/container, installed tools and315 server payload hashes are not freshly inspected this preparation; must be checked after explicit execution authorization.",
+    "GPU preflight had no optimizer state;3900-step training and its peak memory remain unproven."
+  ]
+}

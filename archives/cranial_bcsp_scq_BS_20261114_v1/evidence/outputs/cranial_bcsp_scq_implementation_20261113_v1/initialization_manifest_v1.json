@@ -1,0 +1,57 @@
+{
+  "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_implementation_20261113_v1\\initialization_v1.bin",
+  "bytes": 2784780,
+  "sha256": "e7858ee3ae4c0bf6d68e447727c36514f5bbab42b95e1935f1686620ec089416",
+  "torch_version": "2.5.1",
+  "byte_order": "little",
+  "projection_seed": 20261113,
+  "head_seed": 20261114,
+  "projection_procedure": "CPU randn(384,7) -> torch.linalg.qr reduced -> Q.T contiguous FP32; no extra sign correction",
+  "head_procedure": "Linear default W1 Kaiming uniform a=sqrt(5), then bias uniform +/-1/sqrt(1802); W2/b2 zero",
+  "layout": [
+    {
+      "name": "W1.weight",
+      "shape": [
+        384,
+        1802
+      ],
+      "bytes": 2767872,
+      "sha256": "e0ab6eb69d8ebc68d684cae59906619b0fc181d7aa68a9ef05f65769b0e2f686"
+    },
+    {
+      "name": "W1.bias",
+      "shape": [
+        384
+      ],
+      "bytes": 1536,
+      "sha256": "7cc9e3486f8a9ca1cba02941798ac7b5833bf69688ae812bca2403309b819354"
+    },
+    {
+      "name": "W2.weight",
+      "shape": [
+        3,
+        384
+      ],
+      "bytes": 4608,
+      "sha256": "606f558e014930f9c1669f03c71c28945c4631568e39cd308c6c7f4077c7bfb9"
+    },
+    {
+      "name": "W2.bias",
+      "shape": [
+        3
+      ],
+      "bytes": 12,
+      "sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+    },
+    {
+      "name": "Pfix",
+      "shape": [
+        7,
+        384
+      ],
+      "bytes": 10752,
+      "sha256": "495bf59bc8ee068fe5a2892c6545796404ad1d81cb7b5862a8c09e9491eb7589"
+    }
+  ],
+  "common_CPU_RNG_unchanged": true
+}

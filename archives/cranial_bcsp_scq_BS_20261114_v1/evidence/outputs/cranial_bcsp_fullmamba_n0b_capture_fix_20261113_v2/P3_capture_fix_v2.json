@@ -1,0 +1,45 @@
+{
+  "status": "LOCAL_N0B_CAPTURE_FIX_V2_P3_PASS",
+  "worker": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\local_tools\\n0b_trace_worker_v2.py",
+    "bytes": 10872,
+    "sha256": "82fd2a2582ff045564485e4aea3a0b98fb18cb5d76dc1235dbd06c4bc9835615"
+  },
+  "CPU": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_n0b_capture_fix_20261113_v2\\CPU_contract_v2.json",
+    "bytes": 2064,
+    "sha256": "23026235315368da54e8fac1ad9b586005ab6f5264d80938a00ea14475c0aa5e"
+  },
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\local_tools\\n0b_trace_cpu_contract_v2.py",
+    "bytes": 4955,
+    "sha256": "94900019d9e65342917ca61545f3d4da76c95c0a626753e5ab5da94c7c86763d"
+  },
+  "actual_mother": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\deliverables\\cranial_bcsp_mamba_P1_20261106_v2\\payload\\parent_source_snapshot\\models\\AdaPoinTr.py",
+    "bytes": 103347,
+    "sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4"
+  },
+  "actual_decoder": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_implementation_v1\\bcsp_lqi_decoder_v1.py",
+    "bytes": 6053,
+    "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8"
+  },
+  "checks": {
+    "only_Capture_class_changed": true,
+    "actual_keyword_mother_call_verified": true,
+    "first_LQIBlock_positional_X_F_Q_S_verified": true,
+    "all41_CPU_checks_pass": true,
+    "no_backward_or_optimizer_step_calls": true,
+    "original_v1_bytes_unchanged": true,
+    "no_model_source_changes": true,
+    "old_one_forward_failure_retained": true,
+    "CUDA_not_revalidated": true
+  },
+  "limitations": [
+    "Artificial CPU checks do not certify real CUDA hooks or seven-case output equivalence.",
+    "No new server asset/existence/resource observation in this implementation-only turn."
+  ],
+  "server_operations": 0,
+  "real_model_calls": 0
+}

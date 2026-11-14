@@ -1,0 +1,10 @@
+--- entry_v1
++++ entry_v2
+@@ -247,6 +247,7 @@
+         class Policy(type(base_policy)):
+             def check(self,filename,write=False):
+                 if isinstance(filename,int):return
++                if utc.allow(filename,write):return
+                 if guard.allow(filename,write):return
+                 return super().check(filename,write)
+         sys.addaudithook(Policy(roots,out).audit)

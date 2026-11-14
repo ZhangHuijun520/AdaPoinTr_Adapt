@@ -1,0 +1,193 @@
+{
+  "status": "FORMAL_SCQ_POST_CUDA_FREEZE_AUDIT_PASS",
+  "request_sha256": "0f5aec8c30d0044547cd8806c5663aeb4f0f9643e254a65ce562f5d45641521b",
+  "exit_code": 0,
+  "counts": {
+    "full_forward": 4,
+    "full_backward": 4,
+    "full_loss": 4,
+    "decoder_forward": 0,
+    "decoder_backward": 0,
+    "optimizer_steps": 0
+  },
+  "native_SSM_calls": 144,
+  "phases": [
+    {
+      "phase": "B_eval1",
+      "batch": 1,
+      "loss": 0.4480944275856018,
+      "shared_gradient_prefixes": 35,
+      "SCQ_gradients": null,
+      "initial_equivalence": null,
+      "BN_buffer_change_count": 0,
+      "eval_RNG_unchanged": true,
+      "restoration_assertions": {
+        "kind": "PHASE_RESTORATION",
+        "phase": "B_eval1",
+        "state_restored": true,
+        "RNG_restored": true,
+        "modes_restored": true,
+        "BN_momenta_restored": true,
+        "gradients_cleared": true
+      }
+    },
+    {
+      "phase": "F_eval1",
+      "batch": 1,
+      "loss": 0.4480944275856018,
+      "shared_gradient_prefixes": 35,
+      "SCQ_gradients": {
+        "W1.weight": 0.0,
+        "W1.bias": 0.0,
+        "W2.weight": 0.3055752766727382,
+        "W2.bias": 0.06563304452134835
+      },
+      "initial_equivalence": [
+        {
+          "max_abs": 0.0,
+          "close": true
+        },
+        {
+          "max_abs": 0.0,
+          "close": true
+        }
+      ],
+      "BN_buffer_change_count": 0,
+      "eval_RNG_unchanged": true,
+      "restoration_assertions": {
+        "kind": "PHASE_RESTORATION",
+        "phase": "F_eval1",
+        "state_restored": true,
+        "RNG_restored": true,
+        "modes_restored": true,
+        "BN_momenta_restored": true,
+        "gradients_cleared": true
+      }
+    },
+    {
+      "phase": "S_eval1",
+      "batch": 1,
+      "loss": 0.4480944275856018,
+      "shared_gradient_prefixes": 35,
+      "SCQ_gradients": {
+        "W1.weight": 0.0,
+        "W1.bias": 0.0,
+        "W2.weight": 0.3049128430855131,
+        "W2.bias": 0.06563304390661297
+      },
+      "initial_equivalence": [
+        {
+          "max_abs": 0.0,
+          "close": true
+        },
+        {
+          "max_abs": 0.0,
+          "close": true
+        }
+      ],
+      "BN_buffer_change_count": 0,
+      "eval_RNG_unchanged": true,
+      "restoration_assertions": {
+        "kind": "PHASE_RESTORATION",
+        "phase": "S_eval1",
+        "state_restored": true,
+        "RNG_restored": true,
+        "modes_restored": true,
+        "BN_momenta_restored": true,
+        "gradients_cleared": true
+      }
+    },
+    {
+      "phase": "S_train8",
+      "batch": 8,
+      "loss": 0.393132746219635,
+      "shared_gradient_prefixes": 35,
+      "SCQ_gradients": {
+        "W1.weight": 0.0,
+        "W1.bias": 0.0,
+        "W2.weight": 0.3471812236722432,
+        "W2.bias": 0.0814380232307153
+      },
+      "initial_equivalence": null,
+      "BN_buffer_change_count": 3,
+      "eval_RNG_unchanged": null,
+      "restoration_assertions": {
+        "kind": "PHASE_RESTORATION",
+        "phase": "S_train8",
+        "state_restored": true,
+        "RNG_restored": true,
+        "modes_restored": true,
+        "BN_momenta_restored": true,
+        "gradients_cleared": true
+      }
+    }
+  ],
+  "resources": {
+    "samples": 21,
+    "maximum_RSS_bytes": 1905782784,
+    "maximum_SMI_MiB": 14624,
+    "maximum_torch_allocated_bytes": 13570521600,
+    "maximum_torch_reserved_bytes": 14822670336,
+    "minimum_free_disk_bytes": 11037310976,
+    "monitored_elapsed_seconds": 15.788798901252449,
+    "per_phase": {
+      "B_eval1": {
+        "RSS_bytes": 1765097472,
+        "output_bytes": 61514,
+        "device_MiB": 2390,
+        "peak_allocated": 1869886464,
+        "peak_reserved": 1996488704,
+        "elapsed_seconds": 8.142297910060734,
+        "free_disk_bytes": 11037310976
+      },
+      "F_eval1": {
+        "RSS_bytes": 1886461952,
+        "output_bytes": 122375,
+        "device_MiB": 2442,
+        "peak_allocated": 1904938496,
+        "peak_reserved": 2048917504,
+        "elapsed_seconds": 10.570623006206006,
+        "free_disk_bytes": 11037310976
+      },
+      "S_eval1": {
+        "RSS_bytes": 1886613504,
+        "output_bytes": 182747,
+        "device_MiB": 2442,
+        "peak_allocated": 1904989696,
+        "peak_reserved": 2048917504,
+        "elapsed_seconds": 12.876586453057826,
+        "free_disk_bytes": 11037310976
+      },
+      "S_train8": {
+        "RSS_bytes": 1905754112,
+        "output_bytes": 242960,
+        "device_MiB": 14624,
+        "peak_allocated": 13570521600,
+        "peak_reserved": 14822670336,
+        "elapsed_seconds": 15.50691668689251,
+        "free_disk_bytes": 11037310976
+      }
+    }
+  },
+  "checks": {
+    "exact_installed_and_output_file_sets": true,
+    "all_content_hashes_and_local_readbacks_match": true,
+    "payload_manifest_matches_fresh_hashes": true,
+    "one_way_authorization_and_single_claim": true,
+    "exact_counts_and_order": true,
+    "all_recorded_shared_gradient_groups_nonzero_finite": true,
+    "SCQ_W2_active_and_initial_W1_zero_expected": true,
+    "all_runtime_restoration_assertions_pass": true,
+    "eval_RNG_fingerprints_equal": true,
+    "common_native_initial_state_fingerprints_equal": true,
+    "all_resource_conditions_recomputed_pass": true
+  },
+  "limits": {
+    "no_model_forward_in_audit": true,
+    "no_checkpoint_or_real_data_read": true,
+    "no_new_GPU_operation": true,
+    "restoration_evidence": "Verified bound runtime assertions, recorded RNG fingerprints and matching event/completion records; no independent model reload or in-memory state rehash after process exit",
+    "resource_evidence": "Sampled SMI/RSS plus per-phase torch recorded peaks; not hard cgroup isolation or proof between samples"
+  },
+  "training_authorized": false
+}

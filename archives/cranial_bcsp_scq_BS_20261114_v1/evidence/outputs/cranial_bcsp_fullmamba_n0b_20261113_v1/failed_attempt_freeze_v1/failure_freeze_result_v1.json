@@ -1,0 +1,64 @@
+{
+  "status": "N0B_FAILURE_EVIDENCE_READONLY_FROZEN_NO_RETRY",
+  "forward_attempts": 1,
+  "model_forward_returns_with_equivalence_pass": 1,
+  "usable_memory_traces": 0,
+  "backward": 0,
+  "optimizer_steps": 0,
+  "first_case": {
+    "status": "CLAIMED_BEFORE_FORWARD",
+    "index": 1,
+    "fold": "C",
+    "case_id": "train__012__parietotemporal"
+  },
+  "equivalence": {
+    "status": "EQUIVALENCE_CHECKED",
+    "index": 1,
+    "case_id": "train__012__parietotemporal",
+    "passed": true,
+    "errors": {
+      "Q_normalized_max_abs": 0.0,
+      "P_normalized_max_abs": 0.0,
+      "Q_world_max_abs_mm": 0.0,
+      "P_world_max_abs_mm": 0.0
+    }
+  },
+  "checkpoint_files_fresh_hash_unchanged": true,
+  "worker_not_live": true,
+  "output_files": [
+    {
+      "name": "launch.log",
+      "bytes": 1935,
+      "sha256": "bfd77d3f15dac1e3e5401b600f4a22f5c557f9e3de419c07c7046a4818ece9f6"
+    },
+    {
+      "name": "resources.jsonl",
+      "bytes": 1035,
+      "sha256": "9d994b4af2308254338286cb8db6f66f8ee2df357ee5639f117cd5183a248023"
+    },
+    {
+      "name": "attempt_claim.json",
+      "bytes": 332,
+      "sha256": "63d964f9ae5fa4543cbe25bb62f5f214bb5cf2bd946ef30de0905f8647893c5c"
+    },
+    {
+      "name": "worker.pid",
+      "bytes": 4,
+      "sha256": "9468c114afc20220a94486b82cf437e63a9707c5fb0cb26ec56a8da173762573"
+    },
+    {
+      "name": "forward_attempts.jsonl",
+      "bytes": 332,
+      "sha256": "5d440acbd6c37e126b77530d6277c0306df7f1ae7e3fb916f7005c3e129fbd55"
+    },
+    {
+      "name": "failure.json",
+      "bytes": 109,
+      "sha256": "e73f4a807f5d440cb8852d1ba066088b05068d50d3291cc4963338e0211ede09"
+    }
+  ],
+  "cause": "Observer decoder prehook captured only positional arguments. Actual mother passes q_pos/v_pos by keyword; fixture failed to cover actual call style.",
+  "state_after_fingerprint_available": false,
+  "resource_peak_after_forward_available": false,
+  "original_attempt_consumed": true
+}

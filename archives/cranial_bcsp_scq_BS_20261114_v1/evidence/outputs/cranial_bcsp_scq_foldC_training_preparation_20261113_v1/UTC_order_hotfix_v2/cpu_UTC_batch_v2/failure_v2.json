@@ -1,0 +1,9 @@
+{
+  "status": "FAILED_STOP_NO_RETRY",
+  "checks": [
+    "whole production AST unchanged after removing one UTC check",
+    "old policy reproduces UTC order conflict"
+  ],
+  "error": "AttributeError(\"'types.SimpleNamespace' object has no attribute 'SEEK_SET'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\UTC_order_hotfix_v2\\test_UTC_order_cpu_v2.py\", line 54, in main\n    calls.clear();after.check(binding['link'],False)\n  File \"actual_policy_class_only\", line 250, in check\n  File \"E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\gpu_admission_v3\\exact_utc_resource_v1.py\", line 74, in allow\n    self.verify()\n  File \"E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\gpu_admission_v3\\exact_utc_resource_v1.py\", line 58, in verify\n    os.lseek(self.fd, 0, os.SEEK_SET)\nAttributeError: 'types.SimpleNamespace' object has no attribute 'SEEK_SET'\n"
+}

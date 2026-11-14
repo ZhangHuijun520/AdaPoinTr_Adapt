@@ -1,0 +1,5 @@
+from pathlib import Path;import hashlib,socket;assert socket.gethostname()=='shu-common-25721452-notebook-t6ibfm-0'
+for r in [{'path': '/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/__init__.py', 'bytes': 118, 'sha256': 'af95401837aff56ae3749c2237eaff7df8c6a4328d7c5cc6a6731287ac27152c'}, {'path': '/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/causal_conv1d_interface.py', 'bytes': 8850, 'sha256': '221f41aa963a8f84683d9c6b2b4bf448692feb963fefcd778fa1b4ed2688c859'}, {'path': '/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm-2.3.1.dist-info/METADATA', 'bytes': 25449, 'sha256': 'de580cd29b3bf2c8d81240fad9255978be1835884b82ab8e84f17f4ba720effd'}, {'path': '/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d-1.6.2.post1.dist-info/METADATA', 'bytes': 1625, 'sha256': '3b4a001f4ad6f856465746601e4b0dda9b2d088bd8e81b6376e4a707fcf4ca7b'}]:
+ p=Path(r['path']);assert p.is_file() and not any(x.is_symlink() for x in (p,*p.parents)),str(p)
+ assert p.stat().st_size==r['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest()==r['sha256'],str(p)
+print('EXACT_BINDINGS_PASS')

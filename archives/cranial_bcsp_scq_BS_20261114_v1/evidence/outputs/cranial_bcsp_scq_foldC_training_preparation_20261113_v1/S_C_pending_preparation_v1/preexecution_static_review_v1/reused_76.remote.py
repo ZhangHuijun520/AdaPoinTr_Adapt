@@ -1,0 +1,5 @@
+from pathlib import Path;import hashlib,socket;assert socket.gethostname()=='shu-common-25721452-notebook-t6ibfm-0'
+for r in [{'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/CPU_UTC_order_result_v1.json', 'bytes': 2345, 'sha256': 'e1bb05bc56b635103c7d60ad9ba5c5e6ffcc785badd5d5b91109526b833969d7'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/SCQ_B_FoldC_training_execution_request_v2.json', 'bytes': 16021, 'sha256': '95d6dfdb07a0e64a8f80646c65f84da38ff7297344e74541000fe1dbcc899b84'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/training_entry_P3_v2.json', 'bytes': 3405, 'sha256': 'c79be9e25096216ccfa24fa096a278e7f771ed83e2af4930e987e4e5a0d5bfe2'}]:
+ p=Path(r['path']);assert p.is_file() and not any(x.is_symlink() for x in (p,*p.parents)),str(p)
+ assert p.stat().st_size==r['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest()==r['sha256'],str(p)
+print('EXACT_BINDINGS_PASS')

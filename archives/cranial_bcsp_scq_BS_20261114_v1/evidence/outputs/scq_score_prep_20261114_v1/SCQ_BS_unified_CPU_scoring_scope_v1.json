@@ -1,0 +1,84 @@
+{
+  "schema": "bcsp-scq-BS-local-scoring-protocol-v1",
+  "status": "FROZEN_SCOPE_AWAITING_IMPLEMENTATION_NOT_EXECUTION_REQUEST",
+  "arms": [
+    "B",
+    "S"
+  ],
+  "folds": [
+    "C",
+    "D"
+  ],
+  "counts": {
+    "unique_cases": 210,
+    "sources": 42,
+    "model_rows": 420,
+    "shared_control_rows": 420,
+    "case_score_rows": 840,
+    "source_score_rows": 168
+  },
+  "primary_metric": "A1 area-weighted E_P95 mm",
+  "paired_directions": [
+    "S minus B"
+  ],
+  "secondary_metrics": [
+    "J_P95",
+    "E/J Cover@0.5/1/2mm",
+    "CD-L1: half sum of bidirectional unsquared Euclidean means",
+    "Pred-to-A2 P95 and >20mm outlier fraction",
+    "centroid offset, radius ratio, coarse/dense summaries"
+  ],
+  "aggregation": "Five defects/source equally, then21sources/fold equally; folds separately and pooled descriptive summaries; rows not independent patients",
+  "geometry_labels": {
+    "placement_tail": "centroid>20mm",
+    "compact_distribution": "radius_ratio<0.9",
+    "severe_geometry": "E_P95>20mm OR J_Cover2mm==0"
+  },
+  "reporting": "Keep all cases and defect types including frontoorbital; new/rescued/shared severe cases; no outcome-driven exclusion",
+  "references": "Frozen A1/A2/B bank and GT8192, D-only inverse normalization to world mm",
+  "coarse_availability": "All420 Native outputs have actual Qused256/P8192 and same-forward Qraw256/delta256; preserve original metrics.",
+  "bootstrap": 0,
+  "p_values": false,
+  "formal_gate_execution": false,
+  "ICP": false,
+  "GT_alignment": false,
+  "postfilter": false,
+  "limits": {
+    "wall_seconds": 18000,
+    "RSS_bytes": 8589934592,
+    "output_bytes": 2147483648,
+    "threads": 2
+  },
+  "budget_reason": "Inherited two-thread CPU upper budget retained, no GPU;840case rows instead of1050; no additional cases/metrics.",
+  "prohibited": [
+    "Scoring before implementation/CPU/P3 and separate hash authorization",
+    "New inference/checkpoint/GPU/training/BNCal",
+    "Changes to metrics/reference/threshold/cases/sampling/frame",
+    "Oracle alignment/parameter search/bootstrap/formal gate",
+    "Backup extraction/deletion/writes"
+  ],
+  "inherited_protocol": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_F0_scoring_preparation_v1\\LQI_F0_unified_scoring_scope_v1.json",
+    "bytes": 3529,
+    "sha256": "37058bd408bf5b6f5e12f799f0b9aa2a2bf74b39831c10cb1192f0ed7afbec94"
+  },
+  "metric": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+    "bytes": 6784,
+    "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+  },
+  "score_index": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_score_prep_20261114_v1\\SCQ_BS_score_case_index_candidate_v1.json",
+    "bytes": 377720,
+    "sha256": "1f92f49b3da1eedf78f38b56d937966b75c449ecafee3852bbfad368a4b940e7"
+  },
+  "scientific_constraints": [
+    "Same210 opened cases/42sources; no selection based on model outcomes",
+    "Use same fixed references/metric code/thresholds and D-only inverse normalization to world mm",
+    "420 B/S model rows plus420 shared control rows, total840; controls counted once per case",
+    "Keep all severe/regression cases and five types; C/D separately then descriptive pooled source-equal summaries",
+    "No registration/Oracle/TTA/postfilter/bootstrap/p-values/formal gate",
+    "Qraw and delta are diagnostics, never substitute registered/aligned or corrected predictions for Native scores",
+    "Separate entry/artificial CPU tests/P3 and separate complete request SHA256 authorization required before true scoring"
+  ]
+}

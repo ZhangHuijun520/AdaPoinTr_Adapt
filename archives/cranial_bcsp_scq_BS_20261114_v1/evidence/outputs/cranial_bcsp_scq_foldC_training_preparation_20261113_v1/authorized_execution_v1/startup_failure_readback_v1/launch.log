@@ -1,0 +1,112 @@
+/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+2026-11-13 12:03:59,012 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}
+/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/utils/determinism.py:73: UserWarning: Deterministic mode: upgrade to Triton >= 3.4.0 for cached autotuning.
+  warnings.warn(msg)
+using group version 2
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/linecache.py", line 46, in getlines
+    return updatecache(filename, module_globals)
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/linecache.py", line 136, in updatecache
+    with tokenize.open(fullname) as fp:
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/tokenize.py", line 394, in open
+    buffer = _builtin_open(filename, 'rb')
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 164, in audit
+    self.check(args[0], write)
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_scq_training_entry_v1.py", line 250, in check
+    if guard.allow(filename,write):return
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_cuda_admission_v3.py", line 152, in allow
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_cuda_admission_v3.py", line 138, in verify
+KeyError: PosixPath('/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_factory_v1.py')
+
+Original exception was:
+Traceback (most recent call last):
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2305, in __getattr__
+    module = self._get_module(self._class_to_module[name])
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2539, in _get_module
+    raise e
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2537, in _get_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/transformers/generation/utils.py", line 53, in <module>
+    from .candidate_generator import (
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/transformers/generation/candidate_generator.py", line 31, in <module>
+    from sklearn.metrics import roc_curve
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/sklearn/__init__.py", line 73, in <module>
+    from .base import clone  # noqa: E402
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/sklearn/base.py", line 19, in <module>
+    from .utils._metadata_requests import _MetadataRequester, _routing_enabled
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/sklearn/utils/__init__.py", line 9, in <module>
+    from ._chunking import gen_batches, gen_even_slices
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/sklearn/utils/_chunking.py", line 11, in <module>
+    from ._param_validation import Interval, validate_params
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 17, in <module>
+    from .validation import _is_arraylike_not_scalar
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/sklearn/utils/validation.py", line 21, in <module>
+    from ..utils._array_api import _asarray_with_order, _is_numpy_namespace, get_namespace
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/sklearn/utils/_array_api.py", line 20, in <module>
+    from .fixes import parse_version
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/sklearn/utils/fixes.py", line 20, in <module>
+    import pandas as pd
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/pandas/__init__.py", line 49, in <module>
+    from pandas.core.api import (
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/pandas/core/api.py", line 1, in <module>
+    from pandas._libs import (
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/pandas/_libs/__init__.py", line 18, in <module>
+    from pandas._libs.interval import Interval
+  File "pandas/_libs/interval.pyx", line 1, in init pandas._libs.interval
+  File "pandas/_libs/hashtable.pyx", line 1, in init pandas._libs.hashtable
+  File "pandas/_libs/missing.pyx", line 1, in init pandas._libs.missing
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/pandas/_libs/tslibs/__init__.py", line 40, in <module>
+    from pandas._libs.tslibs.conversion import localize_pydatetime
+  File "pandas/_libs/tslibs/conversion.pyx", line 1, in init pandas._libs.tslibs.conversion
+  File "pandas/_libs/tslibs/offsets.pyx", line 1, in init pandas._libs.tslibs.offsets
+  File "pandas/_libs/tslibs/timestamps.pyx", line 1, in init pandas._libs.tslibs.timestamps
+  File "pandas/_libs/tslibs/timedeltas.pyx", line 1, in init pandas._libs.tslibs.timedeltas
+  File "pandas/_libs/tslibs/timezones.pyx", line 49, in init pandas._libs.tslibs.timezones
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/dateutil/tz/tz.py", line 1557, in __call__
+    rv = self.nocache(name=name)
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/dateutil/tz/tz.py", line 1640, in nocache
+    tz = tzfile(filepath)
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/dateutil/tz/tz.py", line 464, in __init__
+    fileobj = open(fileobj, 'rb')
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 164, in audit
+    self.check(args[0], write)
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_scq_training_entry_v1.py", line 250, in check
+    if guard.allow(filename,write):return
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_cuda_admission_v3.py", line 150, in allow
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_cuda_admission_v3.py", line 40, in clean
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_cuda_admission_v3.py", line 36, in need
+RuntimeError: linked path: /usr/share/zoneinfo/UTC
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_scq_training_entry_v1.py", line 274, in <module>
+    if __name__=='__main__':main()
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_scq_training_entry_v1.py", line 266, in main
+    result=dispatch_training(q,selected,fold,plan,factory=factory.build_model,model_builder=lambda:cls(EasyDict(static['model'])),runtime=runtime,bridge=bridge,admission=admission,expected_common=common,helper=helper,budget=budget,torch=torch,knn_enable=transformer.enable_bcsp_knn)
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_scq_training_entry_v1.py", line 161, in dispatch_training
+    model,evidence=factory(model_builder,q['variant'],q['initialization'])
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_factory_v1.py", line 40, in build_model
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_factory_v1.py", line 59, in build_model
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py", line 84, in build_model
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py", line 63, in _build
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py", line 24, in native_mixer
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/__init__.py", line 6, in <module>
+    from mamba_ssm.models.mixer_seq_simple import MambaLMHeadModel
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/models/mixer_seq_simple.py", line 20, in <module>
+    from mamba_ssm.utils.generation import GenerationMixin
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/utils/generation.py", line 14, in <module>
+    from transformers.generation import GenerateDecoderOnlyOutput, TextStreamer
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2393, in __getattr__
+    raise ModuleNotFoundError(
+ModuleNotFoundError: Could not import module 'GenerateDecoderOnlyOutput'. Are this object's requirements defined correctly?

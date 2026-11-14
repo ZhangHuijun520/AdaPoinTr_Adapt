@@ -1,0 +1,34 @@
+{
+  "tmux_live": false,
+  "exit_code": "1",
+  "worker_PID": "6941",
+  "worker_live": false,
+  "worker_matches_entry": false,
+  "startup_failure.json": {
+    "status": "FAILED_STOP_NO_RETRY",
+    "error": "ModuleNotFoundError(\"Could not import module 'GenerateDecoderOnlyOutput'. Are this object's requirements defined correctly?\")"
+  },
+  "log_tail": "meError: linked path: /usr/share/zoneinfo/UTC\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_scq_training_entry_v1.py\", line 274, in <module>\n    if __name__=='__main__':main()\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_scq_training_entry_v1.py\", line 266, in main\n    result=dispatch_training(q,selected,fold,plan,factory=factory.build_model,model_builder=lambda:cls(EasyDict(static['model'])),runtime=runtime,bridge=bridge,admission=admission,expected_common=common,helper=helper,budget=budget,torch=torch,knn_enable=transformer.enable_bcsp_knn)\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_scq_training_entry_v1.py\", line 161, in dispatch_training\n    model,evidence=factory(model_builder,q['variant'],q['initialization'])\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_factory_v1.py\", line 40, in build_model\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_factory_v1.py\", line 59, in build_model\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py\", line 84, in build_model\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py\", line 63, in _build\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py\", line 24, in native_mixer\n  File \"/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/__init__.py\", line 6, in <module>\n    from mamba_ssm.models.mixer_seq_simple import MambaLMHeadModel\n  File \"/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/models/mixer_seq_simple.py\", line 20, in <module>\n    from mamba_ssm.utils.generation import GenerationMixin\n  File \"/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/utils/generation.py\", line 14, in <module>\n    from transformers.generation import GenerateDecoderOnlyOutput, TextStreamer\n  File \"/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/transformers/utils/import_utils.py\", line 2393, in __getattr__\n    raise ModuleNotFoundError(\nModuleNotFoundError: Could not import module 'GenerateDecoderOnlyOutput'. Are this object's requirements defined correctly?\n",
+  "files": [
+    {
+      "name": "worker.pid",
+      "bytes": 5
+    },
+    {
+      "name": "launch.log",
+      "bytes": 10578
+    },
+    {
+      "name": "resources.jsonl",
+      "bytes": 0
+    },
+    {
+      "name": "startup_failure.json",
+      "bytes": 181
+    },
+    {
+      "name": "exit_code.txt",
+      "bytes": 2
+    }
+  ]
+}

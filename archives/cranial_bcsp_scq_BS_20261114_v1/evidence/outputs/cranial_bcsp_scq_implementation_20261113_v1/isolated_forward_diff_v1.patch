@@ -1,0 +1,17 @@
+--- original_PCTransformer_forward
++++ isolated_SCQ_forward
+@@ -1,4 +1,4 @@
+-def forward(self, xyz, epoch=None):
++def _scq_base_forward(self, xyz, epoch=None):
+     if self.full_instrumentation_enabled and self.training:
+         raise RuntimeError(
+             'Full-model instrumentation is inference-only; call eval() first'
+@@ -95,6 +95,8 @@
+         # skull surface; all coarse queries are generated from global context.
+         coarse = learned_coarse[:, :self.num_query]
+ 
++    coarse, self._scq_last_info = self.scq(coor, mem, global_feature, coarse)
++
+     if self.training and self.use_denoise:
+         # add denoise task
+         # first pick some point : 64?

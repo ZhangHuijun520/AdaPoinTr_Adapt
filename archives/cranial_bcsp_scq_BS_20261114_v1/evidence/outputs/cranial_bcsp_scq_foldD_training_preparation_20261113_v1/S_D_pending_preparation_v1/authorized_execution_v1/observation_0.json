@@ -1,0 +1,125 @@
+{
+  "tmux_live": true,
+  "exit_code": null,
+  "worker_PID": "59013",
+  "worker_live": true,
+  "worker_matches_entry": true,
+  "last_metric": {
+    "step": 2,
+    "epoch": 0,
+    "batch": 1,
+    "case_ids": [
+      "train__019__bilateral",
+      "train__056__bilateral",
+      "train__092__frontoorbital",
+      "train__003__random_1",
+      "train__055__random_2",
+      "train__063__bilateral",
+      "train__061__parietotemporal",
+      "train__066__random_1"
+    ],
+    "source_ids": [
+      "train:019",
+      "train:056",
+      "train:092",
+      "train:003",
+      "train:055",
+      "train:063",
+      "train:061",
+      "train:066"
+    ],
+    "loss_sparse": 0.0,
+    "loss_dense": 0.7871402502059937,
+    "loss_denoise": 0.0,
+    "loss_reconstruction": 0.7871402502059937,
+    "loss": 0.7871402502059937,
+    "LR": [
+      0.0001,
+      0.0001
+    ],
+    "BN_momentum": 0.9,
+    "grad_norm_before_clip": 4.735191822052002,
+    "clip_max_norm": 10,
+    "optimizer_step_committed": true
+  },
+  "last_resource": {
+    "phase": "after_step",
+    "committed_step": 2,
+    "RSS": 1661538304,
+    "output_bytes": 1425337,
+    "peak_allocated": 13927097856,
+    "peak_reserved": 14810087424,
+    "device_MiB": 14612,
+    "compute_PIDs": [
+      3383441
+    ],
+    "own_PID": 59013,
+    "PID_policy": "DIAGNOSTIC_ONLY_NO_OWNERSHIP_GUARANTEE",
+    "PID_query_error": null,
+    "raw_PIDs_match_worker_number": false,
+    "PID_warning": true,
+    "elapsed_seconds": 13.172257317230105,
+    "limits": {
+      "wall_seconds": 86400,
+      "RSS_bytes": 8589934592,
+      "device_MiB": 22528,
+      "torch_peak_bytes": 21474836480,
+      "output_bytes": 2147483648,
+      "minimum_free_disk_bytes": 4294967296
+    },
+    "checks": {
+      "allocated_within_limit": true,
+      "reserved_within_limit": true,
+      "device_within_limit": true
+    },
+    "failed_checks": [],
+    "resource_guard_passed": true
+  },
+  "log_tail": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\n2026-11-13 16:09:58,733 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/utils/determinism.py:73: UserWarning: Deterministic mode: upgrade to Triton >= 3.4.0 for cached autotuning.\n  warnings.warn(msg)\n",
+  "files": [
+    {
+      "name": "launch.log",
+      "bytes": 1420
+    },
+    {
+      "name": "resources.jsonl",
+      "bytes": 1466
+    },
+    {
+      "name": "order_plan.json",
+      "bytes": 1248506
+    },
+    {
+      "name": "metrics.jsonl",
+      "bytes": 1331
+    },
+    {
+      "name": "model_construction.json",
+      "bytes": 91025
+    },
+    {
+      "name": "run_identity.json",
+      "bytes": 336
+    },
+    {
+      "name": "worker.pid",
+      "bytes": 6
+    },
+    {
+      "name": "initialization.json",
+      "bytes": 289
+    },
+    {
+      "name": "optimizer_actual_defaults.json",
+      "bytes": 223
+    },
+    {
+      "name": "optimizer_parameter_groups.json",
+      "bytes": 70466
+    },
+    {
+      "name": "SCQ_geometry.jsonl",
+      "bytes": 11002
+    }
+  ]
+}

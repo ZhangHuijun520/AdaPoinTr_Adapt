@@ -1,0 +1,1 @@
+from pathlib import Path;import hashlib;p=Path('/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/control/runtime_v1.json');assert p.stat().st_size==228 and hashlib.sha256(p.read_bytes()).hexdigest()=='e405a679c6b18425c4980e4fefc4e23a628c7cfe862a834f7293d7efeacba8b9';print('CONTROL_HASH_PASS')

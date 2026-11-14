@@ -1,0 +1,150 @@
+{
+  "completion.json": {
+    "status": "SCQ_NATIVE_CUDA_COMPLETE_PENDING_FORMAL_FREEZE",
+    "counts": {
+      "full_forward": 4,
+      "full_backward": 4,
+      "full_loss": 4,
+      "decoder_forward": 0,
+      "decoder_backward": 0,
+      "optimizer_steps": 0
+    },
+    "training_admission": false,
+    "real_data_reads": 0,
+    "checkpoint_loads": 0,
+    "initial_FS_equivalence": true,
+    "initial_common_state_equal": true,
+    "phases": [
+      {
+        "phase": "B_eval1",
+        "batch": 1,
+        "loss": 0.4480944275856018,
+        "SCQ_gradients": null
+      },
+      {
+        "phase": "F_eval1",
+        "batch": 1,
+        "loss": 0.4480944275856018,
+        "SCQ_gradients": {
+          "W1.weight": 0.0,
+          "W1.bias": 0.0,
+          "W2.weight": 0.3055752766727382,
+          "W2.bias": 0.06563304452134835
+        }
+      },
+      {
+        "phase": "S_eval1",
+        "batch": 1,
+        "loss": 0.4480944275856018,
+        "SCQ_gradients": {
+          "W1.weight": 0.0,
+          "W1.bias": 0.0,
+          "W2.weight": 0.3049128430855131,
+          "W2.bias": 0.06563304390661297
+        }
+      },
+      {
+        "phase": "S_train8",
+        "batch": 8,
+        "loss": 0.393132746219635,
+        "SCQ_gradients": {
+          "W1.weight": 0.0,
+          "W1.bias": 0.0,
+          "W2.weight": 0.3471812236722432,
+          "W2.bias": 0.0814380232307153
+        }
+      }
+    ],
+    "native_SSM_calls_total": 144
+  },
+  "exit_code": "0",
+  "worker_pid": "5699",
+  "worker_live": false,
+  "tmux_live": false,
+  "files": [
+    {
+      "name": "completion.json",
+      "bytes": 246287
+    },
+    {
+      "name": "launch.log",
+      "bytes": 4280
+    },
+    {
+      "name": "worker.pid",
+      "bytes": 5
+    },
+    {
+      "name": "events.jsonl",
+      "bytes": 228854
+    },
+    {
+      "name": "resources.jsonl",
+      "bytes": 10961
+    },
+    {
+      "name": "construction.json",
+      "bytes": 1850
+    },
+    {
+      "name": "payload_manifest.json",
+      "bytes": 566
+    },
+    {
+      "name": "exit_code.txt",
+      "bytes": 2
+    }
+  ],
+  "log_tail": "': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n2026-11-13 11:29:20,514 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\nusing group version 2\nusing group version 2\nusing group version 2\nusing group version 2\n",
+  "last_events": [
+    {
+      "kind": "ATTEMPT_BEFORE_CALL",
+      "operation": "full_forward",
+      "counts": {
+        "full_forward": 4,
+        "full_backward": 3,
+        "full_loss": 3,
+        "decoder_forward": 0,
+        "decoder_backward": 0,
+        "optimizer_steps": 0
+      }
+    },
+    {
+      "kind": "ATTEMPT_BEFORE_CALL",
+      "operation": "full_loss",
+      "counts": {
+        "full_forward": 4,
+        "full_backward": 3,
+        "full_loss": 4,
+        "decoder_forward": 0,
+        "decoder_backward": 0,
+        "optimizer_steps": 0
+      }
+    },
+    {
+      "kind": "ATTEMPT_BEFORE_CALL",
+      "operation": "full_backward",
+      "counts": {
+        "full_forward": 4,
+        "full_backward": 4,
+        "full_loss": 4,
+        "decoder_forward": 0,
+        "decoder_backward": 0,
+        "optimizer_steps": 0
+      }
+    },
+    {
+      "phase": "S_train8",
+      "variant": "S",
+      "batch": 8,
+      "loss": 0.393132746219635
+    },
+    {
+      "kind": "PHASE_RESTORATION",
+      "phase": "S_train8",
+      "state_restored": true,
+      "RNG_restored": true,
+      "modes_restored": true
+    }
+  ]
+}

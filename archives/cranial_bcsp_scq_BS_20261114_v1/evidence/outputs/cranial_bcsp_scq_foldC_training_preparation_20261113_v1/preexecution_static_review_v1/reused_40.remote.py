@@ -1,0 +1,5 @@
+from pathlib import Path;import hashlib,socket;assert socket.gethostname()=='shu-common-25721452-notebook-t6ibfm-0'
+for r in [{'path': '/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/wheelhouse/pointnet2_ops-3.0.0-cp310-cp310-linux_x86_64.whl', 'bytes': 123291, 'sha256': '530496a0d1d5dea6151a466b7c0874632322223308a7016910fb1bfbaaaab1e5'}, {'path': '/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch/version.py', 'bytes': 248, 'sha256': 'b10649fd636e7404398d608b84a2cacc6645e3952f043b439d4c50c95a26a1b5'}, {'path': '/opt/conda/envs/adapointr-mamba/bin/python3.10', 'bytes': 17331920, 'sha256': '01b4275dc374dcae51d245bda004daad6d7882d3f5de7f9852567bb7ab83180d'}, {'path': '/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch-2.4.1+cu118.dist-info/METADATA', 'bytes': 26707, 'sha256': '11606497a9792f0d040ad062064ee1c024dde8b10fc38bed361134d0b7ec429a'}]:
+ p=Path(r['path']);assert p.is_file() and not any(x.is_symlink() for x in (p,*p.parents)),str(p)
+ assert p.stat().st_size==r['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest()==r['sha256'],str(p)
+print('EXACT_BINDINGS_PASS')

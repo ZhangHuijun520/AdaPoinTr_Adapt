@@ -1,0 +1,60 @@
+{
+  "status": "SCQ_TRAINING_ENTRY_LOCAL_P3_PASS",
+  "entry_sha256": "44dc22ff01642c2347bf8a077a09381504f71dff858c92f193239ab2b8c99328",
+  "bridge_sha256": "de9bda5c0e44fe943d54e58325fb7c07c5414fad614a59b591a05950c316ae0d",
+  "native_admission_sha256": "f7fad610b67d96da91c02c6ff879f861d4b101851db5548b05b3117345512895",
+  "CPU_checks": 22,
+  "CPU": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\UTC_order_hotfix_v2\\cpu_UTC_batch_v3\\result_v3.json",
+    "bytes": 2345,
+    "sha256": "e1bb05bc56b635103c7d60ad9ba5c5e6ffcc785badd5d5b91109526b833969d7"
+  },
+  "inherited_CPU_checks": 34,
+  "inherited_P3": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\training_entry_P3_v1.json",
+    "bytes": 4703,
+    "sha256": "20f93edd985f66f0821cb41aa8c9adf1883b7de0f1191cf1c4225166e4b6dced"
+  },
+  "static_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\UTC_order_hotfix_v2\\static_review_v2.json",
+    "bytes": 497,
+    "sha256": "18701ed87a49a352198b00fcc009070475e0d445ad47b8137d70d4a7b3df3fb5"
+  },
+  "diff": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\UTC_order_hotfix_v2\\UTC_order_only_diff_v2.patch",
+    "bytes": 414,
+    "sha256": "caf4af99a1e687a2b1275220c28a57727a5a694cf53dfab6418d5fe4461a2bd3"
+  },
+  "checks": {
+    "formal_failed_startup_audit_pass": true,
+    "old_request_consumed_no_reuse": true,
+    "entire_production_AST_identical_except_one_UTC_order_check": true,
+    "exact_UTC_verify_before_general_guard": true,
+    "UTC_write_hash_metadata_fd_drift_rejected": true,
+    "nonUTC_link_and_source_write_rejection_preserved": true,
+    "train_NPZ_final_checkpoint_and_integer_fd_policy_preserved": true,
+    "model_runtime_bridge_data_order_loss_optimizer_resources_unchanged": true,
+    "all22_targeted_CPU_checks_pass": true,
+    "no_server_deployment_or_GPU_in_patch": true
+  },
+  "failure_audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\failed_startup_freeze_v2\\freeze_verification_v1.json",
+    "bytes": 1116,
+    "sha256": "e480ea39c04be911030e684ca8608f8cda4881fd8663814b19226e3c698c7020"
+  },
+  "CPU_fixture_attempts": 2,
+  "prior_fixture_failure": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\UTC_order_hotfix_v2\\cpu_UTC_batch_v2\\failure_v2.json",
+    "bytes": 1107,
+    "sha256": "607eab7b1b137bf2259792470f7ad17c6ce3d2756c1b95c302b782220d64ebc7"
+  },
+  "fixture_correction": "Only simulated OS SEEK_SET constant completed; production unchanged",
+  "limitations": [
+    "Actual UTC validator and old/new nested policy exercised with artificial file descriptor/metadata fixtures, no real Windows symlink creation.",
+    "No server import/forward/training retry; further startup issues remain possible.",
+    "Secondary closed-guard traceback behavior preserved and outside this UTC-order change."
+  ],
+  "server_writes": 0,
+  "CUDA_calls": 0,
+  "training_executed": false
+}

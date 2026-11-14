@@ -1,0 +1,42 @@
+--- FoldC_entry_v2
++++ FoldD_entry_v1
+@@ -117,8 +117,8 @@
+ def authorize(qr,ar,rr):
+     q=bound(qr);a=bound(ar);runtime=bound(rr)
+     require(q['schema']=='bcsp-scq-training-request-v1' and q['status']=='AWAITING_EXPLICIT_USER_AUTHORIZATION' and q['execution_authorized'] is False and q['stage']=='CRANIAL_BCSP_SCQ','pending SCQ training')
+-    require(q['variant'] in ('B','S') and q['fold']=='C' and q['seed']==0 and q['n_input']==q['n_output']==8192,'fixed Fold C first B/S pair')
+-    require(q['run_id'].startswith('SCQ_'+q['variant']+'_foldC_seed0_train_') and Path(q['output']).name==q['run_id'],'variant/run/output identity')
++    require(q['variant'] in ('B','S') and q['fold']=='D' and q['seed']==0 and q['n_input']==q['n_output']==8192,'fixed Fold D B/S pair')
++    require(q['run_id'].startswith('SCQ_'+q['variant']+'_foldD_seed0_train_') and Path(q['output']).name==q['run_id'],'variant/run/output identity')
+     require(set(a)=={'schema','request_sha256','explicit_user_authorization','user_authorization_text'} and a['schema']=='bcsp-scq-training-authorization-v1' and a['request_sha256']==qr['sha256'] and a['explicit_user_authorization'] is True and bool(a['user_authorization_text'].strip()),'separate execution authorization')
+     require(runtime==dict(schema='bcsp-scq-training-runtime-v1',request_sha256=qr['sha256'],authorization_sha256=ar['sha256']),'one-way runtime')
+     for key,r in q['implementation'].items():
+@@ -130,16 +130,16 @@
+     require(ready['status']=='LOCAL_METADATA_VERIFIED_FRESH_SERVER_CHECK_REQUIRED' and ready['fresh_reverification_required'] is True and ready['payload_arrays_read']==0,'honest readiness')
+     metadata=source_module('bcsp_training_contract_v1',q['implementation']['contract'])
+     static=metadata.validate_static(bound(q['static_config']));require(static['counts']==COUNTS and static['resources']==RESOURCES,'unchanged3900 and resources')
+-    selected,fold=metadata.verify_qualified_receipt(bound(q['QC']['qualified_receipt']),q['QC']['verification'],q['QC']['manifests'],q['QC']['fold_binding'],'C',8192)
++    selected,fold=metadata.verify_qualified_receipt(bound(q['QC']['qualified_receipt']),q['QC']['verification'],q['QC']['manifests'],q['QC']['fold_binding'],'D',8192)
+     plan=metadata.validate_order(bound(q['order_plan']),fold['train_case_ids'])
+     pair=bound(q['pair_contract'])
+     require(pair['status']=='FROZEN_SCQ_BS_CD_CONTRACT_NOT_AUTHORIZATION' and pair['counts']==COUNTS and pair['resources']==RESOURCES and pair['seed']==0 and pair['arm_order']==['B_C','S_C','B_D','S_D'],'fixed B/S C/D contract')
+-    require(pair['identity']==q['identity'] and pair['FoldC']['QC']==q['QC'] and pair['FoldC']['order_plan']==q['order_plan'] and pair['FoldC']['data_root']==q['data_root'] and pair['static_config']==q['static_config'] and pair['native_admission_sha256']==ADMISSION_SHA,'pair identity and metadata')
++    require(pair['identity']==q['identity'] and pair['FoldD']['QC']==q['QC'] and pair['FoldD']['order_plan']==q['order_plan'] and pair['FoldD']['data_root']==q['data_root'] and pair['static_config']==q['static_config'] and pair['native_admission_sha256']==ADMISSION_SHA,'pair identity and metadata')
+     if q['variant']=='B':require(q['paired_baseline'] is None,'baseline first')
+     else:
+         baseline=q['paired_baseline'];require(isinstance(baseline,dict) and set(baseline)=={'audit','construction'},'S requires formal B freeze')
+         ba=bound(baseline['audit']);bc=bound(baseline['construction'])
+-        require(ba['status']=='FORMAL_SCQ_POST_TRAINING_FREEZE_AUDIT_PASS' and ba['variant']=='B' and ba['fold']=='C' and ba['updates']==3900 and ba['identity']==q['identity'] and ba['order_sha256']==metadata.canonical_sha(plan),'matched B freeze')
++        require(ba['status']=='FORMAL_SCQ_POST_TRAINING_FREEZE_AUDIT_PASS' and ba['variant']=='B' and ba['fold']=='D' and ba['updates']==3900 and ba['identity']==q['identity'] and ba['order_sha256']==metadata.canonical_sha(plan),'matched B freeze')
+         require(bc['common_initial_state_SHA256']==common,'B common initialization match')
+     return q,static,metadata,selected,fold,plan,admission,common
+ 
+@@ -192,7 +192,7 @@
+             super().before_step(step)
+             if step==0:
+                 emit(self.output/'model_construction.json',self.first_step_evidence)
+-                emit(self.output/'run_identity.json',dict(stage=q['stage'],variant=q['variant'],fold='C',seed=0,native_admission_sha256=ADMISSION_SHA,checkpoint_legacy_stage='BCSP_INPUT_DENSITY_V1',legacy_stage_is_provenance_only=True,SSM_gradient_non_bitwise_reproducibility_disclosed=True))
++                emit(self.output/'run_identity.json',dict(stage=q['stage'],variant=q['variant'],fold='D',seed=0,native_admission_sha256=ADMISSION_SHA,checkpoint_legacy_stage='BCSP_INPUT_DENSITY_V1',legacy_stage_is_provenance_only=True,SSM_gradient_non_bitwise_reproducibility_disclosed=True))
+         def after_step(self,step):
+             require(self.pending_geometry is not None and self.logged_geometry==step-1 and set(self.pending_losses)=={'coarse_CD','dense_CD'},'one geometry and both original losses per step')
+             epoch,batch=divmod(step-1,39)

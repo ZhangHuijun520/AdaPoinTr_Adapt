@@ -1,0 +1,5 @@
+from pathlib import Path;import hashlib,socket;assert socket.gethostname()=='shu-common-25721452-notebook-t6ibfm-0'
+for r in [{'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/registry.py', 'bytes': 11111, 'sha256': 'a7c49418d587ae84778390b67a50c2bd98cbc93da2e0a506e6d309b5c159ecf7'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/config.py', 'bytes': 2438, 'sha256': '39d487ab6eadcd0a157167cfdf0d1797255f6403828f2653ba7802da6f2ac819'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/logger.py', 'bytes': 5048, 'sha256': '12e50962ca4594ddd573d9a76524ac912ddf55bfc297fa8008a30b20dca28e0c'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/misc.py', 'bytes': 12290, 'sha256': '3063afb490840dd417c2e0cc00f2d5fdfe49ba2074396099c39a112026906485'}]:
+ p=Path(r['path']);assert p.is_file() and not any(x.is_symlink() for x in (p,*p.parents)),str(p)
+ assert p.stat().st_size==r['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest()==r['sha256'],str(p)
+print('EXACT_BINDINGS_PASS')

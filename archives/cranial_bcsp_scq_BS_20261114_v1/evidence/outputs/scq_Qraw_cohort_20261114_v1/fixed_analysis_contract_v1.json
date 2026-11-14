@@ -1,0 +1,30 @@
+{
+  "status": "FROZEN_BOUNDED_POSITION_DIAGNOSTIC_SCOPE",
+  "population": "All210 cases/42sources, four frozen models420 predictions; no exclusions",
+  "grouping": {
+    "E_outcome": "Per-case existing S minus B primary E_P95: negative improved, positive regressed, zero tied",
+    "S_severe": "Existing frozen severe_geometry label; E_P95>20mm or J_Cover2mm==0",
+    "source_group": "Existing E differences averaged over the five frozen defects/source"
+  },
+  "primary_diagnostics": [
+    "Qraw/Qused/P centroid distance to frozen GT8192 centroid",
+    "SCQ correction = raw distance minus used distance; positive moves closer",
+    "Dense correction = used distance minus dense distance; positive moves closer",
+    "Direction cosine of SCQ mean shift towards GT centroid"
+  ],
+  "threshold": "20mm copied from existing dense placement-tail threshold solely as an extended stage diagnostic; not new formal severity/gate",
+  "no_threshold_scan": true,
+  "GT_arrays_read": 0,
+  "reference_arrays_read": 0,
+  "formal_scores_recomputed": 0,
+  "bootstrap": 0,
+  "p_values": false,
+  "formal_gate": false,
+  "new_forward": 0,
+  "training": 0,
+  "limitations": [
+    "Output-defined groups are posthoc associations, not controlled causal groups.",
+    "Case summaries descriptive; five defects/source correlated; source summaries supplied, no significance inference.",
+    "Qraw belongs to jointly trained S, not B or an ablated dense counterfactual."
+  ]
+}

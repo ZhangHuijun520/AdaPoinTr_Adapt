@@ -1,0 +1,20 @@
+--- n0b_trace_worker_v1.py
++++ n0b_trace_worker_v2.py
+@@ -22,13 +22,15 @@
+  values=dict(Q_normalized_max_abs=dq,P_normalized_max_abs=dp,Q_world_max_abs_mm=dq*scale,P_world_max_abs_mm=dp*scale)
+  ok=max(dq,dp)<=limits['normalized_max_abs'] and max(dq,dp)*scale<=limits['world_max_abs_mm'];return ok,values
+ class Capture:
++ """Decoder hook counts calls; tensors come from first LQIBlock's actual positional interface."""
+  def __init__(self):self.values={};self.decoder_calls=0;self.block_calls=0
+  def decoder(self,m,args):
+   self.decoder_calls+=1;require(self.decoder_calls==1,'exact single decoder call')
+-  self.values.update({key:t.detach().clone() for key,t in zip(['X','F','Q','S'],args[:4])})
+  def block(self,m,args):
+   self.block_calls+=1;require(self.block_calls==1,'exact first block call')
+-  self.values.update({key:args[i].detach().clone() for key,i in [('order_q',6),('inverse_q',7),('order_m',8),('self_idx',9),('cross_idx',10)]})
++  require(len(args)>=11,'first LQIBlock positional capture contract')
++  self.values.update({key:args[i].detach().clone() for key,i in [('X',0),('F',1),('Q',2),('S',3),('order_q',6),('inverse_q',7),('order_m',8),('self_idx',9),('cross_idx',10)]})
++
+ def main():
+  import socket
+  scope=Path(sys.argv[1]);require(sha(scope)==sys.argv[2],'scope SHA');q=json.loads(scope.read_bytes());I=q['identity'];out=Path(q['output'])

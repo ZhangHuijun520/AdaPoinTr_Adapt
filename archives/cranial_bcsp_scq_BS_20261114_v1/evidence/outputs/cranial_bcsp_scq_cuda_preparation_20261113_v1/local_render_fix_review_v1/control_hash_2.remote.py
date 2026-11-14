@@ -1,0 +1,1 @@
+from pathlib import Path;import hashlib;p=Path('/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/control/launch_once_v1.sh');assert p.stat().st_size==2722 and hashlib.sha256(p.read_bytes()).hexdigest()=='e2cb9f277217672169de8eea5bd4571dc976c0f96b43f27a320763a19f33153f';print('CONTROL_HASH_PASS')

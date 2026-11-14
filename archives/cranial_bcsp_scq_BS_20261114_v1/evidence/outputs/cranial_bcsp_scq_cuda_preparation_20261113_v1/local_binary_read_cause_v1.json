@@ -1,0 +1,22 @@
+{
+  "cause": "Windows os.open default text mode translated CRLF and stopped binary reading at byte0x1A; complete-read loop alone did not fix it",
+  "observed": [
+    {
+      "file": "scq_factory",
+      "expected_bytes": 14176,
+      "text_mode_bytes": 13942
+    },
+    {
+      "file": "initialization",
+      "expected_bytes": 2784780,
+      "text_mode_bytes": 538
+    }
+  ],
+  "fix": "Explicit O_BINARY when available, plus bounded complete-read loop; Linux keeps O_BINARY=0",
+  "old_failures_preserved": [
+    "cpu_entry_batch_v1/failure_v1.json",
+    "cpu_entry_batch_v2/failure_v1.json"
+  ],
+  "GPU_calls": 0,
+  "SCQ_implementation_changes": 0
+}
