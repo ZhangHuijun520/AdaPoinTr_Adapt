@@ -1,0 +1,34 @@
+{
+  "status": "PRECISE_DEVICE_SELECTOR_MISMATCH_AND_LOST_DIAGNOSTICS_CONFIRMED",
+  "actual_startup_command": [
+    "/usr/bin/nvidia-smi",
+    "--id=GPU-dabcc897-ac69-efac-4438-a6186dea9aaa",
+    "--query-gpu=uuid,name,driver_version,memory.total,memory.used",
+    "--format=csv,noheader,nounits"
+  ],
+  "shell_display": "/usr/bin/nvidia-smi --id=GPU-dabcc897-ac69-efac-4438-a6186dea9aaa --query-gpu=uuid,name,driver_version,memory.total,memory.used --format=csv,noheader,nounits",
+  "SMI_timeout_seconds": 10.0,
+  "reap_timeout_seconds": 2.0,
+  "expected_current_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+  "actual_selector_uuid": "GPU-dabcc897-ac69-efac-4438-a6186dea9aaa",
+  "root_cause": "Accepted identity migration updated q.identity but preserved old q.environment.CUDA_VISIBLE_DEVICES, so frozen launcher and helper.smi --id select the historical GPU.",
+  "error_evidence": {
+    "printed_exception": "monitor query NONZERO_EXIT: ChildNonzeroExit",
+    "stderr_recoverable_from_existing_artifacts": false,
+    "exact_child_returncode_recoverable": false,
+    "stdout_recoverable": false,
+    "explanation": "Popen captured stdout/stderr/returncode in MonitorQueryFailure.details; _MONITOR=None prevented persistence; exception string omits details; process exited. No additional stderr text or numeric child exit code can be established without a separately authorized rerun."
+  },
+  "certainty": "Selector mismatch is directly established by server-fresh request+launcher+helper bytes. Specific NVIDIA stderr wording is unavailable; do not invent it or rule out any simultaneous driver issue.",
+  "minimal_next_fix": [
+    "Version current CUDA_VISIBLE_DEVICES together with exact accepted current GPU UUID; preserve numerical env values.",
+    "Validate historical CUDA environment against historical identity, and current execution env against only the explicit selector migration.",
+    "Persist bounded startup MonitorQueryFailure.details before re-raising, without retries or threshold changes.",
+    "One targeted CPU batch exercises actual launcher exports + smi argv with a fake child and nonzero stdout/stderr/returncode persistence; retain stop-on-failure.",
+    "New P3 and fresh pending request required; current request is consumed."
+  ],
+  "server_writes": 0,
+  "SMI_query_reexecuted": false,
+  "new_forward": 0,
+  "production_edits": 0
+}

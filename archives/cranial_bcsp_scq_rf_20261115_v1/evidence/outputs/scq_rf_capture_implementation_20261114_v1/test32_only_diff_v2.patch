@@ -1,0 +1,30 @@
+--- test_scq_rf_observer_cpu_v1.py
++++ test_scq_rf_observer_cpu_v2.py
+@@ -9,7 +9,7 @@
+ import torch
+ from torch import nn
+ 
+-S=Path(__file__).resolve().parent;O=S/'artificial_cpu_batch_v1'
++S=Path(__file__).resolve().parent;O=S/'artificial_cpu_batch_v2'
+ def rec(p):return dict(path=str(p.resolve()),bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest())
+ def load(name,path):
+     sp=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(sp);sys.modules[name]=m;sp.loader.exec_module(m);return m
+@@ -129,7 +129,17 @@
+         check('30 no retry or next model after failure')
+         reject('31 production CPU bypass rejected',lambda:e.execute(torch,np,p,helper,q,folder('denied_cpu'),Budget(),builder,loader,'cpu',False))
+         launcher=e.render_launcher(q,'a'*64,'b'*64,'c'*64,p)
+-        check('32 short POSIX launcher directory before redirect',max(len(l.encode()) for l in launcher.splitlines())<=2048 and '\\' not in launcher and launcher.index('mkdir --')<launcher.index(' >') and '1800s' in launcher)
++        # Scope the backslash rule to paths, preserving valid shell printf escapes.
++        import shlex
++        from pathlib import PurePosixPath
++        path_values=[q['output'],q['identity']['project'],q['identity']['python_realpath'],q['entry']['path']]
++        path_values += [q['launch_contract'][k] for k in ('request_path','authorization','runtime','launcher','log','pid','exit_code')]
++        command=next(line for line in launcher.splitlines() if line.startswith('/usr/bin/timeout'))
++        tokens=shlex.split(command)
++        arguments=all(tokens[tokens.index(flag)+1]==q['launch_contract'][key] for flag,key in [('--request','request_path'),('--authorization','authorization'),('--runtime','runtime')])
++        posix_paths=all(PurePosixPath(value).is_absolute() and chr(92) not in value and str(PurePosixPath(value))==value for value in path_values)
++        exit_record='printf "%s'+chr(92)+'n" "$rc" >'+shlex.quote(q['launch_contract']['exit_code'])
++        check('32 short POSIX launcher directory before redirect',max(len(line.encode()) for line in launcher.splitlines())<=2048 and posix_paths and arguments and tokens[:4]==['/usr/bin/timeout','--signal=TERM','--kill-after=5s','1800s'] and tokens[4]==q['identity']['python_realpath'] and tokens[8]==q['entry']['path'] and launcher.index('mkdir --')<launcher.index(' >') and exit_record in launcher)
+         assert len(checks)==32
+         for record in ctx['parent_sources']:
+             assert rec(Path(record['path']))==record

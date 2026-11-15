@@ -1,0 +1,92 @@
+{
+  "status": "FROZEN_INITIALIZATION_BYTES_VALID_RUNTIME_REGENERATION_EXACT_ASSERTION_REJECTED",
+  "binary": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\failed_freeze_initialization_review_v1\\downloads\\related\\2_rf_initialization_v1.bin",
+    "bytes": 924684,
+    "sha256": "a4024fbdb49feb41c609ae1171f04c2cb14ab794fc3663855d81395c6a1ea79e"
+  },
+  "actual_server_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/rf_initialization_v1.bin",
+  "manifest": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\failed_freeze_initialization_review_v1\\downloads\\related\\3_rf_initialization_manifest_v1.json",
+    "bytes": 1185,
+    "sha256": "b8bbbacde16fb3f1765f1cb56c1b2b17a8b8e09b0f80ca7a90c7df06530be957"
+  },
+  "blocks": [
+    {
+      "name": "V1.weight",
+      "shape": [
+        128,
+        1802
+      ],
+      "elements": 230656,
+      "bytes": 922624,
+      "sha256": "92ebae629e712ef8e60097a5f7443d0ff6295192dc169b95e798bfabcccdb730",
+      "all_finite": true,
+      "nonzero_elements": 230656,
+      "minimum": -0.023557094857096672,
+      "maximum": 0.023556577041745186
+    },
+    {
+      "name": "V1.bias",
+      "shape": [
+        128
+      ],
+      "elements": 128,
+      "bytes": 512,
+      "sha256": "e65abe0c5e07c169e00087fceb9baedbe73b525ad7eaf5d563e0648736060840",
+      "all_finite": true,
+      "nonzero_elements": 128,
+      "minimum": -0.023336270824074745,
+      "maximum": 0.023285189643502235
+    },
+    {
+      "name": "V2.weight",
+      "shape": [
+        3,
+        128
+      ],
+      "elements": 384,
+      "bytes": 1536,
+      "sha256": "80422bc3d307b4a25bdafcc84ac7fb01cb55a09810e8b0f37bb12e0edb5c48ca",
+      "all_finite": true,
+      "nonzero_elements": 0,
+      "minimum": 0.0,
+      "maximum": 0.0
+    },
+    {
+      "name": "V2.bias",
+      "shape": [
+        3
+      ],
+      "elements": 3,
+      "bytes": 12,
+      "sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+      "all_finite": true,
+      "nonzero_elements": 0,
+      "minimum": 0.0,
+      "maximum": 0.0
+    }
+  ],
+  "source": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\failed_freeze_initialization_review_v1\\downloads\\related\\0_bcsp_scq_rf_residual_v1.py",
+    "bytes": 4155,
+    "sha256": "e8d00efd6b7b40edf599972d75cf98f5e9f0fa725fd969256d2f3b2329f925ef"
+  },
+  "recorded_generation_torch": "2.5.1",
+  "execution_entry_version_contract": "2.4.1+cu118",
+  "facts": [
+    "Actual server initialization bytes exactly match the frozen local original and request.",
+    "All4 tensor chunk hashes match;231171 FP32 values are finite;V2 weight and bias are bitwise zero.",
+    "First error occurs after byte/hash/finite/zero checks at regeneration-and-torch.equal assertion during RF model construction.",
+    "S-ref completed its forward and corrected consumer-role checks; neither RF arm entered forward."
+  ],
+  "interpretation": "The loader adds a runtime random-number regeneration requirement beyond authoritative frozen bytes. It rejects an otherwise byte-valid initialization under the current execution environment.",
+  "unresolved": "No regenerated arrays or per-tensor comparison statistics were saved. The affected tensor, magnitude, dtype/device of regenerated values and specific cause (version/platform/default settings/CPU implementation path) cannot be identified without an additional separately scoped computation. This audit did not regenerate anything.",
+  "shutdown_secondary": "Log KeyError occurs during traceback formatting after exact-read file descriptors have been closed; first error remains preserved in failure.json. No code change here.",
+  "recommendation": "Retain the frozen binary as authoritative: preserve exact size/SHA256/layout/FP32/finite/zero-output checks; use seed as provenance rather than regenerating and demanding cross-environment bit equality. Only implement after separate authorization, with targeted artificial loader tests and new P3/request. Do not regenerate/replace frozen initialization or retry v2.",
+  "seed_generation_calls": 0,
+  "torch_imports": 0,
+  "model_imports": 0,
+  "tests_run": 0,
+  "new_forward": 0
+}

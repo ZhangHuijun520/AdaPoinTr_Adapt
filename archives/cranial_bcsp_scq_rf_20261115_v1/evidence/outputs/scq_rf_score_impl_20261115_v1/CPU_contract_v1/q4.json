@@ -1,0 +1,50 @@
+{
+  "schema": "bcsp-scq-rf-local-scoring-request-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "execution_authorized": false,
+  "counts": {
+    "unique_cases": 210,
+    "sources": 42,
+    "model_rows": 630,
+    "shared_control_rows": 420,
+    "case_score_rows": 1049,
+    "source_score_rows": 210
+  },
+  "scientific_contract": {
+    "arms": [
+      "S-ref",
+      "RF-Static",
+      "RF-Requery"
+    ],
+    "pairs": [
+      [
+        "RF-Static",
+        "RF-Requery"
+      ],
+      [
+        "S-ref",
+        "RF-Static"
+      ],
+      [
+        "S-ref",
+        "RF-Requery"
+      ]
+    ],
+    "controls": [
+      "Nop_D",
+      "GT_8192"
+    ]
+  },
+  "comparison_qualification": {
+    "C_pair": "SAME_DEVICE_PRIMARY_MECHANISM_EVIDENCE",
+    "D_Static_vs_Requery": "DEVICE_AND_DRIVER_CONFOUNDED_SUPPLEMENTARY_EVIDENCE",
+    "strict_same_device_D_pair": false,
+    "do_not_attribute_all_differences_to_requery": true
+  },
+  "limits": {
+    "wall_seconds": 18000,
+    "RSS_bytes": 8589934592,
+    "output_bytes": 2147483648,
+    "threads": 2
+  }
+}

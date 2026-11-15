@@ -1,0 +1,58 @@
+{
+  "status": "LOCAL_RF_IMPLEMENTATION_P3_NOT_PASSED_CPU_FAILURE_STOP",
+  "static_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_implementation_20261114_v1\\static_review_v1.json",
+    "bytes": 6935,
+    "sha256": "a955c1df0b238d5928f5b75b639b9367abadadf30b6bb8e4a3b6c453eb625309"
+  },
+  "failure": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_implementation_20261114_v1\\cpu_batch_v1\\failure_v1.json",
+    "bytes": 3363,
+    "sha256": "374d9cd6d30656ec2d75d4e1fd064109a3c77d43efc473a0c8917e525671e87e"
+  },
+  "candidate_sources": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_implementation_20261114_v1\\bcsp_scq_rf_residual_v1.py",
+      "bytes": 4155,
+      "sha256": "e8d00efd6b7b40edf599972d75cf98f5e9f0fa725fd969256d2f3b2329f925ef"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_implementation_20261114_v1\\bcsp_scq_rf_factory_v1.py",
+      "bytes": 3517,
+      "sha256": "6e243f7a6463241f6c24c6feb6928bde9499ffd3a17afe1442eca54fd6738570"
+    }
+  ],
+  "test_source": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_implementation_20261114_v1\\test_scq_rf_cpu_v1.py",
+    "bytes": 17497,
+    "sha256": "9879eee2f2ced66ab49f8d4fb608404deffacc7bf76a78063b70b9ab2dfb2318"
+  },
+  "initialization": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_implementation_20261114_v1\\initialization_v1.bin",
+    "bytes": 924684,
+    "sha256": "a4024fbdb49feb41c609ae1171f04c2cb14ab794fc3663855d81395c6a1ea79e"
+  },
+  "checks": {
+    "all_frozen_sources_unchanged": true,
+    "static_syntax_pass": true,
+    "saved46_completed_CPU_checks": true,
+    "failed_assertion_preserved": true,
+    "no_pass_receipt_present": true,
+    "no_automatic_retry": true
+  },
+  "CPU_success": false,
+  "completed_checks": 46,
+  "source_level_explanation": "Fixture changes first SCQ W2.bias but leaves W2.weight zero. For delta0=W2*GELU(W1*h)+b2, dL/dW1 contains W2 and must be zero. The full-loss assertion incorrectly requires all original first-head parameters to have nonzero gradients. No per-tensor runtime gradient diagnostics were saved, so other conjuncts are not independently certified.",
+  "uncompleted": [
+    "Correct artificial nonzero first-head diagnostic fixture and add per-tensor gradient evidence; requires a separately authorized versioned CPU batch.",
+    "Post-backward no-step/BN-restoration check was not reached. The process exited; this artificial instance is not reused.",
+    "Native SSM no-decay grouping needs an exact inherited-policy artificial marker check; current batch retained supplied parent groups but used a synthetic partition.",
+    "Actual native parameter total40827847, CUDA batch8 full loss/backward and resource evidence remain for separate CUDA admission.",
+    "Training entry/request not prepared or authorized."
+  ],
+  "recommendation": "Only correct the CPU diagnostic fixture, preserve candidate implementation and frozen initialization, version the test/output, add specific gradient and inherited no-decay checks, and run one separately authorized artificial CPU batch before new P3.",
+  "CUDA": false,
+  "server_operations": 0,
+  "training": 0,
+  "new_execution_request": false
+}

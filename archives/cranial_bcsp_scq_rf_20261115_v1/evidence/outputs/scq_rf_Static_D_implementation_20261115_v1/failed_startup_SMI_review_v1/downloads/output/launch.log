@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/bcsp_scq_rf_Static_D_training_entry_v1.py", line 350, in <module>
+    if __name__=='__main__':main()
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/bcsp_scq_rf_Static_D_training_entry_v1.py", line 309, in main
+    gpu=[s.strip() for s in helper.smi('uuid,name,driver_version,memory.total,memory.used')[0].split(',')]
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 400, in smi
+    return _smi_once(args, SMI_TIMEOUT, _MONITOR)
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 386, in _smi_once
+    raise MonitorQueryFailure(details)
+scq_training_helper.MonitorQueryFailure: monitor query NONZERO_EXIT: ChildNonzeroExit

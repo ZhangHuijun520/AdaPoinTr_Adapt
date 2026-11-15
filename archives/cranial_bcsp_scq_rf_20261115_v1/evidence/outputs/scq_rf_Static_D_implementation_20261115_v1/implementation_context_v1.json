@@ -1,0 +1,1965 @@
+{
+  "status": "IMPLEMENTATION_CONTEXT_NOT_EXECUTION_REQUEST",
+  "candidate": {
+    "schema": "bcsp-scq-rf-Static-D-training-request-v1",
+    "status": "DRAFT_NOT_EXECUTABLE",
+    "execution_authorized": false,
+    "stage": "CRANIAL_BCSP_SCQ_RF",
+    "run_id": "SCQ_RF_Static_foldD_seed0_train_20261115_v1",
+    "variant": "RF-Static",
+    "fold": "D",
+    "seed": 0,
+    "n_input": 8192,
+    "n_output": 8192,
+    "static_config": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/static_training_config_v1.json",
+      "bytes": 2024,
+      "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+    },
+    "QC": {
+      "qualified_receipt": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/qualified_SCQ_D_8192_v1.json",
+        "bytes": 1641,
+        "sha256": "2aa5848b261e046b758a832485a60b80a2d85d152b573b99fafb07fe6d3d5be7"
+      },
+      "verification": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/real_data_qc_verification_v1.json",
+        "bytes": 5769,
+        "sha256": "54fcd0018f9a51f04b8408b3842b6d5c4243777979a0e0add31541e04fa3c55b"
+      },
+      "manifests": {
+        "8192": {
+          "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_8192.jsonl",
+          "bytes": 427975,
+          "sha256": "f94dbe21cb9e406db49a51f6578496db3228d783f15c07b28e3d8ae234a33758"
+        },
+        "16384": {
+          "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_16384.jsonl",
+          "bytes": 428815,
+          "sha256": "1cd06c7d3b33191d02b5464e72fd83ba4b38c839c0bb4da865bed374076734b5"
+        }
+      },
+      "fold_binding": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/fold_binding.json",
+        "bytes": 35012,
+        "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+      }
+    },
+    "order_plan": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldD_seed0_v1.json",
+      "bytes": 1248506,
+      "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+    },
+    "identity": {
+      "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+      "uid": 1000,
+      "project": "/home/jovyan/adapointr_work/PoinTr",
+      "gpu_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+      "gpu_name": "NVIDIA GeForce RTX 4090 D",
+      "driver_version": "570.190",
+      "nvidia_smi_memory_total_MiB": 24564,
+      "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+      "python_version": "3.10.20",
+      "torch_version": "2.4.1+cu118",
+      "numpy_version": "2.2.6",
+      "timm_version": "1.0.27",
+      "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+      "torch_cuda_version": "11.8"
+    },
+    "data_root": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1",
+    "model_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3",
+    "implementation": {
+      "encoder": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_mamba_encoder_v1.py",
+        "bytes": 3546,
+        "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+      },
+      "factory": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py",
+        "bytes": 4396,
+        "sha256": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4"
+      },
+      "lqi_decoder": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_decoder_v1.py",
+        "bytes": 6053,
+        "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8"
+      },
+      "lqi_factory": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_factory_v1.py",
+        "bytes": 3864,
+        "sha256": "56d4cbe89660106f255a0d58e28c7cbaf38374c7788219d5a21779bd97aaf106"
+      },
+      "scq_residual": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_residual_v1.py",
+        "bytes": 3552,
+        "sha256": "2f3a86c5daf7ad00c01dc405b4a3b7011faae06f5766da3dcfe72d645b730404"
+      },
+      "scq_factory": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_factory_v1.py",
+        "bytes": 14176,
+        "sha256": "fe5f7229aa40ba2b7e599c2bea32982f6bb33cf5f1db115b222a581c1d4af1c5"
+      },
+      "timezone": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/exact_utc_resource_v1.py",
+        "bytes": 3563,
+        "sha256": "038267da9f78be5ea9d03164e674d388228768bf0c42959097fcadfd807f830e"
+      },
+      "entry": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/bcsp_scq_rf_Static_D_training_entry_v1.py",
+        "bytes": 30513,
+        "sha256": "20ad874ebb11c6b42f3d72399245a28c6936eef62e8d97491ad20d8bf1d733b6"
+      },
+      "bridge": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_C_training_20261114_v1/bcsp_scq_rf_Static_C_training_bridge_v1.py",
+        "bytes": 845,
+        "sha256": "67644f28ab5cd86dd587bf6cc4391b8a393e8af0fddee857398bc528e545b9a1"
+      },
+      "runtime": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_p1_training_runtime_v1.py",
+        "bytes": 11268,
+        "sha256": "939e317dd447d04c62897849c0230f1918dc65c46ec556acdb60c9d69dfebeee"
+      },
+      "contract": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_training_contract_01dt08_v3.py",
+        "bytes": 16531,
+        "sha256": "08a9af361ef0279cfccf27f9d094020501bfcc9859692ca64322d8dd4c7fd499"
+      },
+      "budget_parent": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/inherited_training_budget_v1.py",
+        "bytes": 20395,
+        "sha256": "095cabb0ab9b098172840432d40699dd18279671cf650894fab9eb9b54575ebe"
+      },
+      "preflight_helper": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+        "bytes": 32728,
+        "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+      },
+      "native_helper": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_CD_native_prediction_20261111_v1/bcsp_lqi_twofold_native_predict_v1.py",
+        "bytes": 31207,
+        "sha256": "b1c4bee971e73c297ce1a9e22a21ef5da69cc6891fba110a6fc2544819362309"
+      },
+      "cuda_entry": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v2/bcsp_scq_rf_cuda_admission_v2.py",
+        "bytes": 29284,
+        "sha256": "b78485c06dd94ca6e54b918f6c5b3ea055f6feebf5d935920d6da9dae4497999"
+      },
+      "rf_residual": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v3/bcsp_scq_rf_residual_v2.py",
+        "bytes": 4596,
+        "sha256": "c50cbdb0986fafe3ff2309ef8c02d74fdc5e651218c71f4bb13a87bacefc726a"
+      },
+      "rf_factory": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/bcsp_scq_rf_factory_v1.py",
+        "bytes": 3517,
+        "sha256": "6e243f7a6463241f6c24c6feb6928bde9499ffd3a17afe1442eca54fd6738570"
+      }
+    },
+    "preflight_scope": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+      "bytes": 23220,
+      "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+    },
+    "dependencies": [
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/__init__.py",
+        "bytes": 264,
+        "sha256": "6d3fee6ff8e8ec4dcab0f7af6c7890ff81f3d9319707865f5a651239aee9ae0a"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/modules/mamba_simple.py",
+        "bytes": 11710,
+        "sha256": "a17e4c51b582dc0d4d690a649eba521cd0c1ee3dc8f0473a0967cdc9ec0874e3"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/ops/selective_scan_interface.py",
+        "bytes": 20025,
+        "sha256": "543edd077f11c80cccd5c5e2f926420d9105fd238d9e8960e53660cfa234dce8"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/__init__.py",
+        "bytes": 118,
+        "sha256": "af95401837aff56ae3749c2237eaff7df8c6a4328d7c5cc6a6731287ac27152c"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/causal_conv1d_interface.py",
+        "bytes": 8850,
+        "sha256": "221f41aa963a8f84683d9c6b2b4bf448692feb963fefcd778fa1b4ed2688c859"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm-2.3.1.dist-info/METADATA",
+        "bytes": 25449,
+        "sha256": "de580cd29b3bf2c8d81240fad9255978be1835884b82ab8e84f17f4ba720effd"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d-1.6.2.post1.dist-info/METADATA",
+        "bytes": 1625,
+        "sha256": "3b4a001f4ad6f856465746601e4b0dda9b2d088bd8e81b6376e4a707fcf4ca7b"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/selective_scan_cuda.cpython-310-x86_64-linux-gnu.so",
+        "bytes": 526135264,
+        "sha256": "5e6a5bfabe7628720631568ec364426e6066da9a9a0946302ebe9fb86f4aa58c"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d_cuda.cpython-310-x86_64-linux-gnu.so",
+        "bytes": 166702752,
+        "sha256": "6ac9c334498773ee337503094d7b5aae4b0f38fa3ba8a0dcd81cca707f48a79a"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch/version.py",
+        "bytes": 248,
+        "sha256": "b10649fd636e7404398d608b84a2cacc6645e3952f043b439d4c50c95a26a1b5"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch-2.4.1+cu118.dist-info/METADATA",
+        "bytes": 26707,
+        "sha256": "11606497a9792f0d040ad062064ee1c024dde8b10fc38bed361134d0b7ec429a"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm-1.0.27.dist-info/METADATA",
+        "bytes": 40196,
+        "sha256": "b6ecaedbcaea5d0d5e431983c3df8e05113a51a2dad062e51dab0500ac6f2bb4"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/numpy-2.2.6.dist-info/METADATA",
+        "bytes": 62026,
+        "sha256": "22d648f53848429464ca643b40d73b49a920d47876fc77c395d4dca4e834904a"
+      }
+    ],
+    "environment": {
+      "CUDA_VISIBLE_DEVICES": "GPU-dabcc897-ac69-efac-4438-a6186dea9aaa",
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "OMP_NUM_THREADS": "2",
+      "MKL_NUM_THREADS": "2",
+      "OPENBLAS_NUM_THREADS": "2",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "MPLBACKEND": "Agg",
+      "MPLCONFIGDIR": "<owned_output>/mplconfig",
+      "CUDA_CACHE_DISABLE": "1",
+      "TMPDIR": "<owned_output>/tmp",
+      "PYTHONHASHSEED": "0",
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1",
+      "HF_HOME": "<owned_output>/hf_cache",
+      "XDG_CACHE_HOME": "<owned_output>/cache",
+      "TRITON_CACHE_DIR": "<owned_output>/triton_cache"
+    },
+    "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldD_seed0_train_20261115_v1",
+    "launch_attempt": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/control/attempt_claim_v1.json",
+    "launch_contract": {
+      "tmux_session": "bcsp_scq_rf_Static_D_train_20261115_v1",
+      "request_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/SCQ_RF_Static_D_training_execution_request_v1.json",
+      "authorization_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/control/authorization_v1.json",
+      "runtime_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/control/runtime_v1.json",
+      "launcher_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/control/launch_once_v1.sh",
+      "original_file_byte_transport": true,
+      "parent_before_redirection": true,
+      "PowerShell_explicit_exit_LASTEXITCODE": true,
+      "automatic_retry": false,
+      "resume": false,
+      "log": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldD_seed0_train_20261115_v1/launch.log",
+      "PID": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldD_seed0_train_20261115_v1/worker.pid",
+      "exit_code": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldD_seed0_train_20261115_v1/exit_code.txt"
+    },
+    "admission": {
+      "audit": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_freeze_audit_v3.json",
+        "bytes": 26364,
+        "sha256": "7611114686154f2024c1489e5d5cb64f59201dd27b112c0e18614c1ca25f1c0e"
+      },
+      "inventory": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_inventory_v3.json",
+        "bytes": 14618,
+        "sha256": "1d2477ba21c88db3defa67165a9842faf71dfe6ff5c76ec7d775d5d1f6e5d921"
+      },
+      "construction": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_construction_v3.json",
+        "bytes": 2181,
+        "sha256": "fae4f3d689665c54b4c162d9004480a915592f58e42255d3a8c9f31d5d6650ae"
+      },
+      "completion": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_completion_v3.json",
+        "bytes": 293297,
+        "sha256": "9b2d98509ebb03a59b8dd14d0332f0ba4d176248023a86f3c7d999516969335a"
+      },
+      "request": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_request_v3.json",
+        "bytes": 31882,
+        "sha256": "8a3d0173fa3cec9e737e384c9af99f37e996c79ef3e60bb5e99b14dc275f2cac"
+      }
+    },
+    "readiness": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/Static_D_current_identity_readiness_v1.json",
+      "bytes": 1387,
+      "sha256": "9d81e2ae2e4dc36eeb975d5e484912ee0993580031bd7533d030906466db9665"
+    },
+    "pair_contract": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/RF_six_run_contract_v2.json",
+      "bytes": 6219,
+      "sha256": "bc0d77d2865c59c0fcd95cc81b83d585fb93f052103675f9b532d62abf5acce8"
+    },
+    "initialization": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/initialization_v1.bin",
+      "bytes": 2784780,
+      "sha256": "e7858ee3ae4c0bf6d68e447727c36514f5bbab42b95e1935f1686620ec089416"
+    },
+    "paired_baseline": {
+      "construction": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/model_construction.json",
+        "bytes": 91077,
+        "sha256": "b234da9681cf01f86f7e94300581050cdd06f3b1600f4fdae1289a06349c5f9d"
+      },
+      "initialization": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/initialization.json",
+        "bytes": 289,
+        "sha256": "424cd95d574c724d8996b285e31787d5c4a4c3ab84e6b6db74a0aafab9c53728"
+      },
+      "order_plan": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldD_seed0_v1.json",
+        "bytes": 1248506,
+        "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+      },
+      "exposure": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/exposure.json",
+        "bytes": 19465,
+        "sha256": "65907c12b1eeec2886b7581bd0c9515c831eff9d45e0ecd46ca384a34d6dc902"
+      },
+      "audit": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Sref_D_formal_freeze_v1.json",
+        "bytes": 9906,
+        "sha256": "c48dbb53070b1c996d77c0272ce0aef03186eb93153855002cbd03a51a98f9dd"
+      },
+      "request": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/SCQ_RF_Sref_D_training_execution_request_v1.json",
+        "bytes": 36546,
+        "sha256": "888ad3b1a519d26ba907b061643e602aafe42df0e0006c7d0606d242e9a5c00d"
+      }
+    },
+    "P3": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/training_entry_P3_v1.json",
+      "bytes": 4811,
+      "sha256": "d6d94a7d53f25016a82f04637d41399840af8cdbcf4e81a40f046ddde755a642"
+    },
+    "not_authorized": [
+      "Execution before separate full request SHA256 authorization",
+      "Warmstart/resume/retry",
+      "Other runs, BNCal, evaluation, GPU preflight repetition",
+      "Data outside exact315 training allowlist",
+      "Changes to model/loss/order/numeric runtime or resource thresholds"
+    ],
+    "supersedes_consumed_request": {
+      "request_sha256": "132ea92fde3fb871f4bad6d78d18d625fc83c85e9e2719d52ef7cd2b9c3b9396",
+      "status": "ATTEMPTED_FAILED_BEFORE_TRAINING_NONREUSABLE",
+      "committed_steps": 0,
+      "audit": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/B_C_failed_startup_freeze_v1.json",
+        "bytes": 1116,
+        "sha256": "e480ea39c04be911030e684ca8608f8cda4881fd8663814b19226e3c698c7020"
+      }
+    },
+    "scope_note": "Only S_C scratch training after formally frozen same-device B_C; no weight warmstart, no C-results tuning, no repeated GPU preflight",
+    "arm": "RF-Static",
+    "CPU_evidence": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/training_CPU_result_v1.json",
+      "bytes": 4044,
+      "sha256": "a263f5050de39eaa18f8249baab0dacb9d42c59ccebc820920f5e475c943cbde"
+    },
+    "resources": {
+      "wall_seconds": 86400,
+      "RSS_bytes": 8589934592,
+      "device_MiB": 22528,
+      "torch_peak_bytes": 21474836480,
+      "output_bytes": 2147483648,
+      "minimum_free_disk_bytes": 4294967296
+    },
+    "science": {
+      "train_sources": 63,
+      "train_cases": 315,
+      "batch": 8,
+      "traversals": 100,
+      "batches_per_traversal": 39,
+      "updates": 3900,
+      "exposures": 31200,
+      "drops": 300,
+      "n_input": 8192,
+      "n_output": 8192,
+      "seed": 0,
+      "from_scratch": true,
+      "optimizer": "AdamW",
+      "BNCal": false,
+      "evaluation": false,
+      "resume": false,
+      "retry": false
+    },
+    "checkpoint_selection": "Only fixed epoch99 step3900 final checkpoint. Legacy checkpoint stage field retained as provenance; actual stage/arm in run_identity.json.",
+    "shared_initialization_contract": "Full persistent original S state including SCQ/BN matches current same-device CUDA S-ref; no RF head; no history checkpoint loading.",
+    "numeric_disclosure": "FP32, TF32=false; inherited accepted finite gradient non-bitwise reproducibility. Do not require exact equality of repeated native backward values.",
+    "activation_prerequisites": [
+      "Separate full request SHA256 authorization",
+      "Fresh exact hostname GPU UUID driver interpreter/provider and all reused file hashes",
+      "Verify uploaded archive+3 sidecars and all10 new targets/control/output absent; exclusive install only; exact original Requery bridge, admitted RF/source/init files, D QC/order and frozen references.",
+      "315 exact Fold C training payload hashes and source identity; no development/confirmation payload reads",
+      "Initially GPU<=256MiB, free disk>=4GiB and cumulative archive budget assessed; all frozen runtime thresholds enforced",
+      "Authorization -> authorizationSHA -> one-way runtime -> original-byte launcher -> exclusive claim -> unique tmux; failure stop, no automatic retry/resume"
+    ],
+    "stage_matrix_note": "First only S-ref_C. Later Static/Requery and Fold D require separate preparation and execution authorizations.",
+    "reused_readonly_bindings": [
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_mamba_encoder_v1.py",
+        "bytes": 3546,
+        "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py",
+        "bytes": 4396,
+        "sha256": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_decoder_v1.py",
+        "bytes": 6053,
+        "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_factory_v1.py",
+        "bytes": 3864,
+        "sha256": "56d4cbe89660106f255a0d58e28c7cbaf38374c7788219d5a21779bd97aaf106"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_residual_v1.py",
+        "bytes": 3552,
+        "sha256": "2f3a86c5daf7ad00c01dc405b4a3b7011faae06f5766da3dcfe72d645b730404"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_factory_v1.py",
+        "bytes": 14176,
+        "sha256": "fe5f7229aa40ba2b7e599c2bea32982f6bb33cf5f1db115b222a581c1d4af1c5"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/exact_utc_resource_v1.py",
+        "bytes": 3563,
+        "sha256": "038267da9f78be5ea9d03164e674d388228768bf0c42959097fcadfd807f830e"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_p1_training_runtime_v1.py",
+        "bytes": 11268,
+        "sha256": "939e317dd447d04c62897849c0230f1918dc65c46ec556acdb60c9d69dfebeee"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_training_contract_01dt08_v3.py",
+        "bytes": 16531,
+        "sha256": "08a9af361ef0279cfccf27f9d094020501bfcc9859692ca64322d8dd4c7fd499"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/inherited_training_budget_v1.py",
+        "bytes": 20395,
+        "sha256": "095cabb0ab9b098172840432d40699dd18279671cf650894fab9eb9b54575ebe"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+        "bytes": 32728,
+        "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_CD_native_prediction_20261111_v1/bcsp_lqi_twofold_native_predict_v1.py",
+        "bytes": 31207,
+        "sha256": "b1c4bee971e73c297ce1a9e22a21ef5da69cc6891fba110a6fc2544819362309"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v2/bcsp_scq_rf_cuda_admission_v2.py",
+        "bytes": 29284,
+        "sha256": "b78485c06dd94ca6e54b918f6c5b3ea055f6feebf5d935920d6da9dae4497999"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/static_training_config_v1.json",
+        "bytes": 2024,
+        "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/qualified_SCQ_C_8192_v1.json",
+        "bytes": 1641,
+        "sha256": "b51fc4d88c63fb8a928868bf94d7c3eef3aba117a7de1138d2cdd2aa6c643cd4"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/real_data_qc_verification_v1.json",
+        "bytes": 5769,
+        "sha256": "54fcd0018f9a51f04b8408b3842b6d5c4243777979a0e0add31541e04fa3c55b"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_8192.jsonl",
+        "bytes": 427975,
+        "sha256": "f94dbe21cb9e406db49a51f6578496db3228d783f15c07b28e3d8ae234a33758"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_16384.jsonl",
+        "bytes": 428815,
+        "sha256": "1cd06c7d3b33191d02b5464e72fd83ba4b38c839c0bb4da865bed374076734b5"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/fold_binding.json",
+        "bytes": 35012,
+        "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldC_seed0_v1.json",
+        "bytes": 1248506,
+        "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/initialization_v1.bin",
+        "bytes": 2784780,
+        "sha256": "e7858ee3ae4c0bf6d68e447727c36514f5bbab42b95e1935f1686620ec089416"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/__init__.py",
+        "bytes": 264,
+        "sha256": "6d3fee6ff8e8ec4dcab0f7af6c7890ff81f3d9319707865f5a651239aee9ae0a"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/modules/mamba_simple.py",
+        "bytes": 11710,
+        "sha256": "a17e4c51b582dc0d4d690a649eba521cd0c1ee3dc8f0473a0967cdc9ec0874e3"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/ops/selective_scan_interface.py",
+        "bytes": 20025,
+        "sha256": "543edd077f11c80cccd5c5e2f926420d9105fd238d9e8960e53660cfa234dce8"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/__init__.py",
+        "bytes": 118,
+        "sha256": "af95401837aff56ae3749c2237eaff7df8c6a4328d7c5cc6a6731287ac27152c"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/causal_conv1d_interface.py",
+        "bytes": 8850,
+        "sha256": "221f41aa963a8f84683d9c6b2b4bf448692feb963fefcd778fa1b4ed2688c859"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm-2.3.1.dist-info/METADATA",
+        "bytes": 25449,
+        "sha256": "de580cd29b3bf2c8d81240fad9255978be1835884b82ab8e84f17f4ba720effd"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d-1.6.2.post1.dist-info/METADATA",
+        "bytes": 1625,
+        "sha256": "3b4a001f4ad6f856465746601e4b0dda9b2d088bd8e81b6376e4a707fcf4ca7b"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/selective_scan_cuda.cpython-310-x86_64-linux-gnu.so",
+        "bytes": 526135264,
+        "sha256": "5e6a5bfabe7628720631568ec364426e6066da9a9a0946302ebe9fb86f4aa58c"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d_cuda.cpython-310-x86_64-linux-gnu.so",
+        "bytes": 166702752,
+        "sha256": "6ac9c334498773ee337503094d7b5aae4b0f38fa3ba8a0dcd81cca707f48a79a"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch/version.py",
+        "bytes": 248,
+        "sha256": "b10649fd636e7404398d608b84a2cacc6645e3952f043b439d4c50c95a26a1b5"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch-2.4.1+cu118.dist-info/METADATA",
+        "bytes": 26707,
+        "sha256": "11606497a9792f0d040ad062064ee1c024dde8b10fc38bed361134d0b7ec429a"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm-1.0.27.dist-info/METADATA",
+        "bytes": 40196,
+        "sha256": "b6ecaedbcaea5d0d5e431983c3df8e05113a51a2dad062e51dab0500ac6f2bb4"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/numpy-2.2.6.dist-info/METADATA",
+        "bytes": 62026,
+        "sha256": "22d648f53848429464ca643b40d73b49a920d47876fc77c395d4dca4e834904a"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+        "bytes": 23220,
+        "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/AdaPoinTr.py",
+        "bytes": 103347,
+        "sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/build.py",
+        "bytes": 342,
+        "sha256": "9c85271220ba992d56d4285b1ef51de939f7471b0712028af8d07880fed9680f"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/cranial_scqr/__init__.py",
+        "bytes": 5859,
+        "sha256": "c4fab9f4cc19bf5c461930749cccea56cb5b3e7432172d2a4959d2cbc2d69634"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/cranial_scqr/contact_support.py",
+        "bytes": 6731,
+        "sha256": "2c92404ba4bd5634a49f396904b2d6f69a22aa2c87bb72f6ee32672ee9d735d1"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/cranial_scqr/local_geometry.py",
+        "bytes": 6413,
+        "sha256": "e3e2eb20aed6afb3024f8b3c10c79ac0f64f288f3892495668980028793ba768"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/cranial_scqr/query_conditioning.py",
+        "bytes": 4719,
+        "sha256": "7c09def4ea7f2d65906e7fc3de753cae699be6d2d4ad3dcbb33e231be37a6942"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/registry.py",
+        "bytes": 11111,
+        "sha256": "a7c49418d587ae84778390b67a50c2bd98cbc93da2e0a506e6d309b5c159ecf7"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/config.py",
+        "bytes": 2438,
+        "sha256": "39d487ab6eadcd0a157167cfdf0d1797255f6403828f2653ba7802da6f2ac819"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/logger.py",
+        "bytes": 5048,
+        "sha256": "12e50962ca4594ddd573d9a76524ac912ddf55bfc297fa8008a30b20dca28e0c"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/misc.py",
+        "bytes": 12290,
+        "sha256": "3063afb490840dd417c2e0cc00f2d5fdfe49ba2074396099c39a112026906485"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/pointnet2_utils.py",
+        "bytes": 4275,
+        "sha256": "6e814a64b244d018047ffefa92004dd4e59fc941145476af1424aae1742c43ec"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/mamba_d22_geometry.py",
+        "bytes": 12533,
+        "sha256": "8b3b56344f7e9c97a3cd1ee141964bc7797faae4f094df9404dedaee07e6c804"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/mamba_d3_contact.py",
+        "bytes": 11021,
+        "sha256": "10c5bb39a8cf3860ed28b65d2c9257ae1ff4e63c4b69228504dd663f0604e5cb"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/extensions/chamfer_dist/__init__.py",
+        "bytes": 6551,
+        "sha256": "6456934164750c2d326236effe4827dc37c77a7d6d915d3c28fa65a90a9b1c50"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/tools/runner.py",
+        "bytes": 32455,
+        "sha256": "e378ab4ab7a26f6b370b4263788ca51e413b47ca3827cf404dd6ac4d9aaa0f32"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/Transformer_utils.py",
+        "bytes": 52026,
+        "sha256": "cd562e02755ffd46382cc539cdb361225b844b12e89df9d98741d37238a6bf5f"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/tools/bcsp_runtime.py",
+        "bytes": 7320,
+        "sha256": "8cbb5389e074347f6bf6e776755d22bbdaedaf5dba5102d51866d1b1e49b3615"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/tools/bcsp_adapter.py",
+        "bytes": 7297,
+        "sha256": "2f7d3050cfb6ac2602cc17a95b860da2204daef2dfa63dab63d233e899b7dd55"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/__init__.py",
+        "bytes": 123,
+        "sha256": "d8a0921aeb90349a0659799a22ccf00ccd31707b226426ff4118eeb65ae0ada2"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/pointnet2_utils.py",
+        "bytes": 9943,
+        "sha256": "ec597d77b1215fbc87bdb452b8ce04b85eb0b816d5e39e7696fc792a2f61ea5b"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/_ext.cpython-310-x86_64-linux-gnu.so",
+        "bytes": 301640,
+        "sha256": "e70d00108bacba4a905dc011f4b8c4868f06ec2d44d8e322148e2e452578fbb5"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/wheelhouse/pointnet2_ops-3.0.0-cp310-cp310-linux_x86_64.whl",
+        "bytes": 123291,
+        "sha256": "530496a0d1d5dea6151a466b7c0874632322223308a7016910fb1bfbaaaab1e5"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+        "bytes": 17331920,
+        "sha256": "01b4275dc374dcae51d245bda004daad6d7882d3f5de7f9852567bb7ab83180d"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/base_model.yaml",
+        "bytes": 2082,
+        "sha256": "e18feb90d782506f864560ce5513b3077f840f9d6365308b03493f80f8c57dc4"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_freeze_audit_v3.json",
+        "bytes": 26364,
+        "sha256": "7611114686154f2024c1489e5d5cb64f59201dd27b112c0e18614c1ca25f1c0e"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_inventory_v3.json",
+        "bytes": 14618,
+        "sha256": "1d2477ba21c88db3defa67165a9842faf71dfe6ff5c76ec7d775d5d1f6e5d921"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_construction_v3.json",
+        "bytes": 2181,
+        "sha256": "fae4f3d689665c54b4c162d9004480a915592f58e42255d3a8c9f31d5d6650ae"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_completion_v3.json",
+        "bytes": 293297,
+        "sha256": "9b2d98509ebb03a59b8dd14d0332f0ba4d176248023a86f3c7d999516969335a"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_request_v3.json",
+        "bytes": 31882,
+        "sha256": "8a3d0173fa3cec9e737e384c9af99f37e996c79ef3e60bb5e99b14dc275f2cac"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/FoldC_readiness_v1.json",
+        "bytes": 963,
+        "sha256": "281f2494f335fba0d4f6069b9f1b04d05325236f479dd2a64c3a6350f0da0dc6"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_six_run_contract_v1.json",
+        "bytes": 4173,
+        "sha256": "52c1ae9eda38cf513a34af449b81da980e43ba1b9fe675f4bc9fda4ef1189735"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/bcsp_scq_rf_training_bridge_v1.py",
+        "bytes": 703,
+        "sha256": "9f282d1ce07e9c89ba7cac246d99c2c9f0ac2086f1f5de80151ae2a73723c6dd"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v3/bcsp_scq_rf_residual_v2.py",
+        "bytes": 4596,
+        "sha256": "c50cbdb0986fafe3ff2309ef8c02d74fdc5e651218c71f4bb13a87bacefc726a"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/bcsp_scq_rf_factory_v1.py",
+        "bytes": 3517,
+        "sha256": "6e243f7a6463241f6c24c6feb6928bde9499ffd3a17afe1442eca54fd6738570"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/rf_initialization_v1.bin",
+        "bytes": 924684,
+        "sha256": "a4024fbdb49feb41c609ae1171f04c2cb14ab794fc3663855d81395c6a1ea79e"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldC_seed0_train_20261114_v3/model_construction.json",
+        "bytes": 91077,
+        "sha256": "b234da9681cf01f86f7e94300581050cdd06f3b1600f4fdae1289a06349c5f9d"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldC_seed0_train_20261114_v3/initialization.json",
+        "bytes": 289,
+        "sha256": "504fe1bcbb96978ad1f5e61d505faefd984bb1de42bb24862d1e1bade2a9aeaa"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldC_seed0_train_20261114_v3/exposure.json",
+        "bytes": 19465,
+        "sha256": "1203296e9aed5f177fe51b2278703828f3c14ed7d10a7f379ea39208e52dfb42"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v3/SCQ_RF_Sref_C_training_execution_request_v3.json",
+        "bytes": 35707,
+        "sha256": "6370a9887893b510c95850616eb664198982131df67d5e9a06ae725f9b860a88"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/model_construction.json",
+        "bytes": 96510,
+        "sha256": "4620af70b1876577839f190e22e604c355501cfe67f32f1f29a20ebf79fddff6"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/initialization.json",
+        "bytes": 289,
+        "sha256": "bce9b64386ab3ab04cffb7bc7636c33e83a6e576e6a91077f7cb3ddf22c8c677"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/exposure.json",
+        "bytes": 19465,
+        "sha256": "1203296e9aed5f177fe51b2278703828f3c14ed7d10a7f379ea39208e52dfb42"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_C_training_20261114_v1/SCQ_RF_Static_C_training_execution_request_v1.json",
+        "bytes": 39531,
+        "sha256": "a3275c69e78f95d59358ba8c621c63cb053b54b97467c8583e67feedb2b1051f"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_C_training_20261114_v1/bcsp_scq_rf_Requery_C_training_bridge_v1.py",
+        "bytes": 848,
+        "sha256": "97b8b25b146f2db87794ca739e8b822d5a6ebf258bf2a424ede73ae37e6e46bf"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/RF_FoldD_metadata_readiness_v1.json",
+        "bytes": 1390,
+        "sha256": "0dbd94626c75c0d5a6afeba138026849777dc3804beaab63a705eae6bc6e0e61"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/RF_six_run_contract_v2.json",
+        "bytes": 6219,
+        "sha256": "bc0d77d2865c59c0fcd95cc81b83d585fb93f052103675f9b532d62abf5acce8"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldD_seed0_v1.json",
+        "bytes": 1248506,
+        "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/qualified_SCQ_D_8192_v1.json",
+        "bytes": 1641,
+        "sha256": "2aa5848b261e046b758a832485a60b80a2d85d152b573b99fafb07fe6d3d5be7"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/model_construction.json",
+        "bytes": 91077,
+        "sha256": "b234da9681cf01f86f7e94300581050cdd06f3b1600f4fdae1289a06349c5f9d"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/initialization.json",
+        "bytes": 289,
+        "sha256": "424cd95d574c724d8996b285e31787d5c4a4c3ab84e6b6db74a0aafab9c53728"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/exposure.json",
+        "bytes": 19465,
+        "sha256": "65907c12b1eeec2886b7581bd0c9515c831eff9d45e0ecd46ca384a34d6dc902"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/SCQ_RF_Sref_D_training_execution_request_v1.json",
+        "bytes": 36546,
+        "sha256": "888ad3b1a519d26ba907b061643e602aafe42df0e0006c7d0606d242e9a5c00d"
+      }
+    ],
+    "rf_initialization": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/rf_initialization_v1.bin",
+      "bytes": 924684,
+      "sha256": "a4024fbdb49feb41c609ae1171f04c2cb14ab794fc3663855d81395c6a1ea79e"
+    },
+    "expected_parameters": 40827847,
+    "expected_RF_parameters": 231171,
+    "continuation_evidence": {
+      "Sref_C": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Sref_C_formal_freeze_v1.json",
+        "bytes": 8448,
+        "sha256": "1d5370c94ba1ad2435687e803a8823adce23c29ab09a27ba4b3fb377bf8d2149"
+      },
+      "Static_C": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Static_C_formal_freeze_v1.json",
+        "bytes": 9221,
+        "sha256": "fdc804bcde639e9dc6074584ddd93d70e8144d7ccecb2dedc2575aa7a91c1cab"
+      },
+      "Requery_C": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Requery_C_formal_freeze_v1.json",
+        "bytes": 10285,
+        "sha256": "10fc886d1523b53c170120d59c645159a5c19d8da78f0f34856db680db6e6d56"
+      }
+    },
+    "expected_model_initialization": {
+      "parameter_sha256": "8697bfc3b9d7dfd2c0003ec54253cf77cd146f2926a41138ffeacc1ec4f7d255",
+      "persistent_state_sha256": "d0f4c3699fe66a2ba2b4879c1bd41ba363a325fa152d79a4055773be3e0f4167",
+      "seed": 0
+    },
+    "historical_identity": {
+      "hostname": "shu-common-25721452-notebook-zbpgzu-0",
+      "uid": 1000,
+      "project": "/home/jovyan/adapointr_work/PoinTr",
+      "gpu_uuid": "GPU-dabcc897-ac69-efac-4438-a6186dea9aaa",
+      "gpu_name": "NVIDIA GeForce RTX 4090 D",
+      "driver_version": "575.51.03",
+      "nvidia_smi_memory_total_MiB": 24564,
+      "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+      "python_version": "3.10.20",
+      "torch_version": "2.4.1+cu118",
+      "numpy_version": "2.2.6",
+      "timm_version": "1.0.27",
+      "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+      "torch_cuda_version": "11.8"
+    },
+    "accepted_device_migration": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/Static_D_accepted_device_migration_v1.json",
+      "bytes": 3162,
+      "sha256": "1db4e71e5f3fe8f00379856cbb47a7b0307b394217685408577b38964d5a06b9"
+    },
+    "comparison_qualification": {
+      "C_pair": "SAME_DEVICE_PRIMARY_MECHANISM_EVIDENCE",
+      "D_Static_vs_Requery": "DEVICE_AND_DRIVER_CONFOUNDED_SUPPLEMENTARY_EVIDENCE",
+      "strict_same_device_D_pair": false,
+      "do_not_attribute_all_differences_to_requery": true
+    },
+    "paired_requery": {
+      "construction": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Requery_foldD_seed0_train_20261115_v1/model_construction.json",
+        "bytes": 96513,
+        "sha256": "9d7a9731463831e9f8b75c6e0f1a3ac6f337db674f83e14c1246a7da2ea06eb2"
+      },
+      "initialization": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Requery_foldD_seed0_train_20261115_v1/initialization.json",
+        "bytes": 289,
+        "sha256": "8bbe1bcce803197b868ec3339fc9fe2bfb70c4f7c8e1d37751767f0033a4b31a"
+      },
+      "order_plan": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldD_seed0_v1.json",
+        "bytes": 1248506,
+        "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+      },
+      "exposure": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Requery_foldD_seed0_train_20261115_v1/exposure.json",
+        "bytes": 19465,
+        "sha256": "65907c12b1eeec2886b7581bd0c9515c831eff9d45e0ecd46ca384a34d6dc902"
+      },
+      "audit": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/Requery_D_formal_freeze_v1.json",
+        "bytes": 11442,
+        "sha256": "51cfba6ead7ab7d15fe3b2fd2fd7463fa6105084fd9a76fb2071d115a6c66cb4"
+      },
+      "request": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/SCQ_RF_Requery_D_training_execution_request_v1.json",
+        "bytes": 45310,
+        "sha256": "4a79f67d7ce29b453343d9bedc27841030d4c6223eb7bfe02d3af1d1bed9f6ed"
+      }
+    }
+  },
+  "mirror": {
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/static_training_config_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\static_training_config_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldC_seed0_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\shared_order_foldC_seed0_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldD_seed0_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\post_training_freeze_v2\\output\\order_plan.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/real_data_qc_verification_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\real_data_qc_verification_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_8192.jsonl": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\manifest_8192.jsonl",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_16384.jsonl": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\manifest_16384.jsonl",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/fold_binding.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\fold_binding.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_p1_training_runtime_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\bcsp_p1_training_runtime_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_training_contract_01dt08_v3.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\bcsp_training_contract_01dt08_v3.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/inherited_training_budget_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\inherited_training_budget_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/qualified_SCQ_C_8192_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\qualified_SCQ_C_8192_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/qualified_SCQ_D_8192_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\qualified_SCQ_D_8192_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/SCQ_CUDA_freeze_audit_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\SCQ_CUDA_freeze_audit_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/SCQ_CUDA_inventory_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\SCQ_CUDA_inventory_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/SCQ_CUDA_construction_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\SCQ_CUDA_construction_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/SCQ_CUDA_completion_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\SCQ_CUDA_completion_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/SCQ_CUDA_request_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\SCQ_CUDA_request_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/SCQ_BS_CD_pair_contract_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\SCQ_BS_CD_pair_contract_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/FoldC_metadata_readiness_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\FoldC_metadata_readiness_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_freeze_audit_v3.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\RF_CUDA_freeze_audit_v3.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_inventory_v3.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\RF_CUDA_inventory_v3.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_construction_v3.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\RF_CUDA_construction_v3.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_completion_v3.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\RF_CUDA_completion_v3.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_request_v3.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\RF_CUDA_request_v3.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/bcsp_scq_rf_Sref_C_training_entry_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\bcsp_scq_rf_Sref_C_training_entry_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/bcsp_scq_rf_training_bridge_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\bcsp_scq_rf_training_bridge_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_mamba_encoder_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\minimal_implementation_v1\\bcsp_mamba_encoder_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\minimal_implementation_v1\\bcsp_p1_model_factory_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_decoder_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_implementation_v1\\bcsp_lqi_decoder_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_factory_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_implementation_v1\\bcsp_lqi_factory_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_residual_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_implementation_20261113_v1\\bcsp_scq_residual_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_factory_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_implementation_20261113_v1\\bcsp_scq_factory_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\gpu_preflight_plotting_lazy_v3\\bcsp_artificial_gpu_preflight_v3.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/exact_utc_resource_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_mamba_p1_20261104\\gpu_admission_v3\\exact_utc_resource_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_CD_native_prediction_20261111_v1/bcsp_lqi_twofold_native_predict_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_native_prediction_implementation_v1\\bcsp_lqi_twofold_native_predict_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_cuda_admission_v3.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_cuda_preparation_20261113_v1\\bcsp_scq_cuda_admission_v3.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_scq_training_bridge_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\bcsp_scq_training_bridge_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_scq_foldD_training_entry_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldD_training_preparation_20261113_v1\\bcsp_scq_foldD_training_entry_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/initialization_v1.bin": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_implementation_20261113_v1\\initialization_v1.bin",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/FoldD_metadata_readiness_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldD_training_preparation_20261113_v1\\FoldD_metadata_readiness_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/bcsp_scq_fourmodel_native_predict_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\bcsp_scq_fourmodel_native_predict_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/SCQ_BS_CD_input_index_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\SCQ_BS_CD_input_index_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/SCQ_BS_CD_native_scope_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\SCQ_BS_CD_native_scope_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/frozen_B_C_training_audit_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\frozen_B_C_training_audit_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/frozen_S_C_training_audit_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\frozen_S_C_training_audit_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/frozen_B_D_training_audit_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\frozen_B_D_training_audit_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/frozen_S_D_training_audit_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\frozen_S_D_training_audit_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/implementation_P3_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\implementation_P3_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/test_scq_native_prediction_cpu_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\test_scq_native_prediction_cpu_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/CPU_contract_result_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\CPU_contract_result_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/static_review_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\static_review_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/source_policy_stdout.bin": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\source_policy_stdout.bin",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/confirmed_numeric_policy_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\confirmed_numeric_policy_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v1/SCQ_BS_CD_native_prediction_execution_request_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\pending_request_v1\\payload\\SCQ_BS_CD_native_prediction_execution_request_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/bcsp_scq_fourmodel_native_predict_v2.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\bcsp_scq_fourmodel_native_predict_v2.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/SCQ_BS_CD_input_index_v2.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\SCQ_BS_CD_input_index_v2.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/resource_rebind_supplement_v2.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\resource_rebind_supplement_v2.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/frozen_B_C_training_audit_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\frozen_B_C_training_audit_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/frozen_S_C_training_audit_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\frozen_S_C_training_audit_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/frozen_B_D_training_audit_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\frozen_B_D_training_audit_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/frozen_S_D_training_audit_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\frozen_S_D_training_audit_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/SCQ_BS_CD_native_scope_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\SCQ_BS_CD_native_scope_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/confirmed_numeric_policy_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\confirmed_numeric_policy_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/implementation_P3_v2.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\implementation_P3_v2.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/test_scq_rebind_cpu_v2.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\test_scq_rebind_cpu_v2.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/CPU_contract_result_v2.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\CPU_contract_result_v2.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/static_review_v2.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\static_review_v2.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/CPU_contract_result_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\CPU_contract_result_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/static_review_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\static_review_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/source_policy_stdout.bin": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\source_policy_stdout.bin",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_BS_CD_prediction_20261114_v2/test_scq_native_prediction_cpu_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\pending_request_v2\\payload\\test_scq_native_prediction_cpu_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v2/bcsp_scq_rf_cuda_admission_v2.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\bcsp_scq_rf_cuda_admission_v2.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_six_run_contract_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\RF_six_run_contract_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/FoldC_readiness_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\FoldC_readiness_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/training_entry_P3_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\training_entry_P3_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/fixture_v2_static_review.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\fixture_v2_static_review.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/static_review_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\static_review_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/test_scq_rf_Sref_C_entry_cpu_v2.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\test_scq_rf_Sref_C_entry_cpu_v2.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/training_CPU_result_v2.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\training_CPU_result_v2.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/SCQ_RF_Sref_C_training_execution_request_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\pending_transport_v1\\payload\\SCQ_RF_Sref_C_training_execution_request_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\runtime_read_hotfix_v2\\bcsp_scq_rf_Sref_C_training_entry_v2.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/training_entry_P3_v2.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\runtime_read_hotfix_v2\\training_entry_P3_v2.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/SCQ_RF_Sref_C_training_execution_request_v2.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\runtime_read_hotfix_v2\\pending_transport_v2\\payload\\SCQ_RF_Sref_C_training_execution_request_v2.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v3/bcsp_scq_rf_Sref_C_training_entry_v3.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\startup_chain_binding_v3\\bcsp_scq_rf_Sref_C_training_entry_v3.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v3/training_entry_P3_v3.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\startup_chain_binding_v3\\training_entry_P3_v3.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v3/SCQ_RF_Sref_C_training_execution_request_v3.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\startup_chain_binding_v3\\pending_transport_v3\\payload\\SCQ_RF_Sref_C_training_execution_request_v3.json",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldC_seed0_train_20261114_v3/model_construction.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\startup_chain_binding_v3\\post_training_freeze_v1\\output\\model_construction.json",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldC_seed0_train_20261114_v3/initialization.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\startup_chain_binding_v3\\post_training_freeze_v1\\output\\initialization.json",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldC_seed0_train_20261114_v3/exposure.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\startup_chain_binding_v3\\post_training_freeze_v1\\output\\exposure.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_C_training_20261114_v1/Sref_C_formal_freeze_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\startup_chain_binding_v3\\post_training_freeze_v1\\freeze_verification_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_C_training_20261114_v1/bcsp_scq_rf_Static_C_training_entry_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_C_implementation_20261114_v1\\bcsp_scq_rf_Static_C_training_entry_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_C_training_20261114_v1/bcsp_scq_rf_Static_C_training_bridge_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_C_implementation_20261114_v1\\bcsp_scq_rf_Static_C_training_bridge_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v3/bcsp_scq_rf_residual_v2.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_initialization_loader_20261114_v2\\bcsp_scq_rf_residual_v2.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/bcsp_scq_rf_factory_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_implementation_20261114_v1\\bcsp_scq_rf_factory_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/rf_initialization_v1.bin": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_implementation_20261114_v1\\initialization_v1.bin",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_C_training_20261114_v1/training_entry_P3_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_C_implementation_20261114_v1\\training_entry_P3_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_C_training_20261114_v1/training_CPU_result_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_C_implementation_20261114_v1\\pending_transport_v1\\payload\\training_CPU_result_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_C_training_20261114_v1/SCQ_RF_Static_C_training_execution_request_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_C_implementation_20261114_v1\\pending_transport_v1\\payload\\SCQ_RF_Static_C_training_execution_request_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_C_training_20261114_v1/bcsp_scq_rf_Requery_C_training_entry_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_C_implementation_20261114_v1\\bcsp_scq_rf_Requery_C_training_entry_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_C_training_20261114_v1/bcsp_scq_rf_Requery_C_training_bridge_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_C_implementation_20261114_v1\\bcsp_scq_rf_Requery_C_training_bridge_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/model_construction.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_C_implementation_20261114_v1\\post_training_freeze_v1\\output\\model_construction.json",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/initialization.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_C_implementation_20261114_v1\\post_training_freeze_v1\\output\\initialization.json",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/exposure.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_C_implementation_20261114_v1\\post_training_freeze_v1\\output\\exposure.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_C_training_20261114_v1/Static_C_formal_freeze_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_C_implementation_20261114_v1\\pending_transport_v1\\payload\\Static_C_formal_freeze_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_C_training_20261114_v1/Sref_C_formal_freeze_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_C_implementation_20261114_v1\\pending_transport_v1\\payload\\Sref_C_formal_freeze_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_C_training_20261114_v1/training_entry_P3_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_C_implementation_20261114_v1\\training_entry_P3_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_C_training_20261114_v1/training_CPU_result_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_C_implementation_20261114_v1\\pending_transport_v1\\payload\\training_CPU_result_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_C_training_20261114_v1/SCQ_RF_Requery_C_training_execution_request_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_C_implementation_20261114_v1\\pending_transport_v1\\payload\\SCQ_RF_Requery_C_training_execution_request_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/Sref_C_formal_freeze_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\startup_chain_binding_v3\\post_training_freeze_v1\\freeze_verification_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/Static_C_formal_freeze_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_C_implementation_20261114_v1\\post_training_freeze_v1\\freeze_verification_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/Requery_C_formal_freeze_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_C_implementation_20261114_v1\\post_training_freeze_v1\\freeze_verification_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/bcsp_scq_rf_Sref_D_training_entry_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_D_implementation_20261114_v1\\bcsp_scq_rf_Sref_D_training_entry_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/RF_six_run_contract_v2.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_D_implementation_20261114_v1\\RF_six_run_contract_v2.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/RF_FoldD_metadata_readiness_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_D_implementation_20261114_v1\\RF_FoldD_metadata_readiness_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/training_entry_P3_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_D_implementation_20261114_v1\\pending_transport_v1\\payload\\training_entry_P3_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/training_CPU_result_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_D_implementation_20261114_v1\\pending_transport_v1\\payload\\training_CPU_result_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/SCQ_RF_Sref_D_training_execution_request_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_D_implementation_20261114_v1\\pending_transport_v1\\payload\\SCQ_RF_Sref_D_training_execution_request_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/bcsp_scq_rf_Requery_D_training_entry_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\bcsp_scq_rf_Requery_D_training_entry_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/model_construction.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_D_implementation_20261114_v1\\post_training_freeze_v1\\output\\model_construction.json",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/initialization.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_D_implementation_20261114_v1\\post_training_freeze_v1\\output\\initialization.json",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/exposure.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_D_implementation_20261114_v1\\post_training_freeze_v1\\output\\exposure.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Sref_D_formal_freeze_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\pending_transport_v1\\payload\\Sref_D_formal_freeze_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Sref_C_formal_freeze_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\pending_transport_v1\\payload\\Sref_C_formal_freeze_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Static_C_formal_freeze_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\pending_transport_v1\\payload\\Static_C_formal_freeze_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Requery_C_formal_freeze_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\pending_transport_v1\\payload\\Requery_C_formal_freeze_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/training_entry_P3_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\pending_transport_v1\\payload\\training_entry_P3_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/training_CPU_result_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\pending_transport_v1\\payload\\training_CPU_result_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/SCQ_RF_Requery_D_training_execution_request_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\pending_transport_v1\\payload\\SCQ_RF_Requery_D_training_execution_request_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/bcsp_scq_rf_Static_D_training_entry_v1.py": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_D_implementation_20261115_v1\\bcsp_scq_rf_Static_D_training_entry_v1.py",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/Static_D_accepted_device_migration_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_D_implementation_20261115_v1\\Static_D_accepted_device_migration_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/Static_D_current_identity_readiness_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_D_implementation_20261115_v1\\Static_D_current_identity_readiness_v1.json",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Requery_foldD_seed0_train_20261115_v1/model_construction.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\post_training_freeze_v2\\output\\model_construction.json",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Requery_foldD_seed0_train_20261115_v1/initialization.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\post_training_freeze_v2\\output\\initialization.json",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Requery_foldD_seed0_train_20261115_v1/exposure.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\post_training_freeze_v2\\output\\exposure.json",
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/Requery_D_formal_freeze_v1.json": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\post_training_freeze_v2\\freeze_verification_v1.json"
+  },
+  "parent_Requery_D_request": {
+    "schema": "bcsp-scq-rf-Requery-D-training-request-v1",
+    "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+    "execution_authorized": false,
+    "stage": "CRANIAL_BCSP_SCQ_RF",
+    "run_id": "SCQ_RF_Requery_foldD_seed0_train_20261115_v1",
+    "variant": "RF-Requery",
+    "fold": "D",
+    "seed": 0,
+    "n_input": 8192,
+    "n_output": 8192,
+    "static_config": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/static_training_config_v1.json",
+      "bytes": 2024,
+      "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+    },
+    "QC": {
+      "qualified_receipt": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/qualified_SCQ_D_8192_v1.json",
+        "bytes": 1641,
+        "sha256": "2aa5848b261e046b758a832485a60b80a2d85d152b573b99fafb07fe6d3d5be7"
+      },
+      "verification": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/real_data_qc_verification_v1.json",
+        "bytes": 5769,
+        "sha256": "54fcd0018f9a51f04b8408b3842b6d5c4243777979a0e0add31541e04fa3c55b"
+      },
+      "manifests": {
+        "8192": {
+          "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_8192.jsonl",
+          "bytes": 427975,
+          "sha256": "f94dbe21cb9e406db49a51f6578496db3228d783f15c07b28e3d8ae234a33758"
+        },
+        "16384": {
+          "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_16384.jsonl",
+          "bytes": 428815,
+          "sha256": "1cd06c7d3b33191d02b5464e72fd83ba4b38c839c0bb4da865bed374076734b5"
+        }
+      },
+      "fold_binding": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/fold_binding.json",
+        "bytes": 35012,
+        "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+      }
+    },
+    "order_plan": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldD_seed0_v1.json",
+      "bytes": 1248506,
+      "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+    },
+    "identity": {
+      "hostname": "shu-common-25721452-notebook-zbpgzu-0",
+      "uid": 1000,
+      "project": "/home/jovyan/adapointr_work/PoinTr",
+      "gpu_uuid": "GPU-dabcc897-ac69-efac-4438-a6186dea9aaa",
+      "gpu_name": "NVIDIA GeForce RTX 4090 D",
+      "driver_version": "575.51.03",
+      "nvidia_smi_memory_total_MiB": 24564,
+      "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+      "python_version": "3.10.20",
+      "torch_version": "2.4.1+cu118",
+      "numpy_version": "2.2.6",
+      "timm_version": "1.0.27",
+      "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+      "torch_cuda_version": "11.8"
+    },
+    "data_root": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1",
+    "model_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3",
+    "implementation": {
+      "encoder": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_mamba_encoder_v1.py",
+        "bytes": 3546,
+        "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+      },
+      "factory": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py",
+        "bytes": 4396,
+        "sha256": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4"
+      },
+      "lqi_decoder": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_decoder_v1.py",
+        "bytes": 6053,
+        "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8"
+      },
+      "lqi_factory": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_factory_v1.py",
+        "bytes": 3864,
+        "sha256": "56d4cbe89660106f255a0d58e28c7cbaf38374c7788219d5a21779bd97aaf106"
+      },
+      "scq_residual": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_residual_v1.py",
+        "bytes": 3552,
+        "sha256": "2f3a86c5daf7ad00c01dc405b4a3b7011faae06f5766da3dcfe72d645b730404"
+      },
+      "scq_factory": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_factory_v1.py",
+        "bytes": 14176,
+        "sha256": "fe5f7229aa40ba2b7e599c2bea32982f6bb33cf5f1db115b222a581c1d4af1c5"
+      },
+      "timezone": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/exact_utc_resource_v1.py",
+        "bytes": 3563,
+        "sha256": "038267da9f78be5ea9d03164e674d388228768bf0c42959097fcadfd807f830e"
+      },
+      "entry": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/bcsp_scq_rf_Requery_D_training_entry_v1.py",
+        "bytes": 28479,
+        "sha256": "0a99d7ca7542b5ab5d4db4787d6ae2ad30e38b5f2d8f764292102b0c984e0c44"
+      },
+      "bridge": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_C_training_20261114_v1/bcsp_scq_rf_Requery_C_training_bridge_v1.py",
+        "bytes": 848,
+        "sha256": "97b8b25b146f2db87794ca739e8b822d5a6ebf258bf2a424ede73ae37e6e46bf"
+      },
+      "runtime": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_p1_training_runtime_v1.py",
+        "bytes": 11268,
+        "sha256": "939e317dd447d04c62897849c0230f1918dc65c46ec556acdb60c9d69dfebeee"
+      },
+      "contract": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_training_contract_01dt08_v3.py",
+        "bytes": 16531,
+        "sha256": "08a9af361ef0279cfccf27f9d094020501bfcc9859692ca64322d8dd4c7fd499"
+      },
+      "budget_parent": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/inherited_training_budget_v1.py",
+        "bytes": 20395,
+        "sha256": "095cabb0ab9b098172840432d40699dd18279671cf650894fab9eb9b54575ebe"
+      },
+      "preflight_helper": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+        "bytes": 32728,
+        "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+      },
+      "native_helper": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_CD_native_prediction_20261111_v1/bcsp_lqi_twofold_native_predict_v1.py",
+        "bytes": 31207,
+        "sha256": "b1c4bee971e73c297ce1a9e22a21ef5da69cc6891fba110a6fc2544819362309"
+      },
+      "cuda_entry": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v2/bcsp_scq_rf_cuda_admission_v2.py",
+        "bytes": 29284,
+        "sha256": "b78485c06dd94ca6e54b918f6c5b3ea055f6feebf5d935920d6da9dae4497999"
+      },
+      "rf_residual": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v3/bcsp_scq_rf_residual_v2.py",
+        "bytes": 4596,
+        "sha256": "c50cbdb0986fafe3ff2309ef8c02d74fdc5e651218c71f4bb13a87bacefc726a"
+      },
+      "rf_factory": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/bcsp_scq_rf_factory_v1.py",
+        "bytes": 3517,
+        "sha256": "6e243f7a6463241f6c24c6feb6928bde9499ffd3a17afe1442eca54fd6738570"
+      }
+    },
+    "preflight_scope": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+      "bytes": 23220,
+      "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+    },
+    "dependencies": [
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/__init__.py",
+        "bytes": 264,
+        "sha256": "6d3fee6ff8e8ec4dcab0f7af6c7890ff81f3d9319707865f5a651239aee9ae0a"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/modules/mamba_simple.py",
+        "bytes": 11710,
+        "sha256": "a17e4c51b582dc0d4d690a649eba521cd0c1ee3dc8f0473a0967cdc9ec0874e3"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/ops/selective_scan_interface.py",
+        "bytes": 20025,
+        "sha256": "543edd077f11c80cccd5c5e2f926420d9105fd238d9e8960e53660cfa234dce8"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/__init__.py",
+        "bytes": 118,
+        "sha256": "af95401837aff56ae3749c2237eaff7df8c6a4328d7c5cc6a6731287ac27152c"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/causal_conv1d_interface.py",
+        "bytes": 8850,
+        "sha256": "221f41aa963a8f84683d9c6b2b4bf448692feb963fefcd778fa1b4ed2688c859"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm-2.3.1.dist-info/METADATA",
+        "bytes": 25449,
+        "sha256": "de580cd29b3bf2c8d81240fad9255978be1835884b82ab8e84f17f4ba720effd"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d-1.6.2.post1.dist-info/METADATA",
+        "bytes": 1625,
+        "sha256": "3b4a001f4ad6f856465746601e4b0dda9b2d088bd8e81b6376e4a707fcf4ca7b"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/selective_scan_cuda.cpython-310-x86_64-linux-gnu.so",
+        "bytes": 526135264,
+        "sha256": "5e6a5bfabe7628720631568ec364426e6066da9a9a0946302ebe9fb86f4aa58c"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d_cuda.cpython-310-x86_64-linux-gnu.so",
+        "bytes": 166702752,
+        "sha256": "6ac9c334498773ee337503094d7b5aae4b0f38fa3ba8a0dcd81cca707f48a79a"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch/version.py",
+        "bytes": 248,
+        "sha256": "b10649fd636e7404398d608b84a2cacc6645e3952f043b439d4c50c95a26a1b5"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch-2.4.1+cu118.dist-info/METADATA",
+        "bytes": 26707,
+        "sha256": "11606497a9792f0d040ad062064ee1c024dde8b10fc38bed361134d0b7ec429a"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm-1.0.27.dist-info/METADATA",
+        "bytes": 40196,
+        "sha256": "b6ecaedbcaea5d0d5e431983c3df8e05113a51a2dad062e51dab0500ac6f2bb4"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/numpy-2.2.6.dist-info/METADATA",
+        "bytes": 62026,
+        "sha256": "22d648f53848429464ca643b40d73b49a920d47876fc77c395d4dca4e834904a"
+      }
+    ],
+    "environment": {
+      "CUDA_VISIBLE_DEVICES": "GPU-dabcc897-ac69-efac-4438-a6186dea9aaa",
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "OMP_NUM_THREADS": "2",
+      "MKL_NUM_THREADS": "2",
+      "OPENBLAS_NUM_THREADS": "2",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "MPLBACKEND": "Agg",
+      "MPLCONFIGDIR": "<owned_output>/mplconfig",
+      "CUDA_CACHE_DISABLE": "1",
+      "TMPDIR": "<owned_output>/tmp",
+      "PYTHONHASHSEED": "0",
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1",
+      "HF_HOME": "<owned_output>/hf_cache",
+      "XDG_CACHE_HOME": "<owned_output>/cache",
+      "TRITON_CACHE_DIR": "<owned_output>/triton_cache"
+    },
+    "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Requery_foldD_seed0_train_20261115_v1",
+    "launch_attempt": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/control/attempt_claim_v1.json",
+    "launch_contract": {
+      "tmux_session": "bcsp_scq_rf_Requery_D_train_20261115_v1",
+      "request_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/SCQ_RF_Requery_D_training_execution_request_v1.json",
+      "authorization_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/control/authorization_v1.json",
+      "runtime_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/control/runtime_v1.json",
+      "launcher_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/control/launch_once_v1.sh",
+      "original_file_byte_transport": true,
+      "parent_before_redirection": true,
+      "PowerShell_explicit_exit_LASTEXITCODE": true,
+      "automatic_retry": false,
+      "resume": false,
+      "log": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Requery_foldD_seed0_train_20261115_v1/launch.log",
+      "PID": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Requery_foldD_seed0_train_20261115_v1/worker.pid",
+      "exit_code": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Requery_foldD_seed0_train_20261115_v1/exit_code.txt"
+    },
+    "admission": {
+      "audit": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_freeze_audit_v3.json",
+        "bytes": 26364,
+        "sha256": "7611114686154f2024c1489e5d5cb64f59201dd27b112c0e18614c1ca25f1c0e"
+      },
+      "inventory": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_inventory_v3.json",
+        "bytes": 14618,
+        "sha256": "1d2477ba21c88db3defa67165a9842faf71dfe6ff5c76ec7d775d5d1f6e5d921"
+      },
+      "construction": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_construction_v3.json",
+        "bytes": 2181,
+        "sha256": "fae4f3d689665c54b4c162d9004480a915592f58e42255d3a8c9f31d5d6650ae"
+      },
+      "completion": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_completion_v3.json",
+        "bytes": 293297,
+        "sha256": "9b2d98509ebb03a59b8dd14d0332f0ba4d176248023a86f3c7d999516969335a"
+      },
+      "request": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_request_v3.json",
+        "bytes": 31882,
+        "sha256": "8a3d0173fa3cec9e737e384c9af99f37e996c79ef3e60bb5e99b14dc275f2cac"
+      }
+    },
+    "readiness": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/RF_FoldD_metadata_readiness_v1.json",
+      "bytes": 1390,
+      "sha256": "0dbd94626c75c0d5a6afeba138026849777dc3804beaab63a705eae6bc6e0e61"
+    },
+    "pair_contract": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/RF_six_run_contract_v2.json",
+      "bytes": 6219,
+      "sha256": "bc0d77d2865c59c0fcd95cc81b83d585fb93f052103675f9b532d62abf5acce8"
+    },
+    "initialization": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/initialization_v1.bin",
+      "bytes": 2784780,
+      "sha256": "e7858ee3ae4c0bf6d68e447727c36514f5bbab42b95e1935f1686620ec089416"
+    },
+    "paired_baseline": {
+      "construction": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/model_construction.json",
+        "bytes": 91077,
+        "sha256": "b234da9681cf01f86f7e94300581050cdd06f3b1600f4fdae1289a06349c5f9d"
+      },
+      "initialization": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/initialization.json",
+        "bytes": 289,
+        "sha256": "424cd95d574c724d8996b285e31787d5c4a4c3ab84e6b6db74a0aafab9c53728"
+      },
+      "order_plan": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldD_seed0_v1.json",
+        "bytes": 1248506,
+        "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+      },
+      "exposure": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/exposure.json",
+        "bytes": 19465,
+        "sha256": "65907c12b1eeec2886b7581bd0c9515c831eff9d45e0ecd46ca384a34d6dc902"
+      },
+      "audit": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Sref_D_formal_freeze_v1.json",
+        "bytes": 9906,
+        "sha256": "c48dbb53070b1c996d77c0272ce0aef03186eb93153855002cbd03a51a98f9dd"
+      },
+      "request": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/SCQ_RF_Sref_D_training_execution_request_v1.json",
+        "bytes": 36546,
+        "sha256": "888ad3b1a519d26ba907b061643e602aafe42df0e0006c7d0606d242e9a5c00d"
+      }
+    },
+    "P3": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/training_entry_P3_v1.json",
+      "bytes": 4811,
+      "sha256": "d6d94a7d53f25016a82f04637d41399840af8cdbcf4e81a40f046ddde755a642"
+    },
+    "not_authorized": [
+      "Execution before separate full request SHA256 authorization",
+      "Warmstart/resume/retry",
+      "Other runs, BNCal, evaluation, GPU preflight repetition",
+      "Data outside exact315 training allowlist",
+      "Changes to model/loss/order/numeric runtime or resource thresholds"
+    ],
+    "supersedes_consumed_request": {
+      "request_sha256": "132ea92fde3fb871f4bad6d78d18d625fc83c85e9e2719d52ef7cd2b9c3b9396",
+      "status": "ATTEMPTED_FAILED_BEFORE_TRAINING_NONREUSABLE",
+      "committed_steps": 0,
+      "audit": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/B_C_failed_startup_freeze_v1.json",
+        "bytes": 1116,
+        "sha256": "e480ea39c04be911030e684ca8608f8cda4881fd8663814b19226e3c698c7020"
+      }
+    },
+    "scope_note": "Only S_C scratch training after formally frozen same-device B_C; no weight warmstart, no C-results tuning, no repeated GPU preflight",
+    "arm": "RF-Requery",
+    "CPU_evidence": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/training_CPU_result_v1.json",
+      "bytes": 4044,
+      "sha256": "a263f5050de39eaa18f8249baab0dacb9d42c59ccebc820920f5e475c943cbde"
+    },
+    "resources": {
+      "wall_seconds": 86400,
+      "RSS_bytes": 8589934592,
+      "device_MiB": 22528,
+      "torch_peak_bytes": 21474836480,
+      "output_bytes": 2147483648,
+      "minimum_free_disk_bytes": 4294967296
+    },
+    "science": {
+      "train_sources": 63,
+      "train_cases": 315,
+      "batch": 8,
+      "traversals": 100,
+      "batches_per_traversal": 39,
+      "updates": 3900,
+      "exposures": 31200,
+      "drops": 300,
+      "n_input": 8192,
+      "n_output": 8192,
+      "seed": 0,
+      "from_scratch": true,
+      "optimizer": "AdamW",
+      "BNCal": false,
+      "evaluation": false,
+      "resume": false,
+      "retry": false
+    },
+    "checkpoint_selection": "Only fixed epoch99 step3900 final checkpoint. Legacy checkpoint stage field retained as provenance; actual stage/arm in run_identity.json.",
+    "shared_initialization_contract": "Full persistent original S state including SCQ/BN matches current same-device CUDA S-ref; no RF head; no history checkpoint loading.",
+    "numeric_disclosure": "FP32, TF32=false; inherited accepted finite gradient non-bitwise reproducibility. Do not require exact equality of repeated native backward values.",
+    "activation_prerequisites": [
+      "Separate full request SHA256 authorization",
+      "Fresh exact hostname GPU UUID driver interpreter/provider and all reused file hashes",
+      "Verify uploaded archive+3 sidecars and all10 new targets/control/output absent; exclusive install only; exact original Requery bridge, admitted RF/source/init files, D QC/order and frozen references.",
+      "315 exact Fold C training payload hashes and source identity; no development/confirmation payload reads",
+      "Initially GPU<=256MiB, free disk>=4GiB and cumulative archive budget assessed; all frozen runtime thresholds enforced",
+      "Authorization -> authorizationSHA -> one-way runtime -> original-byte launcher -> exclusive claim -> unique tmux; failure stop, no automatic retry/resume"
+    ],
+    "stage_matrix_note": "First only S-ref_C. Later Static/Requery and Fold D require separate preparation and execution authorizations.",
+    "reused_readonly_bindings": [
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_mamba_encoder_v1.py",
+        "bytes": 3546,
+        "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py",
+        "bytes": 4396,
+        "sha256": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_decoder_v1.py",
+        "bytes": 6053,
+        "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_factory_v1.py",
+        "bytes": 3864,
+        "sha256": "56d4cbe89660106f255a0d58e28c7cbaf38374c7788219d5a21779bd97aaf106"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_residual_v1.py",
+        "bytes": 3552,
+        "sha256": "2f3a86c5daf7ad00c01dc405b4a3b7011faae06f5766da3dcfe72d645b730404"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_factory_v1.py",
+        "bytes": 14176,
+        "sha256": "fe5f7229aa40ba2b7e599c2bea32982f6bb33cf5f1db115b222a581c1d4af1c5"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/exact_utc_resource_v1.py",
+        "bytes": 3563,
+        "sha256": "038267da9f78be5ea9d03164e674d388228768bf0c42959097fcadfd807f830e"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_p1_training_runtime_v1.py",
+        "bytes": 11268,
+        "sha256": "939e317dd447d04c62897849c0230f1918dc65c46ec556acdb60c9d69dfebeee"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_training_contract_01dt08_v3.py",
+        "bytes": 16531,
+        "sha256": "08a9af361ef0279cfccf27f9d094020501bfcc9859692ca64322d8dd4c7fd499"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/inherited_training_budget_v1.py",
+        "bytes": 20395,
+        "sha256": "095cabb0ab9b098172840432d40699dd18279671cf650894fab9eb9b54575ebe"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+        "bytes": 32728,
+        "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_CD_native_prediction_20261111_v1/bcsp_lqi_twofold_native_predict_v1.py",
+        "bytes": 31207,
+        "sha256": "b1c4bee971e73c297ce1a9e22a21ef5da69cc6891fba110a6fc2544819362309"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v2/bcsp_scq_rf_cuda_admission_v2.py",
+        "bytes": 29284,
+        "sha256": "b78485c06dd94ca6e54b918f6c5b3ea055f6feebf5d935920d6da9dae4497999"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/static_training_config_v1.json",
+        "bytes": 2024,
+        "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/qualified_SCQ_C_8192_v1.json",
+        "bytes": 1641,
+        "sha256": "b51fc4d88c63fb8a928868bf94d7c3eef3aba117a7de1138d2cdd2aa6c643cd4"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/real_data_qc_verification_v1.json",
+        "bytes": 5769,
+        "sha256": "54fcd0018f9a51f04b8408b3842b6d5c4243777979a0e0add31541e04fa3c55b"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_8192.jsonl",
+        "bytes": 427975,
+        "sha256": "f94dbe21cb9e406db49a51f6578496db3228d783f15c07b28e3d8ae234a33758"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_16384.jsonl",
+        "bytes": 428815,
+        "sha256": "1cd06c7d3b33191d02b5464e72fd83ba4b38c839c0bb4da865bed374076734b5"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/fold_binding.json",
+        "bytes": 35012,
+        "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldC_seed0_v1.json",
+        "bytes": 1248506,
+        "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/initialization_v1.bin",
+        "bytes": 2784780,
+        "sha256": "e7858ee3ae4c0bf6d68e447727c36514f5bbab42b95e1935f1686620ec089416"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/__init__.py",
+        "bytes": 264,
+        "sha256": "6d3fee6ff8e8ec4dcab0f7af6c7890ff81f3d9319707865f5a651239aee9ae0a"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/modules/mamba_simple.py",
+        "bytes": 11710,
+        "sha256": "a17e4c51b582dc0d4d690a649eba521cd0c1ee3dc8f0473a0967cdc9ec0874e3"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/ops/selective_scan_interface.py",
+        "bytes": 20025,
+        "sha256": "543edd077f11c80cccd5c5e2f926420d9105fd238d9e8960e53660cfa234dce8"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/__init__.py",
+        "bytes": 118,
+        "sha256": "af95401837aff56ae3749c2237eaff7df8c6a4328d7c5cc6a6731287ac27152c"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/causal_conv1d_interface.py",
+        "bytes": 8850,
+        "sha256": "221f41aa963a8f84683d9c6b2b4bf448692feb963fefcd778fa1b4ed2688c859"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm-2.3.1.dist-info/METADATA",
+        "bytes": 25449,
+        "sha256": "de580cd29b3bf2c8d81240fad9255978be1835884b82ab8e84f17f4ba720effd"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d-1.6.2.post1.dist-info/METADATA",
+        "bytes": 1625,
+        "sha256": "3b4a001f4ad6f856465746601e4b0dda9b2d088bd8e81b6376e4a707fcf4ca7b"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/selective_scan_cuda.cpython-310-x86_64-linux-gnu.so",
+        "bytes": 526135264,
+        "sha256": "5e6a5bfabe7628720631568ec364426e6066da9a9a0946302ebe9fb86f4aa58c"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d_cuda.cpython-310-x86_64-linux-gnu.so",
+        "bytes": 166702752,
+        "sha256": "6ac9c334498773ee337503094d7b5aae4b0f38fa3ba8a0dcd81cca707f48a79a"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch/version.py",
+        "bytes": 248,
+        "sha256": "b10649fd636e7404398d608b84a2cacc6645e3952f043b439d4c50c95a26a1b5"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch-2.4.1+cu118.dist-info/METADATA",
+        "bytes": 26707,
+        "sha256": "11606497a9792f0d040ad062064ee1c024dde8b10fc38bed361134d0b7ec429a"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm-1.0.27.dist-info/METADATA",
+        "bytes": 40196,
+        "sha256": "b6ecaedbcaea5d0d5e431983c3df8e05113a51a2dad062e51dab0500ac6f2bb4"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/numpy-2.2.6.dist-info/METADATA",
+        "bytes": 62026,
+        "sha256": "22d648f53848429464ca643b40d73b49a920d47876fc77c395d4dca4e834904a"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+        "bytes": 23220,
+        "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/AdaPoinTr.py",
+        "bytes": 103347,
+        "sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/build.py",
+        "bytes": 342,
+        "sha256": "9c85271220ba992d56d4285b1ef51de939f7471b0712028af8d07880fed9680f"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/cranial_scqr/__init__.py",
+        "bytes": 5859,
+        "sha256": "c4fab9f4cc19bf5c461930749cccea56cb5b3e7432172d2a4959d2cbc2d69634"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/cranial_scqr/contact_support.py",
+        "bytes": 6731,
+        "sha256": "2c92404ba4bd5634a49f396904b2d6f69a22aa2c87bb72f6ee32672ee9d735d1"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/cranial_scqr/local_geometry.py",
+        "bytes": 6413,
+        "sha256": "e3e2eb20aed6afb3024f8b3c10c79ac0f64f288f3892495668980028793ba768"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/cranial_scqr/query_conditioning.py",
+        "bytes": 4719,
+        "sha256": "7c09def4ea7f2d65906e7fc3de753cae699be6d2d4ad3dcbb33e231be37a6942"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/registry.py",
+        "bytes": 11111,
+        "sha256": "a7c49418d587ae84778390b67a50c2bd98cbc93da2e0a506e6d309b5c159ecf7"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/config.py",
+        "bytes": 2438,
+        "sha256": "39d487ab6eadcd0a157167cfdf0d1797255f6403828f2653ba7802da6f2ac819"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/logger.py",
+        "bytes": 5048,
+        "sha256": "12e50962ca4594ddd573d9a76524ac912ddf55bfc297fa8008a30b20dca28e0c"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/misc.py",
+        "bytes": 12290,
+        "sha256": "3063afb490840dd417c2e0cc00f2d5fdfe49ba2074396099c39a112026906485"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/pointnet2_utils.py",
+        "bytes": 4275,
+        "sha256": "6e814a64b244d018047ffefa92004dd4e59fc941145476af1424aae1742c43ec"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/mamba_d22_geometry.py",
+        "bytes": 12533,
+        "sha256": "8b3b56344f7e9c97a3cd1ee141964bc7797faae4f094df9404dedaee07e6c804"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/utils/mamba_d3_contact.py",
+        "bytes": 11021,
+        "sha256": "10c5bb39a8cf3860ed28b65d2c9257ae1ff4e63c4b69228504dd663f0604e5cb"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/extensions/chamfer_dist/__init__.py",
+        "bytes": 6551,
+        "sha256": "6456934164750c2d326236effe4827dc37c77a7d6d915d3c28fa65a90a9b1c50"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/tools/runner.py",
+        "bytes": 32455,
+        "sha256": "e378ab4ab7a26f6b370b4263788ca51e413b47ca3827cf404dd6ac4d9aaa0f32"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/Transformer_utils.py",
+        "bytes": 52026,
+        "sha256": "cd562e02755ffd46382cc539cdb361225b844b12e89df9d98741d37238a6bf5f"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/tools/bcsp_runtime.py",
+        "bytes": 7320,
+        "sha256": "8cbb5389e074347f6bf6e776755d22bbdaedaf5dba5102d51866d1b1e49b3615"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/tools/bcsp_adapter.py",
+        "bytes": 7297,
+        "sha256": "2f7d3050cfb6ac2602cc17a95b860da2204daef2dfa63dab63d233e899b7dd55"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/__init__.py",
+        "bytes": 123,
+        "sha256": "d8a0921aeb90349a0659799a22ccf00ccd31707b226426ff4118eeb65ae0ada2"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/pointnet2_utils.py",
+        "bytes": 9943,
+        "sha256": "ec597d77b1215fbc87bdb452b8ce04b85eb0b816d5e39e7696fc792a2f61ea5b"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/_ext.cpython-310-x86_64-linux-gnu.so",
+        "bytes": 301640,
+        "sha256": "e70d00108bacba4a905dc011f4b8c4868f06ec2d44d8e322148e2e452578fbb5"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/wheelhouse/pointnet2_ops-3.0.0-cp310-cp310-linux_x86_64.whl",
+        "bytes": 123291,
+        "sha256": "530496a0d1d5dea6151a466b7c0874632322223308a7016910fb1bfbaaaab1e5"
+      },
+      {
+        "path": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+        "bytes": 17331920,
+        "sha256": "01b4275dc374dcae51d245bda004daad6d7882d3f5de7f9852567bb7ab83180d"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/base_model.yaml",
+        "bytes": 2082,
+        "sha256": "e18feb90d782506f864560ce5513b3077f840f9d6365308b03493f80f8c57dc4"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_freeze_audit_v3.json",
+        "bytes": 26364,
+        "sha256": "7611114686154f2024c1489e5d5cb64f59201dd27b112c0e18614c1ca25f1c0e"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_inventory_v3.json",
+        "bytes": 14618,
+        "sha256": "1d2477ba21c88db3defa67165a9842faf71dfe6ff5c76ec7d775d5d1f6e5d921"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_construction_v3.json",
+        "bytes": 2181,
+        "sha256": "fae4f3d689665c54b4c162d9004480a915592f58e42255d3a8c9f31d5d6650ae"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_completion_v3.json",
+        "bytes": 293297,
+        "sha256": "9b2d98509ebb03a59b8dd14d0332f0ba4d176248023a86f3c7d999516969335a"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_CUDA_request_v3.json",
+        "bytes": 31882,
+        "sha256": "8a3d0173fa3cec9e737e384c9af99f37e996c79ef3e60bb5e99b14dc275f2cac"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/FoldC_readiness_v1.json",
+        "bytes": 963,
+        "sha256": "281f2494f335fba0d4f6069b9f1b04d05325236f479dd2a64c3a6350f0da0dc6"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/RF_six_run_contract_v1.json",
+        "bytes": 4173,
+        "sha256": "52c1ae9eda38cf513a34af449b81da980e43ba1b9fe675f4bc9fda4ef1189735"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/bcsp_scq_rf_training_bridge_v1.py",
+        "bytes": 703,
+        "sha256": "9f282d1ce07e9c89ba7cac246d99c2c9f0ac2086f1f5de80151ae2a73723c6dd"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v3/bcsp_scq_rf_residual_v2.py",
+        "bytes": 4596,
+        "sha256": "c50cbdb0986fafe3ff2309ef8c02d74fdc5e651218c71f4bb13a87bacefc726a"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/bcsp_scq_rf_factory_v1.py",
+        "bytes": 3517,
+        "sha256": "6e243f7a6463241f6c24c6feb6928bde9499ffd3a17afe1442eca54fd6738570"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/rf_initialization_v1.bin",
+        "bytes": 924684,
+        "sha256": "a4024fbdb49feb41c609ae1171f04c2cb14ab794fc3663855d81395c6a1ea79e"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldC_seed0_train_20261114_v3/model_construction.json",
+        "bytes": 91077,
+        "sha256": "b234da9681cf01f86f7e94300581050cdd06f3b1600f4fdae1289a06349c5f9d"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldC_seed0_train_20261114_v3/initialization.json",
+        "bytes": 289,
+        "sha256": "504fe1bcbb96978ad1f5e61d505faefd984bb1de42bb24862d1e1bade2a9aeaa"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldC_seed0_train_20261114_v3/exposure.json",
+        "bytes": 19465,
+        "sha256": "1203296e9aed5f177fe51b2278703828f3c14ed7d10a7f379ea39208e52dfb42"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v3/SCQ_RF_Sref_C_training_execution_request_v3.json",
+        "bytes": 35707,
+        "sha256": "6370a9887893b510c95850616eb664198982131df67d5e9a06ae725f9b860a88"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/model_construction.json",
+        "bytes": 96510,
+        "sha256": "4620af70b1876577839f190e22e604c355501cfe67f32f1f29a20ebf79fddff6"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/initialization.json",
+        "bytes": 289,
+        "sha256": "bce9b64386ab3ab04cffb7bc7636c33e83a6e576e6a91077f7cb3ddf22c8c677"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/exposure.json",
+        "bytes": 19465,
+        "sha256": "1203296e9aed5f177fe51b2278703828f3c14ed7d10a7f379ea39208e52dfb42"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_C_training_20261114_v1/SCQ_RF_Static_C_training_execution_request_v1.json",
+        "bytes": 39531,
+        "sha256": "a3275c69e78f95d59358ba8c621c63cb053b54b97467c8583e67feedb2b1051f"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_C_training_20261114_v1/bcsp_scq_rf_Requery_C_training_bridge_v1.py",
+        "bytes": 848,
+        "sha256": "97b8b25b146f2db87794ca739e8b822d5a6ebf258bf2a424ede73ae37e6e46bf"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/RF_FoldD_metadata_readiness_v1.json",
+        "bytes": 1390,
+        "sha256": "0dbd94626c75c0d5a6afeba138026849777dc3804beaab63a705eae6bc6e0e61"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/RF_six_run_contract_v2.json",
+        "bytes": 6219,
+        "sha256": "bc0d77d2865c59c0fcd95cc81b83d585fb93f052103675f9b532d62abf5acce8"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldD_seed0_v1.json",
+        "bytes": 1248506,
+        "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/qualified_SCQ_D_8192_v1.json",
+        "bytes": 1641,
+        "sha256": "2aa5848b261e046b758a832485a60b80a2d85d152b573b99fafb07fe6d3d5be7"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/model_construction.json",
+        "bytes": 91077,
+        "sha256": "b234da9681cf01f86f7e94300581050cdd06f3b1600f4fdae1289a06349c5f9d"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/initialization.json",
+        "bytes": 289,
+        "sha256": "424cd95d574c724d8996b285e31787d5c4a4c3ab84e6b6db74a0aafab9c53728"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Sref_foldD_seed0_train_20261114_v1/exposure.json",
+        "bytes": 19465,
+        "sha256": "65907c12b1eeec2886b7581bd0c9515c831eff9d45e0ecd46ca384a34d6dc902"
+      },
+      {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_D_training_20261114_v1/SCQ_RF_Sref_D_training_execution_request_v1.json",
+        "bytes": 36546,
+        "sha256": "888ad3b1a519d26ba907b061643e602aafe42df0e0006c7d0606d242e9a5c00d"
+      }
+    ],
+    "rf_initialization": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/rf_initialization_v1.bin",
+      "bytes": 924684,
+      "sha256": "a4024fbdb49feb41c609ae1171f04c2cb14ab794fc3663855d81395c6a1ea79e"
+    },
+    "expected_parameters": 40827847,
+    "expected_RF_parameters": 231171,
+    "continuation_evidence": {
+      "Sref_C": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Sref_C_formal_freeze_v1.json",
+        "bytes": 8448,
+        "sha256": "1d5370c94ba1ad2435687e803a8823adce23c29ab09a27ba4b3fb377bf8d2149"
+      },
+      "Static_C": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Static_C_formal_freeze_v1.json",
+        "bytes": 9221,
+        "sha256": "fdc804bcde639e9dc6074584ddd93d70e8144d7ccecb2dedc2575aa7a91c1cab"
+      },
+      "Requery_C": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Requery_C_formal_freeze_v1.json",
+        "bytes": 10285,
+        "sha256": "10fc886d1523b53c170120d59c645159a5c19d8da78f0f34856db680db6e6d56"
+      }
+    },
+    "initialization_reference": {
+      "construction": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/model_construction.json",
+        "bytes": 96510,
+        "sha256": "4620af70b1876577839f190e22e604c355501cfe67f32f1f29a20ebf79fddff6"
+      },
+      "initialization": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/initialization.json",
+        "bytes": 289,
+        "sha256": "bce9b64386ab3ab04cffb7bc7636c33e83a6e576e6a91077f7cb3ddf22c8c677"
+      },
+      "audit": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Static_C_formal_freeze_v1.json",
+        "bytes": 9221,
+        "sha256": "fdc804bcde639e9dc6074584ddd93d70e8144d7ccecb2dedc2575aa7a91c1cab"
+      },
+      "request": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_C_training_20261114_v1/SCQ_RF_Static_C_training_execution_request_v1.json",
+        "bytes": 39531,
+        "sha256": "a3275c69e78f95d59358ba8c621c63cb053b54b97467c8583e67feedb2b1051f"
+      }
+    },
+    "expected_model_initialization": {
+      "parameter_sha256": "8697bfc3b9d7dfd2c0003ec54253cf77cd146f2926a41138ffeacc1ec4f7d255",
+      "persistent_state_sha256": "d0f4c3699fe66a2ba2b4879c1bd41ba363a325fa152d79a4055773be3e0f4167",
+      "seed": 0
+    },
+    "training_reference": "Fifth frozen run: Requery_D before Static_D, scratch seed0, sameD315/order3900/resources; no checkpoint warmstart. Model initial fingerprints are shared RF provenance, not a C batch-order binding."
+  },
+  "expected_common": "b7e5b640c1f0e709ab6697139db1267584266a51b4e0e29f2d5217bfd1236cc5"
+}

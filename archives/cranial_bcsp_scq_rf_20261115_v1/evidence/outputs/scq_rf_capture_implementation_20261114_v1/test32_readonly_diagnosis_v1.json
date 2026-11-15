@@ -1,0 +1,25 @@
+{
+  "status": "READONLY_FAILURE_ASSERTION_DIAGNOSIS_NO_FIX_OR_RERUN",
+  "first_failure": "AssertionError('32 short POSIX launcher directory before redirect')",
+  "completed_checks": 31,
+  "clauses": {
+    "max_line_bytes": 956,
+    "line_bound": true,
+    "no_backslash_anywhere": false,
+    "directory_before_redirect": true,
+    "timeout1800": true
+  },
+  "backslash_lines": [
+    {
+      "line": 34,
+      "text": "printf \"%s\\n\" \"$rc\" >/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_ten_actual_memory_20261114_v1/exit_code.txt"
+    }
+  ],
+  "interpretation": "The broad test rejects printf newline escapes. This observation does not fix the test or certify the complete launcher/deployment contract.",
+  "render_source": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_pred_freeze_20261114_v2\\downloads\\installed\\bcsp_scq_fourmodel_native_predict_v2.py",
+    "sha256": "c74e0da099d170dca3f4d1e002998ad0ce634aae702f0d2e6b324cc469ef5d81"
+  },
+  "no_test_rerun": true,
+  "no_source_change": true
+}

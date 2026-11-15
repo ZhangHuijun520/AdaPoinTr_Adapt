@@ -1,0 +1,9 @@
+# Cranial-BCSP-FullMamba: SCQ-RF closed round, 2026-11-15
+
+Read [the complete Chinese report](REPORT_zh.md). This snapshot preserves the spatial re-query feedback study: ten-case actual Memory feasibility, isolated RF code, artificial CPU/native CUDA evidence, six3900-step training runs,630 Native prediction identities,1050-case-row scoring, formal freeze audits, seven-case stage diagnostics and failure history.
+
+S-ref uses the frozen first SCQ head; Static and Requery add matched231171-parameter heads with the sole neighbor-selection branch. Fold C supports a developmental average benefit from Requery, while severe regressions and type-specific failures remain. Static_D training migrated GPU UUID/driver; D comparisons involving Static are confounded supplementary evidence. One seed per fold, reused development cases; no significance/clinical or formal-gate claim.
+
+Public files contain code, configurations, scalar evidence and static figures. Arrays, binary initializers, raw readbacks, interactive HTML and all checkpoints are local-only. Clinical/raw datasets and compiled dependency binaries are not part of this snapshot. Historical authorizations are evidence, not permission to rerun. Root REPORT_zh.md changes navigation only; original evidence bytes remain unaltered. No new model execution/scoring/server deletion is performed by this archive.
+
+The complete local archive (public_payload + local_attachments) is independently verified member-by-member, with SHA256, byte count and member sidecars, and copied to E:/ResearchBackups/AdaPoinTr/BCSP_FULLMAMBA_SCQ_RF/2026-11-15_code_results_v1. The GitHub snapshot is not a substitute for local arrays/weights or a portable complete runtime. See source_file_manifest_v1.json, bound_shared_source_mapping_v1.json and local_only_reference_manifest_v1.json.

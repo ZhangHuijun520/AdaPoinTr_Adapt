@@ -1,0 +1,143 @@
+{
+  "kind": "COORDINATE_CONSUMERS_BEFORE_ASSERTIONS",
+  "phase": "swapped_PE_roles",
+  "call_counts": {
+    "query": 1,
+    "decoder": 1,
+    "Memory": 1,
+    "PE": 2,
+    "rebuild": 1,
+    "relative": 1
+  },
+  "expected_call_counts": {
+    "query": 1,
+    "decoder": 1,
+    "Memory": 1,
+    "PE": 2,
+    "rebuild": 1,
+    "relative": 1
+  },
+  "exact_call_contract": true,
+  "relative_shape": [
+    1,
+    256,
+    32,
+    3
+  ],
+  "comparisons": [
+    {
+      "role": "query_MLP",
+      "present": true,
+      "actual_shape": [
+        1,
+        256,
+        3
+      ],
+      "expected_shape": [
+        1,
+        256,
+        3
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "finite": true,
+      "exact_equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "role": "decoder_query",
+      "present": true,
+      "actual_shape": [
+        1,
+        256,
+        3
+      ],
+      "expected_shape": [
+        1,
+        256,
+        3
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "finite": true,
+      "exact_equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "role": "PE_query_first",
+      "present": true,
+      "actual_shape": [
+        1,
+        256,
+        3
+      ],
+      "expected_shape": [
+        1,
+        256,
+        3
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "finite": true,
+      "exact_equal": false,
+      "max_abs": 7.0
+    },
+    {
+      "role": "PE_Memory_second",
+      "present": true,
+      "actual_shape": [
+        1,
+        256,
+        3
+      ],
+      "expected_shape": [
+        1,
+        256,
+        3
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "finite": true,
+      "exact_equal": false,
+      "max_abs": 7.0
+    },
+    {
+      "role": "FC_rebuild",
+      "present": true,
+      "actual_shape": [
+        1,
+        256,
+        3
+      ],
+      "expected_shape": [
+        1,
+        256,
+        3
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "finite": true,
+      "exact_equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "role": "dense_center",
+      "present": true,
+      "actual_shape": [
+        1,
+        8192,
+        3
+      ],
+      "expected_shape": [
+        1,
+        8192,
+        3
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "finite": true,
+      "exact_equal": true,
+      "max_abs": 0.0
+    }
+  ]
+}

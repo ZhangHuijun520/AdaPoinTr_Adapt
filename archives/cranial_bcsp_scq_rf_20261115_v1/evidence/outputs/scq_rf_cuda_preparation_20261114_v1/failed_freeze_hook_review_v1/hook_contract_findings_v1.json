@@ -1,0 +1,56 @@
+{
+  "status": "HOOK_CONTRACT_DEFECT_CONFIRMED_BY_EXACT_SOURCE_NOT_NEW_FORWARD",
+  "chain": [
+    "LQIDecoder calls the same coordinate_pe on q_pos then v_pos unconditionally.",
+    "The forward-pre-hook writes both inputs to consumers[PE] using dict.update.",
+    "The second call overwrites the query snapshot with Memory coordinates v_pos.",
+    "After model return, the entry compares that Memory snapshot with returned coarse/Q1 (Q2 slot). This is the wrong expected consumer role.",
+    "The cheap CPU entry Decoder calls coordinate_pe only once, so its37 checks do not exercise overwrite."
+  ],
+  "local_evidence": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v1\\failed_freeze_hook_review_v1\\downloads\\installed\\bcsp_scq_rf_cuda_admission_v1.py",
+      "bytes": 27074,
+      "sha256": "a46c10023766933581f7113141db4e31a5c8fb47c107ece82901cdc58cc8dc47",
+      "anchors": [
+        {
+          "line": 177,
+          "text": "b.decoder.coordinate_pe.register_forward_pre_hook(lambda m,a:consumers.update(PE=a[0].detach().clone())),"
+        },
+        {
+          "line": 186,
+          "text": "need(all(torch.equal(consumers[k],coarse) for k in ('query','decoder','PE','rebuild')),'actual Q2 consumer mismatch')"
+        }
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v1\\failed_freeze_hook_review_v1\\downloads\\related\\1_bcsp_lqi_decoder_v1.py",
+      "bytes": 6053,
+      "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8",
+      "anchors": [
+        {
+          "line": 97,
+          "text": "qp, mp = self.coordinate_pe(q_pos), self.coordinate_pe(v_pos)"
+        }
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v1\\failed_freeze_hook_review_v1\\downloads\\installed\\test_rf_cuda_entry_cpu_v1.py",
+      "bytes": 11969,
+      "sha256": "d250d53af69dc09660e734ca285afd43dc98f1f0fc792de095acccbbd1bbf1af",
+      "anchors": [
+        {
+          "line": 78,
+          "text": "def forward(self,q_pos):return self.coordinate_pe(q_pos)"
+        }
+      ]
+    }
+  ],
+  "correct_contract": "Record both calls in order and by role; query PE must match decoder q_pos/current coarse and Memory PE must match decoder v_pos. Preserve exact equality and call-count checks, and record per-consumer shapes/equality before combined assertions.",
+  "missing_runtime_evidence": "No per-consumer tensor snapshots or equality vector were saved by the failed entry; cannot independently certify every consumer or actual numeric mismatch from artifacts. No re-forward allowed.",
+  "limitation": "Confirms an observation/guard contract error sufficient to explain a false rejection, not proof of absence of all model defects or RF CUDA success.",
+  "RF_models_executed": false,
+  "source_edits": 0,
+  "tests_run": 0,
+  "new_forward": 0
+}

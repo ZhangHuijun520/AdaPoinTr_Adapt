@@ -1,0 +1,97 @@
+{
+  "status": "FROZEN_RF_SREF_STATIC_REQUERY_CD_CONTRACT_NOT_AUTHORIZATION",
+  "arm_order": [
+    "Sref_C",
+    "Static_C",
+    "Requery_C",
+    "Sref_D",
+    "Requery_D",
+    "Static_D"
+  ],
+  "seed": 0,
+  "counts": {
+    "batch": 8,
+    "epochs": 100,
+    "batches_per_epoch": 39,
+    "updates": 3900,
+    "exposures": 31200,
+    "cases": 315,
+    "sources": 63
+  },
+  "resources": {
+    "wall_seconds": 86400,
+    "RSS_bytes": 8589934592,
+    "device_MiB": 22528,
+    "torch_peak_bytes": 21474836480,
+    "output_bytes": 2147483648,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-zbpgzu-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-dabcc897-ac69-efac-4438-a6186dea9aaa",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "575.51.03",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+    "torch_cuda_version": "11.8"
+  },
+  "FoldC": {
+    "QC": {
+      "qualified_receipt": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/qualified_SCQ_C_8192_v1.json",
+        "bytes": 1641,
+        "sha256": "b51fc4d88c63fb8a928868bf94d7c3eef3aba117a7de1138d2cdd2aa6c643cd4"
+      },
+      "verification": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/real_data_qc_verification_v1.json",
+        "bytes": 5769,
+        "sha256": "54fcd0018f9a51f04b8408b3842b6d5c4243777979a0e0add31541e04fa3c55b"
+      },
+      "manifests": {
+        "8192": {
+          "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_8192.jsonl",
+          "bytes": 427975,
+          "sha256": "f94dbe21cb9e406db49a51f6578496db3228d783f15c07b28e3d8ae234a33758"
+        },
+        "16384": {
+          "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_16384.jsonl",
+          "bytes": 428815,
+          "sha256": "1cd06c7d3b33191d02b5464e72fd83ba4b38c839c0bb4da865bed374076734b5"
+        }
+      },
+      "fold_binding": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/fold_binding.json",
+        "bytes": 35012,
+        "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+      }
+    },
+    "order_plan": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldC_seed0_v1.json",
+      "bytes": 1248506,
+      "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+    },
+    "data_root": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1"
+  },
+  "static_config": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/static_training_config_v1.json",
+    "bytes": 2024,
+    "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+  },
+  "initialization": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/initialization_v1.bin",
+    "bytes": 2784780,
+    "sha256": "e7858ee3ae4c0bf6d68e447727c36514f5bbab42b95e1935f1686620ec089416"
+  },
+  "native_admission_sha256": "7611114686154f2024c1489e5d5cb64f59201dd27b112c0e18614c1ca25f1c0e",
+  "expected_Sref_common_state_SHA256": "b7e5b640c1f0e709ab6697139db1267584266a51b4e0e29f2d5217bfd1236cc5",
+  "from_scratch": true,
+  "load_historical_checkpoint": false,
+  "scientific_changes_for_first_run": "None: same original S architecture, same V1 points/order/loss3900, fresh same-device reference"
+}

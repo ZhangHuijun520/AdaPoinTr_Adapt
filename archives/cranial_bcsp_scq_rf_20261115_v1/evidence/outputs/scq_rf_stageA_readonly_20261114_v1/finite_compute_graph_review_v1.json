@@ -1,0 +1,121 @@
+{
+  "status": "FINITE_STATIC_GRAPH_REVIEW_PASS_NOT_RF_IMPLEMENTATION_OR_CUDA_PASS",
+  "sources": [
+    {
+      "label": "SCQ_residual",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_implementation_20261113_v1\\bcsp_scq_residual_v1.py",
+      "bytes": 3552,
+      "sha256": "2f3a86c5daf7ad00c01dc405b4a3b7011faae06f5766da3dcfe72d645b730404",
+      "anchors": {
+        "def describe": [
+          36
+        ],
+        "with torch.no_grad():idx=self.knn(8,S,Q0)": [
+          40
+        ],
+        "head_input=torch.cat": [
+          50
+        ],
+        "Qused=Q0+delta": [
+          55
+        ],
+        "record={k:v.detach()": [
+          58
+        ]
+      }
+    },
+    {
+      "label": "SCQ_factory",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_implementation_20261113_v1\\bcsp_scq_factory_v1.py",
+      "bytes": 14176,
+      "sha256": "fe5f7229aa40ba2b7e599c2bea32982f6bb33cf5f1db115b222a581c1d4af1c5",
+      "anchors": {
+        "self.scq(coor, mem, global_feature, coarse)": [
+          157
+        ],
+        "self.mlp_query(": [
+          168,
+          232
+        ],
+        "q_pos=coarse": [
+          179,
+          184,
+          243,
+          247
+        ],
+        "return q, coarse": [
+          228,
+          291
+        ]
+      }
+    },
+    {
+      "label": "LQI_decoder",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\lqi_implementation_v1\\bcsp_lqi_decoder_v1.py",
+      "bytes": 6053,
+      "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8",
+      "anchors": {
+        "self_idx = self.knn(8, q_pos, q_pos)": [
+          95
+        ],
+        "cross_idx = self.knn(8, v_pos, q_pos)": [
+          96
+        ],
+        "local_condition = neighbors.mean": [
+          59
+        ]
+      }
+    },
+    {
+      "label": "mother",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\deliverables\\cranial_bcsp_fullmamba_20261112_v1\\public_payload\\parent_source_snapshot\\models\\AdaPoinTr.py",
+      "bytes": 103347,
+      "sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4",
+      "anchors": {
+        "loss_coarse = self.loss_func(pred_coarse, gt)": [
+          2165
+        ],
+        "loss_recon = loss_coarse + loss_fine": [
+          2171
+        ],
+        "coarse_point_cloud.unsqueeze(-2)": [
+          2331
+        ],
+        "ret = (coarse_point_cloud, rebuild_points)": [
+          2382
+        ]
+      }
+    },
+    {
+      "label": "frozen_predictor",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_pred_freeze_20261114_v2\\downloads\\installed\\bcsp_scq_fourmodel_native_predict_v2.py",
+      "bytes": 37227,
+      "sha256": "c74e0da099d170dca3f4d1e002998ad0ce634aae702f0d2e6b324cc469ef5d81"
+    }
+  ],
+  "findings": {
+    "actual_SCQ_inputs": "coor, mem, backbone_global_feature, learned_coarse",
+    "Q1_already_used_for_decoder_cross_KNN": true,
+    "decoder_KNN_computed_once_at_entry_and_shared_across_8_layers": true,
+    "RF_insertion": "after original SCQ call, before query MLP; replace same coarse variable with Q2",
+    "full_Q2_consumers": [
+      "query_MLP",
+      "coordinate_PE",
+      "sort",
+      "self_KNN",
+      "cross_KNN",
+      "FC_rebuild_condition",
+      "FC_dense_center",
+      "returned_coarse",
+      "coarse_loss"
+    ],
+    "gradient_policy": "Existing SCQ records detached, production Qused not detached. RF must use graph-bearing Q1, not diagnostic record.",
+    "Qraw_has_no_separate_loss": true,
+    "z_definition": "backbone global_feature before query, not top-level rebuild global_feature",
+    "initial_zero_delta0_implies_N1_equals_N0": true
+  },
+  "tests_run": 0,
+  "model_imports": 0,
+  "new_forward": 0,
+  "production_edits": 0
+}

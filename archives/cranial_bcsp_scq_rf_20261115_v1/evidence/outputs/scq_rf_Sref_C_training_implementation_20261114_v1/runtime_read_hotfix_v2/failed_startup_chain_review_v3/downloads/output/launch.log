@@ -1,0 +1,45 @@
+/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/linecache.py", line 46, in getlines
+    return updatecache(filename, module_globals)
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/linecache.py", line 136, in updatecache
+    with tokenize.open(fullname) as fp:
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/tokenize.py", line 394, in open
+    buffer = _builtin_open(filename, 'rb')
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 164, in audit
+    self.check(args[0], write)
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py", line 252, in check
+    return super().check(filename,write)
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/inherited_training_budget_v1.py", line 83, in check
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 156, in check
+    require(owned if write else owned or any(p == r or r in p.parents for r in self.roots),
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 43, in require
+    raise RuntimeError(message)
+RuntimeError: write/read boundary: /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/inherited_training_budget_v1.py
+
+Original exception was:
+Traceback (most recent call last):
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py", line 275, in <module>
+    if __name__=='__main__':main()
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py", line 264, in main
+    factory=source_module('bcsp_scq_factory_v1',q['implementation']['scq_factory']);bridge=source_module('bcsp_scq_training_bridge_v1',q['implementation']['bridge']);runtime=source_module('scq_parent_training_runtime',q['implementation']['runtime'])
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py", line 55, in source_module
+    p = exact(r); spec = importlib.util.spec_from_file_location(name,p)
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py", line 43, in exact
+    require(p.is_file() and p.stat().st_size == r['bytes'] and sha(p) == r['sha256'], 'binding: '+str(p))
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py", line 35, in sha
+    with no_links(path).open('rb') as f:
+  File "/opt/conda/envs/adapointr-mamba/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 164, in audit
+    self.check(args[0], write)
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py", line 252, in check
+    return super().check(filename,write)
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/inherited_training_budget_v1.py", line 83, in check
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 156, in check
+    require(owned if write else owned or any(p == r or r in p.parents for r in self.roots),
+  File "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py", line 43, in require
+    raise RuntimeError(message)
+RuntimeError: write/read boundary: /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/bcsp_scq_rf_training_bridge_v1.py

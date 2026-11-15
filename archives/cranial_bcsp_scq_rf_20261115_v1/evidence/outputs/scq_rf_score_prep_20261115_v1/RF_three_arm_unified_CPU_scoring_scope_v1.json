@@ -1,0 +1,101 @@
+{
+  "schema": "bcsp-scq-rf-local-scoring-protocol-v1",
+  "status": "FROZEN_SCOPE_AWAITING_IMPLEMENTATION_NOT_EXECUTION_REQUEST",
+  "arms": [
+    "S-ref",
+    "RF-Static",
+    "RF-Requery"
+  ],
+  "folds": [
+    "C",
+    "D"
+  ],
+  "counts": {
+    "unique_cases": 210,
+    "sources": 42,
+    "model_rows": 630,
+    "shared_control_rows": 420,
+    "case_score_rows": 1050,
+    "source_score_rows": 210
+  },
+  "primary_metric": "A1 area-weighted E_P95 mm",
+  "paired_directions": [
+    "RF-Requery minus RF-Static",
+    "RF-Static minus S-ref",
+    "RF-Requery minus S-ref"
+  ],
+  "secondary_metrics": [
+    "J_P95",
+    "E/J Cover@0.5/1/2mm",
+    "CD-L1: half sum of bidirectional unsquared Euclidean means",
+    "Pred-to-A2 P95 and >20mm outlier fraction",
+    "centroid offset, radius ratio, coarse/dense summaries"
+  ],
+  "aggregation": "Five defects/source equally, then21sources/fold equally; folds separately and pooled descriptive summaries; rows not independent patients",
+  "geometry_labels": {
+    "placement_tail": "centroid>20mm",
+    "compact_distribution": "radius_ratio<0.9",
+    "severe_geometry": "E_P95>20mm OR J_Cover2mm==0"
+  },
+  "reporting": "Keep all cases and defect types including frontoorbital; new/rescued/shared severe cases; no outcome-driven exclusion",
+  "references": "Frozen A1/A2/B bank and GT8192, D-only inverse normalization to world mm",
+  "coarse_availability": "All630 Native outputs have actual Qused256/P8192 and same-forward Q0/Q1/Q2/delta0/delta1; score Native dense and actual coarse with unchanged metrics.",
+  "bootstrap": 0,
+  "p_values": false,
+  "formal_gate_execution": false,
+  "ICP": false,
+  "GT_alignment": false,
+  "postfilter": false,
+  "limits": {
+    "wall_seconds": 18000,
+    "RSS_bytes": 8589934592,
+    "output_bytes": 2147483648,
+    "threads": 2
+  },
+  "budget_reason": "Retain inherited18000-second/two-thread/8GiB RSS/2GiB output CPU budget for1050 rows; no extra cases or metric changes. Actual runtime remains unknown until execution.",
+  "prohibited": [
+    "Scoring before implementation/CPU/P3 and separate hash authorization",
+    "New inference/checkpoint/GPU/training/BNCal",
+    "Changes to metrics/reference/threshold/cases/sampling/frame",
+    "Oracle alignment/parameter search/bootstrap/formal gate",
+    "Backup extraction/deletion/writes"
+  ],
+  "inherited_protocol": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_score_prep_20261114_v1\\SCQ_BS_unified_CPU_scoring_scope_v1.json",
+    "bytes": 3721,
+    "sha256": "31a61d87c58e21f0058deb4ef793f00d71b41eddec14c1d601abaeb8fc9d26a7"
+  },
+  "metric": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+    "bytes": 6784,
+    "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+  },
+  "score_index": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_score_prep_20261115_v1\\RF_three_arm_score_case_index_candidate_v1.json",
+    "bytes": 510738,
+    "sha256": "dfbbd659e868482e5adcd0313bb8981442ed5905a2b9270215c703a62b3a84c5"
+  },
+  "scientific_constraints": [
+    "Same210 opened cases/42sources; no model-outcome selection",
+    "Fixed reference bank/metric code/thresholds; D-only inverse normalization to world mm",
+    "630 model rows plus420 shared controls counted once per case, total1050; five defects/source equally weighted",
+    "C and D separately, then descriptive pooled source-equal summaries; cases are not independent patients",
+    "Core contrast RF-Requery minus RF-Static; both versus S-ref are supporting comparisons",
+    "C same-device pair is primary mechanism evidence. D Static training GPU/driver differs; D and pooled contrasts must disclose confounding",
+    "No registration/Oracle/TTA/postfilter/bootstrap/p-values/formal gate or parameter search",
+    "Qraw/stage arrays are diagnostics, never substitute corrected outputs for Native scores",
+    "Separate three-arm entry/artificial CPU tests/P3 and separate full-hash execution authorization before scoring"
+  ],
+  "comparison_qualification": {
+    "C_pair": "SAME_DEVICE_PRIMARY_MECHANISM_EVIDENCE",
+    "D_Static_vs_Requery": "DEVICE_AND_DRIVER_CONFOUNDED_SUPPLEMENTARY_EVIDENCE",
+    "strict_same_device_D_pair": false,
+    "do_not_attribute_all_differences_to_requery": true
+  },
+  "archive_binding": {
+    "archive_bytes": 66673330,
+    "uncompressed_member_bytes": 74282604,
+    "archive_members": 636,
+    "source": "All636 members independently streamed and hash matched; freeze exact observed archive footprint, do not reuse old64MiB ceiling."
+  }
+}

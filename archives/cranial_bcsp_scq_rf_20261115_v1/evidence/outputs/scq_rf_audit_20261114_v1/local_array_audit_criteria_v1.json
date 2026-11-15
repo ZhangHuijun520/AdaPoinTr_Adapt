@@ -1,0 +1,73 @@
+{
+  "status": "FROZEN_LOCAL_ARRAY_AUDIT_CRITERIA_NOT_RESULT",
+  "dtype": "FP32 except N0/N1 int64",
+  "shapes": {
+    "M": [
+      256,
+      3
+    ],
+    "F": [
+      256,
+      384
+    ],
+    "z": [
+      1024
+    ],
+    "Qraw": [
+      256,
+      3
+    ],
+    "Q1": [
+      256,
+      3
+    ],
+    "delta0": [
+      256,
+      3
+    ],
+    "N0": [
+      256,
+      8
+    ],
+    "N1": [
+      256,
+      8
+    ],
+    "h_static": [
+      256,
+      1802
+    ],
+    "h_requery": [
+      256,
+      1802
+    ],
+    "prediction": [
+      8192,
+      3
+    ],
+    "coarse": [
+      256,
+      3
+    ]
+  },
+  "descriptor_recompute": {
+    "reference": "NumPy float64 independent LN/mean/max/geometry from saved FP32",
+    "rtol": 2e-05,
+    "atol": 2e-06,
+    "meaning": "Conservative CPU64 vs CUDA32 arithmetic verification only; never a performance, feasibility or anatomical threshold."
+  },
+  "native_equivalence": {
+    "normalized_max_abs": 1e-06,
+    "world_max_abs_mm": 0.001
+  },
+  "raw_plus_delta": {
+    "rtol": 2e-06,
+    "atol": 2e-07
+  },
+  "nearest_membership": {
+    "distance": "float64 Euclidean from saved normalized coordinates",
+    "boundary_tolerance": "64 * float32 epsilon * max(1,abs(max selected distance),abs(min excluded distance)); allows boundary ties only, not alternative backend replay"
+  },
+  "no_GT_or_model": true,
+  "mechanism_interpretation": "Only after formal audit PASS; exact feature differences are descriptive, not automatically efficacy or failure discrimination."
+}

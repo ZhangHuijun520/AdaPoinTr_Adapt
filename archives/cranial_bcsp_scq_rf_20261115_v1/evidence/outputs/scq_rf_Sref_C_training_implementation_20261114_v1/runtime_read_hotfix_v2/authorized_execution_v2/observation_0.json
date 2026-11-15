@@ -1,0 +1,30 @@
+{
+  "tmux_live": false,
+  "exit_code": "1",
+  "worker_PID": "10974",
+  "worker_live": false,
+  "worker_matches_entry": false,
+  "startup_failure.json": {
+    "status": "FAILED_STOP_NO_RETRY",
+    "error": "RuntimeError('write/read boundary: /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/bcsp_scq_rf_training_bridge_v1.py')"
+  },
+  "log_tail": "/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py\", line 275, in <module>\n    if __name__=='__main__':main()\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py\", line 264, in main\n    factory=source_module('bcsp_scq_factory_v1',q['implementation']['scq_factory']);bridge=source_module('bcsp_scq_training_bridge_v1',q['implementation']['bridge']);runtime=source_module('scq_parent_training_runtime',q['implementation']['runtime'])\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py\", line 55, in source_module\n    p = exact(r); spec = importlib.util.spec_from_file_location(name,p)\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py\", line 43, in exact\n    require(p.is_file() and p.stat().st_size == r['bytes'] and sha(p) == r['sha256'], 'binding: '+str(p))\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py\", line 35, in sha\n    with no_links(path).open('rb') as f:\n  File \"/opt/conda/envs/adapointr-mamba/lib/python3.10/pathlib.py\", line 1119, in open\n    return self._accessor.open(self, mode, buffering, encoding, errors,\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py\", line 164, in audit\n    self.check(args[0], write)\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v2/bcsp_scq_rf_Sref_C_training_entry_v2.py\", line 252, in check\n    return super().check(filename,write)\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/inherited_training_budget_v1.py\", line 83, in check\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py\", line 156, in check\n    require(owned if write else owned or any(p == r or r in p.parents for r in self.roots),\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py\", line 43, in require\n    raise RuntimeError(message)\nRuntimeError: write/read boundary: /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Sref_C_training_20261114_v1/bcsp_scq_rf_training_bridge_v1.py\n",
+  "files": [
+    {
+      "name": "launch.log",
+      "bytes": 4437
+    },
+    {
+      "name": "worker.pid",
+      "bytes": 6
+    },
+    {
+      "name": "startup_failure.json",
+      "bytes": 211
+    },
+    {
+      "name": "exit_code.txt",
+      "bytes": 2
+    }
+  ]
+}

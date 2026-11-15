@@ -1,0 +1,4 @@
+from pathlib import Path;import hashlib
+for r in [{'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/initialization_v1.bin', 'bytes': 2784780, 'sha256': 'e7858ee3ae4c0bf6d68e447727c36514f5bbab42b95e1935f1686620ec089416'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/P3_implementation_v1.json', 'bytes': 4560, 'sha256': '90d0c4c76a5267514ee9e50582c2b8e026aefbb5117232379e7697db6cb72c57'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/SCQ_artificial_cuda_execution_request_v1.json', 'bytes': 29059, 'sha256': '0f5aec8c30d0044547cd8806c5663aeb4f0f9643e254a65ce562f5d45641521b'}]:
+ p=Path(r['path']);assert not p.is_symlink() and p.stat().st_size==r['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest()==r['sha256']
+print('INSTALLED_HASHES_PASS')

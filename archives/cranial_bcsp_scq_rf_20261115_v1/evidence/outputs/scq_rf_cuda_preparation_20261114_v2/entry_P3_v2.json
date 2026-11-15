@@ -1,0 +1,84 @@
+{
+  "status": "RF_CUDA_ENTRY_LOCAL_P3_PASS",
+  "entry_sha256": "b78485c06dd94ca6e54b918f6c5b3ea055f6feebf5d935920d6da9dae4497999",
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\test_rf_cuda_entry_cpu_v2.py",
+    "bytes": 14344,
+    "sha256": "727346266d54723183012ae1aadf5d7a6e9796878e452df3f9098f4e13cb2169"
+  },
+  "CPU": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\cpu_entry_batch_v2\\result_v1.json",
+    "bytes": 192624,
+    "sha256": "568eb992df25912cd95647bee2fff8421e69215091fcea7144c8975fcd504321"
+  },
+  "CPU_entry_checks": 52,
+  "CPU_implementation_checks": 59,
+  "implementation_P3": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_implementation_20261114_v1\\P3_implementation_v2.json",
+    "bytes": 9059,
+    "sha256": "37b842a88a0a72a8b0d8b13f87603d0349384851b7d4b28ddaff36697b2f032a"
+  },
+  "static_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\static_review_v2.json",
+    "bytes": 3031,
+    "sha256": "2f4a835a88f6c8c0118b4ecebedd1c19d965cc329b9f1e458d6ddaefc9d76f9c"
+  },
+  "prior_failure_audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v1\\failed_freeze_hook_review_v1\\formal_failure_freeze_audit_v1.json",
+    "bytes": 16350,
+    "sha256": "1d8f2dce8fe3dbf233315e471c7308e5d38b7484836c5cbf4326c1ec14e04412"
+  },
+  "regression_evidence": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\cpu_entry_batch_v2\\extra_third_PE_diagnostic.json",
+      "bytes": 2560,
+      "sha256": "33021c8ab7a5a6cb5ea337d7a4568b51944393c9ed9abd916139513ad7fe5c0d"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\cpu_entry_batch_v2\\missing_second_PE_diagnostic.json",
+      "bytes": 2512,
+      "sha256": "47f59dbba3c477dac05f1da41e1e674cee1f525d0a849b9c895a8e06974c2853"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\cpu_entry_batch_v2\\overwritten_last_PE_diagnostic.json",
+      "bytes": 2515,
+      "sha256": "6893424d3b1cf9c20416528fb5259bcfcae19d40b708b39f4b12fa471494b74a"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\cpu_entry_batch_v2\\swapped_PE_roles_diagnostic.json",
+      "bytes": 2563,
+      "sha256": "6724683d03d489ec5b4a9e6e9a9a1a3947fbe6228f7de21bc7aec07cda6c2db0"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\cpu_entry_batch_v2\\wrong_Memory_value_diagnostic.json",
+      "bytes": 2564,
+      "sha256": "90915fee2fb2c28139c43aa4a92c0ed6f103a562f0afcde82d435c3b9d71e1c7"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v2\\cpu_entry_batch_v2\\wrong_query_value_diagnostic.json",
+      "bytes": 2563,
+      "sha256": "11a9b92219eaf5a5eb906253b28c6066a04167b4a8ebd6fd77a799163233ffd9"
+    }
+  ],
+  "checks": {
+    "original_RF_model_and_initialization_unchanged": true,
+    "only_phase_observation_contract_changed": true,
+    "dual_PE_call_roles_and_exact_count": true,
+    "all_consumer_diagnostics_persist_before_assertions": true,
+    "six_negative_contract_regressions_rejected": true,
+    "five_phase_engine5F4loss4B0step": true,
+    "success_and_failure_restore_contract": true,
+    "authorization_and_resource_contracts_unchanged": true,
+    "one_CPU_batch_no_retry": true,
+    "no_server_or_CUDA": true
+  },
+  "limitations": [
+    "Cheap CPU model and loss exercise actual phase engine with a CPU CUDA facade; no native Mamba/PointNet2 or real full cdist computation here.",
+    "Production35 shared-gradient groups unchanged from exact inherited engine; this CPU facade checks two synthetic groups only. Original full8192 loss and full surrogate graph already covered by RF implementation59 checks.",
+    "Exact RF read wrapper exercised, not a new system-wide audit framework or fresh server readiness proof.",
+    "The two-call fixture covers the actual PE role pattern; native CUDA has not run v2."
+  ],
+  "CUDA": false,
+  "server_operations": 0,
+  "scientific_efficacy": "NOT_TESTED"
+}

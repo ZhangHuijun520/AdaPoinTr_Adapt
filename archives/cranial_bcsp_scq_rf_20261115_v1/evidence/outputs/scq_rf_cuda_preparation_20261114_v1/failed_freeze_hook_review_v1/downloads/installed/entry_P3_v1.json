@@ -1,0 +1,48 @@
+{
+  "status": "RF_CUDA_ENTRY_LOCAL_P3_PASS",
+  "entry_sha256": "a46c10023766933581f7113141db4e31a5c8fb47c107ece82901cdc58cc8dc47",
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v1\\test_rf_cuda_entry_cpu_v1.py",
+    "bytes": 11969,
+    "sha256": "d250d53af69dc09660e734ca285afd43dc98f1f0fc792de095acccbbd1bbf1af"
+  },
+  "CPU": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_cuda_preparation_20261114_v1\\cpu_entry_batch_v1\\result_v1.json",
+    "bytes": 174789,
+    "sha256": "d04903d2f5f560fd831de7042297b8cc0ada8319df8cf689ba53fa7d9b28fe48"
+  },
+  "implementation_P3": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_implementation_20261114_v1\\P3_implementation_v2.json",
+    "bytes": 9059,
+    "sha256": "37b842a88a0a72a8b0d8b13f87603d0349384851b7d4b28ddaff36697b2f032a"
+  },
+  "CPU_entry_checks": 37,
+  "CPU_implementation_checks": 59,
+  "inherited_engine": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_cuda_preparation_20261113_v1\\bcsp_scq_cuda_admission_v3.py",
+    "bytes": 23393,
+    "sha256": "fe7fc491cdeed22ba939b1a0c45b08905f8ebdb67d5f09b41b6f1975d2630ad6"
+  },
+  "checks": {
+    "exact5F4loss4B0step": true,
+    "Sref_forward_only": true,
+    "one_way_authorization_runtime": true,
+    "attempt_caps_before_call": true,
+    "actual_phase_engine_with_cheap_CPU_facade": true,
+    "initial_same_session_equivalence": true,
+    "gradient_evidence_before_assertions": true,
+    "zero_output_layer_gradient_expectations": true,
+    "_state_RNG_BN_modes_restore_success_and_failure": true,
+    "RF_sources_initializer_exact_read_wrapper": true,
+    "_POSIX_launcher_parent_before_redirect_and_exit_preserved": true,
+    "implementation_and_initialization_unchanged": true
+  },
+  "CUDA": false,
+  "server_operations": 0,
+  "limitations": [
+    "Cheap CPU model and loss exercise actual phase engine with a CPU CUDA facade; no native Mamba/PointNet2 or real full cdist computation here.",
+    "Production35 shared-gradient groups unchanged from exact inherited engine; this CPU facade checks two synthetic groups only. Original full8192 loss and full surrogate graph already covered by RF implementation59 checks.",
+    "Exact RF read wrapper exercised, not a new system-wide audit framework or fresh server readiness proof."
+  ],
+  "readiness": "Last zbpgzu-0 audit is historical evidence only; mandatory exact identity/hash/resource/target checks before any installation and activation."
+}

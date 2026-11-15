@@ -1,0 +1,31 @@
+{
+  "output_exists": true,
+  "exit_code": null,
+  "worker_pid": "8474",
+  "worker_live": true,
+  "tmux_live": true,
+  "files": [
+    {
+      "name": "launch.log",
+      "bytes": 1420
+    },
+    {
+      "name": "worker.pid",
+      "bytes": 5
+    },
+    {
+      "name": "events.jsonl",
+      "bytes": 0
+    },
+    {
+      "name": "resources.jsonl",
+      "bytes": 1002
+    }
+  ],
+  "log_tail": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\n2026-11-14 09:58:11,241 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/utils/determinism.py:73: UserWarning: Deterministic mode: upgrade to Triton >= 3.4.0 for cached autotuning.\n  warnings.warn(msg)\n",
+  "events_tail": [],
+  "resources_tail": [
+    "{\"phase\": \"before_construction\", \"forwards\": 0, \"values\": {\"RSS_bytes\": 487391232, \"output_bytes\": 301, \"device_MiB\": 3, \"peak_allocated\": 0, \"peak_reserved\": 0, \"elapsed_seconds\": 0.06318887323141098, \"free_disk_bytes\": 8863612928}, \"checks\": {\"RSS\": true, \"output\": true, \"device\": true, \"allocated\": true, \"reserved\": true, \"wall\": true, \"disk\": true}, \"failed_checks\": [], \"SMI_PIDs\": [], \"container_PID\": 8474, \"PID_query_error\": null, \"PID_policy\": \"DIAGNOSTIC_ONLY_NO_OWNERSHIP_GUARANTEE\"}",
+    "{\"phase\": \"MONITOR\", \"forwards\": 0, \"values\": {\"RSS_bytes\": 732639232, \"output_bytes\": 1922, \"device_MiB\": 413, \"peak_allocated\": 1572864, \"peak_reserved\": 2097152, \"elapsed_seconds\": 2.1235025338828564, \"free_disk_bytes\": 8863612928}, \"checks\": {\"RSS\": true, \"output\": true, \"device\": true, \"allocated\": true, \"reserved\": true, \"wall\": true, \"disk\": true}, \"failed_checks\": [], \"SMI_PIDs\": [\"8474\"], \"container_PID\": 8474, \"PID_query_error\": null, \"PID_policy\": \"DIAGNOSTIC_ONLY_NO_OWNERSHIP_GUARANTEE\"}"
+  ]
+}

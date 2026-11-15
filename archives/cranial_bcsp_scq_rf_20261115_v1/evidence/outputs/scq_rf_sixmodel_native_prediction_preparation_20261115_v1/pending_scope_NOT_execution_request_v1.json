@@ -1,0 +1,63 @@
+{
+  "status": "DRAFT_PENDING_IMPLEMENTATION_AUTHORIZATION_NOT_EXECUTABLE",
+  "schema": "scq-rf-sixmodel-native-scope-v1",
+  "runs": [
+    "Sref_C",
+    "Static_C",
+    "Requery_C",
+    "Sref_D",
+    "Static_D",
+    "Requery_D"
+  ],
+  "counts": {
+    "forward": 630,
+    "per_run": 105,
+    "unique_inputs": 210,
+    "unique_dev_sources": 42,
+    "batch": 1,
+    "backward": 0,
+    "optimizer_step": 0,
+    "loss": 0,
+    "BNCal": 0,
+    "warmup": 0,
+    "TTA": 0
+  },
+  "current_identity_reference": {
+    "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+    "torch_cuda_version": "11.8"
+  },
+  "execution_identity_requires_fresh_verification": true,
+  "resources": {
+    "wall_seconds": 7200,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "resource_basis": "Retain existing Native prediction limits; six models sequentially, 630 forecasts; actual storage/headroom must pass startup readiness.",
+  "numeric": "Admitted FP32 and TF32-disabled settings; disclose finite SSM non-bitwise reproducibility",
+  "inference": "eval/inference_mode; D-only normalization; no GT, Oracle, outlier removal, registration, BNCal or training",
+  "diagnostics": "Existing Q0/Q1/Q2/delta stage records only; no added forward or full Memory traces",
+  "comparison_qualification": {
+    "C_pair": "SAME_DEVICE_PRIMARY_MECHANISM_EVIDENCE",
+    "D_Static_vs_Requery": "DEVICE_AND_DRIVER_CONFOUNDED_SUPPLEMENTARY_EVIDENCE",
+    "strict_same_device_D_pair": false,
+    "do_not_attribute_all_differences_to_requery": true
+  },
+  "failure": "Stop, no automatic retry/resume; unique request and output paths",
+  "next": "Separate minimal prediction entry implementation + targeted CPU validation + P3, then final pending execution request; no repeated GPU preflight",
+  "new_framework": false
+}

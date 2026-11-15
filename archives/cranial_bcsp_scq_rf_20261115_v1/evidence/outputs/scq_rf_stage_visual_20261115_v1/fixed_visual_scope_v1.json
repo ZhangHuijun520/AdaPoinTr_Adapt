@@ -1,0 +1,77 @@
+{
+  "status": "FROZEN_SEVEN_CASE_DIAGNOSTIC_SCOPE",
+  "cases": [
+    {
+      "fold": "C",
+      "case_id": "train__053__frontoorbital",
+      "role": "new_severe_vs_Static"
+    },
+    {
+      "fold": "C",
+      "case_id": "train__012__parietotemporal",
+      "role": "shared_severe"
+    },
+    {
+      "fold": "C",
+      "case_id": "train__025__parietotemporal",
+      "role": "shared_severe"
+    },
+    {
+      "fold": "C",
+      "case_id": "train__025__random_2",
+      "role": "fixed_rescued_control"
+    },
+    {
+      "fold": "D",
+      "case_id": "train__069__random_2",
+      "role": "new_severe_vs_Static"
+    },
+    {
+      "fold": "D",
+      "case_id": "train__087__frontoorbital",
+      "role": "new_severe_vs_Static"
+    },
+    {
+      "fold": "D",
+      "case_id": "train__008__frontoorbital",
+      "role": "fixed_rescued_control"
+    }
+  ],
+  "arms": [
+    "S-ref",
+    "RF-Static",
+    "RF-Requery"
+  ],
+  "stages": [
+    "Q0",
+    "Q1",
+    "Q2",
+    "dense"
+  ],
+  "prediction_files": 21,
+  "views": [
+    "XY",
+    "XZ",
+    "YZ"
+  ],
+  "coarse_points": 256,
+  "dense_points": 8192,
+  "control_selection": "lexicographically first rescued-versus-Static case per fold, selected before array reads",
+  "audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_score_freeze_20261115_v1\\audit_report_v1.json",
+    "bytes": 143021,
+    "sha256": "3fd0975e127785777e0f94b8abded754972f3975731bb5013f251db26b894bc0"
+  },
+  "limits": {
+    "wall_seconds": 600,
+    "output_bytes": 536870912
+  },
+  "operations": {
+    "forward": 0,
+    "training": 0,
+    "checkpoint_loads": 0,
+    "server_calls": 0
+  },
+  "no_registration_or_filter": true,
+  "reference": "Frozen A1 E/J and A2; world-mm D-only inverse normalization; new stage distances are posthoc diagnostics, not replacement formal scores"
+}

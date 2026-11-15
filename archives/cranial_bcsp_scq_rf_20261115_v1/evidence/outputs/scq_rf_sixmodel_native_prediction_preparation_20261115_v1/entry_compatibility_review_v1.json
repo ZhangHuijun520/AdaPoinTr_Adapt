@@ -1,0 +1,76 @@
+{
+  "status": "MINIMAL_RF_PREDICTION_ADAPTATION_REQUIRED",
+  "old_entry": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_BS_CD_native_prediction_preparation_20261114_v1\\implementation_v1\\resource_rebind_v2\\bcsp_scq_fourmodel_native_predict_v2.py",
+    "bytes": 37227,
+    "sha256": "c74e0da099d170dca3f4d1e002998ad0ce634aae702f0d2e6b324cc469ef5d81"
+  },
+  "bound_sources": {
+    "rf_factory": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_implementation_20261114_v1\\bcsp_scq_rf_factory_v1.py",
+      "bytes": 3517,
+      "sha256": "6e243f7a6463241f6c24c6feb6928bde9499ffd3a17afe1442eca54fd6738570"
+    },
+    "rf_residual": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_initialization_loader_20261114_v2\\bcsp_scq_rf_residual_v2.py",
+      "bytes": 4596,
+      "sha256": "c50cbdb0986fafe3ff2309ef8c02d74fdc5e651218c71f4bb13a87bacefc726a"
+    },
+    "scq_factory": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_implementation_20261113_v1\\bcsp_scq_factory_v1.py",
+      "bytes": 14176,
+      "sha256": "fe5f7229aa40ba2b7e599c2bea32982f6bb33cf5f1db115b222a581c1d4af1c5"
+    },
+    "scq_residual": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_implementation_20261113_v1\\bcsp_scq_residual_v1.py",
+      "bytes": 3552,
+      "sha256": "2f3a86c5daf7ad00c01dc405b4a3b7011faae06f5766da3dcfe72d645b730404"
+    }
+  },
+  "six_formal_training_audits_pass": true,
+  "metadata_pairing_pass": true,
+  "old_entry_directly_compatible": false,
+  "gaps": [
+    {
+      "id": "G1",
+      "topic": "Six frozen models and strict checkpoint dispatch",
+      "required": "Dedicated entry: S-ref uses admitted SCQ S factory (40596676 parameters); RF-Static/RF-Requery use exact RF factory and frozen-byte initialization (40827847). Strict checkpoint keys, final3900, all six exact audit schemas/hash pins. Historical training identities preserved; current execution identity separately verified."
+    },
+    {
+      "id": "G2",
+      "topic": "Exact runtime source and initialization reads",
+      "required": "Reuse existing exact-reader structure, explicitly bind RF factory/residual, actual SCQ factory chain, both frozen initializers and UTC dependency. No generic allowlist widening, seed regeneration or environment changes."
+    },
+    {
+      "id": "G3",
+      "topic": "630 lifecycle accounting and inputs",
+      "required": "Six runs in frozen prediction order Sref_C/Static_C/Requery_C/Sref_D/Static_D/Requery_D; 105 each, identical same-fold inputs/normalization; verify current 210 unique remote files and six checkpoints before execution. No selection, GT read, extra forward, warmup or retries."
+    },
+    {
+      "id": "G4",
+      "topic": "Single-forward RF stage outputs",
+      "required": "Save dense, coarse, Q0/Q1/Q2 and delta0/delta1/total delta from existing detached records, in native output ordering. S-ref: Q1=Q2=coarse, delta1=0, RF-stage fields explicitly not applicable. Preserve row-alignment after existing sorting. Optional N0/N1 overlap summaries from existing indices only, no new model call/full traces."
+    },
+    {
+      "id": "G5",
+      "topic": "Targeted artificial CPU contracts and P3",
+      "required": "Exercise complete authorize, both actual builder dispatches, strict loading, real exact-read policy and traceback, 630 count/stop-on-failure, output alignment and state/RNG invariance; no repeated GPU preflight. Only after final implementation hashes and P3 may an executable pending request be created."
+    }
+  ],
+  "comparison_qualification": {
+    "C_pair": "SAME_DEVICE_PRIMARY_MECHANISM_EVIDENCE",
+    "D_Static_vs_Requery": "DEVICE_AND_DRIVER_CONFOUNDED_SUPPLEMENTARY_EVIDENCE",
+    "strict_same_device_D_pair": false,
+    "do_not_attribute_all_differences_to_requery": true
+  },
+  "operations": {
+    "server_calls": 0,
+    "model_imports": 0,
+    "checkpoint_loads": 0,
+    "real_payload_reads": 0,
+    "forward": 0,
+    "tests_executed": 0,
+    "production_source_changes": 0
+  },
+  "request_created": false
+}

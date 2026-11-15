@@ -1,0 +1,1 @@
+from pathlib import Path;import socket;assert socket.gethostname()=='shu-common-25721452-notebook-t6ibfm-0';p=Path('/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/control_B_D_v1/authorization_B_D_v1.json');assert p.parent.is_dir() and not p.exists() and not any(x.is_symlink() for x in (p,*p.parents));print('CONTROL_TARGET_ABSENT')

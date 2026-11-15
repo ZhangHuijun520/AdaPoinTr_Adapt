@@ -1,0 +1,33 @@
+{
+  "status": "EXACT_RUNTIME_READ_BINDING_OMISSION_CONFIRMED_NO_SCIENTIFIC_FAILURE",
+  "runtime": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\failed_startup_runtime_review_v1\\downloads\\related\\0_bcsp_p1_training_runtime_v1.py",
+    "bytes": 11268,
+    "sha256": "939e317dd447d04c62897849c0230f1918dc65c46ec556acdb60c9d69dfebeee"
+  },
+  "actual_server_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_p1_training_runtime_v1.py",
+  "production_entry": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Sref_C_training_implementation_20261114_v1\\failed_startup_runtime_review_v1\\downloads\\installed\\bcsp_scq_rf_Sref_C_training_entry_v1.py",
+    "bytes": 22066,
+    "sha256": "c6e29be6ac73cd0bb191c35115a00874635d0122d22aee334bd7b083324d11a7"
+  },
+  "chain": [
+    "The request correctly binds the original runtime by exact path,11268 bytes and SHA256.",
+    "Pre-install asset hashing passed; authorize exact() reads also precede the runtime audit hook.",
+    "New entry root is a sibling of the old shared runtime directory; neither model_root nor current entryroot covers the old runtime.",
+    "After installing the audit hook, source_module calls exact(runtime), whose hash read requires permission before compile/exec.",
+    "Explicit guard contains4 inherited model sources plus SCQ2 sources and initializer, but omits runtime.",
+    "It falls through to the general read-root boundary and is correctly denied under that incomplete allowlist.",
+    "CPU policy child exercises exact model modules and binary, not the actual reused runtime read, so its36 checks missed this deployment topology."
+  ],
+  "conclusion": "Integration allowlist omission, not runtime byte corruption, not evidence of model/loss/provider or3900-step numerical failure.",
+  "failure_phase": "Before original runtime execution, model construction and dispatch; no optimizer/update logs exist.",
+  "proposed_minimal_fix": "Add only q[implementation][runtime] to the existing exact read-only guard, retain size/SHA256/link/write checks; do not allow the entire old directory.",
+  "required_regression": "Under the same installed audit policy, actual runtime exact read and source compile/load using exact pinned imported contract/adapter. Reject byte/hash drift, bound runtime writes and unbound sibling file reads. Keep train-only NPZ and final-only checkpoint checks.",
+  "limits": "No independent process-memory replay, CUDA or model execution; absence of metrics/construction and source/trace location support zero-step startup failure.",
+  "server_writes": 0,
+  "new_forward": 0,
+  "tests_run": 0,
+  "production_edits": 0,
+  "request_reuse": false
+}

@@ -1,0 +1,35 @@
+#!/bin/bash
+set -eu
+umask 077
+cd /home/jovyan/adapointr_work/PoinTr
+[ ! -L /home ] || exit 121
+[ ! -L /home/jovyan ] || exit 121
+[ ! -L /home/jovyan/adapointr_work ] || exit 121
+[ ! -L /home/jovyan/adapointr_work/PoinTr ] || exit 121
+[ ! -L /home/jovyan/adapointr_work/PoinTr/logs ] || exit 121
+[ ! -L /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba ] || exit 121
+[ ! -L /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_artificial_cuda_20261114_v1 ] || exit 121
+mkdir -p /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba
+mkdir /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_artificial_cuda_20261114_v1
+export CUDA_VISIBLE_DEVICES=GPU-dabcc897-ac69-efac-4438-a6186dea9aaa
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
+export OMP_NUM_THREADS=2
+export MKL_NUM_THREADS=2
+export OPENBLAS_NUM_THREADS=2
+export PYTHONDONTWRITEBYTECODE=1
+export MPLBACKEND=Agg
+export MPLCONFIGDIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_artificial_cuda_20261114_v1/mplconfig
+export CUDA_CACHE_DISABLE=1
+export TMPDIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_artificial_cuda_20261114_v1/tmp
+export PYTHONHASHSEED=0
+export HF_HUB_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
+export HF_HOME=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_artificial_cuda_20261114_v1/hf_cache
+export XDG_CACHE_HOME=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_artificial_cuda_20261114_v1/cache
+export TRITON_CACHE_DIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_artificial_cuda_20261114_v1/triton_cache
+set +e
+/usr/bin/timeout --signal=TERM --kill-after=10s 1800s /opt/conda/envs/adapointr-mamba/bin/python3.10 -I -S -B /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/bcsp_scq_rf_cuda_admission_v1.py --request /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/SCQ_RF_artificial_cuda_execution_request_v1.json --request-sha256 85854f243d29000cc7a0ee87b03f4ce23974fc92d94d6fd479fd695e68c7ab32 --authorization /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/control/authorization_v1.json --authorization-sha256 6037f1f779a1410b1dc55c17ad9496bf02394859ee4b52735734e986165dcde9 --runtime /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/control/runtime_v1.json --runtime-sha256 7f4fcc215d90aa2b04f010436817f4ba086e2dbaa120dba1baf5a89df07f80b2 >/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_artificial_cuda_20261114_v1/launch.log 2>&1
+rc=$?
+set -e
+printf "%s\n" "$rc" >/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_artificial_cuda_20261114_v1/exit_code.txt
+exit "$rc"

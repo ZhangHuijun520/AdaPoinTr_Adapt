@@ -1,0 +1,109 @@
+{
+  "status": "RF_STATIC_D_TRAINING_ENTRY_LOCAL_P3_PASS",
+  "entry_sha256": "20ad874ebb11c6b42f3d72399245a28c6936eef62e8d97491ad20d8bf1d733b6",
+  "bridge_sha256": "67644f28ab5cd86dd587bf6cc4391b8a393e8af0fddee857398bc528e545b9a1",
+  "native_admission_sha256": "7611114686154f2024c1489e5d5cb64f59201dd27b112c0e18614c1ca25f1c0e",
+  "CPU_checks": 62,
+  "CPU": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_D_implementation_20261115_v1\\cpu_static_D_entry_batch_v1\\result_v1.json",
+    "bytes": 4421,
+    "sha256": "e592fc0e43499e43463975a4a74ee986a135e659cd98659a6679baf376c07dd1"
+  },
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_D_implementation_20261115_v1\\test_RF_Static_D_entry_cpu_v1.py",
+    "bytes": 25428,
+    "sha256": "db846f5b14284ebf806ac1c6a17f6d5c38a96f75d63a9244dbba5d122cc5909d"
+  },
+  "static": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_D_implementation_20261115_v1\\static_review_v1.json",
+    "bytes": 1403,
+    "sha256": "2dc29b0e2c68aeebf0289f2527b60efc57105fa525fa0937f19ebbc0bfc0c691"
+  },
+  "policy_stdout": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_D_implementation_20261115_v1\\cpu_static_D_entry_batch_v1\\policy_stdout.bin",
+    "bytes": 533,
+    "sha256": "24a4ae8281cd9c6ef2061bdb479f1c1ca1e2cb07a27a0dfb443c7d02be9d8e7a"
+  },
+  "accepted_migration": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v1/Static_D_accepted_device_migration_v1.json",
+    "bytes": 3162,
+    "sha256": "1db4e71e5f3fe8f00379856cbb47a7b0307b394217685408577b38964d5a06b9"
+  },
+  "comparison_qualification": {
+    "C_pair": "SAME_DEVICE_PRIMARY_MECHANISM_EVIDENCE",
+    "D_Static_vs_Requery": "DEVICE_AND_DRIVER_CONFOUNDED_SUPPLEMENTARY_EVIDENCE",
+    "strict_same_device_D_pair": false,
+    "do_not_attribute_all_differences_to_requery": true
+  },
+  "historical_identity": {
+    "hostname": "shu-common-25721452-notebook-zbpgzu-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-dabcc897-ac69-efac-4438-a6186dea9aaa",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "575.51.03",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+    "torch_cuda_version": "11.8"
+  },
+  "current_frozen_identity": {
+    "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+    "torch_cuda_version": "11.8"
+  },
+  "unchanged_parent_functions": [
+    "require",
+    "no_links",
+    "sha",
+    "exact",
+    "bound",
+    "emit",
+    "source_module",
+    "payload_paths",
+    "geometry_record",
+    "render_launcher",
+    "startup_read_records"
+  ],
+  "checks": {
+    "all62_CPU_pass": true,
+    "exact_accepted_old_new_identities": true,
+    "arbitrary_hardware_or_software_identity_drift_rejected": true,
+    "historical_identity_not_rewritten": true,
+    "false_strict_pair_claim_rejected": true,
+    "Static_N0_reuse_and_Q1_geometry": true,
+    "full_RF_forward_loss_backward_artificial": true,
+    "source_bridge_runtime_and_formula_unchanged": true,
+    "source_init_read_policy_and_traceback": true,
+    "SCQ_RF_parameter_groups_unchanged": true,
+    "D_order3900_and_frozen_references": true,
+    "training_resources_thresholds_unchanged": true
+  },
+  "limitations": [
+    "Tiny artificial model with actual unchanged SCQ/RF residuals and real RF Requery install; native full Mamba not executed.",
+    "Actual original runtime source imported under policy but optimizer/lifecycle never executed.",
+    "Native CUDA admission inherited; no new GPU or real data validation.",
+    "Historical GPU admission is implementation evidence only; actual CUDA on current GPU/driver has NOT been tested in this batch.",
+    "D Static/Requery comparison is explicitly confounded by device and driver. No unconditional mechanism attribution.",
+    "Current software/provider hashes, real315 payload hashes and resources still need fresh checks before separately authorized execution.",
+    "No matching retraining, retry/resume or protocol tuning authorized."
+  ],
+  "server_operations": 0,
+  "training": false,
+  "CUDA": false
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "scq-rf-native-protocol-v1",
+  "inference": {
+    "forward_attempt_budget": 630,
+    "models": [
+      "Sref_C",
+      "Static_C",
+      "Requery_C",
+      "Sref_D",
+      "Static_D",
+      "Requery_D"
+    ],
+    "cases_per_model": 105,
+    "batch": 1,
+    "backward": 0,
+    "optimizer": 0,
+    "BNCal": 0,
+    "loss": 0,
+    "warmup": 0,
+    "TTA": 0,
+    "GT_condition": false
+  },
+  "outputs": {
+    "predictions": 630,
+    "keys": [
+      "prediction",
+      "coarse",
+      "Qraw",
+      "delta",
+      "Q0",
+      "Q1",
+      "Q2",
+      "delta0",
+      "delta1"
+    ],
+    "context_caches": 0,
+    "full_decoder_traces": 0,
+    "frame": "D-only normalized; per-input center/scale retained",
+    "RF_second_stage_applicable": "False for Sref, True for RF-Static/RF-Requery"
+  },
+  "numeric": {
+    "repeat_GPU_preflight": false,
+    "FP32": true,
+    "TF32": false,
+    "finite_gradient_nondeterminism_disclosed": true
+  },
+  "comparison_qualification": {
+    "C_pair": "SAME_DEVICE_PRIMARY_MECHANISM_EVIDENCE",
+    "D_Static_vs_Requery": "DEVICE_AND_DRIVER_CONFOUNDED_SUPPLEMENTARY_EVIDENCE",
+    "strict_same_device_D_pair": false,
+    "do_not_attribute_all_differences_to_requery": true
+  },
+  "failure": "STOP_NO_AUTOMATIC_RETRY_RESUME",
+  "resources": {
+    "wall_seconds": 7200,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  }
+}
