@@ -1,0 +1,1 @@
+from pathlib import Path;import hashlib;p=Path('/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/control_S_C_v1/runtime_S_C_v1.json');assert p.stat().st_size==232 and hashlib.sha256(p.read_bytes()).hexdigest()=='8f537a9cc4bbf26f4099f54598a57d226f6896cffe1536355ac7ecac93d7b4f5';print('CONTROL_HASH_PASS')

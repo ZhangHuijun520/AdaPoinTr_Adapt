@@ -1,0 +1,87 @@
+{
+  "status": "FORMAL_DAC_R1_FREEZE_PASS_WITH_DISCLOSED_RNG_EVIDENCE_LIMITATION",
+  "request_sha256": "129afea067a01802185719480591845e5918d52c4d28b9ec675012b1794e14a8",
+  "checks": {
+    "request_full_SHA256": true,
+    "stable_complete_before_after_inventories": true,
+    "exact32_installed_files_and_all_original_hashes": true,
+    "exact_installed_directory_set": true,
+    "explicit_authorization_chain": true,
+    "oneway_runtime_and_consumed_single_claim": true,
+    "frozen_entry": true,
+    "frozen_core": true,
+    "frozen_P3": true,
+    "exact20_balanced_cases": true,
+    "exact32_output_files_and7_directories": true,
+    "exit_code_zero_and_no_failure_file": true,
+    "exact180_ordered_call_claims": true,
+    "all_progressive_counts_and_exact20_40": true,
+    "zero_GT_loss_backward_optimizer": true,
+    "two_model_state_fingerprints": true,
+    "RNG_runtime_assertion_evidence_not_raw_fingerprints": true,
+    "exact41_resource_records": true,
+    "all_resource_thresholds_recomputed_from_saved_actuals": true,
+    "manifest_exact20_order": true,
+    "manifest_input_weight_frame_and_file_hashes": true,
+    "all_downloaded_control_metadata_hashes_match_remote_inventory": true,
+    "downloaded_archive_SHA256": true,
+    "archive24_member_source_and_resource_prefix_relationship": true,
+    "all20_saved_tensor_sets_shapes_dtypes_finite": true,
+    "all20_Q_stage_and_DAC_v2_formula_consistent": true,
+    "all20_actual_Memory_KNN_cutoffs_and_unique_indices": true,
+    "all20_Native_replays_independently_match_frozen_predictions": true
+  },
+  "check_count": 28,
+  "calls": {
+    "native": 20,
+    "decoder_only": 40,
+    "decoder": 60,
+    "h1_new": 20,
+    "h1_old": 20,
+    "first_head": 20
+  },
+  "case_files": 20,
+  "control_files": 4,
+  "output_files": 32,
+  "installed_files": 32,
+  "archive": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_DAC_R1_frozen20_20261115_v1/development_predictions_v1.tar.gz",
+    "bytes": 13610252,
+    "sha256": "04c7b4fa54d0039c2502726b4eae284d093519b6ba91846c888646fc819d51ec"
+  },
+  "models": [
+    {
+      "run": "Requery_C",
+      "state_before": "c2fc3d4325b3769f3f0412503bd09b868a0eda87c6d9b5310704649fe87fec4c",
+      "state_after": "c2fc3d4325b3769f3f0412503bd09b868a0eda87c6d9b5310704649fe87fec4c",
+      "RNG_unchanged": true,
+      "cases": 10
+    },
+    {
+      "run": "Requery_D",
+      "state_before": "c21a03317c2463823d8270578ee1514e3c60361d9c974705e7ff17a8c3e304eb",
+      "state_after": "c21a03317c2463823d8270578ee1514e3c60361d9c974705e7ff17a8c3e304eb",
+      "RNG_unchanged": true,
+      "cases": 10
+    }
+  ],
+  "RNG_evidence_level": "RUNTIME_ASSERTION_NOT_RAW_FINGERPRINT_PAIR",
+  "resource_peaks": {
+    "RSS_bytes": 2075897856,
+    "device_MiB": 720,
+    "peak_allocated": 244786176,
+    "peak_reserved": 283115520,
+    "elapsed_seconds": 17.3468909249641
+  },
+  "limitations": {
+    "RNG": "Only runtime equality assertion and boolean saved; no raw before/after RNG fingerprints. Source identity and successful completion corroborate assertion, not an independent RNG snapshot rehash.",
+    "resources": "Cooperative saved samples; no hard peak RSS/VRAM guarantee between samples.",
+    "archive": "resources.jsonl inside archive is exact prefix; the final archived sample exists only in external frozen log by original entry order.",
+    "geometry": "No GT payload, E/J scoring, clinical assessment, or train authorization."
+  },
+  "server_writes": 0,
+  "new_forward": 0,
+  "GT_scoring": 0,
+  "training": 0,
+  "request_reusable": false
+}

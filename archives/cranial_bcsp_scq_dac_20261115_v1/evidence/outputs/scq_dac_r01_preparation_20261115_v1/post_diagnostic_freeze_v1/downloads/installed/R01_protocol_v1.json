@@ -1,0 +1,64 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "plan": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\docs\\cranial_bcsp_scq_dac_plan_20261115\\Cranial_BCSP_FullMamba_SCQ_DAC_正式实验计划书_审阅修订v2_2026-11-15.md",
+    "bytes": 52244,
+    "sha256": "a721117bf1b19a2bb51cbb89de5084cb9c4c2f4bc8eae2bfc64a8c4800c445ed"
+  },
+  "GT_access": false,
+  "geometry_scoring": false,
+  "counts": {
+    "native": 20,
+    "decoder_only": 40,
+    "decoder": 60,
+    "h1_new": 20,
+    "h1_old": 20,
+    "first_head": 20
+  },
+  "formula": {
+    "version": "DAC-plan-v2",
+    "epsilon_norm": 1e-06,
+    "alpha": "0.5+0.5*relu(cosine)",
+    "near_zero": "alpha=0.5",
+    "detach": "alpha_only"
+  },
+  "replay": {
+    "atol": 1e-05,
+    "rtol": 0.0001,
+    "frame": "D_only_normalized",
+    "failure": "STOP_NO_RETRY"
+  },
+  "readiness": {
+    "fresh_remote_recheck_required": true,
+    "verified_this_preparation": false
+  },
+  "timeouts": {
+    "worker_seconds": 600
+  },
+  "checkpoint_deserialized": false,
+  "server_operations": 0,
+  "models": [
+    {
+      "label": "Requery_C",
+      "variant": "RF-Requery",
+      "fold": "C",
+      "checkpoint": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/weights/Requery_C_epoch99_step3900.pth",
+        "bytes": 489927058,
+        "sha256": "4816c8768da60de7c8153fcd0793524b2fb3c1dddba04de9cdf0c6eb13f2602b"
+      },
+      "original_checkpoint_sha256": "4816c8768da60de7c8153fcd0793524b2fb3c1dddba04de9cdf0c6eb13f2602b"
+    },
+    {
+      "label": "Requery_D",
+      "variant": "RF-Requery",
+      "fold": "D",
+      "checkpoint": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/weights/Requery_D_epoch99_step3900.pth",
+        "bytes": 489927058,
+        "sha256": "068288d4beb237dfe820286e22e122a5f427e4e32846c63087320aabc5b25bba"
+      },
+      "original_checkpoint_sha256": "068288d4beb237dfe820286e22e122a5f427e4e32846c63087320aabc5b25bba"
+    }
+  ]
+}

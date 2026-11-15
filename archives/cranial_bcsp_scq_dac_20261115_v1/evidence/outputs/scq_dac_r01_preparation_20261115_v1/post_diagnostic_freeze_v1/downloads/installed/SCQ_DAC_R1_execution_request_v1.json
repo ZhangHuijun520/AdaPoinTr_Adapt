@@ -1,0 +1,493 @@
+{
+  "schema": "bcsp-scq-dac-r1-frozen-weight-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "execution_authorized": false,
+  "stage": "R0_R1_CAPTURE_ONLY_NO_GT_SCORING",
+  "calls": {
+    "native": 20,
+    "decoder_only": 40,
+    "decoder": 60,
+    "h1_new": 20,
+    "h1_old": 20,
+    "first_head": 20
+  },
+  "batch_size": 1,
+  "loss": 0,
+  "backward": 0,
+  "optimizer_steps": 0,
+  "BNCal": 0,
+  "TTA": 0,
+  "warmup": 0,
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+    "torch_cuda_version": "11.8"
+  },
+  "expected_identity": {
+    "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+    "gpu_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+    "driver_version": "570.190"
+  },
+  "identity_provenance": {
+    "hostname": "User confirmed qx2k0r-0 in this turn",
+    "resource_values": "Inherited frozen evidence; must be checked freshly before deployment/launch"
+  },
+  "readiness": {
+    "fresh_remote_recheck_required": true,
+    "verified_this_preparation": false
+  },
+  "entry": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/bcsp_scq_dac_r1_entry_v1.py",
+    "bytes": 14541,
+    "sha256": "b1a1de8833c4699d947bc33878430d5bebf3d9dd83629ddf3ddf4d2617ae8296"
+  },
+  "core": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/bcsp_scq_dac_r1_core_v1.py",
+    "bytes": 7684,
+    "sha256": "5afce8d4cc78f873b5d910f154aabc0d7d09054734e713429ca8540bf6d3ba18"
+  },
+  "native_library": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_sixmodel_prediction_20261115_v2/bcsp_scq_rf_sixmodel_native_predict_v2.py",
+    "bytes": 45866,
+    "sha256": "221210ca3e51fe4178be068abab1cb2e6c98d9731efb474d1ee08f31ec4c7857"
+  },
+  "selection": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/selected20_cases_v1.json",
+    "bytes": 25570,
+    "sha256": "09c032654a369b9830f6389b3479f302a85ac5a79023c0bb63d5ae4e06621763"
+  },
+  "legacy_index": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_sixmodel_prediction_20261115_v2/RF_sixmodel_input_index_v2.json",
+    "bytes": 629739,
+    "sha256": "c7ba0f26c0592f1ea545622dc0ceaa0da5c14ebf15b3083e545ab6e62b681198"
+  },
+  "protocol": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/R01_protocol_v1.json",
+    "bytes": 2068,
+    "sha256": "69d30470c064d9f3679aa064a3912f29ac702afdb9c07203feb714137cd42227"
+  },
+  "P3": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/local_P3_v1.json",
+    "bytes": 2915,
+    "sha256": "1c7a5b3d12d161dacbd39bb77a6ebfb22e0cfe578394d8e9ecb89b1b88ec960f"
+  },
+  "models": [
+    {
+      "label": "Requery_C",
+      "variant": "RF-Requery",
+      "fold": "C",
+      "checkpoint": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/weights/Requery_C_epoch99_step3900.pth",
+        "bytes": 489927058,
+        "sha256": "4816c8768da60de7c8153fcd0793524b2fb3c1dddba04de9cdf0c6eb13f2602b"
+      },
+      "original_checkpoint_sha256": "4816c8768da60de7c8153fcd0793524b2fb3c1dddba04de9cdf0c6eb13f2602b"
+    },
+    {
+      "label": "Requery_D",
+      "variant": "RF-Requery",
+      "fold": "D",
+      "checkpoint": {
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/weights/Requery_D_epoch99_step3900.pth",
+        "bytes": 489927058,
+        "sha256": "068288d4beb237dfe820286e22e122a5f427e4e32846c63087320aabc5b25bba"
+      },
+      "original_checkpoint_sha256": "068288d4beb237dfe820286e22e122a5f427e4e32846c63087320aabc5b25bba"
+    }
+  ],
+  "formula": {
+    "version": "DAC-plan-v2",
+    "epsilon_norm": 1e-06,
+    "alpha": "0.5+0.5*relu(cosine)",
+    "near_zero": "alpha=0.5",
+    "detach": "alpha_only"
+  },
+  "limits": {
+    "wall_seconds": 600,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 268435456,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_DAC_R1_frozen20_20261115_v1",
+  "launch_attempt": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/control/attempt_claim_v1.json",
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "MPLBACKEND": "Agg",
+    "MPLCONFIGDIR": "<owned_output>/mplconfig",
+    "CUDA_CACHE_DISABLE": "1",
+    "TMPDIR": "<owned_output>/tmp",
+    "PYTHONHASHSEED": "0",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "HF_HOME": "<owned_output>/hf_cache",
+    "XDG_CACHE_HOME": "<owned_output>/cache",
+    "TRITON_CACHE_DIR": "<owned_output>/triton_cache"
+  },
+  "launch_contract": {
+    "tmux_session": "bcsp_scq_dac_r1_frozen20_20261115_v1",
+    "request_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/SCQ_DAC_R1_execution_request_v1.json",
+    "authorization": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/control/authorization_v1.json",
+    "runtime": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/control/runtime_v1.json",
+    "launcher": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/control/launch_once_v1.sh",
+    "log": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_DAC_R1_frozen20_20261115_v1/launch.log",
+    "pid": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_DAC_R1_frozen20_20261115_v1/worker.pid",
+    "exit_code": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_DAC_R1_frozen20_20261115_v1/exit_code.txt",
+    "single_attempt": true,
+    "timeout_seconds": 600,
+    "parent_directory_before_redirection": true,
+    "PowerShell_explicit_exit_LASTEXITCODE": true,
+    "raw_bytes_Base64_only": true
+  },
+  "forbidden": [
+    "training/resume/retry",
+    "GT or E/J access in GPU process",
+    "parameter/BN update",
+    "environment download/install/upgrade",
+    "decoder/encoder scientific source edits",
+    "GT registration or Native score substitution",
+    "automatic follow-up scoring or training"
+  ],
+  "post_run": "Formal readonly post-diagnostic freeze audit, local download/verification, then separately scoped offline geometry interpretation; capture itself makes no GO decision",
+  "model_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3",
+  "helper": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+    "bytes": 32728,
+    "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+  },
+  "preflight_scope": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+    "bytes": 23220,
+    "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+  },
+  "static_config": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/static_training_config_v1.json",
+    "bytes": 2024,
+    "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+  },
+  "dependencies": [
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/__init__.py",
+      "bytes": 264,
+      "sha256": "6d3fee6ff8e8ec4dcab0f7af6c7890ff81f3d9319707865f5a651239aee9ae0a"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/modules/mamba_simple.py",
+      "bytes": 11710,
+      "sha256": "a17e4c51b582dc0d4d690a649eba521cd0c1ee3dc8f0473a0967cdc9ec0874e3"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/ops/selective_scan_interface.py",
+      "bytes": 20025,
+      "sha256": "543edd077f11c80cccd5c5e2f926420d9105fd238d9e8960e53660cfa234dce8"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/__init__.py",
+      "bytes": 118,
+      "sha256": "af95401837aff56ae3749c2237eaff7df8c6a4328d7c5cc6a6731287ac27152c"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/causal_conv1d_interface.py",
+      "bytes": 8850,
+      "sha256": "221f41aa963a8f84683d9c6b2b4bf448692feb963fefcd778fa1b4ed2688c859"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm-2.3.1.dist-info/METADATA",
+      "bytes": 25449,
+      "sha256": "de580cd29b3bf2c8d81240fad9255978be1835884b82ab8e84f17f4ba720effd"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d-1.6.2.post1.dist-info/METADATA",
+      "bytes": 1625,
+      "sha256": "3b4a001f4ad6f856465746601e4b0dda9b2d088bd8e81b6376e4a707fcf4ca7b"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/selective_scan_cuda.cpython-310-x86_64-linux-gnu.so",
+      "bytes": 526135264,
+      "sha256": "5e6a5bfabe7628720631568ec364426e6066da9a9a0946302ebe9fb86f4aa58c"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d_cuda.cpython-310-x86_64-linux-gnu.so",
+      "bytes": 166702752,
+      "sha256": "6ac9c334498773ee337503094d7b5aae4b0f38fa3ba8a0dcd81cca707f48a79a"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch/version.py",
+      "bytes": 248,
+      "sha256": "b10649fd636e7404398d608b84a2cacc6645e3952f043b439d4c50c95a26a1b5"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch-2.4.1+cu118.dist-info/METADATA",
+      "bytes": 26707,
+      "sha256": "11606497a9792f0d040ad062064ee1c024dde8b10fc38bed361134d0b7ec429a"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm-1.0.27.dist-info/METADATA",
+      "bytes": 40196,
+      "sha256": "b6ecaedbcaea5d0d5e431983c3df8e05113a51a2dad062e51dab0500ac6f2bb4"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/numpy-2.2.6.dist-info/METADATA",
+      "bytes": 62026,
+      "sha256": "22d648f53848429464ca643b40d73b49a920d47876fc77c395d4dca4e834904a"
+    }
+  ],
+  "implementation": {
+    "encoder": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_mamba_encoder_v1.py",
+      "bytes": 3546,
+      "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+    },
+    "factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py",
+      "bytes": 4396,
+      "sha256": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4"
+    },
+    "lqi_decoder": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_decoder_v1.py",
+      "bytes": 6053,
+      "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8"
+    },
+    "lqi_factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_factory_v1.py",
+      "bytes": 3864,
+      "sha256": "56d4cbe89660106f255a0d58e28c7cbaf38374c7788219d5a21779bd97aaf106"
+    },
+    "scq_residual": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_residual_v1.py",
+      "bytes": 3552,
+      "sha256": "2f3a86c5daf7ad00c01dc405b4a3b7011faae06f5766da3dcfe72d645b730404"
+    },
+    "scq_factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_factory_v1.py",
+      "bytes": 14176,
+      "sha256": "fe5f7229aa40ba2b7e599c2bea32982f6bb33cf5f1db115b222a581c1d4af1c5"
+    },
+    "rf_residual": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v3/bcsp_scq_rf_residual_v2.py",
+      "bytes": 4596,
+      "sha256": "c50cbdb0986fafe3ff2309ef8c02d74fdc5e651218c71f4bb13a87bacefc726a"
+    },
+    "rf_factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/bcsp_scq_rf_factory_v1.py",
+      "bytes": 3517,
+      "sha256": "6e243f7a6463241f6c24c6feb6928bde9499ffd3a17afe1442eca54fd6738570"
+    },
+    "timezone": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/exact_utc_resource_v1.py",
+      "bytes": 3563,
+      "sha256": "038267da9f78be5ea9d03164e674d388228768bf0c42959097fcadfd807f830e"
+    },
+    "cuda_entry": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v2/bcsp_scq_rf_cuda_admission_v2.py",
+      "bytes": 29284,
+      "sha256": "b78485c06dd94ca6e54b918f6c5b3ea055f6feebf5d935920d6da9dae4497999"
+    }
+  },
+  "initialization": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/initialization_v1.bin",
+    "bytes": 2784780,
+    "sha256": "e7858ee3ae4c0bf6d68e447727c36514f5bbab42b95e1935f1686620ec089416"
+  },
+  "rf_initialization": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_cuda_20261114_v1/rf_initialization_v1.bin",
+    "bytes": 924684,
+    "sha256": "a4024fbdb49feb41c609ae1171f04c2cb14ab794fc3663855d81395c6a1ea79e"
+  },
+  "deployment_assets": [
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/weights/Requery_C_epoch99_step3900.pth",
+      "bytes": 489927058,
+      "sha256": "4816c8768da60de7c8153fcd0793524b2fb3c1dddba04de9cdf0c6eb13f2602b",
+      "action": "RESTORE_ONLY_AFTER_SEPARATE_DEPLOYMENT_AUTHORIZATION"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/weights/Requery_D_epoch99_step3900.pth",
+      "bytes": 489927058,
+      "sha256": "068288d4beb237dfe820286e22e122a5f427e4e32846c63087320aabc5b25bba",
+      "action": "RESTORE_ONLY_AFTER_SEPARATE_DEPLOYMENT_AUTHORIZATION"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_C__train__001__bilateral.npz",
+      "bytes": 113987,
+      "sha256": "19e4f51142a33242bdb2c663b40f17551bca2d9b5bd262cc2aaeec4ca9e2244d",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_C__train__012__parietotemporal.npz",
+      "bytes": 115705,
+      "sha256": "ac4b7b1fa349ed4f183fa0e49a582f55236766ec0f1aa4f10ef4e6b41622e816",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_C__train__012__random_1.npz",
+      "bytes": 115488,
+      "sha256": "937dcee20a648cd0e811291aed39c7f29581269039fab1a45764654c84ebd971",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_C__train__025__parietotemporal.npz",
+      "bytes": 114330,
+      "sha256": "9ac1110aed4ef01265959e02f5ee02e223fdb3c003a2388c1806bdb3d14faedf",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_C__train__025__random_2.npz",
+      "bytes": 114836,
+      "sha256": "5909dff7464cbc4774be305c8593f89d41812f743760f691f1aada75386b9f8c",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_C__train__042__random_1.npz",
+      "bytes": 113668,
+      "sha256": "0f3cbba44344b0f6f2ae59463fce5be4b521fd81e4a0a1fac36d20963213dffc",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_C__train__053__frontoorbital.npz",
+      "bytes": 116123,
+      "sha256": "6c2b8cf4320794b3d17e29ba2526e61829cc5ee7457889fc8340c9835c982083",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_C__train__076__random_2.npz",
+      "bytes": 114261,
+      "sha256": "b3785e94c7d79b4f7dc2cd9adb53887a13b0156808164115c6d7acc12e21d265",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_C__train__081__bilateral.npz",
+      "bytes": 112717,
+      "sha256": "d08355dfe71cfca07121b79440a68f210c9c0e9e53e5116966a67f02ac19a367",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_C__train__094__frontoorbital.npz",
+      "bytes": 114521,
+      "sha256": "ae3d25eb53103fe4b69b16a1191ba100c4e95177f09f5fac551327535606f94b",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_D__train__004__parietotemporal.npz",
+      "bytes": 111144,
+      "sha256": "fb60b87e04ab22183ea3ae900de1a5bd09df885ca327316b0a1ea2a228b77011",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_D__train__005__bilateral.npz",
+      "bytes": 115349,
+      "sha256": "be2af846ce485886f7c670f2760a5a7c753532b6cb451bb64415d68ef6e49f26",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_D__train__008__frontoorbital.npz",
+      "bytes": 115090,
+      "sha256": "fce9635a07fdf40c7320f33f39288581ff8d51664e940ee0ad93a35f47d0bb20",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_D__train__037__bilateral.npz",
+      "bytes": 113435,
+      "sha256": "bb97179762d3c35f26c8b9561e0c72da358652fdbff9129f90d9ef3b7d0a81e6",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_D__train__044__parietotemporal.npz",
+      "bytes": 113925,
+      "sha256": "f420ac24d697880a16008355510ea89c13e5b70cef32e531285f886b4e4fc9e0",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_D__train__052__random_1.npz",
+      "bytes": 114746,
+      "sha256": "7f34e346b37670aceba58c243595c7359b9fa552186b338c5742f600ab867bd4",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_D__train__062__random_2.npz",
+      "bytes": 114982,
+      "sha256": "834025a919464a7cfd3035821e84213ac6a24b0ec7af040ba364052a438194ed",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_D__train__069__random_2.npz",
+      "bytes": 114830,
+      "sha256": "8d479dcf8ba9ab9d72688e24f353e9475c97568bd2e0439a6b270e99743a27dc",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_D__train__079__random_1.npz",
+      "bytes": 113237,
+      "sha256": "4c000340690f7c6e45b697855d79b28dd46138a246801c53ef065b0e7c328cad",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/replay/Requery_D__train__087__frontoorbital.npz",
+      "bytes": 115526,
+      "sha256": "3fa951654986b4a0503fe5e15f3e7288982de44d107333356b82cde5bd819d10",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/bcsp_scq_dac_r1_entry_v1.py",
+      "bytes": 14541,
+      "sha256": "b1a1de8833c4699d947bc33878430d5bebf3d9dd83629ddf3ddf4d2617ae8296",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/bcsp_scq_dac_r1_core_v1.py",
+      "bytes": 7684,
+      "sha256": "5afce8d4cc78f873b5d910f154aabc0d7d09054734e713429ca8540bf6d3ba18",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/selected20_cases_v1.json",
+      "bytes": 25570,
+      "sha256": "09c032654a369b9830f6389b3479f302a85ac5a79023c0bb63d5ae4e06621763",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/R01_protocol_v1.json",
+      "bytes": 2068,
+      "sha256": "69d30470c064d9f3679aa064a3912f29ac702afdb9c07203feb714137cd42227",
+      "action": "NEW_NO_OVERWRITE"
+    },
+    {
+      "remote": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1/local_P3_v1.json",
+      "bytes": 2915,
+      "sha256": "1c7a5b3d12d161dacbd39bb77a6ebfb22e0cfe578394d8e9ecb89b1b88ec960f",
+      "action": "NEW_NO_OVERWRITE"
+    }
+  ],
+  "deployment_contract": {
+    "no_overwrite": true,
+    "new_parent_directory": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_dac_r1_20261115_v1",
+    "all_targets_absent_before_first_write": true,
+    "write_parent_checked_no_links": true,
+    "old_deleted_checkpoint_paths_not_reused": true,
+    "asset_count_excluding_request": 27,
+    "request_file_additional": true,
+    "weights": 2,
+    "replay_files": 20,
+    "new_code": 2,
+    "selection_protocol_P3": 3,
+    "source_environment_readiness_required": true,
+    "failed_install_requires_readonly_state_check_no_automatic_retry": true
+  }
+}

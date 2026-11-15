@@ -1,0 +1,306 @@
+"""Write final stage report from frozen evidence only; no scores/models/server calls."""
+from pathlib import Path
+import hashlib,json
+R=Path(__file__).resolve().parent.parent;B=R/'outputs/scq_dac_r01_preparation_20261115_v1';A=B/'fixed20_offline_geometry_v1';F=B/'post_diagnostic_freeze_v1';D=R/'docs/cranial_bcsp_scq_dac_20261115_final';D.mkdir()
+def read(p):return json.loads(p.read_bytes())
+def rec(p):return dict(path=str(p.absolute()),bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest())
+audit=read(F/'freeze_verification_v1.json');cpu=read(B/'cpu_contract_batch_v1/result_v1.json');done=read(A/'completion.json');verify=read(A/'saved_result_consistency_v1.json');mechanism=read(F/'GT_free_mechanism_review_v1.json');summary=read(A/'fold_fixed_case_summary.json')
+assert all(audit['checks'].values()) and cpu['count']==36 and done['score_rows']==60 and verify['case_score_rows']==60
+parts=[]
+def add(s):parts.append(s.strip()+'\n')
+add(r'''# Cranial-BCSP-FullMamba：SCQ-DAC完整实验报告
+
+> 日期：2026-11-15；版本：v1；阶段状态：**正式收束当前固定公式，不进入新训练**。  
+> 本报告依据已冻结的实现、人工CPU验证、唯一一次GPU诊断、正式只读冻结复核及固定20例离线评分撰写。本次撰写没有新增forward、训练、评分或服务器操作。
+
+## 📋 1. 摘要与核心结论
+
+本阶段研究：在Attention-free FullMamba的第二次coarse空间校正中，能否利用旧／新两组Memory邻域的更新方向一致性，保留RF-Requery的大幅有效纠偏，同时减少错误反馈、目标表面漏覆盖和接口失败。
+
+完成了唯一公式冻结、20例选择、隔离采集实现、36项人工CPU合同与本机P3、原Requery两折权重恢复、20次完整Native forward＋40次decoder-only零更新诊断，以及20例×R/A/DAC三输出的60行统一CPU几何评分。没有训练新的DAC模型，也没有开展原计划条件式六run矩阵。
+
+结果表明：旧／新邻域确有差异，DAC也不等于固定平均，但5120个query的余弦全部为正，平均新邻域权重约0.988／0.987，整体接近Requery。相对固定平均，DAC两折E/J P95均值均更差；相对Requery，E P95均值仅改善0.102／0.021 mm，J Cover2均值下降0.196／0.306个百分点，严重病例仍为3／2，没有挽回。
+
+因此，本阶段结论是：**当前固定方向一致性公式没有显示出足够的几何附加价值，不投入六次新训练，保留零新训练的负面筛查证据。** 这是有限证据下的研究预算决定，不是端到端训练的正式阴性结果，也不证明所有双邻域策略都无效。
+
+## 🎯 2. 背景、实验目的与待证伪假设
+
+### 2.1 前序SCQ-RF为何不足以结束问题
+
+前序三臂两折研究中，重查询相对Static的E P95均值改善C为0.687 mm、D为0.766 mm，但D的Static训练迁移GPU/驱动，核心对照受设备混杂。相对Static，重查询新增／挽回严重病例分别为C 1／4、D 2／2。平均改善并未消除新增风险。
+
+既有轨迹还显示两种相反现象：C/012、C/025 parietotemporal可在反馈后继续偏离；C/025 random_2、D/008 frontoorbital又依赖较大二次更新被挽回。不能统一限制残差幅度，也不能把Q0大偏位直接当成失败判据。另有D/069 random_2质心改善而表面/接口漏覆盖，说明空间位置和完整形状不是同一问题。
+
+### 2.2 本轮实验目的
+
+1. 检查实际Memory旧／新邻域是否产生可区分的更新建议。
+2. 检查方向一致性组合是否区别于固定平均与工作基线Requery。
+3. 检查几何变化是否改善自由表面E、共享切壁J与反向离群，是否保护重要挽回病例。
+4. 在零新训练的有限诊断中，决定该候选是否值得投入预设三臂两折训练预算。
+
+### 2.3 假设及反例
+
+原假设是：两个更新方向一致时优先使用重查询；不一致时更对称地组合，可能降低错误反馈，又不硬截断所有大步。预先承认的反例包括：两支同向错误、异向时唯一正确的新更新被抵消、初始Q1已严重错位，以及位置改善而覆盖仍差。
+
+两个proposal共用h1、Memory和全局条件，不能视为两个独立专家；它们的一致性不是可靠概率。因此，本报告使用“方向一致性调节”，保留DAC缩写，不将其称为经过概率校准的不确定度。
+
+## 🦴 3. 数据、目标与评价分母
+
+### 3.1 继承的BCSP任务
+
+完整骨实体C由残余D与移除骨块G互补组成。输入为残余骨的全部骨组织边界∂D，包括源分割中存在的外表面、内表面、孔道/腔体边界和暴露切壁；目标为缺失骨块完整边界∂G，区分自由表面E与接触切壁J。输入8192、输出8192、coarse256，每中心生成32点。
+
+本轮沿用SkullBreak BCSP V1面积采样与D-only中心/尺度，未改缺损、采样、点数或GT语义。没有混入SkullFix、MUG500+，没有访问confirmation20，没有生成新体素参考、重做配准或增加病例。
+
+### 3.2 固定20例选择
+
+原开放资产为84来源、420病例；每折训练63来源/315例，开发21来源/105例。此次只选择C/D各10例：每折五缺损类型各2例。七例既有压力病例预先固定，其余按 `SHA256(SCQ_DAC_R1_v2|fold|source_id|defect_type)` 升序补足；source_id使用manifest原字符串train:NNN。
+
+| Fold | bilateral | frontoorbital | parietotemporal | random_1 | random_2 |
+|---|---|---|---|---|---|
+| C | 001、081 | 053、094 | 012、025 | 012、042 | 025、076 |
+| D | 005、037 | 008、087 | 004、044 | 052、079 | 062、069 |
+
+固定压力病例为C/012与025 parietotemporal、C/053 frontoorbital、D/069 random_2、D/087 frontoorbital、C/025 random_2和D/008 frontoorbital。当前实际覆盖C8、D10个source，每来源没有齐全五缺损。它们不是新盲测病例。
+
+因此本报告主表为**每折固定10病例等权描述**，不是完整21来源均值，不套用12/21来源筛查，不将60行视为60独立患者。C组有意纳入严重压力病例，其R的E均值25.313 mm高于历史完整开发均值6.932 mm，不能据此判断模型新退化或坐标错误。
+
+## 🧮 4. 模型方法与唯一公式
+
+### 4.1 不变的主体
+
+保留原Attention-free FullMamba encoder、LQI Mamba decoder、局部图/KNN、XYZ排序、coarse生成与FC重建。沿用实际Memory M[256,3]、F[256,384]和全局z[1024]，不引入Transformer self/cross-attention、新loss、GT定位器或额外迭代。
+
+第一头h0为1802→384→3，第二头h1为1802→128→3。原RF总可训练参数40,827,847；本次仅增加不带参数的采集/组合逻辑，未注册新可训练模块。训练loss仍属于旧模型合同，本轮没有调用loss。
+
+### 4.2 同一Q1上的双邻域建议
+
+N0=KNN8(M,Q0)，Q1=Q0+h0(Φ(Q0,N0))；N1=KNN8(M,Q1)。定义旧建议u=h1(Φ(Q1,N0))，新建议v=h1(Φ(Q1,N1))，两次共用同一个h1。
+
+Φ拼接z、逐Memory token无affine LN之后的邻域mean/max、当前query坐标、相对坐标均值/逐坐标标准差/平均半径，共1802维。LN eps=1e−5；相对坐标标准差继承sqrt(var+1e−6)。**旧邻域仅保留Q0处索引，所有相对几何在Q1重算**，不复用Q0几何缓存。
+
+### 4.3 最终采用的v2方向规则
+
+设nu=||u||、nv=||v||，εn=1e−6（归一化残差长度单位）：
+
+\[
+\tilde c=\operatorname{clip}\left(\left\langle
+\frac{u}{\max(n_u,\epsilon_n)},\frac{v}{\max(n_v,\epsilon_n)}
+\right\rangle,-1,1\right),\quad
+c=\begin{cases}\tilde c,&n_u>\epsilon_n\land n_v>\epsilon_n\\0,&\text{其它}\end{cases}
+\]
+
+\[
+a=0.5+0.5\max(0,c),\quad
+\delta_{DAC}=\operatorname{sg}(a)v+[1-\operatorname{sg}(a)]u,\quad Q2=Q1+\delta_{DAC}.
+\]
+
+sg仅停止alpha梯度，不停止proposal与连续Memory条件。此次实际推理在inference_mode进行，没有backward。原草案将epsilon加在范数乘积之后，会混入小残差幅值效应；确认后的v2改为单范数保护。本阶段没有扫描epsilon、权重温度、下界或其它公式。
+
+### 4.4 三种输出的角色
+
+| 输出 | 第二次更新 | 角色 |
+|---|---|---|
+| R | v | 原RF-Requery训练权重的Native参照 |
+| A | (u+v)/2 | 同权重双上下文固定均值反事实 |
+| DAC | sg(a)v+(1−sg(a))u | 同权重方向调节反事实 |
+
+DAC−A检验动态权重相对固定平均的区别；DAC−R检验实际替代价值。A不是历史已训练RF-Static，A/DAC不是三个新训练模型。
+
+该公式等价于 `δDAC=δA+0.5·relu(c)·(v−u)`：非正余弦时DAC=A，同向时偏向v。凸组合可能抵消更新，没有几何误差下降或风险保证。u/v高度相关且共同错误时，方向一致性不会自动识错。
+
+### 4.5 端到端解释边界
+
+旧h1是在重查询条件上训练，旧邻域分支与组合后decoder输入有分布偏移。冻结权重干预有利于定位当前规则的即时影响，但不能代替端到端重训。反事实差不能直接解释为新模型训练后差；反事实好也不能证明新训练会保留收益。
+
+## ⚙️ 5. 实施、CPU验证与实际GPU诊断
+
+### 5.1 资产与接口
+
+先核对本机两份Requery权重及20份历史Native文件，从已有归档提取同字节参照。此前服务器源checkpoint已授权清理，本轮将两个所需权重恢复到全新third_party目录，不回填旧日志，不恢复另四个模型。
+
+通过临时hook捕获同一次Native forward的M/F/z、Q0/Q1、N0/N1和v；额外使用原h1计算u。随后仅重放mlp_query→原LQI decoder→原FC重建，分别输出A/DAC，不重复encoder。Q2参与所有真实空间消费者，不只是修改日志。成功与异常路径均清理hook。
+
+### 5.2 人工CPU验证
+
+唯一人工CPU批次36项通过，内部计时约3.14秒，本机P3汇总16项检查。覆盖选择规则、同向/正交/反向/零与近零proposal、尺度语义、alpha detach、实际RF descriptor、原母版顶层forward/FC、suffix中性重放、调用上限、hook异常清理、partial字段隔离、完整authorize()单向绑定和POSIX启动渲染。
+
+CPU使用实际冻结RF残差和母版forward/FC，但encoder/decoder是明确人工替身；不将其等同真实Mamba CUDA验证。没有加载真实checkpoint进行CPU模型推理。
+
+### 5.3 唯一一次实际执行
+
+request完整SHA256：`129afea067a01802185719480591845e5918d52c4d28b9ec675012b1794e14a8`。
+
+确认qx2k0r-0后，只读核验56个相关文件、20个输入及28个新安装目标，冻结运输包；上传核验后，在独立执行授权下再次核验，不覆盖安装28个文件，材料化授权→runtime→launcher并启动一次tmux。request已消耗，不可复用。
+
+| 运行条件 | 实际值 |
+|---|---|
+| 容器 | shu-common-25721452-notebook-qx2k0r-0 |
+| GPU | RTX4090D；UUID GPU-383d118a-368c-94e3-166a-cad3efab8fd7 |
+| 驱动／Python | 570.190／3.10.20 |
+| PyTorch／CUDA | 冻结2.4.1+cu118／11.8 |
+| provider／数值 | 原native Mamba和PointNet2、FP32、TF32关闭、固定严格确定性设置；保留已披露的Mamba数值限制 |
+| 模式 | batch1、eval/inference_mode，无warmup/TTA/BNCal |
+| 调用 | 20完整Native、40额外decoder-only；decoder总60；第一头20；第二头新/旧各20 |
+| loss／backward／optimizer | 0／0／0 |
+| 终态 | exit code 0，tmux与worker结束，20份病例采集文件 |
+
+Native重放在冻结atol=1e−5、rtol=1e−4内通过；本批保存的P_R与旧预测最大绝对差实际为0。GPU预算计时约17.35秒，不含全部运输与启动准备时间。
+
+## 🔒 6. 正式冻结审计与复现强度
+
+正式独立只读复核28组检查通过，状态附RNG证据局限。安装精确32文件（28payload+4控制），输出精确32文件，目录集合匹配；审计前后内容指纹稳定。180条逐次claim顺序与20/40/60等计数对应，独立检查保存张量shape/dtype/有限值、实际Memory近邻截断、Q阶段与DAC公式。
+
+两模型state_before/state_after指纹分别一致。RNG在运行中比较相等，保存了RNG_unchanged=true，但**未持久化原始before/after RNG指纹**；不能声称审计独立重算了这些缺失指纹。没有为补该记录缺口重跑诊断或伪造历史信息。
+
+峰值采样RSS约1.93 GiB，SMI720 MiB，allocated约233.45 MiB，reserved270 MiB；41条资源记录均满足既定阈值。离散合作式采样不等于瞬时硬隔离保证。
+
+诊断归档24成员，13,610,252 bytes，SHA256 `04c7b4fa54d0039c2502726b4eae284d093519b6ba91846c888646fc819d51ec`。归档内资源日志为前40行，打包后增加的最后1行只在外部日志；审计验证其精确前缀关系，其他成员与外部源一致。同字节包已下载本机。
+
+## 📏 7. 离线几何评价方法
+
+随后根据单独的20例离线分析指令，仅在本机读取既有预测、A1/A2/B参考和G8192；无服务器调用、模型导入、checkpoint加载或新forward。
+
+评价器SHA256为 `af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766`，原RF评分功能入口SHA为 `2de4ef5be44c63c7796cdc61f03af8015b562d8b6713db367c19a721b2cb0f3b`。原数据、评分代码、GT数组和阈值未修改，前后文件身份复核一致。
+
+| 指标 | 定义与用途 |
+|---|---|
+| E P95 | A1自由表面→预测的物理面积加权95分位距离，mm，主要覆盖终点 |
+| J P95、E/J Cover0.5/1/2 | 接触切壁与自由表面的误差及阈值内面积比例 |
+| CD-L1 | G8192/P8192双向非平方欧氏NN均值半和 |
+| reverse A2 P95、>20mm比例 | 预测→离散A2表面的反向尾部与远端离群 |
+| 质心与回转半径比 | 辅助位置/范围，非厚度或临床形状认证 |
+| severe | E_P95>20mm OR J_Cover2==0，既有研究标签，非临床标准 |
+
+60行评分约96.6秒完成，峰值采样RSS约153 MiB。20份R重算的指标与风险标签均复现历史冻结分数。完成后独立复核哈希、CSV/JSON、配对归约、六风险转移表及141条资源记录，不重算NN。无bootstrap、p值、Oracle、后处理或正式训练gate。
+''')
+add('## 📊 8. 实验结果\n\n### 8.1 固定病例主表\n\n距离mm，覆盖率百分比；每折10例等权。')
+table=['| Fold | 输出 | E P95↓ | J P95↓ | E Cover2↑ | J Cover2↑ | CD↓ | reverse P95↓ | >20mm点比例↓ | severe |','|---|---|---:|---:|---:|---:|---:|---:|---:|---:|']
+for r in summary:
+ m=r['metrics'];table.append(f"| {r['fold']} | {r['arm']} | {m['E_P95_mm']:.3f} | {m['J_P95_mm']:.3f} | {100*m['E_coverage_2.0mm']:.2f}% | {100*m['J_coverage_2.0mm']:.2f}% | {m['CD_L1_mm']:.3f} | {m['reverse_A2_P95_mm']:.3f} | {100*m['reverse_A2_outlier_20.0mm']:.3f}% | {r['severe']}/10 |")
+add('\n'.join(table))
+add('### 8.2 预设配对差值\n\n距离为mm，覆盖差为百分点。改善/退化为病例数，不是完整来源数。')
+t=['| Fold | 比较 | ΔE P95 | E中位差 | E改善/退化 | ΔJ P95 | ΔJ Cover2 | ΔCD | Δreverse P95 |','|---|---|---:|---:|---|---:|---:|---:|---:|']
+for r in verify['paired_descriptive']:
+ m=r['metrics'];e=m['E_P95_mm'];t.append(f"| {r['fold']} | {r['comparison']} | {e['mean']:+.3f} | {e['median']:+.3f} | {e['improved']}/{e['worsened']} | {m['J_P95_mm']['mean']:+.3f} | {100*m['J_coverage_2.0mm']['mean']:+.3f} | {m['CD_L1_mm']['mean']:+.3f} | {m['reverse_A2_P95_mm']['mean']:+.3f} |")
+add('\n'.join(t))
+add('''### 8.3 方向机制与风险
+
+两折平均余弦0.9761／0.9739，平均alpha0.9881／0.9870，邻居重合率60.25%／64.85%。5120个query均为有效正余弦，未进入非正余弦的alpha=0.5分支；全量alpha约0.5635–1，不能说完全恒定。
+
+DAC−A更新数值等价query仅8.48%／4.73%，DAC−R为29.65%／22.93%；两比较每折均无整份dense全部数值等价病例。故预设95%等价停止筛查未触发。可测的机制差异却没有转化为核心E/J优势。
+
+DAC相对R的dense平均点位变化仅0.204／0.245 mm，相对A约2.169／2.068 mm。这些是输出差异，不能当成误差改善。
+
+相对R，DAC严重病例新增/挽回两折均0/0，共同严重C3、D2。相对A，C无转移，D有1个DAC严重而A非严重的病例D/087 frontoorbital。A该例E P95为19.777 mm，低于研究阈值，但J P95仍23.595、reverse P95达49.141 mm，不能解释为临床成功修复。
+''')
+prior=(A/'SCQ_DAC_固定20例离线几何对照与训练决策建议_zh_v1.md').read_text(encoding='utf-8')
+case=prior.split('## 🩺 5. 五个失败压力病例',1)[1].split('## 🧠 7.',1)[0]
+case=case.replace('## 🛟 6. 两个重要挽回对照','### 8.5 两个重要挽回对照').replace('### 6.1','#### 8.5.1').replace('### 6.2','#### 8.5.2')
+add('### 8.4 五个失败压力病例'+case)
+add('''## 🧠 9. 结果分析
+
+### 9.1 当前方向一致性未形成有效的错误识别
+
+共享头的两建议在已知失败和成功挽回病例中都高度同向。DAC因此保留了R的大部分行为，也保留其严重错误。现有证据支持“高方向一致性不充分保证几何正确”，不支持把alpha作为已校准可靠度或失败概率。
+
+不能进一步声称某个全局特征必然是唯一根因。相关Memory、相同z、共享head、Q1初始空间布局以及残差幅值都可能参与；本阶段没有开展这些因素的独立因果消融。
+
+### 9.2 需要同时看覆盖与反向精确性
+
+DAC相比A的反向P95在C8/10、D10/10病例改善，D的CD有9/10改善，说明方向规则避免了部分均值组合副作用；但E/J覆盖相关终点没有同步获益。A虽有部分E/J改善，反向尾部又更坏，不能自动将A提升为工作基线。
+
+D/069再次表现为远端>20mm点比例为0，但E/J仍大且目标范围不足。逆向离群少只能说明生成点较靠近某些GT表面，不证明覆盖了完整骨块与切壁。
+
+### 9.3 小均值不能替代病例分布
+
+C的DAC−R E均值改善0.102 mm，其中C/025 parietotemporal单例改善0.941 mm，对10例均值贡献0.094 mm；E中位差仅−0.007 mm。D E均值/中位差约−0.021/−0.031 mm，同期J覆盖均值下降、CD和反向P95略升。不能描述为稳定、全面的大幅收益。
+
+C的DAC−R J Cover2为7下降/1上升/2相等；D为4下降/6上升，但下降幅度使均值为负，而中位差略正。不能把均值下降写成所有或多数D病例均下降。
+
+### 9.4 与早期空间错误的关系
+
+C/012的R dense质心偏差约132.03 mm，DAC相对R平均点位变化仅0.482 mm。由质心移动不超过平均点位差可知，当前冻结权重DAC不可能修复其百毫米整体错位。C/025 parietotemporal及C/053也仍存在几十毫米位置错误。
+
+这限制了本公式修复严重失败的能力，但不能由平均点位差直接推断所有E/J分数不变；小于1mm的位移仍可能影响2mm阈值附近的点。实际离线评分已检验这种影响，显示的是小幅收益与退化并存。
+
+### 9.5 为什么不投入六run，而非声称训练已失败
+
+非退化只是有可观察变量的必要检查，不是值得训练的充分条件。当前DAC相对固定平均未获得核心E/J增量，相对R又没有挽回严重病例。考虑反复使用的开发集、单seed及共享头分布偏移，继续训练仍可能产生不同结果，但没有足够机制依据优先投入六run。
+
+本阶段的负面结论应写成“当前固定公式未获得足够训练投资动机”，不能写成“完整DAC模型经多seed训练后无效”。
+
+## ⚠️ 10. 出现的问题、处理与未解决事项
+
+| 问题 | 实际处理/结果 | 剩余边界 |
+|---|---|---|
+| 原草案余弦分母混入小幅值效应 | 确认v2逐范数保护，CPU与保存张量公式核对通过 | 本阶段不做其它门控搜索 |
+| 旧服务器权重已清理 | 本机真实字节核验，新路径恢复两个权重 | 字节恢复不能替代任意环境数值等价 |
+| WebShell长行/引号风险 | 调用前静态检查，原字节封装，短入口，不改冻结request | 不是新通用传输框架 |
+| 上传核验末尾系统Python不支持removeprefix | 保留非零退出记录，只补完元数据映射检查 | 不将辅助调用失败当科研阴性；未重跑模型 |
+| RNG原始指纹未持久化 | 正式审计披露，核对运行时相等断言与完成凭据 | 无独立原始RNG快照复核，不补跑本次 |
+| 归档资源日志少最后一行 | 验证40行前缀+外部archived末行，与冻结写入顺序一致 | 不改旧归档，不声称两文件hash相同 |
+| 高一致性仍共同错误 | 全量query与七压力病例复盘，离线E/J验证 | 本公式没有可靠性保证 |
+| 压力样本选择偏倚 | 保留20例、报告C8/D10来源和病例等权分母 | 不能估计临床风险或套21来源gate |
+| 冻结权重反事实存在分布偏移 | 保留R精确重放与同权重控制 | 不能推断全部端到端训练结果 |
+| 有限训练随机性/硬件历史 | 使用旧权重，明确前序D Static设备混杂 | 本轮未完成多seed或新的同设备重训 |
+
+成功运行日志中的timm弃用和Triton确定性提示被记录，没有借机升级或重装环境。当前无依据把这些提示解释为本次几何结果的根因。
+
+## 🚦 11. 正式收束决定
+
+本阶段按用户指令正式收束：当前v2固定DAC方向组合不进入六run训练，不创建训练request，不扫描alpha温度、epsilon、阈值、第三次反馈或学习型gate来争取开发分数。
+
+收束范围是**SCQ-DAC这一版候选**，不撤销RF-Requery已有开发性证据，也不改变过去SCQ B/S、SCQ-RF的冻结结论。计划中的六run、630次新训练模型预测、1050行正式三臂评分、来源bootstrap、多seed和外部确认均未开展，不能在论文中列为已完成实验。
+
+本报告、代码、60行结果与负面机制证据应一起保留；未来归档/推送GitHub/备份权重/服务器清理仍按单独任务执行，本次写报告不包含这些操作。
+
+## 🧭 12. 下一阶段建议
+
+### 12.1 优先复核已有RF-Requery证据
+
+已有重查询增量尚受单seed和D设备混杂限制。下一阶段优先制定有限同设备复核协议：RF-Static/RF-Requery × C/D，首批四run，保持8k→8k、3900步、同折初始化与完整batch顺序配对，不改采样、目标、loss和网络主体。
+
+同设备公平性以折内两臂为核心；六/四run全程同卡优先，设备无法延续时披露并按预先约定分块，不混充严格比较、不自动重训。先固定seed、矩阵和评价合同，再观察结果，不根据C折loss调整D折。
+
+该四run解决的是同设备重复证据，**不能替代多seed**。应在资源与研究预算允许下另行预先规划匹配重复seed；继承有限梯度非确定性披露，不把相同seed当作初态/批次一致的证明。
+
+### 12.2 后续确认与论文表述
+
+模型和评价规则固定后，再讨论未用于设计的来源确认、SkullFix适用性和公平任务适配基线。已开放SkullFix开发样本不能自动改称盲测；MUG未认证为高精度实体GT的限制不变。来源bootstrap不能覆盖训练seed方差，也不能消除反复开发偏倚。
+
+论文可将DAC作为有价值的设计排除证据：双上下文共享头方向一致，不足以带来完整骨块/接口的可靠改进。不能包装成已训练的可靠性模块或概率不确定度模型。
+
+### 12.3 新结构研究的条件
+
+若后续仍研究coarse空间条件，应先复用既有Q0/Q1/Memory证据形成一个最小假设，明确它针对整体位置、范围覆盖还是接口误差。Q0大偏位并非失败特有，不能简单吸附到残余骨或统一限制残差来抹去有效大步。新假设应有单一接口、必要控制和明确证伪结果，不立即堆叠模块或追加训练。
+
+## 🗂️ 13. 证据索引与复现说明
+
+所有下列路径以本机项目根目录 `E:/Codex/2026-06-06/mamba-ccf-c-1-high-resolution` 为基准。本机与服务器不是同一文件系统，不把E盘路径用于远端执行。
+
+| 证据 | 项目相对位置 |
+|---|---|
+| 确认计划v2 | docs/cranial_bcsp_scq_dac_plan_20261115/ |
+| CPU36项与P3 | outputs/scq_dac_r01_preparation_20261115_v1/cpu_contract_batch_v1/result_v1.json；local_P3_v1.json |
+| 20例与双权重绑定 | 同准备目录selected20_cases_v1.json；local_R0_asset_review_v1.json |
+| 入口/采集实现 | 同准备目录bcsp_scq_dac_r1_entry_v1.py、bcsp_scq_dac_r1_core_v1.py |
+| 实际授权与执行 | 同准备目录authorized_execution_v1/ |
+| 正式冻结 | 同准备目录post_diagnostic_freeze_v1/freeze_verification_v1.json |
+| 方向机制摘要 | 同冻结目录GT_free_mechanism_review_v1.json |
+| 60行离线指标 | 同准备目录fixed20_offline_geometry_v1/case_scores.jsonl、case_scores.csv |
+| 配对/风险与保存复核 | 同评分目录paired_case_deltas.json、severe_transitions.json、saved_result_consistency_v1.json |
+| CPU执行与来源绑定 | 同评分目录completion.json、frozen_analysis_scope_v1.json、output_manifest.json |
+| 详细病例解释 | 同评分目录SCQ_DAC_固定20例离线几何对照与训练决策建议_zh_v1.md |
+
+本报告采用冻结原始指标生成表格，不新增文献检索或重算评分。外部研究动机与新颖性边界沿用确认计划中的一手文献清单；本轮证据不支持“首次Mamba颅骨补全”“全流程严格线性”“临床安全”或“经过校准的置信度”等主张。
+
+随报告生成 `report_source_manifest_v1.json` 与阶段收束回执，绑定实际输入证据、代码和报告SHA256。它们记录文档与现有证据身份，不自动证明已完成长期归档、GitHub推送或新恢复测试。
+''')
+report=D/'Cranial_BCSP_FullMamba_SCQ_DAC_完整实验报告_zh_2026-11-15_v1.md'
+with report.open('x',encoding='utf-8') as f:f.write('\n'.join(parts))
+sources=[B/'cpu_contract_batch_v1/result_v1.json',B/'local_P3_v1.json',B/'selected20_cases_v1.json',B/'local_R0_asset_review_v1.json',B/'bcsp_scq_dac_r1_entry_v1.py',B/'bcsp_scq_dac_r1_core_v1.py',B/'pending_request_v1/SCQ_DAC_R1_execution_request_v1.json',B/'authorized_execution_v1/execution_observation_summary_v1.json',F/'freeze_verification_v1.json',F/'GT_free_mechanism_review_v1.json',A/'completion.json',A/'fold_fixed_case_summary.json',A/'case_scores.jsonl',A/'paired_case_deltas.json',A/'severe_transitions.json',A/'saved_result_consistency_v1.json',A/'SCQ_DAC_固定20例离线几何对照与训练决策建议_zh_v1.md']
+for name,value in [('report_source_manifest_v1.json',dict(status='REPORT_FROM_FROZEN_EVIDENCE_NO_NEW_EXPERIMENT',sources=[rec(p) for p in sources],report=rec(report),new_forward=0,new_scoring=0,server_calls=0)),('stage_closure_receipt_v1.json',dict(status='SCQ_DAC_CURRENT_FORMULA_FORMALLY_CLOSED_NO_NEW_TRAINING',date_Asia_Shanghai='2026-11-15',report=rec(report),completed=dict(CPU_checks=36,native_forward=20,decoder_only=40,cases=20,offline_score_rows=60),new_training_runs=0,planned_six_run_matrix_executed=False,request_consumed=True,formal_MUR_gate=False,next_stage='Separate RF-Requery same-device replication protocol; not authorized by closure',archive_or_GitHub_actions_performed_now=False))]:
+ with (D/name).open('x',encoding='utf-8') as f:json.dump(value,f,ensure_ascii=False,indent=2)
+text=report.read_text(encoding='utf-8');assert text.count('\n```')==0 and sum(l.startswith('# ') for l in text.splitlines())==1
+print(json.dumps(dict(status='SCQ_DAC_FINAL_REPORT_AND_CLOSURE_SAVED',file=str(report),characters=len(text),lines=len(text.splitlines()),sha256=rec(report)['sha256']),ensure_ascii=True))
