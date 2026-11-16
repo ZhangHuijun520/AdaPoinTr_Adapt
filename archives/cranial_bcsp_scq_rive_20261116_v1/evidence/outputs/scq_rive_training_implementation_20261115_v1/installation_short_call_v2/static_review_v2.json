@@ -1,0 +1,197 @@
+{
+  "status": "LOCAL_SHORT_INSTALLATION_CALL_V2_STATIC_REVIEW_PASS_NOT_EXECUTED",
+  "checks": {
+    "four_local_sources_parse_and_compile_without_execution": true,
+    "all22_original_assertions_present": true,
+    "A_B_no_write_open_or_mkdir": true,
+    "C_preserves_exclusive_xb_and_root0700_and_fsync": true,
+    "no_remote_delete_or_overwrite_api": true,
+    "strict_A_B_C_gates": true,
+    "separate_execute_flag_and_authorization_required": true,
+    "new_attempt_exclusive_claim_and_no_retry": true,
+    "raw_stdout_stderr_and_distinct_timeout_capture": true,
+    "original60s_total_budget_and_write_time_reserve": true,
+    "each_call_total_le2048_and_lines_le2048": true,
+    "encoded_payload_equals_exact_source_bytes": true,
+    "request_archive_mapping_sidecars_unchanged": true,
+    "no_execution_claim_or_run_directory_created": true,
+    "original_11_payload_sources_match_request_freeze": true,
+    "driver_self_hash_matches_callset": true
+  },
+  "guard_partition": [
+    {
+      "assertion": "assert not any((x.is_symlink() for x in (p, *p.parents))), str(p)",
+      "stages": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "assertion": "assert p.is_file() and p.stat().st_size == 41020",
+      "stages": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "assertion": "assert ah == '97fcdbe8fe31e410127301581dd7280588b71da0361059937e84015881396445'",
+      "stages": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "assertion": "assert len(m['files']) == 11 and len(m['reused_readonly_records']) == 58",
+      "stages": [
+        "B"
+      ]
+    },
+    {
+      "assertion": "assert __import__('socket').gethostname() == I['hostname'] == 'shu-common-25721452-notebook-qx2k0r-0' and os.getuid() == I['uid'] == 1000",
+      "stages": [
+        "B"
+      ]
+    },
+    {
+      "assertion": "assert str(project) == '/home/jovyan/adapointr_work/PoinTr' and project.is_dir()",
+      "stages": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "assertion": "assert P.cwd() == project",
+      "stages": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "assertion": "assert gpu == [I['gpu_uuid'], I['gpu_name'], I['driver_version'], str(I['nvidia_smi_memory_total_MiB'])]",
+      "stages": [
+        "B"
+      ]
+    },
+    {
+      "assertion": "assert q['identity'] == I and q['environment']['CUDA_VISIBLE_DEVICES'] == I['gpu_uuid'] and (q['execution_authorized'] is False)",
+      "stages": [
+        "B"
+      ]
+    },
+    {
+      "assertion": "assert root.parent == project / 'third_party' and root.parent.is_dir() and (not os.path.lexists(root))",
+      "stages": [
+        "C"
+      ]
+    },
+    {
+      "assertion": "assert sum((r['bytes'] for r in m['reused_readonly_records'])) <= 1073741824",
+      "stages": [
+        "A"
+      ]
+    },
+    {
+      "assertion": "assert not os.path.lexists(root)",
+      "stages": [
+        "C"
+      ]
+    },
+    {
+      "assertion": "assert {x.name for x in root.iterdir()} == {P(r['target']).name for r in m['files']}",
+      "stages": [
+        "C"
+      ]
+    },
+    {
+      "assertion": "assert len(ms) == len({m.name for m in ms}) == 12 and sum((m.size for m in ms)) <= 262144",
+      "stages": [
+        "B"
+      ]
+    },
+    {
+      "assertion": "assert x.is_file() and x.stat().st_size == len(expected.encode()) and (x.read_bytes() == expected.encode()), str(x)",
+      "stages": [
+        "B"
+      ]
+    },
+    {
+      "assertion": "assert x.parent == root and (not os.path.lexists(x)) and (r['overwrite'] is False)",
+      "stages": [
+        "C"
+      ]
+    },
+    {
+      "assertion": "assert len(v) == r['bytes'] and hashlib.sha256(v).hexdigest() == r['sha256']",
+      "stages": [
+        "C"
+      ]
+    },
+    {
+      "assertion": "assert not os.path.lexists(x), x",
+      "stages": [
+        "C"
+      ]
+    },
+    {
+      "assertion": "assert x.is_file() and x.stat().st_size == r['bytes'] and (digest(x) == r['sha256']), str(x)",
+      "stages": [
+        "A"
+      ]
+    },
+    {
+      "assertion": "assert x.stat().st_size == r['bytes'] and digest(x) == r['sha256']",
+      "stages": [
+        "C"
+      ]
+    },
+    {
+      "assertion": "assert m.isfile() and (not n.is_absolute()) and ('..' not in n.parts)",
+      "stages": [
+        "B"
+      ]
+    },
+    {
+      "assertion": "assert len(data[m.name]) == m.size",
+      "stages": [
+        "B"
+      ]
+    }
+  ],
+  "guard_order_note": "All58reused hashes inA; upload/member/identity/GPU/selector inB; fresh archive/identity/parents/absence/target hashes/exclusive writes/readback inC. Mandatory local driver gates A and B before C; no standalone C invocation authorized.",
+  "call_lengths": [
+    {
+      "stage": "A",
+      "command_bytes": 1339,
+      "max_line_bytes": 85
+    },
+    {
+      "stage": "B",
+      "command_bytes": 2020,
+      "max_line_bytes": 85
+    },
+    {
+      "stage": "C",
+      "command_bytes": 1914,
+      "max_line_bytes": 85
+    }
+  ],
+  "request_sha256": "fdcb6cacef71bfae9395baf7b3bd05506b34b4053b75bfb03f54bff6bbe82bda",
+  "archive_sha256": "97fcdbe8fe31e410127301581dd7280588b71da0361059937e84015881396445",
+  "mapping_sha256": "a8f1015ea0b17b3a7de82e0bd4ad271950b41040d5dbaf3b12903e186f93887c",
+  "callset_sha256": "e9d1235ac9a047b0062876503baa9cb86af959296d05b50099697c0431fedfdd",
+  "local_driver_sha256": "4c15494a6f3e9bafe0176551c79041604c9631f7af1318c0e4b991e865eccc99",
+  "operations": {
+    "server_calls": 0,
+    "installation_attempts": 0,
+    "tests": 0,
+    "forward": 0,
+    "training": 0
+  },
+  "limitations": [
+    "Static review only; no execution proof of this revised invocation.",
+    "No atomic lock spans separate calls; guards are checked in their listed stages and key archive/identity/target guards repeated inC.",
+    "If a write-stage call times out, remote state remains unknown until a separately authorized read-only check; no automatic retry."
+  ]
+}

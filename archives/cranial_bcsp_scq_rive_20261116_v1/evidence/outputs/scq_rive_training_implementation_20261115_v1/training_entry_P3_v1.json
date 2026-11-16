@@ -1,0 +1,98 @@
+{
+  "status": "RIVE_TRAINING_ENTRY_LOCAL_P3_PASS",
+  "scope": "IMPLEMENTATION_ONLY_NOT_TRAINING_ADMISSION",
+  "entry_sha256": "2b864497f28d1940af10bcb9d5b099e9846dfd0faf284785bd4e7b8b7980de15",
+  "bridge_sha256": "80ada6b05970a709ddcea8d101b0532504681d51a903054b755ab38ce5739e03",
+  "CPU_checks": 73,
+  "CPU_result": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rive_training_20261115_v1/CPU_result_v1.json",
+    "bytes": 4650,
+    "sha256": "37d1f2d64d6f2331d07ae59ed39328a6fd81ea25d57f9f0dab1a30390bf57f0b"
+  },
+  "test": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rive_training_20261115_v1/test_rive_training_cpu_v1.py",
+    "bytes": 28566,
+    "sha256": "91479332c99632286d2f6f6732cdc7a37409c8c8381228ef5a66846c421e93ad"
+  },
+  "static_review": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rive_training_20261115_v1/static_review_v1.json",
+    "bytes": 1058,
+    "sha256": "a6816952352e29868aa3215486c1a71ca82a0870f3b138dec12c5b8fb1733068"
+  },
+  "CPU_policy_stdout": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rive_training_20261115_v1/CPU_policy_stdout_v1.bin",
+    "bytes": 533,
+    "sha256": "24a4ae8281cd9c6ef2061bdb479f1c1ca1e2cb07a27a0dfb443c7d02be9d8e7a"
+  },
+  "CPU_console_stdout": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_training_implementation_20261115_v1\\cpu_stdout_v1.bin",
+    "bytes": 34,
+    "sha256": "18b131ce49694853d273bd16774faae07344d674b531c26473d5fe09b4f10e82"
+  },
+  "CPU_console_stderr": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_training_implementation_20261115_v1\\cpu_stderr_v1.bin",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "unchanged_parent_functions": [
+    "require",
+    "no_links",
+    "sha",
+    "exact",
+    "bound",
+    "emit",
+    "source_module",
+    "payload_paths",
+    "geometry_record",
+    "startup_smi_identity_query",
+    "startup_read_records"
+  ],
+  "checks": {
+    "all73_artificial_CPU_pass": true,
+    "all_four_fold_arm_authorization_paths": true,
+    "explicit_grant_and_oneway_runtime": true,
+    "old_stage_seed_or_identity_rejected": true,
+    "full_static_and_requery_dispatch_forward_backward": true,
+    "zero_optimizer_step_and_no_CUDA": true,
+    "real_RF_231171_parameters_and_initialization_preservation": true,
+    "both_residual_heads_and_upstream_gradient_probe": true,
+    "Static_N0_with_Q1_geometry_and_Requery_changed_neighbors": true,
+    "full_actual_source_runtime_read_policy_and_exception_traceback": true,
+    "exact_source_writes_and_unbound_siblings_denied": true,
+    "original_model_and_runtime_hashes_unchanged": true,
+    "original_optimizer_flags_and_parameter_partition": true,
+    "effective3600_launcher_and_budget_distinct_from_legacy86400": true,
+    "first_single_run_capacity_only": true,
+    "no_production_authorization_runtime_or_launcher": true
+  },
+  "implementation_files": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_training_implementation_20261115_v1\\bcsp_rive_training_entry_v1.py",
+      "bytes": 30125,
+      "sha256": "2b864497f28d1940af10bcb9d5b099e9846dfd0faf284785bd4e7b8b7980de15"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_training_implementation_20261115_v1\\bcsp_rive_training_bridge_v1.py",
+      "bytes": 1256,
+      "sha256": "80ada6b05970a709ddcea8d101b0532504681d51a903054b755ab38ce5739e03"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_training_implementation_20261115_v1\\test_rive_training_cpu_v1.py",
+      "bytes": 28566,
+      "sha256": "91479332c99632286d2f6f6732cdc7a37409c8c8381228ef5a66846c421e93ad"
+    }
+  ],
+  "limitations": [
+    "Tiny CPU fixture uses actual SCQ/RF implementation and three artificial forwards/backwards; it does not execute native Mamba/CUDA.",
+    "Inherited runtime imported under exact policy, not trained; bridge production delegation tested with an inert recorder.",
+    "Frozen current-device native training evidence is reused; no repeated preflight.",
+    "Resource telemetry inherits sampled worker RSS and GPU metrics, not process-tree/cgroup hard isolation. Wall limit is3600s outer timeout plus effective TrainingBudget.",
+    "First Static_C only; full four-run storage capacity not approved.",
+    "Fresh identity/provider/input hash and>=6GiB free-disk check required at separately authorized execution."
+  ],
+  "server_operations": 0,
+  "deployments": 0,
+  "training_runs": 0,
+  "production_forward": 0,
+  "checkpoint_loads": 0
+}

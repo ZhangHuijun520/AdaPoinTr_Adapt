@@ -1,0 +1,664 @@
+{
+  "status": "RIVE_MODE_A_CURRENT_CANDIDATE_CLOSED_NOT_PROMOTED",
+  "date": "2026-11-16",
+  "basis": "Existing valid paired training, frozen scoring, and formally frozen selected-case diagnosis; no new experiment or statistical gate.",
+  "hypotheses": {
+    "H1_twofold_direction_supported": false,
+    "H2_second_seed": "NOT_EXECUTED_MODE_A",
+    "H3_reliability_direction_by_fold": {
+      "C": false,
+      "D": false
+    }
+  },
+  "decision": "Close current unchanged RF-Requery candidate; do not promote as reliably superior to RF-Static. Preserve mixed and negative evidence; no inference that every requery mechanism is ineffective.",
+  "training": [
+    {
+      "arm": "RF-Static",
+      "fold": "C",
+      "identity": {
+        "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+        "uid": 1000,
+        "project": "/home/jovyan/adapointr_work/PoinTr",
+        "gpu_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+        "gpu_name": "NVIDIA GeForce RTX 4090 D",
+        "driver_version": "570.190",
+        "nvidia_smi_memory_total_MiB": 24564,
+        "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+        "python_version": "3.10.20",
+        "torch_version": "2.4.1+cu118",
+        "numpy_version": "2.2.6",
+        "timm_version": "1.0.27",
+        "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+        "torch_cuda_version": "11.8"
+      },
+      "checkpoint": {
+        "bytes": 489927058,
+        "sha256": "80c59d40fe3d0a415e41c67f1b036f619e2e862fde829f42a66ecb73e950eb97"
+      },
+      "initialization": {
+        "parameter_sha256": "8697bfc3b9d7dfd2c0003ec54253cf77cd146f2926a41138ffeacc1ec4f7d255",
+        "persistent_state_sha256": "d0f4c3699fe66a2ba2b4879c1bd41ba363a325fa152d79a4055773be3e0f4167",
+        "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+        "seed": 0
+      },
+      "common_initial_state_SHA256": "b7e5b640c1f0e709ab6697139db1267584266a51b4e0e29f2d5217bfd1236cc5",
+      "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+      "counts": {
+        "forward": 3900,
+        "backward": 3900,
+        "clip": 3900,
+        "step": 3900,
+        "lr_scheduler": 100,
+        "bn_scheduler": 100
+      },
+      "delta_summary": {
+        "status": "ALL3900_RF_GEOMETRY_AND_LOSS_PASS",
+        "records": 3900,
+        "Static_N0_N1_equal_records": 3900,
+        "RF_nonzero_steps": 3899,
+        "max_query_delta_norm": 0.6651458144187927,
+        "RF_second_residual_mean": 0.08059878756088437,
+        "units": "D-only normalized; descriptive only"
+      },
+      "elapsed_seconds": 1489.3702059332281
+    },
+    {
+      "arm": "RF-Requery",
+      "fold": "C",
+      "identity": {
+        "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+        "uid": 1000,
+        "project": "/home/jovyan/adapointr_work/PoinTr",
+        "gpu_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+        "gpu_name": "NVIDIA GeForce RTX 4090 D",
+        "driver_version": "570.190",
+        "nvidia_smi_memory_total_MiB": 24564,
+        "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+        "python_version": "3.10.20",
+        "torch_version": "2.4.1+cu118",
+        "numpy_version": "2.2.6",
+        "timm_version": "1.0.27",
+        "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+        "torch_cuda_version": "11.8"
+      },
+      "checkpoint": {
+        "bytes": 489927058,
+        "sha256": "5fc095755fa22fec79230394f3d3cd5dc461fd18e4ff1e366e52e5ae033dc87e"
+      },
+      "initialization": {
+        "parameter_sha256": "8697bfc3b9d7dfd2c0003ec54253cf77cd146f2926a41138ffeacc1ec4f7d255",
+        "persistent_state_sha256": "d0f4c3699fe66a2ba2b4879c1bd41ba363a325fa152d79a4055773be3e0f4167",
+        "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+        "seed": 0
+      },
+      "common_initial_state_SHA256": "b7e5b640c1f0e709ab6697139db1267584266a51b4e0e29f2d5217bfd1236cc5",
+      "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+      "counts": {
+        "forward": 3900,
+        "backward": 3900,
+        "clip": 3900,
+        "step": 3900,
+        "lr_scheduler": 100,
+        "bn_scheduler": 100
+      },
+      "delta_summary": {
+        "status": "ALL3900_RF_GEOMETRY_AND_LOSS_PASS",
+        "records": 3900,
+        "Requery_N0_N1_equal_records": 1,
+        "mean_neighbor_overlap": 0.6447559376252003,
+        "RF_nonzero_steps": 3899,
+        "max_query_delta_norm": 0.7608178853988647,
+        "RF_second_residual_mean": 0.16751819848348626,
+        "units": "D-only normalized; descriptive only"
+      },
+      "elapsed_seconds": 1494.554131187033
+    },
+    {
+      "arm": "RF-Static",
+      "fold": "D",
+      "identity": {
+        "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+        "uid": 1000,
+        "project": "/home/jovyan/adapointr_work/PoinTr",
+        "gpu_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+        "gpu_name": "NVIDIA GeForce RTX 4090 D",
+        "driver_version": "570.190",
+        "nvidia_smi_memory_total_MiB": 24564,
+        "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+        "python_version": "3.10.20",
+        "torch_version": "2.4.1+cu118",
+        "numpy_version": "2.2.6",
+        "timm_version": "1.0.27",
+        "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+        "torch_cuda_version": "11.8"
+      },
+      "checkpoint": {
+        "bytes": 489927058,
+        "sha256": "f196f5b1bf406e4018baf11ae5d977dc445f515ea4b72aff431a061e64740b45"
+      },
+      "initialization": {
+        "parameter_sha256": "8697bfc3b9d7dfd2c0003ec54253cf77cd146f2926a41138ffeacc1ec4f7d255",
+        "persistent_state_sha256": "d0f4c3699fe66a2ba2b4879c1bd41ba363a325fa152d79a4055773be3e0f4167",
+        "order_sha256": "2c9f3e9afb2cfe9ae46c0566bdbced465c64acc2a564654914d2163d74e5e838",
+        "seed": 0
+      },
+      "common_initial_state_SHA256": "b7e5b640c1f0e709ab6697139db1267584266a51b4e0e29f2d5217bfd1236cc5",
+      "order_sha256": "2c9f3e9afb2cfe9ae46c0566bdbced465c64acc2a564654914d2163d74e5e838",
+      "counts": {
+        "forward": 3900,
+        "backward": 3900,
+        "clip": 3900,
+        "step": 3900,
+        "lr_scheduler": 100,
+        "bn_scheduler": 100
+      },
+      "delta_summary": {
+        "status": "ALL3900_RF_GEOMETRY_AND_LOSS_PASS",
+        "records": 3900,
+        "Static_N0_N1_equal_records": 3900,
+        "RF_nonzero_steps": 3899,
+        "max_query_delta_norm": 0.5922653079032898,
+        "RF_second_residual_mean": 0.04875550745471488,
+        "units": "D-only normalized; descriptive only"
+      },
+      "elapsed_seconds": 1498.8665359248407
+    },
+    {
+      "arm": "RF-Requery",
+      "fold": "D",
+      "identity": {
+        "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+        "uid": 1000,
+        "project": "/home/jovyan/adapointr_work/PoinTr",
+        "gpu_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+        "gpu_name": "NVIDIA GeForce RTX 4090 D",
+        "driver_version": "570.190",
+        "nvidia_smi_memory_total_MiB": 24564,
+        "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+        "python_version": "3.10.20",
+        "torch_version": "2.4.1+cu118",
+        "numpy_version": "2.2.6",
+        "timm_version": "1.0.27",
+        "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+        "torch_cuda_version": "11.8"
+      },
+      "checkpoint": {
+        "bytes": 489927058,
+        "sha256": "e2528ee8a65f3c8a1a44798a89af1d47a94c3a02aa2c0de2a48ed6bf1a880533"
+      },
+      "initialization": {
+        "parameter_sha256": "8697bfc3b9d7dfd2c0003ec54253cf77cd146f2926a41138ffeacc1ec4f7d255",
+        "persistent_state_sha256": "d0f4c3699fe66a2ba2b4879c1bd41ba363a325fa152d79a4055773be3e0f4167",
+        "order_sha256": "2c9f3e9afb2cfe9ae46c0566bdbced465c64acc2a564654914d2163d74e5e838",
+        "seed": 0
+      },
+      "common_initial_state_SHA256": "b7e5b640c1f0e709ab6697139db1267584266a51b4e0e29f2d5217bfd1236cc5",
+      "order_sha256": "2c9f3e9afb2cfe9ae46c0566bdbced465c64acc2a564654914d2163d74e5e838",
+      "counts": {
+        "forward": 3900,
+        "backward": 3900,
+        "clip": 3900,
+        "step": 3900,
+        "lr_scheduler": 100,
+        "bn_scheduler": 100
+      },
+      "delta_summary": {
+        "status": "ALL3900_RF_GEOMETRY_AND_LOSS_PASS",
+        "records": 3900,
+        "Requery_N0_N1_equal_records": 1,
+        "mean_neighbor_overlap": 0.6577909655448718,
+        "RF_nonzero_steps": 3899,
+        "max_query_delta_norm": 0.5636485815048218,
+        "RF_second_residual_mean": 0.1399415781942438,
+        "units": "D-only normalized; descriptive only"
+      },
+      "elapsed_seconds": 1492.2648648917675
+    }
+  ],
+  "fold_results": {
+    "C": {
+      "metrics": {
+        "E_P95_mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 12.543113061803302,
+          "mean_b": 13.12885848209579,
+          "mean_delta_b_minus_a": 0.5857454202924884,
+          "median_delta": 1.0163341569134694,
+          "min_delta": -8.897350269335675,
+          "max_delta": 9.178006189425432,
+          "improvement_direction": "negative",
+          "improved_sources": 8,
+          "tied_sources": 0,
+          "worse_sources": 13
+        },
+        "J_P95_mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 15.546238585020062,
+          "mean_b": 16.576445360720772,
+          "mean_delta_b_minus_a": 1.030206775700707,
+          "median_delta": 1.2589534668904232,
+          "min_delta": -11.905450318242746,
+          "max_delta": 12.78625235623601,
+          "improvement_direction": "negative",
+          "improved_sources": 9,
+          "tied_sources": 0,
+          "worse_sources": 12
+        },
+        "CD_L1_mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 8.284898015473207,
+          "mean_b": 8.685887833000635,
+          "mean_delta_b_minus_a": 0.40098981752742613,
+          "median_delta": 0.9490342159894523,
+          "min_delta": -8.673372340257796,
+          "max_delta": 7.712528568179464,
+          "improvement_direction": "negative",
+          "improved_sources": 8,
+          "tied_sources": 0,
+          "worse_sources": 13
+        },
+        "E_coverage_2.0mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 0.5414974119452326,
+          "mean_b": 0.49321024057418195,
+          "mean_delta_b_minus_a": -0.04828717137105062,
+          "median_delta": -0.0565045055476574,
+          "min_delta": -0.18701571765856762,
+          "max_delta": 0.10347910607494515,
+          "improvement_direction": "positive",
+          "improved_sources": 7,
+          "tied_sources": 0,
+          "worse_sources": 14
+        },
+        "J_coverage_2.0mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 0.4130771484872761,
+          "mean_b": 0.3793970304058907,
+          "mean_delta_b_minus_a": -0.033680118081385386,
+          "median_delta": -0.0392422128750623,
+          "min_delta": -0.1852764360804353,
+          "max_delta": 0.10200907893409283,
+          "improvement_direction": "positive",
+          "improved_sources": 6,
+          "tied_sources": 0,
+          "worse_sources": 15
+        },
+        "reverse_A2_outlier_20.0mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 0.13782203311011904,
+          "mean_b": 0.1602108909970238,
+          "mean_delta_b_minus_a": 0.02238885788690477,
+          "median_delta": 0.015551757812500011,
+          "min_delta": -0.15830078125,
+          "max_delta": 0.19443359375,
+          "improvement_direction": "negative",
+          "improved_sources": 9,
+          "tied_sources": 0,
+          "worse_sources": 12
+        },
+        "centroid_offset_mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 21.543409317893612,
+          "mean_b": 23.60375263064938,
+          "mean_delta_b_minus_a": 2.0603433127557675,
+          "median_delta": 3.420727094976373,
+          "min_delta": -14.105899123397098,
+          "max_delta": 15.373964540101174,
+          "improvement_direction": "negative",
+          "improved_sources": 9,
+          "tied_sources": 0,
+          "worse_sources": 12
+        },
+        "radius_gyration_ratio": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 0.8826127314757896,
+          "mean_b": 0.9184669816702844,
+          "mean_delta_b_minus_a": 0.03585425019449514,
+          "median_delta": 0.023388812119015112,
+          "min_delta": -0.016952942706229712,
+          "max_delta": 0.15344386417068467,
+          "improvement_direction": "descriptive_not_ordered"
+        }
+      },
+      "risks": {
+        "placement_tail": {
+          "baseline_arm": "RF-Static",
+          "candidate_arm": "RF-Requery",
+          "baseline_count": 31,
+          "candidate_count": 40,
+          "new": 17,
+          "rescued": 8
+        },
+        "compact_distribution": {
+          "baseline_arm": "RF-Static",
+          "candidate_arm": "RF-Requery",
+          "baseline_count": 62,
+          "candidate_count": 51,
+          "new": 7,
+          "rescued": 18
+        },
+        "severe_geometry": {
+          "baseline_arm": "RF-Static",
+          "candidate_arm": "RF-Requery",
+          "baseline_count": 15,
+          "candidate_count": 16,
+          "new": 7,
+          "rescued": 6
+        }
+      }
+    },
+    "D": {
+      "metrics": {
+        "E_P95_mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 6.51767736038504,
+          "mean_b": 5.862769173874132,
+          "mean_delta_b_minus_a": -0.6549081865109068,
+          "median_delta": -0.197736345833059,
+          "min_delta": -8.374034023970488,
+          "max_delta": 3.995210761563561,
+          "improvement_direction": "negative",
+          "improved_sources": 13,
+          "tied_sources": 0,
+          "worse_sources": 8
+        },
+        "J_P95_mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 9.591265283983716,
+          "mean_b": 8.578136983820297,
+          "mean_delta_b_minus_a": -1.0131283001634213,
+          "median_delta": -0.26683127688770014,
+          "min_delta": -9.273653077449486,
+          "max_delta": 4.869731155887546,
+          "improvement_direction": "negative",
+          "improved_sources": 13,
+          "tied_sources": 0,
+          "worse_sources": 8
+        },
+        "CD_L1_mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 3.426322067166162,
+          "mean_b": 3.2308175421052985,
+          "mean_delta_b_minus_a": -0.19550452506086274,
+          "median_delta": -0.1548659534522132,
+          "min_delta": -4.646208507603913,
+          "max_delta": 4.15576713716511,
+          "improvement_direction": "negative",
+          "improved_sources": 14,
+          "tied_sources": 0,
+          "worse_sources": 7
+        },
+        "E_coverage_2.0mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 0.6404635324384623,
+          "mean_b": 0.656642071512072,
+          "mean_delta_b_minus_a": 0.016178539073609527,
+          "median_delta": 0.006178212597308885,
+          "min_delta": -0.12338792588108793,
+          "max_delta": 0.2044375741588726,
+          "improvement_direction": "positive",
+          "improved_sources": 12,
+          "tied_sources": 0,
+          "worse_sources": 9
+        },
+        "J_coverage_2.0mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 0.5314221260472648,
+          "mean_b": 0.5108123132141085,
+          "mean_delta_b_minus_a": -0.020609812833156445,
+          "median_delta": -0.021791241651296533,
+          "min_delta": -0.25864938474438537,
+          "max_delta": 0.1741727897044914,
+          "improvement_direction": "positive",
+          "improved_sources": 9,
+          "tied_sources": 0,
+          "worse_sources": 12
+        },
+        "reverse_A2_outlier_20.0mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 0.029731677827380953,
+          "mean_b": 0.02512323288690476,
+          "mean_delta_b_minus_a": -0.0046084449404761915,
+          "median_delta": -0.0010498046875,
+          "min_delta": -0.131884765625,
+          "max_delta": 0.14169921875,
+          "improvement_direction": "negative",
+          "improved_sources": 13,
+          "tied_sources": 1,
+          "worse_sources": 7
+        },
+        "centroid_offset_mm": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 12.908722900905,
+          "mean_b": 11.512224933005688,
+          "mean_delta_b_minus_a": -1.3964979678993104,
+          "median_delta": -1.0733975460330578,
+          "min_delta": -12.661221084608552,
+          "max_delta": 7.823502544890593,
+          "improvement_direction": "negative",
+          "improved_sources": 15,
+          "tied_sources": 0,
+          "worse_sources": 6
+        },
+        "radius_gyration_ratio": {
+          "status": "OK",
+          "pair_count": 21,
+          "undefined_pairs": 0,
+          "mean_a": 0.9293381697171694,
+          "mean_b": 0.8980153796391002,
+          "mean_delta_b_minus_a": -0.031322790078069415,
+          "median_delta": -0.03273712195722622,
+          "min_delta": -0.07209020876130767,
+          "max_delta": 0.02097602446952429,
+          "improvement_direction": "descriptive_not_ordered"
+        }
+      },
+      "risks": {
+        "placement_tail": {
+          "baseline_arm": "RF-Static",
+          "candidate_arm": "RF-Requery",
+          "baseline_count": 16,
+          "candidate_count": 9,
+          "new": 5,
+          "rescued": 12
+        },
+        "compact_distribution": {
+          "baseline_arm": "RF-Static",
+          "candidate_arm": "RF-Requery",
+          "baseline_count": 40,
+          "candidate_count": 57,
+          "new": 21,
+          "rescued": 4
+        },
+        "severe_geometry": {
+          "baseline_arm": "RF-Static",
+          "candidate_arm": "RF-Requery",
+          "baseline_count": 2,
+          "candidate_count": 2,
+          "new": 2,
+          "rescued": 2
+        }
+      }
+    }
+  },
+  "pooled_source_equal": {
+    "E_P95_mm": {
+      "mean_a": 9.53039521109417,
+      "mean_b": 9.49581382798496,
+      "mean_delta_b_minus_a": -0.03458138310920916
+    },
+    "J_P95_mm": {
+      "mean_a": 12.56875193450189,
+      "mean_b": 12.577291172270535,
+      "mean_delta_b_minus_a": 0.008539237768642849
+    },
+    "CD_L1_mm": {
+      "mean_a": 5.855610041319684,
+      "mean_b": 5.958352687552967,
+      "mean_delta_b_minus_a": 0.10274264623328169
+    },
+    "E_coverage_2.0mm": {
+      "mean_a": 0.5909804721918475,
+      "mean_b": 0.5749261560431269,
+      "mean_delta_b_minus_a": -0.016054316148720545
+    },
+    "J_coverage_2.0mm": {
+      "mean_a": 0.47224963726727043,
+      "mean_b": 0.4451046718099996,
+      "mean_delta_b_minus_a": -0.027144965457270916
+    },
+    "reverse_A2_outlier_20.0mm": {
+      "mean_a": 0.08377685546875,
+      "mean_b": 0.09266706194196428,
+      "mean_delta_b_minus_a": 0.008890206473214288
+    },
+    "centroid_offset_mm": {
+      "mean_a": 17.226066109399305,
+      "mean_b": 17.557988781827536,
+      "mean_delta_b_minus_a": 0.3319226724282286
+    },
+    "radius_gyration_ratio": {
+      "mean_a": 0.9059754505964794,
+      "mean_b": 0.9082411806546923,
+      "mean_delta_b_minus_a": 0.002265730058212862
+    }
+  },
+  "diagnostic_counts": {
+    "cases": 11,
+    "prediction_members": 22,
+    "stage_rows": 88,
+    "transitions": 66,
+    "case_panels": 11,
+    "summary_images": 1
+  },
+  "diagnostic_increases": {
+    "centroid_offset_mm": 7,
+    "E_P95_mm": 3,
+    "J_P95_mm": 5
+  },
+  "scope_limits": [
+    "Only seed0, repeatedly exposed development sources; no independent held-out confirmation.",
+    "Bootstrap/CI and p-values not executed; no significance/equivalence claim.",
+    "Original broad Memory/F/z/actual-index and all420-stage mechanism analysis not completed; selected11 diagnosis follows later authorized scope.",
+    "Selected improved controls are descriptive and outcome-selected before array reads, not unbiased normal controls."
+  ],
+  "next_research": "Only formulate a distinct falsifiable input-conditioned spatial-generation hypothesis before any implementation; no automatic training or parameter search.",
+  "operations": {
+    "server_calls": 0,
+    "forward": 0,
+    "checkpoint_loads": 0,
+    "training": 0,
+    "scoring": 0,
+    "bootstrap": 0
+  },
+  "evidence": [
+    {
+      "label": "training_freeze_Static_C",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_training_implementation_20261115_v1\\post_training_freeze_v1\\freeze_verification_v1.json",
+      "bytes": 16406,
+      "sha256": "37c4c51ba73b28fbc43de7b37aeb00d898d63792655f1de81b29e9bc083990b5"
+    },
+    {
+      "label": "training_freeze_Requery_C_request_preparation_v1",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_training_implementation_20261115_v1\\Requery_C_request_preparation_v1\\post_training_freeze_v1\\freeze_verification_v1.json",
+      "bytes": 19350,
+      "sha256": "fd463d344e62978c79fa8bc1c077b04b3366b38ea945fe49544f81528a02775d"
+    },
+    {
+      "label": "training_freeze_Static_D_request_preparation_v1",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_training_implementation_20261115_v1\\Static_D_request_preparation_v1\\post_training_freeze_v1\\freeze_verification_v1.json",
+      "bytes": 20714,
+      "sha256": "d1637699a9e1e6813920c5feeae014db72500ef71b15e21d447c2d2e479a86ea"
+    },
+    {
+      "label": "training_freeze_Requery_D_request_preparation_v1",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_training_implementation_20261115_v1\\Requery_D_request_preparation_v1\\post_training_freeze_v1\\freeze_verification_v1.json",
+      "bytes": 23961,
+      "sha256": "5c0ef50e3b3a9f0a0a602d3e703d96cea605c86370ababc084c350fabe291346"
+    },
+    {
+      "label": "prediction_freeze",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_fourmodel_native_prediction_preparation_20261115_v1\\post_prediction_freeze_20261116_v1\\freeze_verification_v1.json",
+      "bytes": 175369,
+      "sha256": "5b2b4376c05b7a2705618d6979fdf022c07a3f02984043545cdb1b38ab126518"
+    },
+    {
+      "label": "score_freeze",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_score_freeze_20261116_v1\\audit_verification_v1.json",
+      "bytes": 9044,
+      "sha256": "904e273e49570df19ff3417106d0300a0b3b2fe1d9b835e866ac432cbbee9de2"
+    },
+    {
+      "label": "diagnostic_freeze",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_stage_visual_freeze_20261116_v1\\audit_verification_v1.json",
+      "bytes": 23168,
+      "sha256": "3f409bcb86b1db96f2e06b5e655d9bf915e8b6d5084acba6c58040c3945ed5ef"
+    },
+    {
+      "label": "frozen_descriptive_results",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_score_freeze_20261116_v1\\descriptive_results_v1.json",
+      "bytes": 29146,
+      "sha256": "abca75073c728e3779110140541e2812aa1abdaf9dc50f074dc5645b0c6cdc60"
+    },
+    {
+      "label": "scoring_request",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_score_implementation_20261116_v1\\local_scoring_execution_request_v1.json",
+      "bytes": 11507,
+      "sha256": "fb84bccd3ebcbaa5346ff8897d8e05cf9c10586c99411040bd01dae51856b9e7"
+    },
+    {
+      "label": "original_revised_plan",
+      "path": "C:\\Users\\zhj\\Desktop\\Cranial_BCSP_FullMamba_SCQ_RIVE_正式实验计划书_审阅修订v2_2026-11-15.md",
+      "bytes": 38771,
+      "sha256": "147cf4a8c09bbb4a4ddbff2734548467914e4c8cdc8699bac6470b4295c41627"
+    },
+    {
+      "label": "mode_A_contract",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_training_implementation_20261115_v1\\RIVE_modeA_pair_contract_v1.json",
+      "bytes": 14150,
+      "sha256": "0ce612b00b453bc5e5da2fe22552b2c61c38ff20d46c3bd07f7521a8359fe652"
+    },
+    {
+      "label": "later_authorized_visual_scope",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_stage_visual_20261116_v1\\fixed_visual_scope_v1.json",
+      "bytes": 2489,
+      "sha256": "e9222206229bdf471c199968a025b282067ce16792c14e6a8773f0fc8af7756c"
+    },
+    {
+      "label": "stage_report",
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_stage_visual_20261116_v1\\RIVE_固定病例分阶段几何诊断报告_zh_v1.md",
+      "bytes": 9951,
+      "sha256": "c84f13edbdd04dc0a164918c07f22dbfd88d1d30c7b74e59bdebf06698f3ed92"
+    }
+  ]
+}

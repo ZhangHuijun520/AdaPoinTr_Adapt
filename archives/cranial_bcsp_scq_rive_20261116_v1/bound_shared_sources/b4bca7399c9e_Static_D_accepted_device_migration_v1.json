@@ -1,0 +1,61 @@
+{
+  "status": "USER_ACCEPTED_STATIC_D_CROSS_DEVICE_CONTINUATION_NOT_EXECUTION_AUTHORIZATION",
+  "historical_identity": {
+    "hostname": "shu-common-25721452-notebook-zbpgzu-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-dabcc897-ac69-efac-4438-a6186dea9aaa",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "575.51.03",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+    "torch_cuda_version": "11.8"
+  },
+  "current_identity": {
+    "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+    "torch_cuda_version": "11.8"
+  },
+  "allowed_changed_fields": [
+    "driver_version",
+    "gpu_uuid",
+    "hostname"
+  ],
+  "user_acceptance": "接受上述跨设备延续限制，并授权Static_D最小入口与身份适配、CPU验证及P3，通过后创建待授权request",
+  "acceptance_date": "2026-11-15",
+  "execution_authorized": false,
+  "resource_observation": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Static_D_request_preparation_20261115_v1\\current_resource_identity_v1.json",
+    "bytes": 479,
+    "sha256": "4b8de7d29d202149ea58764ed9803289af8b663d920b0f5cdc3c9f7a4f0889e9"
+  },
+  "model_or_science_changes": false,
+  "interpretation": {
+    "C_pair": "SAME_DEVICE_PRIMARY_MECHANISM_EVIDENCE",
+    "D_Static_vs_Requery": "DEVICE_AND_DRIVER_CONFOUNDED_SUPPLEMENTARY_EVIDENCE",
+    "strict_same_device_D_pair": false,
+    "do_not_attribute_all_differences_to_requery": true
+  },
+  "restrictions": [
+    "Only this Static_D run and these exact old/new identities; no automatic rebind",
+    "All other source/initializer/data/order/numeric/software-version/resource guards preserved",
+    "Historical CUDA result supports model implementation only; current hardware CUDA compatibility has not been retested",
+    "No automatic retry/resume or matching retraining; final full-hash execution authorization still required"
+  ]
+}

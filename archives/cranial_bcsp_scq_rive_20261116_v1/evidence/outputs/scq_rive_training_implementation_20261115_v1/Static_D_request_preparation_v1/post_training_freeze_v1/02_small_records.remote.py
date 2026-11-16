@@ -1,0 +1,20 @@
+import pathlib, json, socket, os, hashlib
+P = pathlib.Path
+assert socket.gethostname() == 'shu-common-25721452-notebook-qx2k0r-0' and os.getuid() == 1000
+run = 'SCQ_RIVE_Static_foldD_seed0_train_20261115_v1'
+root = P('/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rive_training_20261115_v1')
+out = P('/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba') / run
+q = json.loads((root / (run + '_execution_request_v1.json')).read_bytes())
+load = lambda n: json.loads((out / n).read_bytes())
+complete = load('completion.json')
+init = load('initialization.json')
+identity = load('run_identity.json')
+model = load('model_construction.json')
+groups = load('optimizer_parameter_groups.json')
+defaults = load('optimizer_actual_defaults.json')
+manifest = load('payload_manifest.json')
+control = root / 'control' / run
+a = json.loads((control / 'authorization_v1.json').read_bytes())
+rt = json.loads((control / 'runtime_v1.json').read_bytes())
+claim = json.loads((control / 'attempt_claim_v1.json').read_bytes())
+print(json.dumps(dict(status='SMALL_RECORDS_READ', q_identity=q['identity'], completion=complete, initialization=init, run_identity=identity, model_keys=list(model), factory_keys=list(model['factory']), rf=model['factory']['rf'], common=model['common_initial_state_SHA256'], new_optimizer_groups=model['new_optimizer_groups'], group_type=type(groups).__name__, group_count=len(groups), group_first=groups[:2] if isinstance(groups, list) else list(groups), optimizer_defaults=defaults, payload_manifest=manifest, authorization=a, runtime=rt, claim=claim)))

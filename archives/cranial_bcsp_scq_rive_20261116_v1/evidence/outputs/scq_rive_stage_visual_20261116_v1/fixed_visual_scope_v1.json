@@ -1,0 +1,96 @@
+{
+  "status": "FIXED_BEFORE_PREDICTION_ARRAY_READS",
+  "cases": [
+    {
+      "fold": "C",
+      "case_id": "train__001__frontoorbital",
+      "role": "new_severe"
+    },
+    {
+      "fold": "C",
+      "case_id": "train__025__random_2",
+      "role": "new_severe"
+    },
+    {
+      "fold": "C",
+      "case_id": "train__026__frontoorbital",
+      "role": "new_severe"
+    },
+    {
+      "fold": "C",
+      "case_id": "train__036__frontoorbital",
+      "role": "new_severe"
+    },
+    {
+      "fold": "C",
+      "case_id": "train__038__random_1",
+      "role": "new_severe"
+    },
+    {
+      "fold": "C",
+      "case_id": "train__094__parietotemporal",
+      "role": "new_severe"
+    },
+    {
+      "fold": "C",
+      "case_id": "train__094__random_2",
+      "role": "new_severe"
+    },
+    {
+      "fold": "C",
+      "case_id": "train__041__parietotemporal",
+      "role": "fixed_improved_control",
+      "selection_delta_E_P95_mm": -46.6318840136485
+    },
+    {
+      "fold": "D",
+      "case_id": "train__008__frontoorbital",
+      "role": "new_severe"
+    },
+    {
+      "fold": "D",
+      "case_id": "train__046__parietotemporal",
+      "role": "new_severe"
+    },
+    {
+      "fold": "D",
+      "case_id": "train__101__bilateral",
+      "role": "fixed_improved_control",
+      "selection_delta_E_P95_mm": -39.484147294420964
+    }
+  ],
+  "arms": [
+    "RF-Static",
+    "RF-Requery"
+  ],
+  "stages": [
+    "Q0",
+    "Q1",
+    "Q2",
+    "dense"
+  ],
+  "prediction_files": 22,
+  "control_selection": "One per fold: smallest frozen E_P95(Requery-Static) among improved cases with Requery not severe; tie case_id. Descriptive selected controls, not unbiased evaluation.",
+  "source_audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_score_freeze_20261116_v1\\audit_verification_v1.json",
+    "bytes": 9044,
+    "sha256": "904e273e49570df19ff3417106d0300a0b3b2fe1d9b835e866ac432cbbee9de2"
+  },
+  "views": [
+    "XY",
+    "XZ",
+    "YZ"
+  ],
+  "metrics": "Frozen A1 E/J area weighted P95/Cover2, reverse A2 P95/outlier20, GT8192 centroid/radius/CD; stages posthoc only, dense matches frozen scores",
+  "display": "Shared case world bounds and0-40mm color scale; point display subsampling deterministic only, full arrays in statistics; no registration/filter",
+  "limits": {
+    "wall_seconds": 600,
+    "output_bytes": 536870912
+  },
+  "operations": {
+    "server_calls": 0,
+    "checkpoint_loads": 0,
+    "forward": 0,
+    "training": 0
+  }
+}

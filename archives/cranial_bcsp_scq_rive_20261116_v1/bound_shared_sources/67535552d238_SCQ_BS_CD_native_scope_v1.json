@@ -1,0 +1,48 @@
+{
+  "schema": "scq-native-protocol-v1",
+  "inference": {
+    "forward_attempt_budget": 420,
+    "models": [
+      "B_C",
+      "S_C",
+      "B_D",
+      "S_D"
+    ],
+    "cases_per_model": 105,
+    "batch": 1,
+    "backward": 0,
+    "optimizer": 0,
+    "BNCal": 0,
+    "loss": 0,
+    "warmup": 0,
+    "TTA": 0,
+    "GT_condition": false
+  },
+  "outputs": {
+    "predictions": 420,
+    "keys": [
+      "prediction",
+      "coarse",
+      "Qraw",
+      "delta"
+    ],
+    "context_caches": 0,
+    "full_decoder_traces": 0,
+    "frame": "D-only normalized; original center/scale retained in manifest"
+  },
+  "numeric": {
+    "repeat_GPU_preflight": false,
+    "FP32": true,
+    "TF32": false,
+    "finite_gradient_nondeterminism_disclosed": true
+  },
+  "failure": "STOP_NO_AUTOMATIC_RETRY_RESUME",
+  "resources": {
+    "wall_seconds": 7200,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  }
+}

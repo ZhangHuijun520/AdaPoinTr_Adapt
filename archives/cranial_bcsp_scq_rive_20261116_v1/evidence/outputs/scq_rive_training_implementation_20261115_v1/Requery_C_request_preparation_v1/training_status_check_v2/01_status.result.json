@@ -1,0 +1,78 @@
+{
+  "returncode": 0,
+  "local_timeout": false,
+  "rows": [
+    {
+      "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+      "tmux_live": false,
+      "output_exists": true,
+      "exit_code.txt": "0",
+      "worker.pid": "43528",
+      "completion.json": {
+        "stage": "BCSP_INPUT_DENSITY_V1",
+        "optimizer_updates": 3900,
+        "traversals": 100,
+        "case_exposures": 31200,
+        "counts": {
+          "forward": 3900,
+          "backward": 3900,
+          "clip": 3900,
+          "step": 3900,
+          "lr_scheduler": 100,
+          "bn_scheduler": 100
+        },
+        "checkpoint_sha256": "5fc095755fa22fec79230394f3d3cd5dc461fd18e4ff1e366e52e5ae033dc87e",
+        "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+        "elapsed_seconds": 1494.554131187033,
+        "bncal_executed": false,
+        "evaluation_executed": false,
+        "resume": false
+      },
+      "worker_pid_visible": false,
+      "metric_records": 3900,
+      "last_metric": {
+        "step": 3900,
+        "epoch": 99,
+        "batch": 38,
+        "case_ids": [
+          "train__089__parietotemporal",
+          "train__084__random_2",
+          "train__054__bilateral",
+          "train__074__parietotemporal",
+          "train__024__frontoorbital",
+          "train__035__frontoorbital",
+          "train__058__frontoorbital",
+          "train__085__parietotemporal"
+        ],
+        "source_ids": [
+          "train:089",
+          "train:084",
+          "train:054",
+          "train:074",
+          "train:024",
+          "train:035",
+          "train:058",
+          "train:085"
+        ],
+        "loss_sparse": 0.0,
+        "loss_dense": 0.033654432743787766,
+        "loss_denoise": 0.0,
+        "loss_reconstruction": 0.033654432743787766,
+        "loss": 0.033654432743787766,
+        "LR": [
+          6.085357764334223e-05,
+          6.085357764334223e-05
+        ],
+        "BN_momentum": 0.03428475902450087,
+        "grad_norm_before_clip": 1.6963547468185425,
+        "clip_max_norm": 10,
+        "optimizer_step_committed": true
+      },
+      "checkpoint_exists": true,
+      "checkpoint_bytes": 489927058,
+      "log_tail": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\n2026-11-15 12:42:09,548 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/utils/determinism.py:73: UserWarning: Deterministic mode: upgrade to Triton >= 3.4.0 for cached autotuning.\n  warnings.warn(msg)\nusing group version 2\n"
+    }
+  ],
+  "stdout_bytes": 3007,
+  "stderr_bytes": 132
+}

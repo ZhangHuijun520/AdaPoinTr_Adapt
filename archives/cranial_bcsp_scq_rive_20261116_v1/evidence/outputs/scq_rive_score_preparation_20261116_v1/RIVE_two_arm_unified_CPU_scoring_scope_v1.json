@@ -1,0 +1,98 @@
+{
+  "schema": "bcsp-scq-rive-local-scoring-scope-v1",
+  "status": "FROZEN_SCOPE_PENDING_ENTRY_IMPLEMENTATION_NOT_EXECUTION_REQUEST",
+  "arms": [
+    "RF-Static",
+    "RF-Requery"
+  ],
+  "folds": [
+    "C",
+    "D"
+  ],
+  "counts": {
+    "unique_cases": 210,
+    "sources": 42,
+    "model_rows": 420,
+    "shared_control_rows": 420,
+    "case_score_rows": 840,
+    "source_score_rows": 168
+  },
+  "primary_metric": "A1 area-weighted E_P95 mm",
+  "paired_directions": [
+    "RF-Requery minus RF-Static"
+  ],
+  "secondary_metrics": [
+    "J_P95",
+    "E/J Cover@0.5/1/2mm",
+    "CD-L1: half sum of bidirectional unsquared Euclidean means",
+    "Pred-to-A2 P95 and >20mm outlier fraction",
+    "centroid offset, radius ratio, coarse/dense summaries"
+  ],
+  "aggregation": "Five defects/source equally, then21sources/fold equally; folds separately and pooled descriptive summaries; rows not independent patients",
+  "geometry_labels": {
+    "placement_tail": "centroid>20mm",
+    "compact_distribution": "radius_ratio<0.9",
+    "severe_geometry": "E_P95>20mm OR J_Cover2mm==0"
+  },
+  "reporting": "Keep all cases and defect types including frontoorbital; new/rescued/shared severe cases; no outcome-driven exclusion",
+  "references": "Frozen A1/A2/B bank and GT8192, D-only inverse normalization to world mm",
+  "coarse_availability": "All420 Native outputs have Qused256/P8192 and same-forward Q0/Q1/Q2/delta0/delta1. Score Native dense and actual coarse; stage arrays diagnostic only.",
+  "bootstrap": 0,
+  "p_values": false,
+  "formal_gate_execution": false,
+  "ICP": false,
+  "GT_alignment": false,
+  "postfilter": false,
+  "limits": {
+    "wall_seconds": 18000,
+    "RSS_bytes": 8589934592,
+    "output_bytes": 2147483648,
+    "threads": 2
+  },
+  "budget_reason": "Retain existing18000-second,2-thread,8GiB RSS and2GiB output budget for840rows; no extra cases, metrics or threshold changes. Execution separately authorized.",
+  "prohibited": [
+    "Scoring before RIVE entry implementation/CPU/P3 and separate full-hash execution authorization",
+    "New inference/checkpoint/GPU/training/BNCal",
+    "Changes to metrics/reference/threshold/cases/sampling/frame",
+    "Oracle alignment/parameter search/bootstrap/formal gate",
+    "No backup extraction/deletion/writes during scoring; outputs only in fresh project output directory."
+  ],
+  "inherited_protocol": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_score_prep_20261114_v1\\SCQ_BS_unified_CPU_scoring_scope_v1.json",
+    "bytes": 3721,
+    "sha256": "31a61d87c58e21f0058deb4ef793f00d71b41eddec14c1d601abaeb8fc9d26a7"
+  },
+  "metric": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+    "bytes": 6784,
+    "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+  },
+  "score_index": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rive_score_preparation_20261116_v1\\RIVE_two_arm_score_case_index_candidate_v1.json",
+    "bytes": 418374,
+    "sha256": "28326963b1d23161d6a12c8999b8f10daaec9b49fe4ad15552765a730eb8dcfc"
+  },
+  "scientific_constraints": [
+    "Same210 opened cases/42sources, five defects/source; no outcome-driven exclusions.",
+    "420 model rows plus420 shared control rows counted once per case; total840,source rows168.",
+    "Both C/D pairs same frozen device; finite Mamba gradient nondeterminism and single-seed limitation disclosed. Historical RF confounding not overwritten.",
+    "Primary contrast RF-Requery minus RF-Static; report C and D separately and pooled descriptive source-equal summaries.",
+    "Keep A1/A2/B reference bank,metric code,thresholds and D-only inverse normalization to mm unchanged.",
+    "No Oracle/ICP/registration/postfilter/TTA/bootstrap/p-values/formal gate or parameter search.",
+    "CPU implementation/P3 and separate request full SHA authorization before real scoring."
+  ],
+  "comparison_qualification": {
+    "C_pair": "SAME_DEVICE_PAIRED_RIVE_EVIDENCE",
+    "D_pair": "SAME_DEVICE_PAIRED_RIVE_EVIDENCE",
+    "strict_same_device_D_pair": true,
+    "single_seed_only": true,
+    "finite_Mamba_gradient_nondeterminism_disclosed": true,
+    "historical_RF_device_confounds_unchanged": true
+  },
+  "archive_binding": {
+    "archive_bytes": 45697569,
+    "uncompressed_member_bytes": 49967684,
+    "archive_members": 426,
+    "source": "Local independent stream verification of every safe regular tar member against sidecar and formal server freeze."
+  }
+}

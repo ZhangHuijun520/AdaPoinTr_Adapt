@@ -1,0 +1,230 @@
+{
+  "returncode": 0,
+  "local_timeout": false,
+  "rows": [
+    {
+      "status": "SMALL_RECORDS_READ",
+      "q_identity": {
+        "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+        "uid": 1000,
+        "project": "/home/jovyan/adapointr_work/PoinTr",
+        "gpu_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+        "gpu_name": "NVIDIA GeForce RTX 4090 D",
+        "driver_version": "570.190",
+        "nvidia_smi_memory_total_MiB": 24564,
+        "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+        "python_version": "3.10.20",
+        "torch_version": "2.4.1+cu118",
+        "numpy_version": "2.2.6",
+        "timm_version": "1.0.27",
+        "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+        "torch_cuda_version": "11.8"
+      },
+      "completion": {
+        "stage": "BCSP_INPUT_DENSITY_V1",
+        "optimizer_updates": 3900,
+        "traversals": 100,
+        "case_exposures": 31200,
+        "counts": {
+          "forward": 3900,
+          "backward": 3900,
+          "clip": 3900,
+          "step": 3900,
+          "lr_scheduler": 100,
+          "bn_scheduler": 100
+        },
+        "checkpoint_sha256": "f196f5b1bf406e4018baf11ae5d977dc445f515ea4b72aff431a061e64740b45",
+        "order_sha256": "2c9f3e9afb2cfe9ae46c0566bdbced465c64acc2a564654914d2163d74e5e838",
+        "elapsed_seconds": 1498.8665359248407,
+        "bncal_executed": false,
+        "evaluation_executed": false,
+        "resume": false
+      },
+      "initialization": {
+        "parameter_sha256": "8697bfc3b9d7dfd2c0003ec54253cf77cd146f2926a41138ffeacc1ec4f7d255",
+        "persistent_state_sha256": "d0f4c3699fe66a2ba2b4879c1bd41ba363a325fa152d79a4055773be3e0f4167",
+        "order_sha256": "2c9f3e9afb2cfe9ae46c0566bdbced465c64acc2a564654914d2163d74e5e838",
+        "seed": 0
+      },
+      "run_identity": {
+        "stage": "CRANIAL_BCSP_SCQ_RIVE",
+        "arm": "RF-Static",
+        "variant": "RF-Static",
+        "fold": "D",
+        "seed": 0,
+        "mode": "A",
+        "pair_contract_sha256": "0ce612b00b453bc5e5da2fe22552b2c61c38ff20d46c3bd07f7521a8359fe652",
+        "native_reference_sha256": "100770541377b1473c9cb8610375c9e2de336cb702e60189cb0ffb68194f2697",
+        "effective_resources": {
+          "wall_seconds": 3600,
+          "RSS_bytes": 8589934592,
+          "device_MiB": 22528,
+          "torch_peak_bytes": 21474836480,
+          "output_bytes": 2147483648,
+          "minimum_free_disk_bytes": 4294967296
+        },
+        "legacy_resources": {
+          "wall_seconds": 86400,
+          "RSS_bytes": 8589934592,
+          "device_MiB": 22528,
+          "torch_peak_bytes": 21474836480,
+          "output_bytes": 2147483648,
+          "minimum_free_disk_bytes": 4294967296
+        },
+        "checkpoint_legacy_stage": "BCSP_INPUT_DENSITY_V1",
+        "legacy_stage_is_provenance_only": true,
+        "SSM_gradient_non_bitwise_reproducibility_disclosed": true
+      },
+      "model_keys": [
+        "factory",
+        "common_initial_state_SHA256",
+        "variant",
+        "arm",
+        "stage",
+        "new_optimizer_groups"
+      ],
+      "factory_keys": [
+        "parent",
+        "rf"
+      ],
+      "rf": {
+        "variant": "RF-Static",
+        "additional_parameters": 231171,
+        "common_state_preserved": true,
+        "CPU_RNG_preserved": true,
+        "initialization_sha256": "a4024fbdb49feb41c609ae1171f04c2cb14ab794fc3663855d81395c6a1ea79e",
+        "total_parameters": 40827847,
+        "handoff": "original SCQ coarse return before query MLP; Q2 to all original consumers"
+      },
+      "common": "b7e5b640c1f0e709ab6697139db1267584266a51b4e0e29f2d5217bfd1236cc5",
+      "new_optimizer_groups": {
+        "base_model.scq.W1.weight": 0.0005,
+        "base_model.scq.W1.bias": 0.0,
+        "base_model.scq.W2.weight": 0.0005,
+        "base_model.scq.W2.bias": 0.0,
+        "base_model.rf.V1.weight": 0.0005,
+        "base_model.rf.V1.bias": 0.0,
+        "base_model.rf.V2.weight": 0.0005,
+        "base_model.rf.V2.bias": 0.0
+      },
+      "group_type": "list",
+      "group_count": 419,
+      "group_first": [
+        {
+          "name": "base_model.grouper.input_trans.weight",
+          "shape": [
+            8,
+            3,
+            1
+          ],
+          "weight_decay": 0.0005,
+          "reason": "matrix_default"
+        },
+        {
+          "name": "base_model.grouper.input_trans.bias",
+          "shape": [
+            8
+          ],
+          "weight_decay": 0.0,
+          "reason": "one_dimensional_or_bias"
+        }
+      ],
+      "optimizer_defaults": {
+        "lr": 0.0001,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0.01,
+        "amsgrad": false,
+        "foreach": null,
+        "maximize": false,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null
+      },
+      "payload_manifest": {
+        "files": [
+          {
+            "name": "SCQ_geometry.jsonl",
+            "bytes": 35243141,
+            "sha256": "03e7683e46a23ff0ed75ef14ecb1ab8a3fb51d87626b65509d032a213adc4e00"
+          },
+          {
+            "name": "ckpt-last.pth",
+            "bytes": 489927058,
+            "sha256": "f196f5b1bf406e4018baf11ae5d977dc445f515ea4b72aff431a061e64740b45"
+          },
+          {
+            "name": "completion.json",
+            "bytes": 559,
+            "sha256": "8ef021987947a066aaa64ee7c003cb37bcfa6dd7a8a14cf6145b5f5ed0891297"
+          },
+          {
+            "name": "exposure.json",
+            "bytes": 19465,
+            "sha256": "65907c12b1eeec2886b7581bd0c9515c831eff9d45e0ecd46ca384a34d6dc902"
+          },
+          {
+            "name": "initialization.json",
+            "bytes": 289,
+            "sha256": "8bbe1bcce803197b868ec3339fc9fe2bfb70c4f7c8e1d37751767f0033a4b31a"
+          },
+          {
+            "name": "metrics.jsonl",
+            "bytes": 2820154,
+            "sha256": "30b1eea1837e3a9a1ebfe79bfc04451854784f0806237173c21dbca89b174e2e"
+          },
+          {
+            "name": "model_construction.json",
+            "bytes": 96512,
+            "sha256": "3b67057706acc77c53f451672e8f06914a0588313fccc705d0ed4cde9b0e7da6"
+          },
+          {
+            "name": "optimizer_actual_defaults.json",
+            "bytes": 223,
+            "sha256": "9d63cc1e4fb32d46c348688146a9e8b10356a7bc3e8c1eabb9c483bac7c6e592"
+          },
+          {
+            "name": "optimizer_parameter_groups.json",
+            "bytes": 71049,
+            "sha256": "9139009b8d22772f7cdca7d6896d550346b42aba1b7edace22a6b5fb2885c49b"
+          },
+          {
+            "name": "order_plan.json",
+            "bytes": 1248506,
+            "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+          },
+          {
+            "name": "resources.jsonl",
+            "bytes": 2867430,
+            "sha256": "7e950367b55682d95e010fbcdffea96123af804ea80cc1df09afecf7ca87c026"
+          },
+          {
+            "name": "run_identity.json",
+            "bytes": 924,
+            "sha256": "0c62fab39e3fcc4708cd23ef87ad36b6a526dea1bc133f90edf781fe16ab1e0c"
+          }
+        ]
+      },
+      "authorization": {
+        "schema": "bcsp-rive-training-authorization-v1",
+        "request_sha256": "f2a9d28fae758c5e718c28bc463d9c90de8b07b752ec89d80441807827018fb2",
+        "explicit_user_authorization": true,
+        "user_authorization_text": "\u4e0b\u4e00\u6b65\u5355\u72ec\u6388\u6743 Static_D\u8bad\u7ec3request \u5b8c\u6574SHA256\u3002\u552f\u4e00\u6240\u6307\u4e3a\u4e0a\u4e00\u6761\u5217\u660e\u7684 f2a9d28fae758c5e718c28bc463d9c90de8b07b752ec89d80441807827018fb2\uff1b\u51bb\u7ed3\u8303\u56f4\u5185\u552f\u4e00\u4e00\u6b21\u8bad\u7ec3\uff0c\u5931\u8d25\u5373\u505c\uff0c\u4e0d\u81ea\u52a8\u91cd\u8bd5\u6216resume\uff0c\u4e0d\u8fd0\u884c\u8bc4\u4ef7\u6216BNCal\u3002"
+      },
+      "runtime": {
+        "schema": "bcsp-rive-training-runtime-v1",
+        "request_sha256": "f2a9d28fae758c5e718c28bc463d9c90de8b07b752ec89d80441807827018fb2",
+        "authorization_sha256": "88c86367a77a285832558dff06dd228a26ae5e7cffb036c8717197c3365c3b1b"
+      },
+      "claim": {
+        "status": "CLAIMED_BEFORE_TMUX",
+        "request_sha256": "f2a9d28fae758c5e718c28bc463d9c90de8b07b752ec89d80441807827018fb2"
+      }
+    }
+  ],
+  "stdout_bytes": 6402,
+  "stderr_bytes": 132
+}

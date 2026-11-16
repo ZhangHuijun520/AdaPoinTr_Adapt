@@ -1,0 +1,69 @@
+{
+  "returncode": 0,
+  "local_timeout": false,
+  "rows": [
+    {
+      "status": "READONLY_STARTUP_OBSERVATION",
+      "session_live": true,
+      "output_exists": true,
+      "files": [
+        "SCQ_geometry.jsonl",
+        "initialization.json",
+        "launch.log",
+        "metrics.jsonl",
+        "model_construction.json",
+        "optimizer_actual_defaults.json",
+        "optimizer_parameter_groups.json",
+        "order_plan.json",
+        "resources.jsonl",
+        "run_identity.json",
+        "tmp",
+        "worker.pid"
+      ],
+      "worker.pid": "59827\n",
+      "metric_records": 3752,
+      "last_metric": {
+        "step": 3752,
+        "epoch": 96,
+        "batch": 7,
+        "case_ids": [
+          "train__071__random_1",
+          "train__107__bilateral",
+          "train__012__random_1",
+          "train__000__random_2",
+          "train__009__frontoorbital",
+          "train__075__random_1",
+          "train__023__random_1",
+          "train__038__frontoorbital"
+        ],
+        "source_ids": [
+          "train:071",
+          "train:107",
+          "train:012",
+          "train:000",
+          "train:009",
+          "train:075",
+          "train:023",
+          "train:038"
+        ],
+        "loss_sparse": 0.0,
+        "loss_dense": 0.036663588136434555,
+        "loss_denoise": 0.0,
+        "loss_reconstruction": 0.036663588136434555,
+        "loss": 0.036663588136434555,
+        "LR": [
+          6.177644323744501e-05,
+          6.177644323744501e-05
+        ],
+        "BN_momentum": 0.03785344291778502,
+        "grad_norm_before_clip": 1.2355877161026,
+        "clip_max_norm": 10,
+        "optimizer_step_committed": true
+      },
+      "log_tail": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\n2026-11-15 13:38:18,568 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/utils/determinism.py:73: UserWarning: Deterministic mode: upgrade to Triton >= 3.4.0 for cached autotuning.\n  warnings.warn(msg)\n",
+      "worker_visible": true
+    }
+  ],
+  "stdout_bytes": 2599,
+  "stderr_bytes": 132
+}

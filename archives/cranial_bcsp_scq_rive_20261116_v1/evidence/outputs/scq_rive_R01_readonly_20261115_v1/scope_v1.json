@@ -1,0 +1,12 @@
+{
+  "status": "READONLY_SCOPE",
+  "max_files_total": 96,
+  "max_metadata_source_init_bytes": 8388608,
+  "max_native_binary_bytes": 805306368,
+  "max_stat_payload_files": 840,
+  "no_payload_open": true,
+  "no_checkpoint_open": true,
+  "no_import_torch": true,
+  "per_call_timeout_seconds": 50,
+  "remote_command_v1": "/usr/bin/timeout 50s /opt/conda/envs/adapointr-mamba/bin/python3.10 -I -S -B - <<'PY'\nimport json,hashlib,pathlib,os,socket,time\nP=pathlib.Path\nassert socket.gethostname()==\"shu-common-25721452-notebook-qx2k0r-0\" and os.getuid()==1000\np=P(\"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_D_training_20261115_v2/SCQ_RF_Static_D_training_execution_request_v2.json\")\nb=p.read_bytes();assert hashlib.sha256(b).hexdigest()==\"9d7ac459e9a969c36df67ddaee4c5c0aaac2c68b322dcf58097c54f59caa402b\"\nq=json.loads(b); rs=list(q[\"implementation\"].values())+[q[k] for k in (\"initialization\",\"rf_initialization\",\"static_config\",\"preflight_scope\",\"order_plan\")]+[q[\"QC\"][k] for k in (\"qualified_receipt\",\"verification\",\"fold_binding\")]+[q[\"QC\"][\"manifests\"][\"8192\"]]\nx=q[\"order_plan\"].copy();x.update(path=x[\"path\"].replace(\"foldD\",\"foldC\"),sha256=\"6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d\");rs.append(x)\nx=q[\"QC\"][\"qualified_receipt\"].copy();x.update(path=x[\"path\"].replace(\"_D_\",\"_C_\"),sha256=\"b51fc4d88c63fb8a928868bf94d7c3eef3aba117a7de1138d2cdd2aa6c643cd4\");rs.append(x)\nassert len(rs)<=32 and sum(r[\"bytes\"] for r in rs)<8388608\nfor r in rs:\n p=P(r[\"path\"]);assert not any(v.is_symlink() for v in (p,*p.parents))\n b=p.read_bytes();h=hashlib.sha256(b).hexdigest();ok=len(b)==r[\"bytes\"] and h==r[\"sha256\"]\n print(json.dumps(dict(path=str(p),bytes=len(b),sha256=h,match=ok)),flush=True);assert ok,str(p)\nprint(json.dumps(dict(status=\"PASS\",records=len(rs),read_bytes=sum(r[\"bytes\"] for r in rs))))\nPY"
+}

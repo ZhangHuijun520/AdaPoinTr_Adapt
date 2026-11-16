@@ -1,0 +1,83 @@
+{
+  "status": "CORE_MODEL_COMPATIBLE_DEDICATED_RIVE_ENTRY_REQUIRED_BEFORE_FINAL_REQUEST",
+  "checks": {
+    "four_formal_training_audits_pass": true,
+    "four_model_order": true,
+    "exact420rows": true,
+    "210_unique_inputs": true,
+    "same_training_device_all_four": true,
+    "same_model_implementation_all_four": true,
+    "same_initialization_all_four": true,
+    "fold_binding_and_manifest_unchanged": true,
+    "Static_C_fixed105_source21": true,
+    "Static_C_no_train_dev_source_leak": true,
+    "Static_C_8k_no_context_trace": true,
+    "Requery_C_fixed105_source21": true,
+    "Requery_C_no_train_dev_source_leak": true,
+    "Requery_C_8k_no_context_trace": true,
+    "Static_D_fixed105_source21": true,
+    "Static_D_no_train_dev_source_leak": true,
+    "Static_D_8k_no_context_trace": true,
+    "Requery_D_fixed105_source21": true,
+    "Requery_D_no_train_dev_source_leak": true,
+    "Requery_D_8k_no_context_trace": true,
+    "C_paired_input_frame_hashes": true,
+    "C_frozen_full_order_and_counts": true,
+    "C_paired_freeze_matches": true,
+    "D_paired_input_frame_hashes": true,
+    "D_frozen_full_order_and_counts": true,
+    "D_paired_freeze_matches": true,
+    "source_factory_pins_reusable": true,
+    "checkpoint_legacy_stage_supported": true,
+    "Native_eval_tuple_supported": true
+  },
+  "check_count": 29,
+  "entry": {
+    "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_sixmodel_native_prediction_preparation_20261115_v1\\implementation_v1\\input_path_fix_v2\\bcsp_scq_rf_sixmodel_native_predict_v2.py",
+    "bytes": 45866,
+    "sha256": "221210ca3e51fe4178be068abab1cb2e6c98d9731efb474d1ee08f31ec4c7857"
+  },
+  "blockers": [
+    {
+      "id": "B1",
+      "function": "authorize / constants",
+      "reason": "Old schema,630 budget,index/protocol SHA and old device qualification are hardcoded; requires RIVE420 schema and final pins.",
+      "source_lines": [
+        150
+      ]
+    },
+    {
+      "id": "B2",
+      "function": "validate_index / FROZEN_MODELS",
+      "reason": "Old six-model sequence includes Sref and old RF checkpoints/audit statuses. RIVE requires four fresh runs and formal RIVE audit format.",
+      "source_lines": [
+        162
+      ]
+    },
+    {
+      "id": "B3",
+      "function": "validate_evidence",
+      "reason": "Old D pair declares cross-device confounding. New RIVE C/D pairs were trained on the same frozen device; must bind current pair evidence without rewriting historical RF conclusions.",
+      "source_lines": [
+        193
+      ]
+    },
+    {
+      "id": "B4",
+      "function": "execute_pair / main",
+      "reason": "Hardcoded630 attempt and success counters, completion events and protocol cardinality must consistently become420; no extra warmup/TTA.",
+      "source_lines": [
+        306
+      ]
+    },
+    {
+      "id": "B5",
+      "function": "implementation P3 / exact reads",
+      "reason": "New entry and request/index/protocol/audit read bindings require targeted artificial CPU checks and new P3; existing P3 binds old entry bytes.",
+      "source_lines": []
+    }
+  ],
+  "no_server_operations": true,
+  "no_production_source_change": true,
+  "no_final_execution_request": true
+}

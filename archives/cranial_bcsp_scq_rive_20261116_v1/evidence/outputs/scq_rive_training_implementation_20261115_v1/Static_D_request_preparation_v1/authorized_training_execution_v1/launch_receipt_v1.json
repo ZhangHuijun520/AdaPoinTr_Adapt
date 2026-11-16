@@ -1,0 +1,162 @@
+{
+  "status": "SINGLE_STATIC_D_TRAINING_STARTED_AND_OBSERVED_RUNNING",
+  "request_sha256": "f2a9d28fae758c5e718c28bc463d9c90de8b07b752ec89d80441807827018fb2",
+  "run_id": "SCQ_RIVE_Static_foldD_seed0_train_20261115_v1",
+  "pid": 59827,
+  "observed_step": 3,
+  "planned_steps": 3900,
+  "observations": {
+    "01_resource_absence": [
+      {
+        "status": "FRESH_RESOURCE_AND_ABSENCE_PASS",
+        "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+        "uid": 1000,
+        "gpu": [
+          "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+          "NVIDIA GeForce RTX 4090 D",
+          "570.190",
+          "24564",
+          "1"
+        ],
+        "free_bytes": 8045723648,
+        "session_absent": true,
+        "controls_absent": true,
+        "output_absent": true
+      }
+    ],
+    "02_assets": [
+      {
+        "status": "ALL72_BOUND_ASSETS_PASS",
+        "files": 72
+      }
+    ],
+    "03_train315": [
+      {
+        "status": "TRAIN315_HASHES_PASS",
+        "files": 315,
+        "sources": 63,
+        "hashed_bytes": 49417378,
+        "array_loads": 0,
+        "dev_payload_reads": 0
+      }
+    ],
+    "04_authorization": [
+      {
+        "status": "CONTROL_EXACT_WRITTEN",
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rive_training_20261115_v1/control/SCQ_RIVE_Static_foldD_seed0_train_20261115_v1/authorization_v1.json",
+        "bytes": 643,
+        "sha256": "88c86367a77a285832558dff06dd228a26ae5e7cffb036c8717197c3365c3b1b"
+      }
+    ],
+    "05_runtime": [
+      {
+        "status": "CONTROL_EXACT_WRITTEN",
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rive_training_20261115_v1/control/SCQ_RIVE_Static_foldD_seed0_train_20261115_v1/runtime_v1.json",
+        "bytes": 230,
+        "sha256": "d3af655fad89331b97482d0e6be3cce7f3a1e8b9275f0d4451d895d8f39cd4af"
+      }
+    ],
+    "06_launcher": [
+      {
+        "status": "CONTROL_EXACT_WRITTEN",
+        "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rive_training_20261115_v1/control/SCQ_RIVE_Static_foldD_seed0_train_20261115_v1/launch_once_v1.sh",
+        "bytes": 2561,
+        "sha256": "c2d2e28098a930a339b23c96ce86fe368f443905cbd6b16258556e0ab2c97624"
+      }
+    ],
+    "07_actual_authorize": [
+      {
+        "status": "INSTALLED_ACTUAL_AUTHORIZE_PASS",
+        "cases": 315,
+        "updates": 3900,
+        "effective_wall": 3600,
+        "legacy_wall": 86400,
+        "model_calls": 0
+      }
+    ],
+    "08_single_tmux_launch": [
+      {
+        "status": "SINGLE_TMUX_SUBMIT_RESULT",
+        "returncode": 0,
+        "session": "SCQ_RIVE_Static_foldD_seed0_train_20261115_v1",
+        "stdout": "",
+        "stderr": "",
+        "gpu": [
+          "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+          "NVIDIA GeForce RTX 4090 D",
+          "570.190",
+          "24564",
+          "1"
+        ]
+      }
+    ],
+    "09_startup_observation": [
+      {
+        "status": "READONLY_STARTUP_OBSERVATION",
+        "session_live": true,
+        "output_exists": true,
+        "files": [
+          "SCQ_geometry.jsonl",
+          "initialization.json",
+          "launch.log",
+          "metrics.jsonl",
+          "model_construction.json",
+          "optimizer_actual_defaults.json",
+          "optimizer_parameter_groups.json",
+          "order_plan.json",
+          "resources.jsonl",
+          "run_identity.json",
+          "tmp",
+          "worker.pid"
+        ],
+        "worker.pid": "59827\n",
+        "metric_records": 3,
+        "last_metric": {
+          "step": 3,
+          "epoch": 0,
+          "batch": 2,
+          "case_ids": [
+            "train__047__parietotemporal",
+            "train__028__parietotemporal",
+            "train__089__frontoorbital",
+            "train__034__bilateral",
+            "train__099__frontoorbital",
+            "train__006__random_1",
+            "train__026__parietotemporal",
+            "train__102__frontoorbital"
+          ],
+          "source_ids": [
+            "train:047",
+            "train:028",
+            "train:089",
+            "train:034",
+            "train:099",
+            "train:006",
+            "train:026",
+            "train:102"
+          ],
+          "loss_sparse": 0.0,
+          "loss_dense": 0.8126903772354126,
+          "loss_denoise": 0.0,
+          "loss_reconstruction": 0.8126903772354126,
+          "loss": 0.8126903772354126,
+          "LR": [
+            0.0001,
+            0.0001
+          ],
+          "BN_momentum": 0.9,
+          "grad_norm_before_clip": 5.660965442657471,
+          "clip_max_norm": 10,
+          "optimizer_step_committed": true
+        },
+        "log_tail": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\n2026-11-15 13:38:18,568 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/utils/determinism.py:73: UserWarning: Deterministic mode: upgrade to Triton >= 3.4.0 for cached autotuning.\n  warnings.warn(msg)\n",
+        "worker_visible": true
+      }
+    ]
+  },
+  "BNCal": false,
+  "evaluation": false,
+  "retry": false,
+  "resume": false,
+  "formal_post_training_audit": false
+}

@@ -1,0 +1,63 @@
+{
+  "returncode": 0,
+  "local_timeout": false,
+  "rows": [
+    {
+      "status": "READONLY_PREDICTION_OBSERVATION",
+      "session_live": true,
+      "output_exists": true,
+      "files": [
+        "cache_manifest.jsonl",
+        "context",
+        "forward_attempts.jsonl",
+        "geometry_summary.jsonl",
+        "inference_manifest.jsonl",
+        "launch.log",
+        "predictions",
+        "resources.jsonl",
+        "tmp",
+        "traces",
+        "worker.pid"
+      ],
+      "worker.pid": "92433",
+      "inference_manifest.jsonl_records": 125,
+      "inference_manifest.jsonl_last": {
+        "run": "Requery_C",
+        "variant": "RF-Requery",
+        "case_id": "train__013__random_2",
+        "source_id": "train:013",
+        "fold": "C",
+        "n_input": 8192,
+        "n_output": 8192,
+        "input_sha256": "d3dbdfafdf1c272b55efe2b98e43bcc2cc3ea75f1133e0fcf6408af5c0c07d0c",
+        "checkpoint_sha256": "5fc095755fa22fec79230394f3d3cd5dc461fd18e4ff1e366e52e5ae033dc87e",
+        "normalization": {
+          "center": [
+            101.20000000000002,
+            99.60000000000001,
+            55.6
+          ],
+          "scale": 127.01810894514215
+        },
+        "prediction": {
+          "name": "predictions/Requery_C__train__013__random_2.npz",
+          "bytes": 113711,
+          "sha256": "46703b11e4b248049baa03b87178262894da2ff7221877aa9d7dfdbdadc596e1"
+        },
+        "forward_index": 125,
+        "operational_seconds": 0.08242702670395374
+      },
+      "forward_attempts.jsonl_records": 126,
+      "forward_attempts.jsonl_last": {
+        "forward_index": 126,
+        "run": "Requery_C",
+        "case_id": "train__025__bilateral",
+        "status": "CLAIMED_BEFORE_FORWARD"
+      },
+      "log_tail": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\n2026-11-15 15:47:39,623 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/utils/determinism.py:73: UserWarning: Deterministic mode: upgrade to Triton >= 3.4.0 for cached autotuning.\n  warnings.warn(msg)\n2026-11-15 15:48:09,222 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n",
+      "worker_visible": true
+    }
+  ],
+  "stdout_bytes": 3641,
+  "stderr_bytes": 132
+}

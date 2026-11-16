@@ -1,0 +1,99 @@
+{
+  "status": "RF_REQUERY_D_TRAINING_ENTRY_LOCAL_P3_PASS",
+  "entry_sha256": "0a99d7ca7542b5ab5d4db4787d6ae2ad30e38b5f2d8f764292102b0c984e0c44",
+  "bridge_sha256": "97b8b25b146f2db87794ca739e8b822d5a6ebf258bf2a424ede73ae37e6e46bf",
+  "native_admission_sha256": "7611114686154f2024c1489e5d5cb64f59201dd27b112c0e18614c1ca25f1c0e",
+  "CPU_checks": 54,
+  "CPU": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\cpu_requery_D_entry_batch_v1\\result_v1.json",
+    "bytes": 4044,
+    "sha256": "a263f5050de39eaa18f8249baab0dacb9d42c59ccebc820920f5e475c943cbde"
+  },
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\test_RF_Requery_D_entry_cpu_v1.py",
+    "bytes": 24532,
+    "sha256": "5c911732aa1be5bd90bf2d1f2e1f352b68fe09fd12222fd1041199b999cb4c00"
+  },
+  "static": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\static_review_v1.json",
+    "bytes": 1373,
+    "sha256": "f6ef7735dd3f2667d92a6323f4ff81826b8fd3d0b40f54742ac6d169871bb23c"
+  },
+  "policy_stdout": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_Requery_D_implementation_20261115_v1\\cpu_requery_D_entry_batch_v1\\policy_stdout.bin",
+    "bytes": 533,
+    "sha256": "24a4ae8281cd9c6ef2061bdb479f1c1ca1e2cb07a27a0dfb443c7d02be9d8e7a"
+  },
+  "Sref_D_formal_freeze": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_D_training_20261115_v1/Sref_D_formal_freeze_v1.json",
+    "bytes": 9906,
+    "sha256": "c48dbb53070b1c996d77c0272ce0aef03186eb93153855002cbd03a51a98f9dd"
+  },
+  "RF_initialization_reference": {
+    "construction": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/model_construction.json",
+      "bytes": 96510,
+      "sha256": "4620af70b1876577839f190e22e604c355501cfe67f32f1f29a20ebf79fddff6"
+    },
+    "initialization": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RF_Static_foldC_seed0_train_20261114_v1/initialization.json",
+      "bytes": 289,
+      "sha256": "bce9b64386ab3ab04cffb7bc7636c33e83a6e576e6a91077f7cb3ddf22c8c677"
+    },
+    "audit": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Requery_C_training_20261114_v1/Static_C_formal_freeze_v1.json",
+      "bytes": 9221,
+      "sha256": "fdc804bcde639e9dc6074584ddd93d70e8144d7ccecb2dedc2575aa7a91c1cab"
+    },
+    "request": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rf_Static_C_training_20261114_v1/SCQ_RF_Static_C_training_execution_request_v1.json",
+      "bytes": 39531,
+      "sha256": "a3275c69e78f95d59358ba8c621c63cb053b54b97467c8583e67feedb2b1051f"
+    }
+  },
+  "expected_model_initialization": {
+    "parameter_sha256": "8697bfc3b9d7dfd2c0003ec54253cf77cd146f2926a41138ffeacc1ec4f7d255",
+    "persistent_state_sha256": "d0f4c3699fe66a2ba2b4879c1bd41ba363a325fa152d79a4055773be3e0f4167",
+    "seed": 0
+  },
+  "unchanged_parent_functions": [
+    "require",
+    "no_links",
+    "sha",
+    "exact",
+    "bound",
+    "emit",
+    "source_module",
+    "payload_paths",
+    "geometry_record",
+    "render_launcher",
+    "validate_admission",
+    "scq_geometry",
+    "startup_read_records"
+  ],
+  "checks": {
+    "all54_CPU_pass": true,
+    "D_only_authorize_rejects_C_assets": true,
+    "Sref_D_and_C_trio_freezes_bound": true,
+    "no_nonexistent_Static_D_prerequisite": true,
+    "model_initialization_separate_from_D_order": true,
+    "RF_source_bridge_runtime_unchanged": true,
+    "actual_RF_requery_gradients_and_geometric_logging": true,
+    "full_source_policy_and_traceback": true,
+    "both_frozen_initialization_bytes": true,
+    "all8_SCQ_RF_parameter_groups": true,
+    "full_loss_and3900_guards": true,
+    "no_GPU_or_server": true
+  },
+  "limitations": [
+    "Tiny artificial model with actual unchanged SCQ/RF residuals and real RF Requery install; native full Mamba not executed.",
+    "Actual original runtime source imported under policy but optimizer/lifecycle never executed.",
+    "Native CUDA admission inherited; no new GPU or real data validation.",
+    "Native 40,827,847 total and native Mamba path rely on the existing frozen CUDA admission; not rerun.",
+    "C RF model fingerprints describe shared initialization only; D batch order is independently frozen and checked.",
+    "Current server resources and exact D payload hashes still require fresh checks under separate execution authorization."
+  ],
+  "server_operations": 0,
+  "training": false,
+  "CUDA": false
+}

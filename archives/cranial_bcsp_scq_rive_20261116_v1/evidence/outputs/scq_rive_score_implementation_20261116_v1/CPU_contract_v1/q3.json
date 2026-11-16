@@ -1,0 +1,43 @@
+{
+  "schema": "bcsp-scq-rive-local-scoring-request-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "execution_authorized": false,
+  "counts": {
+    "unique_cases": 210,
+    "sources": 42,
+    "model_rows": 420,
+    "shared_control_rows": 420,
+    "case_score_rows": 840,
+    "source_score_rows": 168
+  },
+  "scientific_contract": {
+    "arms": [
+      "RF-Static",
+      "RF-Requery"
+    ],
+    "pairs": [
+      [
+        "RF-Static",
+        "RF-Requery"
+      ]
+    ],
+    "controls": [
+      "Nop_D",
+      "GT_8192"
+    ]
+  },
+  "comparison_qualification": {
+    "C_pair": "SAME_DEVICE_PAIRED_RIVE_EVIDENCE",
+    "D_pair": "SAME_DEVICE_PAIRED_RIVE_EVIDENCE",
+    "strict_same_device_D_pair": true,
+    "single_seed_only": true,
+    "finite_Mamba_gradient_nondeterminism_disclosed": true,
+    "historical_RF_device_confounds_unchanged": true
+  },
+  "limits": {
+    "wall_seconds": 18000,
+    "RSS_bytes": 8589934592,
+    "output_bytes": 2147483648,
+    "threads": 2
+  }
+}

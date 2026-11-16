@@ -1,0 +1,216 @@
+{
+  "status": "FORMAL_SCQ_RF_SREF_POST_TRAINING_FREEZE_AUDIT_PASS",
+  "variant": "S",
+  "fold": "C",
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-zbpgzu-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-dabcc897-ac69-efac-4438-a6186dea9aaa",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "575.51.03",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+    "torch_cuda_version": "11.8"
+  },
+  "request_sha256": "6370a9887893b510c95850616eb664198982131df67d5e9a06ae725f9b860a88",
+  "updates": 3900,
+  "traversals": 100,
+  "exposures": 31200,
+  "drops": 300,
+  "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+  "checkpoint": {
+    "bytes": 487148386,
+    "sha256": "10502e41cd089d50b905a99bce272cee61323180c2299cc02f9f3132c012e1a5"
+  },
+  "initialization": {
+    "parameter_sha256": "11c6f5e3e8bd0c459663858cd90480070f5a46a5adc6427690b67d6d7f62532c",
+    "persistent_state_sha256": "55a5f5cfcde0496e9554768b108341cff71d2215b10d77d094ad52b43686c44c",
+    "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+    "seed": 0
+  },
+  "common_initial_state_SHA256": "b7e5b640c1f0e709ab6697139db1267584266a51b4e0e29f2d5217bfd1236cc5",
+  "checks": {
+    "exact16output_files": true,
+    "exact11installed_files": true,
+    "exactdirectories": true,
+    "all7payload_and3current_controls_match": true,
+    "before_after_all27file_hashes_stable": true,
+    "oneway_authorization_and_singleclaim": true,
+    "completion_counts_exact": true,
+    "checkpoint_fresh_SHA_matches": true,
+    "no_BNCal_eval_resume": true,
+    "exact12member_payload_manifest": true,
+    "raw_andcanonical_order_bindings": true,
+    "frozen_metadata_identity": true,
+    "315case63source21dev": true,
+    "3900metrics_geometry": true,
+    "all_actual_batches_LR_BN_loss_geometry_and_S_delta_identity": true,
+    "exposure_recomputed": true,
+    "formal_RF_admission_source_exact": true,
+    "native_common_initialization_matches": true,
+    "unique415parameters_total": true,
+    "SSM_andoptimizer_contract": true,
+    "runidentity": true,
+    "initialization_record_valid_seed0": true,
+    "3902resource_records": true,
+    "allresource_conditions_recomputed": true,
+    "authorized315payloadprehash_pass": true,
+    "first_Sref_no_old_baseline_reuse": true
+  },
+  "check_count": 26,
+  "peaks": {
+    "RSS": 1669480448,
+    "peak_allocated": 13927097856,
+    "peak_reserved": 14810087424,
+    "device_MiB": 14611,
+    "elapsed_seconds": 1678.5416006147861
+  },
+  "counts": {
+    "forward": 3900,
+    "backward": 3900,
+    "clip": 3900,
+    "step": 3900,
+    "lr_scheduler": 100,
+    "bn_scheduler": 100
+  },
+  "arm": "S-ref",
+  "paired_baseline_audit_sha256": null,
+  "delta_summary": {
+    "max_query_delta_norm": 0.5658299922943115,
+    "mean_batch_delta_norm": 0.2455030466844507,
+    "nonzero_delta_steps": 3899,
+    "units": "D-only normalized, descriptive logging only; no accuracy conclusion"
+  },
+  "artifacts": {
+    "output/SCQ_geometry.jsonl": {
+      "bytes": 22049730,
+      "sha256": "f48bc63924b98c73f6eb296494d343a9c4b7d1663c4ba73df95e2b6fad40967f"
+    },
+    "output/ckpt-last.pth": {
+      "bytes": 487148386,
+      "sha256": "10502e41cd089d50b905a99bce272cee61323180c2299cc02f9f3132c012e1a5"
+    },
+    "output/completion.json": {
+      "bytes": 559,
+      "sha256": "116629e4a2a084485efa3be94545248d966b18873c4535084fa2a65b0663b1e1"
+    },
+    "output/exit_code.txt": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "output/exposure.json": {
+      "bytes": 19465,
+      "sha256": "1203296e9aed5f177fe51b2278703828f3c14ed7d10a7f379ea39208e52dfb42"
+    },
+    "output/initialization.json": {
+      "bytes": 289,
+      "sha256": "504fe1bcbb96978ad1f5e61d505faefd984bb1de42bb24862d1e1bade2a9aeaa"
+    },
+    "output/launch.log": {
+      "bytes": 1442,
+      "sha256": "93093e1a71f816efcc22db13835bd3c3503969aff9c41a01681525cbcc346bc5"
+    },
+    "output/metrics.jsonl": {
+      "bytes": 2820278,
+      "sha256": "8694664362d6618cdd80ae9fd996206b8c15d2b27f4eae5f71099775143d04a0"
+    },
+    "output/model_construction.json": {
+      "bytes": 91077,
+      "sha256": "b234da9681cf01f86f7e94300581050cdd06f3b1600f4fdae1289a06349c5f9d"
+    },
+    "output/optimizer_actual_defaults.json": {
+      "bytes": 223,
+      "sha256": "9d63cc1e4fb32d46c348688146a9e8b10356a7bc3e8c1eabb9c483bac7c6e592"
+    },
+    "output/optimizer_parameter_groups.json": {
+      "bytes": 70466,
+      "sha256": "0611cf12271445150659950c9de5d76ae4522d81c8c609f7d8d50ab9f6774f44"
+    },
+    "output/order_plan.json": {
+      "bytes": 1248506,
+      "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+    },
+    "output/payload_manifest.json": {
+      "bytes": 1879,
+      "sha256": "9e00dca5a4782b222628a80ab8e2e0a0f9955415e8e878140eae8093883fda7b"
+    },
+    "output/resources.jsonl": {
+      "bytes": 2863330,
+      "sha256": "8b4c12f49419ef9f37c3fa3f987657ebd96ad73f118fe7adb0e68887d3510718"
+    },
+    "output/run_identity.json": {
+      "bytes": 357,
+      "sha256": "0e153fa6460155b56a1198b7ce0397ebbf2d08f1041558547ce9cb73b66692a5"
+    },
+    "output/worker.pid": {
+      "bytes": 6,
+      "sha256": "d4b3d3cf40c06908d43f52548a677dbffe624446a2e6575ec95215c13d2a5b21"
+    },
+    "install/SCQ_RF_Sref_C_training_execution_request_v3.json": {
+      "bytes": 35707,
+      "sha256": "6370a9887893b510c95850616eb664198982131df67d5e9a06ae725f9b860a88"
+    },
+    "install/bcsp_scq_rf_Sref_C_training_entry_v3.py": {
+      "bytes": 22450,
+      "sha256": "bc01d750489002949bd442bcd806e8340d272ce7dfe16727ede8ee54f15d4adf"
+    },
+    "install/control/attempt_claim_v3.json": {
+      "bytes": 119,
+      "sha256": "08c0a89210e204e6452994551406919e557c28dd0a7f3bded404ffd244a9a837"
+    },
+    "install/control/authorization_v3.json": {
+      "bytes": 358,
+      "sha256": "bdf484027aa76644a3fe1f7c8689ed6c90d22ee128f670882b3333658d1ece9d"
+    },
+    "install/control/launch_once_v3.sh": {
+      "bytes": 2444,
+      "sha256": "c86583650c2dbcc82ff07951824a4f799c08d41d4dc6dc02ebc197b77e811a15"
+    },
+    "install/control/runtime_v3.json": {
+      "bytes": 232,
+      "sha256": "999199588332093163fbb1823784114fca841352fff776b02abbb9e146fafbf5"
+    },
+    "install/prior_failed_startup_freeze_v2.json": {
+      "bytes": 18098,
+      "sha256": "b5c6519257767c25cd5dffee06f7dc15fc34402f93bd27522040f4147757dec4"
+    },
+    "install/static_review_v3.json": {
+      "bytes": 1229,
+      "sha256": "477ae4797fed73f97c0b011affc393f1b1a563585edf7157cdd9f9d8186b2fa1"
+    },
+    "install/test_scq_rf_Sref_C_startup_chain_cpu_v4.py": {
+      "bytes": 22796,
+      "sha256": "fc76821b8145486c8edd2e26f43e9e17cfb5391004b5915603c6363d4a489543"
+    },
+    "install/training_CPU_result_v4.json": {
+      "bytes": 3360,
+      "sha256": "656572126b48f52a380ca2d0f8bfe519958d61fcc1b609d77e07de9659ae493b"
+    },
+    "install/training_entry_P3_v3.json": {
+      "bytes": 3251,
+      "sha256": "b8cc6a8e51d13f6ccef945a708877a40a2516b9e0717a3b1d01404052344d597"
+    }
+  },
+  "BNCal": false,
+  "evaluation": false,
+  "resume": false,
+  "operations": {
+    "new_forward": 0,
+    "new_backward": 0,
+    "server_writes": 0,
+    "checkpoint_loaded": false,
+    "checkpoint_downloaded": false
+  },
+  "limitations": [
+    "Checkpoint streamed twice without deserialization; no posthoc model restoration forward.",
+    "Common initialization matches hash recorded by bound factory; audit does not independently reconstruct full tensors.",
+    "RSS/SMI sampled and original runtime free-disk guard lacks per-row disk telemetry; no PID namespace ownership claim.",
+    "No scientific efficacy inference from training loss."
+  ]
+}

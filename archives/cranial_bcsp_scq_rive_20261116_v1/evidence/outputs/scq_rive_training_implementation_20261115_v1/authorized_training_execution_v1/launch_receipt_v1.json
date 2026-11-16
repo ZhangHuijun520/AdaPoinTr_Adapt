@@ -1,0 +1,154 @@
+{
+  "status": "SINGLE_STATIC_C_TRAINING_LAUNCHED_AND_UPDATES_CONFIRMED_RUNNING",
+  "request_sha256": "fdcb6cacef71bfae9395baf7b3bd05506b34b4053b75bfb03f54bff6bbe82bda",
+  "run_id": "SCQ_RIVE_Static_foldC_seed0_train_20261115_v1",
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-qx2k0r-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-383d118a-368c-94e3-166a-cad3efab8fd7",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+    "torch_cuda_version": "11.8"
+  },
+  "tmux_session": "SCQ_RIVE_Static_foldC_seed0_train_20261115_v1",
+  "worker_pid": 27290,
+  "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RIVE_Static_foldC_seed0_train_20261115_v1",
+  "log": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RIVE_Static_foldC_seed0_train_20261115_v1/launch.log",
+  "exit_code_path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SCQ_RIVE_Static_foldC_seed0_train_20261115_v1/exit_code.txt",
+  "training_contract": {
+    "folds": [
+      "C",
+      "D"
+    ],
+    "arms": [
+      "RF-Static",
+      "RF-Requery"
+    ],
+    "input": 8192,
+    "output": 8192,
+    "seed": 0,
+    "updates": 3900,
+    "traversals": 100,
+    "exposures": 31200,
+    "drops": 300,
+    "from_scratch": true,
+    "BNCal": false,
+    "evaluation": false,
+    "resume": false,
+    "retry": false
+  },
+  "effective_resources": {
+    "wall_seconds": 3600,
+    "RSS_bytes": 8589934592,
+    "device_MiB": 22528,
+    "torch_peak_bytes": 21474836480,
+    "output_bytes": 2147483648,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "controls": [
+    {
+      "target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rive_training_20261115_v1/control/SCQ_RIVE_Static_foldC_seed0_train_20261115_v1/authorization_v1.json",
+      "bytes": 638,
+      "sha256": "e00e2273fbdf052160071a7a1b4c69403c7970821c0624c9ab92c52808f8575d"
+    },
+    {
+      "target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rive_training_20261115_v1/control/SCQ_RIVE_Static_foldC_seed0_train_20261115_v1/runtime_v1.json",
+      "bytes": 230,
+      "sha256": "d48506eb32d1476746de04e85d151df04f36c81dea8138ad2fafbbf085e26e6a"
+    },
+    {
+      "target": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_rive_training_20261115_v1/control/SCQ_RIVE_Static_foldC_seed0_train_20261115_v1/launch_once_v1.sh",
+      "bytes": 2561,
+      "sha256": "c2046ef2b3149c3638bc8779e3d4ea26f9cf1a3e4d6c1d4351fefd1d54d61b8c"
+    }
+  ],
+  "prechecks": {
+    "bound_files": 69,
+    "train_payload_hashes": 315,
+    "train_sources": 63,
+    "train_hashed_bytes": 49440750,
+    "fresh_resource_checks": true,
+    "installed_actual_authorize_pass": true
+  },
+  "startup_snapshot": {
+    "first_observed_metrics": 60,
+    "latest_resource_committed_step": 215,
+    "initialization": {
+      "parameter_sha256": "8697bfc3b9d7dfd2c0003ec54253cf77cd146f2926a41138ffeacc1ec4f7d255",
+      "persistent_state_sha256": "d0f4c3699fe66a2ba2b4879c1bd41ba363a325fa152d79a4055773be3e0f4167",
+      "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+      "seed": 0
+    },
+    "model": {
+      "common": "b7e5b640c1f0e709ab6697139db1267584266a51b4e0e29f2d5217bfd1236cc5",
+      "arm": "RF-Static",
+      "variant": "RF-Static",
+      "rf": {
+        "variant": "RF-Static",
+        "additional_parameters": 231171,
+        "common_state_preserved": true,
+        "CPU_RNG_preserved": true,
+        "initialization_sha256": "a4024fbdb49feb41c609ae1171f04c2cb14ab794fc3663855d81395c6a1ea79e",
+        "total_parameters": 40827847,
+        "handoff": "original SCQ coarse return before query MLP; Q2 to all original consumers"
+      }
+    },
+    "latest_resource": {
+      "phase": "after_step",
+      "committed_step": 215,
+      "RSS": 1664868352,
+      "output_bytes": 3685059,
+      "peak_allocated": 13955896320,
+      "peak_reserved": 14837350400,
+      "device_MiB": 14638,
+      "compute_PIDs": [
+        3391605
+      ],
+      "own_PID": 27290,
+      "PID_policy": "DIAGNOSTIC_ONLY_NO_OWNERSHIP_GUARANTEE",
+      "PID_query_error": null,
+      "raw_PIDs_match_worker_number": false,
+      "PID_warning": true,
+      "elapsed_seconds": 90.37431510491297,
+      "limits": {
+        "wall_seconds": 3600,
+        "RSS_bytes": 8589934592,
+        "device_MiB": 22528,
+        "torch_peak_bytes": 21474836480,
+        "output_bytes": 2147483648,
+        "minimum_free_disk_bytes": 4294967296
+      },
+      "checks": {
+        "allocated_within_limit": true,
+        "reserved_within_limit": true,
+        "device_within_limit": true
+      },
+      "failed_checks": [],
+      "resource_guard_passed": true
+    },
+    "failure_files": []
+  },
+  "execution": {
+    "tmux_submissions": 1,
+    "automatic_retries": 0,
+    "resume": false,
+    "BNCal": false,
+    "evaluation": false,
+    "additional_runs": false
+  },
+  "completion_not_yet_confirmed": true,
+  "post_training_freeze_audit_not_performed": true,
+  "limits": [
+    "Startup and live snapshots do not establish complete3900updates or efficacy.",
+    "Sampled worker RSS/GPU monitoring, not hard isolation; SMI/container PID numbering differs and is diagnostic only.",
+    "Future arm and full-matrix capacity not authorized by this execution."
+  ]
+}
