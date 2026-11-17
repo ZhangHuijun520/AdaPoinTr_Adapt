@@ -1,0 +1,29 @@
+
+import pathlib as p,json,hashlib as h,socket,os,tarfile,io
+host=socket.gethostname();uid=os.getuid();print(json.dumps(dict(phase='identity',hostname=host,uid=uid)),flush=True)
+assert host=='shu-common-25721452-notebook-yxwd3w-0' and uid==1000,'identity mismatch'
+rows=[('bcsp_trace_D0_minimal_pending_20261117_v1.tar.gz', 32389), ('bcsp_trace_D0_minimal_pending_20261117_v1.tar.gz.sha256', 115), ('bcsp_trace_D0_minimal_pending_20261117_v1.tar.gz.bytes', 6), ('bcsp_trace_D0_minimal_pending_20261117_v1.tar.gz.contents.sha256', 713)]
+records=[];blobs={}
+for name,size in rows:
+ f=p.Path('/home/jovyan')/name;assert f.is_file() and not any(x.is_symlink() for x in (f,*f.parents))
+ a=f.stat();b=f.read_bytes();z=f.stat();assert (a.st_ino,a.st_size,a.st_mtime_ns,a.st_ctime_ns)==(z.st_ino,z.st_size,z.st_mtime_ns,z.st_ctime_ns)
+ assert len(b)==size
+ records.append(dict(path=str(f),bytes=len(b),sha256=h.sha256(b).hexdigest()));blobs[name]=b
+name=rows[0][0];assert records[0]['sha256']=='2ae574bcb691291f7472096ba9e79bb33eb0c152563dcb3f8e808f66043b0734'
+expected={v.split('  ',1)[1]:v.split('  ',1)[0] for v in blobs[name+'.contents.sha256'].decode().splitlines()};assert len(expected)==7
+assert blobs[name+'.sha256'].decode().split()[0]==records[0]['sha256'] and int(blobs[name+'.bytes'])==records[0]['bytes']
+seen={};total=0
+with tarfile.open(fileobj=io.BytesIO(blobs[name]),mode='r:gz') as tf:
+ for m in tf:
+  assert m.isfile() and m.name in expected and m.name not in seen and '..' not in p.PurePosixPath(m.name).parts and not m.name.startswith('/')
+  total+=m.size;assert 0<=m.size<=100000 and total<=262144
+  b=tf.extractfile(m).read();assert len(b)==m.size and h.sha256(b).hexdigest()==expected[m.name]
+  seen[m.name]=dict(bytes=m.size,sha256=h.sha256(b).hexdigest())
+  if m.name=='installation_mapping_v1.json':mapping=json.loads(b)
+  if m.name=='payload/TRACE_D0_execution_request_v1.json':q=json.loads(b)
+assert set(seen)==set(expected) and len(mapping['files'])==6
+assert {v['member'] for v in mapping['files']}==set(seen)-{'installation_mapping_v1.json'}
+assert all(seen[v['member']]==dict(bytes=v['bytes'],sha256=v['sha256']) and v['overwrite'] is False and v['execute'] is False for v in mapping['files'])
+assert seen['payload/TRACE_D0_execution_request_v1.json']['sha256']==mapping['request_sha256']
+assert q['status']=='AWAITING_EXPLICIT_USER_AUTHORIZATION' and q['execution_authorized'] is False
+print(json.dumps(dict(status='READONLY_QUERY_COMPLETE_PENDING_LOCAL_BINDING_CHECK',hostname=host,uid=uid,uploads=records,members=seen,total_member_bytes=total,request_status=q['status'],request_sha256=mapping['request_sha256'],server_writes=0,extracted=False,package_code_executed=False)))

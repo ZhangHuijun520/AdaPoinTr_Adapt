@@ -1,0 +1,24 @@
+
+import pathlib as P,json,hashlib as H,os,socket,tarfile,importlib.util,subprocess
+assert socket.gethostname()=='shu-common-25721452-notebook-yxwd3w-0' and os.getuid()==1000
+root=P.Path('/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_trace_D0_20261117_v1');ar='/home/jovyan/bcsp_trace_D0_minimal_pending_20261117_v1.tar.gz'
+def safe(p):
+ p=P.Path(p);assert not any(x.is_symlink() for x in (p,*p.parents));return p
+with tarfile.open(ar) as t:M=json.loads(t.extractfile('installation_mapping_v1.json').read())
+for r in M['files']:
+ p=safe(r['target']);assert p.stat().st_size==r['bytes'] and H.sha256(p.read_bytes()).hexdigest()==r['sha256']
+assert len(list(root.iterdir()))==6
+for p in M['future_execution_paths_reserved_not_created']:assert not os.path.lexists(safe(p))
+snap=[]
+for p in [r['path'] for r in M['reused_frozen_files']]+[ar+x for x in ('','.sha256','.bytes','.contents.sha256')]:
+ s=safe(p).stat();snap.append([p,[s.st_dev,s.st_ino,s.st_size,s.st_mtime_ns,s.st_ctime_ns]])
+assert H.sha256(json.dumps(sorted(snap),separators=(',',':')).encode()).hexdigest()=='b56cd72263c2cfd0b717651672c09e11d31f9e314a5d6b3d84d135a3af48b4c6'
+q=json.loads((root/'TRACE_D0_execution_request_v1.json').read_bytes());L=q['launch_contract'];assert subprocess.run(['tmux','has-session','-t',L['session']],capture_output=True).returncode==1
+A=b'{\n  "schema": "bcsp-trace-D0-authorization-v1",\n  "request_sha256": "7ad5a27aee302b877af7903b00da107c47560250d18135566315609b12a01b0f",\n  "explicit_user_authorization": true,\n  "user_authorization_text": "\\u4e0b\\u4e00\\u6b65\\u5355\\u72ec\\u660e\\u786e\\u6388\\u6743\\u6b64request\\u5b8c\\u6574SHA256\\uff0c\\u624d\\u53ef\\u91cd\\u9a8c\\u6761\\u4ef6\\u5e76\\u542f\\u52a8\\u552f\\u4e00\\u4e00\\u6b2180\\u6b21forward\\u3001\\u96f6\\u66f4\\u65b0D0\\u8bca\\u65ad\\uff1b\\u627f\\u63a5\\u4e0a\\u4e00\\u6761\\u5b8c\\u6574SHA256 7ad5a27aee302b877af7903b00da107c47560250d18135566315609b12a01b0f"\n}\n'
+R=b'{\n  "schema": "bcsp-trace-D0-runtime-v1",\n  "request_sha256": "7ad5a27aee302b877af7903b00da107c47560250d18135566315609b12a01b0f",\n  "authorization_sha256": "5dc550b8d8e6e571f6b76270905c4ee96c2c3d04517e071a4a6f8c063dd9de8d"\n}\n'
+def put(p,b):
+ with safe(p).open('xb') as f:f.write(b);f.flush();os.fsync(f.fileno())
+put(L['authorization'],A);put(L['runtime'],R)
+p=safe(q['implementation']['native_reuse']['path']);spec=importlib.util.spec_from_file_location('frozen_render',p);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+b=m.render_launcher(q,'7ad5a27aee302b877af7903b00da107c47560250d18135566315609b12a01b0f',H.sha256(A).hexdigest(),H.sha256(R).hexdigest()).encode();assert H.sha256(b).hexdigest()=='5d2a1354e9d7adb53870be54274c02d4d5295ffacd9587660543fcb5f58e8be5';put(L['launcher'],b)
+print(json.dumps(dict(status='CONTROLS_READY_NOT_LAUNCHED',forward=0)))

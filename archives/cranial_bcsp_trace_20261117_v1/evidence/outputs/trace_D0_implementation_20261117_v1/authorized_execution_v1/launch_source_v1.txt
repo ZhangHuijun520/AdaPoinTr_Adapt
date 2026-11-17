@@ -1,0 +1,11 @@
+
+import pathlib as P,json,hashlib as H,os,socket,subprocess,shlex
+assert socket.gethostname()=='shu-common-25721452-notebook-yxwd3w-0' and os.getuid()==1000
+root=P.Path('/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_trace_D0_20261117_v1');q=json.loads((root/'TRACE_D0_execution_request_v1.json').read_bytes());L=q['launch_contract']
+assert H.sha256((root/'TRACE_D0_execution_request_v1.json').read_bytes()).hexdigest()=='7ad5a27aee302b877af7903b00da107c47560250d18135566315609b12a01b0f'
+for key,h in [('authorization','5dc550b8d8e6e571f6b76270905c4ee96c2c3d04517e071a4a6f8c063dd9de8d'),('runtime','b40dfb1e0577c9032051039b8571c86344021fe075ec40aa380b67f4b936c58c'),('launcher','5d2a1354e9d7adb53870be54274c02d4d5295ffacd9587660543fcb5f58e8be5')]:
+ p=P.Path(L[key]);assert not any(x.is_symlink() for x in (p,*p.parents)) and H.sha256(p.read_bytes()).hexdigest()==h
+assert not os.path.lexists(q['launch_attempt']) and not os.path.lexists(q['output']) and subprocess.run(['tmux','has-session','-t',L['session']],capture_output=True).returncode==1
+with P.Path(q['launch_attempt']).open('x') as f:json.dump(dict(status='CLAIMED_BEFORE_TMUX',request_sha256='7ad5a27aee302b877af7903b00da107c47560250d18135566315609b12a01b0f'),f);f.flush();os.fsync(f.fileno())
+r=subprocess.run(['tmux','new-session','-d','-s',L['session'],'/bin/bash '+shlex.quote(L['launcher'])],capture_output=True)
+print(json.dumps(dict(status='SINGLE_TMUX_LAUNCH_ATTEMPTED',returncode=r.returncode,stdout=r.stdout.decode(),stderr=r.stderr.decode(),session=L['session'],output=q['output'])));raise SystemExit(r.returncode)

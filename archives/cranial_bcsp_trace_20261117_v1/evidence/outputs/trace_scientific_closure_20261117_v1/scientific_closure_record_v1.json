@@ -1,0 +1,73 @@
+{
+  "schema": "bcsp-trace-scientific-closure-v1",
+  "date_Asia_Shanghai": "2026-11-17",
+  "status": "BCSP_TRACE_D0_FORMALLY_CLOSED_NO_G3_INVESTMENT",
+  "decision": "Current fixed TRACE D0 completed under its preregistered stopping rule; do not activate conditional G3 implementation/CUDA or six-run training matrix.",
+  "result_status": "NO_SUPPORT_OR_INCONCLUSIVE",
+  "observations": {
+    "full_forward": 80,
+    "unique_cases": 40,
+    "unique_sources": 40,
+    "models": 4,
+    "forward_per_model": 20,
+    "loss": 0,
+    "backward": 0,
+    "optimizer_steps": 0,
+    "new_training": 0,
+    "CPU_replay_rows": 80,
+    "primary_nonpressure_sources": {
+      "C": 17,
+      "D": 18
+    },
+    "previously_exposed_cases": 5,
+    "exact_historical_QP_replays": 80
+  },
+  "fold_results": {
+    "C": {
+      "status": "OK",
+      "n": 17,
+      "spearman": 0.14215686274509806,
+      "type_centered_rank_correlation": 0.05576635204903867,
+      "budget_motivation": true,
+      "causal_claim": false
+    },
+    "D": {
+      "status": "OK",
+      "n": 18,
+      "spearman": -0.06707946336429307,
+      "type_centered_rank_correlation": 0.33067551887537017,
+      "budget_motivation": false,
+      "causal_claim": false
+    }
+  },
+  "scientific_claims": {
+    "observation_replay_equivalent": "ESTABLISHED_FOR_FIXED80",
+    "crossfold_distance_error_motivation": "NOT_ESTABLISHED",
+    "Memory_anchor_G3_training_benefit": "NOT_TESTED",
+    "all_spatial_conditions_ineffective": "NOT_ESTABLISHED",
+    "unique_root_cause": "UNRESOLVED"
+  },
+  "not_started": [
+    "G3 implementation",
+    "G3 CUDA admission",
+    "G0/G2/G3 six-run training matrix"
+  ],
+  "prohibited_automatic_followups": [
+    "threshold or case changes",
+    "k/radius/weight/seed scans",
+    "new diagnostic forward",
+    "training",
+    "server deletion"
+  ],
+  "limitations": [
+    "Exploratory repeatedly exposed development cases.",
+    "Only35 nonpressure sources in primary association; no statistical proof of null effect.",
+    "C/D training source overlap; not independent clinical repetitions.",
+    "No new model or clinical implant validity established."
+  ],
+  "new_checkpoint": false,
+  "full_archive_and_GitHub_status": "NOT_PERFORMED_BY_THIS_CLOSURE_TASK",
+  "server_operations": 0,
+  "new_experiments": 0,
+  "new_scoring": 0
+}

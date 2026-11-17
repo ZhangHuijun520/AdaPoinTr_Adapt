@@ -1,0 +1,11 @@
+{
+  "status": "FAILED_STOP_NO_RETRY",
+  "checks": [
+    "imports inert: no CLI/remote/GPU action",
+    "full authorize and one-way runtime positive",
+    "count identity input checkpoint drift rejected",
+    "reverse runtime binding and unauthorized receipt rejected"
+  ],
+  "error": "FileNotFoundError(2, 'No such file or directory')",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\trace_D0_implementation_20261117_v1\\test_bcsp_trace_D0_CPU_v1.py\", line 68, in main\n    model,ev=n.build_spcg_model(factory,env['Model'],dict(arm=arm),q,artificial_cpu=True);n.validate_model(model,ev,True);model.eval()\n  File \"E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_native_prediction_preparation_20261117_v1\\implementation_v1\\bcsp_spcg_sixmodel_native_predict_v1.py\", line 243, in build_spcg_model\n    model,change=factory['spcg'].install(model,arm,U,H,q['mother_source']['path'],q['mother_source']['sha256'])\n  File \"E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_implementation_20261116_v1\\bcsp_spcg_factory_v1.py\", line 46, in install\n    method,patch=replacement_forward(base.forward,source,source_sha)\n  File \"E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_implementation_20261116_v1\\bcsp_spcg_factory_v1.py\", line 13, in replacement_forward\n    raw = Path(source).read_bytes()\n  File \"E:\\RelocatedData\\zhj\\.conda\\envs\\adapointr\\lib\\pathlib.py\", line 1259, in read_bytes\n    with self.open(mode='rb') as f:\n  File \"E:\\RelocatedData\\zhj\\.conda\\envs\\adapointr\\lib\\pathlib.py\", line 1252, in open\n    return io.open(self, mode, buffering, encoding, errors, newline,\n  File \"E:\\RelocatedData\\zhj\\.conda\\envs\\adapointr\\lib\\pathlib.py\", line 1120, in _opener\n    return self._accessor.open(self, flags, mode)\nFileNotFoundError: [Errno 2] No such file or directory: '\\\\home\\\\jovyan\\\\adapointr_work\\\\PoinTr\\\\third_party\\\\bcsp_geov1_isolated_preflight_v3\\\\models\\\\AdaPoinTr.py'\n"
+}

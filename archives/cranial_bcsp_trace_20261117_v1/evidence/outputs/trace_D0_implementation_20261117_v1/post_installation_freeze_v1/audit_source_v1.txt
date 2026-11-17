@@ -1,0 +1,23 @@
+
+import pathlib as P,json,hashlib as H,os,socket,tarfile,stat
+assert socket.gethostname()=='shu-common-25721452-notebook-yxwd3w-0' and os.getuid()==1000
+print(json.dumps(dict(stage='identity',hostname=socket.gethostname(),uid=os.getuid())),flush=True)
+def safe(p):
+ p=P.Path(p);assert p.is_absolute() and not any(x.is_symlink() for x in (p,*p.parents)),str(p);return p
+a=safe('/home/jovyan/bcsp_trace_D0_minimal_pending_20261117_v1.tar.gz');b=a.read_bytes();assert len(b)==32389 and H.sha256(b).hexdigest()=='2ae574bcb691291f7472096ba9e79bb33eb0c152563dcb3f8e808f66043b0734'
+with tarfile.open(a,'r:gz') as t:
+ b=t.extractfile('installation_mapping_v1.json').read();assert H.sha256(b).hexdigest()=='f217097eb83772e952cf7986b9b9692ec4c3d61442470c067478adddedeeba80';M=json.loads(b)
+root=safe(M['remote_root']);project=safe(M['identity']['project']);assert project.is_dir() and project.resolve()==project and root.is_dir() and root.parent==project/'third_party'
+assert {p.name for p in root.iterdir()}=={P.Path(r['target']).name for r in M['files']};rows=[];docs={}
+for r in M['files']:
+ p=safe(r['target']);assert p.parent==root and p.is_file();s=p.stat();before=(s.st_dev,s.st_ino,s.st_size,s.st_mtime_ns,s.st_ctime_ns);b=p.read_bytes();z=p.stat()
+ assert before==(z.st_dev,z.st_ino,z.st_size,z.st_mtime_ns,z.st_ctime_ns) and len(b)==r['bytes'] and H.sha256(b).hexdigest()==r['sha256'] and stat.S_IMODE(z.st_mode)==0o644 and z.st_uid==1000
+ rows.append(dict(path=str(p),bytes=len(b),sha256=H.sha256(b).hexdigest(),mode='0644',uid=z.st_uid))
+ if p.suffix=='.json':docs[p.name]=json.loads(b)
+q=docs['TRACE_D0_execution_request_v1.json'];proof=docs['TRACE_D0_P3_v1.json'];prep=docs['TRACE_D0_preparation_scope_v1.json']
+assert q['status']=='AWAITING_EXPLICIT_USER_AUTHORIZATION' and q['execution_authorized'] is False and q['counts']==prep['counts'] and q['input_records']==prep['input_records'] and q['identity']==M['identity']
+assert proof['status']=='TRACE_D0_LOCAL_P3_PASS' and all(proof['checks'].values())
+lookup={P.Path(r['path']).name:r for r in rows}
+for r in [q['entry'],q['implementation']['observer'],q['offline_analysis_implementation'],q['P3'],q['preparation_scope']]:assert lookup[P.Path(r['path']).name]['bytes']==r['bytes'] and lookup[P.Path(r['path']).name]['sha256']==r['sha256']
+absent=[dict(path=p,absent=not os.path.lexists(safe(p))) for p in M['future_execution_paths_reserved_not_created']];assert all(r['absent'] for r in absent)
+print(json.dumps(dict(status='REMOTE_POST_INSTALLATION_FREEZE_CHECK_PASS',hostname=socket.gethostname(),uid=os.getuid(),root=str(root),exact_directory_set=True,files=rows,absent_execution_paths=absent,request_status=q['status'],request_sha256=M['request_sha256'],P3_status=proof['status'],server_writes=0,package_code_executed=False,forward=0)),flush=True)

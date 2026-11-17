@@ -1,0 +1,19 @@
+
+import pathlib as P,json,zipfile,ast,struct,socket,os,hashlib
+assert socket.gethostname()=='shu-common-25721452-notebook-yxwd3w-0' and os.getuid()==1000
+o=P.Path('/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/TRACE_D0_memory_evidence_20261117_v1');rows=[json.loads(l) for l in (o/'trace_manifest.jsonl').read_text().splitlines()];result=[]
+shapes=dict(D=(8192,3),S=(256,3),F=(256,384),z=(1024,),A=(256,3),x=(256,1416),f=(256,384),mu=(256,3),rho=(256,1),tau=(256,1),Q=(256,3),P=(8192,3))
+for r in rows:
+ p=P.Path(r['trace']['path']);assert not p.is_symlink();expected=dict(shapes)
+ if r['arm']=='G2':expected.update(index=(256,8),native_d2=(256,256))
+ with zipfile.ZipFile(p) as z:
+  names=z.namelist();assert len(names)==len(set(names)) and set(names)=={k+'.npy' for k in expected}
+  headers={}
+  for k,shape in expected.items():
+   with z.open(k+'.npy') as f:
+    assert f.read(6)==b'\x93NUMPY';v=tuple(f.read(2));assert v in [(1,0),(2,0)]
+    n=struct.unpack('<H' if v==(1,0) else '<I',f.read(2 if v==(1,0) else 4))[0];assert n<=4096;h=ast.literal_eval(f.read(n).decode('latin1'))
+   assert h['shape']==shape and h['fortran_order'] is False and h['descr']==('<i8' if k=='index' else '<f4');headers[k]=h
+  assert z.testzip() is None
+ result.append(dict(run=r['run'],case_id=r['case_id'],headers=headers,ZIP_CRC_pass=True))
+print(json.dumps(dict(status='NPZ80_HEADERS_AND_ZIP_CRC_PASS',files=result,arrays_numerically_analyzed=False,forward=0)))

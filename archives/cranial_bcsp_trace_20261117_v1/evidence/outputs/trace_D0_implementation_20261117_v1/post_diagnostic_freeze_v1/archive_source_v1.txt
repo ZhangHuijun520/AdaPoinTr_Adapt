@@ -1,0 +1,32 @@
+import pathlib as P,json,hashlib as H,os,socket,time
+assert socket.gethostname()=='shu-common-25721452-notebook-yxwd3w-0' and os.getuid()==1000
+root=P.Path('/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_trace_D0_20261117_v1');q=json.loads((root/'TRACE_D0_execution_request_v1.json').read_bytes());out=P.Path(q['output'])
+def sha(p):
+ h=H.sha256()
+ with p.open('rb') as f:
+  for b in iter(lambda:f.read(1048576),b''):h.update(b)
+ return h.hexdigest()
+def js(p):return json.loads(p.read_bytes())
+
+import tarfile,zipfile,ast
+rows=[json.loads(l) for l in (out/'trace_manifest.jsonl').read_text().splitlines()];receipt=js(out/'archive_receipt.json');ar=out/'development_predictions_v1.tar.gz';files={r['name']:r for r in receipt['members']}
+expected={'traces/'+w['run']+'__'+w['case_id']+'.npz' for w in q['input_records']}|{'trace_manifest.jsonl','forward_attempts.jsonl','diagnostic_complete.json','resources.jsonl'};assert set(files)==expected and len(files)==84
+actual=list(out.rglob('*'));assert all(not any(x.is_symlink() for x in (p,*p.parents)) for p in actual)
+assert {str(p.relative_to(out)) for p in actual if p.is_dir()}=={'traces','tmp'}
+names={str(p.relative_to(out)) for p in actual if p.is_file()};extra={'launch.log','worker.pid','exit_code','archive_receipt.json',ar.name,ar.name+'.sha256',ar.name+'.bytes',ar.name+'.contents.sha256'};assert names==expected|extra
+assert ar.stat().st_size==receipt['bytes'] and sha(ar)==receipt['sha256'] and receipt['path']==str(ar)
+assert (out/(ar.name+'.sha256')).read_text().split()[0]==receipt['sha256'] and int((out/(ar.name+'.bytes')).read_text())==receipt['bytes']
+assert (out/(ar.name+'.contents.sha256')).read_text().splitlines()==[r['sha256']+'  '+r['name'] for r in receipt['members']]
+for name,r in files.items():
+ p=out/name;assert p.stat().st_size==r['bytes'] and sha(p)==r['sha256'],name
+seen=set()
+with tarfile.open(ar,'r|gz') as t:
+ for m in t:
+  assert m.isfile() and m.name in files and m.name not in seen and '..' not in P.PurePosixPath(m.name).parts
+  h=H.sha256();f=t.extractfile(m)
+  for b in iter(lambda:f.read(1048576),b''):h.update(b)
+  assert m.size==files[m.name]['bytes'] and h.hexdigest()==files[m.name]['sha256'];seen.add(m.name)
+assert seen==expected
+for row in rows:assert row['trace']['sha256']==files[str(P.Path(row['trace']['path']).relative_to(out))]['sha256']
+size=sum(p.stat().st_size for p in actual if p.is_file());assert size<=q['limits']['output_bytes']
+print(json.dumps(dict(status='ARCHIVE_AND_FILE_SET_READONLY_PASS',files=len(names),directories=['traces','tmp'],trace_files=80,archive_members=84,output_bytes=size,archive=dict(path=str(ar),bytes=receipt['bytes'],sha256=receipt['sha256']),file_records=list(files.values()))))

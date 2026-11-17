@@ -1,0 +1,36 @@
+
+import pathlib as P,json,hashlib as H,os,socket,io,tarfile,subprocess,shutil
+stage='identity';written=[];created=False
+try:
+ assert socket.gethostname()=='shu-common-25721452-notebook-yxwd3w-0' and os.getuid()==1000
+ def safe(p):
+  p=P.Path(p);assert p.is_absolute() and not any(x.is_symlink() for x in (p,*p.parents)),str(p);return p
+ def sig(p):
+  s=p.stat();return [s.st_dev,s.st_ino,s.st_size,s.st_mtime_ns,s.st_ctime_ns]
+ base='/home/jovyan/bcsp_trace_D0_minimal_pending_20261117_v1.tar.gz';b=safe(base).read_bytes();assert len(b)==32389 and H.sha256(b).hexdigest()=='2ae574bcb691291f7472096ba9e79bb33eb0c152563dcb3f8e808f66043b0734'
+ stage='archive';data={}
+ with tarfile.open(fileobj=io.BytesIO(b),mode='r:gz') as tf:
+  for m in tf:assert m.isfile() and m.name not in data;data[m.name]=tf.extractfile(m).read()
+ M=json.loads(data.pop('installation_mapping_v1.json'));I=M['identity'];rows=M['files'];root=safe(M['remote_root']);project=safe(I['project'])
+ assert len(data)==len(rows)==6 and {r['member'] for r in rows}==set(data) and len({r['target'] for r in rows})==6 and root.parent==project/'third_party' and project.resolve()==project
+ for r in rows:
+  assert safe(r['target']).parent==root and not r['overwrite'] and not r['execute'] and r['write_mode']=='xb'
+  assert len(data[r['member']])==r['bytes'] and H.sha256(data[r['member']]).hexdigest()==r['sha256']
+ stage='paths'
+ for p in [root]+[r['target'] for r in rows]+M['future_execution_paths_reserved_not_created']:assert not os.path.lexists(safe(p)),str(p)
+ assert root.parent.is_dir() and safe(M['future_execution_paths_reserved_not_created'][-1]).parent.is_dir() and safe(I['python_realpath']).is_file()
+ stage='resources';s=subprocess.run(['/usr/bin/nvidia-smi','--id='+I['gpu_uuid'],'--query-gpu=uuid,name,driver_version,memory.total,memory.used,utilization.gpu','--format=csv,noheader,nounits'],capture_output=True,timeout=10);assert s.returncode==0,s.stderr.decode()[:512]
+ g=[v.strip() for v in s.stdout.decode().strip().split(',')];assert g[:4]==[I['gpu_uuid'],I['gpu_name'],I['driver_version'],str(I['nvidia_smi_memory_total_MiB'])] and int(g[4])<=256 and int(g[5])==0
+ free=shutil.disk_usage(project).free;assert free>=6*1024**3
+ stage='freshness';paths=[r['path'] for r in M['reused_frozen_files']]+[base+x for x in ('','.sha256','.bytes','.contents.sha256')];snap=sorted([[str(safe(p)),sig(safe(p))] for p in paths]);assert len(snap)==81 and H.sha256(json.dumps(snap,separators=(',',':')).encode()).hexdigest()=='CACHE'
+ print(json.dumps(dict(stage='ALL_PRECONDITIONS_PASS',reused=77,free_disk_bytes=free,GPU=s.stdout.decode().strip())),flush=True)
+ stage='write';root.mkdir(mode=0o755);created=True
+ for r in rows:
+  p=safe(r['target'])
+  with p.open('xb') as f:f.write(data[r['member']]);os.fchmod(f.fileno(),0o644);f.flush();os.fsync(f.fileno())
+  assert H.sha256(p.read_bytes()).hexdigest()==r['sha256'] and p.stat().st_size==r['bytes'] and p.stat().st_mode&0o777==0o644;written.append(dict(path=str(p),bytes=r['bytes'],sha256=r['sha256']))
+ assert {p.name for p in root.iterdir()}=={P.Path(r['target']).name for r in rows}
+ assert all(not os.path.lexists(safe(p)) for p in M['future_execution_paths_reserved_not_created'])
+ print(json.dumps(dict(status='SIX_FILES_NONOVERWRITE_INSTALLED_HASH_MATCH',installed=written,new_directories=1,reused_verified=77,package_code_executed=False,tests=0,GPU_calls=0,forward=0)),flush=True)
+except BaseException as e:
+ print(json.dumps(dict(status='FAILED_STOP_NO_RETRY',stage=stage,root_created=created,completed_files=written,error=repr(e))),flush=True);raise SystemExit(1)

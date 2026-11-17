@@ -1,0 +1,74 @@
+{
+  "status": "FORMAL_TRACE_D0_POST_CPU_ANALYSIS_FREEZE_PASS",
+  "checks": {
+    "frozen_request_all_code_input_and_freeze_bindings": true,
+    "exact_two_output_files": true,
+    "complete80_unique_role_case_records": true,
+    "all_numeric_fields_finite": true,
+    "fixed_model_order_20_each": true,
+    "all_fixed_metadata_fields_match": true,
+    "historical_deltaE_matches_frozen_scores": true,
+    "all80_exact_QP_and_replay_labels": true,
+    "independent80_exact_tensor_replays_and_spatial_consistency": true,
+    "35_nonpressure_and5_exposed_cases_separated": true,
+    "independent_average_rank_and_type_adjusted_correlations_match": true,
+    "summary_decision_exact_protocol": true,
+    "process_zero_exit_and_all_resource_thresholds": true,
+    "stdout_summary_and_empty_stderr": true,
+    "explicit_authorization_and_single_attempt": true,
+    "analysis_outputs_unchanged_during_audit": true
+  },
+  "check_count": 16,
+  "case_count": 80,
+  "primary_nonpressure_sources": {
+    "C": 17,
+    "D": 18
+  },
+  "request_sha256": "78952610006e441f49c0f84caf95134652dea133c0526974325cae86c038d5e9",
+  "output_bindings": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\trace_D0_implementation_20261117_v1\\CPU_history_replay_analysis_v1\\case_evidence.json",
+      "bytes": 2869544,
+      "sha256": "3c38df7ead27d5189e512bbba14c3397afebf0752b7fed6b37f06bab35ec4356"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\trace_D0_implementation_20261117_v1\\CPU_history_replay_analysis_v1\\summary.json",
+      "bytes": 611,
+      "sha256": "3f723540c864a4d0e71dc51e260d14dc73542b70abed5f43bdee4b1df5c6facf"
+    }
+  ],
+  "independent_fold_results": {
+    "C": {
+      "n": 17,
+      "spearman": 0.14215686274509803,
+      "type_centered_rank_correlation": 0.055766352049038674,
+      "budget_motivation": true
+    },
+    "D": {
+      "n": 18,
+      "spearman": -0.06707946336429309,
+      "type_centered_rank_correlation": 0.3306755188753702,
+      "budget_motivation": false
+    }
+  },
+  "decision": "NO_SUPPORT_OR_INCONCLUSIVE",
+  "execution_exit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\trace_D0_implementation_20261117_v1\\CPU_analysis_preparation_v1\\authorized_execution_v1\\execution_exit_v1.json",
+    "bytes": 246,
+    "sha256": "059af62ae06ea30216079494eaefbd5f3f8f40107b91ac66fa3905f962622d3c"
+  },
+  "resource_records": 209,
+  "resource_summary": {
+    "status": "PROCESS_EXIT_ZERO_PENDING_FORMAL_FREEZE",
+    "exit_code": 0,
+    "monitor_violation": null,
+    "peak_RSS_bytes": 194658304,
+    "seconds": 208.92199999999866,
+    "attempts": 1,
+    "forward": 0,
+    "GPU": false,
+    "training": 0
+  },
+  "audit_scope": "Read-only existing outputs and saved prediction arrays; independent tensor replay, spatial consistency and rank summary verification only. No metric rescoring, model imports, forward, new candidates or training.",
+  "no_formal_gate_executed": true
+}

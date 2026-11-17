@@ -1,0 +1,57 @@
+
+import os,socket,pathlib as P,json,hashlib as H,tarfile,io,subprocess,time
+start=time.monotonic();stage='identity';created=False;written=[]
+def safe(p):
+ p=P.Path(p);assert p.is_absolute() and not any(x.is_symlink() for x in (p,*p.parents)),str(p);return p
+def sig(p):
+ s=p.stat();return (s.st_dev,s.st_ino,s.st_size,s.st_mtime_ns,s.st_ctime_ns)
+def verify(r):
+ assert time.monotonic()-start<60
+ p=safe(r['path']);a=sig(p);assert p.is_file() and a[2]==r['bytes'],str(p)
+ h=H.sha256()
+ with p.open('rb') as f:
+  for b in iter(lambda:f.read(4194304),b''):
+   assert time.monotonic()-start<60;h.update(b)
+ assert sig(p)==a and h.hexdigest()==r['sha256'],str(p)
+ return (p,a)
+try:
+ host=socket.gethostname();assert host=='shu-common-25721452-notebook-yxwd3w-0' and os.getuid()==1000,host
+ print(json.dumps(dict(stage=stage,hostname=host,uid=os.getuid())),flush=True)
+ stage='uploads';base='bcsp_trace_D0_minimal_pending_20261117_v1.tar.gz';blobs={};h=H.sha256()
+ for tail in ('','.sha256','.bytes','.contents.sha256'):
+  name=base+tail;p=safe('/home/jovyan/'+name);a=sig(p);assert p.is_file() and a[2]<=65536
+  b=p.read_bytes();assert sig(p)==a;blobs[tail]=b;h.update(name.encode()+b'\0'+len(b).to_bytes(8,'big')+b)
+ assert h.hexdigest()=='a5019f65d73979f511b8461dcd9c8396dce11137db261e9ec5633525cedf72c0'
+ assert int(blobs['.bytes'])==len(blobs['']) and blobs['.sha256'].decode().split()[0]==H.sha256(blobs['']).hexdigest()
+ expected={s.split('  ',1)[1]:s.split('  ',1)[0] for s in blobs['.contents.sha256'].decode().splitlines()};payload={};total=0
+ with tarfile.open(fileobj=io.BytesIO(blobs['']),mode='r:gz') as tf:
+  for m in tf:
+   assert m.isfile() and m.name in expected and m.name not in payload and '..' not in P.PurePosixPath(m.name).parts and not m.name.startswith('/')
+   total+=m.size;assert 0<=m.size<=100000 and total<=262144;b=tf.extractfile(m).read();assert len(b)==m.size and H.sha256(b).hexdigest()==expected[m.name];payload[m.name]=b
+ assert len(payload)==7 and set(payload)==set(expected)
+ M=json.loads(payload['installation_mapping_v1.json']);I=M['identity'];root=safe(M['remote_root']);project=safe(I['project']);assert project.is_dir() and project.resolve()==project and root.parent==project/'third_party'
+ rows=M['files'];assert len(rows)==6 and len({r['target'] for r in rows})==6 and {r['member'] for r in rows}==set(payload)-{'installation_mapping_v1.json'}
+ for r in rows:
+  p=safe(r['target']);assert p.parent==root and r['overwrite'] is False and r['write_mode']=='xb' and r['execute'] is False and r['mode']=='0644'
+  b=payload[r['member']];assert len(b)==r['bytes'] and H.sha256(b).hexdigest()==r['sha256']
+ Q=json.loads(payload['payload/TRACE_D0_execution_request_v1.json']);assert Q['status']=='AWAITING_EXPLICIT_USER_AUTHORIZATION' and Q['execution_authorized'] is False
+ stage='reused77';refs=M['reused_frozen_files'];assert len(refs)==len({r['path'] for r in refs})==77;snap=[verify(r) for r in refs]
+ stage='resources';cmd=['/usr/bin/nvidia-smi','--id='+I['gpu_uuid'],'--query-gpu=uuid,name,driver_version,memory.total,memory.used,utilization.gpu','--format=csv,noheader,nounits'];s=subprocess.run(cmd,capture_output=True,timeout=10);assert s.returncode==0,s.stderr.decode()[:512]
+ gpu=[v.strip() for v in s.stdout.decode().strip().split(',')];assert gpu[:4]==[I['gpu_uuid'],I['gpu_name'],I['driver_version'],str(I['nvidia_smi_memory_total_MiB'])] and int(gpu[4])<=256 and int(gpu[5])==0
+ import shutil
+ free=shutil.disk_usage(project).free;assert free>=6*1024**3;assert safe(I['python_realpath']).is_file()
+ stage='paths';absent=[root]+[P.Path(r['target']) for r in rows]+[P.Path(p) for p in M['future_execution_paths_reserved_not_created']]
+ for p in absent:assert not os.path.lexists(safe(p)),str(p)
+ assert root.parent.is_dir() and safe(Q['output']).parent.is_dir()
+ assert all(sig(safe(p))==a for p,a in snap) and time.monotonic()-start<60
+ print(json.dumps(dict(stage='ALL_PRECONDITIONS_PASS',reused=77,free_disk_bytes=free,GPU=s.stdout.decode().strip(),absent_paths=len(absent))),flush=True)
+ stage='install';root.mkdir(mode=0o755);created=True
+ for r in rows:
+  p=safe(r['target']);assert p.parent==root and not os.path.lexists(p)
+  with p.open('xb') as f:f.write(payload[r['member']]);os.fchmod(f.fileno(),0o644);f.flush();os.fsync(f.fileno())
+  verify(dict(path=str(p),bytes=r['bytes'],sha256=r['sha256']));assert p.stat().st_mode&0o777==0o644;written.append(dict(path=str(p),bytes=r['bytes'],sha256=r['sha256']))
+ assert {p.name for p in root.iterdir()}=={P.Path(r['target']).name for r in rows}
+ assert all(not os.path.lexists(safe(p)) for p in M['future_execution_paths_reserved_not_created'])
+ print(json.dumps(dict(status='SIX_FILES_NONOVERWRITE_INSTALLED_HASH_MATCH',hostname=host,reused_verified=77,installed=written,new_directories=1,seconds=time.monotonic()-start,request_status=Q['status'],package_code_executed=False,tests=0,GPU_calls=0,forward=0)),flush=True)
+except BaseException as e:
+ print(json.dumps(dict(status='FAILED_STOP_NO_RETRY',stage=stage,root_created=created,completed_files=written,error=repr(e))),flush=True);raise SystemExit(1)

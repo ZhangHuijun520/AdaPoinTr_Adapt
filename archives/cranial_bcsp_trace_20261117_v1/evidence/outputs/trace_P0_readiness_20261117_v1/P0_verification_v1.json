@@ -1,0 +1,73 @@
+{
+  "status": "P0_FINITE_DIFFERENTIAL_CHECK_PASS_NOT_EXECUTION_ADMISSION",
+  "checks": {
+    "current_hostname_uid_matches_prior_Native": true,
+    "prior_request_fresh_hash": true,
+    "assets_exact_set_count": true,
+    "assets_all_size_SHA256_match": true,
+    "inputs_exact_set_count": true,
+    "inputs_all_size_SHA256_match": true,
+    "weights_exact_set_count": true,
+    "weights_all_size_SHA256_match": true,
+    "weights_unchanged_during_hash": true,
+    "exact_40_case_set": true,
+    "local_and_remote_input_hashes_agree": true,
+    "forty_unique_sources": true,
+    "fold_type_balance": true,
+    "SMI_success": true,
+    "same_Native_GPU_driver": true,
+    "GPU_current_idle_snapshot": true,
+    "startup_free_disk_6GiB": true,
+    "one_GiB_output_preserves_4GiB_free": true,
+    "new_paths_absent_safe_parents": true,
+    "Python_binary_exists_not_imported": true,
+    "Mamba_CUDA_binaries_stat_only": true,
+    "unique_first_coarse_insertion": true,
+    "local_historical_prediction_archive_fresh_hash": true,
+    "prediction_sidecars_fresh_hash": true,
+    "80_historical_score_rows_present": true
+  },
+  "counts": {
+    "fresh_assets": 18,
+    "fresh_inputs": 40,
+    "fresh_weights": 4,
+    "stat_only_Mamba_CUDA_binaries": 2
+  },
+  "current_resource": {
+    "hostname": "shu-common-25721452-notebook-yxwd3w-0",
+    "uid": 1000,
+    "disk": {
+      "total": 53687091200,
+      "used": 45811236864,
+      "free": 7875854336
+    },
+    "SMI_command": [
+      "nvidia-smi",
+      "--query-gpu=uuid,name,driver_version,memory.total,memory.used,utilization.gpu",
+      "--format=csv,noheader,nounits"
+    ],
+    "SMI_rc": 0,
+    "SMI_stdout": "GPU-4b19574a-832d-b4fe-e655-a57462954d6a, NVIDIA GeForce RTX 4090 D, 570.190, 24564, 1, 0\n",
+    "SMI_stderr": "",
+    "python_exists": true,
+    "request_sha256": "c63ebdfc7e4315e36bb0c65b445925d5496352720fd78db80ff7ed0e5b155dcc"
+  },
+  "server_new_files": 0,
+  "source_modifications": 0,
+  "models_loaded": 0,
+  "NPZ_arrays_decoded": 0,
+  "forward": 0,
+  "training": 0,
+  "query_history": {
+    "first_long_query": "TIMEOUT_AFTER_85S_NO_RESULT",
+    "long_query_retried": false,
+    "residual_python_probe_absent_by_process_listing": true,
+    "subsequent_queries": "four fresh fixed short queries of 811/1115/1171/951 bytes; two-path closure query; no experiment retry"
+  },
+  "open_items": [
+    "minimal observer implementation",
+    "one CPU batch covering real loading path and observation identity",
+    "formal post-test/P3",
+    "final request hash and explicit execution authorization"
+  ]
+}

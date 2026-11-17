@@ -1,0 +1,31 @@
+
+import pathlib as P,json,hashlib as H,os,socket,io,tarfile,time
+start=time.monotonic();assert socket.gethostname()=='shu-common-25721452-notebook-yxwd3w-0' and os.getuid()==1000
+print(json.dumps(dict(stage='identity',hostname=socket.gethostname(),uid=os.getuid())),flush=True)
+def safe(p):
+ p=P.Path(p);assert p.is_absolute() and not any(x.is_symlink() for x in (p,*p.parents)),str(p);return p
+def sig(p):
+ s=p.stat();return [s.st_dev,s.st_ino,s.st_size,s.st_mtime_ns,s.st_ctime_ns]
+base='/home/jovyan/bcsp_trace_D0_minimal_pending_20261117_v1.tar.gz';blobs={};snap=[];h=H.sha256()
+for suffix in ('','.sha256','.bytes','.contents.sha256'):
+ p=safe(base+suffix);a=sig(p);assert p.is_file() and a[2]<=65536;b=p.read_bytes();assert a==sig(p);blobs[suffix]=b;snap.append([str(p),a]);h.update(p.name.encode()+b'\0'+len(b).to_bytes(8,'big')+b)
+assert h.hexdigest()=='a5019f65d73979f511b8461dcd9c8396dce11137db261e9ec5633525cedf72c0'
+manifest={v.split('  ',1)[1]:v.split('  ',1)[0] for v in blobs['.contents.sha256'].decode().splitlines()};assert len(manifest)==7
+assert int(blobs['.bytes'])==len(blobs['']) and blobs['.sha256'].decode().split()[0]==H.sha256(blobs['']).hexdigest()
+seen=set()
+with tarfile.open(fileobj=io.BytesIO(blobs['']),mode='r:gz') as tf:
+ for m in tf:
+  assert m.isfile() and m.name in manifest and m.name not in seen and 0<=m.size<=100000
+  b=tf.extractfile(m).read();assert len(b)==m.size and H.sha256(b).hexdigest()==manifest[m.name];seen.add(m.name)
+  if m.name=='installation_mapping_v1.json':M=json.loads(b)
+assert seen==set(manifest) and len(M['files'])==6;refs=M['reused_frozen_files'];assert len(refs)==len({r['path'] for r in refs})==77
+total=0
+for r in refs:
+ p=safe(r['path']);a=sig(p);assert p.is_file() and a[2]==r['bytes'],str(p);h=H.sha256()
+ with p.open('rb') as f:
+  for b in iter(lambda:f.read(4194304),b''):assert time.monotonic()-start<60;h.update(b)
+ assert a==sig(p) and h.hexdigest()==r['sha256'],str(p)
+ snap.append([str(p),a]);total+=r['bytes']
+assert all(sig(safe(p))==a for p,a in snap)
+digest=H.sha256(json.dumps(sorted(snap),separators=(',',':')).encode()).hexdigest()
+print(json.dumps(dict(status='UPLOADS4_AND_REUSED77_FRESH_HASH_PASS',snapshot_sha256=digest,snapshot_files=81,reused_bytes=total,seconds=time.monotonic()-start,server_writes=0)),flush=True)

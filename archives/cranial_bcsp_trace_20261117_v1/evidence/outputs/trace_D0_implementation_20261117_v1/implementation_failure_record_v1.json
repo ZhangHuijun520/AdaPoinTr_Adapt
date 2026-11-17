@@ -1,0 +1,32 @@
+{
+  "status": "CPU_BATCH_FAILED_STOP_NO_RETRY",
+  "passed_count": 4,
+  "planned_count": 30,
+  "failure": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\trace_D0_implementation_20261117_v1\\CPU_batch_v1\\failure.json",
+    "bytes": 2089,
+    "sha256": "fde4e0f72b36a7266172e3f02229ebdeb435308514ffe095ba28a82d8ee3925e"
+  },
+  "CPU_scope": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\trace_D0_implementation_20261117_v1\\CPU_scope_v1.json",
+    "bytes": 3490,
+    "sha256": "e719debcbb55b8fe1b3bd9ab1421cba0562317ff234efb5cc2dcee337b577f9d"
+  },
+  "checks": {
+    "four_implementation_sources_unchanged_since_CPU_scope": true,
+    "frozen_head_unchanged": true,
+    "frozen_spcg_factory_unchanged": true,
+    "frozen_lqi_decoder_unchanged": true,
+    "frozen_mother_unchanged": true,
+    "final_request_not_created": true
+  },
+  "cause": "TEST_FIXTURE_ONLY: mapped() verifies local mother bytes, but the original remote mother_source.path is passed unchanged into factory.install -> Path(source).read_bytes()",
+  "established_reference": "Existing native CPU test builds a separate buildq with mother_source=rec(MOTHER), checking size and SHA equality before use.",
+  "not_a_claim": "Observer forward equivalence, real CUDA and D0 scientific hypotheses have not been validated.",
+  "production_edits": 0,
+  "server_operations": 0,
+  "real_checkpoint_loads": 0,
+  "real_NPZ_arrays_read": 0,
+  "model_forward": 0,
+  "automatic_retry": 0
+}

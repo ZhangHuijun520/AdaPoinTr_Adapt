@@ -1,0 +1,2862 @@
+{
+  "status": "FORMAL_SPCG_THREE_ARM_TWOFOLD_POST_SCORE_FREEZE_AUDIT_PASS",
+  "checks": 27,
+  "folds": {
+    "C": {
+      "arms": {
+        "G0": {
+          "metrics": {
+            "E_P95_mm": 8.822037877625773,
+            "J_P95_mm": 11.278837265697568,
+            "CD_L1_mm": 4.90882619114168,
+            "E_coverage_2.0mm": 0.5881366037312458,
+            "J_coverage_2.0mm": 0.4445893715653034,
+            "centroid_offset_mm": 15.288274862065432,
+            "radius_gyration_ratio": 0.866626315033287,
+            "reverse_A2_P95_mm": 11.941662794824097,
+            "reverse_A2_outlier_20.0mm": 0.0636474609375
+          },
+          "risks": {
+            "severe_geometry": 10,
+            "placement_tail": 18,
+            "compact_distribution": 70
+          }
+        },
+        "G1": {
+          "metrics": {
+            "E_P95_mm": 8.731873122122474,
+            "J_P95_mm": 11.594471599426663,
+            "CD_L1_mm": 5.034731032946109,
+            "E_coverage_2.0mm": 0.5449421551225244,
+            "J_coverage_2.0mm": 0.3985272998990615,
+            "centroid_offset_mm": 17.26021140571116,
+            "radius_gyration_ratio": 0.8373197582141814,
+            "reverse_A2_P95_mm": 13.087356166545414,
+            "reverse_A2_outlier_20.0mm": 0.06222330729166666
+          },
+          "risks": {
+            "severe_geometry": 6,
+            "placement_tail": 25,
+            "compact_distribution": 81
+          }
+        },
+        "G2": {
+          "metrics": {
+            "E_P95_mm": 10.258908653750002,
+            "J_P95_mm": 13.525233526129782,
+            "CD_L1_mm": 5.530499009664938,
+            "E_coverage_2.0mm": 0.6101441184661862,
+            "J_coverage_2.0mm": 0.46872300870894745,
+            "centroid_offset_mm": 14.639062241629503,
+            "radius_gyration_ratio": 0.886958426188724,
+            "reverse_A2_P95_mm": 12.293412135634057,
+            "reverse_A2_outlier_20.0mm": 0.05516183035714287
+          },
+          "risks": {
+            "severe_geometry": 11,
+            "placement_tail": 14,
+            "compact_distribution": 59
+          }
+        }
+      },
+      "comparisons": {
+        "G2_minus_G1": {
+          "metrics": {
+            "E_P95_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 8.731873122122474,
+              "mean_b": 10.258908653750002,
+              "mean_delta_b_minus_a": 1.5270355316275281,
+              "median_delta": 0.44005336086199254,
+              "min_delta": -15.101897164815943,
+              "max_delta": 19.028780219855044,
+              "improvement_direction": "negative",
+              "improved_sources": 9,
+              "tied_sources": 0,
+              "worse_sources": 12,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -2.092851617312052,
+                  5.096834357855401
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:001",
+                  "delta": -1.2463906065968402
+                },
+                {
+                  "source_id": "train:003",
+                  "delta": 3.2247034965287398
+                },
+                {
+                  "source_id": "train:012",
+                  "delta": -15.101897164815943
+                },
+                {
+                  "source_id": "train:013",
+                  "delta": -11.622146469434014
+                },
+                {
+                  "source_id": "train:025",
+                  "delta": 3.3054490199823334
+                },
+                {
+                  "source_id": "train:026",
+                  "delta": -0.6371101210773187
+                },
+                {
+                  "source_id": "train:036",
+                  "delta": 3.8439182434476225
+                },
+                {
+                  "source_id": "train:038",
+                  "delta": 19.028780219855044
+                },
+                {
+                  "source_id": "train:041",
+                  "delta": 0.44005336086199254
+                },
+                {
+                  "source_id": "train:042",
+                  "delta": 7.445768620718179
+                },
+                {
+                  "source_id": "train:047",
+                  "delta": -3.1442271356035736
+                },
+                {
+                  "source_id": "train:051",
+                  "delta": 14.798319397746972
+                },
+                {
+                  "source_id": "train:053",
+                  "delta": -7.61008868055292
+                },
+                {
+                  "source_id": "train:061",
+                  "delta": -0.9109478317960509
+                },
+                {
+                  "source_id": "train:066",
+                  "delta": 0.34992261915952216
+                },
+                {
+                  "source_id": "train:072",
+                  "delta": 16.111753950549737
+                },
+                {
+                  "source_id": "train:076",
+                  "delta": 1.93829096450742
+                },
+                {
+                  "source_id": "train:081",
+                  "delta": -0.30395417258752744
+                },
+                {
+                  "source_id": "train:094",
+                  "delta": -4.079269186720953
+                },
+                {
+                  "source_id": "train:105",
+                  "delta": 2.109405085163722
+                },
+                {
+                  "source_id": "train:107",
+                  "delta": 4.127412554841946
+                }
+              ]
+            },
+            "J_P95_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 11.594471599426663,
+              "mean_b": 13.525233526129782,
+              "mean_delta_b_minus_a": 1.9307619267031217,
+              "median_delta": 1.5396974101172773,
+              "min_delta": -14.95382090581403,
+              "max_delta": 18.676680185435885,
+              "improvement_direction": "negative",
+              "improved_sources": 8,
+              "tied_sources": 0,
+              "worse_sources": 13,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -1.9256671207307907,
+                  5.711195266624176
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:001",
+                  "delta": -1.30496267320801
+                },
+                {
+                  "source_id": "train:003",
+                  "delta": 5.516677203294362
+                },
+                {
+                  "source_id": "train:012",
+                  "delta": -14.95382090581403
+                },
+                {
+                  "source_id": "train:013",
+                  "delta": -11.464703718807694
+                },
+                {
+                  "source_id": "train:025",
+                  "delta": 3.2931203924468484
+                },
+                {
+                  "source_id": "train:026",
+                  "delta": 0.10946215748356991
+                },
+                {
+                  "source_id": "train:036",
+                  "delta": 7.406426228049497
+                },
+                {
+                  "source_id": "train:038",
+                  "delta": 17.877275510458688
+                },
+                {
+                  "source_id": "train:041",
+                  "delta": 0.24684374246134233
+                },
+                {
+                  "source_id": "train:042",
+                  "delta": 9.725354375401903
+                },
+                {
+                  "source_id": "train:047",
+                  "delta": -4.705766949246953
+                },
+                {
+                  "source_id": "train:051",
+                  "delta": 14.959519722387364
+                },
+                {
+                  "source_id": "train:053",
+                  "delta": -9.260843948767173
+                },
+                {
+                  "source_id": "train:061",
+                  "delta": -0.49539066087916694
+                },
+                {
+                  "source_id": "train:066",
+                  "delta": 1.557953504276914
+                },
+                {
+                  "source_id": "train:072",
+                  "delta": 18.676680185435885
+                },
+                {
+                  "source_id": "train:076",
+                  "delta": 1.5396974101172773
+                },
+                {
+                  "source_id": "train:081",
+                  "delta": -1.6575715464263077
+                },
+                {
+                  "source_id": "train:094",
+                  "delta": -5.920613065116154
+                },
+                {
+                  "source_id": "train:105",
+                  "delta": 2.3927644589465267
+                },
+                {
+                  "source_id": "train:107",
+                  "delta": 7.00789903827086
+                }
+              ]
+            },
+            "CD_L1_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 5.034731032946109,
+              "mean_b": 5.530499009664938,
+              "mean_delta_b_minus_a": 0.4957679767188283,
+              "median_delta": -0.19359330048072954,
+              "min_delta": -11.55570665616048,
+              "max_delta": 17.3791334365455,
+              "improvement_direction": "negative",
+              "improved_sources": 11,
+              "tied_sources": 0,
+              "worse_sources": 10,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -2.299627990175375,
+                  3.284162362271089
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:001",
+                  "delta": -0.4743662158211235
+                },
+                {
+                  "source_id": "train:003",
+                  "delta": -0.34869619529648865
+                },
+                {
+                  "source_id": "train:012",
+                  "delta": -11.511083228411351
+                },
+                {
+                  "source_id": "train:013",
+                  "delta": -11.55570665616048
+                },
+                {
+                  "source_id": "train:025",
+                  "delta": 1.874672239828267
+                },
+                {
+                  "source_id": "train:026",
+                  "delta": -0.19359330048072954
+                },
+                {
+                  "source_id": "train:036",
+                  "delta": 1.055806284607765
+                },
+                {
+                  "source_id": "train:038",
+                  "delta": 17.3791334365455
+                },
+                {
+                  "source_id": "train:041",
+                  "delta": 1.401993076143646
+                },
+                {
+                  "source_id": "train:042",
+                  "delta": 2.1668119828186847
+                },
+                {
+                  "source_id": "train:047",
+                  "delta": -2.6774460880045488
+                },
+                {
+                  "source_id": "train:051",
+                  "delta": 9.719858834814566
+                },
+                {
+                  "source_id": "train:053",
+                  "delta": -4.890838283105876
+                },
+                {
+                  "source_id": "train:061",
+                  "delta": -1.0944324594675887
+                },
+                {
+                  "source_id": "train:066",
+                  "delta": -0.2850225679569718
+                },
+                {
+                  "source_id": "train:072",
+                  "delta": 11.53474559543816
+                },
+                {
+                  "source_id": "train:076",
+                  "delta": -0.2680923415571419
+                },
+                {
+                  "source_id": "train:081",
+                  "delta": 0.08695129945455227
+                },
+                {
+                  "source_id": "train:094",
+                  "delta": -2.0937675128374895
+                },
+                {
+                  "source_id": "train:105",
+                  "delta": 0.40200914139452415
+                },
+                {
+                  "source_id": "train:107",
+                  "delta": 0.18219046914951997
+                }
+              ]
+            },
+            "J_coverage_2.0mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 0.3985272998990615,
+              "mean_b": 0.46872300870894745,
+              "mean_delta_b_minus_a": 0.07019570880988597,
+              "median_delta": 0.04288763561710168,
+              "min_delta": -0.10229218098302884,
+              "max_delta": 0.37508985999723965,
+              "improvement_direction": "positive",
+              "improved_sources": 17,
+              "tied_sources": 0,
+              "worse_sources": 4,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  0.02603508289207284,
+                  0.12141723790926437
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:001",
+                  "delta": 0.008021805719981234
+                },
+                {
+                  "source_id": "train:003",
+                  "delta": 0.008218942305412646
+                },
+                {
+                  "source_id": "train:012",
+                  "delta": 0.20143036503279593
+                },
+                {
+                  "source_id": "train:013",
+                  "delta": 0.21050170567694265
+                },
+                {
+                  "source_id": "train:025",
+                  "delta": 0.046591125036806236
+                },
+                {
+                  "source_id": "train:026",
+                  "delta": -0.03530914365721338
+                },
+                {
+                  "source_id": "train:036",
+                  "delta": -0.04912884268970141
+                },
+                {
+                  "source_id": "train:038",
+                  "delta": 0.0008754200053517347
+                },
+                {
+                  "source_id": "train:041",
+                  "delta": 0.006735981808625557
+                },
+                {
+                  "source_id": "train:042",
+                  "delta": -0.04600164493220804
+                },
+                {
+                  "source_id": "train:047",
+                  "delta": 0.1965215962194789
+                },
+                {
+                  "source_id": "train:051",
+                  "delta": 0.10261897818041898
+                },
+                {
+                  "source_id": "train:053",
+                  "delta": 0.37508985999723965
+                },
+                {
+                  "source_id": "train:061",
+                  "delta": 0.05123396903845484
+                },
+                {
+                  "source_id": "train:066",
+                  "delta": 0.04288763561710168
+                },
+                {
+                  "source_id": "train:072",
+                  "delta": -0.10229218098302884
+                },
+                {
+                  "source_id": "train:076",
+                  "delta": 0.13843925502757676
+                },
+                {
+                  "source_id": "train:081",
+                  "delta": 0.0996348945419715
+                },
+                {
+                  "source_id": "train:094",
+                  "delta": 0.175218516597752
+                },
+                {
+                  "source_id": "train:105",
+                  "delta": 0.03647333054272062
+                },
+                {
+                  "source_id": "train:107",
+                  "delta": 0.006348315921126058
+                }
+              ]
+            }
+          },
+          "severe": {
+            "baseline_arm": "G1",
+            "candidate_arm": "G2",
+            "baseline_count": 6,
+            "candidate_count": 11,
+            "new": 9,
+            "rescued": 4
+          }
+        },
+        "G2_minus_G0": {
+          "metrics": {
+            "E_P95_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 8.822037877625773,
+              "mean_b": 10.258908653750002,
+              "mean_delta_b_minus_a": 1.4368707761242279,
+              "median_delta": 1.0544136986693369,
+              "min_delta": -11.957509434248513,
+              "max_delta": 21.69933779634054,
+              "improvement_direction": "negative",
+              "improved_sources": 6,
+              "tied_sources": 0,
+              "worse_sources": 15,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -1.7954831850078778,
+                  4.9070604059490055
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:001",
+                  "delta": 0.12983423003770422
+                },
+                {
+                  "source_id": "train:003",
+                  "delta": 4.62736203180585
+                },
+                {
+                  "source_id": "train:012",
+                  "delta": -10.052336669881079
+                },
+                {
+                  "source_id": "train:013",
+                  "delta": -1.8858093678852255
+                },
+                {
+                  "source_id": "train:025",
+                  "delta": 0.9663647275061802
+                },
+                {
+                  "source_id": "train:026",
+                  "delta": 0.9629684632587461
+                },
+                {
+                  "source_id": "train:036",
+                  "delta": 4.148247657396406
+                },
+                {
+                  "source_id": "train:038",
+                  "delta": 21.69933779634054
+                },
+                {
+                  "source_id": "train:041",
+                  "delta": 0.6840394005789099
+                },
+                {
+                  "source_id": "train:042",
+                  "delta": 4.700438506242776
+                },
+                {
+                  "source_id": "train:047",
+                  "delta": -1.3518047446814538
+                },
+                {
+                  "source_id": "train:051",
+                  "delta": 17.363064672517226
+                },
+                {
+                  "source_id": "train:053",
+                  "delta": -10.692136424670279
+                },
+                {
+                  "source_id": "train:061",
+                  "delta": 1.8726165893308533
+                },
+                {
+                  "source_id": "train:066",
+                  "delta": 1.0544136986693369
+                },
+                {
+                  "source_id": "train:072",
+                  "delta": 2.476342839215178
+                },
+                {
+                  "source_id": "train:076",
+                  "delta": 1.165706068932951
+                },
+                {
+                  "source_id": "train:081",
+                  "delta": -1.0638705217057272
+                },
+                {
+                  "source_id": "train:094",
+                  "delta": -11.957509434248513
+                },
+                {
+                  "source_id": "train:105",
+                  "delta": 1.129872873447745
+                },
+                {
+                  "source_id": "train:107",
+                  "delta": 4.197143906400663
+                }
+              ]
+            },
+            "J_P95_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 11.278837265697568,
+              "mean_b": 13.525233526129782,
+              "mean_delta_b_minus_a": 2.2463962604322156,
+              "median_delta": 1.295610736809918,
+              "min_delta": -12.208464650737225,
+              "max_delta": 20.398344956958013,
+              "improvement_direction": "negative",
+              "improved_sources": 6,
+              "tied_sources": 0,
+              "worse_sources": 15,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -1.319808755216176,
+                  5.9248685316126455
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:001",
+                  "delta": 0.8520925006171103
+                },
+                {
+                  "source_id": "train:003",
+                  "delta": 7.805383617084056
+                },
+                {
+                  "source_id": "train:012",
+                  "delta": -10.188577433825703
+                },
+                {
+                  "source_id": "train:013",
+                  "delta": -1.8214690045744293
+                },
+                {
+                  "source_id": "train:025",
+                  "delta": 0.22593596350080425
+                },
+                {
+                  "source_id": "train:026",
+                  "delta": 1.2289094382397847
+                },
+                {
+                  "source_id": "train:036",
+                  "delta": 8.995256027676968
+                },
+                {
+                  "source_id": "train:038",
+                  "delta": 20.398344956958013
+                },
+                {
+                  "source_id": "train:041",
+                  "delta": 1.295610736809918
+                },
+                {
+                  "source_id": "train:042",
+                  "delta": 6.515461726330839
+                },
+                {
+                  "source_id": "train:047",
+                  "delta": -0.8923107306127616
+                },
+                {
+                  "source_id": "train:051",
+                  "delta": 17.811281520274083
+                },
+                {
+                  "source_id": "train:053",
+                  "delta": -11.929627422668995
+                },
+                {
+                  "source_id": "train:061",
+                  "delta": 2.6298774297702128
+                },
+                {
+                  "source_id": "train:066",
+                  "delta": 1.6254679642119214
+                },
+                {
+                  "source_id": "train:072",
+                  "delta": 6.409587521918141
+                },
+                {
+                  "source_id": "train:076",
+                  "delta": 0.627731291014614
+                },
+                {
+                  "source_id": "train:081",
+                  "delta": -1.0232924977867954
+                },
+                {
+                  "source_id": "train:094",
+                  "delta": -12.208464650737225
+                },
+                {
+                  "source_id": "train:105",
+                  "delta": 2.0971315875094003
+                },
+                {
+                  "source_id": "train:107",
+                  "delta": 6.7199909273665845
+                }
+              ]
+            },
+            "CD_L1_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 4.90882619114168,
+              "mean_b": 5.530499009664938,
+              "mean_delta_b_minus_a": 0.6216728185232593,
+              "median_delta": 0.25266899688580313,
+              "min_delta": -8.889114106089064,
+              "max_delta": 22.341149193644753,
+              "improvement_direction": "negative",
+              "improved_sources": 7,
+              "tied_sources": 0,
+              "worse_sources": 14,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -1.7329737165554144,
+                  3.639500986856796
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:001",
+                  "delta": 1.128693441071217
+                },
+                {
+                  "source_id": "train:003",
+                  "delta": 0.9840235452870951
+                },
+                {
+                  "source_id": "train:012",
+                  "delta": -6.8826668472847805
+                },
+                {
+                  "source_id": "train:013",
+                  "delta": -1.3224641812056115
+                },
+                {
+                  "source_id": "train:025",
+                  "delta": 0.2494483595771655
+                },
+                {
+                  "source_id": "train:026",
+                  "delta": 0.09824324238380155
+                },
+                {
+                  "source_id": "train:036",
+                  "delta": 1.1313405096816433
+                },
+                {
+                  "source_id": "train:038",
+                  "delta": 22.341149193644753
+                },
+                {
+                  "source_id": "train:041",
+                  "delta": 1.0798282626525526
+                },
+                {
+                  "source_id": "train:042",
+                  "delta": 1.7637362895036781
+                },
+                {
+                  "source_id": "train:047",
+                  "delta": -2.418456164484025
+                },
+                {
+                  "source_id": "train:051",
+                  "delta": 9.863686431643067
+                },
+                {
+                  "source_id": "train:053",
+                  "delta": -8.889114106089064
+                },
+                {
+                  "source_id": "train:061",
+                  "delta": 0.6260271638545571
+                },
+                {
+                  "source_id": "train:066",
+                  "delta": 0.25266899688580313
+                },
+                {
+                  "source_id": "train:072",
+                  "delta": -1.950449042012547
+                },
+                {
+                  "source_id": "train:076",
+                  "delta": 0.2707305715193984
+                },
+                {
+                  "source_id": "train:081",
+                  "delta": -0.06013040395280278
+                },
+                {
+                  "source_id": "train:094",
+                  "delta": -5.751976405282122
+                },
+                {
+                  "source_id": "train:105",
+                  "delta": 0.3689534591189547
+                },
+                {
+                  "source_id": "train:107",
+                  "delta": 0.1718568724757077
+                }
+              ]
+            },
+            "J_coverage_2.0mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 0.4445893715653034,
+              "mean_b": 0.46872300870894745,
+              "mean_delta_b_minus_a": 0.024133637143643975,
+              "median_delta": 0.01047796963765496,
+              "min_delta": -0.10191704789499212,
+              "max_delta": 0.23832911110492727,
+              "improvement_direction": "positive",
+              "improved_sources": 12,
+              "tied_sources": 0,
+              "worse_sources": 9,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -0.01304469262865671,
+                  0.06535039271925298
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:001",
+                  "delta": -0.00972945283838167
+                },
+                {
+                  "source_id": "train:003",
+                  "delta": -0.07371490006083176
+                },
+                {
+                  "source_id": "train:012",
+                  "delta": 0.16238474819979482
+                },
+                {
+                  "source_id": "train:013",
+                  "delta": 0.0031065829299070646
+                },
+                {
+                  "source_id": "train:025",
+                  "delta": 0.05112242389081495
+                },
+                {
+                  "source_id": "train:026",
+                  "delta": 0.011803182709409
+                },
+                {
+                  "source_id": "train:036",
+                  "delta": -0.060289170293905237
+                },
+                {
+                  "source_id": "train:038",
+                  "delta": -0.05999898368104162
+                },
+                {
+                  "source_id": "train:041",
+                  "delta": -0.022743927167911182
+                },
+                {
+                  "source_id": "train:042",
+                  "delta": 0.039522798048856056
+                },
+                {
+                  "source_id": "train:047",
+                  "delta": 0.1932811123995984
+                },
+                {
+                  "source_id": "train:051",
+                  "delta": -0.03470013516794318
+                },
+                {
+                  "source_id": "train:053",
+                  "delta": 0.23832911110492727
+                },
+                {
+                  "source_id": "train:061",
+                  "delta": -0.08690689062513646
+                },
+                {
+                  "source_id": "train:066",
+                  "delta": -0.10191704789499212
+                },
+                {
+                  "source_id": "train:072",
+                  "delta": 0.0782062539666695
+                },
+                {
+                  "source_id": "train:076",
+                  "delta": 0.0459888031094694
+                },
+                {
+                  "source_id": "train:081",
+                  "delta": 0.04796509047420239
+                },
+                {
+                  "source_id": "train:094",
+                  "delta": 0.1210444457363909
+                },
+                {
+                  "source_id": "train:105",
+                  "delta": -0.04642563446102793
+                },
+                {
+                  "source_id": "train:107",
+                  "delta": 0.01047796963765496
+                }
+              ]
+            }
+          },
+          "severe": {
+            "baseline_arm": "G0",
+            "candidate_arm": "G2",
+            "baseline_count": 10,
+            "candidate_count": 11,
+            "new": 9,
+            "rescued": 8
+          }
+        },
+        "G1_minus_G0": {
+          "metrics": {
+            "E_P95_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 8.822037877625773,
+              "mean_b": 8.731873122122474,
+              "mean_delta_b_minus_a": -0.09016475550330033,
+              "median_delta": 0.30432941394878377,
+              "min_delta": -13.635411111334559,
+              "max_delta": 9.736337101548788,
+              "improvement_direction": "negative",
+              "improved_sources": 8,
+              "tied_sources": 0,
+              "worse_sources": 13,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -2.1828572474819383,
+                  1.6221008080618182
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:001",
+                  "delta": 1.3762248366345444
+                },
+                {
+                  "source_id": "train:003",
+                  "delta": 1.4026585352771104
+                },
+                {
+                  "source_id": "train:012",
+                  "delta": 5.049560494934864
+                },
+                {
+                  "source_id": "train:013",
+                  "delta": 9.736337101548788
+                },
+                {
+                  "source_id": "train:025",
+                  "delta": -2.3390842924761532
+                },
+                {
+                  "source_id": "train:026",
+                  "delta": 1.6000785843360648
+                },
+                {
+                  "source_id": "train:036",
+                  "delta": 0.30432941394878377
+                },
+                {
+                  "source_id": "train:038",
+                  "delta": 2.6705575764854945
+                },
+                {
+                  "source_id": "train:041",
+                  "delta": 0.24398603971691735
+                },
+                {
+                  "source_id": "train:042",
+                  "delta": -2.7453301144754034
+                },
+                {
+                  "source_id": "train:047",
+                  "delta": 1.7924223909221197
+                },
+                {
+                  "source_id": "train:051",
+                  "delta": 2.564745274770253
+                },
+                {
+                  "source_id": "train:053",
+                  "delta": -3.082047744117359
+                },
+                {
+                  "source_id": "train:061",
+                  "delta": 2.783564421126904
+                },
+                {
+                  "source_id": "train:066",
+                  "delta": 0.7044910795098147
+                },
+                {
+                  "source_id": "train:072",
+                  "delta": -13.635411111334559
+                },
+                {
+                  "source_id": "train:076",
+                  "delta": -0.772584895574469
+                },
+                {
+                  "source_id": "train:081",
+                  "delta": -0.7599163491181997
+                },
+                {
+                  "source_id": "train:094",
+                  "delta": -7.878240247527559
+                },
+                {
+                  "source_id": "train:105",
+                  "delta": -0.979532211715977
+                },
+                {
+                  "source_id": "train:107",
+                  "delta": 0.06973135155871635
+                }
+              ]
+            },
+            "J_P95_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 11.278837265697568,
+              "mean_b": 11.594471599426663,
+              "mean_delta_b_minus_a": 0.3156343337290946,
+              "median_delta": 1.0487669943485756,
+              "min_delta": -12.267092663517742,
+              "max_delta": 9.643234714233264,
+              "improvement_direction": "negative",
+              "improved_sources": 8,
+              "tied_sources": 0,
+              "worse_sources": 13,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -1.6659417979032294,
+                  2.030527814846757
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:001",
+                  "delta": 2.1570551738251202
+                },
+                {
+                  "source_id": "train:003",
+                  "delta": 2.2887064137896935
+                },
+                {
+                  "source_id": "train:012",
+                  "delta": 4.765243471988327
+                },
+                {
+                  "source_id": "train:013",
+                  "delta": 9.643234714233264
+                },
+                {
+                  "source_id": "train:025",
+                  "delta": -3.067184428946044
+                },
+                {
+                  "source_id": "train:026",
+                  "delta": 1.1194472807562148
+                },
+                {
+                  "source_id": "train:036",
+                  "delta": 1.5888297996274705
+                },
+                {
+                  "source_id": "train:038",
+                  "delta": 2.5210694464993217
+                },
+                {
+                  "source_id": "train:041",
+                  "delta": 1.0487669943485756
+                },
+                {
+                  "source_id": "train:042",
+                  "delta": -3.2098926490710626
+                },
+                {
+                  "source_id": "train:047",
+                  "delta": 3.813456218634191
+                },
+                {
+                  "source_id": "train:051",
+                  "delta": 2.8517617978867182
+                },
+                {
+                  "source_id": "train:053",
+                  "delta": -2.668783473901822
+                },
+                {
+                  "source_id": "train:061",
+                  "delta": 3.1252680906493797
+                },
+                {
+                  "source_id": "train:066",
+                  "delta": 0.06751445993500749
+                },
+                {
+                  "source_id": "train:072",
+                  "delta": -12.267092663517742
+                },
+                {
+                  "source_id": "train:076",
+                  "delta": -0.9119661191026633
+                },
+                {
+                  "source_id": "train:081",
+                  "delta": 0.6342790486395122
+                },
+                {
+                  "source_id": "train:094",
+                  "delta": -6.2878515856210715
+                },
+                {
+                  "source_id": "train:105",
+                  "delta": -0.29563287143712635
+                },
+                {
+                  "source_id": "train:107",
+                  "delta": -0.2879081109042758
+                }
+              ]
+            },
+            "CD_L1_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 4.90882619114168,
+              "mean_b": 5.034731032946109,
+              "mean_delta_b_minus_a": 0.12590484180443035,
+              "median_delta": 0.1438275968285021,
+              "min_delta": -13.485194637450707,
+              "max_delta": 10.233242474954867,
+              "improvement_direction": "negative",
+              "improved_sources": 9,
+              "tied_sources": 0,
+              "worse_sources": 12,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -1.8898075019119431,
+                  1.7889110259832615
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:001",
+                  "delta": 1.6030596568923405
+                },
+                {
+                  "source_id": "train:003",
+                  "delta": 1.3327197405835838
+                },
+                {
+                  "source_id": "train:012",
+                  "delta": 4.62841638112657
+                },
+                {
+                  "source_id": "train:013",
+                  "delta": 10.233242474954867
+                },
+                {
+                  "source_id": "train:025",
+                  "delta": -1.6252238802511014
+                },
+                {
+                  "source_id": "train:026",
+                  "delta": 0.2918365428645311
+                },
+                {
+                  "source_id": "train:036",
+                  "delta": 0.07553422507387841
+                },
+                {
+                  "source_id": "train:038",
+                  "delta": 4.962015757099249
+                },
+                {
+                  "source_id": "train:041",
+                  "delta": -0.3221648134910935
+                },
+                {
+                  "source_id": "train:042",
+                  "delta": -0.4030756933150066
+                },
+                {
+                  "source_id": "train:047",
+                  "delta": 0.25898992352052375
+                },
+                {
+                  "source_id": "train:051",
+                  "delta": 0.1438275968285021
+                },
+                {
+                  "source_id": "train:053",
+                  "delta": -3.998275822983188
+                },
+                {
+                  "source_id": "train:061",
+                  "delta": 1.7204596233221459
+                },
+                {
+                  "source_id": "train:066",
+                  "delta": 0.5376915648427749
+                },
+                {
+                  "source_id": "train:072",
+                  "delta": -13.485194637450707
+                },
+                {
+                  "source_id": "train:076",
+                  "delta": 0.5388229130765403
+                },
+                {
+                  "source_id": "train:081",
+                  "delta": -0.14708170340735505
+                },
+                {
+                  "source_id": "train:094",
+                  "delta": -3.658208892444632
+                },
+                {
+                  "source_id": "train:105",
+                  "delta": -0.03305568227556943
+                },
+                {
+                  "source_id": "train:107",
+                  "delta": -0.010333596673812284
+                }
+              ]
+            },
+            "J_coverage_2.0mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 0.4445893715653034,
+              "mean_b": 0.3985272998990615,
+              "mean_delta_b_minus_a": -0.04606207166624198,
+              "median_delta": -0.05166980406776911,
+              "min_delta": -0.2073951227470356,
+              "max_delta": 0.18049843494969833,
+              "improvement_direction": "positive",
+              "improved_sources": 5,
+              "tied_sources": 0,
+              "worse_sources": 16,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -0.08210268634374922,
+                  -0.0076882626806146145
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:001",
+                  "delta": -0.017751258558362903
+                },
+                {
+                  "source_id": "train:003",
+                  "delta": -0.0819338423662444
+                },
+                {
+                  "source_id": "train:012",
+                  "delta": -0.03904561683300112
+                },
+                {
+                  "source_id": "train:013",
+                  "delta": -0.2073951227470356
+                },
+                {
+                  "source_id": "train:025",
+                  "delta": 0.004531298854008714
+                },
+                {
+                  "source_id": "train:026",
+                  "delta": 0.04711232636662238
+                },
+                {
+                  "source_id": "train:036",
+                  "delta": -0.011160327604203824
+                },
+                {
+                  "source_id": "train:038",
+                  "delta": -0.06087440368639335
+                },
+                {
+                  "source_id": "train:041",
+                  "delta": -0.02947990897653674
+                },
+                {
+                  "source_id": "train:042",
+                  "delta": 0.0855244429810641
+                },
+                {
+                  "source_id": "train:047",
+                  "delta": -0.003240483819880513
+                },
+                {
+                  "source_id": "train:051",
+                  "delta": -0.13731911334836217
+                },
+                {
+                  "source_id": "train:053",
+                  "delta": -0.13676074889231238
+                },
+                {
+                  "source_id": "train:061",
+                  "delta": -0.1381408596635913
+                },
+                {
+                  "source_id": "train:066",
+                  "delta": -0.1448046835120938
+                },
+                {
+                  "source_id": "train:072",
+                  "delta": 0.18049843494969833
+                },
+                {
+                  "source_id": "train:076",
+                  "delta": -0.09245045191810736
+                },
+                {
+                  "source_id": "train:081",
+                  "delta": -0.05166980406776911
+                },
+                {
+                  "source_id": "train:094",
+                  "delta": -0.05417407086136111
+                },
+                {
+                  "source_id": "train:105",
+                  "delta": -0.08289896500374855
+                },
+                {
+                  "source_id": "train:107",
+                  "delta": 0.004129653716528903
+                }
+              ]
+            }
+          },
+          "severe": {
+            "baseline_arm": "G0",
+            "candidate_arm": "G1",
+            "baseline_count": 10,
+            "candidate_count": 6,
+            "new": 4,
+            "rescued": 8
+          }
+        }
+      }
+    },
+    "D": {
+      "arms": {
+        "G0": {
+          "metrics": {
+            "E_P95_mm": 5.83426713707168,
+            "J_P95_mm": 7.827292097971254,
+            "CD_L1_mm": 3.562889278163363,
+            "E_coverage_2.0mm": 0.6526906748984588,
+            "J_coverage_2.0mm": 0.5350980102575414,
+            "centroid_offset_mm": 11.035169823887006,
+            "radius_gyration_ratio": 0.9130474686937627,
+            "reverse_A2_P95_mm": 9.892093569288338,
+            "reverse_A2_outlier_20.0mm": 0.02907249813988095
+          },
+          "risks": {
+            "severe_geometry": 2,
+            "placement_tail": 9,
+            "compact_distribution": 50
+          }
+        },
+        "G1": {
+          "metrics": {
+            "E_P95_mm": 5.404860973187049,
+            "J_P95_mm": 7.723730093936111,
+            "CD_L1_mm": 3.0353290907926636,
+            "E_coverage_2.0mm": 0.6581555854345287,
+            "J_coverage_2.0mm": 0.5072843768658791,
+            "centroid_offset_mm": 10.626673864326259,
+            "radius_gyration_ratio": 0.8820437461129538,
+            "reverse_A2_P95_mm": 8.433063883939841,
+            "reverse_A2_outlier_20.0mm": 0.01906622023809524
+          },
+          "risks": {
+            "severe_geometry": 2,
+            "placement_tail": 8,
+            "compact_distribution": 68
+          }
+        },
+        "G2": {
+          "metrics": {
+            "E_P95_mm": 7.276883856084293,
+            "J_P95_mm": 9.956651004556294,
+            "CD_L1_mm": 3.5471974577058707,
+            "E_coverage_2.0mm": 0.6104574860464721,
+            "J_coverage_2.0mm": 0.51103444870666,
+            "centroid_offset_mm": 12.199367942106099,
+            "radius_gyration_ratio": 0.9380683154605579,
+            "reverse_A2_P95_mm": 10.756018930158902,
+            "reverse_A2_outlier_20.0mm": 0.025093005952380953
+          },
+          "risks": {
+            "severe_geometry": 9,
+            "placement_tail": 12,
+            "compact_distribution": 38
+          }
+        }
+      },
+      "comparisons": {
+        "G2_minus_G1": {
+          "metrics": {
+            "E_P95_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 5.404860973187049,
+              "mean_b": 7.276883856084293,
+              "mean_delta_b_minus_a": 1.8720228828972434,
+              "median_delta": 1.196484782620371,
+              "min_delta": -0.9540974888657558,
+              "max_delta": 8.00315210023766,
+              "improvement_direction": "negative",
+              "improved_sources": 3,
+              "tied_sources": 0,
+              "worse_sources": 18,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  0.9378727667492637,
+                  2.8983155370473512
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:004",
+                  "delta": 5.962833435517528
+                },
+                {
+                  "source_id": "train:005",
+                  "delta": -0.1274708646425191
+                },
+                {
+                  "source_id": "train:008",
+                  "delta": 8.00315210023766
+                },
+                {
+                  "source_id": "train:010",
+                  "delta": 1.5213048684394295
+                },
+                {
+                  "source_id": "train:022",
+                  "delta": 1.1677718918339215
+                },
+                {
+                  "source_id": "train:029",
+                  "delta": 0.4854805561158786
+                },
+                {
+                  "source_id": "train:033",
+                  "delta": 1.3352846568498355
+                },
+                {
+                  "source_id": "train:037",
+                  "delta": -0.9540974888657558
+                },
+                {
+                  "source_id": "train:044",
+                  "delta": 0.90520311733742
+                },
+                {
+                  "source_id": "train:046",
+                  "delta": 2.345677909069737
+                },
+                {
+                  "source_id": "train:052",
+                  "delta": 0.04111122383201149
+                },
+                {
+                  "source_id": "train:054",
+                  "delta": 1.106654723747555
+                },
+                {
+                  "source_id": "train:060",
+                  "delta": 3.498181401744475
+                },
+                {
+                  "source_id": "train:062",
+                  "delta": 1.1200470261761097
+                },
+                {
+                  "source_id": "train:068",
+                  "delta": 1.196484782620371
+                },
+                {
+                  "source_id": "train:069",
+                  "delta": 2.1696476673392464
+                },
+                {
+                  "source_id": "train:079",
+                  "delta": 5.16927423074618
+                },
+                {
+                  "source_id": "train:087",
+                  "delta": 3.6241034014025733
+                },
+                {
+                  "source_id": "train:093",
+                  "delta": 0.17977020987128078
+                },
+                {
+                  "source_id": "train:095",
+                  "delta": 1.3522218728174478
+                },
+                {
+                  "source_id": "train:101",
+                  "delta": -0.7901561813482703
+                }
+              ]
+            },
+            "J_P95_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 7.723730093936111,
+              "mean_b": 9.956651004556294,
+              "mean_delta_b_minus_a": 2.2329209106201837,
+              "median_delta": 1.4931913419954537,
+              "min_delta": -1.0229809344879293,
+              "max_delta": 9.082918155010619,
+              "improvement_direction": "negative",
+              "improved_sources": 5,
+              "tied_sources": 0,
+              "worse_sources": 16,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  1.0999315785340333,
+                  3.450671718732397
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:004",
+                  "delta": 7.152745357378354
+                },
+                {
+                  "source_id": "train:005",
+                  "delta": -0.672856920217229
+                },
+                {
+                  "source_id": "train:008",
+                  "delta": 9.082918155010619
+                },
+                {
+                  "source_id": "train:010",
+                  "delta": 0.8698755724383549
+                },
+                {
+                  "source_id": "train:022",
+                  "delta": 1.5932707932291352
+                },
+                {
+                  "source_id": "train:029",
+                  "delta": -0.2504263213321183
+                },
+                {
+                  "source_id": "train:033",
+                  "delta": 1.793545203457228
+                },
+                {
+                  "source_id": "train:037",
+                  "delta": -1.0229809344879293
+                },
+                {
+                  "source_id": "train:044",
+                  "delta": 1.2400241646750558
+                },
+                {
+                  "source_id": "train:046",
+                  "delta": 2.378462130757331
+                },
+                {
+                  "source_id": "train:052",
+                  "delta": 1.1577091198337959
+                },
+                {
+                  "source_id": "train:054",
+                  "delta": 1.1351896025128463
+                },
+                {
+                  "source_id": "train:060",
+                  "delta": 5.304432833385185
+                },
+                {
+                  "source_id": "train:062",
+                  "delta": 1.423025261727279
+                },
+                {
+                  "source_id": "train:068",
+                  "delta": 1.4931913419954537
+                },
+                {
+                  "source_id": "train:069",
+                  "delta": 2.7704782206914196
+                },
+                {
+                  "source_id": "train:079",
+                  "delta": 5.8937738895686325
+                },
+                {
+                  "source_id": "train:087",
+                  "delta": 4.4439366397201665
+                },
+                {
+                  "source_id": "train:093",
+                  "delta": -0.6375335657132908
+                },
+                {
+                  "source_id": "train:095",
+                  "delta": 2.4474494146595065
+                },
+                {
+                  "source_id": "train:101",
+                  "delta": -0.7048908362659452
+                }
+              ]
+            },
+            "CD_L1_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 3.0353290907926636,
+              "mean_b": 3.5471974577058707,
+              "mean_delta_b_minus_a": 0.5118683669132067,
+              "median_delta": 0.4405207800633164,
+              "min_delta": -1.1290481011351825,
+              "max_delta": 3.7899889132788154,
+              "improvement_direction": "negative",
+              "improved_sources": 5,
+              "tied_sources": 0,
+              "worse_sources": 16,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  0.13119026024700733,
+                  0.98351738124284
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:004",
+                  "delta": 1.0742478215373468
+                },
+                {
+                  "source_id": "train:005",
+                  "delta": 0.005204888180642353
+                },
+                {
+                  "source_id": "train:008",
+                  "delta": 1.3796385445384698
+                },
+                {
+                  "source_id": "train:010",
+                  "delta": -1.1290481011351825
+                },
+                {
+                  "source_id": "train:022",
+                  "delta": 0.4405207800633164
+                },
+                {
+                  "source_id": "train:029",
+                  "delta": 0.4882916328487199
+                },
+                {
+                  "source_id": "train:033",
+                  "delta": 0.29233014115297573
+                },
+                {
+                  "source_id": "train:037",
+                  "delta": 0.46550485637731365
+                },
+                {
+                  "source_id": "train:044",
+                  "delta": -0.1287738608817528
+                },
+                {
+                  "source_id": "train:046",
+                  "delta": -0.46188440159073707
+                },
+                {
+                  "source_id": "train:052",
+                  "delta": 0.5184654665655835
+                },
+                {
+                  "source_id": "train:054",
+                  "delta": 0.22484196805181256
+                },
+                {
+                  "source_id": "train:060",
+                  "delta": 0.7333874642457174
+                },
+                {
+                  "source_id": "train:062",
+                  "delta": 0.6400149890945777
+                },
+                {
+                  "source_id": "train:068",
+                  "delta": -0.08185104416391553
+                },
+                {
+                  "source_id": "train:069",
+                  "delta": 0.2036540055016962
+                },
+                {
+                  "source_id": "train:079",
+                  "delta": 1.6491476489901107
+                },
+                {
+                  "source_id": "train:087",
+                  "delta": 3.7899889132788154
+                },
+                {
+                  "source_id": "train:093",
+                  "delta": 0.33143155250499845
+                },
+                {
+                  "source_id": "train:095",
+                  "delta": 0.6538201399937833
+                },
+                {
+                  "source_id": "train:101",
+                  "delta": -0.3396976999769499
+                }
+              ]
+            },
+            "J_coverage_2.0mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 0.5072843768658791,
+              "mean_b": 0.51103444870666,
+              "mean_delta_b_minus_a": 0.003750071840780858,
+              "median_delta": -0.0007777111565215877,
+              "min_delta": -0.10780012095893016,
+              "max_delta": 0.12680760820309211,
+              "improvement_direction": "positive",
+              "improved_sources": 9,
+              "tied_sources": 0,
+              "worse_sources": 12,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -0.020916416674882206,
+                  0.030094498185022786
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:004",
+                  "delta": -0.03837556094558803
+                },
+                {
+                  "source_id": "train:005",
+                  "delta": 0.06742863714069802
+                },
+                {
+                  "source_id": "train:008",
+                  "delta": -0.002861151011844032
+                },
+                {
+                  "source_id": "train:010",
+                  "delta": 0.025766027549858017
+                },
+                {
+                  "source_id": "train:022",
+                  "delta": -0.03830369785361193
+                },
+                {
+                  "source_id": "train:029",
+                  "delta": -0.0003470069240397722
+                },
+                {
+                  "source_id": "train:033",
+                  "delta": -0.05913696712511052
+                },
+                {
+                  "source_id": "train:037",
+                  "delta": 0.12680760820309211
+                },
+                {
+                  "source_id": "train:044",
+                  "delta": -0.0007777111565215877
+                },
+                {
+                  "source_id": "train:046",
+                  "delta": 0.0501251195327817
+                },
+                {
+                  "source_id": "train:052",
+                  "delta": 0.033680174040744804
+                },
+                {
+                  "source_id": "train:054",
+                  "delta": -0.04508723575889628
+                },
+                {
+                  "source_id": "train:060",
+                  "delta": -0.10780012095893016
+                },
+                {
+                  "source_id": "train:062",
+                  "delta": 0.0013391465235823574
+                },
+                {
+                  "source_id": "train:068",
+                  "delta": 0.11213674315589311
+                },
+                {
+                  "source_id": "train:069",
+                  "delta": -0.026064241353765505
+                },
+                {
+                  "source_id": "train:079",
+                  "delta": -0.010535761913115449
+                },
+                {
+                  "source_id": "train:087",
+                  "delta": -0.08845960394196806
+                },
+                {
+                  "source_id": "train:093",
+                  "delta": -0.004667220227893121
+                },
+                {
+                  "source_id": "train:095",
+                  "delta": 0.004768806355905708
+                },
+                {
+                  "source_id": "train:101",
+                  "delta": 0.07911552532512661
+                }
+              ]
+            }
+          },
+          "severe": {
+            "baseline_arm": "G1",
+            "candidate_arm": "G2",
+            "baseline_count": 2,
+            "candidate_count": 9,
+            "new": 7,
+            "rescued": 0
+          }
+        },
+        "G2_minus_G0": {
+          "metrics": {
+            "E_P95_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 5.83426713707168,
+              "mean_b": 7.276883856084293,
+              "mean_delta_b_minus_a": 1.4426167190126125,
+              "median_delta": 1.1780911429471281,
+              "min_delta": -6.767977855506423,
+              "max_delta": 7.964200221874113,
+              "improvement_direction": "negative",
+              "improved_sources": 3,
+              "tied_sources": 0,
+              "worse_sources": 18,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  0.24258322499841484,
+                  2.648523665412326
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:004",
+                  "delta": 4.9921867623411895
+                },
+                {
+                  "source_id": "train:005",
+                  "delta": -0.977831920542048
+                },
+                {
+                  "source_id": "train:008",
+                  "delta": 7.964200221874113
+                },
+                {
+                  "source_id": "train:010",
+                  "delta": 5.65453443886838
+                },
+                {
+                  "source_id": "train:022",
+                  "delta": 0.588517824965539
+                },
+                {
+                  "source_id": "train:029",
+                  "delta": 0.3108807428523068
+                },
+                {
+                  "source_id": "train:033",
+                  "delta": 1.2399752963198596
+                },
+                {
+                  "source_id": "train:037",
+                  "delta": -0.9686612850048486
+                },
+                {
+                  "source_id": "train:044",
+                  "delta": 0.8140647739654892
+                },
+                {
+                  "source_id": "train:046",
+                  "delta": 3.83055450098108
+                },
+                {
+                  "source_id": "train:052",
+                  "delta": 0.9386852191356034
+                },
+                {
+                  "source_id": "train:054",
+                  "delta": 1.295801298402397
+                },
+                {
+                  "source_id": "train:060",
+                  "delta": 3.2204050815048877
+                },
+                {
+                  "source_id": "train:062",
+                  "delta": 1.5363290719474145
+                },
+                {
+                  "source_id": "train:068",
+                  "delta": 2.4124093473443784
+                },
+                {
+                  "source_id": "train:069",
+                  "delta": 0.7830748266893215
+                },
+                {
+                  "source_id": "train:079",
+                  "delta": -6.767977855506423
+                },
+                {
+                  "source_id": "train:087",
+                  "delta": 1.1780911429471281
+                },
+                {
+                  "source_id": "train:093",
+                  "delta": 1.3981608103866132
+                },
+                {
+                  "source_id": "train:095",
+                  "delta": 0.665715585683591
+                },
+                {
+                  "source_id": "train:101",
+                  "delta": 0.18583521410888793
+                }
+              ]
+            },
+            "J_P95_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 7.827292097971254,
+              "mean_b": 9.956651004556294,
+              "mean_delta_b_minus_a": 2.1293589065850433,
+              "median_delta": 2.260234871451342,
+              "min_delta": -6.765464865838609,
+              "max_delta": 8.857157724445589,
+              "improvement_direction": "negative",
+              "improved_sources": 4,
+              "tied_sources": 0,
+              "worse_sources": 17,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  0.7939212879468062,
+                  3.4110144673605065
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:004",
+                  "delta": 4.9265416595212175
+                },
+                {
+                  "source_id": "train:005",
+                  "delta": -2.004372297968504
+                },
+                {
+                  "source_id": "train:008",
+                  "delta": 8.857157724445589
+                },
+                {
+                  "source_id": "train:010",
+                  "delta": 6.699033740888632
+                },
+                {
+                  "source_id": "train:022",
+                  "delta": 1.2114806431084393
+                },
+                {
+                  "source_id": "train:029",
+                  "delta": -0.07402580992959162
+                },
+                {
+                  "source_id": "train:033",
+                  "delta": 2.6543109343826083
+                },
+                {
+                  "source_id": "train:037",
+                  "delta": -0.2045768638377341
+                },
+                {
+                  "source_id": "train:044",
+                  "delta": 1.1198240024852408
+                },
+                {
+                  "source_id": "train:046",
+                  "delta": 4.90416124008635
+                },
+                {
+                  "source_id": "train:052",
+                  "delta": 2.5019595886229755
+                },
+                {
+                  "source_id": "train:054",
+                  "delta": 1.3333750606065458
+                },
+                {
+                  "source_id": "train:060",
+                  "delta": 5.064018828161657
+                },
+                {
+                  "source_id": "train:062",
+                  "delta": 1.5086024685502153
+                },
+                {
+                  "source_id": "train:068",
+                  "delta": 2.813377873865373
+                },
+                {
+                  "source_id": "train:069",
+                  "delta": 2.728757318016216
+                },
+                {
+                  "source_id": "train:079",
+                  "delta": -6.765464865838609
+                },
+                {
+                  "source_id": "train:087",
+                  "delta": 2.260234871451342
+                },
+                {
+                  "source_id": "train:093",
+                  "delta": 2.379357232386562
+                },
+                {
+                  "source_id": "train:095",
+                  "delta": 1.541168077627706
+                },
+                {
+                  "source_id": "train:101",
+                  "delta": 1.2616156116536708
+                }
+              ]
+            },
+            "CD_L1_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 3.562889278163363,
+              "mean_b": 3.5471974577058707,
+              "mean_delta_b_minus_a": -0.015691820457492553,
+              "median_delta": 0.27453218751434116,
+              "min_delta": -6.002463361409766,
+              "max_delta": 1.6126816174612184,
+              "improvement_direction": "negative",
+              "improved_sources": 5,
+              "tied_sources": 0,
+              "worse_sources": 16,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -0.7438557805978214,
+                  0.5061212052283565
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:004",
+                  "delta": 0.9527468189146693
+                },
+                {
+                  "source_id": "train:005",
+                  "delta": -0.3897614961028313
+                },
+                {
+                  "source_id": "train:008",
+                  "delta": 1.503174724402224
+                },
+                {
+                  "source_id": "train:010",
+                  "delta": -1.1345635003834516
+                },
+                {
+                  "source_id": "train:022",
+                  "delta": 0.27453218751434116
+                },
+                {
+                  "source_id": "train:029",
+                  "delta": 0.19442665224285083
+                },
+                {
+                  "source_id": "train:033",
+                  "delta": 0.2205788819409351
+                },
+                {
+                  "source_id": "train:037",
+                  "delta": 0.02478674537936909
+                },
+                {
+                  "source_id": "train:044",
+                  "delta": 0.052623308489216924
+                },
+                {
+                  "source_id": "train:046",
+                  "delta": 1.6126816174612184
+                },
+                {
+                  "source_id": "train:052",
+                  "delta": 0.5612029177445135
+                },
+                {
+                  "source_id": "train:054",
+                  "delta": 0.3054261806657399
+                },
+                {
+                  "source_id": "train:060",
+                  "delta": 0.40607196332310824
+                },
+                {
+                  "source_id": "train:062",
+                  "delta": 0.35666609520857584
+                },
+                {
+                  "source_id": "train:068",
+                  "delta": 0.0484308169778096
+                },
+                {
+                  "source_id": "train:069",
+                  "delta": -0.08104805067994292
+                },
+                {
+                  "source_id": "train:079",
+                  "delta": -6.002463361409766
+                },
+                {
+                  "source_id": "train:087",
+                  "delta": 0.8738281383740247
+                },
+                {
+                  "source_id": "train:093",
+                  "delta": 0.3596215219505563
+                },
+                {
+                  "source_id": "train:095",
+                  "delta": 0.41190242203240146
+                },
+                {
+                  "source_id": "train:101",
+                  "delta": -0.8803928136529064
+                }
+              ]
+            },
+            "J_coverage_2.0mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 0.5350980102575414,
+              "mean_b": 0.51103444870666,
+              "mean_delta_b_minus_a": -0.024063561550881466,
+              "median_delta": -0.017792423836180293,
+              "min_delta": -0.14474801557002664,
+              "max_delta": 0.11971468360043047,
+              "improvement_direction": "positive",
+              "improved_sources": 7,
+              "tied_sources": 0,
+              "worse_sources": 14,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -0.05297464764806219,
+                  0.005785387962134744
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:004",
+                  "delta": -0.06466739490470053
+                },
+                {
+                  "source_id": "train:005",
+                  "delta": 0.07916882425798266
+                },
+                {
+                  "source_id": "train:008",
+                  "delta": 0.0021587752329171317
+                },
+                {
+                  "source_id": "train:010",
+                  "delta": -0.017792423836180293
+                },
+                {
+                  "source_id": "train:022",
+                  "delta": -0.038122095309794046
+                },
+                {
+                  "source_id": "train:029",
+                  "delta": -0.012660099206623365
+                },
+                {
+                  "source_id": "train:033",
+                  "delta": -0.10354544721136305
+                },
+                {
+                  "source_id": "train:037",
+                  "delta": 0.11971468360043047
+                },
+                {
+                  "source_id": "train:044",
+                  "delta": -0.016580473861525835
+                },
+                {
+                  "source_id": "train:046",
+                  "delta": -0.13699125266964712
+                },
+                {
+                  "source_id": "train:052",
+                  "delta": -0.07782082604706408
+                },
+                {
+                  "source_id": "train:054",
+                  "delta": -0.11053821121619589
+                },
+                {
+                  "source_id": "train:060",
+                  "delta": -0.14474801557002664
+                },
+                {
+                  "source_id": "train:062",
+                  "delta": -0.0022544480959378888
+                },
+                {
+                  "source_id": "train:068",
+                  "delta": 0.027041885759530038
+                },
+                {
+                  "source_id": "train:069",
+                  "delta": 0.02461657559746966
+                },
+                {
+                  "source_id": "train:079",
+                  "delta": 0.03434191738941439
+                },
+                {
+                  "source_id": "train:087",
+                  "delta": -0.061280075130516365
+                },
+                {
+                  "source_id": "train:093",
+                  "delta": -0.03694984547419722
+                },
+                {
+                  "source_id": "train:095",
+                  "delta": -0.041349178647331564
+                },
+                {
+                  "source_id": "train:101",
+                  "delta": 0.07292233277484883
+                }
+              ]
+            }
+          },
+          "severe": {
+            "baseline_arm": "G0",
+            "candidate_arm": "G2",
+            "baseline_count": 2,
+            "candidate_count": 9,
+            "new": 7,
+            "rescued": 0
+          }
+        },
+        "G1_minus_G0": {
+          "metrics": {
+            "E_P95_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 5.83426713707168,
+              "mean_b": 5.404860973187049,
+              "mean_delta_b_minus_a": -0.42940616388463126,
+              "median_delta": -0.09113834337193083,
+              "min_delta": -11.937252086252602,
+              "max_delta": 4.13322957042895,
+              "improvement_direction": "negative",
+              "improved_sources": 13,
+              "tied_sources": 0,
+              "worse_sources": 8,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -1.8238485788901488,
+                  0.606139819247333
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:004",
+                  "delta": -0.9706466731763381
+                },
+                {
+                  "source_id": "train:005",
+                  "delta": -0.8503610558995289
+                },
+                {
+                  "source_id": "train:008",
+                  "delta": -0.038951878363548076
+                },
+                {
+                  "source_id": "train:010",
+                  "delta": 4.13322957042895
+                },
+                {
+                  "source_id": "train:022",
+                  "delta": -0.5792540668683825
+                },
+                {
+                  "source_id": "train:029",
+                  "delta": -0.17459981326357177
+                },
+                {
+                  "source_id": "train:033",
+                  "delta": -0.09530936052997596
+                },
+                {
+                  "source_id": "train:037",
+                  "delta": -0.014563796139092755
+                },
+                {
+                  "source_id": "train:044",
+                  "delta": -0.09113834337193083
+                },
+                {
+                  "source_id": "train:046",
+                  "delta": 1.484876591911343
+                },
+                {
+                  "source_id": "train:052",
+                  "delta": 0.8975739953035919
+                },
+                {
+                  "source_id": "train:054",
+                  "delta": 0.18914657465484197
+                },
+                {
+                  "source_id": "train:060",
+                  "delta": -0.2777763202395871
+                },
+                {
+                  "source_id": "train:062",
+                  "delta": 0.4162820457713048
+                },
+                {
+                  "source_id": "train:068",
+                  "delta": 1.2159245647240073
+                },
+                {
+                  "source_id": "train:069",
+                  "delta": -1.386572840649925
+                },
+                {
+                  "source_id": "train:079",
+                  "delta": -11.937252086252602
+                },
+                {
+                  "source_id": "train:087",
+                  "delta": -2.446012258455445
+                },
+                {
+                  "source_id": "train:093",
+                  "delta": 1.2183906005153324
+                },
+                {
+                  "source_id": "train:095",
+                  "delta": -0.6865062871338568
+                },
+                {
+                  "source_id": "train:101",
+                  "delta": 0.9759913954571582
+                }
+              ]
+            },
+            "J_P95_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 7.827292097971254,
+              "mean_b": 7.723730093936111,
+              "mean_delta_b_minus_a": -0.10356200403514033,
+              "median_delta": 0.08557720682293635,
+              "min_delta": -12.659238755407241,
+              "max_delta": 5.829158168450277,
+              "improvement_direction": "negative",
+              "improved_sources": 10,
+              "tied_sources": 0,
+              "worse_sources": 11,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -1.632179299862619,
+                  1.1651138054140315
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:004",
+                  "delta": -2.2262036978571365
+                },
+                {
+                  "source_id": "train:005",
+                  "delta": -1.3315153777512752
+                },
+                {
+                  "source_id": "train:008",
+                  "delta": -0.22576043056502915
+                },
+                {
+                  "source_id": "train:010",
+                  "delta": 5.829158168450277
+                },
+                {
+                  "source_id": "train:022",
+                  "delta": -0.38179015012069595
+                },
+                {
+                  "source_id": "train:029",
+                  "delta": 0.17640051140252666
+                },
+                {
+                  "source_id": "train:033",
+                  "delta": 0.8607657309253804
+                },
+                {
+                  "source_id": "train:037",
+                  "delta": 0.8184040706501952
+                },
+                {
+                  "source_id": "train:044",
+                  "delta": -0.120200162189815
+                },
+                {
+                  "source_id": "train:046",
+                  "delta": 2.525699109329019
+                },
+                {
+                  "source_id": "train:052",
+                  "delta": 1.3442504687891796
+                },
+                {
+                  "source_id": "train:054",
+                  "delta": 0.19818545809369947
+                },
+                {
+                  "source_id": "train:060",
+                  "delta": -0.24041400522352774
+                },
+                {
+                  "source_id": "train:062",
+                  "delta": 0.08557720682293635
+                },
+                {
+                  "source_id": "train:068",
+                  "delta": 1.3201865318699193
+                },
+                {
+                  "source_id": "train:069",
+                  "delta": -0.041720902675203675
+                },
+                {
+                  "source_id": "train:079",
+                  "delta": -12.659238755407241
+                },
+                {
+                  "source_id": "train:087",
+                  "delta": -2.1837017682688247
+                },
+                {
+                  "source_id": "train:093",
+                  "delta": 3.016890798099853
+                },
+                {
+                  "source_id": "train:095",
+                  "delta": -0.9062813370318006
+                },
+                {
+                  "source_id": "train:101",
+                  "delta": 1.966506447919616
+                }
+              ]
+            },
+            "CD_L1_mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 3.562889278163363,
+              "mean_b": 3.0353290907926636,
+              "mean_delta_b_minus_a": -0.5275601873706993,
+              "median_delta": -0.16598859254897524,
+              "min_delta": -7.6516110103998765,
+              "max_delta": 2.0745660190519555,
+              "improvement_direction": "negative",
+              "improved_sources": 14,
+              "tied_sources": 0,
+              "worse_sources": 7,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -1.3895794118047524,
+                  0.09757449406323389
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:004",
+                  "delta": -0.12150100262267749
+                },
+                {
+                  "source_id": "train:005",
+                  "delta": -0.39496638428347364
+                },
+                {
+                  "source_id": "train:008",
+                  "delta": 0.1235361798637542
+                },
+                {
+                  "source_id": "train:010",
+                  "delta": -0.005515399248269048
+                },
+                {
+                  "source_id": "train:022",
+                  "delta": -0.16598859254897524
+                },
+                {
+                  "source_id": "train:029",
+                  "delta": -0.2938649806058691
+                },
+                {
+                  "source_id": "train:033",
+                  "delta": -0.07175125921204062
+                },
+                {
+                  "source_id": "train:037",
+                  "delta": -0.44071811099794456
+                },
+                {
+                  "source_id": "train:044",
+                  "delta": 0.18139716937096972
+                },
+                {
+                  "source_id": "train:046",
+                  "delta": 2.0745660190519555
+                },
+                {
+                  "source_id": "train:052",
+                  "delta": 0.04273745117893002
+                },
+                {
+                  "source_id": "train:054",
+                  "delta": 0.08058421261392734
+                },
+                {
+                  "source_id": "train:060",
+                  "delta": -0.3273155009226092
+                },
+                {
+                  "source_id": "train:062",
+                  "delta": -0.2833488938860018
+                },
+                {
+                  "source_id": "train:068",
+                  "delta": 0.13028186114172513
+                },
+                {
+                  "source_id": "train:069",
+                  "delta": -0.28470205618163913
+                },
+                {
+                  "source_id": "train:079",
+                  "delta": -7.6516110103998765
+                },
+                {
+                  "source_id": "train:087",
+                  "delta": -2.9161607749047906
+                },
+                {
+                  "source_id": "train:093",
+                  "delta": 0.02818996944555785
+                },
+                {
+                  "source_id": "train:095",
+                  "delta": -0.24191771796138184
+                },
+                {
+                  "source_id": "train:101",
+                  "delta": -0.5406951136759566
+                }
+              ]
+            },
+            "J_coverage_2.0mm": {
+              "status": "OK",
+              "pair_count": 21,
+              "undefined_pairs": 0,
+              "mean_a": 0.5350980102575414,
+              "mean_b": 0.5072843768658791,
+              "mean_delta_b_minus_a": -0.027813633391662318,
+              "median_delta": -0.015802762705004247,
+              "min_delta": -0.18711637220242883,
+              "max_delta": 0.050680816951235164,
+              "improvement_direction": "positive",
+              "improved_sources": 6,
+              "tied_sources": 0,
+              "worse_sources": 15,
+              "bootstrap": {
+                "status": "OK",
+                "CI95": [
+                  -0.05221282601342724,
+                  -0.007804253231638004
+                ],
+                "replicates": 2000,
+                "estimator": "equal source mean candidate minus reference",
+                "quantile_method": "linear"
+              },
+              "source_deltas": [
+                {
+                  "source_id": "train:004",
+                  "delta": -0.0262918339591125
+                },
+                {
+                  "source_id": "train:005",
+                  "delta": 0.01174018711728464
+                },
+                {
+                  "source_id": "train:008",
+                  "delta": 0.005019926244761164
+                },
+                {
+                  "source_id": "train:010",
+                  "delta": -0.04355845138603831
+                },
+                {
+                  "source_id": "train:022",
+                  "delta": 0.00018160254381788254
+                },
+                {
+                  "source_id": "train:029",
+                  "delta": -0.012313092282583593
+                },
+                {
+                  "source_id": "train:033",
+                  "delta": -0.04440848008625253
+                },
+                {
+                  "source_id": "train:037",
+                  "delta": -0.007092924602661643
+                },
+                {
+                  "source_id": "train:044",
+                  "delta": -0.015802762705004247
+                },
+                {
+                  "source_id": "train:046",
+                  "delta": -0.18711637220242883
+                },
+                {
+                  "source_id": "train:052",
+                  "delta": -0.11150100008780889
+                },
+                {
+                  "source_id": "train:054",
+                  "delta": -0.06545097545729961
+                },
+                {
+                  "source_id": "train:060",
+                  "delta": -0.03694789461109649
+                },
+                {
+                  "source_id": "train:062",
+                  "delta": -0.003593594619520246
+                },
+                {
+                  "source_id": "train:068",
+                  "delta": -0.08509485739636308
+                },
+                {
+                  "source_id": "train:069",
+                  "delta": 0.050680816951235164
+                },
+                {
+                  "source_id": "train:079",
+                  "delta": 0.04487767930252984
+                },
+                {
+                  "source_id": "train:087",
+                  "delta": 0.027179528811451692
+                },
+                {
+                  "source_id": "train:093",
+                  "delta": -0.0322826252463041
+                },
+                {
+                  "source_id": "train:095",
+                  "delta": -0.04611798500323727
+                },
+                {
+                  "source_id": "train:101",
+                  "delta": -0.006193192550277782
+                }
+              ]
+            }
+          },
+          "severe": {
+            "baseline_arm": "G0",
+            "candidate_arm": "G1",
+            "baseline_count": 2,
+            "candidate_count": 2,
+            "new": 1,
+            "rescued": 1
+          }
+        }
+      }
+    }
+  }
+}

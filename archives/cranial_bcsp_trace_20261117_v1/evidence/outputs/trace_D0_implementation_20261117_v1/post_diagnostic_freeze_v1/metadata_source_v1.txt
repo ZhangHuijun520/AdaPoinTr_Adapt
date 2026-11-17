@@ -1,0 +1,24 @@
+import pathlib as P,json,hashlib as H,os,socket,time
+assert socket.gethostname()=='shu-common-25721452-notebook-yxwd3w-0' and os.getuid()==1000
+root=P.Path('/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_trace_D0_20261117_v1');q=json.loads((root/'TRACE_D0_execution_request_v1.json').read_bytes());out=P.Path(q['output'])
+def sha(p):
+ h=H.sha256()
+ with p.open('rb') as f:
+  for b in iter(lambda:f.read(1048576),b''):h.update(b)
+ return h.hexdigest()
+def js(p):return json.loads(p.read_bytes())
+
+import subprocess
+L=q['launch_contract'];assert sha(root/'TRACE_D0_execution_request_v1.json')=='7ad5a27aee302b877af7903b00da107c47560250d18135566315609b12a01b0f'
+a=js(P.Path(L['authorization']));r=js(P.Path(L['runtime']));assert a['request_sha256']==r['request_sha256']==sha(root/'TRACE_D0_execution_request_v1.json') and a['explicit_user_authorization'] is True and r['authorization_sha256']==sha(P.Path(L['authorization']))
+assert js(P.Path(q['launch_attempt']))==dict(status='CLAIMED_BEFORE_TMUX',request_sha256=a['request_sha256'])
+assert (out/'exit_code').read_text().strip()=='0' and subprocess.run(['tmux','has-session','-t',L['session']],capture_output=True).returncode==1
+pid=int((out/'worker.pid').read_text());assert not P.Path('/proc/'+str(pid)).exists()
+done=js(out/'diagnostic_complete.json');rows=[json.loads(l) for l in (out/'trace_manifest.jsonl').read_text().splitlines()];claims=[json.loads(l) for l in (out/'forward_attempts.jsonl').read_text().splitlines()]
+assert done['counts']==q['counts'] and len(rows)==len(claims)==80 and done['request_sha256']==a['request_sha256']
+for i,(x,c,w) in enumerate(zip(rows,claims,q['input_records']),1):
+ assert all(x[k]==v for k,v in w.items()) and x['forward_index']==c['forward_index']==i and c['status']=='CLAIMED_BEFORE_FORWARD' and c['case_id']==w['case_id'] and c['run']==w['run']
+ assert x['checkpoint_sha256']==q['checkpoints'][w['run']]['sha256'] and x['trace']['path']==str(out/'traces'/(w['run']+'__'+w['case_id']+'.npz'))
+assert [s['run'] for s in done['states']]==q['order'] and all(s['forwards']==20 and s['state_before']==s['state_after'] and s['RNG_before']==s['RNG_after'] for s in done['states'])
+resources=[json.loads(l) for l in (out/'resources.jsonl').read_text().splitlines()];assert len(resources)==161 and resources[-1]['phase']=='complete'
+print(json.dumps(dict(status='METADATA_READONLY_COLLECTED',counts=done['counts'],states=[dict(run=s['run'],forwards=s['forwards'],state_match=s['state_before']==s['state_after'],RNG_match=s['RNG_before']==s['RNG_after']) for s in done['states']],resources=resources,claims=claims,trace_manifest=rows,authorization_sha256=sha(P.Path(L['authorization'])),runtime_sha256=sha(P.Path(L['runtime'])),launcher_sha256=sha(P.Path(L['launcher'])))))
