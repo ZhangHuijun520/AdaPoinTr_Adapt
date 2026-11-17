@@ -1,0 +1,46 @@
+{
+  "status": "LOCAL_SPCG_THREE_ARM_TWOFOLD_CPU_SCORING_COMPLETE",
+  "model_predictions": 630,
+  "controls": 420,
+  "frozen_baseline_rows_verified": 420,
+  "score_rows": 1050,
+  "source_rows": 210,
+  "seconds": 1836.6720000000023,
+  "archive_sha256": {
+    "SPCG": "a2f3384a95906cad6523cd0eb0c0c9954a4bd4252017934b825da1f0d49f07c7"
+  },
+  "request_sha256": "7b6b3e5f6ade721540397e2c7977a85e2c73298f7e5cedb489b79f257eae27f8",
+  "server_operations": 0,
+  "model_imports": 0,
+  "forward_calls": 0,
+  "bootstrap": {
+    "replicates_per_fold": 2000,
+    "folds": 2,
+    "contract": {
+      "required_by_original_protocol": true,
+      "replicates": 2000,
+      "RNG": "Generator(PCG64)",
+      "numpy": "1.26.4",
+      "seeds": {
+        "C": 2026111601,
+        "D": 2026111602
+      },
+      "unit": "21 source means/fold; five defects and paired arms move together",
+      "source_order": "canonical_source_id lexicographic",
+      "draw_shape": [
+        2000,
+        21
+      ],
+      "reuse": "Same index matrix per fold for all metrics and all3 comparisons.",
+      "CI": "2.5/97.5 percentile; quantile(method=linear)",
+      "save_indices_and_SHA256": true
+    }
+  },
+  "formal_gate": false,
+  "comparison_qualification": {
+    "C_three_arms_same_training_device": true,
+    "D_G1_G2_same_training_device": true,
+    "D_G0_cross_device_reference": true,
+    "common_inference_device_does_not_remove_training_confound": true
+  }
+}

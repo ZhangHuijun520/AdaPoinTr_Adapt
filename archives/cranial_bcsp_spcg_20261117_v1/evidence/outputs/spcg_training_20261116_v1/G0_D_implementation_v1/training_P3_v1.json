@@ -1,0 +1,66 @@
+{
+  "status": "SPCG_G0D_TRAINING_LOCAL_P3_PASS",
+  "entry_sha256": "c82d30e148a4a2fe2826240eb1b680d6015f896919f116cf614182a21a42ce46",
+  "bridge_sha256": "626b31be096dbad3070ae628623c8ecb585b2dff55c398d2607615761d40d9ea",
+  "CPU_checks": 20,
+  "CPU_result": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\G0_D_implementation_v1\\CPU_batch_v1\\result.json",
+    "bytes": 3015,
+    "sha256": "e849571d2ab458c68d3d7c9c1c6d3093931c11532ba41a623d4c357275d3a674"
+  },
+  "CPU_scope": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\G0_D_implementation_v1\\CPU_scope_v1.json",
+    "bytes": 1183,
+    "sha256": "75ab63afd46875256f4c003f5494664aefec7ebc07ebb3fb0fb08efbdfa7f3c8"
+  },
+  "inherited_G0_training_P3": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\UTC_order_hotfix_v3\\training_P3_v3.json",
+    "bytes": 3277,
+    "sha256": "4dcaeb4ce03cce3ead5ef5c43caea8d6592319531d82cfe5b3b7d43e8176d46c"
+  },
+  "C_matrix_freezes": {
+    "G0": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\UTC_order_hotfix_v3\\post_training_freeze_v3\\formal_freeze_result_v3.json",
+      "bytes": 2802,
+      "sha256": "996a52a26a0f6e05d98d95a8c674fc35f593240d0a436c5e69dbc589cc7464f2"
+    },
+    "G1": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\G1_C_implementation_v1\\post_training_freeze_v1\\formal_freeze_result_v1.json",
+      "bytes": 3184,
+      "sha256": "b39b2dc2261579756048e757918481d83396cad22dabae97190661f9b32f19f0"
+    },
+    "G2": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\G2_C_implementation_v1\\post_training_freeze_v1\\formal_freeze_result_v1.json",
+      "bytes": 3828,
+      "sha256": "38605970e6f76973c16061e1f96fa4395d8e1a198fde07761be4eb347fabf7d8"
+    }
+  },
+  "checks": {
+    "D_QC315_sources63_order100": true,
+    "actual_authorize_complete_metadata_CPU": true,
+    "C_fold_and_wrong_data_order_rejected": true,
+    "completed_C_matrix_hashes_required": true,
+    "original_coarse_head_and_FC_loss_route_CPU": true,
+    "same_CUDA_admitted_G0_initialization_bound": true,
+    "bridge_only_fold_guard_changed": true,
+    "actual_bridge3900_artificial_observations": true,
+    "five_Q_gradient_steps_preserved": true,
+    "actual_optimizer_group_function_CPU": true,
+    "UTC_first_and_exception_cleanup_unchanged": true,
+    "source_and_payload_guard_unchanged": true,
+    "no_model_data_loss_budget_changes": true,
+    "new_run_paths_and_one_way_auth": true,
+    "no_dev_tuning": true
+  },
+  "limitations": [
+    "Mother forward/FC/coarse+dense loss route uses artificial encoder/decoder and surrogate CD, not actual CUDA/Mamba.",
+    "3900 bridge observation steps use a tiny artificial model with backward but no optimizer updates; no real payload read.",
+    "Full authorize uses frozen actual D metadata and path aliases with artificial P3/auth fixtures; no execution authority.",
+    "Production initialization matched by frozen CUDA/G0 proof binding, not regenerated with the artificial fixture.",
+    "Existing source-policy/import-chain evidence inherited; no GPU preflight repeated.",
+    "Current server identity, GPU, D315 payload hashes, reused D metadata and disk/new target readiness must be rechecked before execution."
+  ],
+  "server_operations": 0,
+  "GPU": 0,
+  "training_started": false
+}

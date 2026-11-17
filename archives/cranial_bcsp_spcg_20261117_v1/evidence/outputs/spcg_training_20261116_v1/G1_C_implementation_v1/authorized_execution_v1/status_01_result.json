@@ -1,0 +1,24 @@
+{
+  "files": [
+    "SPCG_geometry.jsonl",
+    "initialization.json",
+    "launch.log",
+    "metrics.jsonl",
+    "model_construction.json",
+    "optimizer_actual_defaults.json",
+    "optimizer_parameter_groups.json",
+    "order_plan.json",
+    "resources.jsonl",
+    "tmp",
+    "worker.pid"
+  ],
+  "worker.pid": "20390",
+  "metrics.jsonl_last": [
+    "{\"step\": 278, \"epoch\": 7, \"batch\": 4, \"case_ids\": [\"train__078__frontoorbital\", \"train__004__random_1\", \"train__010__frontoorbital\", \"train__101__parietotemporal\", \"train__054__random_1\", \"train__008__random_2\", \"train__058__random_2\", \"train__087__random_1\"], \"source_ids\": [\"train:078\", \"train:004\", \"train:010\", \"train:101\", \"train:054\", \"train:008\", \"train:058\", \"train:087\"], \"loss_sparse\": 0.0, \"loss_dense\": 0.3865363597869873, \"loss_denoise\": 0.0, \"loss_reconstruction\": 0.3865363597869873, \"loss\": 0.3865363597869873, \"LR\": [9.654893846056297e-05, 9.654893846056297e-05], \"BN_momentum\": 0.7143304733856898, \"grad_norm_before_clip\": 1.4623736143112183, \"clip_max_norm\": 10, \"optimizer_step_committed\": true}"
+  ],
+  "resources.jsonl_last": [
+    "{\"phase\": \"after_step\", \"committed_step\": 278, \"RSS\": 1665662976, \"output_bytes\": 2331025, \"peak_allocated\": 13929265664, \"peak_reserved\": 14805893120, \"device_MiB\": 14608, \"compute_PIDs\": [3237849], \"own_PID\": 20390, \"PID_policy\": \"DIAGNOSTIC_ONLY_NO_OWNERSHIP_GUARANTEE\", \"PID_query_error\": null, \"raw_PIDs_match_worker_number\": false, \"PID_warning\": true, \"elapsed_seconds\": 108.85550745623186, \"limits\": {\"wall_seconds\": 3600, \"RSS_bytes\": 8589934592, \"device_MiB\": 22528, \"torch_peak_bytes\": 21474836480, \"output_bytes\": 1073741824, \"minimum_free_disk_bytes\": 4294967296}, \"checks\": {\"allocated_within_limit\": true, \"reserved_within_limit\": true, \"device_within_limit\": true}, \"failed_checks\": [], \"resource_guard_passed\": true}"
+  ],
+  "log_tail": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\n2026-11-16 13:52:57,974 - MODEL - INFO - Transformer with config {'NAME': 'AdaPoinTr', 'num_query': 256, 'num_points': 8192, 'center_num': [512, 256], 'global_feature_dim': 1024, 'encoder_type': 'graph', 'decoder_type': 'fc', 'query_selection': 'learned_only', 'denoise_weight': 0, 'fine_coverage_weight': 1, 'fine_local_weight': 0, 'encoder_config': {'embed_dim': 384, 'depth': 6, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn'], 'combine_style': 'concat'}, 'decoder_config': {'embed_dim': 384, 'depth': 8, 'num_heads': 6, 'k': 8, 'n_group': 2, 'mlp_ratio': 2, 'self_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'self_attn_combine_style': 'concat', 'cross_attn_block_style_list': ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn'], 'cross_attn_combine_style': 'concat'}}\n/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/utils/determinism.py:73: UserWarning: Deterministic mode: upgrade to Triton >= 3.4.0 for cached autotuning.\n  warnings.warn(msg)\n",
+  "tmux_live": true
+}

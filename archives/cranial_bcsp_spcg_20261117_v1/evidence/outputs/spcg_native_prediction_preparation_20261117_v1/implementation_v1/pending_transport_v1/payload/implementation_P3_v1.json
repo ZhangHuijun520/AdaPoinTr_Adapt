@@ -1,0 +1,60 @@
+{
+  "status": "LOCAL_SPCG_NATIVE_PREDICTION_P3_PASS",
+  "entry_sha256": "223777e0dd409b58b04ab6fbcf53b71e76418fd9ff77b48a0a6e421517eaeb07",
+  "CPU_checks": 24,
+  "CPU_result": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_native_prediction_preparation_20261117_v1\\implementation_v1\\CPU_batch_v2\\result.json",
+    "bytes": 3024,
+    "sha256": "7a03e944adb6674d2f0fe78d8054df5a7957f1768074e315c66e55fe4acb4f6c"
+  },
+  "CPU_scope": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_native_prediction_preparation_20261117_v1\\implementation_v1\\CPU_scope_v1.json",
+    "bytes": 1429,
+    "sha256": "3c639749140a250ca783dae8204c9cdd17521e07c3998f78757f0a208228e083"
+  },
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_native_prediction_preparation_20261117_v1\\implementation_v1\\test_spcg_native_CPU_v2.py",
+    "bytes": 11935,
+    "sha256": "ffbf0a7dcb3b7ad3886406ffa42ae705657f0f2a28b300e087248a6b4030d13e"
+  },
+  "fixture_static_review": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_native_prediction_preparation_20261117_v1\\implementation_v1\\fixture_path_static_review_v2.json",
+    "bytes": 3033,
+    "sha256": "e9693d64aa6a9cd5b9c0eb4efa204c882939a39359c13e6801659e9ff47d1854"
+  },
+  "prior_failure": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_native_prediction_preparation_20261117_v1\\implementation_v1\\CPU_failure_freeze_v1.json",
+    "bytes": 2079,
+    "sha256": "6959b7dce0710fd0ed273a09751cb2e5139ed26a8d535722add9fb776204103c"
+  },
+  "checks": {
+    "six_frozen_models_exact": true,
+    "D_only210_inputs630_paired": true,
+    "actual_G0_G1_G2_factory_CPU": true,
+    "strict_artificial_checkpoint_loading_CPU": true,
+    "actual_G2_k8_CPU": true,
+    "native630_artificial_loop_CPU": true,
+    "coarse_dense_only_outputs_CPU": true,
+    "attempt_counter_and_failure_stop_CPU": true,
+    "parameter_BN_RNG_equality_CPU": true,
+    "source_guard_U_H_readonly_CPU": true,
+    "UTC_first_and_active_guard_exception_capture": true,
+    "resource_and_native_numeric_contract_unchanged": true,
+    "production_entry_unchanged_in_fixture_fix": true,
+    "no_real_checkpoint_or_payload_access": true,
+    "no_repeated_GPU_preflight": true,
+    "cross_device_G0_D_disclosed": true
+  },
+  "limitations": [
+    "Actual SPCG factory/head and mother interfaces tested with artificial backbone and surrogate loss; actual Mamba/CUDA not repeated.",
+    "630-loop test uses tiny artificial models and generated partial arrays; it is not scientific prediction.",
+    "Checkpoint tests deserialize artificial CPU state_dict files only; real weights remain unopened.",
+    "Auth/runtime fixtures provide no execution authority; fresh server readiness remains required.",
+    "Entry and frozen scientific sources were unchanged after first-batch failure. Version2 only remaps the artificial mother-source record; passed once.",
+    "Full server source/dependency/input/checkpoint hashes and current device/disk/targets must be rechecked before installation/execution."
+  ],
+  "server_operations": 0,
+  "GPU": 0,
+  "forward_real": 0,
+  "checkpoint_loads_real": 0
+}

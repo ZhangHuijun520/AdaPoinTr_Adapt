@@ -1,0 +1,54 @@
+# SPCG fixed5 coarse/dense geometry panels
+
+Posthoc explanatory cases only; all3models, same world-mm bounds, no alignment or point deletion. Coarse256 versusdense8192 are unequal point budgets. Color saturation40mm affects display only.
+
+## C train__051__random_1 / posthoc_new_severe
+
+![train__051__random_1_XY_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__051__random_1_XY_global.png)
+
+![train__051__random_1_XZ_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__051__random_1_XZ_global.png)
+
+![train__051__random_1_YZ_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__051__random_1_YZ_global.png)
+
+![train__051__random_1_XY_ROI.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__051__random_1_XY_ROI.png)
+
+## C train__072__random_1 / posthoc_new_severe
+
+![train__072__random_1_XY_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__072__random_1_XY_global.png)
+
+![train__072__random_1_XZ_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__072__random_1_XZ_global.png)
+
+![train__072__random_1_YZ_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__072__random_1_YZ_global.png)
+
+![train__072__random_1_XY_ROI.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__072__random_1_XY_ROI.png)
+
+## D train__008__random_2 / posthoc_new_severe
+
+![train__008__random_2_XY_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__008__random_2_XY_global.png)
+
+![train__008__random_2_XZ_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__008__random_2_XZ_global.png)
+
+![train__008__random_2_YZ_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__008__random_2_YZ_global.png)
+
+![train__008__random_2_XY_ROI.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__008__random_2_XY_ROI.png)
+
+## C train__012__parietotemporal / posthoc_improved_control
+
+![train__012__parietotemporal_XY_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__012__parietotemporal_XY_global.png)
+
+![train__012__parietotemporal_XZ_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__012__parietotemporal_XZ_global.png)
+
+![train__012__parietotemporal_YZ_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__012__parietotemporal_YZ_global.png)
+
+![train__012__parietotemporal_XY_ROI.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__012__parietotemporal_XY_ROI.png)
+
+## D train__046__parietotemporal / posthoc_improved_control
+
+![train__046__parietotemporal_XY_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__046__parietotemporal_XY_global.png)
+
+![train__046__parietotemporal_XZ_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__046__parietotemporal_XZ_global.png)
+
+![train__046__parietotemporal_YZ_global.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__046__parietotemporal_YZ_global.png)
+
+![train__046__parietotemporal_XY_ROI.png](evidence/outputs/spcg_coarse_dense_visualization_20261117_v1/train__046__parietotemporal_XY_ROI.png)
+

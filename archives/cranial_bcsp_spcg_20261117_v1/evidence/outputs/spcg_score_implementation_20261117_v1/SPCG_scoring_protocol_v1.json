@@ -1,0 +1,145 @@
+{
+  "schema": "bcsp-spcg-local-scoring-protocol-v1",
+  "status": "FROZEN_PENDING_CPU_P3_AND_EXECUTION_AUTHORIZATION",
+  "arms": [
+    "G0",
+    "G1",
+    "G2"
+  ],
+  "folds": [
+    "C",
+    "D"
+  ],
+  "counts": {
+    "unique_cases": 210,
+    "sources": 42,
+    "model_rows": 630,
+    "shared_control_rows": 420,
+    "case_score_rows": 1050,
+    "source_score_rows": 210
+  },
+  "primary_metric": "A1 area-weighted E_P95 mm",
+  "paired_directions": [
+    "G2 minus G1",
+    "G2 minus G0",
+    "G1 minus G0"
+  ],
+  "secondary_metrics": [
+    "J_P95",
+    "E/J Cover@0.5/1/2mm",
+    "CD-L1: half sum of bidirectional unsquared Euclidean means",
+    "Pred-to-A2 P95 and >20mm outlier fraction",
+    "centroid offset, radius ratio, coarse/dense summaries"
+  ],
+  "aggregation": "Five defects/source equally, then21sources/fold equally; folds separately and pooled descriptive summaries; rows not independent patients",
+  "geometry_labels": {
+    "placement_tail": "centroid>20mm",
+    "compact_distribution": "radius_ratio<0.9",
+    "severe_geometry": "E_P95>20mm OR J_Cover2mm==0"
+  },
+  "reporting": "Keep all cases and defect types including frontoorbital; new/rescued/shared severe cases; no outcome-driven exclusion",
+  "references": "Frozen A1/A2/B bank and GT8192, D-only inverse normalization to world mm",
+  "coarse_availability": "Actual Native Q256 and dense8192 only; no Qraw/stage/Memory arrays.",
+  "bootstrap": {
+    "required_by_original_protocol": true,
+    "replicates": 2000,
+    "RNG": "Generator(PCG64)",
+    "numpy": "1.26.4",
+    "seeds": {
+      "C": 2026111601,
+      "D": 2026111602
+    },
+    "unit": "21 source means/fold; five defects and paired arms move together",
+    "source_order": "canonical_source_id lexicographic",
+    "draw_shape": [
+      2000,
+      21
+    ],
+    "reuse": "Same index matrix per fold for all metrics and all3 comparisons.",
+    "CI": "2.5/97.5 percentile; quantile(method=linear)",
+    "save_indices_and_SHA256": true
+  },
+  "p_values": false,
+  "formal_gate_execution": false,
+  "ICP": false,
+  "GT_alignment": false,
+  "postfilter": false,
+  "limits": {
+    "wall_seconds": 18000,
+    "RSS_bytes": 8589934592,
+    "output_bytes": 2147483648,
+    "threads": 2
+  },
+  "budget_reason": "Retain inherited18000-second/two-thread/8GiB RSS/2GiB output CPU budget for1050 rows; no extra cases or metric changes. Actual runtime remains unknown until execution.",
+  "prohibited": [
+    "Scoring before implementation/CPU/P3 and separate hash authorization",
+    "New inference/checkpoint/GPU/training/BNCal",
+    "Changes to metrics/reference/threshold/cases/sampling/frame",
+    "Oracle alignment/parameter search/unregistered bootstrap/formal gate",
+    "Backup extraction/deletion/writes"
+  ],
+  "inherited_protocol": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\docs\\cranial_bcsp_spcg_20261116_v2\\Cranial_BCSP_FullMamba_BCSP_SPCG_正式实验计划书_审阅修订v2_2026-11-16.md",
+    "bytes": 40462,
+    "sha256": "3c071175fbb6743f57c593093cc982ad0f37cce9c2041059990d2749b3ff60f1"
+  },
+  "metric": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+    "bytes": 6784,
+    "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+  },
+  "score_index": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_score_preparation_20261117_v1\\SPCG_three_arm_score_case_index_draft_v1.json",
+    "bytes": 436321,
+    "sha256": "72d1162871db4e8ffafe9d955630930fd496160336928b8ed4362e85bc9baf6a"
+  },
+  "scientific_constraints": [
+    "Same opened210cases/42sources; all five defect types retained, no outcome selection.",
+    "Frozen A1/A2/B/GT references and original metrics/risk thresholds; physical mm after D-only inverse normalization.",
+    "G2-G1 primary; G2-G0 practical and G1-G0 explanatory.",
+    "Required fixed source-paired bootstrap retained; no p-values or automatic formal/clinical gate.",
+    "G0_D cross-device limitation persists; bootstrap excludes training seed variation and development-selection bias.",
+    "No GT/Oracle registration, postfilter, extra inference, model/checkpoint access or training."
+  ],
+  "comparison_qualification": {
+    "C_three_arms_same_training_device": true,
+    "D_G1_G2_same_training_device": true,
+    "D_G0_cross_device_reference": true,
+    "common_inference_device_does_not_remove_training_confound": true
+  },
+  "archive_binding": {
+    "archive": {
+      "path": "E:\\ResearchBackups\\AdaPoinTr\\BCSP_FULLMAMBA_SPCG\\2026-11-17_native_development_eval\\development_predictions_v1.tar.gz",
+      "bytes": 58926842,
+      "sha256": "a2f3384a95906cad6523cd0eb0c0c9954a4bd4252017934b825da1f0d49f07c7"
+    },
+    "members": 635,
+    "uncompressed_member_bytes": 60933613
+  },
+  "frozen_baseline_scores": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_scoring_implementation_v1\\unified_scores_v1\\case_metrics.jsonl",
+    "bytes": 6148401,
+    "sha256": "e9ec5436b4efb103f5803b0443b6aaba465d23bef695f3fb2b7c4c8b02a18d19"
+  },
+  "environment": {
+    "python": {
+      "path": "E:\\RelocatedData\\zhj\\.conda\\envs\\adapointr\\python.exe",
+      "bytes": 107792,
+      "sha256": "7b43ac317d5f79012ad097559345e0e4597cfcf2016e209d6643aaf2c3be8223"
+    },
+    "python_version": "3.9.21 (main, Dec 11 2024, 16:35:24) [MSC v.1929 64 bit (AMD64)]",
+    "flags": [
+      "-I",
+      "-B"
+    ],
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.13.1",
+      "psutil": "5.9.0",
+      "scikit-image": "0.24.0"
+    },
+    "CUDA_VISIBLE_DEVICES": "",
+    "threads": 2
+  },
+  "protocol_completeness_note": "Original plan requests same-forward Memory for30 observations; authorized Native scope saved coarse/dense only. Mark Memory NOT_COLLECTED; do not fabricate or add forward automatically."
+}

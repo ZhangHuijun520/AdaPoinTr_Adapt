@@ -1,0 +1,61 @@
+{
+  "status": "FORMAL_READONLY_G0C_V2_UTC_FAILURE_FREEZE_PASS",
+  "checks": {
+    "installed_exact_set": true,
+    "installed_hashes": true,
+    "request_hash": true,
+    "authorization": true,
+    "one_way_runtime": true,
+    "single_claim": true,
+    "exit_one": true,
+    "no_worker_tmux": true,
+    "exact_outputs": true,
+    "tmp_empty": true,
+    "full_trace_saved_before_cleanup": true,
+    "no_late_KeyError": true,
+    "UTC_existing_exact_binding_unchanged": true
+  },
+  "request_sha256": "6a1ff266ff9eae8db51b5809b7db3aa87b72900625d267a4ee3b0a5a9a489f42",
+  "UTC": {
+    "link": "/usr/share/zoneinfo/UTC",
+    "is_symlink": true,
+    "link_text": "Etc/UTC",
+    "resolved": "/usr/share/zoneinfo/Etc/UTC",
+    "target": "/usr/share/zoneinfo/Etc/UTC",
+    "target_regular": true,
+    "target_linked": false,
+    "link_parent_linked": false,
+    "bytes": 118,
+    "sha256": "ab1ddb33c7187e56408033a8165ea3b1432e024710e7ab2aafec036a8bd7f09a"
+  },
+  "actual_dispatch": [
+    "filename int shortcut",
+    "source_guard.allow invokes clean() and rejects UTC symlink",
+    "base training policy with utc.allow is never reached"
+  ],
+  "admitted_CUDA_dispatch": [
+    "filename int shortcut",
+    "utc.allow exact exception first",
+    "source guard",
+    "generic roots/payload guards"
+  ],
+  "primary_root_cause": "Training policy adapter omitted UTC-first dispatch; existing exact UTC resource validation was initialized but intercepted by source guard before it could handle the path.",
+  "outer_exception": "Transformers wraps the inner runtime guard exception as GenerateDecoderOnlyOutput ModuleNotFoundError; not evidence of missing/broken package.",
+  "startup_fixes_validated": "head bound/imported; full original exception persisted; explicit exit1; no late FD KeyError",
+  "training_counts": {
+    "forward": 0,
+    "loss": 0,
+    "backward": 0,
+    "optimizer_step": 0
+  },
+  "count_basis": "Exception in factory native_mixer import, before completed model construction, Budget, dispatch or any step.",
+  "request_consumed": true,
+  "model_changed": false,
+  "server_writes": 0,
+  "SMI_queries": 0,
+  "GPU": 0,
+  "limitations": [
+    "This is a byte/path and dispatch-order review, not execution of dependency import or model.",
+    "Read-only audit verifies current UTC link/target; no environment repair warranted by this evidence."
+  ]
+}

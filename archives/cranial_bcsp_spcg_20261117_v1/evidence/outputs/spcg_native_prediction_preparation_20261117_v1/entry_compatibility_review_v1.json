@@ -1,0 +1,25 @@
+{
+  "status": "NEEDS_SPCG_SPECIFIC_PREDICTOR_CPU_P3",
+  "reusable_reference": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_sixmodel_native_prediction_preparation_20261115_v1\\implementation_v1\\input_path_fix_v2\\bcsp_scq_rf_sixmodel_native_predict_v2.py",
+    "bytes": 45866,
+    "sha256": "221210ca3e51fe4178be068abab1cb2e6c98d9731efb474d1ee08f31ec4c7857"
+  },
+  "six_training_freezes_checked": true,
+  "all_input_rows_metadata_paired": true,
+  "findings": [
+    "Existing RF predictor count/resource/archive/state/RNG/attempt mechanisms are reusable references.",
+    "Existing frozen model pins, SCQ/RF builders and Qraw/delta/stage-array readers are incompatible with SPCG.",
+    "G0 retains coarse_pred; G1/G2 replace it with spcg_head; strict checkpoint loading must follow the correct build path.",
+    "Use precise head/factory/U/H/mother-source read bindings and original UTC-first/exception lifecycle.",
+    "Reuse historical exact dev paths: C dev resides in foldd training points, D dev in foldc; fresh server existence/SHA check still required."
+  ],
+  "minimal_implementation_scope": [
+    "Dedicated SPCG sixmodel Native entry with the existing 630-attempt lifecycle; no new framework.",
+    "Bind final six checkpoints/audits, exact 210 inputs and model source reads; save coarse/dense only.",
+    "One targeted artificial CPU batch covering all six labels, strict state loading, G0/G1/G2 construction, path allowlist, 630 attempts, state/RNG, failure-stop and archive contract.",
+    "P3 then exact-hash pending execution request; no repeated GPU admission."
+  ],
+  "server_operations": 0,
+  "implementation_changes": 0
+}

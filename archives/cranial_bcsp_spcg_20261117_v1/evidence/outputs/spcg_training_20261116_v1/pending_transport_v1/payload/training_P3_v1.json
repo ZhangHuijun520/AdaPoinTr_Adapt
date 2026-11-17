@@ -1,0 +1,98 @@
+{
+  "status": "SPCG_G0C_TRAINING_LOCAL_P3_PASS",
+  "entry_sha256": "50319221e3e1d94302c051e7399ea0f2c69b47acb14b830dd365a13ff61801e6",
+  "bridge_sha256": "2e23031568c0418d9cedf76befa8926eb4694ea2a510a8a9f3427ff4e11310ac",
+  "checks": {
+    "single16_CPU_batch_pass": true,
+    "final_entry_bridge_hashes_match_CPU": true,
+    "original_runtime_byte_identity": true,
+    "original3900_optimizer_scheduler_loss_delegated": true,
+    "full_authorize_QC_order_path_CPU": true,
+    "one_way_receipt_runtime_CPU": true,
+    "correct_GPU_selector_identity": true,
+    "fixed_first_G0_C_only": true,
+    "admitted_G0_initial_fingerprint_algorithm_matched": true,
+    "one_forward_observer_per_step": true,
+    "five_total_loss_Q_gradient_steps": true,
+    "coarse_dense_loss_hooks_CPU": true,
+    "hooks_removed_on_failure_CPU": true,
+    "production_refuses_artificial_CPU": true,
+    "effective_1GiB_3600s_resources": true,
+    "original_static_config_not_modified": true,
+    "formal_CUDA_freeze_reused_no_preflight": true,
+    "finite_reads_from_bound_sources": true
+  },
+  "CPU_result": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\CPU_batch_v1\\result.json",
+    "bytes": 2213,
+    "sha256": "1c80faf23107b5f54ca2700099a08e4af3c231313762ecc03e45ff469ba52712"
+  },
+  "CPU_scope": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\CPU_scope_v1.json",
+    "bytes": 839,
+    "sha256": "b982ec2cf9d4dba23706f7353f6b8c366e8c66a84e1e69be01b7f83c040c37c3"
+  },
+  "sources": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\bcsp_spcg_training_entry_v1.py",
+      "bytes": 11933,
+      "sha256": "50319221e3e1d94302c051e7399ea0f2c69b47acb14b830dd365a13ff61801e6"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\bcsp_spcg_training_bridge_v1.py",
+      "bytes": 3441,
+      "sha256": "2e23031568c0418d9cedf76befa8926eb4694ea2a510a8a9f3427ff4e11310ac"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\test_training_CPU_v1.py",
+      "bytes": 9494,
+      "sha256": "48649c2292b50cedbe6cee9d0e387684e8127f191bfa1d06889f2dd997371485"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\bcsp_p1_training_runtime_v1.py",
+      "bytes": 11268,
+      "sha256": "939e317dd447d04c62897849c0230f1918dc65c46ec556acdb60c9d69dfebeee"
+    }
+  ],
+  "CUDA_freeze": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_implementation_20261116_v1\\output_policy_hotfix_v3\\post_CUDA_freeze_v3\\formal_audit_result_v3.json",
+    "bytes": 3993,
+    "sha256": "8ab62d581215780926ae4d92e9efe064ae025fc19107b9a01b6649cae5c37b5d"
+  },
+  "limits": {
+    "wall_seconds": 3600,
+    "RSS_bytes": 8589934592,
+    "device_MiB": 22528,
+    "torch_peak_bytes": 21474836480,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "counts": {
+    "cases": 315,
+    "sources": 63,
+    "batch": 8,
+    "epochs": 100,
+    "batches_per_epoch": 39,
+    "updates": 3900,
+    "exposures": 31200
+  },
+  "log_steps": [
+    1,
+    39,
+    390,
+    1950,
+    3900
+  ],
+  "limitations": [
+    "Artificial lifecycle substitutes the optimizer loop; original runtime not executed and actual3900step training not certified.",
+    "Same-forward model/loss/gradient hooks executed3900times on tiny artificial CPU tensors; no actual Mamba/cdist/data.",
+    "Existing policy regression evidence reused, not newly run.",
+    "No fresh server readiness was performed this local implementation-only turn.",
+    "CUDA source observer only supports firstG0_C dispatch; futureG1/G2 andFoldD request compatibility require bounded adaptations.",
+    "Per-run static estimate does not replace full3900step output/resource monitoring.",
+    "Legacy checkpoint stage remains BCSP_INPUT_DENSITY_V1 provenance; model_construction and request bind SPCG G0_C identity."
+  ],
+  "server_calls": 0,
+  "model_training_executed": false,
+  "GPU": 0
+}

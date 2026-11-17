@@ -1,0 +1,13 @@
+# Windows人工测试兼容适配与单次回归结果
+
+2026-11-16。本轮仅新增本机测试v4与准备清单，生产守卫、模型模块、runtime、v3候选入口原始SHA均未改变。未操作服务器或GPU。
+
+Windows人工子进程中，仅为加载的parent模块提供os代理，其只读os.open追加O_BINARY；其余方法委托原os。全局os和Linux生产入口未修改。该适配让CRLF的v3 entry以冻结原字节通过已有源码守卫。
+
+执行唯一一次CPU_batch_v4，失败后停止，没有自动修复或重跑。原始哈希漂移不再出现；子进程已建立守卫，并到达traceback.format_exception步骤。该步骤还会读取调用栈中人工policy_child.py的源代码，但fixture使用空read_roots且没有为自身脚本建立精确读绑定，故被拒绝。
+
+明确失败路径：CPU_batch_v4/policy_child.py。它是测试自身源码，不是新的模型依赖，也不是被保护的真实数据。当前父测试仅记录第1项通过；不能把子进程中已走过的断言虚计为整批12项通过。
+
+保留CPU_batch_v4/failure.json、child_stderr.bin、child_stdout.bin、生成脚本与fixture，stop_receipt_v4.json记录生产字节未变。新P3和新execution request均未创建。
+
+建议后续仅修订人工fixture，将自身policy_child.py按精确大小／SHA纳入测试只读允许集合，再单独授权一次新版本回归；不扩大生产读取根、不改源码守卫或模型。正式代码与实际测试链需分开解释，当前失败不是CUDA或科学效果证据。

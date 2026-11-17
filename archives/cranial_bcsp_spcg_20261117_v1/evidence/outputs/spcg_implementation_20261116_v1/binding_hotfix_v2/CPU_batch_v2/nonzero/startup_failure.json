@@ -1,0 +1,38 @@
+{
+  "status": "FAILED_STOP_NO_RETRY",
+  "phase": "STARTUP_SMI_BEFORE_MODEL_IMPORT",
+  "error": "QueryFailure('ARTIFICIAL_QUERY_FAILURE')",
+  "exception_type": "QueryFailure",
+  "details": {
+    "status": "NONZERO_EXIT",
+    "command": [
+      "nvidia-smi",
+      "--id=GPU-c25d6be2-173c-031a-89c6-b96e0f5f8190"
+    ],
+    "returncode": 6,
+    "stdout": {
+      "text": "OUT",
+      "bytes_total": 3,
+      "truncated": false
+    },
+    "stderr": {
+      "text": "ERR",
+      "bytes_total": 3,
+      "truncated": false
+    },
+    "timeout_seconds": 10,
+    "query_attempts": 1
+  },
+  "expected_command": [
+    "/usr/bin/nvidia-smi",
+    "--id=GPU-c25d6be2-173c-031a-89c6-b96e0f5f8190",
+    "--query-gpu=uuid,name,driver_version,memory.total,memory.used",
+    "--format=csv,noheader,nounits"
+  ],
+  "counts": {
+    "full_forward": 0,
+    "full_loss": 0,
+    "full_backward": 0,
+    "optimizer_steps": 0
+  }
+}

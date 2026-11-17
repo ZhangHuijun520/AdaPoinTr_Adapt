@@ -1,0 +1,69 @@
+{
+  "schema": "bcsp-spcg-local-scoring-request-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "execution_authorized": false,
+  "counts": {
+    "unique_cases": 210,
+    "sources": 42,
+    "model_rows": 630,
+    "shared_control_rows": 420,
+    "case_score_rows": 1050,
+    "source_score_rows": 210
+  },
+  "scientific_contract": {
+    "arms": [
+      "G0",
+      "G1",
+      "G2"
+    ],
+    "pairs": [
+      [
+        "G1",
+        "G2"
+      ],
+      [
+        "G0",
+        "G2"
+      ],
+      [
+        "G0",
+        "G1"
+      ]
+    ],
+    "controls": [
+      "Nop_D",
+      "GT_8192"
+    ]
+  },
+  "statistics": {
+    "required_by_original_protocol": true,
+    "replicates": 2000,
+    "RNG": "Generator(PCG64)",
+    "numpy": "1.26.4",
+    "seeds": {
+      "C": 2026111601,
+      "D": 2026111602
+    },
+    "unit": "21 source means/fold; five defects and paired arms move together",
+    "source_order": "canonical_source_id lexicographic",
+    "draw_shape": [
+      2000,
+      21
+    ],
+    "reuse": "Same index matrix per fold for all metrics and all3 comparisons.",
+    "CI": "2.5/97.5 percentile; quantile(method=linear)",
+    "save_indices_and_SHA256": true
+  },
+  "comparison_qualification": {
+    "C_three_arms_same_training_device": true,
+    "D_G1_G2_same_training_device": true,
+    "D_G0_cross_device_reference": true,
+    "common_inference_device_does_not_remove_training_confound": true
+  },
+  "limits": {
+    "wall_seconds": 18000,
+    "RSS_bytes": 8589934592,
+    "output_bytes": 2147483648,
+    "threads": 2
+  }
+}

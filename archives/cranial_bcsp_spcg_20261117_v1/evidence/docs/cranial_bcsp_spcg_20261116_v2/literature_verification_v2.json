@@ -1,0 +1,146 @@
+{
+  "search_date_Asia_Shanghai": "2026-11-16",
+  "scope": "Targeted primary-source search, not an exhaustive systematic review or full reading of all user-listed papers.",
+  "references": [
+    {
+      "id": "L1",
+      "title": "3DMambaComplete: Structured State Space Model for High-Efficiency Point Cloud Completion",
+      "date": "2024 first preprint; v2 2026-05-19",
+      "url": "https://arxiv.org/html/2404.07106v2",
+      "doi": "10.1145/3774887",
+      "access": "Author-uploaded v2 method text inspected, especially Sections3.2–3.4; ACM page not independently inspected; code not inspected",
+      "finding": "Generation includes multi-head cross-attention; hyperpoint generation and subsequent spread are related precedents. Original abs metadata has older title/authors; cite the version actually read."
+    },
+    {
+      "id": "L2",
+      "title": "CompletionMamba: Taming State Space Model for Point Cloud Completion",
+      "date": "2025, IEEE TIP34:5473–5485",
+      "url": "https://research-repository.uwa.edu.au/en/publications/completionmamba-taming-state-space-model-for-point-cloud-completi/",
+      "doi": "10.1109/TIP.2025.3597041",
+      "access": "Author institutional publication record and abstract inspected; complete architecture/code not audited",
+      "finding": "Local SSM and shape-aware information are prior work; does not establish fixed Sobol-probe generation or whole-network attention-free equivalence."
+    },
+    {
+      "id": "L3",
+      "title": "FusionMamba: Efficient 3D point cloud completion via spatially-aware state space models and multi-scale information fusion",
+      "date": "2026-10, Information Fusion134:104378",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1566253526002575",
+      "doi": "10.1016/j.inffus.2026.104378",
+      "access": "Publisher abstract/highlights/introduction preview verified; complete equations and source unavailable/not audited",
+      "finding": "LGSA and geometric residual alignment are nearby; cannot conclude that moving to first coarse alone avoids overlap."
+    },
+    {
+      "id": "L4",
+      "title": "GDPNet: A Geometry Aware Dual-Path Network for point cloud completion",
+      "date": "2026-10, Computers & Graphics139:104710",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0097849326001810",
+      "doi": "10.1016/j.cag.2026.104710",
+      "access": "Publisher abstract/introduction snippets inspected; complete KSM equation and linked anonymous code not verified",
+      "finding": "Keynodes Shift generates coarse skeletons from input anchors; high conceptual overlap, exact equivalence unknown."
+    },
+    {
+      "id": "L5",
+      "title": "AnchorFormer: Point Cloud Completion From Discriminative Nodes",
+      "date": "CVPR2023,13581–13590",
+      "url": "https://openaccess.thecvf.com/content/CVPR2023/html/Chen_AnchorFormer_Point_Cloud_Completion_From_Discriminative_Nodes_CVPR_2023_paper.html",
+      "access": "Official CVF search record/abstract and PDF extraction inspected; direct HTML returned403 on a later attempt; code not audited",
+      "finding": "Input-derived regional anchors and offsets predate this plan; uses attention and a different completion task."
+    },
+    {
+      "id": "L6",
+      "title": "SeedFormer: Patch Seeds Based Point Cloud Completion with Upsample Transformer",
+      "date": "ECCV2022",
+      "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/5127_ECCV_2022_paper.php",
+      "access": "Official ECVA abstract inspected; source not audited",
+      "finding": "Patch-seed regional conditioning is established prior work, not an attention-free SPCG equivalent."
+    },
+    {
+      "id": "L7",
+      "title": "DAPointMamba: Domain Adaptive Point Mamba for Point Cloud Completion",
+      "date": "2026-03-14, AAAI40(8):6653–6661",
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/37596",
+      "doi": "10.1609/aaai.v40i8.37596",
+      "access": "Official conference record/abstract inspected",
+      "finding": "Patch scanning and spatial/channel SSM alignment target domain-adaptive completion, not this single-domain probe head."
+    },
+    {
+      "id": "L8",
+      "title": "Hyper-PCN: Hypergraph-Based Point Cloud Completion via High-Order Correlation Modeling",
+      "date": "CVPR2026,39121–39130",
+      "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Li_Hyper-PCN_Hypergraph-Based_Point_Cloud_Completion_via_High-Order_Correlation_Modeling_CVPR_2026_paper.html",
+      "access": "Official CVF search record/abstract and official repository README verified; direct paper access403; complete method/code not audited",
+      "finding": "Anchor/hypergraph relation modeling is nearby; fixed Sobol-probe equivalence not established."
+    },
+    {
+      "id": "L9",
+      "title": "BuildingComSSSM: Building point cloud completion with Geometry-Aware Mambas",
+      "date": "2026-05, IJAEOG149:105269",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1569843226001858",
+      "doi": "10.1016/j.jag.2026.105269",
+      "access": "Publisher highlights/abstract inspected",
+      "finding": "Keypoint generation and diffusion use self-/cross-attention; not a fully attention-free construction to copy."
+    },
+    {
+      "id": "L10",
+      "title": "MedPCFM: Improving Medical Point Cloud Completion by Integrating Point Transformers and Flow Matching",
+      "date": "arXiv v1 2026-06-23",
+      "url": "https://arxiv.org/html/2606.24433v1",
+      "doi": "10.48550/arXiv.2606.24433",
+      "access": "Author preprint methods/experimental setup inspected",
+      "finding": "Kamil Kwarciak and Marek Wodzinski; PTv3 deterministic/FM medical baselines; sampling, cardinality, normalization and training differ from BCSP."
+    },
+    {
+      "id": "L11",
+      "title": "MedPCFM-TED: One-Step Point Cloud Flow Matching for Implant Generation via Teacher-Guided Endpoint Distillation",
+      "date": "arXiv 2026-09-15; MICCAI2026 SASHIMI official open-access page",
+      "url": "https://papers.miccai.org/miccai-2026-sat/SASHIMI_017.html",
+      "arxiv": "https://arxiv.org/abs/2609.16934",
+      "access": "Official satellite-event abstract/page inspected; full paper/source not audited in this review",
+      "finding": "One-step cranial implant generation is an additional recent task competitor; reported timing cannot be compared without matched hardware/protocol."
+    },
+    {
+      "id": "L12",
+      "title": "Plausible but Unimplantable: A Trustworthiness Audit of Shape Completion Foundation Models for Cranial Defect Reconstruction",
+      "date": "arXiv2026-10-21; author reports ACCV2026 TrustFMI acceptance",
+      "url": "https://arxiv.org/abs/2610.30035",
+      "access": "Author preprint abstract and status inspected; full methods not independently reimplemented",
+      "finding": "Visual plausibility and clinical implantability must be separated; selected zero-shot models do not imply all task-trained point models fail."
+    },
+    {
+      "id": "L13",
+      "title": "High-Resolution Cranial Defect Reconstruction by Iterative, Low-Resolution, Point Cloud Completion Transformers",
+      "date": "MICCAI2023; arXiv v2 2024-05-21",
+      "url": "https://arxiv.org/abs/2308.03813",
+      "doi": "10.1007/978-3-031-43996-4_32",
+      "access": "Author abstract/version metadata inspected",
+      "finding": "Cranial point completion and iterative resolution expansion provide medical context; not the same single-Native BCSP comparison."
+    },
+    {
+      "id": "L14",
+      "title": "SobolEngine",
+      "date": "Official current PyTorch documentation; target runtime remains frozen project version",
+      "url": "https://docs.pytorch.org/docs/stable/generated/torch.quasirandom.SobolEngine.html",
+      "access": "Official API inspected; attempted historical2.4 page/source unavailable in browser",
+      "finding": "Stateful low-discrepancy sampler; generate a fresh256-point asset once in authorized compatible environment, freeze exact bytes. No library upgrade is implied."
+    },
+    {
+      "id": "L15",
+      "title": "Multi-Path Mamba Diffusion for 3D Point Cloud Semantic Scene Completion",
+      "date": "arXiv2026-11-03",
+      "url": "https://arxiv.org/abs/2611.04583",
+      "access": "Author abstract/search record inspected only",
+      "finding": "Recent Mamba semantic-scene completion; task is different and not a direct cranial implant baseline."
+    }
+  ],
+  "unverified_formula_overlap": [
+    "GDPNet KSM",
+    "FusionMamba CM/LGSA",
+    "Hyper-PCN full method"
+  ],
+  "search_terms": [
+    "Mamba point cloud completion2026 coarse query spatial generation",
+    "GDPNet Keynodes Shift Module",
+    "point cloud completion AnchorFormer SeedFormer",
+    "MedPCFM cranial point cloud2026"
+  ]
+}

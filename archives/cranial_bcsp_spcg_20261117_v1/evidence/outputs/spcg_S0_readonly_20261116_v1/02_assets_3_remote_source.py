@@ -1,0 +1,7 @@
+import json,hashlib,stat
+from pathlib import Path
+a=[{'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldD_seed0_v1.json', 'bytes': 1248506, 'sha256': '4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/AdaPoinTr.py', 'bytes': 103347, 'sha256': '1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4'}, {'path': '/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/__init__.py', 'bytes': 264, 'sha256': '6d3fee6ff8e8ec4dcab0f7af6c7890ff81f3d9319707865f5a651239aee9ae0a'}, {'path': '/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/modules/mamba_simple.py', 'bytes': 11710, 'sha256': 'a17e4c51b582dc0d4d690a649eba521cd0c1ee3dc8f0473a0967cdc9ec0874e3'}, {'path': '/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/ops/selective_scan_interface.py', 'bytes': 20025, 'sha256': '543edd077f11c80cccd5c5e2f926420d9105fd238d9e8960e53660cfa234dce8'}]
+r=[]
+for x in a:
+ p=Path(x['path']);assert not any(v.is_symlink() for v in (p,*p.parents));s=p.stat();assert stat.S_ISREG(s.st_mode) and s.st_size==x['bytes'];b=p.read_bytes();h=hashlib.sha256(b).hexdigest();assert h==x['sha256'],str(p);r.append(dict(path=str(p),bytes=len(b),sha256=h))
+print(json.dumps(r))

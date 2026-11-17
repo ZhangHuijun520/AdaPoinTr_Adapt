@@ -1,0 +1,53 @@
+{
+  "status": "FROZEN_BEFORE_SELECTED_ARRAY_READ",
+  "selected": [
+    {
+      "fold": "C",
+      "case_id": "train__051__random_1",
+      "delta_E_G2_minus_G1_mm": 78.99665715821132,
+      "selection": "posthoc_new_severe"
+    },
+    {
+      "fold": "C",
+      "case_id": "train__072__random_1",
+      "delta_E_G2_minus_G1_mm": 66.59754377909857,
+      "selection": "posthoc_new_severe"
+    },
+    {
+      "fold": "D",
+      "case_id": "train__008__random_2",
+      "delta_E_G2_minus_G1_mm": 30.243869964503453,
+      "selection": "posthoc_new_severe"
+    },
+    {
+      "fold": "C",
+      "case_id": "train__012__parietotemporal",
+      "delta_E_G2_minus_G1_mm": -67.05149518758923,
+      "selection": "posthoc_improved_control"
+    },
+    {
+      "fold": "D",
+      "case_id": "train__046__parietotemporal",
+      "delta_E_G2_minus_G1_mm": -9.683206930072743,
+      "selection": "posthoc_improved_control"
+    }
+  ],
+  "selection_rule": "Top3 G2 new-severe versusG1 by descending deltaE thencase_id; per-fold minimum deltaE with G2 nonsevere for2 controls",
+  "source_request_sha256": "7b6b3e5f6ade721540397e2c7977a85e2c73298f7e5cedb489b79f257eae27f8",
+  "arrays": "15 existing NPZ, coarse256 and dense8192 only",
+  "plots": "all-model/stage shared equal world axes; XY/XZ/YZ global and XY GTbbox+10mm detail",
+  "no_GT_alignment": true,
+  "no_point_deletion": true,
+  "no_forward": true,
+  "no_training": true,
+  "no_parameter_scan": true,
+  "no_formal_gate": true,
+  "Memory": "NOT_COLLECTED",
+  "resource_budget": {
+    "wall_seconds": 900
+  },
+  "limitations": [
+    "Selection uses outcomes and is explanatory, not new confirmation.",
+    "Coarse256 versusdense8192 distance gains include point-budget and reconstruction effects."
+  ]
+}

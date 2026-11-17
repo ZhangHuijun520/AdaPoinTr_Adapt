@@ -1,0 +1,708 @@
+{
+  "status": "FORMAL_READONLY_TRAINING_FAILURE_FREEZE_PASS",
+  "checks": {
+    "installed_exact_set": true,
+    "installed_size_hash": true,
+    "request_hash": true,
+    "authorization": true,
+    "one_way_runtime": true,
+    "single_claim": true,
+    "exit_one": true,
+    "no_worker_tmux": true,
+    "exact_failure_outputs": true,
+    "only_tmp_empty": true,
+    "no_training_artifacts": true,
+    "head_exists_frozen_match": true
+  },
+  "request_sha256": "0f5a8aca25b1acd43c3bd258ae8ddf7ea3d06f81d020f2c38bde1ea7a944ef08",
+  "primary_failure": {
+    "status": "FAILED_STOP_NO_RETRY",
+    "error": "ModuleNotFoundError(\"No module named 'bcsp_spcg_head_v1'\")"
+  },
+  "unbound_observation_import": {
+    "module": "bcsp_spcg_head_v1",
+    "only_symbol_used": "need",
+    "source": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/bcsp_spcg_head_v1.py",
+      "bytes": 4209,
+      "sha256": "687c123ae7d0769c9ee89e2067367ff7fc2762f66bf47a814bf077ac68c59d3b"
+    },
+    "present_on_server": true,
+    "absent_from_training_request": true,
+    "not_loaded_in_sys_modules_by_entry": true,
+    "not_in_entryroot_sys_path": true
+  },
+  "secondary_failure": "guard.close clears fds in finally while installed audit hook still calls guard.allow during unhandled-exception source rendering",
+  "training_counts": {
+    "forward": 0,
+    "loss": 0,
+    "backward": 0,
+    "optimizer_step": 0
+  },
+  "count_basis": "Failure occurs loading observe before frozen runtime import, model construction, Budget creation and dispatch; no training artifacts.",
+  "request_consumed": true,
+  "imports": {
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_mamba_encoder_v1.py": [
+      {
+        "line": 2,
+        "module": null,
+        "names": [
+          "torch"
+        ]
+      },
+      {
+        "line": 3,
+        "module": "torch",
+        "names": [
+          "nn"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py": [
+      {
+        "line": 2,
+        "module": null,
+        "names": [
+          "ctypes"
+        ]
+      },
+      {
+        "line": 3,
+        "module": null,
+        "names": [
+          "hashlib"
+        ]
+      },
+      {
+        "line": 4,
+        "module": null,
+        "names": [
+          "torch"
+        ]
+      },
+      {
+        "line": 5,
+        "module": "bcsp_mamba_encoder_v1",
+        "names": [
+          "BidirectionalSpatialMamba",
+          "MambaEncoderBlock"
+        ]
+      },
+      {
+        "line": 24,
+        "module": "mamba_ssm.modules.mamba_simple",
+        "names": [
+          "Mamba"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_decoder_v1.py": [
+      {
+        "line": 2,
+        "module": null,
+        "names": [
+          "torch"
+        ]
+      },
+      {
+        "line": 3,
+        "module": "torch",
+        "names": [
+          "nn"
+        ]
+      },
+      {
+        "line": 4,
+        "module": "bcsp_mamba_encoder_v1",
+        "names": [
+          "lexicographic_order",
+          "gather_tokens"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_factory_v1.py": [
+      {
+        "line": 2,
+        "module": null,
+        "names": [
+          "torch"
+        ]
+      },
+      {
+        "line": 3,
+        "module": "torch",
+        "names": [
+          "nn"
+        ]
+      },
+      {
+        "line": 4,
+        "module": null,
+        "names": [
+          "bcsp_p1_model_factory_v1"
+        ]
+      },
+      {
+        "line": 5,
+        "module": "bcsp_lqi_decoder_v1",
+        "names": [
+          "LQIDecoder",
+          "require"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_training_contract_01dt08_v3.py": [
+      {
+        "line": 2,
+        "module": null,
+        "names": [
+          "hashlib"
+        ]
+      },
+      {
+        "line": 3,
+        "module": null,
+        "names": [
+          "json"
+        ]
+      },
+      {
+        "line": 4,
+        "module": "pathlib",
+        "names": [
+          "Path",
+          "PurePosixPath"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/inherited_training_budget_v1.py": [
+      {
+        "line": 2,
+        "module": null,
+        "names": [
+          "argparse",
+          "hashlib",
+          "importlib.util",
+          "json",
+          "os",
+          "random",
+          "shutil",
+          "socket",
+          "sys",
+          "time"
+        ]
+      },
+      {
+        "line": 3,
+        "module": "pathlib",
+        "names": [
+          "Path",
+          "PurePosixPath"
+        ]
+      },
+      {
+        "line": 219,
+        "module": null,
+        "names": [
+          "numpy"
+        ]
+      },
+      {
+        "line": 220,
+        "module": null,
+        "names": [
+          "torch",
+          "timm",
+          "yaml",
+          "importlib"
+        ]
+      },
+      {
+        "line": 221,
+        "module": "easydict",
+        "names": [
+          "EasyDict"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/exact_utc_resource_v1.py": [
+      {
+        "line": 2,
+        "module": null,
+        "names": [
+          "hashlib"
+        ]
+      },
+      {
+        "line": 3,
+        "module": null,
+        "names": [
+          "os"
+        ]
+      },
+      {
+        "line": 4,
+        "module": null,
+        "names": [
+          "stat"
+        ]
+      },
+      {
+        "line": 5,
+        "module": "pathlib",
+        "names": [
+          "Path"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py": [
+      {
+        "line": 6,
+        "module": "__future__",
+        "names": [
+          "annotations"
+        ]
+      },
+      {
+        "line": 8,
+        "module": null,
+        "names": [
+          "argparse"
+        ]
+      },
+      {
+        "line": 9,
+        "module": null,
+        "names": [
+          "contextlib"
+        ]
+      },
+      {
+        "line": 10,
+        "module": null,
+        "names": [
+          "ctypes"
+        ]
+      },
+      {
+        "line": 11,
+        "module": null,
+        "names": [
+          "gc"
+        ]
+      },
+      {
+        "line": 12,
+        "module": null,
+        "names": [
+          "hashlib"
+        ]
+      },
+      {
+        "line": 13,
+        "module": null,
+        "names": [
+          "importlib"
+        ]
+      },
+      {
+        "line": 14,
+        "module": null,
+        "names": [
+          "importlib.abc"
+        ]
+      },
+      {
+        "line": 15,
+        "module": null,
+        "names": [
+          "importlib.machinery"
+        ]
+      },
+      {
+        "line": 16,
+        "module": null,
+        "names": [
+          "json"
+        ]
+      },
+      {
+        "line": 17,
+        "module": null,
+        "names": [
+          "os"
+        ]
+      },
+      {
+        "line": 18,
+        "module": "pathlib",
+        "names": [
+          "Path"
+        ]
+      },
+      {
+        "line": 19,
+        "module": null,
+        "names": [
+          "random"
+        ]
+      },
+      {
+        "line": 20,
+        "module": null,
+        "names": [
+          "shutil"
+        ]
+      },
+      {
+        "line": 21,
+        "module": null,
+        "names": [
+          "signal"
+        ]
+      },
+      {
+        "line": 22,
+        "module": null,
+        "names": [
+          "socket"
+        ]
+      },
+      {
+        "line": 23,
+        "module": null,
+        "names": [
+          "subprocess"
+        ]
+      },
+      {
+        "line": 24,
+        "module": null,
+        "names": [
+          "sys"
+        ]
+      },
+      {
+        "line": 25,
+        "module": null,
+        "names": [
+          "threading"
+        ]
+      },
+      {
+        "line": 26,
+        "module": null,
+        "names": [
+          "time"
+        ]
+      },
+      {
+        "line": 27,
+        "module": null,
+        "names": [
+          "types"
+        ]
+      },
+      {
+        "line": 536,
+        "module": null,
+        "names": [
+          "numpy"
+        ]
+      },
+      {
+        "line": 538,
+        "module": null,
+        "names": [
+          "torch"
+        ]
+      },
+      {
+        "line": 540,
+        "module": null,
+        "names": [
+          "timm"
+        ]
+      },
+      {
+        "line": 542,
+        "module": null,
+        "names": [
+          "yaml"
+        ]
+      },
+      {
+        "line": 544,
+        "module": "easydict",
+        "names": [
+          "EasyDict"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_p1_training_runtime_v1.py": [
+      {
+        "line": 5,
+        "module": "collections",
+        "names": [
+          "Counter"
+        ]
+      },
+      {
+        "line": 6,
+        "module": null,
+        "names": [
+          "json"
+        ]
+      },
+      {
+        "line": 7,
+        "module": null,
+        "names": [
+          "os"
+        ]
+      },
+      {
+        "line": 8,
+        "module": "pathlib",
+        "names": [
+          "Path"
+        ]
+      },
+      {
+        "line": 9,
+        "module": null,
+        "names": [
+          "time"
+        ]
+      },
+      {
+        "line": 11,
+        "module": null,
+        "names": [
+          "torch"
+        ]
+      },
+      {
+        "line": 12,
+        "module": "torch.utils.data",
+        "names": [
+          "Dataset",
+          "DataLoader"
+        ]
+      },
+      {
+        "line": 13,
+        "module": "tools.bcsp_adapter",
+        "names": [
+          "Contract",
+          "UpdateGuard",
+          "load_case"
+        ]
+      },
+      {
+        "line": 14,
+        "module": "bcsp_training_contract_v1",
+        "names": [
+          "require",
+          "no_links",
+          "emit",
+          "sha",
+          "canonical_sha",
+          "validate_order"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/bcsp_spcg_runtime_v1.py": [
+      {
+        "line": 2,
+        "module": null,
+        "names": [
+          "hashlib"
+        ]
+      },
+      {
+        "line": 3,
+        "module": "pathlib",
+        "names": [
+          "Path"
+        ]
+      },
+      {
+        "line": 4,
+        "module": null,
+        "names": [
+          "torch"
+        ]
+      },
+      {
+        "line": 5,
+        "module": "bcsp_spcg_head_v1",
+        "names": [
+          "need"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_G0C_training_20261116_v1/bcsp_spcg_training_entry_v1.py": [
+      {
+        "line": 2,
+        "module": null,
+        "names": [
+          "argparse",
+          "hashlib",
+          "importlib.util",
+          "json",
+          "os",
+          "random",
+          "shlex",
+          "shutil",
+          "socket",
+          "sys"
+        ]
+      },
+      {
+        "line": 3,
+        "module": "pathlib",
+        "names": [
+          "Path",
+          "PurePosixPath"
+        ]
+      },
+      {
+        "line": 86,
+        "module": null,
+        "names": [
+          "numpy"
+        ]
+      },
+      {
+        "line": 87,
+        "module": null,
+        "names": [
+          "torch",
+          "timm",
+          "yaml",
+          "importlib"
+        ]
+      },
+      {
+        "line": 88,
+        "module": "easydict",
+        "names": [
+          "EasyDict"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_G0C_training_20261116_v1/bcsp_spcg_training_bridge_v1.py": [
+      {
+        "line": 2,
+        "module": null,
+        "names": [
+          "hashlib",
+          "json",
+          "os"
+        ]
+      },
+      {
+        "line": 3,
+        "module": "pathlib",
+        "names": [
+          "Path"
+        ]
+      },
+      {
+        "line": 23,
+        "module": null,
+        "names": [
+          "torch"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_CD_native_prediction_20261111_v2/bcsp_f0_twofold_native_predict_v1.py": [
+      {
+        "line": 2,
+        "module": null,
+        "names": [
+          "argparse",
+          "gc",
+          "hashlib",
+          "importlib.util",
+          "json",
+          "os",
+          "random",
+          "shlex",
+          "shutil",
+          "socket",
+          "subprocess",
+          "sys",
+          "tarfile",
+          "time"
+        ]
+      },
+      {
+        "line": 3,
+        "module": "pathlib",
+        "names": [
+          "Path",
+          "PurePosixPath"
+        ]
+      },
+      {
+        "line": 4,
+        "module": "collections",
+        "names": [
+          "Counter"
+        ]
+      },
+      {
+        "line": 364,
+        "module": null,
+        "names": [
+          "numpy"
+        ]
+      },
+      {
+        "line": 365,
+        "module": null,
+        "names": [
+          "torch",
+          "timm",
+          "yaml",
+          "importlib"
+        ]
+      },
+      {
+        "line": 366,
+        "module": "easydict",
+        "names": [
+          "EasyDict"
+        ]
+      }
+    ],
+    "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/bcsp_spcg_head_v1.py": [
+      {
+        "line": 2,
+        "module": null,
+        "names": [
+          "torch"
+        ]
+      },
+      {
+        "line": 3,
+        "module": "torch",
+        "names": [
+          "nn"
+        ]
+      }
+    ]
+  },
+  "hashed_bytes": 213068,
+  "server_writes": 0,
+  "SMI_queries": 0,
+  "models": 0,
+  "real_NPZ_reads": 0,
+  "limitations": [
+    "No model/checkpoint was loaded to verify tensor state.",
+    "Current-container process view only.",
+    "Static import graph review is not a successful production boot or training admission."
+  ]
+}

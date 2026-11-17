@@ -1,0 +1,14 @@
+{
+  "files": [
+    "exit_code.txt",
+    "launch.log",
+    "startup_failure.json",
+    "tmp",
+    "worker.pid"
+  ],
+  "worker.pid": "3794",
+  "exit_code.txt": "1\n",
+  "startup_failure.json": "{\n  \"status\": \"FAILED_STOP_NO_RETRY\",\n  \"error\": \"ModuleNotFoundError(\\\"No module named 'bcsp_spcg_head_v1'\\\")\"\n}",
+  "log_tail": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\nError in sys.excepthook:\nTraceback (most recent call last):\n  File \"/opt/conda/envs/adapointr-mamba/lib/python3.10/linecache.py\", line 46, in getlines\n    return updatecache(filename, module_globals)\n  File \"/opt/conda/envs/adapointr-mamba/lib/python3.10/linecache.py\", line 136, in updatecache\n    with tokenize.open(fullname) as fp:\n  File \"/opt/conda/envs/adapointr-mamba/lib/python3.10/tokenize.py\", line 394, in open\n    buffer = _builtin_open(filename, 'rb')\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py\", line 164, in audit\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_G0C_training_20261116_v1/bcsp_spcg_training_entry_v1.py\", line 83, in check\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_CD_native_prediction_20261111_v2/bcsp_f0_twofold_native_predict_v1.py\", line 64, in allow\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_CD_native_prediction_20261111_v2/bcsp_f0_twofold_native_predict_v1.py\", line 56, in verify\nKeyError: PosixPath('/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/bcsp_spcg_runtime_v1.py')\n\nOriginal exception was:\nTraceback (most recent call last):\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_G0C_training_20261116_v1/bcsp_spcg_training_entry_v1.py\", line 110, in <module>\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_G0C_training_20261116_v1/bcsp_spcg_training_entry_v1.py\", line 93, in main\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_G0C_training_20261116_v1/bcsp_spcg_training_entry_v1.py\", line 17, in source\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/bcsp_spcg_runtime_v1.py\", line 5, in <module>\nModuleNotFoundError: No module named 'bcsp_spcg_head_v1'\n",
+  "tmux_live": false
+}

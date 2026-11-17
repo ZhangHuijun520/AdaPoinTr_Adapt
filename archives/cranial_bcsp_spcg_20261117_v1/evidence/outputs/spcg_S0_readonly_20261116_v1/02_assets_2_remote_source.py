@@ -1,0 +1,7 @@
+import json,hashlib,stat
+from pathlib import Path
+a=[{'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/qualified_SCQ_D_8192_v1.json', 'bytes': 1641, 'sha256': '2aa5848b261e046b758a832485a60b80a2d85d152b573b99fafb07fe6d3d5be7'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/real_data_qc_verification_v1.json', 'bytes': 5769, 'sha256': '54fcd0018f9a51f04b8408b3842b6d5c4243777979a0e0add31541e04fa3c55b'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_8192.jsonl', 'bytes': 427975, 'sha256': 'f94dbe21cb9e406db49a51f6578496db3228d783f15c07b28e3d8ae234a33758'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/fold_binding.json', 'bytes': 35012, 'sha256': 'cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldC_seed0_v1.json', 'bytes': 1248506, 'sha256': '6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d'}]
+r=[]
+for x in a:
+ p=Path(x['path']);assert not any(v.is_symlink() for v in (p,*p.parents));s=p.stat();assert stat.S_ISREG(s.st_mode) and s.st_size==x['bytes'];b=p.read_bytes();h=hashlib.sha256(b).hexdigest();assert h==x['sha256'],str(p);r.append(dict(path=str(p),bytes=len(b),sha256=h))
+print(json.dumps(r))

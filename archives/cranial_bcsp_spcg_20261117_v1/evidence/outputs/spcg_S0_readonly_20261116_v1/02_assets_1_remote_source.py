@@ -1,0 +1,7 @@
+import json,hashlib,stat
+from pathlib import Path
+a=[{'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/bcsp_training_contract_01dt08_v3.py', 'bytes': 16531, 'sha256': '08a9af361ef0279cfccf27f9d094020501bfcc9859692ca64322d8dd4c7fd499'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/inherited_training_budget_v1.py', 'bytes': 20395, 'sha256': '095cabb0ab9b098172840432d40699dd18279671cf650894fab9eb9b54575ebe'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/exact_utc_resource_v1.py', 'bytes': 3563, 'sha256': '038267da9f78be5ea9d03164e674d388228768bf0c42959097fcadfd807f830e'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/static_training_config_v1.json', 'bytes': 2024, 'sha256': '86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647'}, {'path': '/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/qualified_SCQ_C_8192_v1.json', 'bytes': 1641, 'sha256': 'b51fc4d88c63fb8a928868bf94d7c3eef3aba117a7de1138d2cdd2aa6c643cd4'}]
+r=[]
+for x in a:
+ p=Path(x['path']);assert not any(v.is_symlink() for v in (p,*p.parents));s=p.stat();assert stat.S_ISREG(s.st_mode) and s.st_size==x['bytes'];b=p.read_bytes();h=hashlib.sha256(b).hexdigest();assert h==x['sha256'],str(p);r.append(dict(path=str(p),bytes=len(b),sha256=h))
+print(json.dumps(r))

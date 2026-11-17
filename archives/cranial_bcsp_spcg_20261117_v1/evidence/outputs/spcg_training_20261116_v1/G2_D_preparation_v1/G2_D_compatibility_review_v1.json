@@ -1,0 +1,42 @@
+{
+  "status": "LOCAL_CONTRACT_READY_REQUIRES_G2D_ENTRY_BRIDGE_CPU_P3",
+  "G1_D_freeze": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\G1_D_rebind_v2\\post_training_freeze_v2\\formal_freeze_result_v2.json",
+    "bytes": 3942,
+    "sha256": "a75ecf76c8f37031995380b272625a35570c264c28b6cee48350bd62f71831ce"
+  },
+  "G1_D_request": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\G1_D_rebind_v2\\pending_transport_v1\\payload\\SPCG_G1_D_training_execution_request_v2.json",
+    "bytes": 15957,
+    "sha256": "d0e171d7ef70bef996cb1e4b1fb7006bd7173cc0aecf9b580d130b25fb2d998e"
+  },
+  "G2_C_request": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\G2_C_implementation_v1\\pending_transport_v1\\payload\\SPCG_G2_C_training_execution_request_v1.json",
+    "bytes": 15604,
+    "sha256": "f55806333bf52eef358aa718a77b3e7bbc58f2dd59e5de341d56f8ab9df73322"
+  },
+  "checks": {
+    "G1_D_formal_freeze": true,
+    "same_G1_D_device": true,
+    "same_U_H_complete_initial_state": true,
+    "same_D_order3900_contract": true,
+    "same_runtime_limits": true,
+    "startup6GiB_retained": true,
+    "G0_D_cross_device_limitation_retained": true
+  },
+  "findings": [
+    "Existing frozen head/factory already support G2 k8; no scientific module change needed.",
+    "G2_C entry/bridge only accept C and old startup8.5GiB, without G1_D same-device continuation contract.",
+    "G1_D entry supports rebound identity/startup6GiB but only G1; it cannot execute G2 unmodified."
+  ],
+  "minimal_scope": [
+    "Isolated G2_D entry and bridge; merge proven G2 build with proven G1_D identity/startup6GiB guard.",
+    "Bind G1_D formal freeze and assert same device/initialization/D order; keep G0_D only as disclosed cross-device reference.",
+    "One targeted CPU batch covering actual G2 k8 build, full authorize D metadata, exact assets, identity/budget/paired-proof rejection and unchanged logs/lifecycle.",
+    "P3 then final exact-hash pending request; no repeated GPU admission."
+  ],
+  "server_operations": 0,
+  "tests_run": 0,
+  "implementation_changes": 0,
+  "training_started": false
+}

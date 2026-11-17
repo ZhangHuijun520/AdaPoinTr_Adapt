@@ -1,0 +1,418 @@
+{
+  "schema": "bcsp-spcg-cuda-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "execution_authorized": false,
+  "date": "2026-11-16",
+  "run_id": "SPCG_G0_G1_G2_CUDA_20261116_v1",
+  "project": "/home/jovyan/adapointr_work/PoinTr",
+  "identity": {
+    "hostname": "shu-common-25721452-notebook-lwwgl9-0",
+    "uid": 1000,
+    "project": "/home/jovyan/adapointr_work/PoinTr",
+    "gpu_uuid": "GPU-c25d6be2-173c-031a-89c6-b96e0f5f8190",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "nvidia_smi_memory_total_MiB": 24564,
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "memory_query_semantics": "SMI physical UUID/rounded memory separate from torch logical cuda:0/properties. Do not demand byte equality between the two interfaces; require one visible logical device mapped via the fixed UUID and record torch capacity.",
+    "torch_cuda_version": "11.8"
+  },
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "GPU-41b45aa3-f5e3-e609-53cb-9c48bc7716ed",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "MPLBACKEND": "Agg",
+    "MPLCONFIGDIR": "<owned_output>/mplconfig",
+    "CUDA_CACHE_DISABLE": "1",
+    "TMPDIR": "<owned_output>/tmp",
+    "PYTHONHASHSEED": "0",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "HF_HOME": "<owned_output>/hf_cache",
+    "XDG_CACHE_HOME": "<owned_output>/cache",
+    "TRITON_CACHE_DIR": "<owned_output>/triton_cache"
+  },
+  "model_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3",
+  "helper": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+    "bytes": 32728,
+    "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+  },
+  "parent_helper": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_CD_native_prediction_20261111_v2/bcsp_f0_twofold_native_predict_v1.py",
+    "bytes": 31713,
+    "sha256": "b1318c0ab8441e56dfd7133c83b2ae07435932359f1843fd7c3616c835e6f72b"
+  },
+  "timezone_implementation": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_p1_gradient_quantification_20261105_v1/exact_utc_resource_v1.py",
+    "bytes": 3563,
+    "sha256": "038267da9f78be5ea9d03164e674d388228768bf0c42959097fcadfd807f830e"
+  },
+  "timezone_resource": {
+    "link": "/usr/share/zoneinfo/UTC",
+    "link_text": "Etc/UTC",
+    "target": "/usr/share/zoneinfo/Etc/UTC",
+    "bytes": 118,
+    "sha256": "ab1ddb33c7187e56408033a8165ea3b1432e024710e7ab2aafec036a8bd7f09a"
+  },
+  "preflight_scope": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+    "bytes": 23220,
+    "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+  },
+  "static_config": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/static_training_config_v1.json",
+    "bytes": 2024,
+    "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+  },
+  "dependencies": [
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/__init__.py",
+      "bytes": 264,
+      "sha256": "6d3fee6ff8e8ec4dcab0f7af6c7890ff81f3d9319707865f5a651239aee9ae0a"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/modules/mamba_simple.py",
+      "bytes": 11710,
+      "sha256": "a17e4c51b582dc0d4d690a649eba521cd0c1ee3dc8f0473a0967cdc9ec0874e3"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/ops/selective_scan_interface.py",
+      "bytes": 20025,
+      "sha256": "543edd077f11c80cccd5c5e2f926420d9105fd238d9e8960e53660cfa234dce8"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/__init__.py",
+      "bytes": 118,
+      "sha256": "af95401837aff56ae3749c2237eaff7df8c6a4328d7c5cc6a6731287ac27152c"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/causal_conv1d_interface.py",
+      "bytes": 8850,
+      "sha256": "221f41aa963a8f84683d9c6b2b4bf448692feb963fefcd778fa1b4ed2688c859"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm-2.3.1.dist-info/METADATA",
+      "bytes": 25449,
+      "sha256": "de580cd29b3bf2c8d81240fad9255978be1835884b82ab8e84f17f4ba720effd"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d-1.6.2.post1.dist-info/METADATA",
+      "bytes": 1625,
+      "sha256": "3b4a001f4ad6f856465746601e4b0dda9b2d088bd8e81b6376e4a707fcf4ca7b"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/selective_scan_cuda.cpython-310-x86_64-linux-gnu.so",
+      "bytes": 526135264,
+      "sha256": "5e6a5bfabe7628720631568ec364426e6066da9a9a0946302ebe9fb86f4aa58c"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d_cuda.cpython-310-x86_64-linux-gnu.so",
+      "bytes": 166702752,
+      "sha256": "6ac9c334498773ee337503094d7b5aae4b0f38fa3ba8a0dcd81cca707f48a79a"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch/version.py",
+      "bytes": 248,
+      "sha256": "b10649fd636e7404398d608b84a2cacc6645e3952f043b439d4c50c95a26a1b5"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch-2.4.1+cu118.dist-info/METADATA",
+      "bytes": 26707,
+      "sha256": "11606497a9792f0d040ad062064ee1c024dde8b10fc38bed361134d0b7ec429a"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm-1.0.27.dist-info/METADATA",
+      "bytes": 40196,
+      "sha256": "b6ecaedbcaea5d0d5e431983c3df8e05113a51a2dad062e51dab0500ac6f2bb4"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/numpy-2.2.6.dist-info/METADATA",
+      "bytes": 62026,
+      "sha256": "22d648f53848429464ca643b40d73b49a920d47876fc77c395d4dca4e834904a"
+    }
+  ],
+  "implementation": {
+    "encoder": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_mamba_encoder_v1.py",
+      "bytes": 3546,
+      "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+    },
+    "factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py",
+      "bytes": 4396,
+      "sha256": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4"
+    },
+    "lqi_decoder": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_decoder_v1.py",
+      "bytes": 6053,
+      "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8"
+    },
+    "lqi_factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_factory_v1.py",
+      "bytes": 3864,
+      "sha256": "56d4cbe89660106f255a0d58e28c7cbaf38374c7788219d5a21779bd97aaf106"
+    },
+    "head": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/bcsp_spcg_head_v1.py",
+      "bytes": 4209,
+      "sha256": "687c123ae7d0769c9ee89e2067367ff7fc2762f66bf47a814bf077ac68c59d3b"
+    },
+    "spcg_factory": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/bcsp_spcg_factory_v1.py",
+      "bytes": 3736,
+      "sha256": "b7b85d63c91c23ef0ba7e901706ae85b1cf8eefaa391895978022abfbf3ec8a5"
+    },
+    "runtime": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/bcsp_spcg_runtime_v1.py",
+      "bytes": 3220,
+      "sha256": "9470ce3cbfed9d559bfe84cc37e6b9463437a81342fc27f4b47516d9eeeac90c"
+    }
+  },
+  "mother_source": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/models/AdaPoinTr.py",
+    "bytes": 103347,
+    "sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4"
+  },
+  "entry": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/bcsp_spcg_cuda_entry_v1.py",
+    "bytes": 20405,
+    "sha256": "6ebec6b563d33904d258716865f2dd19865583d60fda7bca26c97459ecfbf99c"
+  },
+  "P3": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/implementation_P3_v1.json",
+    "bytes": 4806,
+    "sha256": "dacd38275da0e75f7b1fbec06b8634ace5ac39687708fdbca13646c6589d26f5"
+  },
+  "probe_asset": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/probe_U_fp32_v1.bin",
+    "bytes": 3072,
+    "sha256": "ba87509aedc575f9b2db006025417261f8d478461e79518c4e8c0d83c6efcbbf"
+  },
+  "head_initialization": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/head_initialization_fp32_v1.bin",
+    "bytes": 7383052,
+    "sha256": "e0177f8ae5d1da31c4eb2f0bfd2d0ec8844255b00dcf31307fbbd33f43346b39"
+  },
+  "science": {
+    "full_forward": 11,
+    "full_loss": 3,
+    "full_backward": 3,
+    "optimizer_steps": 0,
+    "synthetic_forward": 6,
+    "real_D_forward": 5
+  },
+  "limits": {
+    "wall_seconds": 1800,
+    "RSS_bytes": 8589934592,
+    "torch_peak_bytes": 21474836480,
+    "device_MiB": 22528,
+    "output_bytes": 1073741824,
+    "minimum_free_disk_bytes": 4294967296
+  },
+  "fixture": {
+    "kind": "analytic_double_spherical_surface_and_cut_annulus_v1",
+    "outer_points": 3072,
+    "inner_points": 3072,
+    "wall_points": 2048,
+    "outer_radius": 0.45,
+    "inner_radius": 0.4,
+    "cut_polar_angle": 0.55,
+    "input_seed": 2026111603,
+    "target_seed": 2026111604,
+    "batches": [
+      1,
+      8
+    ],
+    "points": 8192,
+    "dtype": "float32"
+  },
+  "real_inputs": [
+    {
+      "case_id": "train__063__bilateral",
+      "source_id": "train:063",
+      "defect": "bilateral",
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__063__bilateral_8192.npz",
+      "bytes": 157288,
+      "sha256": "b960a634e3239ba081f7dd732b3dcd6d55d8d9be1952c195e65e4da367f0eb89",
+      "application_array_allowlist": [
+        "partial"
+      ],
+      "normalization": {
+        "center": [
+          102.2,
+          96.4,
+          60.0
+        ],
+        "scale": 130.64042253452794
+      },
+      "source_selection": "SHA256(SPCG_V2_FEAS|canonical_source_id), first5 common train sources"
+    },
+    {
+      "case_id": "train__023__frontoorbital",
+      "source_id": "train:023",
+      "defect": "frontoorbital",
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__023__frontoorbital_8192.npz",
+      "bytes": 156008,
+      "sha256": "7ef15137cc576d4e220752f6d2f4abcac68153d029b75a80c9a06338af7c4e9a",
+      "application_array_allowlist": [
+        "partial"
+      ],
+      "normalization": {
+        "center": [
+          99.4,
+          101.4,
+          59.6
+        ],
+        "scale": 136.97503422156902
+      },
+      "source_selection": "SHA256(SPCG_V2_FEAS|canonical_source_id), first5 common train sources"
+    },
+    {
+      "case_id": "train__073__parietotemporal",
+      "source_id": "train:073",
+      "defect": "parietotemporal",
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__073__parietotemporal_8192.npz",
+      "bytes": 157681,
+      "sha256": "205d462c5b3e411d85a3deb3eee6b7afdfda2cca9d54d3beeb611fe2c9e15f1a",
+      "application_array_allowlist": [
+        "partial"
+      ],
+      "normalization": {
+        "center": [
+          101.80000000000001,
+          97.60000000000001,
+          56.800000000000004
+        ],
+        "scale": 130.1004227510426
+      },
+      "source_selection": "SHA256(SPCG_V2_FEAS|canonical_source_id), first5 common train sources"
+    },
+    {
+      "case_id": "train__056__random_1",
+      "source_id": "train:056",
+      "defect": "random_1",
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__056__random_1_8192.npz",
+      "bytes": 158060,
+      "sha256": "42a5a76eef8ea4777741601092678fbd095aa357614f0d2da1dfd5aa12aaef14",
+      "application_array_allowlist": [
+        "partial"
+      ],
+      "normalization": {
+        "center": [
+          100.80000000000001,
+          99.2,
+          57.800000000000004
+        ],
+        "scale": 130.73714085905354
+      },
+      "source_selection": "SHA256(SPCG_V2_FEAS|canonical_source_id), first5 common train sources"
+    },
+    {
+      "case_id": "train__006__random_2",
+      "source_id": "train:006",
+      "defect": "random_2",
+      "path": "/home/jovyan/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1/points/train__006__random_2_8192.npz",
+      "bytes": 158654,
+      "sha256": "fae5894fd1e2c5d1ebdf8ee7fdbf88b7c26d7e2a87ee3816286f54d8ceaa811e",
+      "application_array_allowlist": [
+        "partial"
+      ],
+      "normalization": {
+        "center": [
+          102.80000000000001,
+          97.4,
+          61.400000000000006
+        ],
+        "scale": 132.7129232591913
+      },
+      "source_selection": "SHA256(SPCG_V2_FEAS|canonical_source_id), first5 common train sources"
+    }
+  ],
+  "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1",
+  "numeric": {
+    "FP32": true,
+    "TF32": false,
+    "strict_deterministic": true,
+    "finite_gradient_nondeterminism_accepted": true,
+    "bitwise_gradient_repeat_required": false,
+    "loss_backend": "existing_PyTorch_cdist_Chamfer_only_no_compiled_Chamfer",
+    "PointNet2_backend": "exact_existing_Python310_native_provider",
+    "no_mixed_precision": true
+  },
+  "initialization": {
+    "CPU_torch": "2.5.1",
+    "target_torch": "2.4.1+cu118",
+    "policy": "frozen FP32 U/H raw bytes authoritative; target loads exact bytes; no seed regeneration equality or dependency upgrade",
+    "head_seed": 2026111600,
+    "U_sha256": "ba87509aedc575f9b2db006025417261f8d478461e79518c4e8c0d83c6efcbbf",
+    "H_sha256": "e0177f8ae5d1da31c4eb2f0bfd2d0ec8844255b00dcf31307fbbd33f43346b39"
+  },
+  "required_native_SSM_forward_calls": 396,
+  "restoration": "Per phase and exception: state_dict incl BN, gradients cleared, module training modes, BN momentum and Python/NumPy/CPU/CUDA RNG; no bitwise gradient repetition requirement",
+  "scope_notes": [
+    "Six artificial forwards: G0/G1/G2 evalB1+trainB8; only three train calls have loss/backward.",
+    "Five real training D-only G2 eval forwards; no GT array, loss/backward/step.",
+    "Same-forward real Memory S/F/z/A/mu/rho/tau/index and Q/dense preserved; distance/coverage diagnostic scalars may be derived offline without extra forward.",
+    "No trained checkpoint, no warmup, no decoder-only intervention, no training request."
+  ],
+  "readiness": {
+    "S0": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_S0_readonly_20261116_v1\\S0_completion_v1.json",
+      "bytes": 1012,
+      "sha256": "a57fb1b95f901b84d1990234e8ea2473ed0d4d60e86521224fbeebd3761ebaf6"
+    },
+    "observed_GPU": "GPU-c25d6be2-173c-031a-89c6-b96e0f5f8190",
+    "new_install_targets_absence_not_yet_observed": true,
+    "full_dependencies_not_freshly_rehashed_by_S0": true,
+    "mandatory_before_install_and_launch": "reverify current identity, GPU UUID/driver, SMI idle<=256MiB, disk, all reused hashes including exact project/provider/environment dependencies, parent links and new target/output/control absence; any mismatch stop",
+    "local_paths_are_provenance_only": true
+  },
+  "resource_policy": {
+    "RSS": "8GiB monitored, no exclusive hard cgroup guarantee",
+    "torch_peak": "20GiB allocated/reserved",
+    "physical_GPU_stop_MiB": 22528,
+    "initial_GPU_max_MiB": 256,
+    "monitoring_poll_seconds": 2,
+    "nvidia_smi_timeout_seconds": 10,
+    "nvidia_smi_no_retry": true,
+    "PID": "diagnostic only, no host-procfs ownership assertion",
+    "wall_budget_reason": "Inherited1800s wall ceiling for3scratch constructions +6artificial and5real-D forwards +3complete loss/backward calls; monitored fail-stop, not a measured speed claim"
+  },
+  "post_execution_formal_freeze_audit_required": true,
+  "scientific_efficacy": "NOT_TESTED_BY_ADMISSION",
+  "training_admission": false,
+  "launch_contract": {
+    "tmux_session": "SPCG_G0_G1_G2_CUDA_20261116_v1",
+    "request_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/SPCG_CUDA_execution_request_v1.json",
+    "authorization_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/control/authorization_v1.json",
+    "runtime_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/control/runtime_v1.json",
+    "launcher_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/control/launch_once_v1.sh",
+    "launch_attempt_path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/control/launch_attempt_v1.json",
+    "materialization_order": "authorization bytes -> SHA256 -> runtime bytes(one-way) -> SHA256 -> original launcher bytes -> exclusive CLAIMED_BEFORE_TMUX marker -> one tmux attempt",
+    "log": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1/launch.log",
+    "PID": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1/worker.pid",
+    "exit_code": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1/exit_code.txt",
+    "exclusive_single_attempt": true,
+    "automatic_retry": false,
+    "PowerShell_explicit_exit_LASTEXITCODE": true,
+    "transport": "raw bytes and original-file Base64 only; no text re-encoding",
+    "timeout_kill_after_seconds": 10
+  },
+  "forbidden": [
+    "execution without separate full hash authorization",
+    "optimizer creation/step; training; BNCal; development evaluation",
+    "new dependencies/download/compile/upgrade/fallback",
+    "read any GT array from the5 real inputs or any unlisted payload/checkpoint",
+    "additional forward/backward/warmup/decoder-only or retry/resume",
+    "changing head/init/U/fixture/loss/provider/resource limits",
+    "overwrite existing files; claim training admission from CPU or launch success"
+  ]
+}

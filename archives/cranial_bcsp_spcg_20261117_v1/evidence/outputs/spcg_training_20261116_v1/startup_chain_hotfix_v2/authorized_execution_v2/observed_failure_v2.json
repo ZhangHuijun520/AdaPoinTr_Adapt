@@ -1,0 +1,22 @@
+{
+  "status": "SINGLE_TRAINING_ATTEMPT_FAILED_STOP_NO_RETRY",
+  "request_sha256": "6a1ff266ff9eae8db51b5809b7db3aa87b72900625d267a4ee3b0a5a9a489f42",
+  "installed_files": 10,
+  "uploaded_and_installed_hashes_pass": true,
+  "training315_input_hashes_pass": true,
+  "worker_exit_code": 1,
+  "tmux_live": false,
+  "primary_inner_error": "RuntimeError: symlink: /usr/share/zoneinfo/UTC",
+  "outer_error": "ModuleNotFoundError: Could not import module GenerateDecoderOnlyOutput",
+  "dependency_chain": "Mamba import -> transformers generation -> sklearn -> pandas -> dateutil -> UTC zoneinfo read",
+  "failure_traceback_persisted": true,
+  "traceback_phase": "GUARD_ACTIVE_BEFORE_CLEANUP",
+  "late_guard_KeyError_observed": false,
+  "forward": 0,
+  "backward": 0,
+  "optimizer_step": 0,
+  "claim_consumed": true,
+  "automatic_retry": false,
+  "formal_failure_audit": "NOT_EXECUTED",
+  "next_recommended": "Formal read-only failure freeze plus existing ExactUTCReader versus source-guard dispatch ordering review. No reinstall, upgrade, model changes or repeated GPU preflight."
+}

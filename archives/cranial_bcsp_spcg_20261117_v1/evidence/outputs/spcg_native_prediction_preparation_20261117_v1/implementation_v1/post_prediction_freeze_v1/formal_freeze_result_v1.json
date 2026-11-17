@@ -1,0 +1,81 @@
+{
+  "status": "FORMAL_SPCG_NATIVE630_POST_PREDICTION_FREEZE_PASS",
+  "request_sha256": "c63ebdfc7e4315e36bb0c65b445925d5496352720fd78db80ff7ed0e5b155dcc",
+  "checks": {
+    "exit_zero": true,
+    "worker_absent": true,
+    "tmux_absent": true,
+    "completion": true,
+    "exact_output_set": true,
+    "all630_manifest_journal_geometry": true,
+    "each105": true,
+    "states_rng_all6": true,
+    "zero_updates_loss_BNCal": true,
+    "exact1267_resources": true,
+    "resource_values_recomputed": true,
+    "archive_hash_bytes": true,
+    "members635_exact": true,
+    "all_archive_members_match_live": true,
+    "sidecars": true,
+    "all630_arrays_shape_dtype_finite": true,
+    "no_extra_RF_GT_arrays": true,
+    "inventory_unchanged": true,
+    "exact_control_set": true,
+    "one_way_authorization_runtime": true,
+    "single_claim": true,
+    "installed_exact_set": true,
+    "installed_hashes": true
+  },
+  "models": 6,
+  "per_model": 105,
+  "predictions": 630,
+  "forward_attempts": 630,
+  "unique_inputs": 210,
+  "archive": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_sixmodel_native_development_20261117_v1/development_predictions_v1.tar.gz",
+    "bytes": 58926842,
+    "sha256": "a2f3384a95906cad6523cd0eb0c0c9954a4bd4252017934b825da1f0d49f07c7"
+  },
+  "download_files": [
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_sixmodel_native_development_20261117_v1/development_predictions_v1.tar.gz",
+      "bytes": 58926842,
+      "sha256": "a2f3384a95906cad6523cd0eb0c0c9954a4bd4252017934b825da1f0d49f07c7"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_sixmodel_native_development_20261117_v1/development_predictions_v1.tar.gz.sha256",
+      "bytes": 100,
+      "sha256": "ff6a8564e9cf9a96c3375bc4b846f4ff4244c82b4677be504d0d825f72e7bcc0"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_sixmodel_native_development_20261117_v1/development_predictions_v1.tar.gz.bytes",
+      "bytes": 9,
+      "sha256": "ed5c576c406ba3c99738c68fd4bdad3b9ddfaf4257c661eaf77d6e5c56d3cba6"
+    },
+    {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_sixmodel_native_development_20261117_v1/development_predictions_v1.tar.gz.contents.sha256",
+      "bytes": 70749,
+      "sha256": "c418a5da9f66c4dbc6fa2edced9919f2cb806e22a89b26ef80183752975678c2"
+    }
+  ],
+  "state_rng_models": 6,
+  "resource_records": 1267,
+  "resources": {
+    "RSS_bytes": 1970987008,
+    "output_bytes": 60183160,
+    "device_MiB": 718,
+    "peak_allocated": 241075712,
+    "peak_reserved": 281018368,
+    "elapsed_seconds": 178.13237414322793
+  },
+  "server_writes": 0,
+  "model_calls": 0,
+  "checkpoint_loads": 0,
+  "scoring_executed": false,
+  "limitations": [
+    "Common inference device does not remove training-device differences.",
+    "Fold C three arms trained on original GPU; D G1/G2 share new GPU; G0_D cross-device reference only.",
+    "Six runs seed0 and previously exposed development cases; no tuning or case reselection.",
+    "Native outputs are formal predictions; no Oracle alignment or postprocessing."
+  ]
+}

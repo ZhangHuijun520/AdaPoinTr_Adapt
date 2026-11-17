@@ -1,0 +1,44 @@
+from pathlib import Path
+import json,hashlib,ast,copy
+V=Path(__file__).resolve().parent;W=V.parents[1];S=W/'outputs/spcg_training_20261116_v1';O=V/'implementation_v1';O.mkdir()
+def read(p):return json.loads(p.read_text(encoding='utf-8'))
+def rec(p,target=None):return dict(path=target or str(p.resolve()),bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest())
+def emit(p,d):
+ with p.open('x',encoding='utf-8') as f:json.dump(d,f,ensure_ascii=False,indent=2)
+root='/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_native_prediction_20261117_v1'
+scope=read(V/'SPCG_sixmodel_native_scope_draft_v1.json');scope['status']='FROZEN_SCOPE_NOT_EXECUTION_AUTHORIZATION';emit(O/'SPCG_native_scope_v1.json',scope)
+index=read(V/'SPCG_sixmodel_input_index_draft_v1.json');index['schema']='bcsp-spcg-sixmodel-native-index-v1';index['status']='FROZEN_REQUIRES_FRESH_SERVER_READINESS'
+copies={};training={}
+for run in index['runs']:
+ qp=Path(run['training_request']['path']);ap=Path(run.pop('training_freeze')['path']);t=read(qp);training[run['label']]=t
+ run['training_request']=rec(qp,t['launch_contract']['request_path']);run['training_audit']=rec(ap,root+'/frozen_'+run['label']+'_training_audit_v1.json');copies[run['training_audit']['path']]=str(ap)
+emit(O/'SPCG_sixmodel_input_index_v1.json',index)
+t=training['G2_D'];implementation={k:t['implementation'][k] for k in ['encoder','factory','lqi_decoder','lqi_factory','head','spcg_factory','timezone']}
+q=dict(schema='bcsp-spcg-sixmodel-native-prediction-v1',status='AWAITING_EXPLICIT_USER_AUTHORIZATION',execution_authorized=False,run_id=scope['run_id'],stage='CRANIAL_BCSP_SPCG',n_input=8192,n_output=8192,batch_size=1,forward_budget=630,unique_cases=210,loss_calls=0,backward=0,optimizer_steps=0,BNCal=0,warmup=0,TTA=0,identity=scope['identity'],environment=scope['environment'],limits={k:v for k,v in scope['limits'].items() if k!='startup_free_disk_bytes'},startup_free_disk_bytes=scope['limits']['startup_free_disk_bytes'],model_root=t['model_root'],static_config=t['static_config'],preflight_scope=t['preflight_scope'],dependencies=t['dependencies'],helper=t['implementation']['preflight_helper'],implementation=implementation,probe_asset=t['probe_asset'],head_initialization=t['head_initialization'],mother_source=t['mother_source'],parent_G0_initial_state_sha256=t['parent_G0_initial_state_sha256'],prior_native_admission=dict(audit=t['CUDA_freeze']),input_index=rec(O/'SPCG_sixmodel_input_index_v1.json',root+'/SPCG_sixmodel_input_index_v1.json'),protocol=rec(O/'SPCG_native_scope_v1.json',root+'/SPCG_native_scope_v1.json'),source_manifest=t['QC']['manifests']['8192'],fold_binding=t['QC']['fold_binding'],comparison_qualification=scope['comparison_limits'],output=scope['output'],P3=dict(path=root+'/implementation_P3_v1.json',bytes=0,sha256='0'*64))
+control=root+'/control/'+q['run_id'];q['launch_attempt']=control+'/attempt_claim_v1.json';q['launch_contract']=dict(request_path=root+'/SPCG_sixmodel_native_execution_request_v1.json',authorization=control+'/authorization_v1.json',runtime=control+'/runtime_v1.json',launcher=control+'/launch_once_v1.sh',tmux_session=q['run_id'],log=q['output']+'/launch.log',exit_code=q['output']+'/exit_code.txt')
+reference=W/'outputs/scq_rf_sixmodel_native_prediction_preparation_20261115_v1/implementation_v1/input_path_fix_v2/bcsp_scq_rf_sixmodel_native_predict_v2.py';raw=reference.read_text(encoding='utf-8');tree=ast.parse(raw)
+keep=['require','clean','sha','exact','bound','emit','load_partial','predict_once','ExactSourceReads','source_module','make_policy','Budget','pack','append_event','geometry_summary','rng_state','validate_source','validate_lqi_model','load_checkpoint','render_launcher']
+parts=[ast.get_source_segment(raw,n) for name in keep for n in tree.body if isinstance(n,(ast.FunctionDef,ast.ClassDef)) and n.name==name];assert len(parts)==len(keep)
+header='"""SPCG sixmodel Native630; import inert; explicit execution authorization required."""\nimport argparse,gc,hashlib,importlib.util,json,os,random,shlex,shutil,socket,subprocess,sys,tarfile,time,traceback\nfrom pathlib import Path,PurePosixPath\nfrom collections import Counter\n'
+constants=dict(FROZEN_MODELS={r['label']:r for r in index['runs']},CURRENT_IDENTITY=q['identity'],LIMITS=q['limits'],INDEX_SHA=q['input_index']['sha256'],PROTOCOL_SHA=q['protocol']['sha256'],QUALIFICATION=q['comparison_qualification'],PINS={k:r['sha256'] for k,r in implementation.items()},ASSETS={k:q[k] for k in ['probe_asset','head_initialization','mother_source']},DATA_ROOTS={f:str(Path(next(r['input']['path'] for r in index['inputs'] if r['fold']==f)).parent).replace('\\','/') for f in 'CD'})
+header+='\n'.join(k+'='+repr(v) for k,v in constants.items())+'\n'
+main=ast.get_source_segment(raw,next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='main'))
+main=main.replace("for name in ('predictions','context','traces','tmp')", "require(shutil.disk_usage(out).free>=q['startup_free_disk_bytes'],'startup6GiB disk')\n  for name in ('predictions','tmp')")
+main=main.replace("make_source_guard(q['implementation'],q['initialization'],q['rf_initialization'],[q['entry'],q['helper']])","make_source_guard(q)")
+main=main.replace("[out/row['prediction_filename'] for row in rows]+cache_paths(out,rows)","[out/row['prediction_filename'] for row in rows]")
+main=main.replace("factory=load_scq_builder(q['implementation'])","factory=load_spcg_builder(q['implementation'])")
+main=main.replace("build_scq_model(factory,lambda:model_class(EasyDict(static['model'])),run,q['initialization'],q['rf_initialization'])","build_spcg_model(factory,lambda:model_class(EasyDict(static['model'])),run,q)")
+main=main.replace('SCQ_RF_SIXMODEL_630_NATIVE_FORWARD_COMPLETE','SPCG_SIXMODEL_630_NATIVE_FORWARD_COMPLETE')
+main=main.replace("  if out.exists() and not (out/'failure.json').exists():", "  formatted=traceback.format_exc();emit(out/'error_traceback.json',dict(error=repr(exc),traceback=formatted,phase='GUARD_ACTIVE_BEFORE_CLEANUP'))\n  if out.exists() and not (out/'failure.json').exists():")
+main=main.replace('  raise\n finally:','  raise SystemExit(1) from None\n finally:')
+entry=O/'bcsp_spcg_sixmodel_native_predict_v1.py';code=header+'\n\n'.join(parts)+'\n\n'+(V/'spcg_predict_functions_v1.txt').read_text(encoding='utf-8')+'\n\n'+main+"\n\nif __name__=='__main__':main()\n";ast.parse(code);entry.write_text(code,encoding='utf-8');q['entry']=rec(entry,root+'/'+entry.name)
+assert q['forward_budget']==630 and len(index['runs'])==6
+emit(O/'draft_request_v1.json',q)
+aliases=read(S/'G2_D_implementation_v1/local_metadata_map_v1.json');aliases.update(copies)
+for run,oldrun in zip(index['runs'],read(V/'SPCG_sixmodel_input_index_draft_v1.json')['runs']):aliases[run['training_request']['path']]=oldrun['training_request']['path']
+aliases[q['entry']['path']]=str(entry);aliases[q['input_index']['path']]=str(O/'SPCG_sixmodel_input_index_v1.json');aliases[q['protocol']['path']]=str(O/'SPCG_native_scope_v1.json');aliases[q['helper']['path']]=read(S/'G2_C_implementation_v1/local_metadata_map_v1.json')[q['helper']['path']]
+emit(O/'local_metadata_map_v1.json',aliases)
+checks=['all six frozen training proofs and checkpoint pins','actual index630 with210 inputs and fold source disjoint','source manifest and D-only normalization pairing','wrong input hash or frame rejected','wrong index arm count and duplicate rejected','full explicit authorize path and one-way runtime','wrong identity selector or budget rejected','actual G0 G1 G2 factory and strict synthetic weight loading','G1/G2 old head removed and k8 route','strict missing or extra checkpoint key rejected','wrong checkpoint stage epoch or update rejected','actual630 CPU Native loop six models105 each','prediction output keys shapes dtype and coordinates','state BN and RNG fingerprints unchanged','attempt journal sequential630 and no extra forward','only prediction coarse saved no RF context traces','manifest hash counts and normalization complete','prediction archive hash bytes contents verify','mid-forward failure stops at one attempt no retry','state mutation is rejected','RNG mutation is rejected','exact source guard readonly bindings including U H','launcher POSIX paths and create before redirect','inherited limits numeric UTC and protected scientific sources unchanged']
+emit(O/'CPU_scope_v1.json',dict(status='FROZEN_BEFORE_SINGLE24_CPU_BATCH',checks=checks,server_operations=0,GPU=0))
+emit(O/'implementation_static_review_v1.json',dict(status='STATIC_PASS_READY_CPU24',entry=rec(entry),reference=rec(reference),counts=dict(models=6,forwards=630),changes=['SPCG-only frozen builds and state loading','coarse/dense outputs only','exact source/U/H policy and traceback before cleanup'],server_operations=0))
+print('STATIC_PASS_READY_CPU24')

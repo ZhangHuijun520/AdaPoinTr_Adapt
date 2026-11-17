@@ -1,0 +1,83 @@
+{
+  "status": "FORMAL_SPCG_G0_C_POST_TRAINING_FREEZE_PASS",
+  "request_sha256": "871c5216815d5e479446108da979e8c77ce6ea5aec2578ac0573652e51a75d63",
+  "checks": {
+    "manifest_unique": true,
+    "manifest_hashes": true,
+    "manifest_scope": true,
+    "exit_zero": true,
+    "worker_absent": true,
+    "tmux_absent": true,
+    "checkpoint_hash": true,
+    "order_raw_bytes": true,
+    "metrics3900": true,
+    "geometry3900": true,
+    "exposure": true,
+    "counts": true,
+    "five_gradient_steps": true,
+    "resources": true,
+    "installed_exact_set": true,
+    "installed_hashes": true,
+    "reused_source_hashes": true,
+    "authorization": true,
+    "single_claim": true,
+    "exact_final_counts": true,
+    "no_BNCal_evaluation_resume": true,
+    "order_canonical_binding": true,
+    "admitted_initialization": true,
+    "G0C_identity": true,
+    "AdamW_defaults": true,
+    "optimizer_groups": true,
+    "exact_output_set": true
+  },
+  "checkpoint": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_foldC_seed0_train_20261116_v3/ckpt-last.pth",
+    "bytes": 478810419,
+    "sha256": "baffbe5e5b0aa19274c49b9dfa4182d8053813d527c4c2f55c34b395ee00ef69"
+  },
+  "fold": "C",
+  "arm": "G0",
+  "seed": 0,
+  "updates": 3900,
+  "traversals": 100,
+  "exposures": 31200,
+  "drops": 300,
+  "initialization": {
+    "parameter_sha256": "2c7d4e3094a98834ed7e2627c610b8015d183146e10270db1a2dccc56c751d8e",
+    "persistent_state_sha256": "beabbeb8c06c387d6ac54c3ec1825fbe7cd6bd529428c4f79299a5525cef301b",
+    "order_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+    "seed": 0
+  },
+  "order_plan": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldC_seed0_v1.json",
+    "bytes": 1248506,
+    "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d"
+  },
+  "initialization_raw_tensor_fingerprint": "366e5a6c752270708d30a2459933812d92accb8bb24f84adb29a2c6a15053f46",
+  "gradient_steps": [
+    1,
+    39,
+    390,
+    1950,
+    3900
+  ],
+  "resources": {
+    "RSS": 1684918272,
+    "output_bytes": 493138820,
+    "peak_allocated": 13886325248,
+    "peak_reserved": 14772338688,
+    "device_MiB": 14576
+  },
+  "wall_seconds": 1498.384272265248,
+  "BNCal": false,
+  "evaluation": false,
+  "resume": false,
+  "server_writes": 0,
+  "model_calls": 0,
+  "checkpoint_loads": 0,
+  "limitations": [
+    "Checkpoint streamed as bytes only, never deserialized.",
+    "Init byte identity corroborated via runtime factory evidence and admitted same-algorithm fingerprint assertion; no model regeneration in audit.",
+    "Singlefold training does not establish completion improvement."
+  ]
+}

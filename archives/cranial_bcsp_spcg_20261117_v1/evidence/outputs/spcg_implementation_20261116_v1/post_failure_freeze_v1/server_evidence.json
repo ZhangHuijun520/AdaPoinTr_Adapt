@@ -1,0 +1,94 @@
+{
+  "hostname": "shu-common-25721452-notebook-lwwgl9-0",
+  "request_sha256": "00a69c5cc3d42e04f4caa3c21650dd58db5d8c1b446741a1b42caf6730213d0f",
+  "identity": "GPU-c25d6be2-173c-031a-89c6-b96e0f5f8190",
+  "selector": "GPU-41b45aa3-f5e3-e609-53cb-9c48bc7716ed",
+  "files": [
+    {
+      "name": "CPU_batch_scope_v1.json",
+      "bytes": 2199,
+      "sha256": "bf4866d105d97cae8c6b5e898c9a5674fd6c4a7ba5f38d8dc387613a497a7dac"
+    },
+    {
+      "name": "CPU_result_v1.json",
+      "bytes": 44618,
+      "sha256": "21bc7e516d7c87256ada5f28c03820745f006094b40f6e3e150593703d3f3485"
+    },
+    {
+      "name": "Cranial_BCSP_FullMamba_BCSP_SPCG_正式实验计划书_审阅修订v2_2026-11-16.md",
+      "bytes": 40462,
+      "sha256": "3c071175fbb6743f57c593093cc982ad0f37cce9c2041059990d2749b3ff60f1"
+    },
+    {
+      "name": "SPCG_CUDA_execution_request_v1.json",
+      "bytes": 19023,
+      "sha256": "00a69c5cc3d42e04f4caa3c21650dd58db5d8c1b446741a1b42caf6730213d0f"
+    },
+    {
+      "name": "bcsp_spcg_cuda_entry_v1.py",
+      "bytes": 20405,
+      "sha256": "6ebec6b563d33904d258716865f2dd19865583d60fda7bca26c97459ecfbf99c"
+    },
+    {
+      "name": "bcsp_spcg_factory_v1.py",
+      "bytes": 3736,
+      "sha256": "b7b85d63c91c23ef0ba7e901706ae85b1cf8eefaa391895978022abfbf3ec8a5"
+    },
+    {
+      "name": "bcsp_spcg_head_v1.py",
+      "bytes": 4209,
+      "sha256": "687c123ae7d0769c9ee89e2067367ff7fc2762f66bf47a814bf077ac68c59d3b"
+    },
+    {
+      "name": "bcsp_spcg_runtime_v1.py",
+      "bytes": 3220,
+      "sha256": "9470ce3cbfed9d559bfe84cc37e6b9463437a81342fc27f4b47516d9eeeac90c"
+    },
+    {
+      "name": "five_real_training_D_binding_v1.json",
+      "bytes": 3698,
+      "sha256": "6fac9ce2337dd5cfb940d9c7eafd17456e028d8cad6e81eae194ae8cfd1a30e5"
+    },
+    {
+      "name": "head_initialization_fp32_v1.bin",
+      "bytes": 7383052,
+      "sha256": "e0177f8ae5d1da31c4eb2f0bfd2d0ec8844255b00dcf31307fbbd33f43346b39"
+    },
+    {
+      "name": "implementation_P3_v1.json",
+      "bytes": 4806,
+      "sha256": "dacd38275da0e75f7b1fbec06b8634ace5ac39687708fdbca13646c6589d26f5"
+    },
+    {
+      "name": "post_test_freeze_v1.json",
+      "bytes": 2570,
+      "sha256": "9349eff700b71e426a0f6e294ddf87196448a402715b38b7428a436fb7e0982a"
+    },
+    {
+      "name": "probe_U_fp32_v1.bin",
+      "bytes": 3072,
+      "sha256": "ba87509aedc575f9b2db006025417261f8d478461e79518c4e8c0d83c6efcbbf"
+    },
+    {
+      "name": "test_spcg_cpu_v1.py",
+      "bytes": 15498,
+      "sha256": "1a349057dcb4cc7eb9a069c3e2bec42bf0a6e83cc6e2f55b6fc3f70583aa291b"
+    }
+  ],
+  "hashed_bytes": 7550568,
+  "controls": {
+    "authorization_v1.json": "{\n  \"schema\": \"bcsp-spcg-authorization-v1\",\n  \"request_sha256\": \"00a69c5cc3d42e04f4caa3c21650dd58db5d8c1b446741a1b42caf6730213d0f\",\n  \"explicit_user_authorization\": true,\n  \"user_authorization_text\": \"User authorized this exact request and11forward/3loss/3backward/0step in chat2026-11-16\"\n}\n",
+    "launch_attempt_v1.json": "{\"status\": \"CLAIMED_BEFORE_TMUX\", \"request_sha256\": \"00a69c5cc3d42e04f4caa3c21650dd58db5d8c1b446741a1b42caf6730213d0f\"}",
+    "launch_once_v1.sh": "#!/bin/bash\nset -eu\numask 077\ncd /home/jovyan/adapointr_work/PoinTr\n[ ! -L /home ] || exit 121\n[ ! -L /home/jovyan ] || exit 121\n[ ! -L /home/jovyan/adapointr_work ] || exit 121\n[ ! -L /home/jovyan/adapointr_work/PoinTr ] || exit 121\n[ ! -L /home/jovyan/adapointr_work/PoinTr/logs ] || exit 121\n[ ! -L /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba ] || exit 121\n[ ! -L /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1 ] || exit 121\nmkdir -p /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba\nmkdir /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1\nexport CUDA_VISIBLE_DEVICES=GPU-41b45aa3-f5e3-e609-53cb-9c48bc7716ed\nexport CUBLAS_WORKSPACE_CONFIG=:4096:8\nexport OMP_NUM_THREADS=2\nexport MKL_NUM_THREADS=2\nexport OPENBLAS_NUM_THREADS=2\nexport PYTHONDONTWRITEBYTECODE=1\nexport MPLBACKEND=Agg\nexport MPLCONFIGDIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1/mplconfig\nexport CUDA_CACHE_DISABLE=1\nexport TMPDIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1/tmp\nexport PYTHONHASHSEED=0\nexport HF_HUB_OFFLINE=1\nexport TRANSFORMERS_OFFLINE=1\nexport HF_HOME=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1/hf_cache\nexport XDG_CACHE_HOME=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1/cache\nexport TRITON_CACHE_DIR=/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1/triton_cache\nprintf \"%s\\n\" \"$$\" >/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1/launcher.pid\nset +e\n/usr/bin/timeout --signal=TERM --kill-after=10s 1800s /opt/conda/envs/adapointr-mamba/bin/python3.10 -I -S -B /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/bcsp_spcg_cuda_entry_v1.py --request /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/SPCG_CUDA_execution_request_v1.json --request-sha256 00a69c5cc3d42e04f4caa3c21650dd58db5d8c1b446741a1b42caf6730213d0f --authorization /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/control/authorization_v1.json --authorization-sha256 3df5240445a0e656d3b8cdd4519360aba214de894798cdca8f4621e167d2cba0 --runtime /home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/control/runtime_v1.json --runtime-sha256 04bfc9474f2180a20276de742cb0882254d17092a3d49715a7258b2a93440ee0 >/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1/launch.log 2>&1\nrc=$?\nset -e\nprintf \"%s\\n\" \"$rc\" >/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v1/exit_code.txt\nexit \"$rc\"\n",
+    "runtime_v1.json": "{\n  \"schema\": \"bcsp-spcg-runtime-v1\",\n  \"request_sha256\": \"00a69c5cc3d42e04f4caa3c21650dd58db5d8c1b446741a1b42caf6730213d0f\",\n  \"authorization_sha256\": \"3df5240445a0e656d3b8cdd4519360aba214de894798cdca8f4621e167d2cba0\"\n}\n"
+  },
+  "output": {
+    "exit_code.txt": "1\n",
+    "launch.log": "Traceback (most recent call last):\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/bcsp_spcg_cuda_entry_v1.py\", line 212, in <module>\n    if __name__=='__main__':main()\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_spcg_cuda_20261116_v1/bcsp_spcg_cuda_entry_v1.py\", line 141, in main\n    g=[x.strip() for x in helper.smi('uuid,name,driver_version,memory.total,memory.used')[0].split(',')]\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py\", line 400, in smi\n    return _smi_once(args, SMI_TIMEOUT, _MONITOR)\n  File \"/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py\", line 386, in _smi_once\n    raise MonitorQueryFailure(details)\nspcg_inherited_helper.MonitorQueryFailure: monitor query NONZERO_EXIT: ChildNonzeroExit\n",
+    "launcher.pid": "2634\n"
+  },
+  "helper_sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291",
+  "tmux_returncode": 1,
+  "tmux_stderr": "no server running on /tmp/tmux-1000/default\n",
+  "live_matching_worker_PIDs": []
+}

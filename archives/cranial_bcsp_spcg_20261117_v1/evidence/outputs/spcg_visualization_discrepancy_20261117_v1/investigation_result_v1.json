@@ -1,0 +1,534 @@
+{
+  "status": "LIMITED_READONLY_CAUSE_IDENTIFIED_NO_REPAIR_NO_RERUN",
+  "case_id": "train__008__random_2",
+  "fold": "D",
+  "arm": "G0",
+  "stage": "coarse",
+  "saved_vs_frozen_original_differences": [],
+  "saved_vs_independent_audit_differences": [
+    {
+      "field": ".support.J.p95_mm",
+      "saved": 20.18536345809624,
+      "independent_audit": 20.186377176238572,
+      "delta": 0.0010137181423317543
+    }
+  ],
+  "quantile_details": {
+    "E": {
+      "reference_face_count": 274362,
+      "argsort_orders_identical": true,
+      "weight_sum": 43897.920000000035,
+      "sorted_cumulative_final": 43897.92000021546,
+      "total_difference": 2.1542655304074287e-07,
+      "frozen_threshold": 41703.024000204685,
+      "audit_threshold": 41703.024000000034,
+      "threshold_difference": 2.0465085981413722e-07,
+      "frozen_index": 260643,
+      "audit_index": 260643,
+      "frozen_distance_mm": 15.256337022759235,
+      "audit_distance_mm": 15.256337022759235,
+      "frozen_function_value": 15.256337022759235,
+      "sorted_neighborhood": [
+        {
+          "sorted_index": 260641,
+          "distance_mm": 15.256050885139539,
+          "weight": 0.16000000000000003,
+          "cumulative_weight": 41702.720000167545,
+          "cumulative_minus_frozen_threshold": -0.30400003714021295,
+          "cumulative_minus_audit_threshold": -0.30399983248935314
+        },
+        {
+          "sorted_index": 260642,
+          "distance_mm": 15.256234276001372,
+          "weight": 0.16000000000000003,
+          "cumulative_weight": 41702.88000016755,
+          "cumulative_minus_frozen_threshold": -0.1440000371367205,
+          "cumulative_minus_audit_threshold": -0.14399983248586068
+        },
+        {
+          "sorted_index": 260643,
+          "distance_mm": 15.256337022759235,
+          "weight": 0.16000000000000003,
+          "cumulative_weight": 41703.04000016755,
+          "cumulative_minus_frozen_threshold": 0.015999962866771966,
+          "cumulative_minus_audit_threshold": 0.01600016751763178
+        },
+        {
+          "sorted_index": 260644,
+          "distance_mm": 15.256353422733278,
+          "weight": 0.16000000000000003,
+          "cumulative_weight": 41703.200000167555,
+          "cumulative_minus_frozen_threshold": 0.17599996287026443,
+          "cumulative_minus_audit_threshold": 0.17600016752112424
+        },
+        {
+          "sorted_index": 260645,
+          "distance_mm": 15.256479413179992,
+          "weight": 0.16000000000000003,
+          "cumulative_weight": 41703.36000016756,
+          "cumulative_minus_frozen_threshold": 0.3359999628737569,
+          "cumulative_minus_audit_threshold": 0.3360001675246167
+        }
+      ]
+    },
+    "J": {
+      "reference_face_count": 34820,
+      "argsort_orders_identical": true,
+      "weight_sum": 5571.200000000003,
+      "sorted_cumulative_final": 5571.199999997253,
+      "total_difference": -2.749402483459562e-09,
+      "frozen_threshold": 5292.63999999739,
+      "audit_threshold": 5292.640000000002,
+      "threshold_difference": -2.61206878349185e-09,
+      "frozen_index": 33078,
+      "audit_index": 33079,
+      "frozen_distance_mm": 20.18536345809624,
+      "audit_distance_mm": 20.186377176238572,
+      "frozen_function_value": 20.18536345809624,
+      "sorted_neighborhood": [
+        {
+          "sorted_index": 33076,
+          "distance_mm": 20.18490820144119,
+          "weight": 0.16000000000000003,
+          "cumulative_weight": 5292.319999997507,
+          "cumulative_minus_frozen_threshold": -0.31999999988329364,
+          "cumulative_minus_audit_threshold": -0.3200000024953624
+        },
+        {
+          "sorted_index": 33077,
+          "distance_mm": 20.184983910608242,
+          "weight": 0.16000000000000003,
+          "cumulative_weight": 5292.479999997507,
+          "cumulative_minus_frozen_threshold": -0.15999999988343916,
+          "cumulative_minus_audit_threshold": -0.16000000249550794
+        },
+        {
+          "sorted_index": 33078,
+          "distance_mm": 20.18536345809624,
+          "weight": 0.16000000000000003,
+          "cumulative_weight": 5292.6399999975065,
+          "cumulative_minus_frozen_threshold": 1.1641532182693481e-10,
+          "cumulative_minus_audit_threshold": -2.495653461664915e-09
+        },
+        {
+          "sorted_index": 33079,
+          "distance_mm": 20.186377176238572,
+          "weight": 0.16000000000000003,
+          "cumulative_weight": 5292.799999997506,
+          "cumulative_minus_frozen_threshold": 0.1600000001162698,
+          "cumulative_minus_audit_threshold": 0.15999999750420102
+        },
+        {
+          "sorted_index": 33080,
+          "distance_mm": 20.18784472940053,
+          "weight": 0.16000000000000003,
+          "cumulative_weight": 5292.959999997506,
+          "cumulative_minus_frozen_threshold": 0.3200000001161243,
+          "cumulative_minus_audit_threshold": 0.3199999975040555
+        },
+        {
+          "sorted_index": 33081,
+          "distance_mm": 20.18787760008828,
+          "weight": 0.16000000000000003,
+          "cumulative_weight": 5293.119999997506,
+          "cumulative_minus_frozen_threshold": 0.48000000011597876,
+          "cumulative_minus_audit_threshold": 0.47999999750391
+        }
+      ]
+    }
+  },
+  "root_cause": "Audit reimplementation changed weighted-percentile threshold total from sorted cumulative final to pairwise np.sum. FP64 summation order changes threshold rounding at a discrete CDF boundary and selects a neighboring distance. Frozen visualization values reproduce the authoritative frozen metric.",
+  "source_before": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_visualization_freeze_20261117_v1\\audit_failure_v1.json",
+      "bytes": 595,
+      "sha256": "5864f03355ea131cb793949c8a5ec7915a0c82c65b3f2a794f3e4c98ae2656dc",
+      "fingerprint": [
+        281474977650331,
+        411826514,
+        33206,
+        595,
+        1794911768412904300,
+        1794911768412904300
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_visualization_freeze_20261117_v1\\readonly_diagnostic_freeze_audit_v1.py",
+      "bytes": 18170,
+      "sha256": "a8bdac3b3b30da101e1aa9ac80163b07ff850a715d532a3f680fcad3f3b612c1",
+      "fingerprint": [
+        281474977650330,
+        411826514,
+        33206,
+        18170,
+        1794911754211190500,
+        1794911739166070600
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_score_freeze_20261117_v1\\visualize_fixed_coarse_dense_cases_v1.py",
+      "bytes": 14921,
+      "sha256": "5b7ef01460c15f7b545747b76e4101b7b19f48b9db348d47b80e9b72b24efb17",
+      "fingerprint": [
+        281474977650294,
+        411826514,
+        33206,
+        14921,
+        1794911172999223200,
+        1794911156091354300
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+      "bytes": 6784,
+      "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766",
+      "fingerprint": [
+        562949953990599,
+        411826514,
+        33206,
+        6784,
+        1793773496660849700,
+        1793773496652714200
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_coarse_dense_visualization_20261117_v1\\fixed_case_geometry_metrics_v1.json",
+      "bytes": 103487,
+      "sha256": "dc80202227180d459076d05217c44ea47ff4f1ee34305c159043622acadbf2c6",
+      "fingerprint": [
+        281474977650319,
+        411826514,
+        33206,
+        103487,
+        1794911215557683800,
+        1794911215552685400
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_coarse_dense_visualization_20261117_v1\\frozen_case_scope_v1.json",
+      "bytes": 1796,
+      "sha256": "e9d8bb5d1c91a367832b9ea3f923f7357ca9dfa5ef091a95092fc44272dc39e3",
+      "fingerprint": [
+        562949954360953,
+        411826514,
+        33206,
+        1796,
+        1794911187944860500,
+        1794911187943867500
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_coarse_dense_visualization_20261117_v1\\completion_v1.json",
+      "bytes": 678,
+      "sha256": "5e249fabf54b93574814dc6d32c2d73b0e0eb2c4fe331df2c27dbbdb88bcbe65",
+      "fingerprint": [
+        281474977650323,
+        411826514,
+        33206,
+        678,
+        1794911216445401800,
+        1794911216444392200
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_coarse_dense_visualization_20261117_v1\\artifact_manifest_v1.json",
+      "bytes": 7455,
+      "sha256": "12af0db506c58603f89d96b2123a93d97d14f61fe2788c0a2a446a6f0f0b0659",
+      "fingerprint": [
+        281474977650324,
+        411826514,
+        33206,
+        7455,
+        1794911216579953900,
+        1794911216576953900
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_coarse_dense_visualization_20261117_v1\\final_delivery_manifest_v1.json",
+      "bytes": 8300,
+      "sha256": "f26a58c2f3cec416351b6364d9b74b30433c2d74fc4b4e5b3e42f09c303b4c55",
+      "fingerprint": [
+        281474977650328,
+        411826514,
+        33206,
+        8300,
+        1794911413367458200,
+        1794911413367458200
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_score_implementation_20261117_v1\\SPCG_local_scoring_execution_request_v1.json",
+      "bytes": 12151,
+      "sha256": "7b6b3e5f6ade721540397e2c7977a85e2c73298f7e5cedb489b79f257eae27f8",
+      "fingerprint": [
+        281474977650255,
+        411826514,
+        33206,
+        12151,
+        1794905696172991500,
+        1794905696172991500
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_score_implementation_20261117_v1\\SPCG_score_case_index_v1.json",
+      "bytes": 436314,
+      "sha256": "4bc3d0583d344646b838aaeb2e15d1d3e09d57aa02becc700334b250813c751e",
+      "fingerprint": [
+        281474977650205,
+        411826514,
+        33206,
+        436314,
+        1794905434294590400,
+        1794905434294590400
+      ]
+    },
+    {
+      "path": "E:\\ResearchBackups\\AdaPoinTr\\BCSP_FULLMAMBA_SPCG\\2026-11-17_native_development_eval\\development_predictions_v1.tar.gz",
+      "bytes": 58926842,
+      "sha256": "a2f3384a95906cad6523cd0eb0c0c9954a4bd4252017934b825da1f0d49f07c7",
+      "fingerprint": [
+        562949954360844,
+        411826514,
+        33206,
+        58926842,
+        1794904630179799900,
+        1794904591656463400
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__008__random_2_8192.npz",
+      "bytes": 156795,
+      "sha256": "4f513a13121d6343b78a0acb5b3c394855e96c2144e39279dc9a44cae0dc9536",
+      "fingerprint": [
+        281474977578586,
+        411826514,
+        33206,
+        156795,
+        1792837713363626100,
+        1792837713354635500
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__008__random_2.npz",
+      "bytes": 4471390,
+      "sha256": "d8cfc9e4ca476b8cd6332ea696f5e5a2773ff27a257b507e4296899897cc3c56",
+      "fingerprint": [
+        281474977581208,
+        411826514,
+        33206,
+        4471390,
+        1793010325428852300,
+        1793010324567512200
+      ]
+    }
+  ],
+  "source_after": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_visualization_freeze_20261117_v1\\audit_failure_v1.json",
+      "bytes": 595,
+      "sha256": "5864f03355ea131cb793949c8a5ec7915a0c82c65b3f2a794f3e4c98ae2656dc",
+      "fingerprint": [
+        281474977650331,
+        411826514,
+        33206,
+        595,
+        1794911768412904300,
+        1794911768412904300
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_visualization_freeze_20261117_v1\\readonly_diagnostic_freeze_audit_v1.py",
+      "bytes": 18170,
+      "sha256": "a8bdac3b3b30da101e1aa9ac80163b07ff850a715d532a3f680fcad3f3b612c1",
+      "fingerprint": [
+        281474977650330,
+        411826514,
+        33206,
+        18170,
+        1794911754211190500,
+        1794911739166070600
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_score_freeze_20261117_v1\\visualize_fixed_coarse_dense_cases_v1.py",
+      "bytes": 14921,
+      "sha256": "5b7ef01460c15f7b545747b76e4101b7b19f48b9db348d47b80e9b72b24efb17",
+      "fingerprint": [
+        281474977650294,
+        411826514,
+        33206,
+        14921,
+        1794911172999223200,
+        1794911156091354300
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+      "bytes": 6784,
+      "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766",
+      "fingerprint": [
+        562949953990599,
+        411826514,
+        33206,
+        6784,
+        1793773496660849700,
+        1793773496652714200
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_coarse_dense_visualization_20261117_v1\\fixed_case_geometry_metrics_v1.json",
+      "bytes": 103487,
+      "sha256": "dc80202227180d459076d05217c44ea47ff4f1ee34305c159043622acadbf2c6",
+      "fingerprint": [
+        281474977650319,
+        411826514,
+        33206,
+        103487,
+        1794911215557683800,
+        1794911215552685400
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_coarse_dense_visualization_20261117_v1\\frozen_case_scope_v1.json",
+      "bytes": 1796,
+      "sha256": "e9d8bb5d1c91a367832b9ea3f923f7357ca9dfa5ef091a95092fc44272dc39e3",
+      "fingerprint": [
+        562949954360953,
+        411826514,
+        33206,
+        1796,
+        1794911187944860500,
+        1794911187943867500
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_coarse_dense_visualization_20261117_v1\\completion_v1.json",
+      "bytes": 678,
+      "sha256": "5e249fabf54b93574814dc6d32c2d73b0e0eb2c4fe331df2c27dbbdb88bcbe65",
+      "fingerprint": [
+        281474977650323,
+        411826514,
+        33206,
+        678,
+        1794911216445401800,
+        1794911216444392200
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_coarse_dense_visualization_20261117_v1\\artifact_manifest_v1.json",
+      "bytes": 7455,
+      "sha256": "12af0db506c58603f89d96b2123a93d97d14f61fe2788c0a2a446a6f0f0b0659",
+      "fingerprint": [
+        281474977650324,
+        411826514,
+        33206,
+        7455,
+        1794911216579953900,
+        1794911216576953900
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_coarse_dense_visualization_20261117_v1\\final_delivery_manifest_v1.json",
+      "bytes": 8300,
+      "sha256": "f26a58c2f3cec416351b6364d9b74b30433c2d74fc4b4e5b3e42f09c303b4c55",
+      "fingerprint": [
+        281474977650328,
+        411826514,
+        33206,
+        8300,
+        1794911413367458200,
+        1794911413367458200
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_score_implementation_20261117_v1\\SPCG_local_scoring_execution_request_v1.json",
+      "bytes": 12151,
+      "sha256": "7b6b3e5f6ade721540397e2c7977a85e2c73298f7e5cedb489b79f257eae27f8",
+      "fingerprint": [
+        281474977650255,
+        411826514,
+        33206,
+        12151,
+        1794905696172991500,
+        1794905696172991500
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_score_implementation_20261117_v1\\SPCG_score_case_index_v1.json",
+      "bytes": 436314,
+      "sha256": "4bc3d0583d344646b838aaeb2e15d1d3e09d57aa02becc700334b250813c751e",
+      "fingerprint": [
+        281474977650205,
+        411826514,
+        33206,
+        436314,
+        1794905434294590400,
+        1794905434294590400
+      ]
+    },
+    {
+      "path": "E:\\ResearchBackups\\AdaPoinTr\\BCSP_FULLMAMBA_SPCG\\2026-11-17_native_development_eval\\development_predictions_v1.tar.gz",
+      "bytes": 58926842,
+      "sha256": "a2f3384a95906cad6523cd0eb0c0c9954a4bd4252017934b825da1f0d49f07c7",
+      "fingerprint": [
+        562949954360844,
+        411826514,
+        33206,
+        58926842,
+        1794904630179799900,
+        1794904591656463400
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\points\\train__008__random_2_8192.npz",
+      "bytes": 156795,
+      "sha256": "4f513a13121d6343b78a0acb5b3c394855e96c2144e39279dc9a44cae0dc9536",
+      "fingerprint": [
+        281474977578586,
+        411826514,
+        33206,
+        156795,
+        1792837713363626100,
+        1792837713354635500
+      ]
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\development_eval_v1\\reference_bank_v2\\train__008__random_2.npz",
+      "bytes": 4471390,
+      "sha256": "d8cfc9e4ca476b8cd6332ea696f5e5a2773ff27a257b507e4296899897cc3c56",
+      "fingerprint": [
+        281474977581208,
+        411826514,
+        33206,
+        4471390,
+        1793010325428852300,
+        1793010324567512200
+      ]
+    }
+  ],
+  "source_content_stable": true,
+  "prediction_member_binding": {
+    "fold": "D",
+    "arm": "G0",
+    "case_id": "train__008__random_2",
+    "archive_key": "SPCG",
+    "member": "predictions/G0_D__train__008__random_2.npz",
+    "bytes": 92964,
+    "sha256": "dff63281f8667dc6978005d8111a44d67da0572954600b6a6db0d546d4530862",
+    "coarse_saved": true
+  },
+  "operations": {
+    "selected_failed_pointsets_inspected": 1,
+    "full_audit_reruns": 0,
+    "visualization_reruns": 0,
+    "source_repairs": 0,
+    "model_forwards": 0,
+    "training_updates": 0,
+    "parameter_scans": 0
+  },
+  "limitations": [
+    "Finding applies to this exact failedG0/coarse pointset; remaining formal audit checks have not passed.",
+    "Does not reclassify the original failed audit as PASS.",
+    "Only a future separately authorized audit correction may align to the frozen numerical contract; no tolerance widening or original-score replacement is performed here."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "status": "LOCAL_SPCG_SCORING_P3_PASS",
+  "date_Asia_Shanghai": "2026-11-17",
+  "scorer": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_score_implementation_20261117_v1\\bcsp_spcg_three_arm_score_v1.py",
+    "bytes": 32239,
+    "sha256": "17762698e8191465f274c34c56bb43525739707f5415097300bc710e73497e9b"
+  },
+  "test": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_score_implementation_20261117_v1\\test_SPCG_three_arm_score_cpu_v1.py",
+    "bytes": 20231,
+    "sha256": "6f5c8e36adb8e2fbcc195b55794dc94109124dbb4eb4c45a654c17d76a16767d"
+  },
+  "CPU_result": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_score_implementation_20261117_v1\\CPU_contract_v1\\result_v1.json",
+    "bytes": 4190,
+    "sha256": "01fc32152ea2c216863eb9f0bc38243b9a083c5ea8dde2e4397aae818b8ec006"
+  },
+  "CPU_artifact_inventory": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_score_implementation_20261117_v1\\CPU_contract_artifact_inventory_v1.json",
+    "bytes": 10599,
+    "sha256": "f906048ff4029378c681e962d5e4abf4e5e9c5a119503d4c0f03504c1362971d"
+  },
+  "checks": {
+    "single_artificial_batch_61_checks": true,
+    "source_and_test_hashes_match_test": true,
+    "static_sources_unchanged": true,
+    "frozen_metric_unchanged": true,
+    "eleven_metric_risk_aggregation_functions_AST_unchanged": true,
+    "local_archive_and_sidecars_match": true,
+    "all210_reference_and210_point_hashes_match": true,
+    "baseline_control_file_match": true,
+    "source_pairing_42_sources_five_defects": true,
+    "seed_and_CI_regression_pass": true,
+    "one_matrix_per_fold_all_metrics_all_pairs": true,
+    "no_real_scoring_or_bootstrap": true,
+    "CPU_only_no_torch_import": true,
+    "no_output_or_authorization_materialized": true,
+    "device_qualifications_preserved": true
+  },
+  "unchanged_AST_functions": [
+    "select_metrics",
+    "position_shape",
+    "risk_labels",
+    "stage_geometry",
+    "score_case",
+    "aggregate_source",
+    "describe_pairs",
+    "case_differences",
+    "defect_summary",
+    "csv_rows",
+    "risk_transitions"
+  ],
+  "bootstrap_contract": {
+    "required_by_original_protocol": true,
+    "replicates": 2000,
+    "RNG": "Generator(PCG64)",
+    "numpy": "1.26.4",
+    "seeds": {
+      "C": 2026111601,
+      "D": 2026111602
+    },
+    "unit": "21 source means/fold; five defects and paired arms move together",
+    "source_order": "canonical_source_id lexicographic",
+    "draw_shape": [
+      2000,
+      21
+    ],
+    "reuse": "Same index matrix per fold for all metrics and all3 comparisons.",
+    "CI": "2.5/97.5 percentile; quantile(method=linear)",
+    "save_indices_and_SHA256": true
+  },
+  "limits_and_open_qualifications": [
+    "No real score or bootstrap has run; CPU phantom tests do not establish scientific improvement.",
+    "10 analytic phantom metric rows;1050 artificial orchestration rows reuse templates, not1050 independent metric calculations.",
+    "Training seed0 only; bootstrap covers paired source sampling, not training randomness or development-set selection.",
+    "G0_D training on previous GPU; G1_D/G2_D same new GPU. Common inference device does not remove training-device confounding.",
+    "Native archive contains coarse256/dense8192, not Memory or internal stage arrays. Memory NOT_COLLECTED; no automatic extra forward.",
+    "Some test display labels are inherited (e.g.636/nine keys/raw queries); actual assertions require635 members/two keys/no Qraw. Labels do not change checks.",
+    "Formal post-score freeze audit remains separately authorized after the true CPU run."
+  ],
+  "real_score_rows": 0,
+  "real_bootstrap_replicates": 0,
+  "server_operations": 0,
+  "GPU_calls": 0
+}

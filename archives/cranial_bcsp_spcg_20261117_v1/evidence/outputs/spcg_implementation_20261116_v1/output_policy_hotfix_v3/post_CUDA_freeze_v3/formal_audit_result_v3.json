@@ -1,0 +1,128 @@
+{
+  "status": "FORMAL_POST_CUDA_FREEZE_PASS",
+  "request_sha256": "93ee5eb84f4e2b3b0de81e0f5b70c899c0cf2b2661f2946ffdead936c07568f6",
+  "checks": {
+    "exact_installed_set": true,
+    "installed_hashes": true,
+    "request_hash": true,
+    "one_way_authorization": true,
+    "single_claim": true,
+    "exit_zero": true,
+    "worker_and_tmux_absent": true,
+    "exact_output_set": true,
+    "exact_empty_directories": true,
+    "completion_binding": true,
+    "manifest_unique": true,
+    "manifest_content_hashes": true,
+    "manifest_exact_scope": true,
+    "full_forward_events": true,
+    "full_loss_events": true,
+    "full_backward_events": true,
+    "synthetic_forward_events": true,
+    "real_D_forward_events": true,
+    "restoration_three_arms": true,
+    "real_exact_five": true,
+    "six_phase_contract": true,
+    "G0_gradient_contract": true,
+    "G1_gradient_contract": true,
+    "G2_gradient_contract": true,
+    "native396": true,
+    "resource_checks": true,
+    "resource_complete": true,
+    "native_origins": true,
+    "no_training_admission_claim": true
+  },
+  "counts": {
+    "full_forward": 11,
+    "full_loss": 3,
+    "full_backward": 3,
+    "optimizer_steps": 0,
+    "synthetic_forward": 6,
+    "real_D_forward": 5
+  },
+  "gradient_summary": {
+    "G0": {
+      "active_prefix_norm_sums": {
+        "base_model.coarse_pred.": 0.7344182665954384,
+        "base_model.encoder.": 6.985636356252505,
+        "base_model.decoder.": 8.118610372237574,
+        "decode_head.": 2.2797897218340735
+      },
+      "Q_gradient": {
+        "origin": "TOTAL_LOSS_NOT_ISOLATED_COARSE",
+        "L2": 0.11191535792044992,
+        "max_abs": 0.017614154145121574
+      }
+    },
+    "G1": {
+      "active_prefix_norm_sums": {
+        "base_model.spcg_head.": 9.367350429426857,
+        "base_model.encoder.": 32.09866150192856,
+        "base_model.decoder.": 24.088034407983233,
+        "decode_head.": 3.152289141644986
+      },
+      "Q_gradient": {
+        "origin": "TOTAL_LOSS_NOT_ISOLATED_COARSE",
+        "L2": 0.1940682404157299,
+        "max_abs": 0.05755249410867691
+      }
+    },
+    "G2": {
+      "active_prefix_norm_sums": {
+        "base_model.spcg_head.": 9.32875479348455,
+        "base_model.encoder.": 27.108668137194393,
+        "base_model.decoder.": 19.327200555642392,
+        "decode_head.": 3.228707844096928
+      },
+      "Q_gradient": {
+        "origin": "TOTAL_LOSS_NOT_ISOLATED_COARSE",
+        "L2": 0.16151169298980347,
+        "max_abs": 0.0502629391849041
+      }
+    }
+  },
+  "restoration": [
+    {
+      "kind": "RESTORED",
+      "arm": "G0",
+      "state": true,
+      "RNG": true,
+      "modes": true
+    },
+    {
+      "kind": "RESTORED",
+      "arm": "G1",
+      "state": true,
+      "RNG": true,
+      "modes": true
+    },
+    {
+      "kind": "RESTORED",
+      "arm": "G2",
+      "state": true,
+      "RNG": true,
+      "modes": true
+    }
+  ],
+  "native_SSM_calls": 396,
+  "resources": {
+    "records": 24,
+    "peak_allocated_bytes": 13749449216,
+    "peak_reserved_bytes": 15007219712,
+    "max_RSS_bytes": 2100903936,
+    "max_SMI_MiB": 14800,
+    "max_wall_seconds": 25.545256217941642
+  },
+  "hashed_bytes": 10609260,
+  "observations": "5 NPZ files hashed as opaque bytes, no arrays decoded",
+  "limitations": [
+    "Restoration events attest state fingerprint equality and CPU/CUDA/Python/NumPy RNG; audit does not reload model or independently regenerate RNG.",
+    "Per-arm initial fingerprints recorded, but final per-arm RNG/state fingerprints absent; do not claim a complete independently recalculated before/after fingerprint pair.",
+    "Full-run resource evidence is for zero-update admission, not3900-step training proof.",
+    "Spatial probe scientific efficacy and clinical accuracy untested."
+  ],
+  "server_writes": 0,
+  "model_calls": 0,
+  "SMI_queries": 0,
+  "training_request_created": false
+}

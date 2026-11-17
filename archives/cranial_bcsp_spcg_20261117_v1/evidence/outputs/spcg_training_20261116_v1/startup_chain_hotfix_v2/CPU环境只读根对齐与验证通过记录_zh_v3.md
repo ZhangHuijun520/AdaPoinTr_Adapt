@@ -1,0 +1,15 @@
+# 人工CPU环境只读根对齐与单次验证
+
+2026-11-16。本轮仅修改人工测试fixture，在其真实make_policy中加入当前CPU进程sys.prefix的只读根。环境文件写入仍被拒绝；项目源码仍由精确大小／SHA／FD守卫保护，未授权邻近源码及NPZ写入仍拒绝。不逐个放行PyTorch内部文件，不改变Linux生产入口或环境。
+
+在全新CPU_batch_v3执行唯一一次新版验证，12项全部通过：真实bridge→head→observe→frozen training runtime按顺序导入；真实观测函数的人工张量梯度／几何路径通过；源码写入、环境文件写入、邻近未授权源码读取及未授权NPZ写入均被拒绝；坏SHA绑定被拒绝。
+
+人工注入启动错误后，生产fail_with_traceback在guard仍开启时写出完整原异常，子进程按预期退出码1结束；没有KeyError、sys.excepthook二次错误或stderr。此处子进程退出1是预先设计的通过条件，不是本批回归失败。cleanup_record确认格式化失败后才进入关闭guard的finally。
+
+生产v2入口字节与本轮scope冻结SHA一致，bridge和继承模块未修改。所有CPU结果、子进程stdout/stderr及人工失败日志均保留。此前失败批次不删除、不覆盖或复用。
+
+本轮无服务器操作、SMI查询、真实点集／checkpoint读取、模型forward或GPU准入。没有进行3900步实际训练，新P3和新request尚未在本轮汇总创建。
+
+证据：CPU_batch_v3/result.json、completion_receipt_v3.json、owned/chain_checks.json、owned/training_error_traceback.json、owned/cleanup_record.json、child_stdout.bin／child_stderr.bin和CPU_environment_scope_v3.json。
+
+下一步可根据当前最终v2入口及CPU通过证据汇总新P3，增加head精确绑定并创建全新G0_C待授权request；不复用已消耗v1，不重复GPU准入。

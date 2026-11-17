@@ -1,0 +1,1334 @@
+{
+  "status": "SPCG_ARTIFICIAL_CPU_PASS",
+  "count": 32,
+  "checks": [
+    "01 raw Sobol256 asset identity and D bbox mapping",
+    "02 dimensions and exact head parameter count",
+    "03 global analytic mean and dispersion identities",
+    "04 independent local eight-neighbor reference",
+    "05 distance mean differs from nearest distance",
+    "06 D permutation leaves probes unchanged",
+    "07 no-tie joint Memory permutation invariance",
+    "08 stable ties use original Memory indices",
+    "09 batch isolation",
+    "10 nonfinite and flat bbox rejected",
+    "11 FP16 and shape drift rejected",
+    "12 H F z gradients finite and active",
+    "13 artificial differentiable S geometry gradients",
+    "14 nonlearnable S accepted",
+    "15 independent H initialization preserves CPU RNG",
+    "16 byte-authoritative H U and G1 G2 initialization equality",
+    "17 strict one-expression AST coarse replacement",
+    "18 actual mother forward eval consumes new Q",
+    "19 actual mother forward train consumes same Q path",
+    "20 G0 unchanged and old head removed in G1 G2",
+    "21 original outer FC 8192 and original loss route",
+    "22 total loss Q gradients and diversity logs",
+    "23 no GT in prediction API and actual NPZ partial-only accessor",
+    "24 no-decay optimizer grouping preserves SSM markers",
+    "25 fixed six-arm initialization and output budget calculation",
+    "26 complete authorization runtime materialization contract",
+    "27 count budget rejects extra forward backward and steps",
+    "28 POSIX launcher and exact mapping no overwrite",
+    "29 full artificial admission loop restores state RNG modes",
+    "30 five real-D diagnostic calls use no GT loss backward",
+    "31 failure stops and restores without retry",
+    "32 numeric settings and source bindings unchanged"
+  ],
+  "seconds": 3.2810000000172295,
+  "torch": "2.5.1",
+  "numpy": "1.26.4",
+  "source_sha256": {
+    "bcsp_spcg_head_v1.py": "687c123ae7d0769c9ee89e2067367ff7fc2762f66bf47a814bf077ac68c59d3b",
+    "bcsp_spcg_factory_v1.py": "b7b85d63c91c23ef0ba7e901706ae85b1cf8eefaa391895978022abfbf3ec8a5",
+    "bcsp_spcg_runtime_v1.py": "9470ce3cbfed9d559bfe84cc37e6b9463437a81342fc27f4b47516d9eeeac90c",
+    "bcsp_spcg_cuda_entry_v1.py": "6ebec6b563d33904d258716865f2dd19865583d60fda7bca26c97459ecfbf99c",
+    "test_spcg_cpu_v1.py": "1a349057dcb4cc7eb9a069c3e2bec42bf0a6e83cc6e2f55b6fc3f70583aa291b"
+  },
+  "scope_sha256": "bf4866d105d97cae8c6b5e898c9a5674fd6c4a7ba5f38d8dc387613a497a7dac",
+  "probe_sha256": "ba87509aedc575f9b2db006025417261f8d478461e79518c4e8c0d83c6efcbbf",
+  "head_sha256": "e0177f8ae5d1da31c4eb2f0bfd2d0ec8844255b00dcf31307fbbd33f43346b39",
+  "admission_fixture": {
+    "counts": {
+      "full_forward": 11,
+      "full_loss": 3,
+      "full_backward": 3,
+      "optimizer_steps": 0,
+      "synthetic_forward": 6,
+      "real_D_forward": 5
+    },
+    "models": {
+      "G0": {
+        "construction": {
+          "arm": "G0",
+          "source_sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4",
+          "old_head_removed": false,
+          "artificial_fixture": true
+        },
+        "estimate": {
+          "model_parameter_bytes": 11866176,
+          "buffer_bytes": 3080,
+          "model_and_Adam_estimate_bytes": 35601608,
+          "log_and_control_allowance_bytes": 100663296,
+          "serialization_and_tmp_allowance_bytes": 67108864,
+          "total_bytes": 203373768,
+          "cap_bytes": 1073741824,
+          "actual_runtime_enforcement_required": true
+        },
+        "phases": [
+          {
+            "training": false,
+            "batch": 1,
+            "geometry": {
+              "centroid": [
+                [
+                  0.0010442971251904964,
+                  -0.0023719011805951595,
+                  0.0005987792974337935
+                ]
+              ],
+              "rms_radius": [
+                0.048960763961076736
+              ],
+              "first_batch_pair_min": 0.002774840919300914,
+              "first_batch_pair_median": 0.062465935945510864,
+              "first_batch_exact_duplicates": 0
+            },
+            "Q_gradient": null,
+            "gradients": {},
+            "BN_changed": [],
+            "parameters_unchanged": true
+          },
+          {
+            "training": true,
+            "batch": 8,
+            "geometry": {
+              "centroid": [
+                [
+                  -0.00018124748021364212,
+                  -0.01612469181418419,
+                  -0.0051850974559783936
+                ],
+                [
+                  -9.046774357557297e-05,
+                  -0.016054153442382812,
+                  -0.0047874837182462215
+                ],
+                [
+                  4.4753775000572205e-05,
+                  -0.016068728640675545,
+                  -0.005178417079150677
+                ],
+                [
+                  -6.815046072006226e-05,
+                  -0.016039788722991943,
+                  -0.005224240478128195
+                ],
+                [
+                  -0.0001929132267832756,
+                  -0.01602034643292427,
+                  -0.005192458629608154
+                ],
+                [
+                  0.0001462819054722786,
+                  -0.01603802666068077,
+                  -0.005090891849249601
+                ],
+                [
+                  -0.0002460787072777748,
+                  -0.016210682690143585,
+                  -0.0051454901695251465
+                ],
+                [
+                  -0.00018683262169361115,
+                  -0.01613583229482174,
+                  -0.005166529677808285
+                ]
+              ],
+              "rms_radius": [
+                0.35258638858795166,
+                0.3527141213417053,
+                0.35263609886169434,
+                0.35311850905418396,
+                0.3526885211467743,
+                0.3526768684387207,
+                0.3531574308872223,
+                0.3524298369884491
+              ],
+              "first_batch_pair_min": 0.016213318333029747,
+              "first_batch_pair_median": 0.45006072521209717,
+              "first_batch_exact_duplicates": 0
+            },
+            "Q_gradient": {
+              "origin": "TOTAL_LOSS_NOT_ISOLATED_COARSE",
+              "L2": 0.012048325343426125,
+              "max_abs": 0.00033523168531246483
+            },
+            "gradients": {
+              "base_model.encoder.0.weight": 0.014205540368426493,
+              "base_model.encoder.0.bias": 0.001775966240005545,
+              "base_model.bn.weight": 0.004313701408459282,
+              "base_model.bn.bias": 0.005622874256007929,
+              "base_model.increase_dim.weight": 0.13855138392451352,
+              "base_model.increase_dim.bias": 0.007118851035151854,
+              "base_model.coarse_pred.0.weight": 0.3860216205098051,
+              "base_model.coarse_pred.0.bias": 0.01194789820856571,
+              "base_model.coarse_pred.2.weight": 0.37293360050572594,
+              "base_model.coarse_pred.2.bias": 0.03407457983987433,
+              "base_model.mlp_query.0.weight": 0.07357671217053528,
+              "base_model.mlp_query.0.bias": 0.002277096104620507,
+              "base_model.decoder.proj.weight": 0.040429954732393865,
+              "base_model.decoder.proj.bias": 0.006057091039836183,
+              "base_model.decoder.pos.weight": 0.0028745805891893348,
+              "base_model.decoder.pos.bias": 0.006057091039836183,
+              "increase_dim.weight": 0.009701695662798155,
+              "increase_dim.bias": 0.0011655981105137487,
+              "reduce_map.weight": 0.08984963141770207,
+              "reduce_map.bias": 0.011082210991494711,
+              "decode_head.layer.fc1.weight": 0.14248164255050075,
+              "decode_head.layer.fc1.bias": 0.020191461926107154,
+              "decode_head.layer.fc2.weight": 0.02370248303406976,
+              "decode_head.layer.fc2.bias": 0.0497875055839489
+            },
+            "BN_changed": [
+              "base_model.bn.running_mean",
+              "base_model.bn.running_var",
+              "base_model.bn.num_batches_tracked"
+            ],
+            "parameters_unchanged": true
+          }
+        ],
+        "initial_state_sha256": "af4d9200bf17f93a323ef7527626aad049d2a4e4929258efffd0588cc6a938c0"
+      },
+      "G1": {
+        "construction": {
+          "arm": "G1",
+          "source_sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4",
+          "old_head_removed": true,
+          "artificial_fixture": true,
+          "patch": {
+            "replaced_assignments": 1,
+            "before_ast_sha256": "63c35f5e992a589fee5ef1dcb2d7c2aef01cbcdbf7ca1ca9b804b1dc49aaf423",
+            "after_ast_sha256": "4a9efdd09f05c3248f81ff2efcd53d6a8b5816201725d0246875cccf0ec6ab56"
+          },
+          "head_parameters": 1845763,
+          "additional_parameters": 8963
+        },
+        "estimate": {
+          "model_parameter_bytes": 11902028,
+          "buffer_bytes": 6152,
+          "model_and_Adam_estimate_bytes": 35712236,
+          "log_and_control_allowance_bytes": 100663296,
+          "serialization_and_tmp_allowance_bytes": 67108864,
+          "total_bytes": 203484396,
+          "cap_bytes": 1073741824,
+          "actual_runtime_enforcement_required": true
+        },
+        "phases": [
+          {
+            "training": false,
+            "batch": 1,
+            "geometry": {
+              "centroid": [
+                [
+                  0.02501717582345009,
+                  0.02417832612991333,
+                  -0.024957526475191116
+                ]
+              ],
+              "rms_radius": [
+                0.0015360143734142184
+              ],
+              "first_batch_pair_min": 7.128350989660248e-05,
+              "first_batch_pair_median": 0.001786818029358983,
+              "first_batch_exact_duplicates": 0
+            },
+            "Q_gradient": null,
+            "gradients": {},
+            "BN_changed": [],
+            "parameters_unchanged": true
+          },
+          {
+            "training": true,
+            "batch": 8,
+            "geometry": {
+              "centroid": [
+                [
+                  -0.03671598061919212,
+                  0.00131538778077811,
+                  -0.014627937227487564
+                ],
+                [
+                  -0.036759939044713974,
+                  0.006002834998071194,
+                  -0.015026669017970562
+                ],
+                [
+                  -0.036829762160778046,
+                  0.0026516630314290524,
+                  -0.01575477607548237
+                ],
+                [
+                  -0.03677772730588913,
+                  0.002757253823801875,
+                  -0.01331908069550991
+                ],
+                [
+                  -0.03807618468999863,
+                  0.002702945377677679,
+                  -0.015006588771939278
+                ],
+                [
+                  -0.038789376616477966,
+                  0.0045157019048929214,
+                  -0.012875097803771496
+                ],
+                [
+                  -0.035652950406074524,
+                  0.003639677306637168,
+                  -0.01577506773173809
+                ],
+                [
+                  -0.038263510912656784,
+                  0.003304598154500127,
+                  -0.014194587245583534
+                ]
+              ],
+              "rms_radius": [
+                0.0019971660804003477,
+                0.0019740858115255833,
+                0.0019967216067016125,
+                0.002007960807532072,
+                0.0019883345812559128,
+                0.00200667604804039,
+                0.001963716931641102,
+                0.002013099379837513
+              ],
+              "first_batch_pair_min": 8.739519398659468e-05,
+              "first_batch_pair_median": 0.0024237018078565598,
+              "first_batch_exact_duplicates": 0
+            },
+            "Q_gradient": {
+              "origin": "TOTAL_LOSS_NOT_ISOLATED_COARSE",
+              "L2": 0.012383075052326564,
+              "max_abs": 0.00039907742757350206
+            },
+            "gradients": {
+              "base_model.encoder.0.weight": 0.06308308144126105,
+              "base_model.encoder.0.bias": 0.007665250418748918,
+              "base_model.bn.weight": 0.015947781454292615,
+              "base_model.bn.bias": 0.02281442684347491,
+              "base_model.increase_dim.weight": 0.5386298031282021,
+              "base_model.increase_dim.bias": 0.027630039337036862,
+              "base_model.mlp_query.0.weight": 0.07272851103706808,
+              "base_model.mlp_query.0.bias": 0.0022510462524643012,
+              "base_model.decoder.proj.weight": 0.04050328514272589,
+              "base_model.decoder.proj.bias": 0.006068406956397628,
+              "base_model.decoder.pos.weight": 0.00024383362408219453,
+              "base_model.decoder.pos.bias": 0.006068406956397628,
+              "base_model.spcg_head.net.0.weight": 1.833053397049312,
+              "base_model.spcg_head.net.0.bias": 0.056714498356574806,
+              "base_model.spcg_head.net.2.weight": 1.4335138860231027,
+              "base_model.spcg_head.net.2.bias": 0.16189634287755078,
+              "base_model.spcg_head.net.4.weight": 0.9146632078809722,
+              "base_model.spcg_head.net.4.bias": 0.5590981120637926,
+              "increase_dim.weight": 0.008876663902697042,
+              "increase_dim.bias": 0.001191680961946605,
+              "reduce_map.weight": 0.08324290404658381,
+              "reduce_map.bias": 0.011053106497895026,
+              "decode_head.layer.fc1.weight": 0.12347478557099001,
+              "decode_head.layer.fc1.bias": 0.02015605546234292,
+              "decode_head.layer.fc2.weight": 0.02093228351699396,
+              "decode_head.layer.fc2.bias": 0.051533264002963444
+            },
+            "BN_changed": [
+              "base_model.bn.running_mean",
+              "base_model.bn.running_var",
+              "base_model.bn.num_batches_tracked"
+            ],
+            "parameters_unchanged": true
+          }
+        ],
+        "initial_state_sha256": "f0f84cc64fcdc2f7040c297f0b0016cd7cd25b03cd0cc2a3a0218596e02427b5"
+      },
+      "G2": {
+        "construction": {
+          "arm": "G2",
+          "source_sha256": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4",
+          "old_head_removed": true,
+          "artificial_fixture": true,
+          "patch": {
+            "replaced_assignments": 1,
+            "before_ast_sha256": "63c35f5e992a589fee5ef1dcb2d7c2aef01cbcdbf7ca1ca9b804b1dc49aaf423",
+            "after_ast_sha256": "4a9efdd09f05c3248f81ff2efcd53d6a8b5816201725d0246875cccf0ec6ab56"
+          },
+          "head_parameters": 1845763,
+          "additional_parameters": 8963
+        },
+        "estimate": {
+          "model_parameter_bytes": 11902028,
+          "buffer_bytes": 6152,
+          "model_and_Adam_estimate_bytes": 35712236,
+          "log_and_control_allowance_bytes": 100663296,
+          "serialization_and_tmp_allowance_bytes": 67108864,
+          "total_bytes": 203484396,
+          "cap_bytes": 1073741824,
+          "actual_runtime_enforcement_required": true
+        },
+        "phases": [
+          {
+            "training": false,
+            "batch": 1,
+            "geometry": {
+              "centroid": [
+                [
+                  0.024851568043231964,
+                  0.024196503683924675,
+                  -0.024097559973597527
+                ]
+              ],
+              "rms_radius": [
+                0.01696602813899517
+              ],
+              "first_batch_pair_min": 0.00012981407053302974,
+              "first_batch_pair_median": 0.021502269431948662,
+              "first_batch_exact_duplicates": 0
+            },
+            "Q_gradient": null,
+            "gradients": {},
+            "BN_changed": [],
+            "parameters_unchanged": true
+          },
+          {
+            "training": true,
+            "batch": 8,
+            "geometry": {
+              "centroid": [
+                [
+                  -0.02291444130241871,
+                  0.011928722262382507,
+                  -0.007898703217506409
+                ],
+                [
+                  -0.022757338359951973,
+                  0.012631833553314209,
+                  -0.008048986084759235
+                ],
+                [
+                  -0.02178358845412731,
+                  0.012419745326042175,
+                  -0.009270718321204185
+                ],
+                [
+                  -0.02227703295648098,
+                  0.01239706203341484,
+                  -0.007971532642841339
+                ],
+                [
+                  -0.022906165570020676,
+                  0.011849124915897846,
+                  -0.00858309306204319
+                ],
+                [
+                  -0.022599058225750923,
+                  0.013599242083728313,
+                  -0.008297211490571499
+                ],
+                [
+                  -0.0218556709587574,
+                  0.012252073734998703,
+                  -0.007958936505019665
+                ],
+                [
+                  -0.022680092602968216,
+                  0.012246107682585716,
+                  -0.008139981888234615
+                ]
+              ],
+              "rms_radius": [
+                0.03877037391066551,
+                0.03851569443941116,
+                0.03861765190958977,
+                0.03863095864653587,
+                0.038753021508455276,
+                0.0385357029736042,
+                0.03877827525138855,
+                0.03827482461929321
+              ],
+              "first_batch_pair_min": 0.00025208169245161116,
+              "first_batch_pair_median": 0.04980175942182541,
+              "first_batch_exact_duplicates": 0
+            },
+            "Q_gradient": {
+              "origin": "TOTAL_LOSS_NOT_ISOLATED_COARSE",
+              "L2": 0.012136742288076046,
+              "max_abs": 0.0003302692493889481
+            },
+            "gradients": {
+              "base_model.encoder.0.weight": 0.062436337818262466,
+              "base_model.encoder.0.bias": 0.007267327629492767,
+              "base_model.bn.weight": 0.015578932491830885,
+              "base_model.bn.bias": 0.021750350920766583,
+              "base_model.increase_dim.weight": 0.516945041331919,
+              "base_model.increase_dim.bias": 0.026514316083145445,
+              "base_model.mlp_query.0.weight": 0.07145831379753852,
+              "base_model.mlp_query.0.bias": 0.0022117321258731918,
+              "base_model.decoder.proj.weight": 0.03971960851278702,
+              "base_model.decoder.proj.bias": 0.005950885922309549,
+              "base_model.decoder.pos.weight": 0.0002647192612151447,
+              "base_model.decoder.pos.bias": 0.005950885922309549,
+              "base_model.spcg_head.net.0.weight": 1.7716261260726873,
+              "base_model.spcg_head.net.0.bias": 0.054500116408242226,
+              "base_model.spcg_head.net.2.weight": 1.448330588993106,
+              "base_model.spcg_head.net.2.bias": 0.15867301635292036,
+              "base_model.spcg_head.net.4.weight": 0.922118381607013,
+              "base_model.spcg_head.net.4.bias": 0.5472638386000478,
+              "increase_dim.weight": 0.008626054420187275,
+              "increase_dim.bias": 0.0011587346252387764,
+              "reduce_map.weight": 0.0815730543554669,
+              "reduce_map.bias": 0.010834054673957491,
+              "decode_head.layer.fc1.weight": 0.12088873078064488,
+              "decode_head.layer.fc1.bias": 0.019712336398958485,
+              "decode_head.layer.fc2.weight": 0.020721204963575067,
+              "decode_head.layer.fc2.bias": 0.05043087576042154
+            },
+            "BN_changed": [
+              "base_model.bn.running_mean",
+              "base_model.bn.running_var",
+              "base_model.bn.num_batches_tracked"
+            ],
+            "parameters_unchanged": true
+          }
+        ],
+        "initial_state_sha256": "f0f84cc64fcdc2f7040c297f0b0016cd7cd25b03cd0cc2a3a0218596e02427b5"
+      }
+    },
+    "common_initialization_sha256": "1200f16f2990c2865ed553b5693e5b3f6b3fb0e2309fff10d9cb3df89a00763e"
+  },
+  "entry_events": [
+    {
+      "operation": "synthetic_forward",
+      "counts": {
+        "full_forward": 0,
+        "full_loss": 0,
+        "full_backward": 0,
+        "optimizer_steps": 0,
+        "synthetic_forward": 1,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "operation": "full_forward",
+      "counts": {
+        "full_forward": 1,
+        "full_loss": 0,
+        "full_backward": 0,
+        "optimizer_steps": 0,
+        "synthetic_forward": 1,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "kind": "SYNTHETIC_PHASE",
+      "arm": "G0",
+      "training": false,
+      "batch": 1,
+      "geometry": {
+        "centroid": [
+          [
+            0.0010442971251904964,
+            -0.0023719011805951595,
+            0.0005987792974337935
+          ]
+        ],
+        "rms_radius": [
+          0.048960763961076736
+        ],
+        "first_batch_pair_min": 0.002774840919300914,
+        "first_batch_pair_median": 0.062465935945510864,
+        "first_batch_exact_duplicates": 0
+      },
+      "Q_gradient": null,
+      "gradients": {},
+      "BN_changed": [],
+      "parameters_unchanged": true
+    },
+    {
+      "operation": "synthetic_forward",
+      "counts": {
+        "full_forward": 1,
+        "full_loss": 0,
+        "full_backward": 0,
+        "optimizer_steps": 0,
+        "synthetic_forward": 2,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "operation": "full_forward",
+      "counts": {
+        "full_forward": 2,
+        "full_loss": 0,
+        "full_backward": 0,
+        "optimizer_steps": 0,
+        "synthetic_forward": 2,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "operation": "full_loss",
+      "counts": {
+        "full_forward": 2,
+        "full_loss": 1,
+        "full_backward": 0,
+        "optimizer_steps": 0,
+        "synthetic_forward": 2,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "operation": "full_backward",
+      "counts": {
+        "full_forward": 2,
+        "full_loss": 1,
+        "full_backward": 1,
+        "optimizer_steps": 0,
+        "synthetic_forward": 2,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "kind": "SYNTHETIC_PHASE",
+      "arm": "G0",
+      "training": true,
+      "batch": 8,
+      "geometry": {
+        "centroid": [
+          [
+            -0.00018124748021364212,
+            -0.01612469181418419,
+            -0.0051850974559783936
+          ],
+          [
+            -9.046774357557297e-05,
+            -0.016054153442382812,
+            -0.0047874837182462215
+          ],
+          [
+            4.4753775000572205e-05,
+            -0.016068728640675545,
+            -0.005178417079150677
+          ],
+          [
+            -6.815046072006226e-05,
+            -0.016039788722991943,
+            -0.005224240478128195
+          ],
+          [
+            -0.0001929132267832756,
+            -0.01602034643292427,
+            -0.005192458629608154
+          ],
+          [
+            0.0001462819054722786,
+            -0.01603802666068077,
+            -0.005090891849249601
+          ],
+          [
+            -0.0002460787072777748,
+            -0.016210682690143585,
+            -0.0051454901695251465
+          ],
+          [
+            -0.00018683262169361115,
+            -0.01613583229482174,
+            -0.005166529677808285
+          ]
+        ],
+        "rms_radius": [
+          0.35258638858795166,
+          0.3527141213417053,
+          0.35263609886169434,
+          0.35311850905418396,
+          0.3526885211467743,
+          0.3526768684387207,
+          0.3531574308872223,
+          0.3524298369884491
+        ],
+        "first_batch_pair_min": 0.016213318333029747,
+        "first_batch_pair_median": 0.45006072521209717,
+        "first_batch_exact_duplicates": 0
+      },
+      "Q_gradient": {
+        "origin": "TOTAL_LOSS_NOT_ISOLATED_COARSE",
+        "L2": 0.012048325343426125,
+        "max_abs": 0.00033523168531246483
+      },
+      "gradients": {
+        "base_model.encoder.0.weight": 0.014205540368426493,
+        "base_model.encoder.0.bias": 0.001775966240005545,
+        "base_model.bn.weight": 0.004313701408459282,
+        "base_model.bn.bias": 0.005622874256007929,
+        "base_model.increase_dim.weight": 0.13855138392451352,
+        "base_model.increase_dim.bias": 0.007118851035151854,
+        "base_model.coarse_pred.0.weight": 0.3860216205098051,
+        "base_model.coarse_pred.0.bias": 0.01194789820856571,
+        "base_model.coarse_pred.2.weight": 0.37293360050572594,
+        "base_model.coarse_pred.2.bias": 0.03407457983987433,
+        "base_model.mlp_query.0.weight": 0.07357671217053528,
+        "base_model.mlp_query.0.bias": 0.002277096104620507,
+        "base_model.decoder.proj.weight": 0.040429954732393865,
+        "base_model.decoder.proj.bias": 0.006057091039836183,
+        "base_model.decoder.pos.weight": 0.0028745805891893348,
+        "base_model.decoder.pos.bias": 0.006057091039836183,
+        "increase_dim.weight": 0.009701695662798155,
+        "increase_dim.bias": 0.0011655981105137487,
+        "reduce_map.weight": 0.08984963141770207,
+        "reduce_map.bias": 0.011082210991494711,
+        "decode_head.layer.fc1.weight": 0.14248164255050075,
+        "decode_head.layer.fc1.bias": 0.020191461926107154,
+        "decode_head.layer.fc2.weight": 0.02370248303406976,
+        "decode_head.layer.fc2.bias": 0.0497875055839489
+      },
+      "BN_changed": [
+        "base_model.bn.running_mean",
+        "base_model.bn.running_var",
+        "base_model.bn.num_batches_tracked"
+      ],
+      "parameters_unchanged": true
+    },
+    {
+      "kind": "RESTORED",
+      "arm": "G0",
+      "state": true,
+      "RNG": true,
+      "modes": true
+    },
+    {
+      "operation": "synthetic_forward",
+      "counts": {
+        "full_forward": 2,
+        "full_loss": 1,
+        "full_backward": 1,
+        "optimizer_steps": 0,
+        "synthetic_forward": 3,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "operation": "full_forward",
+      "counts": {
+        "full_forward": 3,
+        "full_loss": 1,
+        "full_backward": 1,
+        "optimizer_steps": 0,
+        "synthetic_forward": 3,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "kind": "SYNTHETIC_PHASE",
+      "arm": "G1",
+      "training": false,
+      "batch": 1,
+      "geometry": {
+        "centroid": [
+          [
+            0.02501717582345009,
+            0.02417832612991333,
+            -0.024957526475191116
+          ]
+        ],
+        "rms_radius": [
+          0.0015360143734142184
+        ],
+        "first_batch_pair_min": 7.128350989660248e-05,
+        "first_batch_pair_median": 0.001786818029358983,
+        "first_batch_exact_duplicates": 0
+      },
+      "Q_gradient": null,
+      "gradients": {},
+      "BN_changed": [],
+      "parameters_unchanged": true
+    },
+    {
+      "operation": "synthetic_forward",
+      "counts": {
+        "full_forward": 3,
+        "full_loss": 1,
+        "full_backward": 1,
+        "optimizer_steps": 0,
+        "synthetic_forward": 4,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "operation": "full_forward",
+      "counts": {
+        "full_forward": 4,
+        "full_loss": 1,
+        "full_backward": 1,
+        "optimizer_steps": 0,
+        "synthetic_forward": 4,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "operation": "full_loss",
+      "counts": {
+        "full_forward": 4,
+        "full_loss": 2,
+        "full_backward": 1,
+        "optimizer_steps": 0,
+        "synthetic_forward": 4,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "operation": "full_backward",
+      "counts": {
+        "full_forward": 4,
+        "full_loss": 2,
+        "full_backward": 2,
+        "optimizer_steps": 0,
+        "synthetic_forward": 4,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "kind": "SYNTHETIC_PHASE",
+      "arm": "G1",
+      "training": true,
+      "batch": 8,
+      "geometry": {
+        "centroid": [
+          [
+            -0.03671598061919212,
+            0.00131538778077811,
+            -0.014627937227487564
+          ],
+          [
+            -0.036759939044713974,
+            0.006002834998071194,
+            -0.015026669017970562
+          ],
+          [
+            -0.036829762160778046,
+            0.0026516630314290524,
+            -0.01575477607548237
+          ],
+          [
+            -0.03677772730588913,
+            0.002757253823801875,
+            -0.01331908069550991
+          ],
+          [
+            -0.03807618468999863,
+            0.002702945377677679,
+            -0.015006588771939278
+          ],
+          [
+            -0.038789376616477966,
+            0.0045157019048929214,
+            -0.012875097803771496
+          ],
+          [
+            -0.035652950406074524,
+            0.003639677306637168,
+            -0.01577506773173809
+          ],
+          [
+            -0.038263510912656784,
+            0.003304598154500127,
+            -0.014194587245583534
+          ]
+        ],
+        "rms_radius": [
+          0.0019971660804003477,
+          0.0019740858115255833,
+          0.0019967216067016125,
+          0.002007960807532072,
+          0.0019883345812559128,
+          0.00200667604804039,
+          0.001963716931641102,
+          0.002013099379837513
+        ],
+        "first_batch_pair_min": 8.739519398659468e-05,
+        "first_batch_pair_median": 0.0024237018078565598,
+        "first_batch_exact_duplicates": 0
+      },
+      "Q_gradient": {
+        "origin": "TOTAL_LOSS_NOT_ISOLATED_COARSE",
+        "L2": 0.012383075052326564,
+        "max_abs": 0.00039907742757350206
+      },
+      "gradients": {
+        "base_model.encoder.0.weight": 0.06308308144126105,
+        "base_model.encoder.0.bias": 0.007665250418748918,
+        "base_model.bn.weight": 0.015947781454292615,
+        "base_model.bn.bias": 0.02281442684347491,
+        "base_model.increase_dim.weight": 0.5386298031282021,
+        "base_model.increase_dim.bias": 0.027630039337036862,
+        "base_model.mlp_query.0.weight": 0.07272851103706808,
+        "base_model.mlp_query.0.bias": 0.0022510462524643012,
+        "base_model.decoder.proj.weight": 0.04050328514272589,
+        "base_model.decoder.proj.bias": 0.006068406956397628,
+        "base_model.decoder.pos.weight": 0.00024383362408219453,
+        "base_model.decoder.pos.bias": 0.006068406956397628,
+        "base_model.spcg_head.net.0.weight": 1.833053397049312,
+        "base_model.spcg_head.net.0.bias": 0.056714498356574806,
+        "base_model.spcg_head.net.2.weight": 1.4335138860231027,
+        "base_model.spcg_head.net.2.bias": 0.16189634287755078,
+        "base_model.spcg_head.net.4.weight": 0.9146632078809722,
+        "base_model.spcg_head.net.4.bias": 0.5590981120637926,
+        "increase_dim.weight": 0.008876663902697042,
+        "increase_dim.bias": 0.001191680961946605,
+        "reduce_map.weight": 0.08324290404658381,
+        "reduce_map.bias": 0.011053106497895026,
+        "decode_head.layer.fc1.weight": 0.12347478557099001,
+        "decode_head.layer.fc1.bias": 0.02015605546234292,
+        "decode_head.layer.fc2.weight": 0.02093228351699396,
+        "decode_head.layer.fc2.bias": 0.051533264002963444
+      },
+      "BN_changed": [
+        "base_model.bn.running_mean",
+        "base_model.bn.running_var",
+        "base_model.bn.num_batches_tracked"
+      ],
+      "parameters_unchanged": true
+    },
+    {
+      "kind": "RESTORED",
+      "arm": "G1",
+      "state": true,
+      "RNG": true,
+      "modes": true
+    },
+    {
+      "operation": "synthetic_forward",
+      "counts": {
+        "full_forward": 4,
+        "full_loss": 2,
+        "full_backward": 2,
+        "optimizer_steps": 0,
+        "synthetic_forward": 5,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "operation": "full_forward",
+      "counts": {
+        "full_forward": 5,
+        "full_loss": 2,
+        "full_backward": 2,
+        "optimizer_steps": 0,
+        "synthetic_forward": 5,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "kind": "SYNTHETIC_PHASE",
+      "arm": "G2",
+      "training": false,
+      "batch": 1,
+      "geometry": {
+        "centroid": [
+          [
+            0.024851568043231964,
+            0.024196503683924675,
+            -0.024097559973597527
+          ]
+        ],
+        "rms_radius": [
+          0.01696602813899517
+        ],
+        "first_batch_pair_min": 0.00012981407053302974,
+        "first_batch_pair_median": 0.021502269431948662,
+        "first_batch_exact_duplicates": 0
+      },
+      "Q_gradient": null,
+      "gradients": {},
+      "BN_changed": [],
+      "parameters_unchanged": true
+    },
+    {
+      "operation": "synthetic_forward",
+      "counts": {
+        "full_forward": 5,
+        "full_loss": 2,
+        "full_backward": 2,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "operation": "full_forward",
+      "counts": {
+        "full_forward": 6,
+        "full_loss": 2,
+        "full_backward": 2,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "operation": "full_loss",
+      "counts": {
+        "full_forward": 6,
+        "full_loss": 3,
+        "full_backward": 2,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "operation": "full_backward",
+      "counts": {
+        "full_forward": 6,
+        "full_loss": 3,
+        "full_backward": 3,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 0
+      }
+    },
+    {
+      "kind": "SYNTHETIC_PHASE",
+      "arm": "G2",
+      "training": true,
+      "batch": 8,
+      "geometry": {
+        "centroid": [
+          [
+            -0.02291444130241871,
+            0.011928722262382507,
+            -0.007898703217506409
+          ],
+          [
+            -0.022757338359951973,
+            0.012631833553314209,
+            -0.008048986084759235
+          ],
+          [
+            -0.02178358845412731,
+            0.012419745326042175,
+            -0.009270718321204185
+          ],
+          [
+            -0.02227703295648098,
+            0.01239706203341484,
+            -0.007971532642841339
+          ],
+          [
+            -0.022906165570020676,
+            0.011849124915897846,
+            -0.00858309306204319
+          ],
+          [
+            -0.022599058225750923,
+            0.013599242083728313,
+            -0.008297211490571499
+          ],
+          [
+            -0.0218556709587574,
+            0.012252073734998703,
+            -0.007958936505019665
+          ],
+          [
+            -0.022680092602968216,
+            0.012246107682585716,
+            -0.008139981888234615
+          ]
+        ],
+        "rms_radius": [
+          0.03877037391066551,
+          0.03851569443941116,
+          0.03861765190958977,
+          0.03863095864653587,
+          0.038753021508455276,
+          0.0385357029736042,
+          0.03877827525138855,
+          0.03827482461929321
+        ],
+        "first_batch_pair_min": 0.00025208169245161116,
+        "first_batch_pair_median": 0.04980175942182541,
+        "first_batch_exact_duplicates": 0
+      },
+      "Q_gradient": {
+        "origin": "TOTAL_LOSS_NOT_ISOLATED_COARSE",
+        "L2": 0.012136742288076046,
+        "max_abs": 0.0003302692493889481
+      },
+      "gradients": {
+        "base_model.encoder.0.weight": 0.062436337818262466,
+        "base_model.encoder.0.bias": 0.007267327629492767,
+        "base_model.bn.weight": 0.015578932491830885,
+        "base_model.bn.bias": 0.021750350920766583,
+        "base_model.increase_dim.weight": 0.516945041331919,
+        "base_model.increase_dim.bias": 0.026514316083145445,
+        "base_model.mlp_query.0.weight": 0.07145831379753852,
+        "base_model.mlp_query.0.bias": 0.0022117321258731918,
+        "base_model.decoder.proj.weight": 0.03971960851278702,
+        "base_model.decoder.proj.bias": 0.005950885922309549,
+        "base_model.decoder.pos.weight": 0.0002647192612151447,
+        "base_model.decoder.pos.bias": 0.005950885922309549,
+        "base_model.spcg_head.net.0.weight": 1.7716261260726873,
+        "base_model.spcg_head.net.0.bias": 0.054500116408242226,
+        "base_model.spcg_head.net.2.weight": 1.448330588993106,
+        "base_model.spcg_head.net.2.bias": 0.15867301635292036,
+        "base_model.spcg_head.net.4.weight": 0.922118381607013,
+        "base_model.spcg_head.net.4.bias": 0.5472638386000478,
+        "increase_dim.weight": 0.008626054420187275,
+        "increase_dim.bias": 0.0011587346252387764,
+        "reduce_map.weight": 0.0815730543554669,
+        "reduce_map.bias": 0.010834054673957491,
+        "decode_head.layer.fc1.weight": 0.12088873078064488,
+        "decode_head.layer.fc1.bias": 0.019712336398958485,
+        "decode_head.layer.fc2.weight": 0.020721204963575067,
+        "decode_head.layer.fc2.bias": 0.05043087576042154
+      },
+      "BN_changed": [
+        "base_model.bn.running_mean",
+        "base_model.bn.running_var",
+        "base_model.bn.num_batches_tracked"
+      ],
+      "parameters_unchanged": true
+    },
+    {
+      "operation": "real_D_forward",
+      "counts": {
+        "full_forward": 6,
+        "full_loss": 3,
+        "full_backward": 3,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 1
+      }
+    },
+    {
+      "operation": "full_forward",
+      "counts": {
+        "full_forward": 7,
+        "full_loss": 3,
+        "full_backward": 3,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 1
+      }
+    },
+    {
+      "kind": "REAL_D_ONLY",
+      "case_id": "0",
+      "geometry": {
+        "centroid": [
+          [
+            0.024851568043231964,
+            0.024196503683924675,
+            -0.024097559973597527
+          ]
+        ],
+        "rms_radius": [
+          0.01696602813899517
+        ],
+        "first_batch_pair_min": 0.00012981407053302974,
+        "first_batch_pair_median": 0.021502269431948662,
+        "first_batch_exact_duplicates": 0
+      }
+    },
+    {
+      "operation": "real_D_forward",
+      "counts": {
+        "full_forward": 7,
+        "full_loss": 3,
+        "full_backward": 3,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 2
+      }
+    },
+    {
+      "operation": "full_forward",
+      "counts": {
+        "full_forward": 8,
+        "full_loss": 3,
+        "full_backward": 3,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 2
+      }
+    },
+    {
+      "kind": "REAL_D_ONLY",
+      "case_id": "1",
+      "geometry": {
+        "centroid": [
+          [
+            0.024851568043231964,
+            0.024196503683924675,
+            -0.024097559973597527
+          ]
+        ],
+        "rms_radius": [
+          0.01696602813899517
+        ],
+        "first_batch_pair_min": 0.00012981407053302974,
+        "first_batch_pair_median": 0.021502269431948662,
+        "first_batch_exact_duplicates": 0
+      }
+    },
+    {
+      "operation": "real_D_forward",
+      "counts": {
+        "full_forward": 8,
+        "full_loss": 3,
+        "full_backward": 3,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 3
+      }
+    },
+    {
+      "operation": "full_forward",
+      "counts": {
+        "full_forward": 9,
+        "full_loss": 3,
+        "full_backward": 3,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 3
+      }
+    },
+    {
+      "kind": "REAL_D_ONLY",
+      "case_id": "2",
+      "geometry": {
+        "centroid": [
+          [
+            0.024851568043231964,
+            0.024196503683924675,
+            -0.024097559973597527
+          ]
+        ],
+        "rms_radius": [
+          0.01696602813899517
+        ],
+        "first_batch_pair_min": 0.00012981407053302974,
+        "first_batch_pair_median": 0.021502269431948662,
+        "first_batch_exact_duplicates": 0
+      }
+    },
+    {
+      "operation": "real_D_forward",
+      "counts": {
+        "full_forward": 9,
+        "full_loss": 3,
+        "full_backward": 3,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 4
+      }
+    },
+    {
+      "operation": "full_forward",
+      "counts": {
+        "full_forward": 10,
+        "full_loss": 3,
+        "full_backward": 3,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 4
+      }
+    },
+    {
+      "kind": "REAL_D_ONLY",
+      "case_id": "3",
+      "geometry": {
+        "centroid": [
+          [
+            0.024851568043231964,
+            0.024196503683924675,
+            -0.024097559973597527
+          ]
+        ],
+        "rms_radius": [
+          0.01696602813899517
+        ],
+        "first_batch_pair_min": 0.00012981407053302974,
+        "first_batch_pair_median": 0.021502269431948662,
+        "first_batch_exact_duplicates": 0
+      }
+    },
+    {
+      "operation": "real_D_forward",
+      "counts": {
+        "full_forward": 10,
+        "full_loss": 3,
+        "full_backward": 3,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 5
+      }
+    },
+    {
+      "operation": "full_forward",
+      "counts": {
+        "full_forward": 11,
+        "full_loss": 3,
+        "full_backward": 3,
+        "optimizer_steps": 0,
+        "synthetic_forward": 6,
+        "real_D_forward": 5
+      }
+    },
+    {
+      "kind": "REAL_D_ONLY",
+      "case_id": "4",
+      "geometry": {
+        "centroid": [
+          [
+            0.024851568043231964,
+            0.024196503683924675,
+            -0.024097559973597527
+          ]
+        ],
+        "rms_radius": [
+          0.01696602813899517
+        ],
+        "first_batch_pair_min": 0.00012981407053302974,
+        "first_batch_pair_median": 0.021502269431948662,
+        "first_batch_exact_duplicates": 0
+      }
+    },
+    {
+      "kind": "RESTORED",
+      "arm": "G2",
+      "state": true,
+      "RNG": true,
+      "modes": true
+    }
+  ],
+  "output_estimate_fixture": {
+    "model_parameter_bytes": 11902028,
+    "buffer_bytes": 6152,
+    "model_and_Adam_estimate_bytes": 35712236,
+    "log_and_control_allowance_bytes": 100663296,
+    "serialization_and_tmp_allowance_bytes": 67108864,
+    "total_bytes": 203484396,
+    "cap_bytes": 1073741824,
+    "actual_runtime_enforcement_required": true
+  },
+  "production_output_estimate_bytes": 648814896,
+  "native_Mamba": false,
+  "CUDA": false,
+  "real_payload_reads": 0,
+  "trained_checkpoint_loads": 0,
+  "optimizer_steps": 0,
+  "limitations": [
+    "Artificial encoder/decoder and cheap scalar CD substitute; actual mother forward/outer FC/loss routing extracted unchanged.",
+    "Actual Mamba/provider/production full cdist loss, CUDA gradients and memory NOT validated.",
+    "U and H are CPU torch2.5.1 frozen FP32 bytes, loaded as authoritative bytes on target torch2.4.1; no runtime regeneration equality."
+  ]
+}

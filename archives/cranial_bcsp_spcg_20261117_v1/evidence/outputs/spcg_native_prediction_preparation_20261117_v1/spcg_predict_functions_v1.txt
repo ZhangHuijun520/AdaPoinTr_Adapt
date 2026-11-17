@@ -1,0 +1,117 @@
+def authorize(qr,ar,rr):
+ q,a,r=bound(qr),bound(ar),bound(rr)
+ require(q['schema']=='bcsp-spcg-sixmodel-native-prediction-v1' and q['status']=='AWAITING_EXPLICIT_USER_AUTHORIZATION' and q['execution_authorized'] is False,'pending SPCG request')
+ require(q['forward_budget']==630 and q['batch_size']==1 and q['unique_cases']==210 and all(q[k]==0 for k in ('backward','optimizer_steps','BNCal','loss_calls','warmup','TTA')),'Native630 only')
+ require(q['limits']==LIMITS and q['identity']==CURRENT_IDENTITY and q['environment']['CUDA_VISIBLE_DEVICES']==CURRENT_IDENTITY['gpu_uuid'] and q['startup_free_disk_bytes']==6*1024**3,'identity and resources')
+ require(q['input_index']['sha256']==INDEX_SHA and q['protocol']['sha256']==PROTOCOL_SHA and q['comparison_qualification']==QUALIFICATION,'scope pins')
+ require(set(a)=={'schema','request_sha256','explicit_user_authorization','user_authorization_text'} and a['schema']=='bcsp-development-authorization-v1' and a['request_sha256']==qr['sha256'] and a['explicit_user_authorization'] is True and bool(a['user_authorization_text'].strip()),'explicit authorization')
+ require(r==dict(schema='bcsp-development-runtime-v1',request_sha256=qr['sha256'],authorization_sha256=ar['sha256']),'one-way runtime')
+ return q
+
+def validate_index(index,folds,selection=None):
+ require(index['schema']=='bcsp-spcg-sixmodel-native-index-v1','index schema')
+ runs,rows=index['runs'],index['inputs'];require([r['label'] for r in runs]==list(FROZEN_MODELS) and len(rows)==630,'six runs630')
+ for run in runs:
+  require(run==FROZEN_MODELS[run['label']],'exact frozen model')
+  f=run['fold'];fold=folds['folds'][f];part=[r for r in rows if r['run']==run['label']]
+  require(len(part)==105 and [r['case_id'] for r in part]==run['dev_case_ids']==fold['dev_case_ids'],'ordered105')
+  require(len(fold['train_sources'])==63 and len(fold['dev_sources'])==21 and not set(fold['train_sources'])&set(fold['dev_sources']),'source split')
+  require(set(Counter(r['source_id'] for r in part).values())=={5} and set(r['source_id'] for r in part)==set(fold['dev_sources']),'five defects per source')
+  for row in part:
+   cid=row['case_id'];require(row['variant']==run['arm'] and row['fold']==f and row['n_input']==row['n_output']==8192 and row['source_id']=='train:'+cid.split('__')[1] and row['defect_type']==cid.split('__',2)[2],'row identity')
+   require(row['input']['path']==DATA_ROOTS[f]+'/'+cid+'_8192.npz' and row['prediction_filename']=='predictions/'+run['label']+'__'+cid+'.npz','exact paths')
+   require(row['save_coarse'] is True and all(row[k] is False for k in ['save_Qraw','cache_context','save_full_decoder_trace']),'coarse dense only')
+   clean(row['input']['path']);n=row['normalization'];require(row['normalization_source']=='defective_bbox' and len(n['center'])==3 and all(isinstance(x,(int,float)) and abs(x)<1e6 for x in n['center']) and 0<n['scale']<1e6,'D-only frame')
+ require(len({(r['run'],r['case_id']) for r in rows})==630 and len({r['input']['path'] for r in rows})==210 and len({r['prediction_filename'] for r in rows})==630,'unique paths')
+ require(not set(folds['folds']['C']['dev_sources'])&set(folds['folds']['D']['dev_sources']),'disjoint folds')
+ for f in 'CD':
+  parts=[[r for r in rows if r['run']==a+'_'+f] for a in ['G0','G1','G2']]
+  require(all(all(x[k]==y[k]==z[k] for k in ['case_id','source_id','input','normalization']) for x,y,z in zip(*parts)),'three arms identical inputs')
+ return runs,rows
+
+def validate_evidence(q,index):
+ for run in index['runs']:
+  a=bound(run['training_audit']);t=bound(run['training_request']);arm=run['arm'];f=run['fold']
+  require(a['status']=='FORMAL_SPCG_'+arm+'_'+f+'_POST_TRAINING_FREEZE_PASS' and all(a['checks'].values()) and a['checkpoint']==run['checkpoint'],'formal freeze')
+  require(a['request_sha256']==run['training_request']['sha256'] and t['identity']==run['training_identity'] and t['arm']==arm and t['fold']==f,'training identity')
+  require((a['updates'],a['traversals'],a['exposures'],a['drops'])==(3900,100,31200,300) and not any(a[k] for k in ['BNCal','evaluation','resume']),'counts')
+  require(a['initialization_raw_tensor_fingerprint']==run['expected_initial_state_sha256'],'init pin')
+ for k,h in PINS.items():require(q['implementation'][k]['sha256']==h,'source pin '+k)
+ for r in q['implementation'].values():exact(r)
+ for r in q['dependencies']:exact(r)
+ for k in ['probe_asset','head_initialization','mother_source']:require(q[k]==ASSETS[k],'asset pin');exact(q[k])
+ exact(q['entry']);p=bound(q['protocol']);require(p['counts']['forward_attempts']==630 and p['counts']['loss']==p['counts']['backward']==0 and p['outputs']['context_caches']==p['outputs']['full_decoder_traces']==0,'protocol')
+ admission=bound(q['prior_native_admission']['audit']);require(admission['status']=='FORMAL_POST_CUDA_FREEZE_PASS' and all(admission['checks'].values()),'prior CUDA admission')
+ p3=bound(q['P3']);require(p3['status']=='LOCAL_SPCG_NATIVE_PREDICTION_P3_PASS' and p3['entry_sha256']==q['entry']['sha256'] and all(p3['checks'].values()),'P3')
+
+def load_spcg_builder(implementation):
+ for name,key in [('bcsp_mamba_encoder_v1','encoder'),('bcsp_p1_model_factory_v1','factory'),('bcsp_lqi_decoder_v1','lqi_decoder'),('bcsp_lqi_factory_v1','lqi_factory'),('bcsp_spcg_head_v1','head')]:source_module(name,implementation[key])
+ spcg=source_module('bcsp_spcg_factory_v1',implementation['spcg_factory'])
+ return dict(lqi=sys.modules['bcsp_lqi_factory_v1'],spcg=spcg,head=sys.modules['bcsp_spcg_head_v1'])
+
+def raw_state_fingerprint(model):
+ h=hashlib.sha256()
+ for n,t in model.state_dict().items():h.update(n.encode());h.update(t.detach().cpu().contiguous().numpy().tobytes())
+ return h.hexdigest()
+
+def build_spcg_model(factory,legacy_builder,run,q,artificial_cpu=False):
+ arm=run['arm'];require(arm in ['G0','G1','G2'],'SPCG arm')
+ model,parent=factory['lqi'].build_model(legacy_builder,seed=0)
+ require(parent['artificial_fixture'] is artificial_cpu,'fixture scope')
+ if not artificial_cpu:require(raw_state_fingerprint(model)==q['parent_G0_initial_state_sha256'],'shared scratch mother')
+ change=None
+ if arm!='G0':
+  U=factory['head'].from_bytes(exact(q['probe_asset']).read_bytes(),(256,3));H=exact(q['head_initialization']).read_bytes()
+  model,change=factory['spcg'].install(model,arm,U,H,q['mother_source']['path'],q['mother_source']['sha256'])
+ if not artificial_cpu:require(raw_state_fingerprint(model)==run['expected_initial_state_sha256'],'admitted full initial state')
+ return model,dict(parent=parent,change=change,arm=arm,artificial_fixture=artificial_cpu)
+
+def validate_model(model,evidence,artificial_cpu=False):
+ require(evidence['artificial_fixture'] is artificial_cpu,'production model only')
+ arm=evidence['arm'];base=model.base_model
+ require(hasattr(base,'coarse_pred') is (arm=='G0') and hasattr(base,'spcg_head') is (arm!='G0'),'head replacement')
+ if arm!='G0':require(base.spcg_head.arm==arm and evidence['change']['old_head_removed'] and evidence['change']['head_parameters']==1845763,'SPCG head')
+ if not artificial_cpu:
+  validate_lqi_model(model,evidence['parent'],False)
+  require(sum(p.numel() for p in model.parameters())==(39903169 if arm=='G0' else 39912132),'model parameters')
+ require(not hasattr(base,'scq') and not hasattr(base,'rf'),'no SCQ or RF')
+
+def make_source_guard(q):
+ guard=ExactSourceReads(q['implementation'])
+ try:
+  for r in [*q['implementation'].values(),q['entry'],q['helper'],q['probe_asset'],q['head_initialization'],q['mother_source']]:
+   p=exact(r)
+   if p not in guard.records:guard.records[p]=r;guard.fds[p]=os.open(p,os.O_RDONLY|getattr(os,'O_NOFOLLOW',0));guard.verify(p)
+  return guard
+ except BaseException:guard.close();raise
+
+def execute_pair(torch,np,helper,runs,rows,out,budget,builder,device='cuda:0',artificial_cpu=False):
+ require((device=='cpu') is artificial_cpu,'explicit CPU fixture only');cuda=not artificial_cpu;attempts=successful=0;files=[];states=[]
+ manifest=out/'inference_manifest.jsonl';journal=out/'forward_attempts.jsonl';geometry=out/'geometry_summary.jsonl'
+ for p in [manifest,journal,geometry]:p.open('x').close()
+ try:
+  for run in runs:
+   random.seed(0);np.random.seed(0);torch.manual_seed(0)
+   model,construction=builder(run);validate_model(model,construction,artificial_cpu);load_checkpoint(torch,model,run);model.eval();model.to(device)
+   if cuda:torch.cuda.synchronize();torch.cuda.reset_peak_memory_stats(0)
+   if hasattr(model,'enable_full_instrumentation'):model.enable_full_instrumentation(False)
+   before=helper.state_sha(model);rng_before=rng_state(torch,np,helper,cuda);budget.sample('model_start:'+run['label'],attempts)
+   selected=[r for r in rows if r['run']==run['label']];require(len(selected)==105,'105 per model')
+   for row in selected:
+    helper.assert_numeric(torch);budget.sample('before_forward',attempts);x=torch.from_numpy(load_partial(np,row)).unsqueeze(0).to(device);start=time.monotonic()
+    require(attempts<630,'attempt cap');attempts+=1;append_event(journal,dict(forward_index=attempts,run=run['label'],case_id=row['case_id'],status='CLAIMED_BEFORE_FORWARD'))
+    coarse,dense=predict_once(torch,model,x)
+    if cuda:torch.cuda.synchronize()
+    successful+=1;path=out/row['prediction_filename']
+    with path.open('xb') as f:np.savez_compressed(f,prediction=dense[0],coarse=coarse[0])
+    files.append(path);append_event(geometry,dict(run=run['label'],case_id=row['case_id'],**geometry_summary(np,coarse,dense)))
+    append_event(manifest,dict(run=run['label'],variant=run['arm'],case_id=row['case_id'],source_id=row['source_id'],fold=run['fold'],n_input=8192,n_output=8192,input_sha256=row['input']['sha256'],checkpoint_sha256=run['checkpoint']['sha256'],normalization=row['normalization'],prediction=dict(name=row['prediction_filename'],bytes=path.stat().st_size,sha256=sha(path)),forward_index=attempts,operational_seconds=time.monotonic()-start))
+    del x,coarse,dense;helper.assert_numeric(torch);budget.sample('after_forward',attempts)
+   after=helper.state_sha(model);rng_after=rng_state(torch,np,helper,cuda);require(before==after,'model state changed');require(rng_before==rng_after,'RNG changed')
+   states.append(dict(run=run['label'],forwards=len(selected),state_before=before,state_after=after,RNG_before=rng_before,RNG_after=rng_after,mode='eval_inference_mode',BNCal=0,optimizer=0,backward=0,construction=construction))
+   del model;gc.collect()
+   if cuda:torch.cuda.empty_cache()
+  require(attempts==successful==630 and len(files)==630,'exact630');budget.sample('all_complete',attempts)
+  return files,[manifest,journal,geometry],states
+ except BaseException as exc:
+  emit(out/'failure.json',dict(status='FAILED_STOP_NO_RETRY',forward_attempts=attempts,valid_forward_returns=successful,error=repr(exc),training_updates=0,BNCal=0));raise

@@ -1,0 +1,124 @@
+{
+  "status": "FORMAL_READONLY_V2_FAILURE_FREEZE_PASS",
+  "checks": {
+    "installed_exact_set": true,
+    "installed_hashes": true,
+    "single_claim": true,
+    "authorization": true,
+    "one_way_runtime": true,
+    "exit_one": true,
+    "tmux_absent": true,
+    "worker_absent": true,
+    "startup_SMI_success": true,
+    "attempt_counts": true,
+    "six_synthetic_phases": true,
+    "three_restore_events": true,
+    "no_completion": true,
+    "no_partial_real_D_npz": true,
+    "resource_records_present": true,
+    "all_recorded_resource_checks_pass": true
+  },
+  "request_sha256": "a2b1961158b58199e212130654ddd274ce617c90e24448f22ba70a0062c2343e",
+  "last_attempt_counts": {
+    "full_forward": 7,
+    "full_loss": 3,
+    "full_backward": 3,
+    "optimizer_steps": 0,
+    "synthetic_forward": 6,
+    "real_D_forward": 1
+  },
+  "synthetic_phases": [
+    {
+      "arm": "G0",
+      "training": false,
+      "batch": 1,
+      "parameters_unchanged": true
+    },
+    {
+      "arm": "G0",
+      "training": true,
+      "batch": 8,
+      "parameters_unchanged": true
+    },
+    {
+      "arm": "G1",
+      "training": false,
+      "batch": 1,
+      "parameters_unchanged": true
+    },
+    {
+      "arm": "G1",
+      "training": true,
+      "batch": 8,
+      "parameters_unchanged": true
+    },
+    {
+      "arm": "G2",
+      "training": false,
+      "batch": 1,
+      "parameters_unchanged": true
+    },
+    {
+      "arm": "G2",
+      "training": true,
+      "batch": 8,
+      "parameters_unchanged": true
+    }
+  ],
+  "restoration_events": [
+    {
+      "kind": "RESTORED",
+      "arm": "G0",
+      "state": true,
+      "RNG": true,
+      "modes": true
+    },
+    {
+      "kind": "RESTORED",
+      "arm": "G1",
+      "state": true,
+      "RNG": true,
+      "modes": true
+    },
+    {
+      "kind": "RESTORED",
+      "arm": "G2",
+      "state": true,
+      "RNG": true,
+      "modes": true
+    }
+  ],
+  "resources": {
+    "count": 38,
+    "peak_allocated": 13749449216,
+    "peak_reserved": 15007219712,
+    "peak_RSS": 2059583488,
+    "peak_SMI_MiB": 14800
+  },
+  "primary_failure": {
+    "status": "FAILED_STOP_NO_RETRY",
+    "error": "RuntimeError('non-allowlisted evaluation payload: /home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v2/real_D_00.npz')"
+  },
+  "exact_missing_write_allowlist": [
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v2/real_D_00.npz",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v2/real_D_01.npz",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v2/real_D_02.npz",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v2/real_D_03.npz",
+    "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/SPCG_G0_G1_G2_CUDA_20261116_v2/real_D_04.npz"
+  ],
+  "secondary_missing_exact_read": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_f0_CD_native_prediction_20261111_v2/bcsp_f0_twofold_native_predict_v1.py",
+    "bytes": 31713,
+    "sha256": "b1318c0ab8441e56dfd7133c83b2ae07435932359f1843fd7c3616c835e6f72b"
+  },
+  "request_consumed": true,
+  "SMI_queries": 0,
+  "forward_calls": 0,
+  "server_writes": 0,
+  "real_payload_reads": 0,
+  "limitations": [
+    "Counters are attempt-before-call; first real forward returned to save_memory per traceback, but real-case success record was not emitted.",
+    "Resource peaks are recorded samples; incomplete run is not full admission or future training resource proof.",
+    "Restoration is confirmed from emitted fingerprints/booleans, not by loading vanished process state."
+  ]
+}

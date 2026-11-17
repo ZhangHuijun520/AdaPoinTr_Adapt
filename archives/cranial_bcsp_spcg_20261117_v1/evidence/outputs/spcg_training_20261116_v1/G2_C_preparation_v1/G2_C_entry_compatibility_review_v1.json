@@ -1,0 +1,39 @@
+{
+  "status": "NEEDS_MINIMAL_G2C_ENTRY_BRIDGE_CPU_P3",
+  "basis": {
+    "G1_request": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\G1_C_implementation_v1\\pending_transport_v1\\payload\\SPCG_G1_C_training_execution_request_v1.json",
+      "bytes": 15342,
+      "sha256": "2d8ef3fff5db90653d0408ac6db72911e2c84b75aa61c9f03c8033aaf56ac0e4"
+    },
+    "G0_freeze": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\UTC_order_hotfix_v3\\post_training_freeze_v3\\formal_freeze_result_v3.json",
+      "bytes": 2802,
+      "sha256": "996a52a26a0f6e05d98d95a8c674fc35f593240d0a436c5e69dbc589cc7464f2"
+    },
+    "G1_freeze": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\G1_C_implementation_v1\\post_training_freeze_v1\\formal_freeze_result_v1.json",
+      "bytes": 3184,
+      "sha256": "b39b2dc2261579756048e757918481d83396cad22dabae97190661f9b32f19f0"
+    },
+    "CUDA_evidence": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_implementation_20261116_v1\\output_policy_hotfix_v3\\post_CUDA_freeze_v3\\server_evidence.json",
+      "bytes": 590200,
+      "sha256": "40fc7fa66b6e3687d743e59f92e8e346a9a59f27758eb4bd3881aa60cce57974"
+    }
+  },
+  "findings": [
+    "Frozen head and factory support G2.",
+    "G1 entry validate/build/identity and bridge arm guard explicitly reject G2.",
+    "G1 P3 certifies only G1_C; no compatible G2_C entry found."
+  ],
+  "scope": [
+    "New isolated G2_C entry derived from validated G1_C; only arm/schema/path/P3 binding changes plus G1 formal-freeze binding.",
+    "New G2_C bridge derived from G1 bridge, preserving lifecycle/logging and changing arm guard only.",
+    "One targeted artificial CPU batch covering real G2 build/authorize path, k8 route, U/H/raw initialization, paired order/counts, no-decay, UTC/exception lifecycle, and rejection cases.",
+    "New P3 then final pending request with exact hashes; do not repeat GPU admission."
+  ],
+  "server_operations": 0,
+  "tests_run": 0,
+  "implementation_changes": 0
+}

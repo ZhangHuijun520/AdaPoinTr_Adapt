@@ -1,0 +1,21 @@
+# SPCG精确输出与回溯读取：新P3及v3待授权请求
+
+2026-11-16。最终v3入口SHA256：5af1f1f9ec175a01fde1d29689c98b0b143bcd1ec00d876d64dbb0e36af38f18。
+
+最终12项CPU文件策略回归通过，新增P3已汇总并绑定最终入口、CPU结果／测试、Windows fixture范围、既有P3和v2正式失败冻结审计。先前失败批次保留；本轮没有重跑测试、服务器操作、SMI或CUDA调用。
+
+生产修改限于v3入口五个精确NPZ输出和四个既有基础源码的精确只读守卫；Windows二进制适配、人工脚本自绑定及生命周期修正仅在测试进程，不随生产入口执行。模型、U/H、provider、loss、病例、资源和11forward/3loss/3backward/0step均不变。
+
+新request完整SHA256：
+
+`93ee5eb84f4e2b3b0de81e0f5b70c899c0cf2b2661f2946ffdead936c07568f6`
+
+位置：pending_transport_v3/payload/SPCG_CUDA_execution_request_v3.json。
+
+状态AWAITING_EXPLICIT_USER_AUTHORIZATION；新安装根、run ID、tmux、control及输出均为v3，不复用已消耗v2。真实授权回执、runtime、launcher、claim均未材料化，只在内存以人工静态授权检查合同。
+
+最终静态检查曾用Windows Path解析Linux输出路径产生误比较；已改为本机检查使用PurePosixPath词法比较，未修改入口或request字节，未重跑CPU。完整记录在final_request_contract_review_v3.json。
+
+运输目录pending_transport_v3。上传bcsp_spcg_output_policy_pending_20261116_v3.tar.gz及.sha256、.bytes、.contents.sha256四文件。归档20,806bytes，共10个新安装文件＋映射；大模型、数据、rawU/H等复用，不重新安装依赖。
+
+本轮未重新连接服务器，当前身份／资源及新目标不存在必须在安装启动前重新核验。上传后仅在单独完整哈希执行授权下才可不覆盖安装并启动一次GPU准入；失败停止，成功后仍需正式post-CUDA冻结审计，不自动训练。CPU通过不代表实际CUDA及科研效果通过。

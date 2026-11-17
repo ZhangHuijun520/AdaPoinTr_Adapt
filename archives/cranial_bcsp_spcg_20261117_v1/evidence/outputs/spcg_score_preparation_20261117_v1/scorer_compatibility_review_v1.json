@@ -1,0 +1,28 @@
+{
+  "status": "NEEDS_SPCG_SCORER_AND_PREREGISTERED_BOOTSTRAP_CPU_P3",
+  "existing_scorer": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_rf_score_impl_20261115_v1\\bcsp_scq_rf_three_arm_score_v1.py",
+    "bytes": 32095,
+    "sha256": "2de4ef5be44c63c7796cdc61f03af8015b562d8b6713db367c19a721b2cb0f3b"
+  },
+  "metric": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_geov1_20261024\\blue_pair_eval_v1\\bcsp_eval_metrics_v1.py",
+    "bytes": 6784,
+    "sha256": "af938519125b25b6d22d862dd4967dabef3be6d97d38e60eb9995ee7e9ce9766"
+  },
+  "reference_and_point_files_verified": 420,
+  "baseline_controls_bound": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_fullmamba_20261110\\Native_scoring_implementation_v1\\unified_scores_v1\\case_metrics.jsonl",
+    "bytes": 6148401,
+    "sha256": "e9ec5436b4efb103f5803b0443b6aaba465d23bef695f3fb2b7c4c8b02a18d19"
+  },
+  "findings": [
+    "Existing metric/aggregation/risk/source-difference functions reusable; no metric changes.",
+    "RF scorer pins RF archives/labels/initializers/Q stage arrays and has no-bootstrap summaries; incompatible without isolated adaptation.",
+    "Need SPCG635-member Native archive, G0/G1/G2 labels, coarse/dense-only input and required2000 source-paired bootstrap.",
+    "Preserve original reference and shared-control recomputation/equality, fixed source unit and save RNG indices; do not inherit RF device qualification."
+  ],
+  "server_operations": 0,
+  "model_calls": 0,
+  "score_calculations": 0
+}

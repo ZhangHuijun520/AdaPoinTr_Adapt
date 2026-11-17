@@ -1,0 +1,60 @@
+{
+  "status": "LOCAL_D_METADATA_PASS_NEEDS_MINIMAL_G0D_ENTRY_BRIDGE",
+  "counts": {
+    "sources": 63,
+    "train_cases": 315,
+    "dev_sources": 21,
+    "dev_cases": 105,
+    "updates": 3900,
+    "traversals": 100,
+    "exposures": 31200,
+    "drops": 300
+  },
+  "D_qualified_receipt": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\qualified_SCQ_D_8192_v1.json",
+    "bytes": 1641,
+    "sha256": "2aa5848b261e046b758a832485a60b80a2d85d152b573b99fafb07fe6d3d5be7"
+  },
+  "D_order": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\cranial_bcsp_scq_foldC_training_preparation_20261113_v1\\candidate_payload\\shared_order_foldD_seed0_v1.json",
+    "bytes": 1248506,
+    "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+  },
+  "C_matrix_proofs": {
+    "G0": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\UTC_order_hotfix_v3\\post_training_freeze_v3\\formal_freeze_result_v3.json",
+      "bytes": 2802,
+      "sha256": "996a52a26a0f6e05d98d95a8c674fc35f593240d0a436c5e69dbc589cc7464f2"
+    },
+    "G1": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\G1_C_implementation_v1\\post_training_freeze_v1\\formal_freeze_result_v1.json",
+      "bytes": 3184,
+      "sha256": "b39b2dc2261579756048e757918481d83396cad22dabae97190661f9b32f19f0"
+    },
+    "G2": {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\spcg_training_20261116_v1\\G2_C_implementation_v1\\post_training_freeze_v1\\formal_freeze_result_v1.json",
+      "bytes": 3828,
+      "sha256": "38605970e6f76973c16061e1f96fa4395d8e1a198fde07761be4eb347fabf7d8"
+    }
+  },
+  "checks": {
+    "frozen_D_QC_metadata_valid": true,
+    "D_order_all100_traversals_valid": true,
+    "all_C_runs_formally_frozen": true,
+    "original_G0_initialization_retained": true
+  },
+  "compatibility_findings": [
+    "Existing G0 entry validate/authorize only accepts C and G0C P3/schema.",
+    "Existing G0 bridge accepts G0/C only. No G0_D dedicated entry found.",
+    "G0_D must use original LQI coarse head; do not install G1/G2 SPCG head."
+  ],
+  "minimal_scope": [
+    "Isolated G0_D entry and bridge derived from validated G0_C, changing fold/schema/P3/run bindings and adding completed C-matrix prerequisite.",
+    "One targeted artificial CPU batch, including complete authorize path with frozen D metadata, D order/counts, exact source reads, UTC/exception lifecycle and wrong-fold rejection.",
+    "P3 followed by final exact-hash pending execution request; reuse existing CUDA admission."
+  ],
+  "server_operations": 0,
+  "training_started": false,
+  "payload_reads": 0,
+  "tests_run": 0
+}
