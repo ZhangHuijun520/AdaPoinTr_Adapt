@@ -1,0 +1,148 @@
+{
+  "status": "PASS_FORMAL_READ_ONLY_POST_TRAINING_FREEZE_AUDIT",
+  "request_sha256": "e75cc9dbc77b367936c85a14cba014911ac03ee3f75a7c8cfb776999e5b360fe",
+  "run": "FCSP_P4_B0_Global_C_seed0_20261120_v1",
+  "counts": {
+    "updates": 3900,
+    "epochs": 100,
+    "exposures": 31200,
+    "drops": 300,
+    "metrics_sha256": "c9e368f40c523f08b9db145e1efba5aea87ef335ba87bcf8a619976c031c4228",
+    "max_loss": 0.016412971541285515,
+    "max_grad_norm": 0.013897329568862915,
+    "max_residual_norm": 0.11801539286359317,
+    "first_lr": 5e-06,
+    "last_lr": 1e-05
+  },
+  "checkpoint": {
+    "file": "B0_Global_C_seed0_step3900.pth",
+    "sha256": "e9135aa79ac6a83e11f9266b24448e8d5c83476a7e738cd23b8675b98374b68b",
+    "bytes": 253964
+  },
+  "output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/FCSP_P4_B0_Global_C_seed0_20261120_v1",
+  "exact_output_inventory": {
+    "launch.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exit_code.txt": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "worker.pid": {
+      "bytes": 5,
+      "sha256": "9b8dc57b60a6c8ba2e278d68dd44ef489c32d7b5d0f63cbe0ce87bb1bac3257f"
+    },
+    "initialization.json": {
+      "bytes": 407,
+      "sha256": "78596f4a46de820e59eb7844ed9a1ab00340162738093c656718eb7c274e1673"
+    },
+    "metrics.jsonl": {
+      "bytes": 2093778,
+      "sha256": "c9e368f40c523f08b9db145e1efba5aea87ef335ba87bcf8a619976c031c4228"
+    },
+    "resources.jsonl": {
+      "bytes": 88900,
+      "sha256": "681c8cd28a7151122e631b9274e284bfbc17e83ba2f13ef66cf359369c585fad"
+    },
+    "completion.json": {
+      "bytes": 611,
+      "sha256": "415b68755783cf9f0c5e965227a092eeb2f14fec304166e48db941bbc1c857a5"
+    },
+    "B0_Global_C_seed0_step3900.pth": {
+      "bytes": 253964,
+      "sha256": "e9135aa79ac6a83e11f9266b24448e8d5c83476a7e738cd23b8675b98374b68b"
+    }
+  },
+  "initial_reproduction": {
+    "initial": "5099cd2032909ab0a3127867b24c4c8871073ce60ae7456e59057fc9f2a2697e",
+    "final": "1f2f719f4a1ca9a87eac51167957244f8121db1d5f48e1773b54780663ca1469",
+    "checkpoint_sha256": "e9135aa79ac6a83e11f9266b24448e8d5c83476a7e738cd23b8675b98374b68b",
+    "trainable_parameters": 62944,
+    "zero_output_layer": true
+  },
+  "residual_scale_reproduction": {
+    "cases": 315,
+    "b_train_fp64": 0.09540301117343965,
+    "b_train_float32_bytes": "a762c33d"
+  },
+  "recorded_initialization": {
+    "seed": 0,
+    "state_sha256": "5099cd2032909ab0a3127867b24c4c8871073ce60ae7456e59057fc9f2a2697e",
+    "b_train_fp64": 0.09540301117343965,
+    "b_train_float32_bytes": "a762c33d",
+    "trainable_parameters": 62944,
+    "optimizer": {
+      "lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.0001,
+      "amsgrad": false,
+      "foreach": false,
+      "maximize": false,
+      "capturable": false,
+      "differentiable": false,
+      "fused": false
+    }
+  },
+  "resources": {
+    "records": 248,
+    "extrema": {
+      "wall_seconds": 330.94515492673963,
+      "RSS_bytes": 1146687488,
+      "torch_peak_bytes": 11882463232,
+      "device_MiB": 11812,
+      "output_bytes": 2436694,
+      "minimum_free_disk_bytes": 8642363392
+    },
+    "limits": {
+      "wall_seconds": 5400,
+      "RSS_bytes": 8589934592,
+      "torch_peak_bytes": 21474836480,
+      "device_MiB": 22528,
+      "output_bytes": 67108864,
+      "minimum_free_disk_bytes": 4294967296
+    }
+  },
+  "worker_pid": 1906,
+  "tmux_absent": true,
+  "worker_absent": true,
+  "exit_code": 0,
+  "controls_aggregate_sha256": "02d025cd772a46dbebfa45a291c2ad8e84c88999bc90d123b473d4cc26478ce8",
+  "scope": {
+    "donor_forward": 0,
+    "development_access": 0,
+    "BNCal": false,
+    "resume": false
+  },
+  "audit_only_noted": "First scale check used the generic remote Python and hit a library ABI mismatch. Version 2 used the exact training Python with CUDA hidden and completed read-only checks.",
+  "server_writes": 0,
+  "additional_optimizer_steps": 0,
+  "evidence_sha256": {
+    "inventory_result.json": "732b9804c6c755585fd738d5387f60fd23116890116f8a4c94dcf87540f6c688",
+    "inventory_scope.py": "fd2d66239bf6fc4d2546962bad84d21731b4a206f4529651ddf66e4d4c18b4e2",
+    "inventory_stderr.bin": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "inventory_stdout.bin": "7e8e5fd908bfc7d4deffd0f9fea3df3ecd4fa937c9d122c712115b7756f46a69",
+    "inventory_transport.json": "20497bbbb420d0b3f5c741d0dcedc154ee219aafdf9d3712b5e9c7ccc84ea960",
+    "metrics_result.json": "1b5aba22e7871a6e2246a395080b633f7b0700a3a62ade3c7d3b21e7713a7a08",
+    "metrics_scope.py": "159600a157e816767e0e4eec3d7e63374e7d09482f2a757af9128bc90a1e6de3",
+    "metrics_stderr.bin": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "metrics_stdout.bin": "ded7cd0f9018a26b45ffe002c03c0647d333defff0447b93a4ee628f3cd87288",
+    "metrics_transport.json": "80c6690dfa961fa12e95308ca6ecafaeffe6eda525746a927baa79b8f6ea2d49",
+    "resources.jsonl": "681c8cd28a7151122e631b9274e284bfbc17e83ba2f13ef66cf359369c585fad",
+    "scale_scope.py": "3fc2f25c3b012ed7b3b06ad3c6b573fb24421a920af66a14246f8d65ec4347be",
+    "scale_stderr.bin": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "scale_stdout.bin": "6b5f41a3471baa357fc076104bf60c5741ed54c9a6c668f4ddbb87daed0d9b6e",
+    "scale_v2_result.json": "35cd3baa088b3df88aa9e7a3fee36531da8a0e4a254255371f81d206478860ea",
+    "scale_v2_scope.py": "3fc2f25c3b012ed7b3b06ad3c6b573fb24421a920af66a14246f8d65ec4347be",
+    "scale_v2_stderr.bin": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "scale_v2_stdout.bin": "908e6d26e750f174db8efdab118853e952cd99e2db05a1ad35b7972220a91a76",
+    "state_v2_result.json": "f1a64dd91f952afa35d83026589232e983bb8e0c8469c89deba143dfbd041b23",
+    "state_v2_scope.py": "91f84d514866aad8b832731828bb20861cd9e06565f84d10200eea3aa16d78c0",
+    "state_v2_stderr.bin": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "state_v2_stdout.bin": "976f9db538ff04b8d49f280980e8977ef6991586211f9f5e3084d87b3f75da76"
+  }
+}
