@@ -1,0 +1,56 @@
+{
+  "status": "FROZEN_NO_SCORING_AUTHORIZATION",
+  "plan": {
+    "bytes": 22722,
+    "sha256": "affc56f04cf2b94d40a8730074977934f460649b1670fe2c006c174db9e0fb5d"
+  },
+  "counts": {
+    "cases": 105,
+    "sources": 21,
+    "model_rows": 315,
+    "control_rows": 210,
+    "total_rows": 525
+  },
+  "ordered_source_ids": [
+    "train:001",
+    "train:003",
+    "train:012",
+    "train:013",
+    "train:025",
+    "train:026",
+    "train:036",
+    "train:038",
+    "train:041",
+    "train:042",
+    "train:047",
+    "train:051",
+    "train:053",
+    "train:061",
+    "train:066",
+    "train:072",
+    "train:076",
+    "train:081",
+    "train:094",
+    "train:105",
+    "train:107"
+  ],
+  "pairs": [
+    "S−B",
+    "S−F",
+    "F−B"
+  ],
+  "bootstrap": {
+    "engine": "PCG64",
+    "seed": 2026112103,
+    "replicates": 2000,
+    "unit": "paired_source"
+  },
+  "frame": "world_mm_D_only_inverse_normalization_no_GT_alignment",
+  "source_aggregation": "five defects equal within source; all 21 sources equal",
+  "endpoint": "A1 area-weighted E P95; A1 J P95/J Cover@2; Pred→A2 P95/>20 mm",
+  "shared_controls": [
+    "Nop_D",
+    "GT_8192"
+  ],
+  "formal_gate_in_this_execution": false
+}

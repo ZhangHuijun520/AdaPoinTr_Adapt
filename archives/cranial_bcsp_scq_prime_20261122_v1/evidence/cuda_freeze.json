@@ -1,0 +1,65 @@
+{
+  "status": "FORMAL_SCQ_PRIME_POST_CUDA_FREEZE_AUDIT_PASS",
+  "request_sha256": "adbc6721c4a92dbbe6765c22875ab7d4419d988deccf2ecc89a92dd27bbe0404",
+  "exit_code": 0,
+  "stable_remote_inventory": true,
+  "worker_absent": true,
+  "tmux_absent": true,
+  "server_writes": 0,
+  "audit_added_model_calls": 0,
+  "counts": {
+    "full_forward": 6,
+    "full_backward": 3,
+    "full_loss": 3,
+    "decoder_forward": 0,
+    "decoder_backward": 0,
+    "optimizer_steps": 0
+  },
+  "phases": [
+    "B_eval1",
+    "F_eval1",
+    "S_eval1",
+    "B_train8",
+    "F_train8",
+    "S_train8"
+  ],
+  "native_SSM_calls": 216,
+  "gradient_summary": {
+    "B": {
+      "loss": 0.4014521837234497,
+      "gradient_parameters": 403,
+      "head": null
+    },
+    "F": {
+      "loss": 0.4014521837234497,
+      "gradient_parameters": 407,
+      "head": {
+        "W1.weight": 0.0,
+        "W1.bias": 0.0,
+        "W2.weight": 0.19512809797474134,
+        "W2.bias": 0.041495925297497536
+      }
+    },
+    "S": {
+      "loss": 0.4014521837234497,
+      "gradient_parameters": 407,
+      "head": {
+        "W1.weight": 0.0,
+        "W1.bias": 0.0,
+        "W2.weight": 0.19254394801056052,
+        "W2.bias": 0.04149591368867541
+      }
+    }
+  },
+  "resource_rows": 47,
+  "peak": {
+    "peak_allocated": 13577099776,
+    "peak_reserved": 14826864640,
+    "device_MiB": 14628,
+    "RSS_bytes": 1923219456,
+    "elapsed_seconds": 63.53135738056153
+  },
+  "minimum_free_bytes": 10556014592,
+  "rng_and_state_restorations": 6,
+  "payload_members": 4
+}

@@ -1,0 +1,526 @@
+{
+  "status": "T1_C_FAIL_STOP",
+  "fold": "C",
+  "training_seed": 2026112101,
+  "preregistered_section": "8.1",
+  "formal_gate_executed": true,
+  "integrity_pass": true,
+  "F_equal_capacity_pass": true,
+  "F_control_underperforms": false,
+  "fold_D_allowed": false,
+  "failed": [
+    "S_minus_F/E_P95_mean_mm",
+    "S_minus_F/J_P95_mm",
+    "S_minus_F/J_coverage_2.0mm",
+    "S_minus_F/reverse_A2_outlier_20.0mm",
+    "S_minus_F/severe_total_change",
+    "S_minus_F/new_severe_cases"
+  ],
+  "source_weighted_arm_means": {
+    "B": {
+      "E_P95_mm": 11.34853427180072,
+      "J_P95_mm": 14.446285949432387,
+      "J_coverage_2.0mm": 43.085397960881835,
+      "reverse_A2_P95_mm": 14.248428494039223,
+      "reverse_A2_outlier_20.0mm": 7.831217447916666
+    },
+    "F": {
+      "E_P95_mm": 7.694521512620623,
+      "J_P95_mm": 10.577028795505143,
+      "J_coverage_2.0mm": 51.11676957099293,
+      "reverse_A2_P95_mm": 10.861292892207784,
+      "reverse_A2_outlier_20.0mm": 3.830798921130952
+    },
+    "S": {
+      "E_P95_mm": 8.495511767410177,
+      "J_P95_mm": 11.175713947497897,
+      "J_coverage_2.0mm": 45.749139415831245,
+      "reverse_A2_P95_mm": 11.330610924449433,
+      "reverse_A2_outlier_20.0mm": 4.757254464285714
+    }
+  },
+  "comparisons": {
+    "S_minus_B": {
+      "criteria": {
+        "E_P95_mean_mm": {
+          "actual": -2.8530225043905415,
+          "op": "<=",
+          "limit": -0.5,
+          "passed": true
+        },
+        "E_P95_improved_sources": {
+          "actual": 17,
+          "op": ">=",
+          "limit": 12,
+          "passed": true
+        },
+        "J_P95_mm": {
+          "actual": -3.2705720019344873,
+          "op": "<=",
+          "limit": 0.25,
+          "passed": true
+        },
+        "J_coverage_2.0mm": {
+          "actual": 2.6637414549494216,
+          "op": ">=",
+          "limit": -0.5,
+          "passed": true
+        },
+        "reverse_A2_P95_mm": {
+          "actual": -2.9178175695897943,
+          "op": "<=",
+          "limit": 0.5,
+          "passed": true
+        },
+        "reverse_A2_outlier_20.0mm": {
+          "actual": -3.0739629836309517,
+          "op": "<=",
+          "limit": 0.25,
+          "passed": true
+        },
+        "severe_total_change": {
+          "actual": -12,
+          "op": "<=",
+          "limit": 0,
+          "passed": true
+        },
+        "new_severe_cases": {
+          "actual": 1,
+          "op": "<=",
+          "limit": 2,
+          "passed": true
+        }
+      },
+      "source_CI95": {
+        "E_P95_mm": [
+          -4.434831455120973,
+          -1.4766223459428076
+        ],
+        "J_P95_mm": [
+          -4.977044354997619,
+          -1.7861802371422995
+        ],
+        "J_coverage_2.0mm": [
+          0.27935040592656013,
+          5.090520521885387
+        ],
+        "reverse_A2_P95_mm": [
+          -5.041064110348128,
+          -0.7340630900632839
+        ],
+        "reverse_A2_outlier_20.0mm": [
+          -6.137494768415179,
+          -0.08284795851934641
+        ]
+      },
+      "E_P95_sources": {
+        "improved": 17,
+        "tied": 0,
+        "worse": 4
+      },
+      "severe": {
+        "baseline_severe": 18,
+        "candidate_severe": 6,
+        "new_severe": 1,
+        "rescued_severe": 13,
+        "common_severe": 5
+      },
+      "new_severe_cases": [
+        {
+          "case_id": "train__013__parietotemporal",
+          "defect": "parietotemporal",
+          "baseline": {
+            "E_P95_mm": 3.9742773867745163,
+            "J_P95_mm": 4.682546665734731,
+            "J_coverage_2.0mm": 0.7231722840223587,
+            "reverse_A2_P95_mm": 16.054469561810045,
+            "reverse_A2_outlier_20.0mm": 0.0216064453125
+          },
+          "candidate": {
+            "E_P95_mm": 48.11996397086244,
+            "J_P95_mm": 53.13313986581493,
+            "J_coverage_2.0mm": 0.006087774641651444,
+            "reverse_A2_P95_mm": 54.54633959150658,
+            "reverse_A2_outlier_20.0mm": 0.8856201171875
+          },
+          "native_unit_deltas": {
+            "E_P95_mm": 44.145686584087926,
+            "J_P95_mm": 48.4505932000802,
+            "J_coverage_2.0mm": -0.7170845093807072,
+            "reverse_A2_P95_mm": 38.491870029696535,
+            "reverse_A2_outlier_20.0mm": 0.864013671875
+          },
+          "coarse_and_dense_stage": {
+            "B": {
+              "coarse": {
+                "centroid_offset_mm": 19.533996134886692,
+                "radius_gyration_ratio": 1.0434066705712999
+              },
+              "dense": {
+                "centroid_offset_mm": 13.931168586005136,
+                "radius_gyration_ratio": 0.9637391460858109
+              }
+            },
+            "S": {
+              "coarse": {
+                "centroid_offset_mm": 71.24571234452756,
+                "radius_gyration_ratio": 0.8596379734918581
+              },
+              "dense": {
+                "centroid_offset_mm": 59.821821043585686,
+                "radius_gyration_ratio": 0.7416961213822868
+              }
+            }
+          }
+        }
+      ],
+      "frontoorbital_means_native_units": {
+        "E_P95_mm": -10.980130099500293,
+        "J_P95_mm": -11.939358803150263,
+        "J_coverage_2.0mm": 0.10931024645823176,
+        "reverse_A2_P95_mm": -9.050619143112536,
+        "reverse_A2_outlier_20.0mm": -0.13758486793154762
+      }
+    },
+    "S_minus_F": {
+      "criteria": {
+        "E_P95_mean_mm": {
+          "actual": 0.8009902547895532,
+          "op": "<=",
+          "limit": -0.25,
+          "passed": false
+        },
+        "J_P95_mm": {
+          "actual": 0.598685151992755,
+          "op": "<=",
+          "limit": 0.25,
+          "passed": false
+        },
+        "J_coverage_2.0mm": {
+          "actual": -5.367630155161665,
+          "op": ">=",
+          "limit": -0.5,
+          "passed": false
+        },
+        "reverse_A2_P95_mm": {
+          "actual": 0.4693180322416485,
+          "op": "<=",
+          "limit": 0.5,
+          "passed": true
+        },
+        "reverse_A2_outlier_20.0mm": {
+          "actual": 0.9264555431547618,
+          "op": "<=",
+          "limit": 0.25,
+          "passed": false
+        },
+        "severe_total_change": {
+          "actual": 2,
+          "op": "<=",
+          "limit": 0,
+          "passed": false
+        },
+        "new_severe_cases": {
+          "actual": 3,
+          "op": "<=",
+          "limit": 2,
+          "passed": false
+        }
+      },
+      "source_CI95": {
+        "E_P95_mm": [
+          -0.5112160589897238,
+          2.031779032505516
+        ],
+        "J_P95_mm": [
+          -0.8566029416439335,
+          1.962457453317901
+        ],
+        "J_coverage_2.0mm": [
+          -7.4040087507688535,
+          -3.165240416144285
+        ],
+        "reverse_A2_P95_mm": [
+          -1.405933545382484,
+          2.4011420008234663
+        ],
+        "reverse_A2_outlier_20.0mm": [
+          -1.8212629045758937,
+          3.9232788085937487
+        ]
+      },
+      "E_P95_sources": {
+        "improved": 7,
+        "tied": 0,
+        "worse": 14
+      },
+      "severe": {
+        "baseline_severe": 4,
+        "candidate_severe": 6,
+        "new_severe": 3,
+        "rescued_severe": 1,
+        "common_severe": 3
+      },
+      "new_severe_cases": [
+        {
+          "case_id": "train__013__parietotemporal",
+          "defect": "parietotemporal",
+          "baseline": {
+            "E_P95_mm": 7.812020770402224,
+            "J_P95_mm": 9.585280944487955,
+            "J_coverage_2.0mm": 0.35408711052078135,
+            "reverse_A2_P95_mm": 17.051456696497485,
+            "reverse_A2_outlier_20.0mm": 0.0264892578125
+          },
+          "candidate": {
+            "E_P95_mm": 48.11996397086244,
+            "J_P95_mm": 53.13313986581493,
+            "J_coverage_2.0mm": 0.006087774641651444,
+            "reverse_A2_P95_mm": 54.54633959150658,
+            "reverse_A2_outlier_20.0mm": 0.8856201171875
+          },
+          "native_unit_deltas": {
+            "E_P95_mm": 40.307943200460215,
+            "J_P95_mm": 43.54785892132698,
+            "J_coverage_2.0mm": -0.3479993358791299,
+            "reverse_A2_P95_mm": 37.4948828950091,
+            "reverse_A2_outlier_20.0mm": 0.859130859375
+          },
+          "coarse_and_dense_stage": {
+            "F": {
+              "coarse": {
+                "centroid_offset_mm": 32.1602428641786,
+                "radius_gyration_ratio": 0.910515361124313
+              },
+              "dense": {
+                "centroid_offset_mm": 20.686775248074387,
+                "radius_gyration_ratio": 0.8345151266081637
+              }
+            },
+            "S": {
+              "coarse": {
+                "centroid_offset_mm": 71.24571234452756,
+                "radius_gyration_ratio": 0.8596379734918581
+              },
+              "dense": {
+                "centroid_offset_mm": 59.821821043585686,
+                "radius_gyration_ratio": 0.7416961213822868
+              }
+            }
+          }
+        },
+        {
+          "case_id": "train__038__random_1",
+          "defect": "random_1",
+          "baseline": {
+            "E_P95_mm": 18.05990784214776,
+            "J_P95_mm": 22.00974606128244,
+            "J_coverage_2.0mm": 0.3318397569774064,
+            "reverse_A2_P95_mm": 15.196967268131626,
+            "reverse_A2_outlier_20.0mm": 0.0140380859375
+          },
+          "candidate": {
+            "E_P95_mm": 23.89231258533804,
+            "J_P95_mm": 28.44208501469401,
+            "J_coverage_2.0mm": 0.2601101196126827,
+            "reverse_A2_P95_mm": 10.025383534836816,
+            "reverse_A2_outlier_20.0mm": 0.00048828125
+          },
+          "native_unit_deltas": {
+            "E_P95_mm": 5.832404743190281,
+            "J_P95_mm": 6.43233895341157,
+            "J_coverage_2.0mm": -0.07172963736472371,
+            "reverse_A2_P95_mm": -5.17158373329481,
+            "reverse_A2_outlier_20.0mm": -0.0135498046875
+          },
+          "coarse_and_dense_stage": {
+            "F": {
+              "coarse": {
+                "centroid_offset_mm": 26.37170982734735,
+                "radius_gyration_ratio": 0.7801766567885806
+              },
+              "dense": {
+                "centroid_offset_mm": 24.06152067777068,
+                "radius_gyration_ratio": 0.7655151054986074
+              }
+            },
+            "S": {
+              "coarse": {
+                "centroid_offset_mm": 26.22808957884917,
+                "radius_gyration_ratio": 0.6950768425087146
+              },
+              "dense": {
+                "centroid_offset_mm": 24.180315475832217,
+                "radius_gyration_ratio": 0.670672352113828
+              }
+            }
+          }
+        },
+        {
+          "case_id": "train__066__frontoorbital",
+          "defect": "frontoorbital",
+          "baseline": {
+            "E_P95_mm": 8.136323383515476,
+            "J_P95_mm": 12.794656165257868,
+            "J_coverage_2.0mm": 0.49214120072146345,
+            "reverse_A2_P95_mm": 14.084342548471993,
+            "reverse_A2_outlier_20.0mm": 0.0045166015625
+          },
+          "candidate": {
+            "E_P95_mm": 51.671816325919785,
+            "J_P95_mm": 57.62426485438026,
+            "J_coverage_2.0mm": 0.014815769131667088,
+            "reverse_A2_P95_mm": 61.00123871033367,
+            "reverse_A2_outlier_20.0mm": 0.8792724609375
+          },
+          "native_unit_deltas": {
+            "E_P95_mm": 43.53549294240431,
+            "J_P95_mm": 44.82960868912239,
+            "J_coverage_2.0mm": -0.47732543158979635,
+            "reverse_A2_P95_mm": 46.91689616186168,
+            "reverse_A2_outlier_20.0mm": 0.874755859375
+          },
+          "coarse_and_dense_stage": {
+            "F": {
+              "coarse": {
+                "centroid_offset_mm": 20.848185743150477,
+                "radius_gyration_ratio": 1.0560771859457614
+              },
+              "dense": {
+                "centroid_offset_mm": 18.163402332635656,
+                "radius_gyration_ratio": 1.0138130010939066
+              }
+            },
+            "S": {
+              "coarse": {
+                "centroid_offset_mm": 69.99058672781771,
+                "radius_gyration_ratio": 1.1057675723962201
+              },
+              "dense": {
+                "centroid_offset_mm": 65.27648084863416,
+                "radius_gyration_ratio": 0.9870486812715301
+              }
+            }
+          }
+        }
+      ],
+      "frontoorbital_means_native_units": {
+        "E_P95_mm": 2.0643480987939853,
+        "J_P95_mm": 2.254558596658583,
+        "J_coverage_2.0mm": -0.12250166360308214,
+        "reverse_A2_P95_mm": 2.688247461731272,
+        "reverse_A2_outlier_20.0mm": 0.03347632998511905
+      }
+    },
+    "F_minus_B": {
+      "criteria": {
+        "E_P95_mean_mm": {
+          "actual": -3.654012759180095,
+          "op": "<=",
+          "limit": 0.5,
+          "passed": true
+        }
+      },
+      "source_CI95": {
+        "E_P95_mm": [
+          -5.371034178851835,
+          -1.9688264222939404
+        ],
+        "J_P95_mm": [
+          -5.681546717420629,
+          -2.009569580046906
+        ],
+        "J_coverage_2.0mm": [
+          5.2950140992818575,
+          10.684352540147804
+        ],
+        "reverse_A2_P95_mm": [
+          -5.080414716516479,
+          -1.7471248596953115
+        ],
+        "reverse_A2_outlier_20.0mm": [
+          -6.424319312686012,
+          -1.7548246837797625
+        ]
+      },
+      "E_P95_sources": {
+        "improved": 18,
+        "tied": 0,
+        "worse": 3
+      },
+      "severe": {
+        "baseline_severe": 18,
+        "candidate_severe": 4,
+        "new_severe": 1,
+        "rescued_severe": 15,
+        "common_severe": 3
+      },
+      "new_severe_cases": [
+        {
+          "case_id": "train__107__parietotemporal",
+          "defect": "parietotemporal",
+          "baseline": {
+            "E_P95_mm": 19.668329686675264,
+            "J_P95_mm": 25.066614262301833,
+            "J_coverage_2.0mm": 0.3770406691664263,
+            "reverse_A2_P95_mm": 7.070776550131292,
+            "reverse_A2_outlier_20.0mm": 0.0
+          },
+          "candidate": {
+            "E_P95_mm": 22.90433929280888,
+            "J_P95_mm": 29.015940419342773,
+            "J_coverage_2.0mm": 0.4164984136140756,
+            "reverse_A2_P95_mm": 3.9394401994891273,
+            "reverse_A2_outlier_20.0mm": 0.0
+          },
+          "native_unit_deltas": {
+            "E_P95_mm": 3.236009606133617,
+            "J_P95_mm": 3.9493261570409395,
+            "J_coverage_2.0mm": 0.03945774444764927,
+            "reverse_A2_P95_mm": -3.1313363506421648,
+            "reverse_A2_outlier_20.0mm": 0.0
+          },
+          "coarse_and_dense_stage": {
+            "B": {
+              "coarse": {
+                "centroid_offset_mm": 21.674202206009927,
+                "radius_gyration_ratio": 0.7173053729972099
+              },
+              "dense": {
+                "centroid_offset_mm": 19.559544401907424,
+                "radius_gyration_ratio": 0.6758719331571503
+              }
+            },
+            "F": {
+              "coarse": {
+                "centroid_offset_mm": 13.903905120162005,
+                "radius_gyration_ratio": 0.8072290299800209
+              },
+              "dense": {
+                "centroid_offset_mm": 12.370127141939106,
+                "radius_gyration_ratio": 0.7605059000291065
+              }
+            }
+          }
+        }
+      ],
+      "frontoorbital_means_native_units": {
+        "E_P95_mm": -13.044478198294279,
+        "J_P95_mm": -14.193917399808848,
+        "J_coverage_2.0mm": 0.23181191006131385,
+        "reverse_A2_P95_mm": -11.738866604843805,
+        "reverse_A2_outlier_20.0mm": -0.17106119791666666
+      }
+    }
+  },
+  "inputs": {
+    "plan_sha256": "affc56f04cf2b94d40a8730074977934f460649b1670fe2c006c174db9e0fb5d",
+    "score_audit_sha256": "e790057427fae15bd21e74659aa15661ee7c178de4de4bbc685e4bcc2b7eb0b8",
+    "scoring_request_sha256": "8c0d908d60836d8921cf7405b973074f73a2e507843ee72438da3d3fca546154",
+    "paired_summary_sha256": "6af5a9da4875cf0af812f6ecf5e47a1ee9bf5312992b57016fb5dd7e463c7324"
+  },
+  "scoring_reruns": 0,
+  "new_forwards": 0,
+  "training_runs": 0,
+  "scoring_files_modified": 0
+}
