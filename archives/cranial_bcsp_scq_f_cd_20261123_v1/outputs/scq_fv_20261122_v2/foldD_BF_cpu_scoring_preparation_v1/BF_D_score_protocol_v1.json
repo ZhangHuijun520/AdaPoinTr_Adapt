@@ -1,0 +1,66 @@
+{
+  "status": "FROZEN_NO_SCORING_AUTHORIZATION",
+  "plan": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\docs\\cranial_bcsp_scq_prime_20261121_v2\\SCQ-F_FoldD_BF_\u4e24\u81c2\u590d\u73b0\u534f\u8bae_2026-11-23_v1.md",
+    "bytes": 8485,
+    "sha256": "8c8cde70a16b5b8cc599fa9355116c3ea32085a0fa496a33a1b6d0a1291e4cce"
+  },
+  "counts": {
+    "cases": 105,
+    "sources": 21,
+    "model_rows": 210,
+    "reused_control_rows": 210,
+    "total_rows": 210
+  },
+  "ordered_source_ids": [
+    "train:004",
+    "train:005",
+    "train:008",
+    "train:010",
+    "train:022",
+    "train:029",
+    "train:033",
+    "train:037",
+    "train:044",
+    "train:046",
+    "train:052",
+    "train:054",
+    "train:060",
+    "train:062",
+    "train:068",
+    "train:069",
+    "train:079",
+    "train:087",
+    "train:093",
+    "train:095",
+    "train:101"
+  ],
+  "pairs": [
+    "F minus B"
+  ],
+  "bootstrap": {
+    "engine": "PCG64",
+    "seed": 2026112303,
+    "replicates": 2000,
+    "unit": "paired_source"
+  },
+  "frame": "world_mm_D_only_inverse_normalization_no_GT_alignment",
+  "source_aggregation": "five defects equal within source; all 21 sources equal",
+  "endpoint": "A1 area-weighted E P95; A1 J P95/J Cover@2; Pred to A2 P95 and strictly greater than 20 mm",
+  "severe": "E P95 > 20 mm or J Cover@2 = 0",
+  "shared_controls_reused": [
+    "Nop_D",
+    "GT_8192"
+  ],
+  "gate_parameters": {
+    "E_P95_max_mm": -0.5,
+    "E_improved_sources_min": 14,
+    "J_P95_max_mm": 0.25,
+    "J_Cover_at_2_min_pp": -0.5,
+    "reverse_A2_P95_max_mm": 0.5,
+    "far20_max_pp": 0.25,
+    "severe_F_no_more_than_B": true,
+    "new_severe_max": 2
+  },
+  "formal_gate_in_this_execution": false
+}

@@ -1,0 +1,146 @@
+{
+  "status": "STOP_ADDITIONAL_CANDIDATE_RUNS_UNDER_PREREGISTERED_RULE",
+  "scoring_audit": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_fv_20261122_v2\\foldD_BF_cpu_scoring_preparation_v1\\BF_D_post_scoring_freeze_audit_v1.json",
+    "bytes": 2558,
+    "sha256": "0d59fbfa31b5f3b917d0c2b540fa8ac85f2f6758d6420929bb724ee86752fc41"
+  },
+  "request_sha256": "0f279325e0d0d3b4dc58595bfd88bdd85c70b6ccebffb6a642a14eae7ced0704",
+  "protocol": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_fv_20261122_v2\\foldD_BF_cpu_scoring_preparation_v1\\BF_D_score_protocol_v1.json",
+    "bytes": 1698,
+    "sha256": "4d97e9713336721da59673a3bf4b037d0946579a0510995f5b79dd256f82a3a9"
+  },
+  "seed": 2026112101,
+  "fold": "D",
+  "gates": [
+    {
+      "metric": "E_P95_mm",
+      "observed": 0.6599775676161352,
+      "comparison": "<=",
+      "threshold": -0.5,
+      "passed": false
+    },
+    {
+      "metric": "E_improved_sources",
+      "observed": 13,
+      "comparison": ">=",
+      "threshold": 14,
+      "passed": false
+    },
+    {
+      "metric": "J_P95_mm",
+      "observed": -0.09987318509311767,
+      "comparison": "<=",
+      "threshold": 0.25,
+      "passed": true
+    },
+    {
+      "metric": "J_Cover_at_2_pp",
+      "observed": 5.475655688502683,
+      "comparison": ">=",
+      "threshold": -0.5,
+      "passed": true
+    },
+    {
+      "metric": "reverse_A2_P95_mm",
+      "observed": 5.154312421129464,
+      "comparison": "<=",
+      "threshold": 0.5,
+      "passed": false
+    },
+    {
+      "metric": "far20_pp",
+      "observed": 3.7583705357142856,
+      "comparison": "<=",
+      "threshold": 0.25,
+      "passed": false
+    },
+    {
+      "metric": "F_severe_total",
+      "observed": 11,
+      "comparison": "<=",
+      "threshold": 10,
+      "passed": false
+    },
+    {
+      "metric": "new_severe",
+      "observed": 6,
+      "comparison": "<=",
+      "threshold": 2,
+      "passed": false
+    }
+  ],
+  "all_eight_pass": false,
+  "primary_E_source_CI95_mm": [
+    -1.0245481050041076,
+    2.3064410213406648
+  ],
+  "primary_E_leave_one_source_range_mm": [
+    0.32396575944227735,
+    0.9789301192640135
+  ],
+  "severe_counts": {
+    "baseline_severe": 10,
+    "candidate_severe": 11,
+    "new_severe": 6,
+    "rescued_severe": 5,
+    "common_severe": 5
+  },
+  "severe_case_lists": {
+    "baseline_severe": [
+      "train__004__random_2",
+      "train__008__frontoorbital",
+      "train__008__random_2",
+      "train__062__random_1",
+      "train__069__frontoorbital",
+      "train__069__parietotemporal",
+      "train__069__random_2",
+      "train__079__parietotemporal",
+      "train__087__frontoorbital",
+      "train__087__random_2"
+    ],
+    "candidate_severe": [
+      "train__008__frontoorbital",
+      "train__010__frontoorbital",
+      "train__022__random_1",
+      "train__060__bilateral",
+      "train__062__frontoorbital",
+      "train__068__frontoorbital",
+      "train__069__frontoorbital",
+      "train__069__random_2",
+      "train__087__frontoorbital",
+      "train__087__random_2",
+      "train__093__parietotemporal"
+    ],
+    "new_severe": [
+      "train__010__frontoorbital",
+      "train__022__random_1",
+      "train__060__bilateral",
+      "train__062__frontoorbital",
+      "train__068__frontoorbital",
+      "train__093__parietotemporal"
+    ],
+    "rescued_severe": [
+      "train__004__random_2",
+      "train__008__random_2",
+      "train__062__random_1",
+      "train__069__parietotemporal",
+      "train__079__parietotemporal"
+    ],
+    "common_severe": [
+      "train__008__frontoorbital",
+      "train__069__frontoorbital",
+      "train__069__random_2",
+      "train__087__frontoorbital",
+      "train__087__random_2"
+    ]
+  },
+  "efficiency": {
+    "P50_ms": 1.0302730553228758,
+    "peak_allocated_bytes": 1.011553548787196,
+    "peak_reserved_bytes": 1.0
+  },
+  "training_authorized": false,
+  "server_writes": 0
+}

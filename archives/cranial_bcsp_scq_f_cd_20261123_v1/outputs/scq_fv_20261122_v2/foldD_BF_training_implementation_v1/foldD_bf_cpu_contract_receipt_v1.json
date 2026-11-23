@@ -1,0 +1,58 @@
+{
+  "schema": "scq-fv-foldD-bf-local-cpu-contract-v1",
+  "recorded_at_Asia_Shanghai": "2026-11-23T00:31:29+08:00",
+  "status": "SCQ_FV_D_BF_TRAIN_ENTRY_CPU_FAILED",
+  "protocol_sha256": "8c8cde70a16b5b8cc599fa9355116c3ea32085a0fa496a33a1b6d0a1291e4cce",
+  "entry_sha256": "65509f954e7ce9636785343177d57e1a592b5e4a051f2122e4b1d0105f64241c",
+  "runtime_sha256": "09973e15bfebe820f39bed550b809e814a4b14c022b22863946ad25f3c5dd292",
+  "prime_worker_sha256": "158efb375acb7dc46c40a407c288a9108acdaaa6d89bb94cd31b8ff3eb0ad8d3",
+  "sources": [
+    {
+      "path": "E:/Codex/2026-06-06/mamba-ccf-c-1-high-resolution/outputs/scq_fv_20261122_v2/foldD_BF_training_implementation_v1/bcsp_scq_prime_foldD_bf_train_v1.py",
+      "bytes": 17210,
+      "sha256": "65509f954e7ce9636785343177d57e1a592b5e4a051f2122e4b1d0105f64241c"
+    },
+    {
+      "path": "E:/Codex/2026-06-06/mamba-ccf-c-1-high-resolution/outputs/scq_fv_20261122_v2/foldD_BF_training_implementation_v1/test_foldD_bf_cpu_v1.py",
+      "bytes": 13335,
+      "sha256": "974c21bbfd00c644d827ec02d379d3aa6aea46d579760afd257f015134eb1176"
+    }
+  ],
+  "python_version": "3.9.21 (main, Dec 11 2024, 16:35:24) [MSC v.1929 64 bit (AMD64)]",
+  "elapsed_seconds": 0.547,
+  "checks": {
+    "authorize_B_D_with_real_metadata_and_historical_admission": true,
+    "authorize_F_D_with_real_metadata_and_historical_admission": true,
+    "unsupported_arm": true,
+    "wrong_fold": true,
+    "wrong_seed": true,
+    "changed_order": true,
+    "wrong_data_root": true,
+    "request_hash_drift": true,
+    "missing_user_authorization": true,
+    "different_control_path": true,
+    "runtime_hash_drift": true,
+    "different_gpu": true,
+    "B_unexpected_predecessor": true,
+    "F_missing_predecessor": true,
+    "F_rejects_C_predecessor": true,
+    "F_rejects_old_C0_evidence": true,
+    "F_rejects_predecessor_count_drift": true,
+    "F_rejects_predecessor_BNCal": true,
+    "F_rejects_predecessor_order_drift": true,
+    "F_rejects_predecessor_init_drift": true,
+    "F_rejects_predecessor_pair_drift": true,
+    "F_rejects_predecessor_device_drift": true,
+    "F_rejects_unrelated_checkpoint_path": true
+  },
+  "exit_code": 1,
+  "artificial_controls_persisted": false,
+  "real_payloads_read": 0,
+  "model_or_optimizer_calls": 0,
+  "server_calls": 0,
+  "gpu_calls": 0,
+  "training_requests_created": 0,
+  "current_device_verified": false,
+  "training_authorized": false,
+  "stderr": "Traceback (most recent call last):\r\n  File \"E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_fv_20261122_v2\\foldD_BF_training_implementation_v1\\test_foldD_bf_cpu_v1.py\", line 203, in <module>\r\n    run(checks)\r\n  File \"E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_fv_20261122_v2\\foldD_BF_training_implementation_v1\\test_foldD_bf_cpu_v1.py\", line 197, in run\r\n    check(f\"original_dispatch_routes_{arm}_D_with_shared_runtime_contract\", dispatch)\r\n  File \"E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_fv_20261122_v2\\foldD_BF_training_implementation_v1\\test_foldD_bf_cpu_v1.py\", line 41, in check\r\n    fn()\r\n  File \"E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\scq_fv_20261122_v2\\foldD_BF_training_implementation_v1\\test_foldD_bf_cpu_v1.py\", line 194, in dispatch\r\n    assert parent.dispatch_training(q, selected, fold, plan, factory=SimpleNamespace(parent=None), model_builder=None,\r\n  File \"E:\\ResearchBackups\\AdaPoinTr\\BCSP_FULLMAMBA_SCQ_PRIME\\2026-11-22_code_results_v1\\code\\bcsp_scq_prime_foldC_train_v1.py\", line 219, in dispatch_training\r\n    return prime.train_admitted(run,model,evidence,runtime,q['implementation']['runtime']['sha256'],expected_common,admission,'cuda:0',lambda epoch:runtime.make_loader(dataset,plan,epoch),selected,plan,q['output'],numeric_check=helper.assert_numeric,resources=budget,knn_enable=knn_enable,state_fingerprint=helper.state_sha)\r\nTypeError: fake_train() takes 11 positional arguments but 12 were given\r\n"
+}

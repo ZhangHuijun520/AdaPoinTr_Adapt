@@ -1,0 +1,110 @@
+{
+  "status": "FORMAL_SCQ_PRIME_BFS_C_POST_SCORE_FREEZE_PASS",
+  "request_sha256": "8c0d908d60836d8921cf7405b973074f73a2e507843ee72438da3d3fca546154",
+  "fold": "C",
+  "seed": 2026112101,
+  "counts": {
+    "cases": 105,
+    "sources": 21,
+    "model_rows": 315,
+    "control_rows": 210,
+    "total_rows": 525,
+    "source_rows": 105,
+    "case_pairs_per_contrast": 105,
+    "contrasts": 3,
+    "bootstrap_draws": 2000
+  },
+  "exit_code": 0,
+  "checks": [
+    "authorized_request_hash",
+    "exact_five_scoring_outputs",
+    "exact_seven_execution_files",
+    "authorization_and_single_attempt",
+    "execution_and_completion_record_match",
+    "process_stream_hashes",
+    "frozen_scoring_and_prediction_bindings",
+    "validated_upstream_prediction_freeze",
+    "exact_105_paired_cases_and_525_ordered_rows",
+    "315_model_210_control_rows_no_duplicates",
+    "all_case_metadata_primary_metrics_and_severe_flags",
+    "all_210_control_rows_match_historical_scores",
+    "CSV_exact_match_to_JSONL",
+    "independently_reduced_105_source_rows",
+    "independent_shared_PCG64_draws",
+    "exact_three_contrasts_and_no_formal_gate",
+    "S_minus_B_105_pairs_severity_defects_source_means_and_bootstrap",
+    "S_minus_F_105_pairs_severity_defects_source_means_and_bootstrap",
+    "F_minus_B_105_pairs_severity_defects_source_means_and_bootstrap",
+    "all_output_and_execution_hashes_stable"
+  ],
+  "inventory": {
+    "output": {
+      "case_metrics.csv": {
+        "bytes": 272843,
+        "sha256": "9e574ccab86283ce077962bd2715af2822facaf28c43916360a08d46beef6b7a",
+        "mtime_ns": 1795339081129301200
+      },
+      "case_metrics.jsonl": {
+        "bytes": 3070587,
+        "sha256": "f9f3aa8881e23052cc5fc768e952306aec44564a89ed4641675e0b526d4f80a4",
+        "mtime_ns": 1795339081043305300
+      },
+      "completion.json": {
+        "bytes": 380,
+        "sha256": "740d24928e665ecb1a996f1fd063af4191c2c1b93f28a988075f783e9413c89c",
+        "mtime_ns": 1795339081130301800
+      },
+      "paired_comparisons.json": {
+        "bytes": 704073,
+        "sha256": "6af5a9da4875cf0af812f6ecf5e47a1ee9bf5312992b57016fb5dd7e463c7324",
+        "mtime_ns": 1795339081116301000
+      },
+      "source_metrics.json": {
+        "bytes": 146279,
+        "sha256": "2022d5f3c48052e38d164eab8be2ccb2b65062459bf4f91bddcdcbf0edffa505",
+        "mtime_ns": 1795339081094369700
+      }
+    },
+    "execution": {
+      "attempt_claim_v1.json": {
+        "bytes": 1257,
+        "sha256": "dfb38c432439142ba6c24a8f31c35894c19e0b380854ee5a8f6d21d1608cc471",
+        "mtime_ns": 1795338297607111300
+      },
+      "execution_result_v1.json": {
+        "bytes": 918,
+        "sha256": "606cb46d4563cc59eb12bda1419131f9c04f7e3be47ba3584b149dff1a19d0d4",
+        "mtime_ns": 1795339081182595700
+      },
+      "prelaunch_verification_v1.json": {
+        "bytes": 452,
+        "sha256": "3708d8028acd38b12b9c156f942157f7a7bfc1ef53baa7711faa32639bb5e3af",
+        "mtime_ns": 1795338297597032200
+      },
+      "score_authorization_v1.json": {
+        "bytes": 258,
+        "sha256": "73abfaae74fad9521b4d49534518611ce57ab46fbbe7d6d559d8b43160c64bab",
+        "mtime_ns": 1795338297597032200
+      },
+      "stderr_v1.bin": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mtime_ns": 1795338297608112000
+      },
+      "stdout_v1.bin": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mtime_ns": 1795338297608112000
+      },
+      "worker_started_v1.json": {
+        "bytes": 106,
+        "sha256": "7b735d00f4d04920ea78a441be5c234a406bc133cc0302d56405c30c7b752df4",
+        "mtime_ns": 1795338297620044900
+      }
+    }
+  },
+  "scoring_reruns": 0,
+  "formal_gate_executed": false,
+  "server_calls": 0,
+  "audit_scope": "Independent aggregation, CSV consistency, and bootstrap from frozen scores. Geometry distances were not recomputed."
+}
