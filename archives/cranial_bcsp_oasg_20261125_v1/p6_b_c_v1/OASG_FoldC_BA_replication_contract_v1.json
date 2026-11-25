@@ -1,0 +1,84 @@
+{
+  "status": "FOLD_C_PAIR_PROTOCOL_FROZEN",
+  "prior_Fold_D_P5": {
+    "path": "outputs/bcsp_oasg_20261124_v1/p4_cpu_scoring_v1/OASG_BA_D_P5_preregistered_decision_v1.json",
+    "bytes": 24587,
+    "sha256": "5a4b3e1c6121e34ccd6ed719b97362aedc8cb2bb71623d03c1275c1f908e1e5d"
+  },
+  "run_order": [
+    "B_C",
+    "A_C"
+  ],
+  "fold": "C",
+  "training_seed": 2026112101,
+  "data_root": "/home/USER/adapointr_work/PoinTr/data/bcsp_geov1_foldc_8192_seed0_v1",
+  "order": {
+    "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldC_seed0_v1.json",
+    "sha256": "6ab424177d5227bd34585a710eedca578acdd2eeb226bec10cdfc86ee89cec9d",
+    "bytes": 1248506
+  },
+  "order_canonical_sha256": "349189dcada4c41b9e6b0152fa24695b2c71ce5fce4144865247d03c445f795f",
+  "counts": {
+    "batch": 8,
+    "cases": 315,
+    "sources": 63,
+    "epochs": 100,
+    "batches_per_epoch": 39,
+    "updates": 3900,
+    "exposures": 31200,
+    "drop_slots": 300
+  },
+  "n_input": 8192,
+  "n_output": 8192,
+  "resource_thresholds": {
+    "wall_seconds": 86400,
+    "monitor_interval_seconds": 2,
+    "smi_timeout_seconds": 8,
+    "rss_bytes": 8589934592,
+    "minimum_disk_bytes": 4294967296,
+    "output_bytes": 2147483648,
+    "torch_peak_bytes": 21474836480,
+    "device_used_MiB": 22528,
+    "idle_used_MiB": 256,
+    "minimum_start_free_MiB": 20480
+  },
+  "minimum_free_bytes_prelaunch": 6442450944,
+  "same_gpu_for_pair": {
+    "hostname": "notebook-a7jkrj-0",
+    "uid": 1000,
+    "gpu_uuid": "GPU-3fea2502-c54e-30e1-ae67-8696c29238d2",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "total_MiB": "24564",
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "torch_cuda_version": "11.8"
+  },
+  "same_shared_initial_state_sha256": "0238e3fc6dba4fd74f47c0a7a7fdaf8e19293c3bf257485bf629c110a200487b",
+  "untrained_mother": true,
+  "historical_B_C_for_initialization_and_order_only": {
+    "path": "outputs/scq_prime_foldC_training_preparation_20261122_v1/B_C_post_training_freeze_v1/B_C_post_training_freeze_receipt_v1.json",
+    "bytes": 2071,
+    "sha256": "e27b26d12607b67d88750351745696911281f80f17587d93e3c97d926bc631aa"
+  },
+  "A_head_frozen_initializer": {
+    "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_oasg_p2_20261124_v1/OASG_head_init_seed2026112402_v1.bin",
+    "bytes": 7362572,
+    "sha256": "a445481a3400d4c8ef6d07af164d64430d9fc2c9ec30a80f0d339bb5a636966b",
+    "seed": 2026112402
+  },
+  "formula": "Q_i = S_i + g([z,F_i,S_i])",
+  "fold_C_entry": {
+    "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_oasg_p6_b_c_20261124_v1/bcsp_oasg_entry_foldc_v1.py",
+    "bytes": 9311,
+    "sha256": "fc2b8e8305c259cf89cf213fc384cbfd0f2447f75ce9b37f79b4a773c5d4fc97"
+  },
+  "A_C_final_request": "Bind B_C formal post-training freeze receipt before creating the executable request.",
+  "evaluation": "Same 105 Fold C cases per arm, 210 Native forwards, original scoring and thresholds.",
+  "numerical_scope": "same FP32 execution path with known Mamba finite CUDA gradient nondeterminism",
+  "interpretation": "same-project cross-fold replication; training seed fixed and development folds previously used",
+  "automatic_retry": false
+}

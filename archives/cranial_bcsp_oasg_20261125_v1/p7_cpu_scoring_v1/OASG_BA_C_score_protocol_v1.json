@@ -1,0 +1,73 @@
+{
+  "plan": {
+    "path": "<LOCAL_USER>\\Desktop\\Cranial_BCSP_FullMamba_BCSP_OASG_\u6b63\u5f0f\u5b9e\u9a8c\u8ba1\u5212\u4e66_zh_2026-11-24_v1.md",
+    "bytes": 23888,
+    "sha256": "cbf3b49d097ff4635b0cd69b654bb79101eeaf00bf93ee2e1760ea41ab67e096"
+  },
+  "status": "FROZEN_SCORING_SCOPE",
+  "counts": {
+    "model_rows": 210,
+    "case_pairs": 105,
+    "sources": 21,
+    "bootstrap_replicates": 2000
+  },
+  "comparison": "A_minus_B",
+  "frame": "native_world_mm_no_alignment",
+  "endpoint": {
+    "coarse_points": 256,
+    "dense_points": 8192,
+    "forward": "area-weighted A1 face-center E/J P95 and Cover at 2 mm",
+    "reverse": "unweighted Pred to A2 P95 and strict >20 mm",
+    "dense_CD_L1": "half sum of mean NN in both directions",
+    "severe": "dense E P95 >20 mm or dense J Cover@2 = 0"
+  },
+  "source_aggregation": {
+    "five_defects_per_source_equal": true,
+    "sources_equal": true,
+    "ordered_ids": [
+      "train:001",
+      "train:003",
+      "train:012",
+      "train:013",
+      "train:025",
+      "train:026",
+      "train:036",
+      "train:038",
+      "train:041",
+      "train:042",
+      "train:047",
+      "train:051",
+      "train:053",
+      "train:061",
+      "train:066",
+      "train:072",
+      "train:076",
+      "train:081",
+      "train:094",
+      "train:105",
+      "train:107"
+    ],
+    "report": [
+      "case_deltas",
+      "95_percentile_interval",
+      "improved_source_count",
+      "leave_one_source_range",
+      "defect_descriptives"
+    ]
+  },
+  "bootstrap": {
+    "generator": "PCG64",
+    "seed": 2026112401,
+    "replicates": 2000,
+    "sources_per_draw": 21
+  },
+  "display_units": {
+    "coverage_and_far20_aggregate": "percentage points",
+    "case_and_defect_deltas": "native fractions",
+    "distances": "mm",
+    "radius": "ratio"
+  },
+  "formal_gate_separate": true,
+  "forward_calls": 0,
+  "new_control_rows": 0
+}

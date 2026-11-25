@@ -1,0 +1,122 @@
+{
+  "schema": "bcsp-oasg-post-p2-freeze-v1",
+  "status": "FORMAL_P2_READ_ONLY_FREEZE_AUDIT_PASS",
+  "identity": {
+    "hostname": "notebook-a7jkrj-0",
+    "uid": 1000,
+    "gpu_uuid": "GPU-3fea2502-c54e-30e1-ae67-8696c29238d2",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "total_MiB": "24564",
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "torch_cuda_version": "11.8"
+  },
+  "output": "/home/USER/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/OASG_P2_D_seed2026112101_a7jkrj_v1",
+  "request_sha256": "49eb2448b68eea012b4282ec6f185bc86c5d3803b72f44dba4f0bec6030bda20",
+  "exit_code": 0,
+  "controls_sha256": {
+    "OASG_P2_cuda_execution_request_v1.json": "49eb2448b68eea012b4282ec6f185bc86c5d3803b72f44dba4f0bec6030bda20",
+    "authorization_v1.json": "5c34450668ace7c5e3196e523b16b94aaa08f883adda7f6f08b40d87361ba84b",
+    "runtime_v1.json": "d59f75780b0c25fe74d4b6726f3e5a7e267915016c6ed50fcc00f2a096bb6289",
+    "launch_oasg_p2_once_v1.sh": "dd27f64be105cab43dca999cfcec109a36630f0a8dc37717add866365ac8ff29",
+    "oasg_p2_worker_v1.py": "1622238a71861c842617733c9d5e1c47a1bb22b02491f0e0a48369997d651dfb"
+  },
+  "one_way_control_binding_verified": true,
+  "artifacts": [
+    {
+      "path": "/home/USER/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/OASG_P2_D_seed2026112101_a7jkrj_v1/completion.json",
+      "bytes": 113,
+      "sha256": "fe19c23a79a059b366d6a3aa54c907bfe00a96fa91450d913d8c209f3aba5b94"
+    },
+    {
+      "path": "/home/USER/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/OASG_P2_D_seed2026112101_a7jkrj_v1/events.jsonl",
+      "bytes": 30698,
+      "sha256": "1d95e399625b1dce0d0ec0d932b03d8cd0633ac2548192e55ef03e64ff9033be"
+    },
+    {
+      "path": "/home/USER/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/OASG_P2_D_seed2026112101_a7jkrj_v1/exit_code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "/home/USER/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/OASG_P2_D_seed2026112101_a7jkrj_v1/launch.log",
+      "bytes": 2388,
+      "sha256": "8d9c0b5e24f53c20b599ae93b6ab9155a6cb45233330b0eb87cc852c189952a9"
+    },
+    {
+      "path": "/home/USER/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/OASG_P2_D_seed2026112101_a7jkrj_v1/launcher.pid",
+      "bytes": 4,
+      "sha256": "d35afb174a7f8cee01b12d840310722409dfce5ae07492ccd5dd346eb94ad661"
+    }
+  ],
+  "directories": [
+    "cache",
+    "hf",
+    "mplconfig",
+    "tmp",
+    "triton"
+  ],
+  "stable_rehash": true,
+  "counts": {
+    "counts": {
+      "forward": 2,
+      "loss": 2,
+      "backward": 2,
+      "optimizer_step": 0
+    },
+    "rows": 96,
+    "wall_from_mtimes": 165,
+    "pid": 746
+  },
+  "gradient_checks": {
+    "shared": "0238e3fc6dba4fd74f47c0a7a7fdaf8e19293c3bf257485bf629c110a200487b",
+    "grad_counts": {
+      "B": {
+        "coarse_head": 4,
+        "shared_encoder": 106,
+        "dense_head": 4
+      },
+      "A": {
+        "coarse_head": 6,
+        "shared_encoder": 106,
+        "dense_head": 4
+      }
+    },
+    "restoration": true
+  },
+  "resources_observed": {
+    "peak": {
+      "B": {
+        "allocated": 13511775232,
+        "reserved": 14753464320
+      },
+      "A": {
+        "allocated": 13586985984,
+        "reserved": 14753464320
+      }
+    },
+    "used_MiB": 14558,
+    "rss_bytes": 1867194368,
+    "min_disk_bytes": 7852785664,
+    "output_bytes": 33205,
+    "samples": 83
+  },
+  "resources_frozen": {
+    "wall_seconds": 1800,
+    "monitor_interval_seconds": 2,
+    "smi_timeout_seconds": 8,
+    "rss_bytes": 8589934592,
+    "minimum_disk_bytes": 4294967296,
+    "output_bytes": 134217728,
+    "torch_peak_bytes": 21474836480,
+    "device_used_MiB": 22528,
+    "idle_used_MiB": 256,
+    "minimum_start_free_MiB": 20480
+  },
+  "server_writes": 0,
+  "forward_reexecutions": 0
+}

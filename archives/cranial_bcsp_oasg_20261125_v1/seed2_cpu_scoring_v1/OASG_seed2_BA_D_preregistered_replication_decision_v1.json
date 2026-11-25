@@ -1,0 +1,304 @@
+{
+  "schema": "bcsp-oasg-seed2-fold-d-preregistered-decision-v1",
+  "status": "PASS_SECOND_SEED_FOLD_D_REPLICATION_RETAIN_OASG_LQI",
+  "date_Asia_Shanghai": "2026-11-25",
+  "fold": "D",
+  "training_seed": 2026112102,
+  "comparison": "A_minus_B",
+  "evidence": {
+    "protocol": {
+      "path": "<WORKSPACE>\\outputs\\bcsp_oasg_20261124_v1\\OASG_\u7b2c\u4e8c\u79cd\u5b50\u9a8c\u8bc1\u534f\u8bae_zh_v1.md",
+      "bytes": 8144,
+      "sha256": "1bdff41eb567e781b4c786bce84f92f047768e57305a1b881b162177c21df281"
+    },
+    "original_plan": {
+      "path": "<LOCAL_USER>\\Desktop\\Cranial_BCSP_FullMamba_BCSP_OASG_\u6b63\u5f0f\u5b9e\u9a8c\u8ba1\u5212\u4e66_zh_2026-11-24_v1.md",
+      "bytes": 23888,
+      "sha256": "cbf3b49d097ff4635b0cd69b654bb79101eeaf00bf93ee2e1760ea41ab67e096"
+    },
+    "first_seed_decision": {
+      "path": "<WORKSPACE>\\outputs\\bcsp_oasg_20261124_v1\\p7_cpu_scoring_v1\\OASG_BA_CD_preregistered_replication_decision_v1.json",
+      "bytes": 54496,
+      "sha256": "9a87d1f6ca7699727a5e6015b4a8eca4fc09a769f2f58d55f060fc1b632b4de1"
+    },
+    "score_freeze": {
+      "path": "<WORKSPACE>\\outputs\\bcsp_oasg_20261124_v1\\seed2_cpu_scoring_v1\\seed2_BA_D_formal_post_score_freeze_receipt_v1.json",
+      "bytes": 3046,
+      "sha256": "6554f3ad913793e7f6ab3a48725fd4785437049f509350f9a25c0664205c4fa6"
+    },
+    "source_summary": {
+      "path": "<WORKSPACE>\\outputs\\bcsp_oasg_20261124_v1\\seed2_cpu_scoring_v1\\scored_once_v1\\source_summary.json",
+      "bytes": 24101,
+      "sha256": "8ea1360e30d69b576af477fe533512d68f6a1f9b749bfbf605885ae750e2555e"
+    },
+    "score_request": {
+      "path": "<WORKSPACE>\\outputs\\bcsp_oasg_20261124_v1\\seed2_cpu_scoring_v1\\OASG_seed2_BA_D_CPU_scoring_execution_request_v1.json",
+      "bytes": 5735,
+      "sha256": "5e6e26b23737d903e08413681971ae5cc7d3ac47132312ac7e12504e02df347c"
+    },
+    "paired_training_freeze": {
+      "path": "<WORKSPACE>\\outputs\\bcsp_oasg_20261124_v1\\seed2_training_v1\\seed2_A_D_formal_post_training_pair_freeze_receipt_v1.json",
+      "bytes": 9242,
+      "sha256": "7f8fa5b63bac55026c1423df5cfb1dc55b83fe2698b2b8ed24b23ed0628b61c0"
+    },
+    "first_seed_D_training_request": {
+      "path": "<WORKSPACE>\\outputs\\bcsp_oasg_20261124_v1\\p3_a_d_v1\\OASG_A_D_training_execution_request_v1.json",
+      "bytes": 15355,
+      "sha256": "ad34d559e1c0604fe065d24d32077e78d95c4e99314007eb81dbaa7e11d38fa6"
+    }
+  },
+  "passed_groups": 6,
+  "total_groups": 6,
+  "group_pass": {
+    "coarse_mechanism": true,
+    "dense_benefit": true,
+    "dense_interface": true,
+    "dense_reverse_risk": true,
+    "dense_severe_tail": true,
+    "uncertainty": true
+  },
+  "gate_groups": {
+    "coarse_mechanism": {
+      "E_P95_delta": {
+        "observed": -3.3280033022578484,
+        "operator": "<=",
+        "threshold": -0.5,
+        "unit": "mm",
+        "passed": true,
+        "margin_to_threshold": 2.8280033022578484
+      },
+      "far20_delta": {
+        "observed": -5.651041666666667,
+        "operator": "<=",
+        "threshold": -1.0,
+        "unit": "pp",
+        "passed": true,
+        "margin_to_threshold": 4.651041666666667
+      }
+    },
+    "dense_benefit": {
+      "E_P95_delta": {
+        "observed": -2.9468254507976464,
+        "operator": "<=",
+        "threshold": -0.5,
+        "unit": "mm",
+        "passed": true,
+        "margin_to_threshold": 2.4468254507976464
+      },
+      "improved_sources": {
+        "observed": 20,
+        "operator": ">=",
+        "threshold": 14,
+        "unit": "sources of 21",
+        "passed": true,
+        "margin_to_threshold": 6
+      }
+    },
+    "dense_interface": {
+      "J_P95_delta": {
+        "observed": -2.9721329886143804,
+        "operator": "<=",
+        "threshold": 0.25,
+        "unit": "mm",
+        "passed": true,
+        "margin_to_threshold": 3.2221329886143804
+      },
+      "J_Cover_at_2_delta": {
+        "observed": 4.67160869313337,
+        "operator": ">=",
+        "threshold": -0.5,
+        "unit": "pp",
+        "passed": true,
+        "margin_to_threshold": 5.17160869313337
+      }
+    },
+    "dense_reverse_risk": {
+      "reverse_A2_P95_delta": {
+        "observed": -6.384330245719062,
+        "operator": "<=",
+        "threshold": 0.5,
+        "unit": "mm",
+        "passed": true,
+        "margin_to_threshold": 6.884330245719062
+      },
+      "far20_delta": {
+        "observed": -4.403831845238095,
+        "operator": "<=",
+        "threshold": 0.25,
+        "unit": "pp",
+        "passed": true,
+        "margin_to_threshold": 4.653831845238095
+      }
+    },
+    "dense_severe_tail": {
+      "A_severe_total": {
+        "observed": 3,
+        "operator": "<=",
+        "threshold": 11,
+        "unit": "cases of 105",
+        "passed": true,
+        "margin_to_threshold": 8
+      },
+      "A_new_severe": {
+        "observed": 1,
+        "operator": "<=",
+        "threshold": 2,
+        "unit": "cases of 105",
+        "passed": true,
+        "margin_to_threshold": 1
+      }
+    },
+    "uncertainty": {
+      "dense_E_P95_CI95_upper": {
+        "observed": -1.9413971933913474,
+        "operator": "<",
+        "threshold": 0.0,
+        "unit": "mm",
+        "passed": true,
+        "margin_to_threshold": 1.9413971933913474
+      }
+    }
+  },
+  "coarse_far20_arm_percent": {
+    "B": 8.031994047619047,
+    "A": 2.380952380952381
+  },
+  "coarse_far20_branch": "B_at_least_2pct",
+  "dense_E_CI95": [
+    -4.031652462774168,
+    -1.9413971933913474
+  ],
+  "dense_E_leave_one_source_range": [
+    -3.1863484752629256,
+    -2.6698256504116222
+  ],
+  "dense_J_P95_CI95": [
+    -4.225893630246099,
+    -1.7404125721335542
+  ],
+  "dense_J_Cover_at_2_CI95": [
+    1.7144686656295374,
+    7.494444422415259
+  ],
+  "dense_reverse_A2_P95_CI95": [
+    -8.908298575206604,
+    -4.294610595287008
+  ],
+  "dense_far20_CI95": [
+    -6.894763764880952,
+    -2.2108444940476195
+  ],
+  "severe_case_ids": {
+    "B": [
+      "train__008__bilateral",
+      "train__010__frontoorbital",
+      "train__010__random_2",
+      "train__022__frontoorbital",
+      "train__046__parietotemporal",
+      "train__052__frontoorbital",
+      "train__062__random_1",
+      "train__068__random_2",
+      "train__069__random_2",
+      "train__079__frontoorbital",
+      "train__087__frontoorbital"
+    ],
+    "A": [
+      "train__037__random_1",
+      "train__079__frontoorbital",
+      "train__087__frontoorbital"
+    ],
+    "new": [
+      "train__037__random_1"
+    ],
+    "rescued": [
+      "train__008__bilateral",
+      "train__010__frontoorbital",
+      "train__010__random_2",
+      "train__022__frontoorbital",
+      "train__046__parietotemporal",
+      "train__052__frontoorbital",
+      "train__062__random_1",
+      "train__068__random_2",
+      "train__069__random_2"
+    ],
+    "common": [
+      "train__079__frontoorbital",
+      "train__087__frontoorbital"
+    ]
+  },
+  "comparisons": {
+    "C_seed1": {
+      "coarse_E": -7.004321258151397,
+      "coarse_far20": -7.444196428571429,
+      "dense_E": -6.629565656629991,
+      "dense_E_CI95": [
+        -9.047545118654838,
+        -4.488235041612888
+      ],
+      "dense_E_improved_sources": 21,
+      "dense_J": -8.824959259056369,
+      "dense_J_cover": 15.745371476316961,
+      "dense_reverse": -5.45045927395587,
+      "dense_far20": -5.967378162202381,
+      "severe": {
+        "B": 16,
+        "A": 2,
+        "new": 0,
+        "rescued": 14,
+        "common": 2
+      }
+    },
+    "D_seed1": {
+      "coarse_E": -6.529439410478654,
+      "coarse_far20": -7.976190476190476,
+      "dense_E": -5.769584238735197,
+      "dense_E_CI95": [
+        -8.461358076607494,
+        -3.4534368296906703
+      ],
+      "dense_E_improved_sources": 20,
+      "dense_J": -6.400013654146213,
+      "dense_J_cover": 12.24958716934087,
+      "dense_reverse": -7.492354907141049,
+      "dense_far20": -7.634974888392857,
+      "severe": {
+        "B": 12,
+        "A": 1,
+        "new": 0,
+        "rescued": 11,
+        "common": 1
+      }
+    },
+    "D_seed2": {
+      "coarse_E": -3.3280033022578484,
+      "coarse_far20": -5.651041666666667,
+      "dense_E": -2.9468254507976464,
+      "dense_E_CI95": [
+        -4.031652462774168,
+        -1.9413971933913474
+      ],
+      "dense_E_improved_sources": 20,
+      "dense_J": -2.9721329886143804,
+      "dense_J_cover": 4.67160869313337,
+      "dense_reverse": -6.384330245719062,
+      "dense_far20": -4.403831845238095,
+      "severe": {
+        "B": 11,
+        "A": 3,
+        "new": 1,
+        "rescued": 9,
+        "common": 2
+      }
+    }
+  },
+  "same_device_and_bound_software": true,
+  "scope": {
+    "shared_development_sources_across_D_seeds": true,
+    "bootstrap_unit": "source at fixed checkpoints",
+    "A_head_initialization_reused": true,
+    "limited_Mamba_CUDA_gradient_nondeterminism": true,
+    "independent_source_generalization_established": false,
+    "fold_C_seed2_evaluated": false
+  },
+  "additional_scoring_prediction_or_training_calls": 0
+}

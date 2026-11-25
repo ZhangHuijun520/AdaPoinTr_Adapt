@@ -1,0 +1,365 @@
+{
+  "schema": "bcsp-oasg-p2-cuda-execution-v1",
+  "status": "AWAITING_EXPLICIT_USER_AUTHORIZATION",
+  "execution_authorized": false,
+  "project": "/home/USER/adapointr_work/PoinTr",
+  "output": "/home/USER/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/OASG_P2_D_seed2026112101_a7jkrj_v1",
+  "site_packages": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages",
+  "model_root": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3",
+  "identity": {
+    "hostname": "notebook-a7jkrj-0",
+    "uid": 1000,
+    "gpu_uuid": "GPU-3fea2502-c54e-30e1-ae67-8696c29238d2",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "driver_version": "570.190",
+    "total_MiB": "24564",
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20",
+    "torch_version": "2.4.1+cu118",
+    "numpy_version": "2.2.6",
+    "timm_version": "1.0.27",
+    "torch_cuda_version": "11.8"
+  },
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "GPU-3fea2502-c54e-30e1-ae67-8696c29238d2",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "CUDA_CACHE_DISABLE": "1",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "MPLBACKEND": "Agg",
+    "TMPDIR": "/home/USER/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/OASG_P2_D_seed2026112101_a7jkrj_v1/tmp",
+    "XDG_CACHE_HOME": "/home/USER/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/OASG_P2_D_seed2026112101_a7jkrj_v1/cache",
+    "MPLCONFIGDIR": "/home/USER/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/OASG_P2_D_seed2026112101_a7jkrj_v1/mplconfig",
+    "TRITON_CACHE_DIR": "/home/USER/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/OASG_P2_D_seed2026112101_a7jkrj_v1/triton",
+    "HF_HOME": "/home/USER/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/OASG_P2_D_seed2026112101_a7jkrj_v1/hf"
+  },
+  "science": {
+    "fold": "D",
+    "seed": 2026112101,
+    "arms": [
+      "B",
+      "A"
+    ],
+    "batch": 8,
+    "forward": 2,
+    "loss": 2,
+    "backward": 2,
+    "optimizer_step": 0
+  },
+  "resources": {
+    "wall_seconds": 1800,
+    "monitor_interval_seconds": 2,
+    "smi_timeout_seconds": 8,
+    "rss_bytes": 8589934592,
+    "minimum_disk_bytes": 4294967296,
+    "output_bytes": 134217728,
+    "torch_peak_bytes": 21474836480,
+    "device_used_MiB": 22528,
+    "idle_used_MiB": 256,
+    "minimum_start_free_MiB": 20480
+  },
+  "inputs": [
+    {
+      "case_id": "train__112__random_1",
+      "source_id": "train:112",
+      "path": "/home/USER/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__112__random_1_8192.npz",
+      "bytes": 158448,
+      "sha256": "1af4e388bd5315ee796d8899b5b14e92163daff47198774340a9cbc9c8adaa94",
+      "target_array_sha256": "601278fcc84645ced256e01e62db945acf9c01921337682f32358d646b558bd9"
+    },
+    {
+      "case_id": "train__035__bilateral",
+      "source_id": "train:035",
+      "path": "/home/USER/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__035__bilateral_8192.npz",
+      "bytes": 156784,
+      "sha256": "97c09e7097da211e9d5885bbc53886afff30d6f57e7225bce928d6dabc5939c5",
+      "target_array_sha256": "4ec893d2b13da5e6a3685a9cb8dc9794eb6f062e7b67f849d113860ecd1f4724"
+    },
+    {
+      "case_id": "train__110__random_2",
+      "source_id": "train:110",
+      "path": "/home/USER/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__110__random_2_8192.npz",
+      "bytes": 158146,
+      "sha256": "216dbe6f7b936d8104498d2747879426a46103496ad2f3fca9084541512a38df",
+      "target_array_sha256": "919a31a5118c4106a3e9e052f1c55cc0bc6c14fd92ed240a2b5671a970c61bbb"
+    },
+    {
+      "case_id": "train__055__bilateral",
+      "source_id": "train:055",
+      "path": "/home/USER/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__055__bilateral_8192.npz",
+      "bytes": 156516,
+      "sha256": "e80f2a1844f3290ad570d5f0828a803fd0454f7299d391747e83385595723e1a",
+      "target_array_sha256": "9c155415bc4eb2a96b71df2b23fdda228720f197e0c28f18988c6d3892c1cf0e"
+    },
+    {
+      "case_id": "train__006__random_2",
+      "source_id": "train:006",
+      "path": "/home/USER/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__006__random_2_8192.npz",
+      "bytes": 158654,
+      "sha256": "fae5894fd1e2c5d1ebdf8ee7fdbf88b7c26d7e2a87ee3816286f54d8ceaa811e",
+      "target_array_sha256": "c2e8f0bca9981f991e301ada3edbd9f990003e794a56c1c37571532fd8f100f5"
+    },
+    {
+      "case_id": "train__085__random_1",
+      "source_id": "train:085",
+      "path": "/home/USER/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__085__random_1_8192.npz",
+      "bytes": 157885,
+      "sha256": "62bd79a4871fde428152fc4e15149cae477eaa960fb6df7fbb28253a1547fba0",
+      "target_array_sha256": "d3064f48446a49715d842c15ef17c13b38e970297fe74deee4e331be9c0e92c6"
+    },
+    {
+      "case_id": "train__081__parietotemporal",
+      "source_id": "train:081",
+      "path": "/home/USER/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__081__parietotemporal_8192.npz",
+      "bytes": 157159,
+      "sha256": "30cd5c4f225ee2d1bb1668d2058dabde8bb0f5c12680163df3aa69eae8f8abec",
+      "target_array_sha256": "a815db0409f0359997ccf5de2d780023b61ba88f7f92947d41d4d6b85fb58095"
+    },
+    {
+      "case_id": "train__009__frontoorbital",
+      "source_id": "train:009",
+      "path": "/home/USER/adapointr_work/PoinTr/data/bcsp_geov1_foldd_8192_seed0_v1/points/train__009__frontoorbital_8192.npz",
+      "bytes": 155532,
+      "sha256": "cb2711ff823e7e725d18d9dd369ed08ba2a8ba3550a11ad53788617ec15a3504",
+      "target_array_sha256": "435c176e9df3d8d54b3a9b2a201ecc081de33ec639da5b4d3aefc5b263730334"
+    }
+  ],
+  "initialization": {
+    "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_oasg_p2_20261124_v1/OASG_head_init_seed2026112402_v1.bin",
+    "bytes": 7362572,
+    "sha256": "a445481a3400d4c8ef6d07af164d64430d9fc2c9ec30a80f0d339bb5a636966b",
+    "seed": 2026112402
+  },
+  "dependencies": [
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/__init__.py",
+      "bytes": 264,
+      "sha256": "6d3fee6ff8e8ec4dcab0f7af6c7890ff81f3d9319707865f5a651239aee9ae0a"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/modules/mamba_simple.py",
+      "bytes": 11710,
+      "sha256": "a17e4c51b582dc0d4d690a649eba521cd0c1ee3dc8f0473a0967cdc9ec0874e3"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm/ops/selective_scan_interface.py",
+      "bytes": 20025,
+      "sha256": "543edd077f11c80cccd5c5e2f926420d9105fd238d9e8960e53660cfa234dce8"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/__init__.py",
+      "bytes": 118,
+      "sha256": "af95401837aff56ae3749c2237eaff7df8c6a4328d7c5cc6a6731287ac27152c"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d/causal_conv1d_interface.py",
+      "bytes": 8850,
+      "sha256": "221f41aa963a8f84683d9c6b2b4bf448692feb963fefcd778fa1b4ed2688c859"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/mamba_ssm-2.3.1.dist-info/METADATA",
+      "bytes": 25449,
+      "sha256": "de580cd29b3bf2c8d81240fad9255978be1835884b82ab8e84f17f4ba720effd"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d-1.6.2.post1.dist-info/METADATA",
+      "bytes": 1625,
+      "sha256": "3b4a001f4ad6f856465746601e4b0dda9b2d088bd8e81b6376e4a707fcf4ca7b"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/selective_scan_cuda.cpython-310-x86_64-linux-gnu.so",
+      "bytes": 526135264,
+      "sha256": "5e6a5bfabe7628720631568ec364426e6066da9a9a0946302ebe9fb86f4aa58c"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/causal_conv1d_cuda.cpython-310-x86_64-linux-gnu.so",
+      "bytes": 166702752,
+      "sha256": "6ac9c334498773ee337503094d7b5aae4b0f38fa3ba8a0dcd81cca707f48a79a"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch/version.py",
+      "bytes": 248,
+      "sha256": "b10649fd636e7404398d608b84a2cacc6645e3952f043b439d4c50c95a26a1b5"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/torch-2.4.1+cu118.dist-info/METADATA",
+      "bytes": 26707,
+      "sha256": "11606497a9792f0d040ad062064ee1c024dde8b10fc38bed361134d0b7ec429a"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/timm-1.0.27.dist-info/METADATA",
+      "bytes": 40196,
+      "sha256": "b6ecaedbcaea5d0d5e431983c3df8e05113a51a2dad062e51dab0500ac6f2bb4"
+    },
+    {
+      "path": "/opt/conda/envs/adapointr-mamba/lib/python3.10/site-packages/numpy-2.2.6.dist-info/METADATA",
+      "bytes": 62026,
+      "sha256": "22d648f53848429464ca643b40d73b49a920d47876fc77c395d4dca4e834904a"
+    }
+  ],
+  "provider": [
+    {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/__init__.py",
+      "exists": true,
+      "bytes": 123,
+      "sha256": "d8a0921aeb90349a0659799a22ccf00ccd31707b226426ff4118eeb65ae0ada2"
+    },
+    {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/pointnet2_utils.py",
+      "exists": true,
+      "bytes": 9943,
+      "sha256": "ec597d77b1215fbc87bdb452b8ce04b85eb0b816d5e39e7696fc792a2f61ea5b"
+    },
+    {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/provider/pointnet2_ops/_ext.cpython-310-x86_64-linux-gnu.so",
+      "exists": true,
+      "bytes": 301640,
+      "sha256": "e70d00108bacba4a905dc011f4b8c4868f06ec2d44d8e322148e2e452578fbb5"
+    },
+    {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/r1b_pointnet2_cp310_b5ceb6d_v2_20261018/wheelhouse/pointnet2_ops-3.0.0-cp310-cp310-linux_x86_64.whl",
+      "exists": true,
+      "bytes": 123291,
+      "sha256": "530496a0d1d5dea6151a466b7c0874632322223308a7016910fb1bfbaaaab1e5"
+    }
+  ],
+  "implementation": {
+    "encoder": {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_mamba_encoder_v1.py",
+      "bytes": 3546,
+      "sha256": "5c5d32ccaead239ca4db542a8041f0f81ac1596e8f5c6519788a879642111bd8"
+    },
+    "factory": {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_f0_cuda_20261110_v1/bcsp_p1_model_factory_v1.py",
+      "bytes": 4396,
+      "sha256": "59ce47093ce97c217dfe46d7075e460e798fe552adaeec54740c75d84ce405e4"
+    },
+    "lqi_decoder": {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_decoder_v1.py",
+      "bytes": 6053,
+      "sha256": "92a52949ec037edd13bac7bfae7395bfafad84c5ffc204e1d178ea1f68507ea8"
+    },
+    "lqi_factory": {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_lqi_cuda_20261111_v1/bcsp_lqi_factory_v1.py",
+      "bytes": 3864,
+      "sha256": "56d4cbe89660106f255a0d58e28c7cbaf38374c7788219d5a21779bd97aaf106"
+    },
+    "scq_residual": {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_residual_v1.py",
+      "bytes": 3552,
+      "sha256": "2f3a86c5daf7ad00c01dc405b4a3b7011faae06f5766da3dcfe72d645b730404"
+    },
+    "scq_factory": {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_scq_cuda_20261113_v1/bcsp_scq_factory_v1.py",
+      "bytes": 14176,
+      "sha256": "fe5f7229aa40ba2b7e599c2bea32982f6bb33cf5f1db115b222a581c1d4af1c5"
+    },
+    "prime_entry": {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_scq_prime_cuda_20261122_v1/bcsp_scq_prime_entry_v1.py",
+      "bytes": 4570,
+      "sha256": "7489645de3adaaf3c6a7e03f9eb79177e0b22810358975ae5d9230f0f2afdefd"
+    },
+    "prime_seeded_parent": {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_scq_prime_cuda_20261122_v1/bcsp_scq_prime_seeded_parent_v1.py",
+      "bytes": 4461,
+      "sha256": "69bfbf311e6b22e5e09ce45927ac784abfb184a0fd4e6054dff3820a69fa5250"
+    },
+    "preflight_helper": {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/bcsp_artificial_gpu_preflight_v3.py",
+      "bytes": 32728,
+      "sha256": "7e645e4638624bb172567e39291da81edb6b762f0d5628844998d52e5f643291"
+    },
+    "oasg_head": {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_oasg_p2_20261124_v1/bcsp_oasg_head_v1.py",
+      "bytes": 2508,
+      "sha256": "ee92fbca3ee04bfde3c2921526bef640ca6151354acfa64029beb84b6c7b5d93"
+    },
+    "oasg_entry": {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_oasg_p2_20261124_v1/bcsp_oasg_entry_v1.py",
+      "bytes": 9311,
+      "sha256": "ddc9a741a3cf89973e669671b46ef7a1ae09040446053f0682f9fbe119fad5b8"
+    },
+    "oasg_core": {
+      "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_oasg_p2_20261124_v1/bcsp_oasg_p2_cuda_v1.py",
+      "bytes": 11529,
+      "sha256": "3e776a12d1b3e762d2abaddde1e1513996b25ab802f4b88a2956d97edd3618df"
+    }
+  },
+  "module_names": {
+    "encoder": "bcsp_mamba_encoder_v1",
+    "factory": "bcsp_p1_model_factory_v1",
+    "lqi_decoder": "bcsp_lqi_decoder_v1",
+    "lqi_factory": "bcsp_lqi_factory_v1",
+    "scq_residual": "bcsp_scq_residual_v1",
+    "scq_factory": "bcsp_scq_factory_v1",
+    "prime_entry": "bcsp_scq_prime_entry_v1",
+    "prime_seeded_parent": "bcsp_scq_prime_seeded_parent_v1",
+    "oasg_head": "bcsp_oasg_head_v1",
+    "oasg_entry": "bcsp_oasg_entry_v1",
+    "oasg_core": "bcsp_oasg_p2_cuda_v1"
+  },
+  "order": {
+    "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldD_seed0_v1.json",
+    "bytes": 1248506,
+    "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+  },
+  "static_config": {
+    "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_geov1_training_foldc_8192_seed0_v1/static_training_config_v1.json",
+    "bytes": 2024,
+    "sha256": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+  },
+  "parent_scope": {
+    "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_geov1_isolated_preflight_v3/evidence/frozen_scope_v3.json",
+    "bytes": 23220,
+    "sha256": "c6edb9bfcf833d2abf98eb18749d03b49a490579d79475e4823750df6a8311e6"
+  },
+  "worker": {
+    "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_oasg_p2_20261124_v1/oasg_p2_worker_v1.py",
+    "bytes": 13035,
+    "sha256": "1622238a71861c842617733c9d5e1c47a1bb22b02491f0e0a48369997d651dfb"
+  },
+  "launcher": {
+    "path": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_oasg_p2_20261124_v1/launch_oasg_p2_once_v1.sh",
+    "bytes": 1374,
+    "sha256": "dd27f64be105cab43dca999cfcec109a36630f0a8dc37717add866365ac8ff29"
+  },
+  "controls": {
+    "request": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_oasg_p2_20261124_v1/OASG_P2_cuda_execution_request_v1.json",
+    "authorization": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_oasg_p2_20261124_v1/authorization_v1.json",
+    "runtime": "/home/USER/adapointr_work/PoinTr/third_party/bcsp_oasg_p2_20261124_v1/runtime_v1.json"
+  },
+  "evidence": {
+    "p1": {
+      "path": "outputs/bcsp_oasg_20261124_v1/P1_formal_post_CPU_freeze_receipt_v1.json",
+      "bytes": 5546,
+      "sha256": "4d35e77728b8be51c1deff8100bbd4c5e678fefa318be52294ea7f0f2e75be4f"
+    },
+    "cpu_entry": {
+      "path": "outputs/bcsp_oasg_20261124_v1/p2_implementation_v1/P2_entry_CPU_receipt_v1.json",
+      "bytes": 1691,
+      "sha256": "10f4f0e04d4ca728cc267a92d4a64ad7b7d185d6ecc8da40a7258a5cbef05e1c"
+    },
+    "scope_draft": {
+      "path": "outputs/bcsp_oasg_20261124_v1/P2_CUDA_request_preparation_v1.json",
+      "bytes": 8247,
+      "sha256": "69fbe4b4a1cc3dbf26f2a4d11f967174af3113c269eb77b5ff800ee0eacd36f8"
+    },
+    "observed_gpu_used_MiB": 1,
+    "observed_gpu_free_MiB": 24090,
+    "observed_disk_available_KiB": 7683072,
+    "start_reverification_required": true
+  },
+  "execution_boundary": {
+    "installation": "separate non-overwrite operation",
+    "single_attempt": true,
+    "retry": false,
+    "resume": false,
+    "training": false,
+    "development": false,
+    "BNCal": false
+  }
+}

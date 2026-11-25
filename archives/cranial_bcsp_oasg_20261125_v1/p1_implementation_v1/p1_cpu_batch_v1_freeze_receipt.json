@@ -1,0 +1,54 @@
+{
+  "status": "P1_CPU_V1_FAILED_V2_STATIC_ONLY",
+  "authorized_cpu_batches_used": 1,
+  "test_results": {
+    "executed": 7,
+    "passed": 6,
+    "failed": 1,
+    "first_failure": "test used projected FC feature as raw coordinate concatenation"
+  },
+  "full_backward_reached": false,
+  "p1_pass": false,
+  "p2_prepared": false,
+  "production_sources": [
+    {
+      "path": "bcsp_oasg_entry_v1.py",
+      "bytes": 9311,
+      "sha256": "ddc9a741a3cf89973e669671b46ef7a1ae09040446053f0682f9fbe119fad5b8"
+    },
+    {
+      "path": "bcsp_oasg_head_v1.py",
+      "bytes": 2508,
+      "sha256": "ee92fbca3ee04bfde3c2921526bef640ca6151354acfa64029beb84b6c7b5d93"
+    }
+  ],
+  "original_test": {
+    "path": "test_bcsp_oasg_cpu_v1.py",
+    "bytes": 11936,
+    "sha256": "1881c65e2b38de617e8af7da498ec0963203c4d80ef1b7a6561c5e2ae1e13931"
+  },
+  "log": {
+    "path": "cpu_contract_v1.log",
+    "bytes": 1294,
+    "sha256": "33d0249753be747bfff91d0e2a3a20299528a87ab42c4cbdd41ec299f0304efb"
+  },
+  "result": {
+    "path": "cpu_contract_result_v1.json",
+    "bytes": 599,
+    "sha256": "e9204000eddcada93cbb12e746e3013fe14d2e6bf399a723566d703255f7cc3a"
+  },
+  "initialization": {
+    "path": "OASG_head_init_seed2026112402_v1.bin",
+    "bytes": 7362572,
+    "sha256": "a445481a3400d4c8ef6d07af164d64430d9fc2c9ec30a80f0d339bb5a636966b",
+    "relative_path": "artificial_cpu_v1/OASG_head_init_seed2026112402_v1.bin",
+    "seed": 2026112402
+  },
+  "replacement_test": {
+    "path": "test_bcsp_oasg_cpu_v2.py",
+    "bytes": 12146,
+    "sha256": "a0210f87b3208432c9089ebb42ca4cd1a7898aed0c75209335f64f594785ea80",
+    "state": "STATIC_CHECKED_NOT_EXECUTED",
+    "change": "Check actual reduce_map input with pre-hook. Reuse frozen initializer."
+  }
+}
