@@ -1,0 +1,35 @@
+{
+  "status": "J_D_P3_BOUNDED_DIFFERENTIAL_REVIEW_PASS",
+  "worker_sha256": "ba45a7a834b7229f6d29dea7d0de4c5357d98b7800952674a40e6ccad3dbcaf0",
+  "launcher_sha256": "744960989af77be738223224ed5cc5aa1cbc41cf848e69a16bfbe5426570ea02",
+  "CPU_receipt_sha256": "326d34fb54fc768485214b3bf7e1aa3d577a4955504a6e84660999d2ef4c45c7",
+  "CPU_checks": 33,
+  "actual_start_terminal_call_path": [
+    "TrainingResources",
+    "lifecycle_factory",
+    "training_lifecycle_boundary"
+  ],
+  "normalized_lifecycle_equals_parent": true,
+  "launcher_diff_limited_to_J_identity_and_schema_lambda": true,
+  "loss_candidate_unchanged": true,
+  "R_worker_unchanged": true,
+  "guards_resources_3900_contract_unchanged": true,
+  "pairing_includes_strict_frozen_state_and_four_RNG_checks": true,
+  "label_batch_binding_checks_pass": true,
+  "real_315_label_files_verified": true,
+  "actual_8_case_GT_row_hashes_verified": true,
+  "T_worker_unchanged": true,
+  "unresolved_required_before_execution": [
+    "Fresh server identity/resource/dependency/target recheck",
+    "No-overwrite installation authorization",
+    "Separate final request SHA256 execution authorization"
+  ],
+  "limitations": [
+    "Artificial 64-point model exercised unchanged frozen get_loss and 3900-step lifecycle; it is not the actual Mamba model",
+    "CUDA RNG was a named fixture; actual CUDA RNG matching remains mandatory at training startup",
+    "Actual launcher.main tested with fake Popen; no remote process was spawned"
+  ],
+  "CUDA_repeated": false,
+  "remote_operations": 0,
+  "review_type": "Local source differential and recorded CPU evidence review, no independent external reviewer"
+}

@@ -1,0 +1,25 @@
+--- launch_ejtc_j_d_v1.py
++++ launch_ejtc_native315_v1.py
+@@ -1,4 +1,4 @@
+-"""Single-attempt J_D launcher and resource monitor. Runs only after authorization."""
++"""Single-attempt EJTC Native315 launcher and resource monitor. Runs only after authorization."""
+ import argparse
+ from datetime import datetime
+ import hashlib
+@@ -67,11 +67,13 @@
+     q=json.loads(exact(flags('request'),req)); auth=json.loads(exact(flags('authorization'),flags('authorization-sha256')))
+     rt=json.loads(exact(flags('runtime'),flags('runtime-sha256')))
+     b=q['binding'];i=b['identity'];r=b['resources'];policy=q['launch'];out=Path(b['output'])
+-    need(q['schema']=='bcsp-ejtc-foldD-j-training-v1' and q['lambda']==0.027474069997873135
++    need(q['schema']=='bcsp-ejtc-rtj-native315-v1'
+          and q['status']=='AWAITING_EXPLICIT_USER_AUTHORIZATION' and q['execution_authorized'] is False
+-         and q['arm']=='J' and q['counts']==dict(steps=3900,epochs=100,exposures=31200,drops=300), 'J_D frozen request')
++         and q['arms']==['R','T','J'] and q['seeds']==[2026112801,2026112803]
++         and q['counts']==dict(forward=315,loss=0,backward=0,optimizer_steps=0,
++                              BNCal=0,warmup=0,TTA=0,scoring=0), 'frozen Native315 request')
+     need(auth.get('schema')=='bcsp-development-authorization-v1' and auth.get('request_sha256')==req
+-         and auth.get('explicit_user_authorization') is True and bool(auth.get('user_authorization_text','').strip())
++         and auth.get('explicit_user_authorization') is True and isinstance(auth.get('user_authorization_text'),str) and req in auth['user_authorization_text']
+          and rt==dict(schema='bcsp-development-runtime-v1',request_sha256=req,authorization_sha256=flags('authorization-sha256')),
+          'authorization chain')
+     need((socket.gethostname(),os.getuid(),str(Path(sys.executable).resolve()),sys.version.split()[0])==

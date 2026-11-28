@@ -1,0 +1,49 @@
+{
+  "schema": "bcsp-ejtc-foldD-j-training-preparation-v1",
+  "status": "DRAFT_NOT_EXECUTABLE_PENDING_J_ENTRY_LABEL_BINDING_CPU_VALIDATION",
+  "execution_authorized": false,
+  "arm": "J",
+  "paired_contract_sha256": "753eb53ab2af99ec85e93d040fe3bfa2b57a4350da40bb792363a44264fe51fe",
+  "label_binding_sha256": "35ea833592c9a7b42d73261fee0795408b52324a8f35399b3928b2bd31581094",
+  "proposed_install_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_j_d_20261127_v1",
+  "proposed_output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/EJTC_D1_J_D_h7vvrr_v1",
+  "proposed_controls": {
+    "request": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_j_d_20261127_v1/EJTC_D1_J_D_training_execution_request_h7vvrr_v1.json",
+    "authorization": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_j_d_20261127_v1/J_D_authorization_v1.json",
+    "runtime": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_j_d_20261127_v1/J_D_runtime_v1.json",
+    "single_attempt_log": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_j_d_20261127_v1/J_D_single_attempt_v1.log",
+    "resource_log": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_j_d_20261127_v1/J_D_resource_v1.jsonl",
+    "dispatch_log": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_j_d_20261127_v1/J_D_dispatch_v1.log",
+    "exit_code": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_j_d_20261127_v1/J_D_exit_code_v1.txt"
+  },
+  "proposed_session": "bcsp_ejtc_j_d_h7vvrr_v1",
+  "required_implementation": [
+    "J worker and necessary launcher identity adaptation; preserve strict R initial-state loading and all four starting RNG checks",
+    "Exact case-ID and frozen 8192-row E/J label binding, target SHA256/shape/class-count validation; labels used only in training loss",
+    "Reuse one differentiable dense G-to-prediction distance computation; select each E/J top ceil(10%) independently with stable target-row ties, weight each region 0.5, then average cases and apply unchanged lambda",
+    "Targeted CPU value/gradient checks, deliberately swapped/misaligned labels rejection, actual startup/authorize boundary, loss logging and order/count guard checks; bounded P3 before final request"
+  ],
+  "existing_implementation": {
+    "T_worker": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\d1_t_d_preparation_v1\\ejtc_train_t_d_v1.py",
+      "sha256": "589b2e38d5d0cdca6b1cb8fc08e8e202bf7047bb733e4b725f8bcd421e8a318d"
+    },
+    "T_launcher": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\d1_t_d_preparation_v1\\launch_ejtc_t_d_v1.py",
+      "sha256": "7e2eaa66ffe7f8fc433c1dfe6d3eed251ef803f50205114567a2169bf5c654ff"
+    },
+    "loss_candidate": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\ejtc_loss_cpu_candidate_v1.py",
+      "sha256": "eaab0e866a120e52655adf5bbcaca8aedc37df87c05c8b52016ec9e1d4a579f2"
+    }
+  },
+  "boundary": {
+    "single_attempt": true,
+    "resume": false,
+    "BNCal": false,
+    "development": false,
+    "automatic_retry": false
+  },
+  "final_request_condition": "Freeze the final executable request only after J-specific files, label batching contract, CPU validation and P3 are complete. This draft is not a training authorization target.",
+  "server_paths_verified": false
+}

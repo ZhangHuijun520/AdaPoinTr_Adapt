@@ -1,0 +1,62 @@
+{
+  "fold": "D",
+  "split": "train",
+  "case_ids": [
+    "train__000__bilateral",
+    "train__001__bilateral",
+    "train__002__bilateral",
+    "train__003__frontoorbital",
+    "train__006__frontoorbital",
+    "train__009__frontoorbital",
+    "train__012__parietotemporal",
+    "train__013__parietotemporal",
+    "train__017__parietotemporal",
+    "train__018__random_1",
+    "train__019__random_1",
+    "train__021__random_1",
+    "train__023__random_2",
+    "train__024__random_2",
+    "train__025__random_2"
+  ],
+  "source_ids": [
+    "train:000",
+    "train:001",
+    "train:002",
+    "train:003",
+    "train:006",
+    "train:009",
+    "train:012",
+    "train:013",
+    "train:017",
+    "train:018",
+    "train:019",
+    "train:021",
+    "train:023",
+    "train:024",
+    "train:025"
+  ],
+  "selection": "ordered defect types, lexical case IDs, first three unmatched sources each",
+  "sampler": {
+    "rng": "numpy.default_rng/PCG64",
+    "seed": 0,
+    "rows": 8192,
+    "draws": "weighted face choice followed by all 8192x2 face offsets"
+  },
+  "spot_checks": {
+    "rng": "PCG64",
+    "seed": 2026112811,
+    "rows_per_region": 8,
+    "region_order": [
+      "E",
+      "J"
+    ]
+  },
+  "input_sha256": {
+    "outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1.py": "6f487dca7457d56efa00b47caa468c148fdd24b51e6e461b5aa8437810cb5420",
+    "outputs\\cranial_geometry_diagnostic_20261023\\analyze_raw_pairs_v1.py": "cc27ae2b43cadd0a5ea1b3e1dc928c8fe4a73d9a049d49916ef55e1323ad006a",
+    "outputs\\cranial_bcsp_geov1_20261024\\real_data_qc_v1\\manifest_8192.jsonl": "f94dbe21cb9e406db49a51f6578496db3228d783f15c07b28e3d8ae234a33758",
+    "outputs\\cranial_bcsp_geov1_20261024\\consolidated_binding_v1\\fold_binding.json": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90",
+    "outputs\\BCSP-EJTC_自由表面与共享切壁感知尾部覆盖监督_正式实验计划_2026-11-27_v2.md": "c2598f0a069969672de5e69a3dcfc2c4267153da019a236e8234b198e0bf4e9b"
+  },
+  "pilot_code_sha256": "55beed960257545ea8a083a883ba90e7c8f6265e92f0b4306d290a7b1a0f16bf"
+}

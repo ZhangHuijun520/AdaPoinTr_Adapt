@@ -1,0 +1,27 @@
+{
+  "status": "R_D_V2_ACTUAL_START_CALL_CPU_PASS",
+  "source_diff": "only import importlib",
+  "test_method": "exact real module imports and actual main tail call, mocked Transformer_utils and lifecycle boundary",
+  "traces": [
+    {
+      "entry": 1,
+      "trace": [
+        "factory"
+      ]
+    },
+    {
+      "entry": 2,
+      "trace": [
+        "factory",
+        "models.Transformer_utils",
+        "training_lifecycle_entered"
+      ]
+    }
+  ],
+  "old_sha256": "12dbbf51fde2dc2b8ed275f73becba704cba8f5cb17646732f5f3c5ca8fc4a00",
+  "new_sha256": "0d797a8c0d910d139f0b21186eb35f069f468157babf3fbd9dedf98773199043",
+  "model_forward": 0,
+  "optimizer_steps": 0,
+  "failure_audit_sha256": "88af5c4c0c19e539a9eabbe9cca028b82a3d909c9fab2aec54a8acccb8d81a08",
+  "cuda_preflight_repeated": false
+}

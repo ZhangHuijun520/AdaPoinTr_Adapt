@@ -1,0 +1,117 @@
+{
+  "status": "FROZEN_D1_COMMON_CONTRACT",
+  "arms": [
+    "R",
+    "T",
+    "J"
+  ],
+  "fold": "D",
+  "seeds": [
+    2026112801,
+    2026112803
+  ],
+  "initial_state_sha256": "81687ab7d797592e056e683b82dfead3e82aa318327151aa9315c13dfe1a855c",
+  "constructor": {
+    "prefix": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_rbss_p0b_prefix16_20261127_v1/rbss_prefix16_v1.py",
+      "bytes": 17030,
+      "sha256": "1541ed8b285a8088afc0dd9c0f9b40ca0245bf5fdca3ce4674bd2ad6b18469ad"
+    },
+    "parent": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_oasg_p3_a_d_20261124_v1/OASG_A_D_training_execution_request_v1.json",
+      "bytes": 15355,
+      "sha256": "ad34d559e1c0604fe065d24d32077e78d95c4e99314007eb81dbaa7e11d38fa6"
+    },
+    "native_loader": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_oasg_sf_native_20261125_hwk2fy_v2/oasg_sf_native_v2.py",
+      "bytes": 21010,
+      "sha256": "0d1f30ac43fb6b5002429100bafd54e117156f9a40989e153aaf3da4c7c9a3d5"
+    }
+  },
+  "rng_policy": "After verifying initialization, seed Python/NumPy/PyTorch CPU and CUDA to the model seed. Freeze R start RNG evidence, require exact match for T/J.",
+  "state_policy": "R serializes the common untrained state once after matching the P1 fingerprint; T/J load that frozen artifact and verify both serialized SHA256 and tensor fingerprint.",
+  "lambda_value_hex": "0x1.c2229a083f918p-6",
+  "lambda": 0.027474069997873135,
+  "counts_per_arm": {
+    "steps": 3900,
+    "epochs": 100,
+    "exposures": 31200,
+    "drops": 300
+  },
+  "total_optimizer_updates": 11700,
+  "batch_size": 8,
+  "cases": 315,
+  "sources": 63,
+  "input_points": 8192,
+  "order": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldD_seed0_v1.json",
+    "bytes": 1248506,
+    "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+  },
+  "order_canonical_sha256": "2c9f3e9afb2cfe9ae46c0566bdbced465c64acc2a564654914d2163d74e5e838",
+  "point_manifest": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/manifest_8192.jsonl",
+    "bytes": 427975,
+    "sha256": "f94dbe21cb9e406db49a51f6578496db3228d783f15c07b28e3d8ae234a33758"
+  },
+  "fold_binding": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/fold_binding.json",
+    "bytes": 35012,
+    "sha256": "cbd96c29002b959e6a05e0ccbf6d57e7a6134e4394f2013472c3944b1a641f90"
+  },
+  "label_manifest_sha256": "c2d51280937b7508a8b1bb12c31992d99eb1c3f2ac29880802ad4b42a3a7200a",
+  "p1_audit_sha256": "0f2691b27dea6e4fab51403be24d3b482fc7fc936e1730c14be38ff0ea2708d6",
+  "p1_request_sha256": "1cb96ed253b91cf9248b768934da3f8e48276ca160aa74d9efa8fcb76e4b8a80",
+  "loss": {
+    "R": "original get_loss only",
+    "T": "original plus lambda times global G tail",
+    "J": "original plus lambda times half E tail and half J tail",
+    "tail_fraction": 0.1
+  },
+  "retained_protocol": {
+    "precision": "FP32",
+    "optimizer": "AdamW (original groups/schedule/BN/clipping)",
+    "checkpoints": "epoch99 step3900",
+    "resume": false,
+    "BNCal": false,
+    "development_during_training": false
+  },
+  "budget": {
+    "p1_forward_loss_backward_seconds": 3263.198113348335,
+    "p1_with_25pct_margin_seconds": 4078.997641685419,
+    "same_host_historical_3900_step_seconds": [
+      1200.7021141536534,
+      1196.7503023622558,
+      1198.8131824778393
+    ],
+    "same_host_historical_sum_seconds": 3596.2655989937484,
+    "planned_training_window_same_GPU_seconds": 5400,
+    "per_arm_wall_limit_seconds": 1800,
+    "native_scoring_archive_reserve_seconds": 3600,
+    "planned_total_window_seconds": 9000,
+    "planning_basis": "90 min training, then 60 min Native/CPU scoring/audit reserve; cumulative availability must be verified before launch.",
+    "deadline": "2026-11-30T23:59:59+08:00",
+    "latest_matrix_start_beijing": "2026-11-30T21:29:59+08:00",
+    "minimum_disk_before_first_arm_bytes": 11811160064,
+    "per_arm_disk_max_bytes": 2147483648,
+    "model_or_optimizer_calls_this_preparation": 0
+  },
+  "budget_evidence": [
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_rbss_20261126_v2\\foldd_accuracy_preparation_v1\\RBSS_R_D_formal_post_training_freeze_v1.json",
+      "bytes": 7216,
+      "sha256": "4957ebb5bfbc9e88da42254a008104c72ff0a6c5140383dc2e6c8001f53dce4b"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_rbss_20261126_v2\\foldd_accuracy_preparation_v1\\RBSS_C_D_formal_post_training_pair_freeze_v1.json",
+      "bytes": 9922,
+      "sha256": "cb18b145f9e9d5eb238f9e97a25c34f026f75781e09ef78853917bf02c4187fd"
+    },
+    {
+      "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_rbss_20261126_v2\\foldd_accuracy_preparation_v1\\RBSS_S_D_formal_post_training_three_arm_freeze_v1.json",
+      "bytes": 12285,
+      "sha256": "5a5e916f9a5fa912ba020ecbb81a8867217bccd66cdde9db7ae452bcdcccaf63"
+    }
+  ],
+  "availability_verified": false
+}

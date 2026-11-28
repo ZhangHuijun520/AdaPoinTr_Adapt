@@ -1,0 +1,124 @@
+[
+  {
+    "check": "C01_actual_frozen_get_loss_value_and_gradient",
+    "status": "PASS",
+    "detail": {
+      "loss_abs": 0.0,
+      "grad_max_abs": 7.450580596923828e-09
+    }
+  },
+  {
+    "check": "C02_no_duplicate_dense_distance_or_persistent_patch",
+    "status": "PASS",
+    "detail": {
+      "coarse_distance_calls": 1,
+      "dense_distance_calls": 1
+    }
+  },
+  {
+    "check": "C03_loss_hook_restored_on_exception",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C04_repeated_dense_call_rejected",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C05_ceiling_ties_and_target_row_gradient",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C06_zero_distance_values_without_changing_backend",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C07_strict_frozen_state_loading",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C08_initial_byte_drift_rejected",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C09_parameter_fingerprint_drift_rejected",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C10_trained_checkpoint_payload_rejected",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C11_strict_state_structure_rejected",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C12_all_four_RNG_fields_and_mismatch_stop",
+    "status": "PASS",
+    "detail": "CPU RNG real; CUDA state is an explicit fixture, no CUDA initialized"
+  },
+  {
+    "check": "C13_actual_serialized_T_authorize_path",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C14_wrong_arm_rejected",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C15_lambda_drift_rejected",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C16_wrong_step_contract_rejected",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C17_start_RNG_contract_drift_rejected",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C18_missing_request_hash_text_rejected",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C19_actual_frozen_3900_step_CPU_lifecycle",
+    "status": "PASS",
+    "detail": {
+      "artificial_optimizer_updates": 3900,
+      "real_model_updates": 0,
+      "seconds": 11.296999999998661,
+      "actual_frozen_order_verified": true,
+      "all_metrics_loss_decomposition_verified": true
+    }
+  },
+  {
+    "check": "C20_real_lifecycle_wrong_identity_rejected_before_output",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C21_runtime_byte_drift_rejected",
+    "status": "PASS",
+    "detail": null
+  },
+  {
+    "check": "C22_actual_launcher_main_and_exact_worker_argv",
+    "status": "FAIL",
+    "error": "AssertionError()"
+  }
+]

@@ -1,0 +1,227 @@
+{
+  "status": "P1_CPU_CONTRACT_PASS",
+  "passed": 12,
+  "total": 12,
+  "checks": [
+    {
+      "check": "U01_top10_percent_of_10",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "U02_ceiling_at_11",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "U03_stable_tail_and_original_nn_ties",
+      "status": "PASS",
+      "details": {
+        "tail_rows": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "nn_winner": 0,
+        "duplicates_same_neighbor": 2
+      }
+    },
+    {
+      "check": "U04_region_and_case_equal_weights",
+      "status": "PASS",
+      "details": {
+        "T": 8.0,
+        "J": 4.0
+      }
+    },
+    {
+      "check": "U05_same_distance_distribution",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "U06_G_to_prediction_direction",
+      "status": "PASS",
+      "details": {
+        "G_to_P": [
+          [
+            2.0,
+            1.0,
+            2.0
+          ]
+        ],
+        "gradient": [
+          [
+            [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "check": "U07_zero_distance_and_mixed_neighbors",
+      "status": "PASS",
+      "details": [
+        {
+          "dtype": "torch.float32",
+          "rows": 4,
+          "mixed": false,
+          "exact_zero_G_to_P": 4,
+          "native_gradient_finite": true,
+          "auxiliary_gradient_finite": {}
+        },
+        {
+          "dtype": "torch.float32",
+          "rows": 64,
+          "mixed": false,
+          "exact_zero_G_to_P": 64,
+          "native_gradient_finite": true,
+          "auxiliary_gradient_finite": {
+            "T": true,
+            "J": true
+          }
+        },
+        {
+          "dtype": "torch.float32",
+          "rows": 64,
+          "mixed": true,
+          "exact_zero_G_to_P": 1,
+          "native_gradient_finite": true,
+          "auxiliary_gradient_finite": {
+            "T": true,
+            "J": true
+          }
+        },
+        {
+          "dtype": "torch.float32",
+          "rows": 8192,
+          "mixed": false,
+          "exact_zero_G_to_P": 8192,
+          "native_gradient_finite": true,
+          "auxiliary_gradient_finite": {
+            "T": true,
+            "J": true
+          }
+        },
+        {
+          "dtype": "torch.float64",
+          "rows": 4,
+          "mixed": false,
+          "exact_zero_G_to_P": 4,
+          "native_gradient_finite": true,
+          "auxiliary_gradient_finite": {}
+        },
+        {
+          "dtype": "torch.float64",
+          "rows": 64,
+          "mixed": false,
+          "exact_zero_G_to_P": 64,
+          "native_gradient_finite": true,
+          "auxiliary_gradient_finite": {
+            "T": true,
+            "J": true
+          }
+        },
+        {
+          "dtype": "torch.float64",
+          "rows": 64,
+          "mixed": true,
+          "exact_zero_G_to_P": 1,
+          "native_gradient_finite": true,
+          "auxiliary_gradient_finite": {
+            "T": true,
+            "J": true
+          }
+        },
+        {
+          "dtype": "torch.float64",
+          "rows": 8192,
+          "mixed": false,
+          "exact_zero_G_to_P": 8192,
+          "native_gradient_finite": true,
+          "auxiliary_gradient_finite": {
+            "T": true,
+            "J": true
+          }
+        }
+      ]
+    },
+    {
+      "check": "U08_original_get_loss_and_lambda_zero",
+      "status": "PASS",
+      "details": [
+        {
+          "dtype": "torch.float32",
+          "dense": 64,
+          "coarse": 32,
+          "max_loss_abs_diff": 0.0,
+          "max_gradient_abs_diff": 0.0
+        },
+        {
+          "dtype": "torch.float64",
+          "dense": 64,
+          "coarse": 32,
+          "max_loss_abs_diff": 0.0,
+          "max_gradient_abs_diff": 0.0
+        },
+        {
+          "dtype": "torch.float32",
+          "dense": 8192,
+          "coarse": 256,
+          "max_loss_abs_diff": 0.0,
+          "max_gradient_abs_diff": 0.0
+        }
+      ]
+    },
+    {
+      "check": "U09_synchronized_permutation_and_alignment_fixture",
+      "status": "PASS",
+      "details": {
+        "identity_check": "synthetic ordered-label hash; real sidecar binding deferred"
+      }
+    },
+    {
+      "check": "U10_invalid_inputs_and_R_aux_bypass",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "U11_frozen_D_frame_scale",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "U12_differentiable_tail_finite_difference",
+      "status": "PASS",
+      "details": {
+        "max_abs_error": 1.529416489287616e-10
+      }
+    }
+  ],
+  "torch": "2.5.1",
+  "python": "3.9.21 (main, Dec 11 2024, 16:35:24) [MSC v.1929 64 bit (AMD64)]",
+  "interpreter": "C:\\Users\\zhj\\.conda\\envs\\adapointr\\python.exe",
+  "device": "cpu",
+  "torch_threads": 2,
+  "source_sha256": {
+    "outputs/cranial_scqr_v12_qa_github_publish_20261019/models/AdaPoinTr.py": "1f3eb07ad0c3e2f78756682dcb273d745939dc7efda5563c6528915d6d89a1d4",
+    "outputs/cranial_scqr_v12_qa_github_publish_20261019/extensions/chamfer_dist/__init__.py": "6456934164750c2d326236effe4827dc37c77a7d6d915d3c28fa65a90a9b1c50",
+    "outputs/cranial_bcsp_geov1_20261024/first_run_freeze_foldC_8192_v1/static_training_config_v1.json": "86dbbb7b216a932209abd446bdd28408ad5327433834336f2584b087c1b35647"
+  },
+  "original_class": "AdaPoinTr",
+  "frozen_get_loss_execution": "original methods on isolated loss-only CPU fixture",
+  "candidate_sha256": "eaab0e866a120e52655adf5bbcaca8aedc37df87c05c8b52016ec9e1d4a579f2",
+  "test_sha256": "1db9fcb47427fe2629836a818fd71cd54750a1a50c8fbc92518b5024e3a63b99",
+  "model_forward": 0,
+  "cuda_calls": 0,
+  "optimizer_steps": 0
+}

@@ -1,0 +1,145 @@
+{
+  "status": "J_D_PAIRED_CONTRACT_FROZEN_PENDING_IMPLEMENTATION",
+  "arm": "J",
+  "fold": "D",
+  "seeds": [
+    2026112801,
+    2026112803
+  ],
+  "input_points": 8192,
+  "output_points": 8192,
+  "counts": {
+    "steps": 3900,
+    "epochs": 100,
+    "exposures": 31200,
+    "drops": 300
+  },
+  "batch_size": 8,
+  "cases": 315,
+  "sources": 63,
+  "lambda_value": 0.027474069997873135,
+  "tail_fraction": 0.1,
+  "tail_selection": "ceil(0.1*N), descending detached distances, stable original target-row tie order",
+  "loss": "original loss + frozen lambda * batch mean[0.5*tail_mean(E_to_dense) + 0.5*tail_mean(J_to_dense)]",
+  "common_contract": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_r_d_20261127_v2/EJTC_D1_common_contract_v1.json",
+    "bytes": 5123,
+    "sha256": "53d32515d71fbff28d333f99e7751cf7f6e754a2c29120ad1d97a244bccdf4c3"
+  },
+  "initial_state": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/EJTC_D1_R_D_h7vvrr_v3/common_initial_state.pth",
+    "bytes": 159797106,
+    "serialized_sha256": "3e319c532e53efc613db8051d5f9035b45f0669f596b0c5426aea1b9707e0fa9",
+    "tensor_fingerprint": "81687ab7d797592e056e683b82dfead3e82aa318327151aa9315c13dfe1a855c",
+    "parameter_fingerprint": "8a17bca7eb9ef7ec08babd61e9cd0530894c8456f311f67ee7eaab50f74d0186",
+    "policy": "Load frozen R initial state strictly with CPU mapping; verify serialized bytes and tensor fingerprints; never load trained R checkpoint or regenerate common initial state"
+  },
+  "start_rng": {
+    "python": "b629d1ef225d6090293aefdb55d2fab7f5e5043718143caa0658f3df6e95cde1",
+    "numpy": "f206bfef0f79900eab8246ac3ef75674c6b75ca51137725a0c794d699f6ba708",
+    "cpu": "7a0f3c61b01b133202c617a6d507e5fe79a2abda7207bbb132ad115b8fc69db4",
+    "cuda": "1b9e102c06ad4ad7464b83fc2215d3e4b3c1f1a856a7b16feebbedf0b2a0f2a0"
+  },
+  "rng_policy": "After identical model construction and loading, seed Python, NumPy and Torch CPU/CUDA to 2026112801 at the same point as R; require all four actual RNG fingerprints to equal frozen R before first batch. If any differ, stop.",
+  "order": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_scq_foldC_training_20261113_v1/shared_order_foldD_seed0_v1.json",
+    "bytes": 1248506,
+    "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+  },
+  "order_canonical_sha256": "2c9f3e9afb2cfe9ae46c0566bdbced465c64acc2a564654914d2163d74e5e838",
+  "frozen_R_evidence": {
+    "final_freeze_index_v3.json": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\d1_r_d_preparation_v3\\post_training_freeze_audit_v3\\final_freeze_index_v3.json",
+      "bytes": 453,
+      "sha256": "a4d841902f65375859d53b7d964abbb9a59f5e27217b2f91e7c090d9b3f6c237"
+    },
+    "formal_post_training_freeze_audit_v3.json": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\d1_r_d_preparation_v3\\post_training_freeze_audit_v3\\formal_post_training_freeze_audit_v3.json",
+      "bytes": 3488,
+      "sha256": "a7da0f8d1102d53ccc3f5cf59bd83af9b4237ae48f4d2ce1574f435acb7376b7"
+    },
+    "optimizer_and_resources_supplement_v3.json": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\d1_r_d_preparation_v3\\post_training_freeze_audit_v3\\optimizer_and_resources_supplement_v3.json",
+      "bytes": 338,
+      "sha256": "eb263feb7fee3a3c61e022e73c3c7ead89334878bf1c0e1a561084fe514754dc"
+    },
+    "ejtc_start.json": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\d1_r_d_preparation_v3\\post_training_freeze_audit_v3\\evidence\\ejtc_start.json",
+      "bytes": 668,
+      "sha256": "168c0f1b562c250008d2bdb814ee2c943e34c27275a6320c807b0ec532772860"
+    },
+    "initialization.json": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\d1_r_d_preparation_v3\\post_training_freeze_audit_v3\\evidence\\initialization.json",
+      "bytes": 298,
+      "sha256": "4d640c1d8555c7fae33c79b52bf5bccca8e5596b8e0be8f4591ba6f435d37d73"
+    },
+    "order_plan.json": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\d1_r_d_preparation_v3\\post_training_freeze_audit_v3\\evidence\\order_plan.json",
+      "bytes": 1248506,
+      "sha256": "4f68edd55912be0dccfb3d2a1cc72e499d3d499a36aa5f3788550145b3095720"
+    },
+    "exposure.json": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\d1_r_d_preparation_v3\\post_training_freeze_audit_v3\\evidence\\exposure.json",
+      "bytes": 19465,
+      "sha256": "65907c12b1eeec2886b7581bd0c9515c831eff9d45e0ecd46ca384a34d6dc902"
+    },
+    "optimizer_actual_defaults.json": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\d1_r_d_preparation_v3\\post_training_freeze_audit_v3\\evidence\\optimizer_actual_defaults.json",
+      "bytes": 223,
+      "sha256": "9d63cc1e4fb32d46c348688146a9e8b10356a7bc3e8c1eabb9c483bac7c6e592"
+    },
+    "optimizer_parameter_groups.json": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\d1_r_d_preparation_v3\\post_training_freeze_audit_v3\\evidence\\optimizer_parameter_groups.json",
+      "bytes": 70184,
+      "sha256": "2e90da8a1aad158a22301a5847cea24bc89cfdb519ee751b4805209623cdc9f1"
+    }
+  },
+  "R_final_checkpoint": {
+    "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/EJTC_D1_R_D_h7vvrr_v3/ckpt-last.pth",
+    "bytes": 478859115,
+    "sha256": "b9b023db67db68d328ecf1c2c6a8e8001b5a4f99f86dd296937fe448c9f18313",
+    "independently_hashed_twice": true
+  },
+  "R_checkpoint_use": "reference only; forbidden as T initialization",
+  "device": {
+    "hostname": "shu-common-25721452-notebook-h7vvrr-0",
+    "uid": 1000,
+    "gpu_uuid": "GPU-3fea2502-c54e-30e1-ae67-8696c29238d2",
+    "driver_version": "570.190",
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "total_MiB": "24564",
+    "python_realpath": "/opt/conda/envs/adapointr-mamba/bin/python3.10",
+    "python_version": "3.10.20"
+  },
+  "resources": {
+    "wall_seconds": 1800,
+    "monitor_interval_seconds": 2,
+    "smi_timeout_seconds": 8,
+    "rss_bytes": 8589934592,
+    "minimum_disk_bytes": 4294967296,
+    "output_bytes": 2147483648,
+    "torch_peak_bytes": 21474836480,
+    "device_used_MiB": 22107,
+    "idle_used_MiB": 256,
+    "minimum_start_free_MiB": 20480
+  },
+  "deadline": "2026-11-30T23:59:59+08:00",
+  "scientific_config_unchanged": true,
+  "execution_authorized": false,
+  "remote_operations": 0,
+  "label_binding_sha256": "35ea833592c9a7b42d73261fee0795408b52324a8f35399b3928b2bd31581094",
+  "label_manifest_sha256": "c2d51280937b7508a8b1bb12c31992d99eb1c3f2ac29880802ad4b42a3a7200a",
+  "T_freeze_evidence": {
+    "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\d1_t_d_preparation_v1\\post_training_freeze_audit_v1\\formal_post_training_pair_freeze_audit_v1.json",
+    "bytes": 3654,
+    "sha256": "4374901d7baa239d6e06e0fa121fee4865732e066386ad978e0bad6db3cb05e7",
+    "request_sha256": "0764f6a292b0d05f1bf5a6c964adac22d7b2c3ae1e8147cd08260c5b5b38cb22",
+    "checkpoint": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/EJTC_D1_T_D_h7vvrr_v1/ckpt-last.pth",
+      "bytes": 478859115,
+      "sha256": "06f7a525b88b4ae2e79034a609c9a956bddfa87d6f2be9af5462b1f73967ba14",
+      "independently_hashed_twice": true
+    }
+  },
+  "frozen_R_T_pair_recomputed": true
+}

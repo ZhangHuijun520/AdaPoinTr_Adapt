@@ -1,0 +1,57 @@
+{
+  "status": "EJTC_NATIVE315_P3_LIMITED_REVIEW_PASS",
+  "review_type": "Local bounded source and contract review, not an independent external review",
+  "checks": [
+    "All four implementation/test files compile",
+    "28 CPU checks pass with unchanged production entry",
+    "Actual worker.main startup path passes with explicit CPU fixtures",
+    "No train/loss/backward/step call in Native worker",
+    "One observed full forward per fixed case, 315 claims; overrun rejected",
+    "Frozen Native observer checks S+delta, consumed coarse and FC parent-major output",
+    "No RBSS permutation intervention",
+    "Only partial array is accessed; unreadable artificial GT is never accessed",
+    "Three checkpoint arm identities and strict state loading checked",
+    "Parameters/buffers and RNG unchanged per arm; mutation detection checked",
+    "Archive has 315 predictions plus five evidence members",
+    "Launcher resource monitor, GPU query, termination logic and trailing startup body unchanged from J launcher"
+  ],
+  "worker": {
+    "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\native_rtj315_preparation_v1\\ejtc_native_rtj315_v1.py",
+    "bytes": 18573,
+    "sha256": "50990bab7d5b5670f03b1a411d1eb1dc1ae20f0822ae551dd96e0d336ca4ea37"
+  },
+  "launcher": {
+    "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\native_rtj315_preparation_v1\\launch_ejtc_native315_v1.py",
+    "bytes": 6293,
+    "sha256": "9c5fc2dfe5c6cef1f22930576efae6b6614b2f1c87e1f481791d5b39a977f06b"
+  },
+  "CPU": {
+    "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\native_rtj315_preparation_v1\\cpu_validation_v2\\Native315_CPU_validation_receipt_v1.json",
+    "bytes": 4994,
+    "sha256": "31baba4b16e16d0e0d6b5c7feaff5b73f45d0d1fb321a59cd8974dc0bf60c236"
+  },
+  "startup_CPU": {
+    "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\native_rtj315_preparation_v1\\cpu_startup_validation_v1\\startup_receipt_v1.json",
+    "bytes": 762,
+    "sha256": "200043bae0c3625aafb495f54be1686acbf86a5a78dec3fb2c19584c4dea0304"
+  },
+  "launcher_diff": {
+    "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\native_rtj315_preparation_v1\\launcher_P3_diff_v1.txt",
+    "bytes": 1936,
+    "sha256": "9eba42a2a83a087d98fa3a71102ae6034980883ccca46e38b8ff66448955053b"
+  },
+  "prior_failed_batch": {
+    "path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\native_rtj315_preparation_v1\\cpu_validation_v1\\failed_checks.json",
+    "cause": "Artificial coarse head returned delta/used in reverse order; fixture-only v2 correction"
+  },
+  "CUDA_executed": false,
+  "server_operations": 0,
+  "limitations": [
+    "Construct/load/observation checks use artificial CPU networks and checkpoints; actual Mamba CUDA execution is not repeated",
+    "CUDA RNG and process spawning are explicit CPU fixtures",
+    "Archive count check uses artificial member bytes, while production payload shapes are separately tested through the frozen Native observation function",
+    "Linux identity, GPU sample and checkpoint existence use explicit fixtures",
+    "Actual main performs authorization, source binding, receipt pairing, fold selection, 105 local input hashes, fresh output/cache creation and started evidence",
+    "run is a non-CUDA sentinel; checkpoint deserialization and observation tested separately in 28-check batch"
+  ]
+}

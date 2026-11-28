@@ -1,0 +1,45 @@
+{
+  "status": "EJTC_NATIVE315_P3_LIMITED_REVIEW_PASS",
+  "review_type": "Bounded local differential review, not an independent external review",
+  "worker": {
+    "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\native_rtj315_preparation_v1\\ejtc_native_rtj315_v2.py",
+    "bytes": 18573,
+    "sha256": "cce983c9def39c12db21afa2cf692de6f5f27ff79aa11f4ef5f5a6b7f2e9f454"
+  },
+  "prior_P3": {
+    "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\native_rtj315_preparation_v1\\Native315_P3_review_v1.json",
+    "bytes": 3595,
+    "sha256": "aab61fb29db09d3b3ecb1ea4b9a33489a07118e86b82af5d7afdf5c12f1618d9"
+  },
+  "CPU": {
+    "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\native_rtj315_preparation_v1\\cpu_validation_v3\\Native315_CPU_validation_receipt_v1.json",
+    "bytes": 4994,
+    "sha256": "266f8389f9ea2b9605a67581d57acbad58d3fc38998ab7a5b626942e64af678d"
+  },
+  "startup_CPU": {
+    "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\native_rtj315_preparation_v1\\cpu_startup_validation_v2\\startup_receipt_v1.json",
+    "bytes": 762,
+    "sha256": "632b53e7c9372f526bf37c7b5756f30b66fdb9dec181f146b1be3a09ccb2dfca"
+  },
+  "path_regression": {
+    "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\native_rtj315_preparation_v1\\Native315_path_CPU_regression_v2.json",
+    "bytes": 726,
+    "sha256": "66e1a41034fca07ef698fd9bc92b91924e94832086c670100fde61c5324f5211"
+  },
+  "checks": [
+    "Exact worker text differs only in frozen scope hash and input path root expression",
+    "Launcher bytes unchanged",
+    "Original scope equal after reverting only 105 paths and removing input_root",
+    "Fold D case/source identities, schedule, input bytes/array hashes, normalization, checkpoint identities, seeds and 315/0 contract unchanged",
+    "28 full CPU contracts plus six path regression checks and actual main startup pass",
+    "No CUDA/preflight/server operation in this revision"
+  ],
+  "limitations": [
+    "Construct/load/observation checks use artificial CPU networks and checkpoints; actual Mamba CUDA execution is not repeated",
+    "CUDA RNG and process spawning are explicit CPU fixtures",
+    "Archive count check uses artificial member bytes, while production payload shapes are separately tested through the frozen Native observation function",
+    "Linux identity, GPU sample and checkpoint existence use explicit fixtures",
+    "Actual main performs authorization, source binding, receipt pairing, fold selection, 105 local input hashes, fresh output/cache creation and started evidence",
+    "run is a non-CUDA sentinel; checkpoint deserialization and observation tested separately in 28-check batch"
+  ]
+}

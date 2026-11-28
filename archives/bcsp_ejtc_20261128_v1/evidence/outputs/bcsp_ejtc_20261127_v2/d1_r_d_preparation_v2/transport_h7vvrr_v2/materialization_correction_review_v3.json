@@ -1,0 +1,19 @@
+{
+  "status": "LIMITED_MATERIALIZATION_CORRECTION_REVIEW_PASS",
+  "failure_audit_sha256": "5739b74d6587340ccc780caf478abf397bb03a0e498152313f168316cebd874e",
+  "CPU_receipt_sha256": "379e2cb025670ae8dfa9b56268b8a3a64bedb23ac24fd4b342435fd790dbf10d",
+  "correction": "Add the exact SHA256 of original request bytes to authorization text; bind runtime to exact serialized authorization bytes.",
+  "unchanged": [
+    "request",
+    "worker",
+    "model",
+    "training_contract",
+    "server_files",
+    "resource_thresholds"
+  ],
+  "remote_mutations": false,
+  "training_restarted": false,
+  "failed_controls_preserved": true,
+  "next_boundary": "Prepare a separately reviewable new-attempt binding with fresh control and evidence paths before any new execution authorization. Do not overwrite consumed controls or reuse old execution authorization.",
+  "limitation": "Regression covers the actual authorize function and byte serialization; it does not establish full training startup success."
+}

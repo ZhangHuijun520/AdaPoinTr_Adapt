@@ -1,0 +1,47 @@
+{
+  "status": "MINIMAL_RTJ_NATIVE_ENTRY_ADAPTATION_REQUIRED",
+  "model_architecture_compatible": true,
+  "strict_runtime_checkpoint_loading_required": true,
+  "no_actual_checkpoint_deserialization_performed": true,
+  "existing_sources": {
+    "native_loader": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_oasg_20261124_v1\\skullfix_prediction_v2\\oasg_sf_native_v2.py",
+      "bytes": 21010,
+      "sha256": "0d1f30ac43fb6b5002429100bafd54e117156f9a40989e153aaf3da4c7c9a3d5"
+    },
+    "old_rbss_entry": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_rbss_20261126_v2\\foldd_native315_v1\\rbss_native315_v1.py",
+      "bytes": 9820,
+      "sha256": "e2d61bdb5d4d0459f6c86ed0ea1e8d6467a83175ede102a289952cf3f6a0986f"
+    },
+    "old_oasg_entry": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_oasg_20261124_v1\\p4_ba_d_v2\\oasg_native_ba_d_v2.py",
+      "bytes": 19258,
+      "sha256": "eb1e9f462d3d91518e207eda31f745b09a439812b7ccc3178dda754f3f9953a8"
+    },
+    "prefix": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_rbss_20261126_v2\\p0b_prefix16_v1\\rbss_prefix16_v1.py",
+      "bytes": 17030,
+      "sha256": "1541ed8b285a8088afc0dd9c0f9b40ca0245bf5fdca3ce4674bd2ad6b18469ad"
+    }
+  },
+  "reusable": [
+    "Frozen training prefix.build_model and native prepare_models",
+    "Existing Native coarse/FC observations and OASG S/delta/parent-index diagnostics",
+    "Partial-only reading, Fold D selection, state/RNG observations and archive conventions"
+  ],
+  "cannot_reuse_verbatim": [
+    "OASG entry hardcodes old B/A identities, seed2026112101 and 210 calls",
+    "RBSS entry hardcodes old R/C/S identities, seed2026112701/03 and injects permutations which EJTC must not use",
+    "Training launchers enforce 3900 training steps and cannot launch zero-update Native prediction"
+  ],
+  "minimum_changes": [
+    "EJTC R/T/J Native entry and necessary prediction-only short launcher, actual seed2026112801/03 and checkpoint/freeze schemas",
+    "Reject wrong arm/fold/seed/epoch/update checkpoint payloads; load each state strictly",
+    "315 ordered forward claims, no warm-up/extra forward/retry; preserve true R/T/J tags in manifests while observing common OASG head format",
+    "Targeted CPU build/load boundary, wrong identity/split, partial-only array-access spy, forward order/budget, payload and state/RNG evidence tests",
+    "Bounded P3, then read-only current server checkpoint/GPU/105 actual input paths/new-target verification before final request and transport freeze"
+  ],
+  "GPU_preflight_repeat_required": false,
+  "execution_authorized": false
+}

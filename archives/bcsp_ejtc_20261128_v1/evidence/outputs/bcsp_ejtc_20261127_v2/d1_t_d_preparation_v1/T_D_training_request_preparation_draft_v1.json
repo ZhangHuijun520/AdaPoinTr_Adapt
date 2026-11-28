@@ -1,0 +1,49 @@
+{
+  "schema": "bcsp-ejtc-foldD-t-training-preparation-v1",
+  "status": "DRAFT_NOT_EXECUTABLE_PENDING_MINIMAL_T_ENTRY_CPU_VALIDATION",
+  "execution_authorized": false,
+  "arm": "T",
+  "paired_contract_sha256": "056f64ba012e9eafb21ab2d6fd40ce349ddc167d9462a17d4e9a99f7e2a38cc5",
+  "proposed_install_root": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_t_d_20261127_v1",
+  "proposed_output": "/home/jovyan/adapointr_work/PoinTr/logs/cranial_bcsp_fullmamba/EJTC_D1_T_D_h7vvrr_v1",
+  "proposed_controls": {
+    "request": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_t_d_20261127_v1/EJTC_D1_T_D_training_execution_request_h7vvrr_v1.json",
+    "authorization": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_t_d_20261127_v1/T_D_authorization_v1.json",
+    "runtime": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_t_d_20261127_v1/T_D_runtime_v1.json",
+    "single_attempt_log": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_t_d_20261127_v1/T_D_single_attempt_v1.log",
+    "resource_log": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_t_d_20261127_v1/T_D_resource_v1.jsonl",
+    "dispatch_log": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_t_d_20261127_v1/T_D_dispatch_v1.log",
+    "exit_code": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_t_d_20261127_v1/T_D_exit_code_v1.txt"
+  },
+  "proposed_session": "bcsp_ejtc_t_d_h7vvrr_v1",
+  "required_implementation": [
+    "Isolated T worker: strict loading and actual fingerprint validation of frozen R initial state; exact four starting RNG checks; T global tail loss using existing validated cdist distance reuse without duplicate dense distance computation",
+    "T-compatible short launcher with exact T request identity; retain original counts and resource thresholds",
+    "Actual worker/launcher authorization and startup argument path CPU checks, loss value/gradient equivalence and tail logging, frozen-init rejection, RNG mismatch rejection; validate full materialized authorization bytes with real authorize() before writes"
+  ],
+  "required_frozen_implementation": {
+    "existing_R_worker": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_r_d_20261127_v2/ejtc_train_r_d_v2.py",
+      "bytes": 8791,
+      "sha256": "0d797a8c0d910d139f0b21186eb35f069f468157babf3fbd9dedf98773199043"
+    },
+    "existing_R_launcher": {
+      "path": "/home/jovyan/adapointr_work/PoinTr/third_party/bcsp_ejtc_d1_r_d_20261127_v2/launch_rbss_r_d_v1.py",
+      "bytes": 5929,
+      "sha256": "4488611e77a6456ca61b0f8f6b24f9924cff8f7445aac4f96fff6deb91a96bb4"
+    },
+    "loss_candidate": {
+      "local_path": "E:\\Codex\\2026-06-06\\mamba-ccf-c-1-high-resolution\\outputs\\bcsp_ejtc_20261127_v2\\ejtc_loss_cpu_candidate_v1.py",
+      "sha256": "eaab0e866a120e52655adf5bbcaca8aedc37df87c05c8b52016ec9e1d4a579f2"
+    }
+  },
+  "boundary": {
+    "single_attempt": true,
+    "resume": false,
+    "BNCal": false,
+    "development": false,
+    "automatic_retry": false
+  },
+  "final_request_condition": "Final execution request and its authorization SHA256 can be frozen only after T-specific executable files, targeted CPU evidence and bounded review are complete. This draft hash is not an execution authorization target.",
+  "fresh_server_paths_status": "not checked this turn"
+}

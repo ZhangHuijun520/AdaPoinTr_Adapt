@@ -1,0 +1,180 @@
+{
+  "status": "EJTC_NATIVE315_TARGETED_CPU_VALIDATION_PASS",
+  "passed": 28,
+  "checks": [
+    {
+      "check": "N01_actual_serialized_authorization",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N02_wrong_arms_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N03_wrong_seed_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N04_extra_forward_budget_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N05_missing_hash_authorization_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N06_real_frozen_training_receipts",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N07_wrong_checkpoint_receipt_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N08_pairing_RNG_drift_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N09_exact_105_case_development_selection",
+      "status": "PASS",
+      "details": 105
+    },
+    {
+      "check": "N10_training_case_overlap_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N11_normalization_drift_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N12_exact315_budget_and_overrun",
+      "status": "PASS",
+      "details": {
+        "claims": 315,
+        "extra_call_rejected": true
+      }
+    },
+    {
+      "check": "N13_wrong_forward_order_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N14_partial_only_access_spy_and_unreadable_GT",
+      "status": "PASS",
+      "details": {
+        "accessed_arrays": [
+          "partial"
+        ],
+        "GT_accesses": 0
+      }
+    },
+    {
+      "check": "N15_partial_array_hash_drift_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N16_actual_constructor_strict_loading_and_Native_observer",
+      "status": "PASS",
+      "details": {
+        "artificial_forward_calls": 3,
+        "real_Mamba_forward_calls": 0,
+        "real_frozen_observe_once_used": true
+      }
+    },
+    {
+      "check": "N17_wrong_checkpoint_arm_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N18_wrong_checkpoint_step_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N19_wrong_checkpoint_seed_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N20_checkpoint_structure_drift_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N21_nonfinite_prediction_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N22_wrong_parent_indices_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N23_changed_coarse_identity_rejected",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N24_training_mode_rejected_before_forward",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "N25_data_boundary_labels_and_extra_payload_rejection",
+      "status": "PASS",
+      "details": {
+        "labels_and_extra_checkpoints_denied": true,
+        "owned_prediction_allowed": true
+      }
+    },
+    {
+      "check": "N26_state_RNG_evidence_and_mutation_detection",
+      "status": "PASS",
+      "details": "Real CPU/Python/NumPy RNG; CUDA RNG is a named CPU fixture"
+    },
+    {
+      "check": "N27_exact_archive_member_and_checksum_contract",
+      "status": "PASS",
+      "details": {
+        "artificial_predictions": 315,
+        "archive_members": 320,
+        "download_files": 4
+      }
+    },
+    {
+      "check": "N28_actual_launcher_main_and_single_worker_argv",
+      "status": "PASS",
+      "details": "Actual launcher.main, mocked process spawn, exact Native worker argv"
+    }
+  ],
+  "worker_sha256": "50990bab7d5b5670f03b1a411d1eb1dc1ae20f0822ae551dd96e0d336ca4ea37",
+  "launcher_sha256": "9c5fc2dfe5c6cef1f22930576efae6b6614b2f1c87e1f481791d5b39a977f06b",
+  "scope_sha256": "f61e62cf2cbaf9e81b2e60598c1e0fede3a7b058368694012df0c7fb121606d2",
+  "test_sha256": "d8457d892761368c3765086bbde37941649111b2039756dd66b5d58127f4052c",
+  "torch_version": "2.5.1",
+  "numpy_version": "1.26.4",
+  "CUDA_initialized": false,
+  "remote_operations": 0,
+  "real_Mamba_forward_calls": 0,
+  "real_optimizer_steps": 0,
+  "limitations": [
+    "Construct/load/observation checks use artificial CPU networks and checkpoints; actual Mamba CUDA execution is not repeated",
+    "CUDA RNG and process spawning are explicit CPU fixtures",
+    "Archive count check uses artificial member bytes, while production payload shapes are separately tested through the frozen Native observation function"
+  ]
+}
